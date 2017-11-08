@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `swilifecore` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `swilifecore`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: swilifecore
@@ -62,33 +60,35 @@ CREATE TABLE `candidate` (
   `LastName` varchar(45) CHARACTER SET utf8 NOT NULL,
   `Email` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `SecondaryEmail` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `WebSite` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `SkypeIM` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `CellPhone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `WorkPhone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Address` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `City` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `Country` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `BestTimeToCall` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `ResumeLink` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `Gender` tinyint(4) DEFAULT NULL,
+  `Address` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `WebSite` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `Source` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `CurrentPosition` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `DOBMarried` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `InterviewNotes` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
-  `CanRelocate` tinyint(4) DEFAULT NULL,
   `DateAvailable` date DEFAULT NULL,
   `CurrentEmployer` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `KeySkills` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `CanRelocate` tinyint(4) DEFAULT NULL,
   `CurrentPay` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `DesiredPay` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `Source` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `KeySkills` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `DOBMarried` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `InterviewNotes` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
+  `Gender` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `MiscNotes` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
+  `City` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `Country` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `ResumeLink` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `PositionsUpTillNow` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
   `Years` int(11) DEFAULT NULL,
   `ProjectDone` varchar(2000) CHARACTER SET utf8 DEFAULT NULL,
   `Industry` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `Education` varchar(2000) CHARACTER SET utf8 DEFAULT NULL,
   `Language` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `CreatedDate` datetime DEFAULT NULL,
+  `CreatedId` int(11) DEFAULT NULL,
   PRIMARY KEY (`candidateId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -116,22 +116,23 @@ CREATE TABLE `company` (
   `SecondaryPhone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `FaxNumber` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Address` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `City` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `State` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `PostalCode` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `WebSite` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `Department` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `IsHot` tinyint(4) DEFAULT NULL,
   `CountryOfOrigin` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `IsActive` tinyint(4) DEFAULT NULL,
+  `WebSite` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `KeyTechnologies` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ServiceContractTerms` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
   `Industry` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ABC` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `KeyTechnologies` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `IsActive` tinyint(4) DEFAULT NULL,
   `MiscNotes` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
+  `City` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `State` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `PostalCode` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `Department` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `IsHot` tinyint(4) DEFAULT NULL,
   `ContractSigingTime` date DEFAULT NULL,
   `Teams` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ScanLink` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `BillingContactId` int(11) DEFAULT NULL,
   PRIMARY KEY (`companyId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -203,8 +204,8 @@ CREATE TABLE `joborder` (
   `CompanyId` int(11) DEFAULT NULL,
   `City` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `State` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `Recruiter` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `Owner` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `RecruiterId` int(11) DEFAULT NULL,
+  `OwnerId` int(11) DEFAULT NULL,
   `StartDate` date DEFAULT NULL,
   `Duration` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `MaximumRate` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
@@ -322,4 +323,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-06 12:39:53
+-- Dump completed on 2017-11-08 20:15:32
