@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace DBTEST.Model
 {
-    class StaffUser : BaseModel
+    class User : BaseModel
     {
         public int Index { get; set; }
         public string UserName { get; set; }
@@ -23,13 +23,14 @@ namespace DBTEST.Model
             return verifyMd5Hash(password + salt, Password + Salt);
         }
         public string Salt { get; set; }
-        public enum StaffRole{
+        public enum UsserRole{
             ROLE_ROOT = 0,
             ROLE_ADMIN = 1, // ADD, MODIFY, DELETE DB
             ROLE_STAFF = 2, // VIEW ONLY
+            ROLE_DEACTIVE = 3,
         }
 
-        public StaffRole Role { get; set; }
+        public UsserRole Role { get; set; }
 
         public string PasswordHash { get; set; }
 
@@ -60,7 +61,7 @@ namespace DBTEST.Model
 
         }
 
-        public StaffUser()
+        public User()
         {
 
         }

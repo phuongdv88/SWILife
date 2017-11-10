@@ -16,7 +16,7 @@ namespace DBTEST
     public partial class DBTEST : Form
     {
         DataAccess dataAccess;
-        StaffUser currentUser;
+        User currentUser;
         public DBTEST()
         {
             InitializeComponent();
@@ -39,12 +39,12 @@ namespace DBTEST
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            StaffUser user = new StaffUser()
+            User user = new User()
             {
                 UserName = textBoxUserName.Text.Trim(),
                 Password = textBoxPassword.Text.Trim(),
                 Salt = "123456",
-                Role = (StaffUser.StaffRole)comboBoxRole.SelectedIndex
+                Role = (User.UsserRole)comboBoxRole.SelectedIndex
             };
             try
             {
@@ -80,7 +80,7 @@ namespace DBTEST
             {
                 currentUser.UserName = textBoxUserName.Text.Trim();
                 currentUser.Password = textBoxPassword.Text.Trim();
-                currentUser.Role = (StaffUser.StaffRole)comboBoxRole.SelectedIndex;
+                currentUser.Role = (User.UsserRole)comboBoxRole.SelectedIndex;
                 dataAccess.executeNonQuery(QueryBuilder.Update(currentUser));
             }
             catch (Exception ex)
@@ -92,7 +92,7 @@ namespace DBTEST
 
         private void buttonShow_Click(object sender, EventArgs e)
         {
-            string query = "Select * from staffuser";
+            string query = "Select * from user";
             try
             {
                 dataGridViewUser.DataSource = dataAccess.getTable(query);
@@ -110,13 +110,13 @@ namespace DBTEST
                 return;
             try
             {
-                currentUser = new StaffUser()
+                currentUser = new User()
                 {
                     Index = int.Parse(dataGridViewUser.Rows[row].Cells[0].Value.ToString()),
                     UserName = dataGridViewUser.Rows[row].Cells[1].Value.ToString(),
                     PasswordHash = dataGridViewUser.Rows[row].Cells[2].Value.ToString(),
                     Salt = dataGridViewUser.Rows[row].Cells[3].Value.ToString(),
-                    Role = (StaffUser.StaffRole)int.Parse(dataGridViewUser.Rows[row].Cells[4].Value.ToString())
+                    Role = (User.UsserRole)int.Parse(dataGridViewUser.Rows[row].Cells[4].Value.ToString())
                 };
 
                 textBoxUserName.Text = currentUser.UserName;

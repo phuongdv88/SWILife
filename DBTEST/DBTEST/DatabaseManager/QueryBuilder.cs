@@ -38,10 +38,10 @@ namespace DBTEST.DatabaseManager
         public static string Create(BaseModel obj)
         {
             string rs = "";
-            if(obj is StaffUser)
+            if(obj is User)
             {
-                var user = obj as StaffUser;
-                rs = string.Format("INSERT INTO `swilifecore`.`staffuser` (`UserName`, `Password`, `Salt`, `Role`) VALUES ('{0}', '{1}', '{2}', '{3}')"
+                var user = obj as User;
+                rs = string.Format("INSERT INTO `swilifecore`.`user` (`UserName`, `Password`, `Salt`, `Role`) VALUES ('{0}', '{1}', '{2}', '{3}')"
                     ,mySqlEscape(user.UserName), user.md5Password(), user.Salt,(int) user.Role);
 
             }
@@ -51,10 +51,10 @@ namespace DBTEST.DatabaseManager
         public static string Update(BaseModel obj)
         {
             string rs = "";
-            if (obj is StaffUser)
+            if (obj is User)
             {
-                var user = obj as StaffUser;
-                rs = string.Format("UPDATE `swilifecore`.`staffuser` SET `UserName`= '{0}', `Password`= '{1}', `Salt`= '{2}', `Role`= '{3}' WHERE `idStaffUser`= '{4}'"
+                var user = obj as User;
+                rs = string.Format("UPDATE `swilifecore`.`user` SET `UserName`= '{0}', `Password`= '{1}', `Salt`= '{2}', `Role`= '{3}' WHERE `UserId`= '{4}'"
                     , mySqlEscape(user.UserName), user.md5Password(), user.Salt, (int)user.Role, user.Index);
 
             }
@@ -63,10 +63,10 @@ namespace DBTEST.DatabaseManager
         public static string Delete(BaseModel obj)
         {
             string rs = "";
-            if (obj is StaffUser)
+            if (obj is User)
             {
-                var user = obj as StaffUser;
-                rs = string.Format("DELETE FROM `swilifecore`.`staffuser` WHERE `idStaffUser`='{0}';", user.Index);
+                var user = obj as User;
+                rs = string.Format("DELETE FROM `swilifecore`.`user` WHERE `UserId`='{0}';", user.Index);
             }
             return rs;
         }

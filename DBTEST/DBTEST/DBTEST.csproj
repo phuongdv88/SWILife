@@ -58,8 +58,15 @@
     <Compile Include="DBTEST.Designer.cs">
       <DependentUpon>DBTEST.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\BaseModel.cs" />
-    <Compile Include="Model\StaffUser.cs" />
+    <Compile Include="Model\Candidate.cs" />
+    <Compile Include="Model\Company.cs" />
+    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\JobOrder.cs" />
+    <Compile Include="Model\RunningTask.cs" />
+    <Compile Include="Model\ScheduleEvent.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DBTEST.resx">
@@ -113,6 +120,16 @@
     </None>
     <None Include="swilifecoreDataSet4.xss">
       <DependentUpon>swilifecoreDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="swilifecoreDataSet5.xsc">
+      <DependentUpon>swilifecoreDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="swilifecoreDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="swilifecoreDataSet5.xss">
+      <DependentUpon>swilifecoreDataSet5.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

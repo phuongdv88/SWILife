@@ -23,9 +23,8 @@ DROP TABLE IF EXISTS `activity`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `activity` (
-  `ActivityId` int(11) NOT NULL,
+  `ActivityId` int(11) NOT NULL AUTO_INCREMENT,
   `Regarding` int(11) DEFAULT NULL,
-  `Status` int(11) DEFAULT NULL,
   `Type` int(11) DEFAULT NULL,
   `Notes` longtext CHARACTER SET utf8,
   `DateTime` datetime DEFAULT NULL,
@@ -33,6 +32,7 @@ CREATE TABLE `activity` (
   `JobOrderId` int(11) DEFAULT NULL,
   `CandidateId` int(11) DEFAULT NULL,
   `ContactID` int(11) DEFAULT NULL,
+  `UserId` int(11) NOT NULL,
   PRIMARY KEY (`ActivityId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -54,7 +54,7 @@ DROP TABLE IF EXISTS `candidate`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `candidate` (
-  `candidateId` int(11) NOT NULL,
+  `CandidateId` int(11) NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(45) CHARACTER SET utf8 NOT NULL,
   `MiddleName` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
   `LastName` varchar(45) CHARACTER SET utf8 NOT NULL,
@@ -89,7 +89,10 @@ CREATE TABLE `candidate` (
   `Language` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `CreatedDate` datetime DEFAULT NULL,
   `CreatedId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`candidateId`)
+  `IsInBlacklist` tinyint(4) DEFAULT NULL,
+  `UserId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`CandidateId`),
+  UNIQUE KEY `CandidateId_UNIQUE` (`CandidateId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -110,7 +113,7 @@ DROP TABLE IF EXISTS `company`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `company` (
-  `companyId` int(11) NOT NULL,
+  `CompanyId` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `PrimaryPhone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `SecondaryPhone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -133,7 +136,8 @@ CREATE TABLE `company` (
   `Teams` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ScanLink` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `BillingContactId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`companyId`)
+  `UserId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`CompanyId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -154,7 +158,7 @@ DROP TABLE IF EXISTS `contact`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contact` (
-  `ContactId` int(11) NOT NULL,
+  `ContactId` int(11) NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `MiddleName` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `LastName` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
@@ -175,6 +179,7 @@ CREATE TABLE `contact` (
   `ProfileLink` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `MiscNotes` longtext CHARACTER SET utf8,
   `CompanyId` int(11) DEFAULT NULL,
+  `UserId` int(11) DEFAULT NULL,
   PRIMARY KEY (`ContactId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -196,7 +201,7 @@ DROP TABLE IF EXISTS `joborder`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `joborder` (
-  `joborderId` int(11) NOT NULL,
+  `joborderId` int(11) NOT NULL AUTO_INCREMENT,
   `Title` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `Department` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `Salary` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
@@ -240,9 +245,10 @@ DROP TABLE IF EXISTS `runningtask`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `runningtask` (
-  `RunningtaskId` int(11) NOT NULL,
+  `RunningtaskId` int(11) NOT NULL AUTO_INCREMENT,
   `CandidateId` int(11) DEFAULT NULL,
   `JobOrderId` int(11) DEFAULT NULL,
+  `Status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`RunningtaskId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -287,32 +293,32 @@ LOCK TABLES `scheduleevent` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `staffuser`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `staffuser`;
+DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `staffuser` (
-  `idStaffUser` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `UserId` int(11) NOT NULL AUTO_INCREMENT,
   `UserName` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `Password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Salt` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Role` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idStaffUser`),
-  UNIQUE KEY `idStaffUser_UNIQUE` (`idStaffUser`),
+  PRIMARY KEY (`UserId`),
+  UNIQUE KEY `idStaffUser_UNIQUE` (`UserId`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='It''s for authentication. Password is md5 of raw_pass+ salt ';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='It''s for authentication. Password is md5 of raw_pass+ salt ';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `staffuser`
+-- Dumping data for table `user`
 --
 
-LOCK TABLES `staffuser` WRITE;
-/*!40000 ALTER TABLE `staffuser` DISABLE KEYS */;
-INSERT INTO `staffuser` VALUES (1,'root','86EC4309A83C02FC2B514198FA93091C','123456a@',1),(2,'admin','86EC4309A83C02FC2B514198FA93091C','123456a@',1);
-/*!40000 ALTER TABLE `staffuser` ENABLE KEYS */;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'root','86EC4309A83C02FC2B514198FA93091C','123456a@',1),(2,'admin','86EC4309A83C02FC2B514198FA93091C','123456a@',1),(4,'dp','EEAFB716F93FA090D7716749A6EEFA72','123456',1);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -324,4 +330,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-09 20:20:05
+-- Dump completed on 2017-11-10 20:15:03
