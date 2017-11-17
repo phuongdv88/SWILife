@@ -39,6 +39,8 @@ namespace DXSWI
         public void initLoginScreen()
         {
             Application.Run(mdlgLogin);
+            //Application.Run(mMain);
+            //showLoginScreen();
         }
         public void showLoginScreen()
         {
@@ -50,6 +52,12 @@ namespace DXSWI
             mMain?.Show();
             mdlgLogin?.Hide();
 
+        }
+
+        public void quit()
+        {
+            mdlgLogin.Close();
+            //Application.Exit();
         }
     }
 }

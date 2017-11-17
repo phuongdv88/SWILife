@@ -64,11 +64,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\User.cs">
+    <Compile Include="Controls\ucCalendar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\User.Designer.cs">
-      <DependentUpon>User.cs</DependentUpon>
+    <Compile Include="Controls\ucCalendar.Designer.cs">
+      <DependentUpon>ucCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucCandidate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucCandidate.Designer.cs">
+      <DependentUpon>ucCandidate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucCompany.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucCompany.Designer.cs">
+      <DependentUpon>ucCompany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucContact.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucContact.Designer.cs">
+      <DependentUpon>ucContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucJobOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucJobOrder.Designer.cs">
+      <DependentUpon>ucJobOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucReport.Designer.cs">
+      <DependentUpon>ucReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucUser.Designer.cs">
+      <DependentUpon>ucUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucUtilities.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucUtilities.Designer.cs">
+      <DependentUpon>ucUtilities.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\dlgChangePassword.cs">
       <SubType>Form</SubType>
@@ -88,11 +130,53 @@
     <Compile Include="Forms\dlgUser.Designer.cs">
       <DependentUpon>dlgUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\frCalendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\frCalendar.Designer.cs">
+      <DependentUpon>frCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\frCandidates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\frCandidates.Designer.cs">
+      <DependentUpon>frCandidates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\frCompanies.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\frCompanies.Designer.cs">
+      <DependentUpon>frCompanies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\frContacts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\frContacts.Designer.cs">
+      <DependentUpon>frContacts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\frJobOrders.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\frJobOrders.Designer.cs">
+      <DependentUpon>frJobOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\frReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\frReport.Designer.cs">
+      <DependentUpon>frReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\frUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Modules\frUser.Designer.cs">
       <DependentUpon>frUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\frUtilities.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\frUtilities.Designer.cs">
+      <DependentUpon>frUtilities.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,14 +192,56 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>swilifecoreDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\User.resx">
-      <DependentUpon>User.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\ucCalendar.resx">
+      <DependentUpon>ucCalendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucCandidate.resx">
+      <DependentUpon>ucCandidate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucCompany.resx">
+      <DependentUpon>ucCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucContact.resx">
+      <DependentUpon>ucContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucJobOrder.resx">
+      <DependentUpon>ucJobOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucReport.resx">
+      <DependentUpon>ucReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucUser.resx">
+      <DependentUpon>ucUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucUtilities.resx">
+      <DependentUpon>ucUtilities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgChangePassword.resx">
       <DependentUpon>dlgChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgLogin.resx">
       <DependentUpon>dlgLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\frCalendar.resx">
+      <DependentUpon>frCalendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\frCandidates.resx">
+      <DependentUpon>frCandidates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\frCompanies.resx">
+      <DependentUpon>frCompanies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\frContacts.resx">
+      <DependentUpon>frContacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\frJobOrders.resx">
+      <DependentUpon>frJobOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\frReport.resx">
+      <DependentUpon>frReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\frUtilities.resx">
+      <DependentUpon>frUtilities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SWIMain.resx">
       <DependentUpon>SWIMain.cs</DependentUpon>

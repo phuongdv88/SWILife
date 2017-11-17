@@ -49,11 +49,16 @@ namespace DXSWI
 
         private void SWIMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(XtraMessageBox.Show("Are you sure to want to quit?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (XtraMessageBox.Show("Are you sure to want to quit?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 e.Cancel = true;
             }
-            SWIBLL.UserManager.logout();
+            try
+            {
+                SWIBLL.UserManager.logout();
+                ScreenManager.Instance.quit();
+            }
+            catch { }
         }
 
         private void SWIMain_KeyDown(object sender, KeyEventArgs e)
@@ -67,5 +72,39 @@ namespace DXSWI
                     break;
             }
         }
+
+        private void barBILogout_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (XtraMessageBox.Show("Are you sure to want to logout?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+            try
+            {
+                if (SWIBLL.UserManager.logout())
+                {
+                    ScreenManager.Instance.showLoginScreen();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Can not logout!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+        }
+
+        private void navBarControl1_ActiveGroupChanged(object sender, DevExpress.XtraNavBar.NavBarGroupEventArgs e)
+        {
+            //object data = GetModuleData((NavBarGroupTagObject)e.Group.Tag);
+        }
+
+        //protected object GetModuleData(NavBarGroupTagObject tag)
+        //{
+        //    if (tag == null) return null;
+        //    if (tag.ModuleType == typeof(DevExpress.MailClient.Win.Calendar)) return ucCalendar1;
+        //    if (tag.ModuleType == typeof(DevExpress.MailClient.Win.Feeds)) return navBarControl2;
+        //    if (tag.ModuleType == typeof(DevExpress.MailClient.Win.Tasks)) return nbgTasks;
+        //    return null;
+        //}
     }
 }

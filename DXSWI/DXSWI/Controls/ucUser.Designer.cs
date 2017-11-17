@@ -1,6 +1,6 @@
 ﻿namespace DXSWI.Controls
 {
-    partial class User
+    partial class ucUser
     {
         /// <summary> 
         /// Required designer variable.

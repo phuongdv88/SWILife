@@ -30,19 +30,15 @@ namespace SWIBLL
                 Exception ex = new Exception("User name or password is incorrect!");
                 throw ex;
             }
-            if (ActivatedUser.IsOnline)
-            {
-                Exception ex = new Exception("Account is used by another user!");
-                throw ex;
-            }
+            //if (ActivatedUser.IsOnline)
+            //{
+            //    Exception ex = new Exception("Account is used by another user!");
+            //    throw ex;
+            //}
             // if correct , update login state of user
-            if (DataAccess.Instance.updateLoginState(userName, true))
-            {
-                ActivatedUser.IsOnline = true;
-                return true;
-            }
-            else
-                return false;
+            DataAccess.Instance.updateLoginState(userName, true);
+            ActivatedUser.IsOnline = true;
+            return true;
         }
 
         public static bool logout()

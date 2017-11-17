@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace DXSWI.Controls
+namespace DXSWI.Modules
 {
-    public partial class User : DevExpress.XtraEditors.XtraUserControl
+    public partial class frUtilities : DevExpress.XtraEditors.XtraUserControl
     {
-        public User()
+        public frUtilities()
         {
             InitializeComponent();
         }
