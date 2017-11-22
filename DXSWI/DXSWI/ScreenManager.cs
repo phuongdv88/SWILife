@@ -59,5 +59,7 @@ namespace DXSWI
             mdlgLogin.Close();
             //Application.Exit();
         }
+
     }
+
 }

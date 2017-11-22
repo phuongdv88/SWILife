@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace DXSWI.Modules
+namespace DXSWI.Controls
 {
-    public partial class frContacts : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucChangePageBar : DevExpress.XtraEditors.XtraUserControl
     {
-        public frContacts()
+        public ucChangePageBar()
         {
             InitializeComponent();
         }
-
     }
 }

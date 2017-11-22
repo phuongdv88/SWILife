@@ -37,12 +37,12 @@ namespace DevExpress.MailClient.Win {
             TaskbarHelper.InitDemoJumpList(TaskbarAssistant.Default, this);
             InitializeComponent();
             rpcSearch.Text = TagResources.SearchTools;
-            InitNavBarGroups();
+            InitNavBarGroups();  // init tag of navbargroup
             SkinHelper.InitSkinGallery(rgbiSkins);
             RibbonButtonsInitialize();
-            modulesNavigator = new ModulesNavigator(ribbonControl1, pcMain);
-            zoomManager = new ZoomManager(ribbonControl1, modulesNavigator, beiZoom);
-            modulesNavigator.ChangeGroup(navBarControl1.ActiveGroup, this);
+            modulesNavigator = new ModulesNavigator(ribbonControl1, pcMain);  // ctor screen manager
+            zoomManager = new ZoomManager(ribbonControl1, modulesNavigator, beiZoom);  //ctor 
+            modulesNavigator.ChangeGroup(navBarControl1.ActiveGroup, this);   // change group of UI
             NavigationInitialize();
             SetPageLayoutStyle();
         }

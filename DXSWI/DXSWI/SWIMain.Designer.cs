@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SWIMain));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -43,17 +43,16 @@
             this.bbiChangePassword = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.barBILogout = new DevExpress.XtraBars.BarButtonItem();
-            this.rpcSearch = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
-            this.rpSearch = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.rpcCalendarTools = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
-            this.rpApointment = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpUser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpCandidates = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpCompanies = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpContacts = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpJobOrders = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpCalendar = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -62,9 +61,7 @@
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.nbgUtilites = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarGroupControlContainer8 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
-            this.ucUtilities1 = new DXSWI.Controls.ucUtilities();
+            this.nbgUsers = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.user1 = new DXSWI.Controls.ucUser();
             this.navBarGroupControlContainer2 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
@@ -79,21 +76,19 @@
             this.ucCalendar1 = new DXSWI.Controls.ucCalendar();
             this.navBarGroupControlContainer7 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.ucReport1 = new DXSWI.Controls.ucReport();
-            this.nbgUsers = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarGroupControlContainer8 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.ucUtilities1 = new DXSWI.Controls.ucUtilities();
             this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgCompanies = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgJoborder = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgContacts = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgCalendar = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgReport = new DevExpress.XtraNavBar.NavBarGroup();
+            this.nbgUtilites = new DevExpress.XtraNavBar.NavBarGroup();
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.navBarControl1.SuspendLayout();
-            this.navBarGroupControlContainer8.SuspendLayout();
             this.navBarGroupControlContainer1.SuspendLayout();
             this.navBarGroupControlContainer2.SuspendLayout();
             this.navBarGroupControlContainer3.SuspendLayout();
@@ -101,14 +96,15 @@
             this.navBarGroupControlContainer5.SuspendLayout();
             this.navBarGroupControlContainer6.SuspendLayout();
             this.navBarGroupControlContainer7.SuspendLayout();
+            this.navBarGroupControlContainer8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).BeginInit();
             this.SuspendLayout();
             // 
-            // ribbonControl
+            // ribbonControlMain
             // 
-            this.ribbonControl.ExpandCollapseItem.Id = 0;
-            this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl.ExpandCollapseItem,
+            this.ribbonControlMain.ExpandCollapseItem.Id = 0;
+            this.ribbonControlMain.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbonControlMain.ExpandCollapseItem,
             this.skinRibbonGalleryBarItem,
             this.barButtonItem1,
             this.barButtonItem2,
@@ -118,14 +114,11 @@
             this.bbiChangePassword,
             this.skinRibbonGalleryBarItem1,
             this.barBILogout});
-            this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 57;
-            this.ribbonControl.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
-            this.ribbonControl.Name = "ribbonControl";
-            this.ribbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
-            this.rpcSearch,
-            this.rpcCalendarTools});
-            this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControlMain.MaxItemId = 57;
+            this.ribbonControlMain.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
+            this.ribbonControlMain.Name = "ribbonControlMain";
+            this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpUser,
             this.rpCandidates,
             this.rpCompanies,
@@ -134,11 +127,11 @@
             this.rpCalendar,
             this.rpReport,
             this.rpUtilities});
-            this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
-            this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1350, 143);
-            this.ribbonControl.StatusBar = this.ribbonStatusBar;
-            this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
+            this.ribbonControlMain.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
+            this.ribbonControlMain.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControlMain.Size = new System.Drawing.Size(1350, 143);
+            this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
+            this.ribbonControlMain.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // skinRibbonGalleryBarItem
             // 
@@ -154,9 +147,9 @@
             this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem1.Text = "Add new user";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.barButtonItem1.SuperTip = superToolTip1;
+            toolTipTitleItem5.Text = "Add new user";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            this.barButtonItem1.SuperTip = superToolTip5;
             // 
             // barButtonItem2
             // 
@@ -167,9 +160,9 @@
             this.barButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem2.Text = "Edit current selected user";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.barButtonItem2.SuperTip = superToolTip2;
+            toolTipTitleItem6.Text = "Edit current selected user";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            this.barButtonItem2.SuperTip = superToolTip6;
             // 
             // barButtonItem3
             // 
@@ -224,30 +217,6 @@
             this.barBILogout.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barBILogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBILogout_ItemClick);
             // 
-            // rpcSearch
-            // 
-            this.rpcSearch.Name = "rpcSearch";
-            this.rpcSearch.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.rpSearch});
-            this.rpcSearch.Text = "Search Tools";
-            // 
-            // rpSearch
-            // 
-            this.rpSearch.Name = "rpSearch";
-            this.rpSearch.Text = "SEARCH";
-            // 
-            // rpcCalendarTools
-            // 
-            this.rpcCalendarTools.Name = "rpcCalendarTools";
-            this.rpcCalendarTools.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.rpApointment});
-            this.rpcCalendarTools.Text = "Calendar Tools";
-            // 
-            // rpApointment
-            // 
-            this.rpApointment.Name = "rpApointment";
-            this.rpApointment.Text = "APOINTMENT";
-            // 
             // rpUser
             // 
             this.rpUser.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -255,6 +224,7 @@
             this.ribbonPageGroup2,
             this.ribbonPageGroup4});
             this.rpUser.Name = "rpUser";
+            this.rpUser.Tag = "user";
             this.rpUser.Text = "USER";
             // 
             // ribbonPageGroup1
@@ -284,47 +254,69 @@
             this.rpCandidates.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup6});
             this.rpCandidates.Name = "rpCandidates";
+            this.rpCandidates.Tag = "candidate";
             this.rpCandidates.Text = "CANDIDATES";
+            // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            this.ribbonPageGroup6.Text = "Edit candidates";
             // 
             // rpCompanies
             // 
             this.rpCompanies.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup7});
             this.rpCompanies.Name = "rpCompanies";
+            this.rpCompanies.Tag = "company";
             this.rpCompanies.Text = "COMPANIES";
+            // 
+            // ribbonPageGroup7
+            // 
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
+            this.ribbonPageGroup7.Text = "Companies";
             // 
             // rpContacts
             // 
             this.rpContacts.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup8});
             this.rpContacts.Name = "rpContacts";
+            this.rpContacts.Tag = "contact";
             this.rpContacts.Text = "CONTACTS";
+            // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            this.ribbonPageGroup8.Text = "Contacts";
             // 
             // rpJobOrders
             // 
             this.rpJobOrders.Name = "rpJobOrders";
+            this.rpJobOrders.Tag = "joborder";
             this.rpJobOrders.Text = "JOB ORDERS";
             // 
             // rpCalendar
             // 
             this.rpCalendar.Name = "rpCalendar";
+            this.rpCalendar.Tag = "calendar";
             this.rpCalendar.Text = "CALENDAR";
             // 
             // rpReport
             // 
             this.rpReport.Name = "rpReport";
+            this.rpReport.Tag = "report";
             this.rpReport.Text = "REPORT";
             // 
             // rpUtilities
             // 
             this.rpUtilities.Name = "rpUtilities";
+            this.rpUtilities.Tag = "utility";
             this.rpUtilities.Text = "UTILITIES";
             // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 736);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbonControl;
+            this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1350, 31);
             // 
             // ribbonPageGroup3
@@ -373,34 +365,18 @@
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.ActiveGroupChanged += new DevExpress.XtraNavBar.NavBarGroupEventHandler(this.navBarControl1_ActiveGroupChanged);
             // 
-            // nbgUtilites
+            // nbgUsers
             // 
-            this.nbgUtilites.Caption = "Utilities";
-            this.nbgUtilites.ControlContainer = this.navBarGroupControlContainer8;
-            this.nbgUtilites.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgUtilites.GroupClientHeight = 150;
-            this.nbgUtilites.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
-            this.nbgUtilites.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgUtilites.LargeImage")));
-            this.nbgUtilites.Name = "nbgUtilites";
-            this.nbgUtilites.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgUtilites.SmallImage")));
-            this.nbgUtilites.Tag = "utilities";
-            // 
-            // navBarGroupControlContainer8
-            // 
-            this.navBarGroupControlContainer8.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.navBarGroupControlContainer8.Appearance.Options.UseBackColor = true;
-            this.navBarGroupControlContainer8.Controls.Add(this.ucUtilities1);
-            this.navBarGroupControlContainer8.Name = "navBarGroupControlContainer8";
-            this.navBarGroupControlContainer8.Size = new System.Drawing.Size(150, 150);
-            this.navBarGroupControlContainer8.TabIndex = 7;
-            // 
-            // ucUtilities1
-            // 
-            this.ucUtilities1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucUtilities1.Location = new System.Drawing.Point(0, 0);
-            this.ucUtilities1.Name = "ucUtilities1";
-            this.ucUtilities1.Size = new System.Drawing.Size(150, 150);
-            this.ucUtilities1.TabIndex = 0;
+            this.nbgUsers.Caption = "Users";
+            this.nbgUsers.ControlContainer = this.navBarGroupControlContainer1;
+            this.nbgUsers.Expanded = true;
+            this.nbgUsers.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgUsers.GroupClientHeight = 80;
+            this.nbgUsers.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+            this.nbgUsers.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.LargeImage")));
+            this.nbgUsers.Name = "nbgUsers";
+            this.nbgUsers.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.SmallImage")));
+            this.nbgUsers.Tag = "user";
             // 
             // navBarGroupControlContainer1
             // 
@@ -521,18 +497,22 @@
             this.ucReport1.Size = new System.Drawing.Size(150, 150);
             this.ucReport1.TabIndex = 0;
             // 
-            // nbgUsers
+            // navBarGroupControlContainer8
             // 
-            this.nbgUsers.Caption = "Users";
-            this.nbgUsers.ControlContainer = this.navBarGroupControlContainer1;
-            this.nbgUsers.Expanded = true;
-            this.nbgUsers.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgUsers.GroupClientHeight = 80;
-            this.nbgUsers.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
-            this.nbgUsers.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.LargeImage")));
-            this.nbgUsers.Name = "nbgUsers";
-            this.nbgUsers.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.SmallImage")));
-            this.nbgUsers.Tag = "users";
+            this.navBarGroupControlContainer8.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.navBarGroupControlContainer8.Appearance.Options.UseBackColor = true;
+            this.navBarGroupControlContainer8.Controls.Add(this.ucUtilities1);
+            this.navBarGroupControlContainer8.Name = "navBarGroupControlContainer8";
+            this.navBarGroupControlContainer8.Size = new System.Drawing.Size(150, 150);
+            this.navBarGroupControlContainer8.TabIndex = 7;
+            // 
+            // ucUtilities1
+            // 
+            this.ucUtilities1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucUtilities1.Location = new System.Drawing.Point(0, 0);
+            this.ucUtilities1.Name = "ucUtilities1";
+            this.ucUtilities1.Size = new System.Drawing.Size(150, 150);
+            this.ucUtilities1.TabIndex = 0;
             // 
             // nbgCandidates
             // 
@@ -544,7 +524,7 @@
             this.nbgCandidates.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.LargeImage")));
             this.nbgCandidates.Name = "nbgCandidates";
             this.nbgCandidates.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.SmallImage")));
-            this.nbgCandidates.Tag = "candidates";
+            this.nbgCandidates.Tag = "candidate";
             // 
             // nbgCompanies
             // 
@@ -556,6 +536,7 @@
             this.nbgCompanies.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCompanies.LargeImage")));
             this.nbgCompanies.Name = "nbgCompanies";
             this.nbgCompanies.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCompanies.SmallImage")));
+            this.nbgCompanies.Tag = "company";
             // 
             // nbgJoborder
             // 
@@ -567,7 +548,7 @@
             this.nbgJoborder.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.LargeImage")));
             this.nbgJoborder.Name = "nbgJoborder";
             this.nbgJoborder.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.SmallImage")));
-            this.nbgJoborder.Tag = "joborders";
+            this.nbgJoborder.Tag = "joborder";
             // 
             // nbgContacts
             // 
@@ -579,7 +560,7 @@
             this.nbgContacts.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgContacts.LargeImage")));
             this.nbgContacts.Name = "nbgContacts";
             this.nbgContacts.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgContacts.SmallImage")));
-            this.nbgContacts.Tag = "contacts";
+            this.nbgContacts.Tag = "contact";
             // 
             // nbgCalendar
             // 
@@ -605,6 +586,18 @@
             this.nbgReport.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgReport.SmallImage")));
             this.nbgReport.Tag = "report";
             // 
+            // nbgUtilites
+            // 
+            this.nbgUtilites.Caption = "Utilities";
+            this.nbgUtilites.ControlContainer = this.navBarGroupControlContainer8;
+            this.nbgUtilites.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgUtilites.GroupClientHeight = 150;
+            this.nbgUtilites.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+            this.nbgUtilites.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgUtilites.LargeImage")));
+            this.nbgUtilites.Name = "nbgUtilites";
+            this.nbgUtilites.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgUtilites.SmallImage")));
+            this.nbgUtilites.Tag = "utility";
+            // 
             // pcMain
             // 
             this.pcMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -612,21 +605,6 @@
             this.pcMain.Name = "pcMain";
             this.pcMain.Size = new System.Drawing.Size(1200, 593);
             this.pcMain.TabIndex = 6;
-            // 
-            // ribbonPageGroup6
-            // 
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "Edit candidates";
-            // 
-            // ribbonPageGroup7
-            // 
-            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
-            this.ribbonPageGroup7.Text = "Companies";
-            // 
-            // ribbonPageGroup8
-            // 
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
-            this.ribbonPageGroup8.Text = "Contacts";
             // 
             // SWIMain
             // 
@@ -636,21 +614,20 @@
             this.Controls.Add(this.pcMain);
             this.Controls.Add(this.navBarControl1);
             this.Controls.Add(this.ribbonStatusBar);
-            this.Controls.Add(this.ribbonControl);
+            this.Controls.Add(this.ribbonControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "SWIMain";
-            this.Ribbon = this.ribbonControl;
+            this.Ribbon = this.ribbonControlMain;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SWIMain_FormClosing);
             this.Load += new System.EventHandler(this.SWIMain_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SWIMain_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.navBarControl1.ResumeLayout(false);
-            this.navBarGroupControlContainer8.ResumeLayout(false);
             this.navBarGroupControlContainer1.ResumeLayout(false);
             this.navBarGroupControlContainer2.ResumeLayout(false);
             this.navBarGroupControlContainer3.ResumeLayout(false);
@@ -658,6 +635,7 @@
             this.navBarGroupControlContainer5.ResumeLayout(false);
             this.navBarGroupControlContainer6.ResumeLayout(false);
             this.navBarGroupControlContainer7.ResumeLayout(false);
+            this.navBarGroupControlContainer8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -665,13 +643,9 @@
         }
 
         #endregion
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
+        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControlMain;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem;
-        private DevExpress.XtraBars.Ribbon.RibbonPageCategory rpcSearch;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rpSearch;
-        private DevExpress.XtraBars.Ribbon.RibbonPageCategory rpcCalendarTools;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rpApointment;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpUser;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpCandidates;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpCompanies;

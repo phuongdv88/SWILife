@@ -76,6 +76,18 @@
     <Compile Include="Controls\ucCandidate.Designer.cs">
       <DependentUpon>ucCandidate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ucCandidateEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucCandidateEdit.Designer.cs">
+      <DependentUpon>ucCandidateEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucChangePageBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucChangePageBar.Designer.cs">
+      <DependentUpon>ucChangePageBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ucCompany.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -197,6 +209,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucCandidate.resx">
       <DependentUpon>ucCandidate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucCandidateEdit.resx">
+      <DependentUpon>ucCandidateEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucChangePageBar.resx">
+      <DependentUpon>ucChangePageBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucCompany.resx">
       <DependentUpon>ucCompany.cs</DependentUpon>

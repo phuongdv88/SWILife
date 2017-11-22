@@ -36,9 +36,9 @@ namespace DevExpress.MailClient.Win {
         }
         public void ChangeGroup(NavBarGroup group, object moduleData) {
             bool allowSetVisiblePage = true;
-            NavBarGroupTagObject groupObject = group.Tag as NavBarGroupTagObject;
+            NavBarGroupTagObject groupObject = group.Tag as NavBarGroupTagObject;  // get tag current group
             if (groupObject == null) return;
-            List<RibbonPage> deferredPagesToShow = new List<RibbonPage>();
+            List<RibbonPage> deferredPagesToShow = new List<RibbonPage>(); // list pages to show
             foreach (RibbonPage page in ribbon.Pages) {
                 if (!string.IsNullOrEmpty(string.Format("{0}", page.Tag))) {
                     bool isPageVisible = groupObject.Name.Equals(page.Tag);
@@ -53,6 +53,8 @@ namespace DevExpress.MailClient.Win {
                     allowSetVisiblePage = false;
                 }
             }
+
+            // if it is the firt show, ,show splash screen until finish get constructor
             bool firstShow = groupObject.Module == null;
             if (firstShow) {
                 if (SplashScreenManager.Default == null)
@@ -73,10 +75,12 @@ namespace DevExpress.MailClient.Win {
                         SplashScreenManager.CloseForm();
                 }
             }
-
+            // set visible all ribbon page equal current tag
             foreach (RibbonPage page in deferredPagesToShow) {
                 page.Visible = true;
             }
+
+            // select the first visible ribbon page
             foreach (RibbonPage page in ribbon.Pages) {
                 if (page.Visible) {
                     ribbon.SelectedPage = page;
@@ -84,6 +88,7 @@ namespace DevExpress.MailClient.Win {
                 }
             }
 
+            // set pc panel
             if (groupObject.Module != null) {
                 if (panel.Controls.Count > 0) {
                     BaseModule currentModule = panel.Controls[0] as BaseModule;
