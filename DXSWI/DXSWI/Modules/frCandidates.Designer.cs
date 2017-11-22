@@ -39,7 +39,7 @@
             this.gcAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcDesiredPay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ucChangePageBar1 = new DXSWI.Controls.ucChangePageBar();
-            this.ucCandidateEdit1 = new DXSWI.Controls.ucCandidateEdit();
+            this.ucCandidateManager1 = new DXSWI.Controls.ucCandidateManager();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -54,7 +54,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.ucCandidateEdit1, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ucCandidateManager1, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1177, 635);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1306, 635);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -77,7 +77,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(572, 609);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(637, 609);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // gridControl1
@@ -86,7 +86,7 @@
             this.gridControl1.Location = new System.Drawing.Point(3, 43);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(566, 563);
+            this.gridControl1.Size = new System.Drawing.Size(631, 563);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -151,16 +151,16 @@
             this.ucChangePageBar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucChangePageBar1.Location = new System.Drawing.Point(3, 3);
             this.ucChangePageBar1.Name = "ucChangePageBar1";
-            this.ucChangePageBar1.Size = new System.Drawing.Size(566, 34);
+            this.ucChangePageBar1.Size = new System.Drawing.Size(631, 34);
             this.ucChangePageBar1.TabIndex = 1;
             // 
-            // ucCandidateEdit1
+            // ucCandidateManager1
             // 
-            this.ucCandidateEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucCandidateEdit1.Location = new System.Drawing.Point(591, 13);
-            this.ucCandidateEdit1.Name = "ucCandidateEdit1";
-            this.ucCandidateEdit1.Size = new System.Drawing.Size(572, 609);
-            this.ucCandidateEdit1.TabIndex = 2;
+            this.ucCandidateManager1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucCandidateManager1.Location = new System.Drawing.Point(656, 13);
+            this.ucCandidateManager1.Name = "ucCandidateManager1";
+            this.ucCandidateManager1.Size = new System.Drawing.Size(637, 609);
+            this.ucCandidateManager1.TabIndex = 2;
             // 
             // frCandidates
             // 
@@ -168,7 +168,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frCandidates";
-            this.Size = new System.Drawing.Size(1177, 635);
+            this.Size = new System.Drawing.Size(1306, 635);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -190,6 +190,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gcDesiredPay;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Controls.ucChangePageBar ucChangePageBar1;
-        private Controls.ucCandidateEdit ucCandidateEdit1;
+        private Controls.ucCandidateManager ucCandidateManager1;
     }
 }

@@ -91,9 +91,10 @@ CREATE TABLE `candidate` (
   `CreatedId` int(11) DEFAULT NULL,
   `IsInBlacklist` tinyint(4) DEFAULT NULL,
   `UserId` int(11) DEFAULT NULL,
+  `Modified` datetime DEFAULT NULL,
   PRIMARY KEY (`CandidateId`),
   UNIQUE KEY `CandidateId_UNIQUE` (`CandidateId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +103,7 @@ CREATE TABLE `candidate` (
 
 LOCK TABLES `candidate` WRITE;
 /*!40000 ALTER TABLE `candidate` DISABLE KEYS */;
+INSERT INTO `candidate` VALUES (1,'Đào ','Việt ','Phương','phuongdv@live.com','secondary@mail.com','phuongalas','0983949090','0123456789','11 giờ đêm','234 Phạm Văn Đồng','swilife.com','1','Tech','2018-01-21','Viettel','C++, State machine',0,'1000$','2000$','24/6/1988','interview notes...','1','notes...','Hanoi','Vietnam','D:\\SWIlifeCVs\\1','Nhân viên',11,'VQ; abc; xyz','Công nghệ thông tin','BKHN','English, Russian','2017-11-21 00:00:00',1,0,1,'2017-11-21 00:00:00'),(2,'Nguyễn','Hương','Trà','tra@email1.com','tra@email2.com','traSkype','0989838896','0122132132','12 giờ đêm','232 Phạm Văn Đồng','trawebsite.com.vn','2','Sale','2018-02-15','sale manager','xinh',1,'1200$','2500$','09/08/1990','note interview Trà','0','not Trà','HCM','Mỹ','D:\\SWIlifeCVs\\2','Vợ',2,'đẻ Sun Sun','Sếp','Báo chí','Tiếng Anh, Tiếng Em','2017-11-22 00:00:00',1,0,1,'2017-11-22 00:00:00');
 /*!40000 ALTER TABLE `candidate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,6 +139,8 @@ CREATE TABLE `company` (
   `ScanLink` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `BillingContactId` int(11) DEFAULT NULL,
   `UserId` int(11) DEFAULT NULL,
+  `Created` datetime DEFAULT NULL,
+  `Modified` datetime DEFAULT NULL,
   PRIMARY KEY (`CompanyId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -180,6 +184,8 @@ CREATE TABLE `contact` (
   `MiscNotes` longtext CHARACTER SET utf8,
   `CompanyId` int(11) DEFAULT NULL,
   `UserId` int(11) DEFAULT NULL,
+  `Created` datetime DEFAULT NULL,
+  `Modified` datetime DEFAULT NULL,
   PRIMARY KEY (`ContactId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -224,6 +230,8 @@ CREATE TABLE `joborder` (
   `AttachmentLink` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `YearsOfExperiences` int(11) DEFAULT NULL,
   `Status` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `Created` datetime DEFAULT NULL,
+  `Modified` datetime DEFAULT NULL,
   PRIMARY KEY (`joborderId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -331,4 +339,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-16 23:59:02
+-- Dump completed on 2017-11-23  1:16:05
