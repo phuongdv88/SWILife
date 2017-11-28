@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SWIMain));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -48,6 +48,7 @@
             this.bbiCandidatesAddEvent = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCandidatesAddAttachment = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCandidatesAddPipeline = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiCandidateLogActivity = new DevExpress.XtraBars.BarButtonItem();
             this.rpUser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -92,7 +93,6 @@
             this.nbgReport = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgUtilites = new DevExpress.XtraNavBar.NavBarGroup();
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
-            this.bbiCandidateLogActivity = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.navBarControl1.SuspendLayout();
@@ -156,34 +156,34 @@
             this.bbiUserAdd.Caption = "Add";
             this.bbiUserAdd.Id = 48;
             this.bbiUserAdd.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.bbiUserAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.bbiUserAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiUserAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserAdd.ImageOptions.Image")));
+            this.bbiUserAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserAdd.ImageOptions.LargeImage")));
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem3.Text = "Add new user";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.bbiUserAdd.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Add new user";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.bbiUserAdd.SuperTip = superToolTip1;
             // 
             // bbiUserEdit
             // 
             this.bbiUserEdit.Caption = "Edit";
             this.bbiUserEdit.Id = 49;
             this.bbiUserEdit.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.bbiUserEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.bbiUserEdit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.bbiUserEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserEdit.ImageOptions.Image")));
+            this.bbiUserEdit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserEdit.ImageOptions.LargeImage")));
             this.bbiUserEdit.Name = "bbiUserEdit";
             this.bbiUserEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem4.Text = "Edit current selected user";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            this.bbiUserEdit.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = "Edit current selected user";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.bbiUserEdit.SuperTip = superToolTip2;
             // 
             // bbiUserDelete
             // 
             this.bbiUserDelete.Caption = "Delete";
             this.bbiUserDelete.Id = 50;
             this.bbiUserDelete.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.bbiUserDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
-            this.bbiUserDelete.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.bbiUserDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserDelete.ImageOptions.Image")));
+            this.bbiUserDelete.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserDelete.ImageOptions.LargeImage")));
             this.bbiUserDelete.Name = "bbiUserDelete";
             this.bbiUserDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -200,16 +200,16 @@
             // 
             this.bbiUserHelp.Caption = "Help";
             this.bbiUserHelp.Id = 52;
-            this.bbiUserHelp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.bbiUserHelp.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.bbiUserHelp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserHelp.ImageOptions.Image")));
+            this.bbiUserHelp.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserHelp.ImageOptions.LargeImage")));
             this.bbiUserHelp.Name = "bbiUserHelp";
             // 
             // bbiUserChangePassword
             // 
             this.bbiUserChangePassword.Caption = "Change Password";
             this.bbiUserChangePassword.Id = 53;
-            this.bbiUserChangePassword.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiChangePassword.ImageOptions.Image")));
-            this.bbiUserChangePassword.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiChangePassword.ImageOptions.LargeImage")));
+            this.bbiUserChangePassword.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserChangePassword.ImageOptions.Image")));
+            this.bbiUserChangePassword.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserChangePassword.ImageOptions.LargeImage")));
             this.bbiUserChangePassword.Name = "bbiUserChangePassword";
             this.bbiUserChangePassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -225,7 +225,7 @@
             // 
             this.bbiUserLogout.Caption = "Logout";
             this.bbiUserLogout.Id = 56;
-            this.bbiUserLogout.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBILogout.ImageOptions.Image")));
+            this.bbiUserLogout.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserLogout.ImageOptions.Image")));
             this.bbiUserLogout.Name = "bbiUserLogout";
             this.bbiUserLogout.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiUserLogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBILogout_ItemClick);
@@ -234,7 +234,7 @@
             // 
             this.bbiCandidatesCreate.Caption = "Create";
             this.bbiCandidatesCreate.Id = 57;
-            this.bbiCandidatesCreate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.ImageOptions.Image")));
+            this.bbiCandidatesCreate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesCreate.ImageOptions.Image")));
             this.bbiCandidatesCreate.Name = "bbiCandidatesCreate";
             this.bbiCandidatesCreate.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -242,7 +242,7 @@
             // 
             this.bbiCandidatesEdit.Caption = "Edit";
             this.bbiCandidatesEdit.Id = 58;
-            this.bbiCandidatesEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
+            this.bbiCandidatesEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesEdit.ImageOptions.Image")));
             this.bbiCandidatesEdit.Name = "bbiCandidatesEdit";
             this.bbiCandidatesEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -250,7 +250,7 @@
             // 
             this.bbiCandidatesAddEvent.Caption = "Schedule Event";
             this.bbiCandidatesAddEvent.Id = 59;
-            this.bbiCandidatesAddEvent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.ImageOptions.Image")));
+            this.bbiCandidatesAddEvent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesAddEvent.ImageOptions.Image")));
             this.bbiCandidatesAddEvent.Name = "bbiCandidatesAddEvent";
             this.bbiCandidatesAddEvent.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -258,7 +258,7 @@
             // 
             this.bbiCandidatesAddAttachment.Caption = "Add Attachment";
             this.bbiCandidatesAddAttachment.Id = 60;
-            this.bbiCandidatesAddAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.Image")));
+            this.bbiCandidatesAddAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesAddAttachment.ImageOptions.Image")));
             this.bbiCandidatesAddAttachment.Name = "bbiCandidatesAddAttachment";
             this.bbiCandidatesAddAttachment.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -266,8 +266,15 @@
             // 
             this.bbiCandidatesAddPipeline.Caption = "Add To Job Order Pipeline";
             this.bbiCandidatesAddPipeline.Id = 61;
-            this.bbiCandidatesAddPipeline.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem10.ImageOptions.Image")));
+            this.bbiCandidatesAddPipeline.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesAddPipeline.ImageOptions.Image")));
             this.bbiCandidatesAddPipeline.Name = "bbiCandidatesAddPipeline";
+            // 
+            // bbiCandidateLogActivity
+            // 
+            this.bbiCandidateLogActivity.Caption = "Log An Activity";
+            this.bbiCandidateLogActivity.Id = 63;
+            this.bbiCandidateLogActivity.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidateLogActivity.ImageOptions.Image")));
+            this.bbiCandidateLogActivity.Name = "bbiCandidateLogActivity";
             // 
             // rpUser
             // 
@@ -401,7 +408,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.nbgUsers;
+            this.navBarControl1.ActiveGroup = this.nbgCandidates;
             this.navBarControl1.Controls.Add(this.navBarGroupControlContainer1);
             this.navBarControl1.Controls.Add(this.navBarGroupControlContainer2);
             this.navBarControl1.Controls.Add(this.navBarGroupControlContainer3);
@@ -433,7 +440,6 @@
             // 
             this.nbgUsers.Caption = "Users";
             this.nbgUsers.ControlContainer = this.navBarGroupControlContainer1;
-            this.nbgUsers.Expanded = true;
             this.nbgUsers.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
             this.nbgUsers.GroupClientHeight = 80;
             this.nbgUsers.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
@@ -582,6 +588,7 @@
             // 
             this.nbgCandidates.Caption = "Candidates";
             this.nbgCandidates.ControlContainer = this.navBarGroupControlContainer2;
+            this.nbgCandidates.Expanded = true;
             this.nbgCandidates.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
             this.nbgCandidates.GroupClientHeight = 150;
             this.nbgCandidates.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
@@ -669,13 +676,6 @@
             this.pcMain.Name = "pcMain";
             this.pcMain.Size = new System.Drawing.Size(1200, 593);
             this.pcMain.TabIndex = 6;
-            // 
-            // bbiCandidateLogActivity
-            // 
-            this.bbiCandidateLogActivity.Caption = "Log An Activity";
-            this.bbiCandidateLogActivity.Id = 63;
-            this.bbiCandidateLogActivity.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem11.ImageOptions.Image")));
-            this.bbiCandidateLogActivity.Name = "bbiCandidateLogActivity";
             // 
             // SWIMain
             // 

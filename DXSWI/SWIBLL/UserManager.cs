@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SWIDAL;
-using SWIDAL.Model;
+using SWIBLL.Model;
+using MySql.Data.MySqlClient;
+
 namespace SWIBLL
 {
     public class UserManager
@@ -23,7 +25,30 @@ namespace SWIBLL
         {
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
             // get user info
-            ActivatedUser = DataAccess.Instance.getDataByUserName(userName);
+            //ActivatedUser = DataAccess.Instance.getDataByUserName(userName);
+            //User user_info = null;
+            ActivatedUser = null;
+            try
+            {
+                MySqlDataReader reader = DataAccess.Instance.getDataByUserName(userName);
+                if (reader.Read())
+                {
+                    //string temp = string.Format("{0} {1} {2} {3} {4} {5}", reader[0], reader[1], reader[2], reader[3], reader[4], reader[5]);
+                    ActivatedUser = new User()
+                    {
+                        Index = int.Parse(reader[0].ToString()),
+                        UserName = reader[1].ToString(),
+                        Password = reader[2].ToString(),
+                        Salt = reader[3].ToString(),
+                        Role = (User.UserRole)int.Parse(reader[4].ToString()),
+                        IsOnline = Convert.ToBoolean(int.Parse(reader[5].ToString()))
+                    };
+                }
+            }
+            catch
+            {
+                throw;
+            }
             // check user info
             if (ActivatedUser == null || comparer.Compare(password, ActivatedUser.Password) != 0)
             {

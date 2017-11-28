@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SWIDAL.Model
+namespace SWIBLL.Model
 {
     public class Company : BaseModel
     {
@@ -28,7 +28,6 @@ namespace SWIDAL.Model
         public string Department { get; set; }
         public bool IsHot { get; set; }
         public DateTime ContractSigingTime { get; set; }
-        public string Teams { get; set; }
         public string ScanLink { get; set; }
         public int BillingContactId { get; set; }
         public int UserId { get; set; }

@@ -26,7 +26,6 @@ namespace DXSWI
             //Application.Run(new SWIMain());
             //Application.Run(new dlgLogin());
             ScreenManager.Instance.initLoginScreen();
-
         }
     }
 }

@@ -28,23 +28,120 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.gcCandidates = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLastName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKeySkills = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCurrentPosition = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCompanyName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDOBMarried = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDesiredPay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gcFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcLastName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcKeySkills = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcModified = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcAddress = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcDesiredPay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ucChangePageBar1 = new DXSWI.Controls.ucChangePageBar();
             this.ucCandidateManager1 = new DXSWI.Controls.ucCandidateManager();
+            ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gcCandidates
+            // 
+            this.gcCandidates.DataMember = "swilifecore_spGetCandidates";
+            this.gcCandidates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcCandidates.Location = new System.Drawing.Point(3, 43);
+            this.gcCandidates.MainView = this.gridView1;
+            this.gcCandidates.Name = "gcCandidates";
+            this.gcCandidates.Size = new System.Drawing.Size(689, 563);
+            this.gcCandidates.TabIndex = 0;
+            this.gcCandidates.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            this.gcCandidates.Click += new System.EventHandler(this.gcCandidates_Click);
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colFirstName,
+            this.colLastName,
+            this.colKeySkills,
+            this.colModified,
+            this.colCurrentPosition,
+            this.colCompanyName,
+            this.colDOBMarried,
+            this.colDesiredPay});
+            this.gridView1.GridControl = this.gcCandidates;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            this.gridView1.ColumnFilterChanged += new System.EventHandler(this.gridView1_ColumnFilterChanged);
+            // 
+            // colFirstName
+            // 
+            this.colFirstName.Caption = "First Name";
+            this.colFirstName.FieldName = "FirstName";
+            this.colFirstName.Name = "colFirstName";
+            this.colFirstName.Visible = true;
+            this.colFirstName.VisibleIndex = 0;
+            // 
+            // colLastName
+            // 
+            this.colLastName.Caption = "Last Name";
+            this.colLastName.FieldName = "LastName";
+            this.colLastName.Name = "colLastName";
+            this.colLastName.Visible = true;
+            this.colLastName.VisibleIndex = 1;
+            // 
+            // colKeySkills
+            // 
+            this.colKeySkills.Caption = "Key Skills";
+            this.colKeySkills.FieldName = "KeySkills";
+            this.colKeySkills.Name = "colKeySkills";
+            this.colKeySkills.Visible = true;
+            this.colKeySkills.VisibleIndex = 2;
+            // 
+            // colModified
+            // 
+            this.colModified.Caption = "Modified";
+            this.colModified.FieldName = "Modified";
+            this.colModified.Name = "colModified";
+            this.colModified.Visible = true;
+            this.colModified.VisibleIndex = 3;
+            // 
+            // colCurrentPosition
+            // 
+            this.colCurrentPosition.Caption = "Current Position";
+            this.colCurrentPosition.FieldName = "CurrentPosition";
+            this.colCurrentPosition.Name = "colCurrentPosition";
+            this.colCurrentPosition.Visible = true;
+            this.colCurrentPosition.VisibleIndex = 6;
+            // 
+            // colCompanyName
+            // 
+            this.colCompanyName.Caption = "Current company";
+            this.colCompanyName.FieldName = "CompanyName";
+            this.colCompanyName.Name = "colCompanyName";
+            this.colCompanyName.Visible = true;
+            this.colCompanyName.VisibleIndex = 4;
+            // 
+            // colDOBMarried
+            // 
+            this.colDOBMarried.Caption = "Born";
+            this.colDOBMarried.FieldName = "DOBMarried";
+            this.colDOBMarried.Name = "colDOBMarried";
+            this.colDOBMarried.Visible = true;
+            this.colDOBMarried.VisibleIndex = 7;
+            // 
+            // colDesiredPay
+            // 
+            this.colDesiredPay.Caption = "Desired Pay";
+            this.colDesiredPay.FieldName = "DesiredPay";
+            this.colDesiredPay.Name = "colDesiredPay";
+            this.colDesiredPay.Visible = true;
+            this.colDesiredPay.VisibleIndex = 5;
             // 
             // tableLayoutPanel1
             // 
@@ -62,14 +159,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1306, 635);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1423, 635);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.gridControl1, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.gcCandidates, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.ucChangePageBar1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(13, 13);
@@ -77,89 +174,25 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(637, 609);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(695, 609);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(3, 43);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(631, 563);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gcFirstName,
-            this.gcLastName,
-            this.gcKeySkills,
-            this.gcModified,
-            this.gcAddress,
-            this.gcDesiredPay});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsFind.AlwaysVisible = true;
-            // 
-            // gcFirstName
-            // 
-            this.gcFirstName.Caption = "First Name";
-            this.gcFirstName.Name = "gcFirstName";
-            this.gcFirstName.Visible = true;
-            this.gcFirstName.VisibleIndex = 0;
-            // 
-            // gcLastName
-            // 
-            this.gcLastName.Caption = "Last Name";
-            this.gcLastName.Name = "gcLastName";
-            this.gcLastName.Visible = true;
-            this.gcLastName.VisibleIndex = 1;
-            // 
-            // gcKeySkills
-            // 
-            this.gcKeySkills.Caption = "Key Skills";
-            this.gcKeySkills.Name = "gcKeySkills";
-            this.gcKeySkills.Visible = true;
-            this.gcKeySkills.VisibleIndex = 2;
-            // 
-            // gcModified
-            // 
-            this.gcModified.Caption = "Modified";
-            this.gcModified.Name = "gcModified";
-            this.gcModified.Visible = true;
-            this.gcModified.VisibleIndex = 3;
-            // 
-            // gcAddress
-            // 
-            this.gcAddress.Caption = "Address";
-            this.gcAddress.Name = "gcAddress";
-            this.gcAddress.Visible = true;
-            this.gcAddress.VisibleIndex = 4;
-            // 
-            // gcDesiredPay
-            // 
-            this.gcDesiredPay.Caption = "Desired Pay";
-            this.gcDesiredPay.Name = "gcDesiredPay";
-            this.gcDesiredPay.Visible = true;
-            this.gcDesiredPay.VisibleIndex = 5;
             // 
             // ucChangePageBar1
             // 
+            this.ucChangePageBar1.CurrentPage = 0;
             this.ucChangePageBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucChangePageBar1.ItemCount = 0;
             this.ucChangePageBar1.Location = new System.Drawing.Point(3, 3);
             this.ucChangePageBar1.Name = "ucChangePageBar1";
-            this.ucChangePageBar1.Size = new System.Drawing.Size(631, 34);
+            this.ucChangePageBar1.Size = new System.Drawing.Size(689, 34);
             this.ucChangePageBar1.TabIndex = 1;
             // 
             // ucCandidateManager1
             // 
             this.ucCandidateManager1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucCandidateManager1.Location = new System.Drawing.Point(656, 13);
+            this.ucCandidateManager1.Location = new System.Drawing.Point(714, 13);
             this.ucCandidateManager1.Name = "ucCandidateManager1";
-            this.ucCandidateManager1.Size = new System.Drawing.Size(637, 609);
+            this.ucCandidateManager1.Size = new System.Drawing.Size(695, 609);
             this.ucCandidateManager1.TabIndex = 2;
             // 
             // frCandidates
@@ -168,11 +201,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frCandidates";
-            this.Size = new System.Drawing.Size(1306, 635);
+            this.Size = new System.Drawing.Size(1423, 635);
+            ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -180,16 +213,18 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gcFirstName;
-        private DevExpress.XtraGrid.Columns.GridColumn gcLastName;
-        private DevExpress.XtraGrid.Columns.GridColumn gcKeySkills;
-        private DevExpress.XtraGrid.Columns.GridColumn gcModified;
-        private DevExpress.XtraGrid.Columns.GridColumn gcAddress;
-        private DevExpress.XtraGrid.Columns.GridColumn gcDesiredPay;
+        private DevExpress.XtraGrid.Columns.GridColumn colFirstName;
+        private DevExpress.XtraGrid.Columns.GridColumn colLastName;
+        private DevExpress.XtraGrid.Columns.GridColumn colKeySkills;
+        private DevExpress.XtraGrid.Columns.GridColumn colModified;
+        private DevExpress.XtraGrid.Columns.GridColumn colCompanyName;
+        private DevExpress.XtraGrid.Columns.GridColumn colDesiredPay;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Controls.ucChangePageBar ucChangePageBar1;
         private Controls.ucCandidateManager ucCandidateManager1;
+        private DevExpress.XtraGrid.Columns.GridColumn colCurrentPosition;
+        private DevExpress.XtraGrid.Columns.GridColumn colDOBMarried;
+        private DevExpress.XtraGrid.GridControl gcCandidates;
     }
 }

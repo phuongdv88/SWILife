@@ -33,7 +33,6 @@
             this.cbePageSize = new DevExpress.XtraEditors.ComboBoxEdit();
             this.sbFirst = new DevExpress.XtraEditors.SimpleButton();
             this.sbPrevious = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.lcCurrentPage = new DevExpress.XtraEditors.LabelControl();
             this.sbNext = new DevExpress.XtraEditors.SimpleButton();
             this.sbLas = new DevExpress.XtraEditors.SimpleButton();
@@ -47,7 +46,6 @@
             this.flowLayoutPanel1.Controls.Add(this.cbePageSize);
             this.flowLayoutPanel1.Controls.Add(this.sbFirst);
             this.flowLayoutPanel1.Controls.Add(this.sbPrevious);
-            this.flowLayoutPanel1.Controls.Add(this.labelControl2);
             this.flowLayoutPanel1.Controls.Add(this.lcCurrentPage);
             this.flowLayoutPanel1.Controls.Add(this.sbNext);
             this.flowLayoutPanel1.Controls.Add(this.sbLas);
@@ -69,6 +67,7 @@
             // cbePageSize
             // 
             this.cbePageSize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbePageSize.EditValue = "15";
             this.cbePageSize.Location = new System.Drawing.Point(54, 4);
             this.cbePageSize.Name = "cbePageSize";
             this.cbePageSize.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -80,6 +79,7 @@
             "100"});
             this.cbePageSize.Size = new System.Drawing.Size(100, 20);
             this.cbePageSize.TabIndex = 1;
+            this.cbePageSize.TabIndexChanged += new System.EventHandler(this.cbePageSize_TabIndexChanged);
             // 
             // sbFirst
             // 
@@ -89,6 +89,7 @@
             this.sbFirst.Size = new System.Drawing.Size(75, 23);
             this.sbFirst.TabIndex = 2;
             this.sbFirst.Text = "First";
+            this.sbFirst.Click += new System.EventHandler(this.sbFirst_Click);
             // 
             // sbPrevious
             // 
@@ -98,20 +99,12 @@
             this.sbPrevious.Size = new System.Drawing.Size(75, 23);
             this.sbPrevious.TabIndex = 2;
             this.sbPrevious.Text = "Previous";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl2.Location = new System.Drawing.Point(322, 8);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(24, 13);
-            this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "Page";
+            this.sbPrevious.Click += new System.EventHandler(this.sbPrevious_Click);
             // 
             // lcCurrentPage
             // 
             this.lcCurrentPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lcCurrentPage.Location = new System.Drawing.Point(352, 8);
+            this.lcCurrentPage.Location = new System.Drawing.Point(322, 8);
             this.lcCurrentPage.Name = "lcCurrentPage";
             this.lcCurrentPage.Size = new System.Drawing.Size(28, 13);
             this.lcCurrentPage.TabIndex = 4;
@@ -120,20 +113,22 @@
             // sbNext
             // 
             this.sbNext.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.sbNext.Location = new System.Drawing.Point(386, 3);
+            this.sbNext.Location = new System.Drawing.Point(356, 3);
             this.sbNext.Name = "sbNext";
             this.sbNext.Size = new System.Drawing.Size(75, 23);
             this.sbNext.TabIndex = 2;
             this.sbNext.Text = "Next";
+            this.sbNext.Click += new System.EventHandler(this.sbNext_Click);
             // 
             // sbLas
             // 
             this.sbLas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.sbLas.Location = new System.Drawing.Point(467, 3);
+            this.sbLas.Location = new System.Drawing.Point(437, 3);
             this.sbLas.Name = "sbLas";
             this.sbLas.Size = new System.Drawing.Size(75, 23);
             this.sbLas.TabIndex = 2;
             this.sbLas.Text = "Last";
+            this.sbLas.Click += new System.EventHandler(this.sbLas_Click);
             // 
             // ucChangePageBar
             // 
@@ -156,7 +151,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit cbePageSize;
         private DevExpress.XtraEditors.SimpleButton sbFirst;
         private DevExpress.XtraEditors.SimpleButton sbPrevious;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl lcCurrentPage;
         private DevExpress.XtraEditors.SimpleButton sbNext;
         private DevExpress.XtraEditors.SimpleButton sbLas;

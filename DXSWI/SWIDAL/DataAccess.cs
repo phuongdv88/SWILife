@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using MySql.Data;
 using System.Data;
 using MySql.Data.MySqlClient;
-using SWIDAL.Model;
 
 namespace SWIDAL
 {
@@ -121,10 +120,9 @@ namespace SWIDAL
         }
 
         // function to call store procedure in user table
-        public User getDataByUserName(string userName)
+        public MySqlDataReader getDataByUserName(string userName)
         {
             if (mCon == null) return null;
-            User user_info = null;
             MySqlCommand cmd = null;
             try
             {
@@ -135,19 +133,7 @@ namespace SWIDAL
                 //cmd.Parameters["UserName"].Direction = ParameterDirection.Input;
 
                 MySqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    //string temp = string.Format("{0} {1} {2} {3} {4} {5}", reader[0], reader[1], reader[2], reader[3], reader[4], reader[5]);
-                    user_info = new User()
-                    {
-                        Index = int.Parse(reader[0].ToString()),
-                        UserName = reader[1].ToString(),
-                        Password = reader[2].ToString(),
-                        Salt = reader[3].ToString(),
-                        Role = (User.UserRole)int.Parse(reader[4].ToString()),
-                        IsOnline = Convert.ToBoolean(int.Parse(reader[5].ToString()))
-                    };
-                }
+                return reader;
             }
             catch
             {
@@ -158,7 +144,6 @@ namespace SWIDAL
                 cmd?.Dispose();
 
             }
-            return user_info;
         }
 
         public bool updateLoginState(string userName, bool value)
@@ -187,6 +172,58 @@ namespace SWIDAL
 
             }
 
+        }
+
+        //----------------candiates-------------------
+        public DataSet getLimitedCandidates(int offset, int len)
+        {
+            if (mCon == null) return null;
+            MySqlCommand cmd = null;
+            DataSet dt = null;
+            try
+            {
+                cmd = new MySqlCommand("spGetCandidates", mCon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                //cmd = new MySqlCommand("spGetLimitedCandidates", mCon);
+                //cmd.CommandType = CommandType.StoredProcedure;
+                //cmd.Parameters.AddWithValue("Offset", offset);
+                //cmd.Parameters.AddWithValue("Length", len);
+
+                MySqlDataAdapter ad = new MySqlDataAdapter();
+                ad.SelectCommand = cmd;
+                dt = new DataSet();
+                ad.Fill(dt, offset, len, "candidate");
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+
+            }
+            return dt;
+        }
+
+        public int getNumberOfCandidates()
+        {
+            if (mCon == null) return -1;
+            MySqlCommand cmd = null;
+            try
+            {
+                cmd = new MySqlCommand("select count(*) from candidate", mCon);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+
+            }
         }
     }
 }

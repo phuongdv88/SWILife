@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SWIDAL.Model;
 using System.Text.RegularExpressions;
+using System.Data;
+using System.Reflection;
 
 namespace SWIDAL
 {
-    public class QueryBuilder
+    public static class QueryBuilder
     {
         public static string mySqlEscape(string str)
         {
@@ -35,9 +36,9 @@ namespace SWIDAL
                     }
                 });
         }
-        public static string Create(BaseModel obj)
-        {
-            string rs = "";
+        //public static string Create(BaseModel obj)
+        //{
+        //    string rs = "";
             //if(obj is User)
             //{
             //    var user = obj as User;
@@ -46,11 +47,11 @@ namespace SWIDAL
 
             //}
 
-            return rs;
-        }
-        public static string Update(BaseModel obj)
-        {
-            string rs = "";
+        //    return rs;
+        //}
+        //public static string Update(BaseModel obj)
+        //{
+        //    string rs = "";
             //if (obj is User)
             //{
             //    var user = obj as User;
@@ -58,17 +59,57 @@ namespace SWIDAL
             //        , mySqlEscape(user.UserName), user.md5Password(), user.Salt, (int)user.Role, user.Index);
 
             //}
-            return rs;
-        }
-        public static string Delete(BaseModel obj)
+        //    return rs;
+        //}
+        //public static string Delete(BaseModel obj)
+        //{
+        //    string rs = "";
+        //    if (obj is User)
+        //    {
+        //        var user = obj as User;
+        //        rs = string.Format("DELETE FROM `swilifecore`.`user` WHERE `UserId`='{0}';", user.Index);
+        //    }
+        //    return rs;
+        //}
+
+        /// <summary>
+        /// Converts a DataTable to a list with generic objects
+        /// </summary>
+        /// <typeparam name="T">Generic object</typeparam>
+        /// <param name="table">DataTable</param>
+        /// <returns>List with generic objects</returns>
+        public static List<T> DataTableToList<T>(this DataTable table) where T : class, new()
         {
-            string rs = "";
-            if (obj is User)
+            try
             {
-                var user = obj as User;
-                rs = string.Format("DELETE FROM `swilifecore`.`user` WHERE `UserId`='{0}';", user.Index);
+                List<T> list = new List<T>();
+
+                foreach (var row in table.AsEnumerable())
+                {
+                    T obj = new T();
+
+                    foreach (var prop in obj.GetType().GetProperties())
+                    {
+                        try
+                        {
+                            PropertyInfo propertyInfo = obj.GetType().GetProperty(prop.Name);
+                            propertyInfo.SetValue(obj, Convert.ChangeType(row[prop.Name], propertyInfo.PropertyType), null);
+                        }
+                        catch
+                        {
+                            continue;
+                        }
+                    }
+
+                    list.Add(obj);
+                }
+
+                return list;
             }
-            return rs;
+            catch
+            {
+                return null;
+            }
         }
     }
 }

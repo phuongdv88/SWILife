@@ -38,8 +38,8 @@ namespace DXSWI
 
         public void initLoginScreen()
         {
-            Application.Run(mdlgLogin);
-            //Application.Run(mMain);
+            //Application.Run(mdlgLogin);
+            Application.Run(mMain);
             //showLoginScreen();
         }
         public void showLoginScreen()

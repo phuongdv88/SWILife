@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SWIDAL.Model
+namespace SWIBLL.Model
 {
     public class Candidate
     {
@@ -45,10 +45,13 @@ namespace SWIDAL.Model
         public int CreatedId { get; set; }
 
         public bool IsInBlacklist { get; set; }
+
+        public int UserId { get; set; }
+        public DateTime Modified { get; set; }
+        public string ImageLink { get; set; }
         //Listed all candidates with bad / unprofessional attitude , behaviors.
         //We will not delete those candidates from ATS, but keep to mornitor them and refrain from approaching them again.
         //This much time saving when we not spend time/efforts with those.
-        public int UserId { get; set; }
         public Candidate()
         {
 

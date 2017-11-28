@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace SWIDAL.Model
+namespace SWIBLL.Model
 {
     public class User : BaseModel
     {
