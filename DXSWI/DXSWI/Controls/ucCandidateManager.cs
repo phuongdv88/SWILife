@@ -71,15 +71,15 @@ namespace DXSWI.Controls
         }
         private void loadAttachment()
         {
-
+            // load attach ment from disk
         }
         private void loadJobPipeLine()
         {
-
+            // load job pipe line from running task by candidate id
         }
         private void loadActivities()
         {
-
+            // load activities from activities by 
         }
 
     }

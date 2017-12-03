@@ -1,3 +1,9 @@
+﻿@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `swilifecore` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+USE `swilifecore`;
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+--
+-- Host: localhost    Database: swilifecore
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: swilifecore
@@ -92,6 +98,7 @@ CREATE TABLE `candidate` (
   `IsInBlacklist` tinyint(4) DEFAULT NULL,
   `UserId` int(11) DEFAULT NULL,
   `Modified` datetime DEFAULT NULL,
+  `ImageLink` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`CandidateId`),
   UNIQUE KEY `CandidateId_UNIQUE` (`CandidateId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -103,7 +110,7 @@ CREATE TABLE `candidate` (
 
 LOCK TABLES `candidate` WRITE;
 /*!40000 ALTER TABLE `candidate` DISABLE KEYS */;
-INSERT INTO `candidate` VALUES (1,'Đào ','Việt ','Phương','phuongdv@live.com','secondary@mail.com','phuongalas','0983949090','0123456789','11 giờ đêm','234 Phạm Văn Đồng','swilife.com','1','Tech','2018-01-21','Viettel','C++, State machine',0,'1000$','2000$','24/6/1988','interview notes...','1','notes...','Hanoi','Vietnam','D:\\SWIlifeCVs\\1','Nhân viên',11,'VQ; abc; xyz','Công nghệ thông tin','BKHN','English, Russian','2017-11-21 00:00:00',1,0,1,'2017-11-21 00:00:00'),(2,'Nguyễn','Hương','Trà','tra@email1.com','tra@email2.com','traSkype','0989838896','0122132132','12 giờ đêm','232 Phạm Văn Đồng','trawebsite.com.vn','2','Sale','2018-02-15','sale manager','xinh',1,'1200$','2500$','09/08/1990','note interview Trà','0','not Trà','HCM','Mỹ','D:\\SWIlifeCVs\\2','Vợ',2,'đẻ Sun Sun','Sếp','Báo chí','Tiếng Anh, Tiếng Em','2017-11-22 00:00:00',1,0,1,'2017-11-22 00:00:00');
+INSERT INTO `candidate` VALUES (1,'Đào ','Việt ','Phương','phuongdv@live.com','secondary@mail.com','phuongalas','0983949090','0123456789','11 giờ đêm','234 Phạm Văn Đồng','swilife.com','1','Tech','2018-01-21','Viettel','C++, State machine',0,'1000$','2000$','24/6/1988','interview notes...','1','notes...','Hanoi','Vietnam','D:\\SWIlifeCVs\\1','Nhân viên',11,'VQ; abc; xyz','Công nghệ thông tin','BKHN','English, Russian','2017-11-21 00:00:00',1,0,1,'2017-11-21 00:00:00',NULL),(2,'Nguyễn','Hương','Trà','tra@email1.com','tra@email2.com','traSkype','0989838896','0122132132','12 giờ đêm','232 Phạm Văn Đồng','trawebsite.com.vn','2','Sale','2018-02-15','sale manager','xinh',1,'1200$','2500$','09/08/1990','note interview Trà','0','not Trà','HCM','Mỹ','D:\\SWIlifeCVs\\2','Vợ',2,'đẻ Sun Sun','Sếp','Báo chí','Tiếng Anh, Tiếng Em','2017-11-22 00:00:00',1,0,1,'2017-11-22 00:00:00',NULL);
 /*!40000 ALTER TABLE `candidate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,14 +142,13 @@ CREATE TABLE `company` (
   `Department` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `IsHot` tinyint(4) DEFAULT NULL,
   `ContractSigingTime` date DEFAULT NULL,
-  `Teams` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `ScanLink` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `BillingContactId` int(11) DEFAULT NULL,
   `UserId` int(11) DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Modified` datetime DEFAULT NULL,
   PRIMARY KEY (`CompanyId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,6 +157,7 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
+INSERT INTO `company` VALUES (1,'Swilife','01228800899','11111111','2222222','PVD','Vietnam','swilife.com','CNTT','FULL time','tuyển dụng ','A',1,'MiscNotes1','Hanoi','Hanoi_state','80000','HR',1,'2017-11-26',NULL,1,1,'2017-11-26 00:00:00','2017-11-26 00:00:00'),(2,'com Name','1111','2222','33333','Com address','Vietnam','company.com.vn','com tech','com service ','com industy','B',0,'com misc','HCM','HCM','90000','CNTT',0,'2017-10-10',NULL,2,1,'2017-11-26 00:00:00','2017-11-26 00:00:00');
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,6 +193,7 @@ CREATE TABLE `contact` (
   `UserId` int(11) DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `Modified` datetime DEFAULT NULL,
+  `ImageLink` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ContactId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -257,6 +265,7 @@ CREATE TABLE `runningtask` (
   `CandidateId` int(11) DEFAULT NULL,
   `JobOrderId` int(11) DEFAULT NULL,
   `Status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Match` int(11) DEFAULT NULL,
   PRIMARY KEY (`RunningtaskId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -339,4 +348,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-23  1:16:05
+-- Dump completed on 2017-12-03 20:32:36
