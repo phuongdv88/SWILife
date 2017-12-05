@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SWIDAL;
-using SWIBLL.Model;
+using SWIBLL.Models;
 using MySql.Data.MySqlClient;
 
 namespace SWIBLL

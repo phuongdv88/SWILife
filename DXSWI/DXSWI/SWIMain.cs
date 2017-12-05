@@ -12,6 +12,7 @@ using DevExpress.XtraBars.Docking2010.Views;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Navigation;
 using DXSWI.Modules;
+using DXSWI.Forms;
 using DevExpress.XtraBars.Ribbon;
 
 namespace DXSWI
@@ -125,8 +126,7 @@ namespace DXSWI
         {
             if (e.Group.Tag == null)
                 return;
-            changeGroup(e.Group.Tag.ToString());           
-
+            changeGroup(e.Group.Tag.ToString());
         }
         private void changeGroup(string tag)
         {
@@ -173,12 +173,6 @@ namespace DXSWI
                 pcMain.Controls.Add(mfrCalendar);
                 mfrCalendar.Dock = DockStyle.Fill;
             }
-            if (tag.Equals(tagCandidates))
-            {
-                pcMain.Controls.Clear();
-                pcMain.Controls.Add(mfrCandidate);
-                mfrCandidate.Dock = DockStyle.Fill;
-            }
             if (tag.Equals(tagCompanies))
             {
                 pcMain.Controls.Clear();
@@ -217,5 +211,30 @@ namespace DXSWI
             }
         }
 
+        private void navBarControl1_CustomDrawLink(object sender, DevExpress.XtraNavBar.ViewInfo.CustomDrawNavBarElementEventArgs e)
+        {
+            if (e.Caption == nbgCandidates.Caption)
+                e.Graphics.FillRectangle(Brushes.Red, e.RealBounds);
+        }
+
+        private void bbiCandidatesEdit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            dlgCandidateEdit dlg= new dlgCandidateEdit(mfrCandidate.currentCandidate(), null);
+            dlg.emitUpdateData += updateCandidateData;
+            dlg.ShowDialog();
+        }
+
+        private void bbiCandidatesCreate_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            dlgCandidateEdit dlg = new dlgCandidateEdit(null, null);
+            dlg.emitUpdateData += updateCandidateData;
+            dlg.ShowDialog();
+
+        }
+
+        private void updateCandidateData()
+        {
+            mfrCandidate.updateData();
+        }
     }
 }

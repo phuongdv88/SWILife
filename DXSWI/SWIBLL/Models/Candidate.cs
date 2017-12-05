@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SWIBLL.Model
+namespace SWIBLL.Models
 {
     public class Candidate
     {
@@ -30,7 +30,7 @@ namespace SWIBLL.Model
         public string DesiredPay { get; set; }
         public string DOBMarried { get; set; }
         public string InterviewNotes { get; set; }
-        public string Gender { get; set; }
+        public bool Gender { get; set; }
         public string MiscNotes { get; set; }
         public string City { get; set; }
         public string Country { get; set; }

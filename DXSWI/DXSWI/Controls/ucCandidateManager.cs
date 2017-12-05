@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using SWIBLL.Model;
+using SWIBLL.Models;
 
 namespace DXSWI.Controls
 {
@@ -29,9 +29,7 @@ namespace DXSWI.Controls
             }
             else peAvatar.Cursor = Cursors.Default;
             mCandidate = can;
-            this.FirstNameTextEdit.Text = can.FirstName;
-            this.MiddleNameTextEdit.Text = can.MiddleName;
-            this.LastNameTextEdit.Text = can.LastName;
+            this.locAvatar.Text = string.Format("{0} {1} {2}", can.FirstName, can.MiddleName, can.LastName);
             this.EmailTextEdit.Text = can.Email;
             this.SecondaryEmailTextEdit.Text = can.SecondaryEmail;
             this.SkypeIMTextEdit.Text = can.SkypeIM;
@@ -44,16 +42,22 @@ namespace DXSWI.Controls
             this.CurrentPositionTextEdit.Text = can.CurrentPosition;
             this.CurrentEmployerTextEdit.Text = can.CurrentEmployer;
             this.KeySkillsTextEdit.Text = can.KeySkills;
-            this.CanRelocateTextEdit.Text = can.CanRelocate.ToString();
+            setGender(can.Gender);
+            if (can.CanRelocate)
+            {
+                this.CanRelocateTextEdit.Text = "Yes";
+            } else
+            {
+                this.CanRelocateTextEdit.Text = "No";
+            }
             this.CurrentPayTextEdit.Text = can.CurrentPay;
             this.DesiredPayTextEdit.Text = can.DesiredPay;
             this.DOBMarriedTextEdit.Text = can.DOBMarried;
             this.InterviewNotesMemoEdit.Text = can.InterviewNotes;
-            this.GenderTextEdit.Text = can.Gender.ToString();
-            //this.UserIdTextEdit.Text = can.;
+            //this.UserIdTextEdit.Text = can.; // owner
             this.MiscNotesMemoExEdit.Text = can.MiscNotes;
-            //this.CreatedDateDateEdit.Text = can.create;
-            this.DateAvailableDateEdit.Text = can.DateAvailable.ToString();
+            this.CreatedDateDateEdit.Text = can.CreatedDate.ToShortDateString();
+            this.DateAvailableDateEdit.Text = can.DateAvailable.ToShortDateString();
             // add data to view
 
             loadAvatar();
@@ -80,6 +84,17 @@ namespace DXSWI.Controls
         private void loadActivities()
         {
             // load activities from activities by 
+        }
+
+        private void setGender(bool isMan)
+        {
+            if (isMan)
+            {
+                this.locAvatar.Image = DXSWI.Properties.Resources.user_male_3;
+            } else
+            {
+                this.locAvatar.Image = DXSWI.Properties.Resources.user_female_5;
+            }
         }
 
     }

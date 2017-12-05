@@ -203,7 +203,7 @@
             // 
             // sqlDataSource1
             // 
-            this.sqlDataSource1.ConnectionName = "localhost_swilifecore_Connection_final";
+            this.sqlDataSource1.ConnectionName = "DXSWI.Properties.Settings.swilifecoreConnectionString";
             this.sqlDataSource1.Name = "sqlDataSource1";
             columnExpression1.ColumnName = "UserId";
             table1.MetaSerializable = "<Meta X=\"30\" Y=\"30\" Width=\"125\" Height=\"153\" />";

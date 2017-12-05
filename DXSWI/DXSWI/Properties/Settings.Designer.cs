@@ -26,8 +26,8 @@ namespace DXSWI.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=127.0.0.1;user id=root;password=123456a@;persistsecurityinfo=True;database" +
-            "=swilifecore;port=3306")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.1.200;user id=admin;password=123456a@;persistsecurityinfo=True;dat" +
+            "abase=swilifecore;port=3306")]
         public string swilifecoreConnectionString {
             get {
                 return ((string)(this["swilifecoreConnectionString"]));

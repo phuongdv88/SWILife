@@ -175,11 +175,11 @@ namespace SWIDAL
         }
 
         //----------------candiates-------------------
-        public DataSet getLimitedCandidates(int offset, int len)
+        public DataTable getLimitedCandidates(int offset, int len)
         {
             if (mCon == null) return null;
             MySqlCommand cmd = null;
-            DataSet dt = null;
+            DataTable dt = null;
             try
             {
                 cmd = new MySqlCommand("spGetCandidates", mCon);
@@ -191,8 +191,8 @@ namespace SWIDAL
 
                 MySqlDataAdapter ad = new MySqlDataAdapter();
                 ad.SelectCommand = cmd;
-                dt = new DataSet();
-                ad.Fill(dt, offset, len, "candidate");
+                dt = new DataTable();
+                ad.Fill(offset, len, dt);
             }
             catch
             {

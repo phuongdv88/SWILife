@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SWIMain));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -68,11 +68,11 @@
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.nbgUsers = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
-            this.user1 = new DXSWI.Controls.ucUser();
+            this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarGroupControlContainer2 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.ucCandidate1 = new DXSWI.Controls.ucCandidate();
+            this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.user1 = new DXSWI.Controls.ucUser();
             this.navBarGroupControlContainer3 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.ucCompany1 = new DXSWI.Controls.ucCompany();
             this.navBarGroupControlContainer4 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
@@ -85,7 +85,7 @@
             this.ucReport1 = new DXSWI.Controls.ucReport();
             this.navBarGroupControlContainer8 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
             this.ucUtilities1 = new DXSWI.Controls.ucUtilities();
-            this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
+            this.nbgUsers = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgCompanies = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgJoborder = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgContacts = new DevExpress.XtraNavBar.NavBarGroup();
@@ -96,8 +96,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             this.navBarControl1.SuspendLayout();
-            this.navBarGroupControlContainer1.SuspendLayout();
             this.navBarGroupControlContainer2.SuspendLayout();
+            this.navBarGroupControlContainer1.SuspendLayout();
             this.navBarGroupControlContainer3.SuspendLayout();
             this.navBarGroupControlContainer4.SuspendLayout();
             this.navBarGroupControlContainer5.SuspendLayout();
@@ -160,9 +160,9 @@
             this.bbiUserAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserAdd.ImageOptions.LargeImage")));
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem1.Text = "Add new user";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.bbiUserAdd.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Add new user";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.bbiUserAdd.SuperTip = superToolTip3;
             // 
             // bbiUserEdit
             // 
@@ -173,9 +173,9 @@
             this.bbiUserEdit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserEdit.ImageOptions.LargeImage")));
             this.bbiUserEdit.Name = "bbiUserEdit";
             this.bbiUserEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem2.Text = "Edit current selected user";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.bbiUserEdit.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "Edit current selected user";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.bbiUserEdit.SuperTip = superToolTip4;
             // 
             // bbiUserDelete
             // 
@@ -237,6 +237,7 @@
             this.bbiCandidatesCreate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesCreate.ImageOptions.Image")));
             this.bbiCandidatesCreate.Name = "bbiCandidatesCreate";
             this.bbiCandidatesCreate.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiCandidatesCreate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidatesCreate_ItemClick);
             // 
             // bbiCandidatesEdit
             // 
@@ -245,6 +246,7 @@
             this.bbiCandidatesEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesEdit.ImageOptions.Image")));
             this.bbiCandidatesEdit.Name = "bbiCandidatesEdit";
             this.bbiCandidatesEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiCandidatesEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidatesEdit_ItemClick);
             // 
             // bbiCandidatesAddEvent
             // 
@@ -434,36 +436,21 @@
             this.navBarControl1.Size = new System.Drawing.Size(150, 593);
             this.navBarControl1.TabIndex = 5;
             this.navBarControl1.Text = "navBarControl1";
+            this.navBarControl1.CustomDrawLink += new DevExpress.XtraNavBar.ViewInfo.CustomDrawNavBarElementEventHandler(this.navBarControl1_CustomDrawLink);
             this.navBarControl1.ActiveGroupChanged += new DevExpress.XtraNavBar.NavBarGroupEventHandler(this.navBarControl1_ActiveGroupChanged);
             // 
-            // nbgUsers
+            // nbgCandidates
             // 
-            this.nbgUsers.Caption = "Users";
-            this.nbgUsers.ControlContainer = this.navBarGroupControlContainer1;
-            this.nbgUsers.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgUsers.GroupClientHeight = 80;
-            this.nbgUsers.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
-            this.nbgUsers.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.LargeImage")));
-            this.nbgUsers.Name = "nbgUsers";
-            this.nbgUsers.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.SmallImage")));
-            this.nbgUsers.Tag = "user";
-            // 
-            // navBarGroupControlContainer1
-            // 
-            this.navBarGroupControlContainer1.Appearance.BackColor = System.Drawing.SystemColors.Control;
-            this.navBarGroupControlContainer1.Appearance.Options.UseBackColor = true;
-            this.navBarGroupControlContainer1.Controls.Add(this.user1);
-            this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
-            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(150, 150);
-            this.navBarGroupControlContainer1.TabIndex = 0;
-            // 
-            // user1
-            // 
-            this.user1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.user1.Location = new System.Drawing.Point(0, 0);
-            this.user1.Name = "user1";
-            this.user1.Size = new System.Drawing.Size(150, 150);
-            this.user1.TabIndex = 0;
+            this.nbgCandidates.Caption = "Candidates";
+            this.nbgCandidates.ControlContainer = this.navBarGroupControlContainer2;
+            this.nbgCandidates.Expanded = true;
+            this.nbgCandidates.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgCandidates.GroupClientHeight = 150;
+            this.nbgCandidates.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+            this.nbgCandidates.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.LargeImage")));
+            this.nbgCandidates.Name = "nbgCandidates";
+            this.nbgCandidates.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.SmallImage")));
+            this.nbgCandidates.Tag = "candidate";
             // 
             // navBarGroupControlContainer2
             // 
@@ -481,6 +468,23 @@
             this.ucCandidate1.Name = "ucCandidate1";
             this.ucCandidate1.Size = new System.Drawing.Size(150, 150);
             this.ucCandidate1.TabIndex = 0;
+            // 
+            // navBarGroupControlContainer1
+            // 
+            this.navBarGroupControlContainer1.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.navBarGroupControlContainer1.Appearance.Options.UseBackColor = true;
+            this.navBarGroupControlContainer1.Controls.Add(this.user1);
+            this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(150, 150);
+            this.navBarGroupControlContainer1.TabIndex = 0;
+            // 
+            // user1
+            // 
+            this.user1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.user1.Location = new System.Drawing.Point(0, 0);
+            this.user1.Name = "user1";
+            this.user1.Size = new System.Drawing.Size(150, 150);
+            this.user1.TabIndex = 0;
             // 
             // navBarGroupControlContainer3
             // 
@@ -584,18 +588,17 @@
             this.ucUtilities1.Size = new System.Drawing.Size(150, 150);
             this.ucUtilities1.TabIndex = 0;
             // 
-            // nbgCandidates
+            // nbgUsers
             // 
-            this.nbgCandidates.Caption = "Candidates";
-            this.nbgCandidates.ControlContainer = this.navBarGroupControlContainer2;
-            this.nbgCandidates.Expanded = true;
-            this.nbgCandidates.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgCandidates.GroupClientHeight = 150;
-            this.nbgCandidates.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
-            this.nbgCandidates.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.LargeImage")));
-            this.nbgCandidates.Name = "nbgCandidates";
-            this.nbgCandidates.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.SmallImage")));
-            this.nbgCandidates.Tag = "candidate";
+            this.nbgUsers.Caption = "Users";
+            this.nbgUsers.ControlContainer = this.navBarGroupControlContainer1;
+            this.nbgUsers.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgUsers.GroupClientHeight = 80;
+            this.nbgUsers.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+            this.nbgUsers.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.LargeImage")));
+            this.nbgUsers.Name = "nbgUsers";
+            this.nbgUsers.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.SmallImage")));
+            this.nbgUsers.Tag = "user";
             // 
             // nbgCompanies
             // 
@@ -699,8 +702,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             this.navBarControl1.ResumeLayout(false);
-            this.navBarGroupControlContainer1.ResumeLayout(false);
             this.navBarGroupControlContainer2.ResumeLayout(false);
+            this.navBarGroupControlContainer1.ResumeLayout(false);
             this.navBarGroupControlContainer3.ResumeLayout(false);
             this.navBarGroupControlContainer4.ResumeLayout(false);
             this.navBarGroupControlContainer5.ResumeLayout(false);

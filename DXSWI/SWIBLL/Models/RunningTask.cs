@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SWIBLL.Model
+namespace SWIBLL.Models
 {
     public class RunningTask :BaseModel
     {

@@ -1,5 +1,4 @@
-﻿@@ -1,3 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `swilifecore` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+﻿CREATE DATABASE  IF NOT EXISTS `swilifecore` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 USE `swilifecore`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --

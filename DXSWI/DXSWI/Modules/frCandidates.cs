@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using SWIBLL;
-
+using SWIBLL.Models;
+using DXSWI.Forms;
 namespace DXSWI.Modules
 {
     public partial class frCandidates : DevExpress.XtraEditors.XtraUserControl
@@ -26,15 +21,19 @@ namespace DXSWI.Modules
 
         private void init()
         {
-            // load data in candidate table and show in grid control
-            gcCandidates.DataSource = mCandidateManager.getCurrentPages();
-            gcCandidates.DataMember = "candidate";
-            //gcCandidates.DataSource = mCandidateManager.getCurrentPages();
+            try {
+                // load data in candidate table and show in grid control
+                gcCandidates.DataSource = mCandidateManager.getCurrentPages();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void gcCandidates_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -44,6 +43,7 @@ namespace DXSWI.Modules
             else if (e.FocusedRowHandle >= 0)
                 gridView1.FocusedColumn = null;
             updateCurrentCandidate();
+
         }
 
         private void gridView1_ColumnFilterChanged(object sender, EventArgs e)
@@ -55,7 +55,47 @@ namespace DXSWI.Modules
             //frCandidates.
             if (gcCandidates.MainView == gridView1)
                 gridView1.MakeRowVisible(gridView1.FocusedRowHandle);
+            //get current selection object
+            if (gridView1.SelectedRowsCount > 0)
+            {
+                int row = gridView1.GetSelectedRows().First();
+                DataRow data_row = gridView1.GetDataRow(row); // for test
+                //DataRow item = mCandidateManager.CurrentTable.Rows[row];
+                Candidate obj = Data.CreateItemFromRow<Candidate>(data_row);
+                ucCandidateManager1.setCurrentCandidate(obj,"");
+            }
+            // fill to ucCandidateManager form
+
+
             //OwnerForm.EnableEditContact(CurrentContact != null); // enable edit button
+        }
+
+        private void ucCandidateManager1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public Candidate currentCandidate()
+        {
+            if (gridView1.SelectedRowsCount > 0)
+            {
+                int row = gridView1.GetSelectedRows().First();
+                DataRow data_row = gridView1.GetDataRow(row); // for test
+                return Data.CreateItemFromRow<Candidate>(data_row);
+            }
+            return null;
+        }
+
+        private void gridView1_DoubleClick(object sender, EventArgs e)
+        {
+            dlgCandidateEdit dlg = new dlgCandidateEdit(currentCandidate(), null);
+            dlg.emitUpdateData += updateData;
+            dlg.ShowDialog();
+        }
+
+        public void updateData()
+        {
+            init();
         }
 
 
