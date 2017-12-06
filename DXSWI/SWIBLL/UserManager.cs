@@ -21,7 +21,7 @@ namespace SWIBLL
         {
             DataAccess.Instance.closeConnectionToDB();
         }
-        public static bool login(string userName, string password)
+        public static bool login(string userName, string password, ref int index, ref int role)
         {
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
             // get user info
@@ -63,6 +63,12 @@ namespace SWIBLL
             // if correct , update login state of user
             DataAccess.Instance.updateLoginState(userName, true);
             ActivatedUser.IsOnline = true;
+
+            // save to property.setting
+            role = (int)ActivatedUser.Role;
+            index = ActivatedUser.Index;
+
+            
             return true;
         }
 

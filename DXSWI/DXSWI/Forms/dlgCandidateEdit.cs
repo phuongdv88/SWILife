@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SWIBLL.Models;
 using SWIBLL;
+using System.Security.Principal;
+using System.IO;
 
 namespace DXSWI.Forms
 {
@@ -18,6 +20,8 @@ namespace DXSWI.Forms
         public delegate void onUpdateData();
         public event onUpdateData emitUpdateData;
         Candidate mCandidate;
+        string fileNameAvatar = string.Empty;
+        string link = string.Empty;
         public dlgCandidateEdit(Candidate can, string toolTip)
         {
             InitializeComponent();
@@ -116,6 +120,7 @@ namespace DXSWI.Forms
             this.LanguageTextEdit.Text = can.Language;
             this.IsInBlacklistCheckEdit.Checked = can.IsInBlacklist;
             // load image
+            peAvatar.Image = Bitmap.FromFile(can.ImageLink);
         }
 
         private void sbCancel_Click(object sender, EventArgs e)
@@ -137,12 +142,46 @@ namespace DXSWI.Forms
             try
             {
                 getDataFromUI(ref mCandidate);
+                if (mCandidate.ImageLink.Length == 0)
+                {
+                    // save image to hardisk: folder = createedtime + candidateName + randomstring
+                    string folderName = mCandidate.CreatedDate.ToString(@"yyyy-MM-dd_hh-mm-ss") + Utils.getRandomAlphaNumeric(10);
+                    string dir = string.Format(@"{0}candidates\avatar\{1}\{2}", Properties.Settings.Default.StorageLocation, folderName, fileNameAvatar);
+                    mCandidate.ImageLink = dir;
+                }
+                else
+                {
+                    // update link of avatar
+                    if (fileNameAvatar.Length > 0)
+                    {
+                        var link = mCandidate.ImageLink.Split('\\');
+                        mCandidate.ImageLink = mCandidate.ImageLink.Replace(link.Last(), fileNameAvatar);
+                    }
+                }
 
-                // todo: update userid, modified, created
+                // copy image to server
+                if (fileNameAvatar.Length > 0)
+                {
+                    //peAvatar.Image.Save(mCandidate.ImageLink);
+                    if(link.Length > 0)
+                    {
+                        AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);
+                        //WindowsIdentity idnt = new WindowsIdentity("Phuongdv", "1");
+                        //WindowsImpersonationContext context = idnt.Impersonate();
+                        Directory.CreateDirectory(mCandidate.ImageLink.Replace(mCandidate.ImageLink.Split('\\').Last(), ""));
+                        File.Copy(link, mCandidate.ImageLink, true);
+                        //context.Undo();
+                    }
+                }
 
                 // save candidate to database: if it is new candidate -> use inserting function, else use updating function
                 if (isNewCandidate)
                 {
+                    mCandidate.UserId = Properties.Settings.Default.userId;
+                    mCandidate.CreatedId = Properties.Settings.Default.userId;
+                    mCandidate.CreatedDate = DateTime.Now;
+                    mCandidate.ResumeLink = "";
+                    
                     if (CandidateManager.addCandidate(mCandidate))
                     {
                         XtraMessageBox.Show("Add new candidate successfully!", "Notice");
@@ -151,6 +190,7 @@ namespace DXSWI.Forms
                 }
                 else
                 {
+                    
                     if (CandidateManager.updateCandidate(mCandidate))
                     {
                         XtraMessageBox.Show("Update candidate successfully!", "Notice");
@@ -207,11 +247,30 @@ namespace DXSWI.Forms
             can.Education = this.EducationMemoEdit.Text;
             can.Language = this.LanguageTextEdit.Text;
             can.IsInBlacklist = this.IsInBlacklistCheckEdit.Checked;
+            mCandidate.Modified = DateTime.Now;
+
             // todo: copy picture to hard disk
             // store link of this picture to db
             can.ImageLink = "";
-            can.ResumeLink = "";
         }
 
+        private void peAvatar_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void peAvatar_DoubleClick(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDlg = new OpenFileDialog();
+            openFileDlg.Filter = "Jpeps|*.jpg|Png|*.png|Bitmaps|*.bmp";
+            if (openFileDlg.ShowDialog() == DialogResult.OK)
+            {
+                peAvatar.Image = Bitmap.FromFile(openFileDlg.FileName);
+                fileNameAvatar = openFileDlg.FileName.Split('\\').Last();
+                link = openFileDlg.FileName;
+            }
+        }
+
+        
     }
 }

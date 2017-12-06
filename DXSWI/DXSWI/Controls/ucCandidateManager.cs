@@ -29,41 +29,47 @@ namespace DXSWI.Controls
             }
             else peAvatar.Cursor = Cursors.Default;
             mCandidate = can;
-            this.locAvatar.Text = string.Format("{0} {1} {2}", can.FirstName, can.MiddleName, can.LastName);
-            this.EmailTextEdit.Text = can.Email;
-            this.SecondaryEmailTextEdit.Text = can.SecondaryEmail;
-            this.SkypeIMTextEdit.Text = can.SkypeIM;
-            this.CellPhoneTextEdit.Text = can.CellPhone;
-            this.WorkPhoneTextEdit.Text = can.WorkPhone;
-            this.BestTimeToCallTextEdit.Text = can.BestTimeToCall;
-            this.AddressTextEdit.Text = can.Address;
-            this.WebSiteTextEdit.Text = can.WebSite;
-            this.SourceTextEdit.Text = can.Source;
-            this.CurrentPositionTextEdit.Text = can.CurrentPosition;
-            this.CurrentEmployerTextEdit.Text = can.CurrentEmployer;
-            this.KeySkillsTextEdit.Text = can.KeySkills;
-            setGender(can.Gender);
-            if (can.CanRelocate)
-            {
-                this.CanRelocateTextEdit.Text = "Yes";
-            } else
-            {
-                this.CanRelocateTextEdit.Text = "No";
-            }
-            this.CurrentPayTextEdit.Text = can.CurrentPay;
-            this.DesiredPayTextEdit.Text = can.DesiredPay;
-            this.DOBMarriedTextEdit.Text = can.DOBMarried;
-            this.InterviewNotesMemoEdit.Text = can.InterviewNotes;
-            //this.UserIdTextEdit.Text = can.; // owner
-            this.MiscNotesMemoExEdit.Text = can.MiscNotes;
-            this.CreatedDateDateEdit.Text = can.CreatedDate.ToShortDateString();
-            this.DateAvailableDateEdit.Text = can.DateAvailable.ToShortDateString();
-            // add data to view
+            try {
+                this.locAvatar.Text = string.Format("{0} {1} {2}", can.FirstName, can.MiddleName, can.LastName);
+                this.EmailTextEdit.Text = can.Email;
+                this.SecondaryEmailTextEdit.Text = can.SecondaryEmail;
+                this.SkypeIMTextEdit.Text = can.SkypeIM;
+                this.CellPhoneTextEdit.Text = can.CellPhone;
+                this.WorkPhoneTextEdit.Text = can.WorkPhone;
+                this.BestTimeToCallTextEdit.Text = can.BestTimeToCall;
+                this.AddressTextEdit.Text = can.Address;
+                this.WebSiteTextEdit.Text = can.WebSite;
+                this.SourceTextEdit.Text = can.Source;
+                this.CurrentPositionTextEdit.Text = can.CurrentPosition;
+                this.CurrentEmployerTextEdit.Text = can.CurrentEmployer;
+                this.KeySkillsTextEdit.Text = can.KeySkills;
+                setGender(can.Gender);
+                if (can.CanRelocate)
+                {
+                    this.CanRelocateTextEdit.Text = "Yes";
+                } else
+                {
+                    this.CanRelocateTextEdit.Text = "No";
+                }
+                this.CurrentPayTextEdit.Text = can.CurrentPay;
+                this.DesiredPayTextEdit.Text = can.DesiredPay;
+                this.DOBMarriedTextEdit.Text = can.DOBMarried;
+                this.InterviewNotesMemoEdit.Text = can.InterviewNotes;
+                //this.UserIdTextEdit.Text = can.; // owner
+                this.MiscNotesMemoExEdit.Text = can.MiscNotes;
+                this.CreatedDateDateEdit.Text = can.CreatedDate.ToShortDateString();
+                this.DateAvailableDateEdit.Text = can.DateAvailable.ToShortDateString();
+                // add data to view
 
-            loadAvatar();
-            loadAttachment();
-            loadJobPipeLine();
-            loadActivities();
+                loadAvatar();
+                loadAttachment();
+                loadJobPipeLine();
+                loadActivities();
+            }
+            catch(Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
 
@@ -72,6 +78,10 @@ namespace DXSWI.Controls
         private void loadAvatar()
         {
             //this.dataLayoutControl1.Controls.Add(this.peAvatar);
+            if (mCandidate.ImageLink?.Length > 0)
+            {
+                this.peAvatar.Image = Bitmap.FromFile(mCandidate.ImageLink);
+            }
         }
         private void loadAttachment()
         {

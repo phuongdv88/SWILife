@@ -215,6 +215,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>swilifecoreDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Controls\ucCalendar.resx">
       <DependentUpon>ucCalendar.cs</DependentUpon>
     </EmbeddedResource>

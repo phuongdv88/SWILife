@@ -258,7 +258,7 @@
             // EmailTextEdit
             // 
             this.EmailTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.Email", true));
-            this.EmailTextEdit.Location = new System.Drawing.Point(316, 42);
+            this.EmailTextEdit.Location = new System.Drawing.Point(325, 42);
             this.EmailTextEdit.Name = "EmailTextEdit";
             this.EmailTextEdit.Properties.ReadOnly = true;
             this.EmailTextEdit.Size = new System.Drawing.Size(277, 20);
@@ -268,17 +268,17 @@
             // SecondaryEmailTextEdit
             // 
             this.SecondaryEmailTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.SecondaryEmail", true));
-            this.SecondaryEmailTextEdit.Location = new System.Drawing.Point(684, 42);
+            this.SecondaryEmailTextEdit.Location = new System.Drawing.Point(693, 42);
             this.SecondaryEmailTextEdit.Name = "SecondaryEmailTextEdit";
             this.SecondaryEmailTextEdit.Properties.ReadOnly = true;
-            this.SecondaryEmailTextEdit.Size = new System.Drawing.Size(264, 20);
+            this.SecondaryEmailTextEdit.Size = new System.Drawing.Size(255, 20);
             this.SecondaryEmailTextEdit.StyleController = this.dataLayoutControl1;
             this.SecondaryEmailTextEdit.TabIndex = 8;
             // 
             // SkypeIMTextEdit
             // 
             this.SkypeIMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.SkypeIM", true));
-            this.SkypeIMTextEdit.Location = new System.Drawing.Point(316, 90);
+            this.SkypeIMTextEdit.Location = new System.Drawing.Point(325, 90);
             this.SkypeIMTextEdit.Name = "SkypeIMTextEdit";
             this.SkypeIMTextEdit.Properties.ReadOnly = true;
             this.SkypeIMTextEdit.Size = new System.Drawing.Size(277, 20);
@@ -288,7 +288,7 @@
             // CellPhoneTextEdit
             // 
             this.CellPhoneTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.CellPhone", true));
-            this.CellPhoneTextEdit.Location = new System.Drawing.Point(316, 66);
+            this.CellPhoneTextEdit.Location = new System.Drawing.Point(325, 66);
             this.CellPhoneTextEdit.Name = "CellPhoneTextEdit";
             this.CellPhoneTextEdit.Properties.ReadOnly = true;
             this.CellPhoneTextEdit.Size = new System.Drawing.Size(277, 20);
@@ -298,57 +298,57 @@
             // WorkPhoneTextEdit
             // 
             this.WorkPhoneTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.WorkPhone", true));
-            this.WorkPhoneTextEdit.Location = new System.Drawing.Point(684, 66);
+            this.WorkPhoneTextEdit.Location = new System.Drawing.Point(693, 66);
             this.WorkPhoneTextEdit.Name = "WorkPhoneTextEdit";
             this.WorkPhoneTextEdit.Properties.ReadOnly = true;
-            this.WorkPhoneTextEdit.Size = new System.Drawing.Size(264, 20);
+            this.WorkPhoneTextEdit.Size = new System.Drawing.Size(255, 20);
             this.WorkPhoneTextEdit.StyleController = this.dataLayoutControl1;
             this.WorkPhoneTextEdit.TabIndex = 11;
             // 
             // BestTimeToCallTextEdit
             // 
             this.BestTimeToCallTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.BestTimeToCall", true));
-            this.BestTimeToCallTextEdit.Location = new System.Drawing.Point(684, 90);
+            this.BestTimeToCallTextEdit.Location = new System.Drawing.Point(693, 90);
             this.BestTimeToCallTextEdit.Name = "BestTimeToCallTextEdit";
             this.BestTimeToCallTextEdit.Properties.ReadOnly = true;
-            this.BestTimeToCallTextEdit.Size = new System.Drawing.Size(264, 20);
+            this.BestTimeToCallTextEdit.Size = new System.Drawing.Size(255, 20);
             this.BestTimeToCallTextEdit.StyleController = this.dataLayoutControl1;
             this.BestTimeToCallTextEdit.TabIndex = 12;
             // 
             // AddressTextEdit
             // 
             this.AddressTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.Address", true));
-            this.AddressTextEdit.Location = new System.Drawing.Point(316, 138);
+            this.AddressTextEdit.Location = new System.Drawing.Point(325, 138);
             this.AddressTextEdit.Name = "AddressTextEdit";
             this.AddressTextEdit.Properties.ReadOnly = true;
-            this.AddressTextEdit.Size = new System.Drawing.Size(632, 20);
+            this.AddressTextEdit.Size = new System.Drawing.Size(623, 20);
             this.AddressTextEdit.StyleController = this.dataLayoutControl1;
             this.AddressTextEdit.TabIndex = 13;
             // 
             // WebSiteTextEdit
             // 
             this.WebSiteTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.WebSite", true));
-            this.WebSiteTextEdit.Location = new System.Drawing.Point(316, 114);
+            this.WebSiteTextEdit.Location = new System.Drawing.Point(325, 114);
             this.WebSiteTextEdit.Name = "WebSiteTextEdit";
             this.WebSiteTextEdit.Properties.ReadOnly = true;
-            this.WebSiteTextEdit.Size = new System.Drawing.Size(632, 20);
+            this.WebSiteTextEdit.Size = new System.Drawing.Size(623, 20);
             this.WebSiteTextEdit.StyleController = this.dataLayoutControl1;
             this.WebSiteTextEdit.TabIndex = 14;
             // 
             // SourceTextEdit
             // 
             this.SourceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.Source", true));
-            this.SourceTextEdit.Location = new System.Drawing.Point(775, 162);
+            this.SourceTextEdit.Location = new System.Drawing.Point(784, 162);
             this.SourceTextEdit.Name = "SourceTextEdit";
             this.SourceTextEdit.Properties.ReadOnly = true;
-            this.SourceTextEdit.Size = new System.Drawing.Size(173, 20);
+            this.SourceTextEdit.Size = new System.Drawing.Size(164, 20);
             this.SourceTextEdit.StyleController = this.dataLayoutControl1;
             this.SourceTextEdit.TabIndex = 15;
             // 
             // CurrentPositionTextEdit
             // 
             this.CurrentPositionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.CurrentPosition", true));
-            this.CurrentPositionTextEdit.Location = new System.Drawing.Point(316, 300);
+            this.CurrentPositionTextEdit.Location = new System.Drawing.Point(325, 300);
             this.CurrentPositionTextEdit.Name = "CurrentPositionTextEdit";
             this.CurrentPositionTextEdit.Properties.ReadOnly = true;
             this.CurrentPositionTextEdit.Size = new System.Drawing.Size(278, 20);
@@ -358,17 +358,17 @@
             // CurrentEmployerTextEdit
             // 
             this.CurrentEmployerTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.CurrentEmployer", true));
-            this.CurrentEmployerTextEdit.Location = new System.Drawing.Point(685, 300);
+            this.CurrentEmployerTextEdit.Location = new System.Drawing.Point(694, 300);
             this.CurrentEmployerTextEdit.Name = "CurrentEmployerTextEdit";
             this.CurrentEmployerTextEdit.Properties.ReadOnly = true;
-            this.CurrentEmployerTextEdit.Size = new System.Drawing.Size(263, 20);
+            this.CurrentEmployerTextEdit.Size = new System.Drawing.Size(254, 20);
             this.CurrentEmployerTextEdit.StyleController = this.dataLayoutControl1;
             this.CurrentEmployerTextEdit.TabIndex = 18;
             // 
             // KeySkillsTextEdit
             // 
             this.KeySkillsTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.KeySkills", true));
-            this.KeySkillsTextEdit.Location = new System.Drawing.Point(316, 228);
+            this.KeySkillsTextEdit.Location = new System.Drawing.Point(325, 228);
             this.KeySkillsTextEdit.Name = "KeySkillsTextEdit";
             this.KeySkillsTextEdit.Properties.ReadOnly = true;
             this.KeySkillsTextEdit.Size = new System.Drawing.Size(278, 20);
@@ -378,7 +378,7 @@
             // CurrentPayTextEdit
             // 
             this.CurrentPayTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.CurrentPay", true));
-            this.CurrentPayTextEdit.Location = new System.Drawing.Point(316, 252);
+            this.CurrentPayTextEdit.Location = new System.Drawing.Point(325, 252);
             this.CurrentPayTextEdit.Name = "CurrentPayTextEdit";
             this.CurrentPayTextEdit.Properties.ReadOnly = true;
             this.CurrentPayTextEdit.Size = new System.Drawing.Size(278, 20);
@@ -388,17 +388,17 @@
             // DesiredPayTextEdit
             // 
             this.DesiredPayTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.DesiredPay", true));
-            this.DesiredPayTextEdit.Location = new System.Drawing.Point(685, 252);
+            this.DesiredPayTextEdit.Location = new System.Drawing.Point(694, 252);
             this.DesiredPayTextEdit.Name = "DesiredPayTextEdit";
             this.DesiredPayTextEdit.Properties.ReadOnly = true;
-            this.DesiredPayTextEdit.Size = new System.Drawing.Size(263, 20);
+            this.DesiredPayTextEdit.Size = new System.Drawing.Size(254, 20);
             this.DesiredPayTextEdit.StyleController = this.dataLayoutControl1;
             this.DesiredPayTextEdit.TabIndex = 22;
             // 
             // DOBMarriedTextEdit
             // 
             this.DOBMarriedTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.DOBMarried", true));
-            this.DOBMarriedTextEdit.Location = new System.Drawing.Point(316, 276);
+            this.DOBMarriedTextEdit.Location = new System.Drawing.Point(325, 276);
             this.DOBMarriedTextEdit.Name = "DOBMarriedTextEdit";
             this.DOBMarriedTextEdit.Properties.ReadOnly = true;
             this.DOBMarriedTextEdit.Size = new System.Drawing.Size(278, 20);
@@ -418,7 +418,7 @@
             // UserIdTextEdit
             // 
             this.UserIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.UserId", true));
-            this.UserIdTextEdit.Location = new System.Drawing.Point(536, 162);
+            this.UserIdTextEdit.Location = new System.Drawing.Point(545, 162);
             this.UserIdTextEdit.Name = "UserIdTextEdit";
             this.UserIdTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.UserIdTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -443,7 +443,7 @@
             // CreatedDateDateEdit
             // 
             this.CreatedDateDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.CreatedDate", true));
-            this.CreatedDateDateEdit.Location = new System.Drawing.Point(316, 162);
+            this.CreatedDateDateEdit.Location = new System.Drawing.Point(325, 162);
             this.CreatedDateDateEdit.Name = "CreatedDateDateEdit";
             this.CreatedDateDateEdit.Properties.DisplayFormat.FormatString = "d";
             this.CreatedDateDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -459,7 +459,7 @@
             // DateAvailableDateEdit
             // 
             this.DateAvailableDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.DateAvailable", true));
-            this.DateAvailableDateEdit.Location = new System.Drawing.Point(685, 228);
+            this.DateAvailableDateEdit.Location = new System.Drawing.Point(694, 228);
             this.DateAvailableDateEdit.Name = "DateAvailableDateEdit";
             this.DateAvailableDateEdit.Properties.DisplayFormat.FormatString = "d";
             this.DateAvailableDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -468,16 +468,16 @@
             this.DateAvailableDateEdit.Properties.Mask.EditMask = "d";
             this.DateAvailableDateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTime;
             this.DateAvailableDateEdit.Properties.ReadOnly = true;
-            this.DateAvailableDateEdit.Size = new System.Drawing.Size(263, 20);
+            this.DateAvailableDateEdit.Size = new System.Drawing.Size(254, 20);
             this.DateAvailableDateEdit.StyleController = this.dataLayoutControl1;
             this.DateAvailableDateEdit.TabIndex = 17;
             // 
             // CanRelocateTextEdit
             // 
-            this.CanRelocateTextEdit.Location = new System.Drawing.Point(685, 276);
+            this.CanRelocateTextEdit.Location = new System.Drawing.Point(694, 276);
             this.CanRelocateTextEdit.Name = "CanRelocateTextEdit";
             this.CanRelocateTextEdit.Properties.ReadOnly = true;
-            this.CanRelocateTextEdit.Size = new System.Drawing.Size(263, 20);
+            this.CanRelocateTextEdit.Size = new System.Drawing.Size(254, 20);
             this.CanRelocateTextEdit.StyleController = this.dataLayoutControl1;
             this.CanRelocateTextEdit.TabIndex = 30;
             // 
@@ -487,8 +487,9 @@
             this.peAvatar.Location = new System.Drawing.Point(12, 47);
             this.peAvatar.Name = "peAvatar";
             this.peAvatar.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.peAvatar.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.peAvatar.Properties.ZoomAccelerationFactor = 1D;
-            this.peAvatar.Size = new System.Drawing.Size(201, 285);
+            this.peAvatar.Size = new System.Drawing.Size(210, 285);
             this.peAvatar.StyleController = this.dataLayoutControl1;
             this.peAvatar.TabIndex = 31;
             // 
@@ -550,9 +551,9 @@
             this.ItemForUserId,
             this.ItemForBestTimeToCall,
             this.ItemForSource});
-            this.layoutControlGroup4.Location = new System.Drawing.Point(205, 0);
+            this.layoutControlGroup4.Location = new System.Drawing.Point(214, 0);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(747, 186);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(738, 186);
             this.layoutControlGroup4.Text = "Contact Information";
             // 
             // ItemForEmail
@@ -569,7 +570,7 @@
             this.ItemForSecondaryEmail.Control = this.SecondaryEmailTextEdit;
             this.ItemForSecondaryEmail.Location = new System.Drawing.Point(368, 0);
             this.ItemForSecondaryEmail.Name = "ItemForSecondaryEmail";
-            this.ItemForSecondaryEmail.Size = new System.Drawing.Size(355, 24);
+            this.ItemForSecondaryEmail.Size = new System.Drawing.Size(346, 24);
             this.ItemForSecondaryEmail.Text = "Secondary Email";
             this.ItemForSecondaryEmail.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -587,7 +588,7 @@
             this.ItemForAddress.Control = this.AddressTextEdit;
             this.ItemForAddress.Location = new System.Drawing.Point(0, 96);
             this.ItemForAddress.Name = "ItemForAddress";
-            this.ItemForAddress.Size = new System.Drawing.Size(723, 24);
+            this.ItemForAddress.Size = new System.Drawing.Size(714, 24);
             this.ItemForAddress.Text = "Address";
             this.ItemForAddress.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -605,7 +606,7 @@
             this.ItemForWorkPhone.Control = this.WorkPhoneTextEdit;
             this.ItemForWorkPhone.Location = new System.Drawing.Point(368, 24);
             this.ItemForWorkPhone.Name = "ItemForWorkPhone";
-            this.ItemForWorkPhone.Size = new System.Drawing.Size(355, 24);
+            this.ItemForWorkPhone.Size = new System.Drawing.Size(346, 24);
             this.ItemForWorkPhone.Text = "Work Phone";
             this.ItemForWorkPhone.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -614,7 +615,7 @@
             this.ItemForWebSite.Control = this.WebSiteTextEdit;
             this.ItemForWebSite.Location = new System.Drawing.Point(0, 72);
             this.ItemForWebSite.Name = "ItemForWebSite";
-            this.ItemForWebSite.Size = new System.Drawing.Size(723, 24);
+            this.ItemForWebSite.Size = new System.Drawing.Size(714, 24);
             this.ItemForWebSite.Text = "Web Site";
             this.ItemForWebSite.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -641,7 +642,7 @@
             this.ItemForBestTimeToCall.Control = this.BestTimeToCallTextEdit;
             this.ItemForBestTimeToCall.Location = new System.Drawing.Point(368, 48);
             this.ItemForBestTimeToCall.Name = "ItemForBestTimeToCall";
-            this.ItemForBestTimeToCall.Size = new System.Drawing.Size(355, 24);
+            this.ItemForBestTimeToCall.Size = new System.Drawing.Size(346, 24);
             this.ItemForBestTimeToCall.Text = "Best Time To Call";
             this.ItemForBestTimeToCall.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -650,7 +651,7 @@
             this.ItemForSource.Control = this.SourceTextEdit;
             this.ItemForSource.Location = new System.Drawing.Point(459, 120);
             this.ItemForSource.Name = "ItemForSource";
-            this.ItemForSource.Size = new System.Drawing.Size(264, 24);
+            this.ItemForSource.Size = new System.Drawing.Size(255, 24);
             this.ItemForSource.Text = "Source";
             this.ItemForSource.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -665,9 +666,9 @@
             this.ItemForCurrentPosition,
             this.ItemForCurrentEmployer,
             this.ItemForDateAvailable});
-            this.layoutControlGroup6.Location = new System.Drawing.Point(205, 186);
+            this.layoutControlGroup6.Location = new System.Drawing.Point(214, 186);
             this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(747, 138);
+            this.layoutControlGroup6.Size = new System.Drawing.Size(738, 138);
             this.layoutControlGroup6.Text = "Candidate Information";
             // 
             // ItemForKeySkills
@@ -693,7 +694,7 @@
             this.ItemForDesiredPay.Control = this.DesiredPayTextEdit;
             this.ItemForDesiredPay.Location = new System.Drawing.Point(369, 24);
             this.ItemForDesiredPay.Name = "ItemForDesiredPay";
-            this.ItemForDesiredPay.Size = new System.Drawing.Size(354, 24);
+            this.ItemForDesiredPay.Size = new System.Drawing.Size(345, 24);
             this.ItemForDesiredPay.Text = "Desired Pay";
             this.ItemForDesiredPay.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -711,7 +712,7 @@
             this.CanRelocate.Control = this.CanRelocateTextEdit;
             this.CanRelocate.Location = new System.Drawing.Point(369, 48);
             this.CanRelocate.Name = "CanRelocate";
-            this.CanRelocate.Size = new System.Drawing.Size(354, 24);
+            this.CanRelocate.Size = new System.Drawing.Size(345, 24);
             this.CanRelocate.Text = "Can Relocate";
             this.CanRelocate.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -729,7 +730,7 @@
             this.ItemForCurrentEmployer.Control = this.CurrentEmployerTextEdit;
             this.ItemForCurrentEmployer.Location = new System.Drawing.Point(369, 72);
             this.ItemForCurrentEmployer.Name = "ItemForCurrentEmployer";
-            this.ItemForCurrentEmployer.Size = new System.Drawing.Size(354, 24);
+            this.ItemForCurrentEmployer.Size = new System.Drawing.Size(345, 24);
             this.ItemForCurrentEmployer.Text = "Current Employer";
             this.ItemForCurrentEmployer.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -738,7 +739,7 @@
             this.ItemForDateAvailable.Control = this.DateAvailableDateEdit;
             this.ItemForDateAvailable.Location = new System.Drawing.Point(369, 0);
             this.ItemForDateAvailable.Name = "ItemForDateAvailable";
-            this.ItemForDateAvailable.Size = new System.Drawing.Size(354, 24);
+            this.ItemForDateAvailable.Size = new System.Drawing.Size(345, 24);
             this.ItemForDateAvailable.Text = "Date Available";
             this.ItemForDateAvailable.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -748,7 +749,7 @@
             this.locAvatar.Image = global::DXSWI.Properties.Resources.user_male_3;
             this.locAvatar.Location = new System.Drawing.Point(0, 0);
             this.locAvatar.Name = "locAvatar";
-            this.locAvatar.Size = new System.Drawing.Size(205, 324);
+            this.locAvatar.Size = new System.Drawing.Size(214, 324);
             this.locAvatar.Text = "Name";
             this.locAvatar.TextLocation = DevExpress.Utils.Locations.Top;
             this.locAvatar.TextSize = new System.Drawing.Size(84, 32);

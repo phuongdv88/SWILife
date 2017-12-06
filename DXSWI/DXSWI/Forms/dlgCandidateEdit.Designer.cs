@@ -40,7 +40,6 @@
             this.BestTimeToCallTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.AddressTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.WebSiteTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.SourceTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.CurrentPositionTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.DateAvailableDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.CurrentEmployerTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -65,14 +64,12 @@
             this.peAvatar = new DevExpress.XtraEditors.PictureEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForFirstName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForEmail = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCellPhone = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForAddress = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCurrentPosition = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForKeySkills = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForInterviewNotes = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForMiddleName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForLastName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForIsInBlacklist = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForSecondaryEmail = new DevExpress.XtraLayout.LayoutControlItem();
@@ -101,6 +98,9 @@
             this.ItemForIndustry = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCurrentPay = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForPositionsUpTillNow = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForFirstName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForMiddleName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.SourceTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).BeginInit();
@@ -114,7 +114,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BestTimeToCallTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddressTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WebSiteTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SourceTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentPositionTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateAvailableDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateAvailableDateEdit.Properties)).BeginInit();
@@ -138,14 +137,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.peAvatar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForFirstName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCellPhone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAddress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForKeySkills)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForInterviewNotes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForMiddleName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLastName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIsInBlacklist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSecondaryEmail)).BeginInit();
@@ -174,6 +171,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIndustry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentPay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPositionsUpTillNow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFirstName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMiddleName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourceTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -189,7 +189,6 @@
             this.dataLayoutControl1.Controls.Add(this.BestTimeToCallTextEdit);
             this.dataLayoutControl1.Controls.Add(this.AddressTextEdit);
             this.dataLayoutControl1.Controls.Add(this.WebSiteTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.SourceTextEdit);
             this.dataLayoutControl1.Controls.Add(this.CurrentPositionTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DateAvailableDateEdit);
             this.dataLayoutControl1.Controls.Add(this.CurrentEmployerTextEdit);
@@ -212,6 +211,7 @@
             this.dataLayoutControl1.Controls.Add(this.sbCancel);
             this.dataLayoutControl1.Controls.Add(this.sbOk);
             this.dataLayoutControl1.Controls.Add(this.peAvatar);
+            this.dataLayoutControl1.Controls.Add(this.SourceTextEdit);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -308,14 +308,6 @@
             this.WebSiteTextEdit.StyleController = this.dataLayoutControl1;
             this.WebSiteTextEdit.TabIndex = 14;
             // 
-            // SourceTextEdit
-            // 
-            this.SourceTextEdit.Location = new System.Drawing.Point(552, 108);
-            this.SourceTextEdit.Name = "SourceTextEdit";
-            this.SourceTextEdit.Size = new System.Drawing.Size(162, 20);
-            this.SourceTextEdit.StyleController = this.dataLayoutControl1;
-            this.SourceTextEdit.TabIndex = 15;
-            // 
             // CurrentPositionTextEdit
             // 
             this.CurrentPositionTextEdit.Location = new System.Drawing.Point(259, 132);
@@ -333,6 +325,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.DateAvailableDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DateAvailableDateEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.DateAvailableDateEdit.Size = new System.Drawing.Size(176, 20);
             this.DateAvailableDateEdit.StyleController = this.dataLayoutControl1;
             this.DateAvailableDateEdit.TabIndex = 17;
@@ -406,6 +399,7 @@
             this.GenderComboBoxEdit.Properties.Items.AddRange(new object[] {
             "Female",
             "Male"});
+            this.GenderComboBoxEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.GenderComboBoxEdit.Size = new System.Drawing.Size(88, 20);
             this.GenderComboBoxEdit.StyleController = this.dataLayoutControl1;
             this.GenderComboBoxEdit.TabIndex = 25;
@@ -509,13 +503,17 @@
             // peAvatar
             // 
             this.peAvatar.Cursor = System.Windows.Forms.Cursors.Default;
+            this.peAvatar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.peAvatar.Location = new System.Drawing.Point(12, 12);
             this.peAvatar.Name = "peAvatar";
             this.peAvatar.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.peAvatar.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.peAvatar.Properties.ZoomAccelerationFactor = 1D;
             this.peAvatar.Size = new System.Drawing.Size(143, 164);
             this.peAvatar.StyleController = this.dataLayoutControl1;
             this.peAvatar.TabIndex = 39;
+            this.peAvatar.EditValueChanged += new System.EventHandler(this.peAvatar_EditValueChanged);
+            this.peAvatar.DoubleClick += new System.EventHandler(this.peAvatar_DoubleClick);
             // 
             // layoutControlGroup1
             // 
@@ -573,15 +571,6 @@
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
             this.layoutControlGroup2.Size = new System.Drawing.Size(986, 701);
             // 
-            // ItemForFirstName
-            // 
-            this.ItemForFirstName.Control = this.FirstNameTextEdit;
-            this.ItemForFirstName.Location = new System.Drawing.Point(147, 0);
-            this.ItemForFirstName.Name = "ItemForFirstName";
-            this.ItemForFirstName.Size = new System.Drawing.Size(293, 24);
-            this.ItemForFirstName.Text = "First Name";
-            this.ItemForFirstName.TextSize = new System.Drawing.Size(97, 13);
-            // 
             // ItemForEmail
             // 
             this.ItemForEmail.Control = this.EmailTextEdit;
@@ -636,15 +625,6 @@
             this.ItemForInterviewNotes.StartNewLine = true;
             this.ItemForInterviewNotes.Text = "Interview Notes";
             this.ItemForInterviewNotes.TextSize = new System.Drawing.Size(97, 13);
-            // 
-            // ItemForMiddleName
-            // 
-            this.ItemForMiddleName.Control = this.MiddleNameTextEdit;
-            this.ItemForMiddleName.Location = new System.Drawing.Point(440, 0);
-            this.ItemForMiddleName.Name = "ItemForMiddleName";
-            this.ItemForMiddleName.Size = new System.Drawing.Size(266, 24);
-            this.ItemForMiddleName.Text = "Middle Name";
-            this.ItemForMiddleName.TextSize = new System.Drawing.Size(97, 13);
             // 
             // ItemForLastName
             // 
@@ -901,6 +881,40 @@
             this.ItemForPositionsUpTillNow.Text = "Positions Up Till Now";
             this.ItemForPositionsUpTillNow.TextSize = new System.Drawing.Size(97, 13);
             // 
+            // ItemForFirstName
+            // 
+            this.ItemForFirstName.Control = this.FirstNameTextEdit;
+            this.ItemForFirstName.Location = new System.Drawing.Point(147, 0);
+            this.ItemForFirstName.Name = "ItemForFirstName";
+            this.ItemForFirstName.Size = new System.Drawing.Size(293, 24);
+            this.ItemForFirstName.Text = "First Name";
+            this.ItemForFirstName.TextSize = new System.Drawing.Size(97, 13);
+            // 
+            // ItemForMiddleName
+            // 
+            this.ItemForMiddleName.Control = this.MiddleNameTextEdit;
+            this.ItemForMiddleName.Location = new System.Drawing.Point(440, 0);
+            this.ItemForMiddleName.Name = "ItemForMiddleName";
+            this.ItemForMiddleName.Size = new System.Drawing.Size(266, 24);
+            this.ItemForMiddleName.Text = "Middle Name";
+            this.ItemForMiddleName.TextSize = new System.Drawing.Size(97, 13);
+            // 
+            // SourceTextEdit
+            // 
+            this.SourceTextEdit.Location = new System.Drawing.Point(552, 108);
+            this.SourceTextEdit.Name = "SourceTextEdit";
+            this.SourceTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.SourceTextEdit.Properties.Items.AddRange(new object[] {
+            "Directly",
+            "Linkedin",
+            "Vietnamworks",
+            "Reference",
+            "Other"});
+            this.SourceTextEdit.Size = new System.Drawing.Size(162, 20);
+            this.SourceTextEdit.StyleController = this.dataLayoutControl1;
+            this.SourceTextEdit.TabIndex = 15;
+            // 
             // dlgCandidateEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -924,7 +938,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BestTimeToCallTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddressTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WebSiteTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SourceTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentPositionTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateAvailableDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateAvailableDateEdit.Properties)).EndInit();
@@ -948,14 +961,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.peAvatar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForFirstName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCellPhone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAddress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentPosition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForKeySkills)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForInterviewNotes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForMiddleName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLastName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIsInBlacklist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSecondaryEmail)).EndInit();
@@ -984,6 +995,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIndustry)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentPay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPositionsUpTillNow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFirstName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMiddleName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourceTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1002,7 +1016,6 @@
         private DevExpress.XtraEditors.TextEdit BestTimeToCallTextEdit;
         private DevExpress.XtraEditors.TextEdit AddressTextEdit;
         private DevExpress.XtraEditors.TextEdit WebSiteTextEdit;
-        private DevExpress.XtraEditors.TextEdit SourceTextEdit;
         private DevExpress.XtraEditors.TextEdit CurrentPositionTextEdit;
         private DevExpress.XtraEditors.DateEdit DateAvailableDateEdit;
         private DevExpress.XtraEditors.TextEdit CurrentEmployerTextEdit;
@@ -1063,5 +1076,6 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForMiscNotes;
         private DevExpress.XtraEditors.PictureEdit peAvatar;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.ComboBoxEdit SourceTextEdit;
     }
 }

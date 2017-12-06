@@ -73,7 +73,7 @@ namespace DXSWI.Forms
             //validate input
 
             // gen password
-            string salt = "123456a@";
+            string salt = "123456a@";  //todo: this salt need get from db by username
             string hashPassword = Properties.Settings.Default.password;
             if (hashPassword.Length == 0)
             {
@@ -82,7 +82,9 @@ namespace DXSWI.Forms
             try
             {
                 //login
-                if (UserManager.login(textEditUserName.Text, hashPassword))
+                int id = 0;
+                int role = 0;
+                if (UserManager.login(textEditUserName.Text, hashPassword, ref id, ref role))
                 {
                     // if login successfully, save username and hash password if necessary
                     if (checkEditRememberMe.Checked == true)
@@ -97,6 +99,8 @@ namespace DXSWI.Forms
                     }
 
                     Properties.Settings.Default.Save();
+                    Properties.Settings.Default.userId = id;
+                    Properties.Settings.Default.role = role;
                     //show main window
                     ScreenManager.Instance.showMainScreen();
                     //XtraMessageBox.Show("login successfully!", textEditUserName.Text);

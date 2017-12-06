@@ -93,5 +93,29 @@ namespace DXSWI.Properties {
                 this["isOnline"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int userId {
+            get {
+                return ((int)(this["userId"]));
+            }
+            set {
+                this["userId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\192.168.1.200\\d\\swilifedata\\")]
+        public string StorageLocation {
+            get {
+                return ((string)(this["StorageLocation"]));
+            }
+            set {
+                this["StorageLocation"] = value;
+            }
+        }
     }
 }
