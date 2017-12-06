@@ -68,6 +68,14 @@ namespace SWIBLL
             return DataAccess.Instance.getLimitedCandidates((page_count - 1) * page_size, page_size);
         }
 
+        public static bool deleteCadidate(int id)
+        {
+            //DELETE FROM `swilifecore`.`candidate` WHERE `CandidateId`='5';
+            string sql = string.Format("DELETE FROM `swilifecore`.`candidate` WHERE `CandidateId`='{0}'", id);
+            int result = DataAccess.Instance.executeNonQuery(sql);
+            return result > 0 ? true : false;
+        }
+
         public static bool addCandidate(Candidate can)
         {
             //INSERT INTO `swilifecore`.`candidate` (`FirstName`, `MiddleName`, `LastName`, `Email`, `SecondaryEmail`, `SkypeIM`, `CellPhone`, `WorkPhone`, `BestTimeToCall`, `Address`, `WebSite`, `Source`, `CurrentPosition`, `DateAvailable`, `CurrentEmployer`, `KeySkills`, `CanRelocate`, `CurrentPay`, `DesiredPay`, `DOBMarried`, `InterviewNotes`, `Gender`, `MiscNotes`, `City`, `Country`, `ResumeLink`, `PositionsUpTillNow`, `Years`, `ProjectDone`, `Industry`, `Education`, `Language`, `CreatedDate`, `CreatedId`, `IsInBlacklist`, `UserId`, `Modified`, `ImageLink`) 

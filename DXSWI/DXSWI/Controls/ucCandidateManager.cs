@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SWIBLL.Models;
+using SWIBLL;
 
 namespace DXSWI.Controls
 {
@@ -55,7 +56,7 @@ namespace DXSWI.Controls
                 this.DesiredPayTextEdit.Text = can.DesiredPay;
                 this.DOBMarriedTextEdit.Text = can.DOBMarried;
                 this.InterviewNotesMemoEdit.Text = can.InterviewNotes;
-                //this.UserIdTextEdit.Text = can.; // owner
+                this.UserOwnerTexEdit.Text = UserManager.getUserName(can.UserId); // owner
                 this.MiscNotesMemoExEdit.Text = can.MiscNotes;
                 this.CreatedDateDateEdit.Text = can.CreatedDate.ToShortDateString();
                 this.DateAvailableDateEdit.Text = can.DateAvailable.ToShortDateString();
@@ -78,9 +79,15 @@ namespace DXSWI.Controls
         private void loadAvatar()
         {
             //this.dataLayoutControl1.Controls.Add(this.peAvatar);
-            if (mCandidate.ImageLink?.Length > 0)
+            try {
+                if (mCandidate.ImageLink?.Length > 0)
+                {
+                    this.peAvatar.Image = Bitmap.FromFile(mCandidate.ImageLink);
+                }
+            }
+            catch
             {
-                this.peAvatar.Image = Bitmap.FromFile(mCandidate.ImageLink);
+                // donot do anything
             }
         }
         private void loadAttachment()
@@ -107,5 +114,9 @@ namespace DXSWI.Controls
             }
         }
 
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

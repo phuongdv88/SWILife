@@ -96,6 +96,7 @@ namespace DXSWI.Modules
         public void updateData()
         {
             init();
+            updateCurrentCandidate();
         }
 
 

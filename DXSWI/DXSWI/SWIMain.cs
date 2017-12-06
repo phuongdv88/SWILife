@@ -14,6 +14,7 @@ using DevExpress.XtraBars.Navigation;
 using DXSWI.Modules;
 using DXSWI.Forms;
 using DevExpress.XtraBars.Ribbon;
+using SWIBLL;
 
 namespace DXSWI
 {
@@ -235,6 +236,42 @@ namespace DXSWI
         private void updateCandidateData()
         {
             mfrCandidate.updateData();
+        }
+
+        private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if(XtraMessageBox.Show("Are you sure to delete?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                //delete
+                // todo: delete all reference data from runningtash table, activities... using transaction
+
+                if(!CandidateManager.deleteCadidate(mfrCandidate.currentCandidate().CandidateId))
+                {
+                    XtraMessageBox.Show("Cannot delete data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                mfrCandidate.updateData();
+            }
+        }
+
+        private void bbiCandidatesAddEvent_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void bbiCandidatesAddAttachment_ItemClick(object sender, ItemClickEventArgs e)
+        {
+        }
+
+        private void bbiCandidatesAddPipeline_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            dlgAddJobOrderToPipeline dlg = new dlgAddJobOrderToPipeline(mfrCandidate.currentCandidate().CandidateId);
+            dlg.updateDataEvent += mfrCandidate.updateData;
+            dlg.ShowDialog();
+        }
+
+        private void bbiCandidateLogActivity_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

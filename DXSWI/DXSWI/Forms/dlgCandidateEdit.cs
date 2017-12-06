@@ -193,13 +193,13 @@ namespace DXSWI.Forms
                     
                     if (CandidateManager.updateCandidate(mCandidate))
                     {
-                        XtraMessageBox.Show("Update candidate successfully!", "Notice");
+                        //XtraMessageBox.Show("Update candidate successfully!", "Notice");
 
                     }
                 }
 
                 //emit main form reload gridview control
-                emitUpdateData();
+                emitUpdateData?.Invoke();
             }
             catch (Exception ex)
             {

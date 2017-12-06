@@ -44,6 +44,8 @@ namespace SWIBLL
                         IsOnline = Convert.ToBoolean(int.Parse(reader[5].ToString()))
                     };
                 }
+
+                reader.Dispose();
             }
             catch
             {
@@ -68,7 +70,7 @@ namespace SWIBLL
             role = (int)ActivatedUser.Role;
             index = ActivatedUser.Index;
 
-            
+
             return true;
         }
 
@@ -83,5 +85,12 @@ namespace SWIBLL
             }
             return false;
         }
+
+        public static string getUserName(int id)
+        {
+            string userName = DataAccess.Instance.getUserName(id);
+            return userName;
+        }
+
     }
 }

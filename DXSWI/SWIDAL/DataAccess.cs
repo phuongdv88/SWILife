@@ -39,7 +39,7 @@ namespace SWIDAL
         {
             mCon?.Close();
         }
-
+        //------------------------------- nomal command-------------------
         public void ConnectToDB(string connection_string)
         {
             mCon = ConnectToDatabase(connection_string);
@@ -56,6 +56,16 @@ namespace SWIDAL
             return new MySqlConnection(string_connection);
         }
 
+
+        public object executeScalar(string query)
+        {
+            if (mCon == null)
+                return -1;
+            MySqlCommand cmd = new MySqlCommand(query, mCon);
+            object result = cmd.ExecuteScalar();
+            cmd.Dispose();
+            return result;
+        }
         public int executeNonQuery(string query)
         {
             if (mCon == null)
@@ -146,6 +156,35 @@ namespace SWIDAL
             }
         }
 
+        public string getUserName(int id)
+        {
+            if (mCon == null) return string.Empty;
+            MySqlCommand cmd = null;
+            string userName = string.Empty;
+            MySqlDataReader reader = null;
+            try
+            {
+
+                cmd = new MySqlCommand(string.Format("select user.UserName from user where user.UserId={0}", id), mCon);
+                reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    userName = reader[0].ToString();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+                reader?.Dispose();
+            }
+            return userName;
+        }
+
+
         public bool updateLoginState(string userName, bool value)
         {
             if (mCon == null) return false;
@@ -225,5 +264,34 @@ namespace SWIDAL
 
             }
         }
+
+
+        //---------------------------job order----------------------------
+        public DataTable getJobOrders()
+        {
+            if (mCon == null) return null;
+            MySqlCommand cmd = null;
+            DataTable dt = null;
+            try
+            {
+                cmd = new MySqlCommand("spGetJobOrders", mCon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                MySqlDataAdapter ad = new MySqlDataAdapter();
+                ad.SelectCommand = cmd;
+                dt = new DataTable();
+                ad.Fill(dt);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+
+            }
+            return dt;
+        }
+
     }
 }

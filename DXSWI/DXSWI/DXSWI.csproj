@@ -129,6 +129,24 @@
     <Compile Include="Controls\ucUtilities.Designer.cs">
       <DependentUpon>ucUtilities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\dlgAddCandidateToPipeline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgAddCandidateToPipeline.Designer.cs">
+      <DependentUpon>dlgAddCandidateToPipeline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\dlgAddJobOrderToPipeline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgAddJobOrderToPipeline.Designer.cs">
+      <DependentUpon>dlgAddJobOrderToPipeline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\dlgAddScheduleEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgAddScheduleEvent.Designer.cs">
+      <DependentUpon>dlgAddScheduleEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\dlgCandidateEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +158,12 @@
     </Compile>
     <Compile Include="Forms\dlgChangePassword.Designer.cs">
       <DependentUpon>dlgChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\dlgLogActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgLogActivity.Designer.cs">
+      <DependentUpon>dlgLogActivity.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\dlgLogin.cs">
       <SubType>Form</SubType>
@@ -246,11 +270,23 @@
     <EmbeddedResource Include="Controls\ucUtilities.resx">
       <DependentUpon>ucUtilities.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgAddCandidateToPipeline.resx">
+      <DependentUpon>dlgAddCandidateToPipeline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgAddJobOrderToPipeline.resx">
+      <DependentUpon>dlgAddJobOrderToPipeline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgAddScheduleEvent.resx">
+      <DependentUpon>dlgAddScheduleEvent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgCandidateEdit.resx">
       <DependentUpon>dlgCandidateEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgChangePassword.resx">
       <DependentUpon>dlgChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgLogActivity.resx">
+      <DependentUpon>dlgLogActivity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgLogin.resx">
       <DependentUpon>dlgLogin.cs</DependentUpon>

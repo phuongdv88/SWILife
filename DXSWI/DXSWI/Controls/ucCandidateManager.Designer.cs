@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery2 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCandidateManager));
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.swilifecoreDataSet = new DXSWI.swilifecoreDataSet();
@@ -52,7 +52,6 @@
             this.DesiredPayTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.DOBMarriedTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.InterviewNotesMemoEdit = new DevExpress.XtraEditors.MemoEdit();
-            this.UserIdTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.MiscNotesMemoExEdit = new DevExpress.XtraEditors.MemoEdit();
             this.CreatedDateDateEdit = new DevExpress.XtraEditors.TextEdit();
             this.DateAvailableDateEdit = new DevExpress.XtraEditors.TextEdit();
@@ -71,7 +70,6 @@
             this.ItemForWorkPhone = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForWebSite = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCreatedDate = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForUserId = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForBestTimeToCall = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForSource = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -107,7 +105,6 @@
             this.ActionActivities = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -115,6 +112,14 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.sbAttachment = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.sliAttachments = new DevExpress.XtraLayout.SimpleLabelItem();
+            this.UserOwnerTexEdit = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.swilifecoreDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.swilifecoreDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -137,7 +142,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DesiredPayTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DOBMarriedTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InterviewNotesMemoEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserIdTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiscNotesMemoExEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreatedDateDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateAvailableDateEdit.Properties)).BeginInit();
@@ -156,7 +160,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForWorkPhone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForWebSite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCreatedDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForUserId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBestTimeToCall)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
@@ -189,16 +192,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
+            this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliAttachments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserOwnerTexEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // sqlDataSource1
             // 
             this.sqlDataSource1.ConnectionName = "DXSWI.Properties.Settings.swilifecoreConnectionString";
             this.sqlDataSource1.Name = "sqlDataSource1";
-            customSqlQuery1.Name = "Query";
-            customSqlQuery1.Sql = "select * from candidate";
+            customSqlQuery2.Name = "Query";
+            customSqlQuery2.Sql = "select * from candidate";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery1});
+            customSqlQuery2});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
             // swilifecoreDataSet
@@ -238,12 +249,12 @@
             this.dataLayoutControl1.Controls.Add(this.DesiredPayTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DOBMarriedTextEdit);
             this.dataLayoutControl1.Controls.Add(this.InterviewNotesMemoEdit);
-            this.dataLayoutControl1.Controls.Add(this.UserIdTextEdit);
             this.dataLayoutControl1.Controls.Add(this.MiscNotesMemoExEdit);
             this.dataLayoutControl1.Controls.Add(this.CreatedDateDateEdit);
             this.dataLayoutControl1.Controls.Add(this.DateAvailableDateEdit);
             this.dataLayoutControl1.Controls.Add(this.CanRelocateTextEdit);
             this.dataLayoutControl1.Controls.Add(this.peAvatar);
+            this.dataLayoutControl1.Controls.Add(this.UserOwnerTexEdit);
             this.dataLayoutControl1.DataMember = "Query";
             this.dataLayoutControl1.DataSource = this.sqlDataSource1;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -338,10 +349,10 @@
             // SourceTextEdit
             // 
             this.SourceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.Source", true));
-            this.SourceTextEdit.Location = new System.Drawing.Point(784, 162);
+            this.SourceTextEdit.Location = new System.Drawing.Point(562, 162);
             this.SourceTextEdit.Name = "SourceTextEdit";
             this.SourceTextEdit.Properties.ReadOnly = true;
-            this.SourceTextEdit.Size = new System.Drawing.Size(164, 20);
+            this.SourceTextEdit.Size = new System.Drawing.Size(177, 20);
             this.SourceTextEdit.StyleController = this.dataLayoutControl1;
             this.SourceTextEdit.TabIndex = 15;
             // 
@@ -415,21 +426,6 @@
             this.InterviewNotesMemoEdit.StyleController = this.dataLayoutControl1;
             this.InterviewNotesMemoEdit.TabIndex = 24;
             // 
-            // UserIdTextEdit
-            // 
-            this.UserIdTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.UserId", true));
-            this.UserIdTextEdit.Location = new System.Drawing.Point(545, 162);
-            this.UserIdTextEdit.Name = "UserIdTextEdit";
-            this.UserIdTextEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.UserIdTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.UserIdTextEdit.Properties.Mask.EditMask = "N0";
-            this.UserIdTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.UserIdTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.UserIdTextEdit.Properties.ReadOnly = true;
-            this.UserIdTextEdit.Size = new System.Drawing.Size(148, 20);
-            this.UserIdTextEdit.StyleController = this.dataLayoutControl1;
-            this.UserIdTextEdit.TabIndex = 28;
-            // 
             // MiscNotesMemoExEdit
             // 
             this.MiscNotesMemoExEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sqlDataSource1, "Query.MiscNotes", true));
@@ -452,7 +448,7 @@
             this.CreatedDateDateEdit.Properties.Mask.EditMask = "d";
             this.CreatedDateDateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTime;
             this.CreatedDateDateEdit.Properties.ReadOnly = true;
-            this.CreatedDateDateEdit.Size = new System.Drawing.Size(129, 20);
+            this.CreatedDateDateEdit.Size = new System.Drawing.Size(146, 20);
             this.CreatedDateDateEdit.StyleController = this.dataLayoutControl1;
             this.CreatedDateDateEdit.TabIndex = 27;
             // 
@@ -548,9 +544,9 @@
             this.ItemForWorkPhone,
             this.ItemForWebSite,
             this.ItemForCreatedDate,
-            this.ItemForUserId,
             this.ItemForBestTimeToCall,
-            this.ItemForSource});
+            this.ItemForSource,
+            this.layoutControlItem5});
             this.layoutControlGroup4.Location = new System.Drawing.Point(214, 0);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
             this.layoutControlGroup4.Size = new System.Drawing.Size(738, 186);
@@ -624,18 +620,9 @@
             this.ItemForCreatedDate.Control = this.CreatedDateDateEdit;
             this.ItemForCreatedDate.Location = new System.Drawing.Point(0, 120);
             this.ItemForCreatedDate.Name = "ItemForCreatedDate";
-            this.ItemForCreatedDate.Size = new System.Drawing.Size(220, 24);
+            this.ItemForCreatedDate.Size = new System.Drawing.Size(237, 24);
             this.ItemForCreatedDate.Text = "Created Date";
             this.ItemForCreatedDate.TextSize = new System.Drawing.Size(84, 13);
-            // 
-            // ItemForUserId
-            // 
-            this.ItemForUserId.Control = this.UserIdTextEdit;
-            this.ItemForUserId.Location = new System.Drawing.Point(220, 120);
-            this.ItemForUserId.Name = "ItemForUserId";
-            this.ItemForUserId.Size = new System.Drawing.Size(239, 24);
-            this.ItemForUserId.Text = "Owner";
-            this.ItemForUserId.TextSize = new System.Drawing.Size(84, 13);
             // 
             // ItemForBestTimeToCall
             // 
@@ -649,9 +636,9 @@
             // ItemForSource
             // 
             this.ItemForSource.Control = this.SourceTextEdit;
-            this.ItemForSource.Location = new System.Drawing.Point(459, 120);
+            this.ItemForSource.Location = new System.Drawing.Point(237, 120);
             this.ItemForSource.Name = "ItemForSource";
-            this.ItemForSource.Size = new System.Drawing.Size(255, 24);
+            this.ItemForSource.Size = new System.Drawing.Size(268, 24);
             this.ItemForSource.Text = "Source";
             this.ItemForSource.TextSize = new System.Drawing.Size(84, 13);
             // 
@@ -757,9 +744,9 @@
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.gcJobOrderPipeline);
-            this.groupControl3.Location = new System.Drawing.Point(12, 540);
+            this.groupControl3.Location = new System.Drawing.Point(12, 549);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(976, 133);
+            this.groupControl3.Size = new System.Drawing.Size(976, 124);
             this.groupControl3.TabIndex = 0;
             this.groupControl3.Text = "Job Order Pipeline";
             // 
@@ -769,7 +756,7 @@
             this.gcJobOrderPipeline.Location = new System.Drawing.Point(2, 20);
             this.gcJobOrderPipeline.MainView = this.gvJobOrderPipeline;
             this.gcJobOrderPipeline.Name = "gcJobOrderPipeline";
-            this.gcJobOrderPipeline.Size = new System.Drawing.Size(972, 111);
+            this.gcJobOrderPipeline.Size = new System.Drawing.Size(972, 102);
             this.gcJobOrderPipeline.TabIndex = 0;
             this.gcJobOrderPipeline.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvJobOrderPipeline,
@@ -932,20 +919,12 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.flowLayoutPanel1);
+            this.groupControl2.Controls.Add(this.layoutControl2);
             this.groupControl2.Location = new System.Drawing.Point(12, 473);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(976, 63);
+            this.groupControl2.Size = new System.Drawing.Size(976, 72);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Attachments";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 20);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(972, 41);
-            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // layoutControlGroup1
             // 
@@ -975,16 +954,16 @@
             this.layoutControlItem2.Control = this.groupControl2;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 461);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(980, 67);
+            this.layoutControlItem2.Size = new System.Drawing.Size(980, 76);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.groupControl3;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 528);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 537);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(980, 137);
+            this.layoutControlItem3.Size = new System.Drawing.Size(980, 128);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -1017,6 +996,91 @@
             this.layoutControlGroup5.Name = "layoutControlGroup5";
             this.layoutControlGroup5.Size = new System.Drawing.Size(165, 66);
             // 
+            // layoutControl2
+            // 
+            this.layoutControl2.Controls.Add(this.sbAttachment);
+            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl2.Location = new System.Drawing.Point(2, 20);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.Root = this.layoutControlGroup7;
+            this.layoutControl2.Size = new System.Drawing.Size(972, 50);
+            this.layoutControl2.TabIndex = 0;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // layoutControlGroup7
+            // 
+            this.layoutControlGroup7.CustomizationFormText = "lcgAttachments";
+            this.layoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup7.GroupBordersVisible = false;
+            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem6,
+            this.emptySpaceItem1,
+            this.sliAttachments});
+            this.layoutControlGroup7.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup7.Name = "layoutControlGroup7";
+            this.layoutControlGroup7.Size = new System.Drawing.Size(972, 50);
+            this.layoutControlGroup7.TextVisible = false;
+            // 
+            // sbAttachment
+            // 
+            this.sbAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.sbAttachment.Location = new System.Drawing.Point(12, 12);
+            this.sbAttachment.Name = "sbAttachment";
+            this.sbAttachment.Size = new System.Drawing.Size(115, 22);
+            this.sbAttachment.TabIndex = 5;
+            this.sbAttachment.Text = "Select attachment";
+            this.sbAttachment.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.sbAttachment;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(119, 30);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(229, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(723, 30);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // sliAttachments
+            // 
+            this.sliAttachments.AllowHotTrack = false;
+            this.sliAttachments.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.sliAttachments.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.sliAttachments.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.sliAttachments.Location = new System.Drawing.Point(119, 0);
+            this.sliAttachments.Name = "sliAttachments";
+            this.sliAttachments.OptionsPrint.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.sliAttachments.OptionsPrint.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.sliAttachments.OptionsPrint.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.sliAttachments.Size = new System.Drawing.Size(110, 30);
+            this.sliAttachments.Text = "No file chosen";
+            this.sliAttachments.TextSize = new System.Drawing.Size(67, 13);
+            // 
+            // UserOwnerTexEdit
+            // 
+            this.UserOwnerTexEdit.Location = new System.Drawing.Point(830, 162);
+            this.UserOwnerTexEdit.Name = "UserOwnerTexEdit";
+            this.UserOwnerTexEdit.Properties.ReadOnly = true;
+            this.UserOwnerTexEdit.Size = new System.Drawing.Size(118, 20);
+            this.UserOwnerTexEdit.StyleController = this.dataLayoutControl1;
+            this.UserOwnerTexEdit.TabIndex = 32;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.UserOwnerTexEdit;
+            this.layoutControlItem5.Location = new System.Drawing.Point(505, 120);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(209, 24);
+            this.layoutControlItem5.Text = "Owner";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(84, 13);
+            // 
             // ucCandidateManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1046,7 +1110,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DesiredPayTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DOBMarriedTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InterviewNotesMemoEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserIdTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiscNotesMemoExEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreatedDateDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DateAvailableDateEdit.Properties)).EndInit();
@@ -1065,7 +1128,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForWorkPhone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForWebSite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCreatedDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForUserId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBestTimeToCall)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
@@ -1098,6 +1160,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
+            this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliAttachments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserOwnerTexEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1124,7 +1194,6 @@
         private DevExpress.XtraEditors.TextEdit DesiredPayTextEdit;
         private DevExpress.XtraEditors.TextEdit DOBMarriedTextEdit;
         private DevExpress.XtraEditors.MemoEdit InterviewNotesMemoEdit;
-        private DevExpress.XtraEditors.TextEdit UserIdTextEdit;
         private DevExpress.XtraEditors.MemoEdit MiscNotesMemoExEdit;
         private DevExpress.XtraEditors.TextEdit CreatedDateDateEdit;
         private DevExpress.XtraEditors.TextEdit DateAvailableDateEdit;
@@ -1147,7 +1216,6 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForDesiredPay;
         private DevExpress.XtraLayout.LayoutControlItem ItemForCreatedDate;
         private DevExpress.XtraLayout.LayoutControlItem ItemForSource;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForUserId;
         private DevExpress.XtraLayout.LayoutControlItem ItemForWebSite;
         private DevExpress.XtraLayout.LayoutControlItem ItemForDOBMarried;
         private DevExpress.XtraLayout.LayoutControlItem ItemForCurrentPosition;
@@ -1176,7 +1244,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn ActionActivities;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
@@ -1187,5 +1254,13 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForAddress;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
+        private DevExpress.XtraLayout.LayoutControl layoutControl2;
+        private DevExpress.XtraEditors.SimpleButton sbAttachment;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraLayout.SimpleLabelItem sliAttachments;
+        private DevExpress.XtraEditors.TextEdit UserOwnerTexEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }

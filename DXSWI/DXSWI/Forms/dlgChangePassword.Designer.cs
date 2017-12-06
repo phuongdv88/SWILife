@@ -59,7 +59,7 @@
             this.labelControl3.LineVisible = true;
             this.labelControl3.Location = new System.Drawing.Point(12, 12);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(96, 23);
+            this.labelControl3.Size = new System.Drawing.Size(98, 23);
             this.labelControl3.TabIndex = 0;
             this.labelControl3.Text = "Username";
             // 
@@ -194,6 +194,7 @@
             this.Controls.Add(this.textEdit2);
             this.Controls.Add(this.textEditPassword);
             this.Name = "dlgChangePassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "te";
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

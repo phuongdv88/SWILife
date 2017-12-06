@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SWIMain));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -49,6 +49,7 @@
             this.bbiCandidatesAddAttachment = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCandidatesAddPipeline = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCandidateLogActivity = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.rpUser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -126,9 +127,10 @@
             this.bbiCandidatesAddEvent,
             this.bbiCandidatesAddAttachment,
             this.bbiCandidatesAddPipeline,
-            this.bbiCandidateLogActivity});
+            this.bbiCandidateLogActivity,
+            this.bbiDelete});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 64;
+            this.ribbonControlMain.MaxItemId = 65;
             this.ribbonControlMain.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -160,9 +162,9 @@
             this.bbiUserAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserAdd.ImageOptions.LargeImage")));
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem3.Text = "Add new user";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.bbiUserAdd.SuperTip = superToolTip3;
+            toolTipTitleItem7.Text = "Add new user";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            this.bbiUserAdd.SuperTip = superToolTip7;
             // 
             // bbiUserEdit
             // 
@@ -173,9 +175,9 @@
             this.bbiUserEdit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserEdit.ImageOptions.LargeImage")));
             this.bbiUserEdit.Name = "bbiUserEdit";
             this.bbiUserEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem4.Text = "Edit current selected user";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            this.bbiUserEdit.SuperTip = superToolTip4;
+            toolTipTitleItem8.Text = "Edit current selected user";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            this.bbiUserEdit.SuperTip = superToolTip8;
             // 
             // bbiUserDelete
             // 
@@ -255,6 +257,7 @@
             this.bbiCandidatesAddEvent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesAddEvent.ImageOptions.Image")));
             this.bbiCandidatesAddEvent.Name = "bbiCandidatesAddEvent";
             this.bbiCandidatesAddEvent.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiCandidatesAddEvent.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidatesAddEvent_ItemClick);
             // 
             // bbiCandidatesAddAttachment
             // 
@@ -263,6 +266,7 @@
             this.bbiCandidatesAddAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesAddAttachment.ImageOptions.Image")));
             this.bbiCandidatesAddAttachment.Name = "bbiCandidatesAddAttachment";
             this.bbiCandidatesAddAttachment.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiCandidatesAddAttachment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidatesAddAttachment_ItemClick);
             // 
             // bbiCandidatesAddPipeline
             // 
@@ -270,6 +274,7 @@
             this.bbiCandidatesAddPipeline.Id = 61;
             this.bbiCandidatesAddPipeline.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesAddPipeline.ImageOptions.Image")));
             this.bbiCandidatesAddPipeline.Name = "bbiCandidatesAddPipeline";
+            this.bbiCandidatesAddPipeline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidatesAddPipeline_ItemClick);
             // 
             // bbiCandidateLogActivity
             // 
@@ -277,6 +282,16 @@
             this.bbiCandidateLogActivity.Id = 63;
             this.bbiCandidateLogActivity.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidateLogActivity.ImageOptions.Image")));
             this.bbiCandidateLogActivity.Name = "bbiCandidateLogActivity";
+            this.bbiCandidateLogActivity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidateLogActivity_ItemClick);
+            // 
+            // bbiDelete
+            // 
+            this.bbiDelete.Caption = "Delete";
+            this.bbiDelete.Id = 64;
+            this.bbiDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDelete.ImageOptions.Image")));
+            this.bbiDelete.Name = "bbiDelete";
+            this.bbiDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDelete_ItemClick);
             // 
             // rpUser
             // 
@@ -323,6 +338,7 @@
             // 
             this.ribbonPageGroup6.ItemLinks.Add(this.bbiCandidatesCreate);
             this.ribbonPageGroup6.ItemLinks.Add(this.bbiCandidatesEdit);
+            this.ribbonPageGroup6.ItemLinks.Add(this.bbiDelete);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.Text = "Edit candidates";
             // 
@@ -777,5 +793,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiCandidatesAddPipeline;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.BarButtonItem bbiCandidateLogActivity;
+        private DevExpress.XtraBars.BarButtonItem bbiDelete;
     }
 }
