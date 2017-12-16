@@ -22,10 +22,16 @@ namespace DXSWI.Forms
         Candidate mCandidate;
         string fileNameAvatar = string.Empty;
         string link = string.Empty;
-        public dlgCandidateEdit(Candidate can, string toolTip)
+        public dlgCandidateEdit(int canId, string toolTip)
         {
             InitializeComponent();
-            setCurrentCandidate(can, toolTip);
+            try {
+                setCurrentCandidate(canId, toolTip);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dlgCandidateEdit_Load(object sender, EventArgs e)
@@ -33,7 +39,7 @@ namespace DXSWI.Forms
 
         }
 
-        public void setCurrentCandidate(Candidate can, string toolTip)
+        public void setCurrentCandidate(int canId, string toolTip)
         {
             if (!string.IsNullOrEmpty(toolTip))
             {
@@ -41,8 +47,7 @@ namespace DXSWI.Forms
                 peAvatar.Cursor = Cursors.Hand;
             }
             else peAvatar.Cursor = Cursors.Default;
-            mCandidate = can;
-            if (can == null)
+            if (canId == -1)
             {
                 //clear all ui
                 this.FirstNameTextEdit.Text = string.Empty;
@@ -80,29 +85,31 @@ namespace DXSWI.Forms
                 return;
             }
             // fill data to ui
-
-            this.FirstNameTextEdit.Text = can.FirstName;
-            this.MiddleNameTextEdit.Text = can.MiddleName;
-            this.LastNameTextEdit.Text = can.LastName;
-            this.EmailTextEdit.Text = can.Email;
-            this.SecondaryEmailTextEdit.Text = can.SecondaryEmail;
-            this.SkypeIMTextEdit.Text = can.SkypeIM;
-            this.CellPhoneTextEdit.Text = can.CellPhone;
-            this.WorkPhoneTextEdit.Text = can.WorkPhone;
-            this.BestTimeToCallTextEdit.Text = can.BestTimeToCall;
-            this.AddressTextEdit.Text = can.Address;
-            this.WebSiteTextEdit.Text = can.WebSite;
-            this.SourceTextEdit.Text = can.Source;
-            this.CurrentPositionTextEdit.Text = can.CurrentPosition;
-            this.DateAvailableDateEdit.Text = can.DateAvailable.ToShortDateString();
-            this.CurrentEmployerTextEdit.Text = can.CurrentEmployer;
-            this.KeySkillsTextEdit.Text = can.KeySkills;
-            this.CanRelocateCheckEdit.Checked = can.CanRelocate;
-            this.CurrentPayTextEdit.Text = can.CurrentPay;
-            this.DesiredPayTextEdit.Text = can.DesiredPay;
-            this.DOBMarriedTextEdit.Text = can.DOBMarried;
-            this.InterviewNotesMemoEdit.Text = can.InterviewNotes;
-            if (can.Gender)
+            mCandidate = CandidateManager.getCandidate(canId);
+            if (mCandidate == null)
+                return;
+            this.FirstNameTextEdit.Text = mCandidate.FirstName;
+            this.MiddleNameTextEdit.Text = mCandidate.MiddleName;
+            this.LastNameTextEdit.Text = mCandidate.LastName;
+            this.EmailTextEdit.Text = mCandidate.Email;
+            this.SecondaryEmailTextEdit.Text = mCandidate.SecondaryEmail;
+            this.SkypeIMTextEdit.Text = mCandidate.SkypeIM;
+            this.CellPhoneTextEdit.Text = mCandidate.CellPhone;
+            this.WorkPhoneTextEdit.Text = mCandidate.WorkPhone;
+            this.BestTimeToCallTextEdit.Text = mCandidate.BestTimeToCall;
+            this.AddressTextEdit.Text = mCandidate.Address;
+            this.WebSiteTextEdit.Text = mCandidate.WebSite;
+            this.SourceTextEdit.Text = mCandidate.Source;
+            this.CurrentPositionTextEdit.Text = mCandidate.CurrentPosition;
+            this.DateAvailableDateEdit.Text = mCandidate.DateAvailable.ToShortDateString();
+            this.CurrentEmployerTextEdit.Text = mCandidate.CurrentEmployer;
+            this.KeySkillsTextEdit.Text = mCandidate.KeySkills;
+            this.CanRelocateCheckEdit.Checked = mCandidate.CanRelocate;
+            this.CurrentPayTextEdit.Text = mCandidate.CurrentPay;
+            this.DesiredPayTextEdit.Text = mCandidate.DesiredPay;
+            this.DOBMarriedTextEdit.Text = mCandidate.DOBMarried;
+            this.InterviewNotesMemoEdit.Text = mCandidate.InterviewNotes;
+            if (mCandidate.Gender)
             {
                 this.GenderComboBoxEdit.SelectedIndex = 1; // male
             }
@@ -110,17 +117,17 @@ namespace DXSWI.Forms
             {
                 this.GenderComboBoxEdit.SelectedIndex = 0; // female
             }
-            this.MiscNotesMemoEdit.Text = can.MiscNotes;
-            this.CityTextEdit.Text = can.City;
-            this.CountryTextEdit.Text = can.Country;
-            this.PositionsUpTillNowTextEdit.Text = can.PositionsUpTillNow;
-            this.ProjectDoneMemoEdit.Text = can.ProjectDone;
-            this.IndustryTextEdit.Text = can.Industry;
-            this.EducationMemoEdit.Text = can.Education;
-            this.LanguageTextEdit.Text = can.Language;
-            this.IsInBlacklistCheckEdit.Checked = can.IsInBlacklist;
+            this.MiscNotesMemoEdit.Text = mCandidate.MiscNotes;
+            this.CityTextEdit.Text = mCandidate.City;
+            this.CountryTextEdit.Text = mCandidate.Country;
+            this.PositionsUpTillNowTextEdit.Text = mCandidate.PositionsUpTillNow;
+            this.ProjectDoneMemoEdit.Text = mCandidate.ProjectDone;
+            this.IndustryTextEdit.Text = mCandidate.Industry;
+            this.EducationMemoEdit.Text = mCandidate.Education;
+            this.LanguageTextEdit.Text = mCandidate.Language;
+            this.IsInBlacklistCheckEdit.Checked = mCandidate.IsInBlacklist;
             // load image
-            peAvatar.Image = Bitmap.FromFile(can.ImageLink);
+            peAvatar.Image = Bitmap.FromFile(mCandidate.ImageLink);
         }
 
         private void sbCancel_Click(object sender, EventArgs e)
@@ -145,7 +152,7 @@ namespace DXSWI.Forms
                 if (mCandidate.ImageLink.Length == 0)
                 {
                     // save image to hardisk: folder = createedtime + candidateName + randomstring
-                    string folderName = mCandidate.CreatedDate.ToString(@"yyyy-MM-dd_hh-mm-ss") + Utils.getRandomAlphaNumeric(10);
+                    string folderName = mCandidate.CandidateId.ToString() + mCandidate.CreatedDate.ToString(@"_yyyy-MM-dd") + Utils.getRandomAlphaNumeric(10);
                     string dir = string.Format(@"{0}candidates\avatar\{1}\{2}", Properties.Settings.Default.StorageLocation, folderName, fileNameAvatar);
                     mCandidate.ImageLink = dir;
                 }

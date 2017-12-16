@@ -72,8 +72,10 @@ namespace DXSWI.Forms
         {
             //validate input
 
-            // gen password
+            // todo check exist and get salt
             string salt = "123456a@";  //todo: this salt need get from db by username
+
+            // gen password
             string hashPassword = Properties.Settings.Default.password;
             if (hashPassword.Length == 0)
             {
@@ -103,7 +105,6 @@ namespace DXSWI.Forms
                     Properties.Settings.Default.role = role;
                     //show main window
                     ScreenManager.Instance.showMainScreen();
-                    //XtraMessageBox.Show("login successfully!", textEditUserName.Text);
                 } else
                 {
                     XtraMessageBox.Show("Can not login!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

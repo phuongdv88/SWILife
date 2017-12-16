@@ -133,5 +133,25 @@ namespace SWIBLL
             return result > 0 ? true : false;
         }
 
+        public static bool updateResumeLink(Candidate can)
+        {
+            string sql = string.Format("UPDATE `swilifecore`.`candidate` SET `ResumeLink`='{0}' WHERE `CandidateId`='{1}'", QueryBuilder.mySqlEscape(can.ResumeLink), can.CandidateId);
+            int result = DataAccess.Instance.executeNonQuery(sql);
+            return result > 0 ? true : false;
+        }
+
+        public static Candidate getCandidate(int id)
+        {
+            Candidate can = null;
+            string sql = string.Format("select * from `swilifecore`.`candidate` where `CandidateId`='{0}'", id);
+            DataTable tbl = DataAccess.Instance.getTable(sql);
+            if(tbl.Rows.Count > 0)
+            {
+                DataRow datarow = tbl.Rows[0];
+                can = Data.CreateItemFromRow<Candidate>(datarow);
+            }              
+            return can;
+        }
+
     }
 }

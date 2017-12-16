@@ -15,6 +15,7 @@ using DXSWI.Modules;
 using DXSWI.Forms;
 using DevExpress.XtraBars.Ribbon;
 using SWIBLL;
+using SWIBLL.Models;
 
 namespace DXSWI
 {
@@ -220,37 +221,17 @@ namespace DXSWI
 
         private void bbiCandidatesEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
-            dlgCandidateEdit dlg= new dlgCandidateEdit(mfrCandidate.currentCandidate(), null);
-            dlg.emitUpdateData += updateCandidateData;
-            dlg.ShowDialog();
+            mfrCandidate.editToolStripMenuItem_Click(sender, e);
         }
 
         private void bbiCandidatesCreate_ItemClick(object sender, ItemClickEventArgs e)
         {
-            dlgCandidateEdit dlg = new dlgCandidateEdit(null, null);
-            dlg.emitUpdateData += updateCandidateData;
-            dlg.ShowDialog();
-
-        }
-
-        private void updateCandidateData()
-        {
-            mfrCandidate.updateData();
+            mfrCandidate.newToolStripMenuItem_Click(sender, e);
         }
 
         private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if(XtraMessageBox.Show("Are you sure to delete?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                //delete
-                // todo: delete all reference data from runningtash table, activities... using transaction
-
-                if(!CandidateManager.deleteCadidate(mfrCandidate.currentCandidate().CandidateId))
-                {
-                    XtraMessageBox.Show("Cannot delete data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                mfrCandidate.updateData();
-            }
+            mfrCandidate.deleteToolStripMenuItem_Click(sender, e);
         }
 
         private void bbiCandidatesAddEvent_ItemClick(object sender, ItemClickEventArgs e)
@@ -264,12 +245,35 @@ namespace DXSWI
 
         private void bbiCandidatesAddPipeline_ItemClick(object sender, ItemClickEventArgs e)
         {
-            dlgAddJobOrderToPipeline dlg = new dlgAddJobOrderToPipeline(mfrCandidate.currentCandidate().CandidateId);
-            dlg.updateDataEvent += mfrCandidate.updateData;
-            dlg.ShowDialog();
+            mfrCandidate.AddJobToPipeLine();
         }
 
         private void bbiCandidateLogActivity_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            mfrCandidate.logActivity();
+        }
+
+        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem1_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem5_ItemClick_1(object sender, ItemClickEventArgs e)
         {
 
         }

@@ -54,7 +54,7 @@ namespace SWIBLL.Models
         //This much time saving when we not spend time/efforts with those.
         public Candidate()
         {
-
+            CandidateId = -1;
         }
 
         ~Candidate()

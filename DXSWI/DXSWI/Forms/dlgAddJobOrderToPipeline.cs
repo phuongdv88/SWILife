@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SWIBLL;
 using SWIBLL.Models;
+using DXSWI;
 
 namespace DXSWI.Forms
 {
@@ -51,7 +52,11 @@ namespace DXSWI.Forms
                     DataRow data_row = gvJobOrder.GetDataRow(row); // for test
                     int jobId = int.Parse(data_row["JobOrderId"].ToString());
                     // add to running task table
-                    RunningTask rtask = new RunningTask { CandidateId = canId, JobOrderId = jobId };
+                    RunningTask rtask = new RunningTask { CandidateId = canId, 
+                                                        JobOrderId = jobId,
+                    Added = DateTime.Now,
+                    EnteredBy = UserManager.ActivatedUser?.UserName};
+                    
                     RunningTaskManager.createRunningTask(rtask);
                     // emit to update data
                     updateDataEvent?.Invoke();

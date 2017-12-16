@@ -14,6 +14,7 @@ namespace SWIDAL
         private MySqlConnection mCon;
         private static DataAccess instance = null;
         private static readonly object padlock = new object();
+        private static MySqlTransaction mTran = null;
         public DataAccess()
         {
 
@@ -76,27 +77,88 @@ namespace SWIDAL
             return result;
         }
 
-        public void executeNonQueryTransaction(string[] queries)
+        //public bool executeNonQueryTransaction(string[] queries)
+        //{
+        //    if (mCon == null)
+        //        return false;
+        //    MySqlTransaction transaction = mCon.BeginTransaction();
+        //    try
+        //    {
+        //        foreach (var query in queries)
+        //        {
+        //            MySqlCommand cmd = new MySqlCommand(query, mCon);
+        //            cmd.Transaction = transaction;
+        //            cmd.ExecuteNonQuery();
+        //            cmd.Dispose();
+        //        }
+        //        transaction.Commit();
+        //    }
+        //    catch
+        //    {
+        //        //Console.WriteLine(ex.Message);
+        //        transaction.Rollback();
+        //        throw;
+        //    }
+        //    return true;
+        //}
+
+        public void StartTransaction()
         {
             if (mCon == null)
                 return;
-            MySqlTransaction transaction = mCon.BeginTransaction();
+            mTran =  mCon.BeginTransaction();
+        }
+
+        public bool executeNonQueryTransaction(string querry)
+        {
+            MySqlCommand cmd = null;
+            try {
+                cmd = new MySqlCommand(querry, mCon);
+                cmd.Transaction = mTran;
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+            }
+            return true;
+        }
+        public long executeInsertQueryTransaction(string querry)
+        {
+            MySqlCommand cmd = null;
             try
             {
-                foreach (var query in queries)
-                {
-                    MySqlCommand cmd = new MySqlCommand(query, mCon);
-                    cmd.Transaction = transaction;
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
-                }
-                transaction.Commit();
+                cmd = new MySqlCommand(querry, mCon);
+                cmd.Transaction = mTran;
+                cmd.ExecuteNonQuery();
+                return cmd.LastInsertedId;
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine(ex.Message);
-                transaction.Rollback();
+                throw;
             }
+            finally
+            {
+                cmd?.Dispose();
+            }
+        }
+
+        public void commitTransaction()
+        {
+            if (mCon == null)
+                return;
+            mTran?.Commit();
+        }
+
+        public void rollbackTransaction()
+        {
+            if (mCon == null)
+                return;
+            mTran?.Rollback();
         }
 
         public DataTable getTable(string query)
@@ -292,6 +354,5 @@ namespace SWIDAL
             }
             return dt;
         }
-
     }
 }

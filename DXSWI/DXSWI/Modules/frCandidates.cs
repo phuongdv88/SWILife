@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using SWIBLL;
 using SWIBLL.Models;
 using DXSWI.Forms;
+using DevExpress.XtraEditors;
+
 namespace DXSWI.Modules
 {
     public partial class frCandidates : DevExpress.XtraEditors.XtraUserControl
@@ -60,9 +62,9 @@ namespace DXSWI.Modules
             {
                 int row = gridView1.GetSelectedRows().First();
                 DataRow data_row = gridView1.GetDataRow(row); // for test
-                //DataRow item = mCandidateManager.CurrentTable.Rows[row];
-                Candidate obj = Data.CreateItemFromRow<Candidate>(data_row);
-                ucCandidateManager1.setCurrentCandidate(obj,"");
+                //Candidate obj = Data.CreateItemFromRow<Candidate>(data_row);
+                int canID = int.Parse(data_row["CandidateId"].ToString());
+                ucCandidateManager1.setCurrentCandidate(canID,"");
             }
             // fill to ucCandidateManager form
 
@@ -75,20 +77,30 @@ namespace DXSWI.Modules
 
         }
 
-        public Candidate currentCandidate()
+        //public Candidate currentCandidate()
+        //{
+        //    if (gridView1.SelectedRowsCount > 0)
+        //    {
+        //        int row = gridView1.GetSelectedRows().First();
+        //        DataRow data_row = gridView1.GetDataRow(row); // for test
+        //        return Data.CreateItemFromRow<Candidate>(data_row);
+        //    }
+        //    return null;
+        //}
+
+        public int currentCandidateId()
         {
             if (gridView1.SelectedRowsCount > 0)
             {
                 int row = gridView1.GetSelectedRows().First();
-                DataRow data_row = gridView1.GetDataRow(row); // for test
-                return Data.CreateItemFromRow<Candidate>(data_row);
+                return int.Parse(gridView1.GetDataRow(row)["CandidateId"].ToString());
             }
-            return null;
+            return -1;
         }
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
-            dlgCandidateEdit dlg = new dlgCandidateEdit(currentCandidate(), null);
+            dlgCandidateEdit dlg = new dlgCandidateEdit(currentCandidateId(), null);
             dlg.emitUpdateData += updateData;
             dlg.ShowDialog();
         }
@@ -99,12 +111,49 @@ namespace DXSWI.Modules
             updateCurrentCandidate();
         }
 
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
 
-        //Contact CurrentContact
-        //{
-        //    get { return ((ColumnView)gridControl1.MainView).GetFocusedRow() as Contact; }
-        //}
+        public void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dlgCandidateEdit dlg = new dlgCandidateEdit(-1, null);
+            dlg.emitUpdateData += updateData;
+            dlg.ShowDialog();
+        }
+
+        public void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dlgCandidateEdit dlg = new dlgCandidateEdit(currentCandidateId(), null);
+            dlg.emitUpdateData += updateData;
+            dlg.ShowDialog();
+        }
+
+        public void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show("Are you sure to delete?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                //delete
+                // todo: delete all reference data from runningtash table, activities... using transaction
+
+                if (!CandidateManager.deleteCadidate(currentCandidateId()))
+                {
+                    XtraMessageBox.Show("Cannot delete data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                updateData();
+            }
+        }
+
+        public void AddJobToPipeLine()
+        {
+            ucCandidateManager1.AddJobToPipeLine();
+        }
+
+        public void logActivity()
+        {
+            ucCandidateManager1.logActivity();
+        }
     }
 }
 

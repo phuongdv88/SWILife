@@ -12,7 +12,7 @@ namespace SWIBLL.Models
         public int Type { get; set; }  // call, email, meeting, interview*, personal, other
         public string Title { get; set; }
         public DateTime DateTime { get; set; }
-        public int Duration { get; set; } // 15. 30, 45, 1hour, 1.5, 2, 3, 4, morthan 4, all day (nospecial time)
+        public int Duration { get; set; } // 15 minutes 30 minutes 1 hour 1,5 hours 2 hours 4 hours more than 4 hours, all day (nospecial time)
         public bool IsPublicEntry { get; set; }
         public string Description { get; set; }
         public int ActivityId { get; set; }

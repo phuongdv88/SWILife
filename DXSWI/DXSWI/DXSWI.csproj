@@ -117,6 +117,12 @@
     <Compile Include="Controls\ucReport.Designer.cs">
       <DependentUpon>ucReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ucScheduleEvent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucScheduleEvent.Designer.cs">
+      <DependentUpon>ucScheduleEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ucUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -264,6 +270,9 @@
     <EmbeddedResource Include="Controls\ucReport.resx">
       <DependentUpon>ucReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucScheduleEvent.resx">
+      <DependentUpon>ucScheduleEvent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucUser.resx">
       <DependentUpon>ucUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -357,6 +366,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lollipop_candy.ico" />
+    <None Include="Resources\Candidates.png" />
+    <None Include="Resources\activity.png" />
+    <None Include="Resources\job.png" />
+    <None Include="Resources\changeCompany.png" />
+    <None Include="Resources\addCompany.png" />
+    <None Include="Resources\company.png" />
     <None Include="Resources\user-male-3.png" />
     <None Include="Resources\user-female-5.png" />
   </ItemGroup>
