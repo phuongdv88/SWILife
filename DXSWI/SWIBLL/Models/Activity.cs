@@ -9,9 +9,10 @@ namespace SWIBLL.Models
     public class Activity : BaseModel
     {
         public enum TypeOfLogActivity{
-            JobOrder = 0,
-            Contact = 1,
-            Candidate = 2,
+            JobOrder = 0, // create JobOrder, edit joborder, Delete JobOrder,
+            Contact = 1, // add, edit, delete contact
+            Candidate = 2, // add, edit, delete candidate
+            Pipeline = 3, // add running task
         }
 
         public enum RunningTaskStatus
@@ -27,21 +28,21 @@ namespace SWIBLL.Models
             CLIENT_DECLINED,
             PLACED,
         }
-        public int ActivityId { get; set; }
+        public long ActivityId { get; set; }
         public string Regarding { get; set; }  //General, job order1, job order2...
         public RunningTaskStatus Status { get; set; } // each of job order have different status: no contact, contacted, candidate responded,
         //qualifying, submitted, interviewing, offered, not in consideration, client declined, placed.
-        public string Type { get; set; } // Call, Call(talked), Message,CV Submitted, e-mail, meeting, other
+        public string Type { get; set; } // Call, Call(talked), Message,CV Submitted, e-mail, meeting, other, add Job Order To PipeLIne, Add Candidate to Pipeline
         public string Notes { get; set; }
 
         public DateTime Created { get; set; }
         public TypeOfLogActivity ActivityOf { get; set; } // job order, contact, company, running task, candidate,
-        public int JobOrderId { get; set; }
-        public int CandidateId { get; set; }
-        public int ContactID { get; set; }
-        public int UserId { get; set; }
+        public long JobOrderId { get; set; }
+        public long CandidateId { get; set; }
+        public long ContactID { get; set; }
+        public long UserId { get; set; }
 
-        public int RunningTaskId { get; set; }
+        public long RunningTaskId { get; set; }
 
         public long ScheduleEventId { get; set; }
 
@@ -53,6 +54,9 @@ namespace SWIBLL.Models
             UserId = -1;
             ScheduleEventId = -1;
             RunningTaskId = -1;
+            Regarding = "General";
+            Status = Activity.RunningTaskStatus.NOT_CONTACT;
+            Notes = string.Empty;
         }
         ~Activity()
         {

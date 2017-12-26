@@ -640,7 +640,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.nbgCandidates;
+            this.navBarControl1.ActiveGroup = this.nbgJoborder;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.nbgUsers,
@@ -664,7 +664,6 @@
             // nbgCandidates
             // 
             this.nbgCandidates.Caption = "Candidates";
-            this.nbgCandidates.Expanded = true;
             this.nbgCandidates.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
             this.nbgCandidates.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.LargeImage")));
             this.nbgCandidates.Name = "nbgCandidates";
@@ -692,6 +691,7 @@
             // nbgJoborder
             // 
             this.nbgJoborder.Caption = "Job Orders";
+            this.nbgJoborder.Expanded = true;
             this.nbgJoborder.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
             this.nbgJoborder.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.LargeImage")));
             this.nbgJoborder.Name = "nbgJoborder";

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery3 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCandidateManager));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.swilifecoreDataSet = new DXSWI.swilifecoreDataSet();
             this.swilifecoreDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -224,10 +224,10 @@
             // 
             this.sqlDataSource1.ConnectionName = "DXSWI.Properties.Settings.swilifecoreConnectionString";
             this.sqlDataSource1.Name = "sqlDataSource1";
-            customSqlQuery3.Name = "Query";
-            customSqlQuery3.Sql = "select * from candidate";
+            customSqlQuery1.Name = "Query";
+            customSqlQuery1.Sql = "select * from candidate";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery3});
+            customSqlQuery1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
             // swilifecoreDataSet
@@ -809,27 +809,27 @@
             this.addActivityToolStripMenuItem,
             this.tsmiDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 92);
             // 
             // tsmiAddCandidateToPipeLine
             // 
             this.tsmiAddCandidateToPipeLine.Name = "tsmiAddCandidateToPipeLine";
-            this.tsmiAddCandidateToPipeLine.Size = new System.Drawing.Size(184, 22);
-            this.tsmiAddCandidateToPipeLine.Text = "Add Job To Pipe Line";
+            this.tsmiAddCandidateToPipeLine.Size = new System.Drawing.Size(214, 22);
+            this.tsmiAddCandidateToPipeLine.Text = "Add Job To Pipeline";
             this.tsmiAddCandidateToPipeLine.Click += new System.EventHandler(this.tsmiAddJobToPipeLine_Click);
             // 
             // addActivityToolStripMenuItem
             // 
             this.addActivityToolStripMenuItem.Name = "addActivityToolStripMenuItem";
-            this.addActivityToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.addActivityToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.addActivityToolStripMenuItem.Text = "Add Activity";
             this.addActivityToolStripMenuItem.Click += new System.EventHandler(this.addActivityToolStripMenuItem_Click);
             // 
             // tsmiDelete
             // 
             this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(184, 22);
-            this.tsmiDelete.Text = "Delete";
+            this.tsmiDelete.Size = new System.Drawing.Size(214, 22);
+            this.tsmiDelete.Text = "Remove Job From Pipeline";
             this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
             // 
             // gvJobOrderPipeline
@@ -912,17 +912,17 @@
             // ribeAction
             // 
             this.ribeAction.AutoHeight = false;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
-            serializableAppearanceObject9.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject9.Image")));
-            serializableAppearanceObject9.Options.UseImage = true;
-            serializableAppearanceObject10.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject10.Image")));
-            serializableAppearanceObject10.Options.UseImage = true;
-            serializableAppearanceObject11.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject11.Image")));
-            serializableAppearanceObject11.Options.UseImage = true;
-            serializableAppearanceObject12.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject12.Image")));
-            serializableAppearanceObject12.Options.UseImage = true;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
+            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
+            serializableAppearanceObject2.Options.UseImage = true;
+            serializableAppearanceObject3.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject3.Image")));
+            serializableAppearanceObject3.Options.UseImage = true;
+            serializableAppearanceObject4.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject4.Image")));
+            serializableAppearanceObject4.Options.UseImage = true;
             this.ribeAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null)});
             this.ribeAction.Name = "ribeAction";
             this.ribeAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -954,27 +954,27 @@
             this.editActivityToolStripMenuItem,
             this.deleteActivityToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(108, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(151, 70);
             // 
             // logActivityToolStripMenuItem
             // 
             this.logActivityToolStripMenuItem.Name = "logActivityToolStripMenuItem";
-            this.logActivityToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.logActivityToolStripMenuItem.Text = "New";
+            this.logActivityToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.logActivityToolStripMenuItem.Text = "New Activity";
             this.logActivityToolStripMenuItem.Click += new System.EventHandler(this.logActivityToolStripMenuItem_Click);
             // 
             // editActivityToolStripMenuItem
             // 
             this.editActivityToolStripMenuItem.Name = "editActivityToolStripMenuItem";
-            this.editActivityToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.editActivityToolStripMenuItem.Text = "Edit";
+            this.editActivityToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.editActivityToolStripMenuItem.Text = "Edit Activity";
             this.editActivityToolStripMenuItem.Click += new System.EventHandler(this.editActivityToolStripMenuItem_Click);
             // 
             // deleteActivityToolStripMenuItem
             // 
             this.deleteActivityToolStripMenuItem.Name = "deleteActivityToolStripMenuItem";
-            this.deleteActivityToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.deleteActivityToolStripMenuItem.Text = "Delete";
+            this.deleteActivityToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.deleteActivityToolStripMenuItem.Text = "Delete Activity";
             this.deleteActivityToolStripMenuItem.Click += new System.EventHandler(this.deleteActivityToolStripMenuItem_Click);
             // 
             // gvActivities
@@ -1056,7 +1056,7 @@
             // 
             // sbAttachmentDownload
             // 
-            this.sbAttachmentDownload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbActtachmentDownload.ImageOptions.Image")));
+            this.sbAttachmentDownload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAttachmentDownload.ImageOptions.Image")));
             this.sbAttachmentDownload.Location = new System.Drawing.Point(380, 12);
             this.sbAttachmentDownload.Name = "sbAttachmentDownload";
             this.sbAttachmentDownload.Size = new System.Drawing.Size(86, 22);
@@ -1088,7 +1088,7 @@
             this.sliAttachments,
             this.layoutControlItem6});
             this.layoutControlGroup7.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup7.Name = "layoutControlGroup7";
+            this.layoutControlGroup7.Name = "Root";
             this.layoutControlGroup7.Size = new System.Drawing.Size(972, 56);
             this.layoutControlGroup7.TextVisible = false;
             // 

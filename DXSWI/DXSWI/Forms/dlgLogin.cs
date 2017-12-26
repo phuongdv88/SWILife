@@ -84,7 +84,7 @@ namespace DXSWI.Forms
             try
             {
                 //login
-                int id = 0;
+                long id = 0;
                 int role = 0;
                 if (UserManager.login(textEditUserName.Text, hashPassword, ref id, ref role))
                 {

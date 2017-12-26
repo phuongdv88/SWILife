@@ -8,7 +8,7 @@ namespace SWIBLL.Models
 {
     public class Candidate
     {
-        public int CandidateId { get; set; }
+        public long CandidateId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -42,11 +42,11 @@ namespace SWIBLL.Models
         public string Education { get; set; }
         public string Language { get; set; }
         public DateTime CreatedDate { get; set; }
-        public int CreatedId { get; set; }
+        public long CreatedId { get; set; }
 
         public bool IsInBlacklist { get; set; }
 
-        public int UserId { get; set; }
+        public long UserId { get; set; }
         public DateTime Modified { get; set; }
         public string ImageLink { get; set; }
         //Listed all candidates with bad / unprofessional attitude , behaviors.

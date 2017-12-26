@@ -77,6 +77,17 @@ namespace SWIDAL
             return result;
         }
 
+        public long executeInsertingQuery(string query)
+        {
+            if (mCon == null)
+                return -1;
+            MySqlCommand cmd = new MySqlCommand(query, mCon);
+            int result = cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            if (result == 0) return -1;
+            return cmd.LastInsertedId;
+        }
+
         //public bool executeNonQueryTransaction(string[] queries)
         //{
         //    if (mCon == null)
@@ -218,7 +229,7 @@ namespace SWIDAL
             }
         }
 
-        public string getUserName(int id)
+        public string getUserName(long id)
         {
             if (mCon == null) return string.Empty;
             MySqlCommand cmd = null;
@@ -276,7 +287,37 @@ namespace SWIDAL
         }
 
         //----------------candiates-------------------
+        // get data to show on main table
         public DataTable getLimitedCandidates(int offset, int len)
+        {
+            if (mCon == null) return null;
+            MySqlCommand cmd = null;
+            DataTable dt = null;
+            try
+            {
+                cmd = new MySqlCommand("spGetLimitedCandidates", mCon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("Offset", offset);
+                cmd.Parameters.AddWithValue("Length", len);
+
+                MySqlDataAdapter ad = new MySqlDataAdapter();
+                ad.SelectCommand = cmd;
+                dt = new DataTable();
+                ad.Fill(offset, len, dt);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+
+            }
+            return dt;
+        }
+
+        public DataTable getCandidatesOverview()
         {
             if (mCon == null) return null;
             MySqlCommand cmd = null;
@@ -285,15 +326,10 @@ namespace SWIDAL
             {
                 cmd = new MySqlCommand("spGetCandidates", mCon);
                 cmd.CommandType = CommandType.StoredProcedure;
-                //cmd = new MySqlCommand("spGetLimitedCandidates", mCon);
-                //cmd.CommandType = CommandType.StoredProcedure;
-                //cmd.Parameters.AddWithValue("Offset", offset);
-                //cmd.Parameters.AddWithValue("Length", len);
-
                 MySqlDataAdapter ad = new MySqlDataAdapter();
                 ad.SelectCommand = cmd;
                 dt = new DataTable();
-                ad.Fill(offset, len, dt);
+                ad.Fill(dt);
             }
             catch
             {
@@ -329,6 +365,10 @@ namespace SWIDAL
 
 
         //---------------------------job order----------------------------
+        /// <summary>
+        /// get and fill data to show on table
+        /// </summary>
+        /// <returns></returns>
         public DataTable getJobOrders()
         {
             if (mCon == null) return null;
@@ -342,6 +382,61 @@ namespace SWIDAL
                 ad.SelectCommand = cmd;
                 dt = new DataTable();
                 ad.Fill(dt);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+
+            }
+            return dt;
+        }
+
+        public DataTable getJobOrderById(long id)
+        {
+            if (mCon == null) return null;
+            MySqlCommand cmd = null;
+            DataTable dt = null;
+            try
+            {
+                cmd = new MySqlCommand("spGetJobOrderById", mCon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("JobOrderId", id);
+                MySqlDataAdapter ad = new MySqlDataAdapter();
+                ad.SelectCommand = cmd;
+                dt = new DataTable();
+                ad.Fill(dt);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+
+            }
+            return dt;
+        }
+
+        public DataTable getPipelineCandidates(long jobOrderId)
+        {
+            if (mCon == null) return null;
+            MySqlCommand cmd = null;
+            DataTable dt = null;
+            try
+            {
+                cmd = new MySqlCommand("spGetCandidatesInPipeline", mCon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("JobOrderId", jobOrderId);
+                MySqlDataAdapter ad = new MySqlDataAdapter();
+                ad.SelectCommand = cmd;
+                dt = new DataTable();
+                ad.Fill(dt);
+
             }
             catch
             {

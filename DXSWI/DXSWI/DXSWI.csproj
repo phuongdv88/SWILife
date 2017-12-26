@@ -165,6 +165,24 @@
     <Compile Include="Forms\dlgChangePassword.Designer.cs">
       <DependentUpon>dlgChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\dlgCompanyEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgCompanyEdit.Designer.cs">
+      <DependentUpon>dlgCompanyEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\dlgContactEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgContactEdit.Designer.cs">
+      <DependentUpon>dlgContactEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\dlgJobOrderEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgJobOrderEdit.Designer.cs">
+      <DependentUpon>dlgJobOrderEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\dlgLogActivity.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +312,15 @@
     <EmbeddedResource Include="Forms\dlgChangePassword.resx">
       <DependentUpon>dlgChangePassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgCompanyEdit.resx">
+      <DependentUpon>dlgCompanyEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgContactEdit.resx">
+      <DependentUpon>dlgContactEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgJobOrderEdit.resx">
+      <DependentUpon>dlgJobOrderEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgLogActivity.resx">
       <DependentUpon>dlgLogActivity.cs</DependentUpon>
     </EmbeddedResource>
@@ -343,6 +370,7 @@
     </Compile>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SWIBLL.Models.JobOrder.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

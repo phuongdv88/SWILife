@@ -191,7 +191,7 @@ namespace DXSWI.Controls
 
                     dlgLogActivity dlg = new dlgLogActivity();
                     dlg.updateDataEvent += updateData;
-                    dlg.init(mCandidate.CandidateId, mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate);
+                    dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate, mCandidate.CandidateId, -1, -1);
                     dlg.setData(activity_index, scheduleEvent_index);
                     dlg.ShowDialog();
 
@@ -237,7 +237,7 @@ namespace DXSWI.Controls
         {
             dlgLogActivity dlg = new dlgLogActivity();
             dlg.updateDataEvent += updateData;
-            dlg.init(mCandidate.CandidateId, mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate);
+            dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate, mCandidate.CandidateId, -1, -1);
             dlg.ShowDialog();
         }
 
@@ -293,14 +293,19 @@ namespace DXSWI.Controls
             dlgLogActivity dlg = new dlgLogActivity();
             dlg.updateDataEvent += updateData;
             string regarding = string.Empty;
+            int jobOrderId = -1;
 
-            if (gvJobOrderPipeline.SelectedRowsCount > 0)
+            if (gvJobOrderPipeline.SelectedRowsCount == 0)
             {
-                int row = gvJobOrderPipeline.GetSelectedRows().First();
-                DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
-                regarding = data_row["Title"].ToString();
+                XtraMessageBox.Show("Have not yet selected anything", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            dlg.init(mCandidate.CandidateId, mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate);
+            int row = gvJobOrderPipeline.GetSelectedRows().First();
+            DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
+            regarding = data_row["Title"].ToString();
+            jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
+
+            dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Pipeline, mCandidate.CandidateId, jobOrderId, -1);
             if (regarding.Length > 0)
             {
                 //todo
@@ -324,7 +329,8 @@ namespace DXSWI.Controls
             // store link file 
             linkAttachment = openFileDlg.FileName;
             fileNameAttachment = linkAttachment.Split('\\').Last();
-            try {
+            try
+            {
                 // create link file and folder in server
                 if (mCandidate.ResumeLink.Length == 0)
                 {
@@ -373,14 +379,21 @@ namespace DXSWI.Controls
         {
             if (XtraMessageBox.Show("Are you sure to delete this file?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                // delete file in server
-                File.Delete(mCandidate.ResumeLink);
-                mCandidate.ResumeLink = string.Empty;
-                // update to database
-                if (CandidateManager.updateResumeLink(mCandidate))
+                try
                 {
-                    // update attackment
-                    loadAttachment();
+                    // delete file in server
+                    File.Delete(mCandidate.ResumeLink);
+                    mCandidate.ResumeLink = string.Empty;
+                    // update to database
+                    if (CandidateManager.updateResumeLink(mCandidate))
+                    {
+                        // update attackment
+                        loadAttachment();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

@@ -34,6 +34,43 @@ namespace DXSWI.Forms
             }
         }
 
+        public void setViewMode()
+        {
+            sbOk.Enabled = false;
+            this.FirstNameTextEdit.ReadOnly = true;
+            this.MiddleNameTextEdit.ReadOnly = true;
+            this.LastNameTextEdit.ReadOnly = true;
+            this.EmailTextEdit.ReadOnly = true;
+            this.SecondaryEmailTextEdit.ReadOnly = true;
+            this.SkypeIMTextEdit.ReadOnly = true;
+            this.CellPhoneTextEdit.ReadOnly = true;
+            this.WorkPhoneTextEdit.ReadOnly = true;
+            this.BestTimeToCallTextEdit.ReadOnly = true;
+            this.AddressTextEdit.ReadOnly = true;
+            this.WebSiteTextEdit.ReadOnly = true;
+            this.SourceTextEdit.ReadOnly = true;
+            this.CurrentPositionTextEdit.ReadOnly = true;
+            this.DateAvailableDateEdit.ReadOnly = true;
+            this.CurrentEmployerTextEdit.ReadOnly = true;
+            this.KeySkillsTextEdit.ReadOnly = true;
+            this.CanRelocateCheckEdit.ReadOnly = true;
+            this.CurrentPayTextEdit.ReadOnly = true;
+            this.DesiredPayTextEdit.ReadOnly = true;
+            this.DOBMarriedTextEdit.ReadOnly = true;
+            this.InterviewNotesMemoEdit.ReadOnly = true;
+            this.GenderComboBoxEdit.ReadOnly = true;
+            this.MiscNotesMemoEdit.ReadOnly = true;
+            this.CityTextEdit.ReadOnly = true;
+            this.CountryTextEdit.ReadOnly = true;
+            this.PositionsUpTillNowTextEdit.ReadOnly = true;
+            this.ProjectDoneMemoEdit.ReadOnly = true;
+            this.IndustryTextEdit.ReadOnly = true;
+            this.EducationMemoEdit.ReadOnly = true;
+            this.LanguageTextEdit.ReadOnly = true;
+            this.IsInBlacklistCheckEdit.ReadOnly = true;
+            this.peAvatar.ReadOnly = true;
+        }
+
         private void dlgCandidateEdit_Load(object sender, EventArgs e)
         {
 
@@ -127,7 +164,9 @@ namespace DXSWI.Forms
             this.LanguageTextEdit.Text = mCandidate.Language;
             this.IsInBlacklistCheckEdit.Checked = mCandidate.IsInBlacklist;
             // load image
-            peAvatar.Image = Bitmap.FromFile(mCandidate.ImageLink);
+            try {
+                peAvatar.Image = Bitmap.FromFile(mCandidate.ImageLink);
+            } catch { };
         }
 
         private void sbCancel_Click(object sender, EventArgs e)
@@ -254,7 +293,7 @@ namespace DXSWI.Forms
             can.Education = this.EducationMemoEdit.Text;
             can.Language = this.LanguageTextEdit.Text;
             can.IsInBlacklist = this.IsInBlacklistCheckEdit.Checked;
-            mCandidate.Modified = DateTime.Now;
+            can.Modified = DateTime.Now;
 
             // todo: copy picture to hard disk
             // store link of this picture to db

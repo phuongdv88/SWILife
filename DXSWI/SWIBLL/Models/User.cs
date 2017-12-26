@@ -9,7 +9,7 @@ namespace SWIBLL.Models
 {
     public class User : BaseModel
     {
-        public int Index { get; set; }
+        public long Index { get; set; }
         public string UserName { get; set; }
 
         public string Password { get; set; }

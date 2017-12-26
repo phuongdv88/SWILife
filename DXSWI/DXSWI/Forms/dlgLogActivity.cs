@@ -16,17 +16,19 @@ namespace DXSWI.Forms
     public partial class dlgLogActivity : DevExpress.XtraEditors.XtraForm
     {
 
-        Dictionary<string, int> listRegarding = new Dictionary<string, int>();   // title of regarding , IdOfRunningTask in database
+        Dictionary<string, long> listRegarding = new Dictionary<string, long>();   // title of regarding , IdOfRunningTask in database
         Dictionary<string, string> listRegardingStatus = new Dictionary<string, string>(); // status of regarding
         Activity.TypeOfLogActivity typeOfActivity;
-        int currentId = -1;
+        long CurrentCandidateId = -1;
+        long CurrentJobOrderId = -1;
+        long CurrentContactId = -1;
         bool isAddNew = true;
         Activity currentActivity = new Activity();
         ScheduleEvent currentScheduleEvent = new ScheduleEvent();
         public delegate void updateData();
         public event updateData updateDataEvent;
 
-        public void init(int id, string name, Activity.TypeOfLogActivity type)
+        public void init(string name, Activity.TypeOfLogActivity type, long CandidateId, long JobOrderId, long ContactId)
         {
             try
             {
@@ -35,18 +37,26 @@ namespace DXSWI.Forms
                 listRegarding.Add("General", -1);
                 listRegardingStatus.Add("General", "None");
                 typeOfActivity = type;
-                currentId = id;
+                CurrentCandidateId = CandidateId;
+                CurrentJobOrderId = JobOrderId;
+                CurrentContactId = ContactId;
                 this.Text = name;
-
-                // get list index by tipe of log activity: JobOrder = 0, Contact = 1, Company = 2, RunningTask = 3, Candidate = 4,
-                if (type == Activity.TypeOfLogActivity.Candidate)
+                switch (type)
                 {
-                    // get list job order in pipeline
-                    ActivityManager.getListRegardingForCandidate(id, ref listRegarding, ref listRegardingStatus);
-                }
-                else if (type == Activity.TypeOfLogActivity.JobOrder)
-                {
-                    // todo
+                    case Activity.TypeOfLogActivity.JobOrder:
+                        break;
+                    case Activity.TypeOfLogActivity.Contact:
+                        break;
+                    case Activity.TypeOfLogActivity.Candidate:
+                        // get list job order in pipeline
+                        ActivityManager.getListRegardingForCandidate(CandidateId, ref listRegarding, ref listRegardingStatus);
+                        break;
+                    case Activity.TypeOfLogActivity.Pipeline:
+                        // get list job order in pipeline
+                        ActivityManager.getListRegardingForCandidate(CandidateId, ref listRegarding, ref listRegardingStatus);
+                        break;
+                    default:
+                        break;
                 }
 
                 cbeRegarding.Properties.Items.BeginUpdate();
@@ -203,20 +213,9 @@ namespace DXSWI.Forms
             act.Created = DateTime.Now;
             act.ActivityOf = typeOfActivity;
             act.RunningTaskId = listRegarding[cbeRegarding.SelectedText];  // get running task id of this activity
-            switch (typeOfActivity)
-            {
-                case Activity.TypeOfLogActivity.JobOrder:
-                    act.JobOrderId = currentId;
-                    break;
-                case Activity.TypeOfLogActivity.Contact:
-                    act.ContactID = currentId;
-                    break;
-                case Activity.TypeOfLogActivity.Candidate:
-                    act.CandidateId = currentId;
-                    break;
-                default:
-                    break;
-            }
+            act.CandidateId = CurrentCandidateId;
+            act.JobOrderId = CurrentJobOrderId;
+            act.ContactID = CurrentContactId;
             return act;
         }
 

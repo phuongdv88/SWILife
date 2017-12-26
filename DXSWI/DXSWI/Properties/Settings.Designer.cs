@@ -97,9 +97,9 @@ namespace DXSWI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int userId {
+        public long userId {
             get {
-                return ((int)(this["userId"]));
+                return ((long)(this["userId"]));
             }
             set {
                 this["userId"] = value;

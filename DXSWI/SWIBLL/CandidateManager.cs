@@ -65,7 +65,8 @@ namespace SWIBLL
 
         public DataTable  GetLimitedCandidates(int page_count, int page_size)
         {
-            return DataAccess.Instance.getLimitedCandidates((page_count - 1) * page_size, page_size);
+            //return DataAccess.Instance.getLimitedCandidates((page_count - 1) * page_size, page_size);
+            return DataAccess.Instance.getCandidatesOverview();
         }
 
         public static bool deleteCadidate(int id)
@@ -151,6 +152,11 @@ namespace SWIBLL
                 can = Data.CreateItemFromRow<Candidate>(datarow);
             }              
             return can;
+        }
+
+        public static DataTable getCandidatesOverview()
+        {
+            return DataAccess.Instance.getCandidatesOverview();
         }
 
     }

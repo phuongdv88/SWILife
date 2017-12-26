@@ -11,7 +11,9 @@ namespace SWIBLL
 {
     public class UserManager
     {
-        public static User ActivatedUser = null;
+        //public static User ActivatedUser = null;
+        // todo: for dev
+        public static User ActivatedUser = new User() { UserName = "phuongdv", Index = 5, IsOnline = true};
         public static void connectoDB(string connection_string)
         {
             DataAccess.Instance.ConnectToDB(connection_string);
@@ -21,7 +23,7 @@ namespace SWIBLL
         {
             DataAccess.Instance.closeConnectionToDB();
         }
-        public static bool login(string userName, string password, ref int index, ref int role)
+        public static bool login(string userName, string password, ref long index, ref int role)
         {
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
             // get user info
@@ -86,7 +88,7 @@ namespace SWIBLL
             return false;
         }
 
-        public static string getUserName(int id)
+        public static string getUserName(long id)
         {
             string userName = DataAccess.Instance.getUserName(id);
             return userName;

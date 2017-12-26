@@ -25,7 +25,7 @@
     <Setting Name="isOnline" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="userId" Type="System.Int32" Scope="User">
+    <Setting Name="userId" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="StorageLocation" Type="System.String" Scope="User">

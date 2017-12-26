@@ -62,6 +62,7 @@
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
             this.sbOk = new DevExpress.XtraEditors.SimpleButton();
             this.peAvatar = new DevExpress.XtraEditors.PictureEdit();
+            this.SourceTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForEmail = new DevExpress.XtraLayout.LayoutControlItem();
@@ -85,8 +86,8 @@
             this.ItemForLanguage = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForProjectDone = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForEducation = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciOk = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciCancel = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.ItemForDateAvailable = new DevExpress.XtraLayout.LayoutControlItem();
@@ -100,7 +101,6 @@
             this.ItemForPositionsUpTillNow = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForFirstName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForMiddleName = new DevExpress.XtraLayout.LayoutControlItem();
-            this.SourceTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).BeginInit();
@@ -135,6 +135,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.LanguageTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IsInBlacklistCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peAvatar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourceTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEmail)).BeginInit();
@@ -158,8 +159,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLanguage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForProjectDone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEducation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciOk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDateAvailable)).BeginInit();
@@ -173,7 +174,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPositionsUpTillNow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForFirstName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMiddleName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SourceTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -503,7 +503,6 @@
             // peAvatar
             // 
             this.peAvatar.Cursor = System.Windows.Forms.Cursors.Default;
-            this.peAvatar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.peAvatar.Location = new System.Drawing.Point(12, 12);
             this.peAvatar.Name = "peAvatar";
             this.peAvatar.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
@@ -514,6 +513,22 @@
             this.peAvatar.TabIndex = 39;
             this.peAvatar.EditValueChanged += new System.EventHandler(this.peAvatar_EditValueChanged);
             this.peAvatar.DoubleClick += new System.EventHandler(this.peAvatar_DoubleClick);
+            // 
+            // SourceTextEdit
+            // 
+            this.SourceTextEdit.Location = new System.Drawing.Point(552, 108);
+            this.SourceTextEdit.Name = "SourceTextEdit";
+            this.SourceTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.SourceTextEdit.Properties.Items.AddRange(new object[] {
+            "Directly",
+            "Linkedin",
+            "Vietnamworks",
+            "Reference",
+            "Other"});
+            this.SourceTextEdit.Size = new System.Drawing.Size(162, 20);
+            this.SourceTextEdit.StyleController = this.dataLayoutControl1;
+            this.SourceTextEdit.TabIndex = 15;
             // 
             // layoutControlGroup1
             // 
@@ -552,8 +567,8 @@
             this.ItemForLanguage,
             this.ItemForProjectDone,
             this.ItemForEducation,
-            this.layoutControlItem2,
-            this.layoutControlItem1,
+            this.lciOk,
+            this.lciCancel,
             this.emptySpaceItem1,
             this.emptySpaceItem2,
             this.ItemForDateAvailable,
@@ -765,23 +780,23 @@
             this.ItemForEducation.Text = "Education";
             this.ItemForEducation.TextSize = new System.Drawing.Size(97, 13);
             // 
-            // layoutControlItem2
+            // lciOk
             // 
-            this.layoutControlItem2.Control = this.sbOk;
-            this.layoutControlItem2.Location = new System.Drawing.Point(711, 675);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(134, 26);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
+            this.lciOk.Control = this.sbOk;
+            this.lciOk.Location = new System.Drawing.Point(711, 675);
+            this.lciOk.Name = "lciOk";
+            this.lciOk.Size = new System.Drawing.Size(134, 26);
+            this.lciOk.TextSize = new System.Drawing.Size(0, 0);
+            this.lciOk.TextVisible = false;
             // 
-            // layoutControlItem1
+            // lciCancel
             // 
-            this.layoutControlItem1.Control = this.sbCancel;
-            this.layoutControlItem1.Location = new System.Drawing.Point(856, 675);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(130, 26);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
+            this.lciCancel.Control = this.sbCancel;
+            this.lciCancel.Location = new System.Drawing.Point(856, 675);
+            this.lciCancel.Name = "lciCancel";
+            this.lciCancel.Size = new System.Drawing.Size(130, 26);
+            this.lciCancel.TextSize = new System.Drawing.Size(0, 0);
+            this.lciCancel.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
@@ -899,22 +914,6 @@
             this.ItemForMiddleName.Text = "Middle Name";
             this.ItemForMiddleName.TextSize = new System.Drawing.Size(97, 13);
             // 
-            // SourceTextEdit
-            // 
-            this.SourceTextEdit.Location = new System.Drawing.Point(552, 108);
-            this.SourceTextEdit.Name = "SourceTextEdit";
-            this.SourceTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.SourceTextEdit.Properties.Items.AddRange(new object[] {
-            "Directly",
-            "Linkedin",
-            "Vietnamworks",
-            "Reference",
-            "Other"});
-            this.SourceTextEdit.Size = new System.Drawing.Size(162, 20);
-            this.SourceTextEdit.StyleController = this.dataLayoutControl1;
-            this.SourceTextEdit.TabIndex = 15;
-            // 
             // dlgCandidateEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -959,6 +958,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.LanguageTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IsInBlacklistCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peAvatar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourceTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEmail)).EndInit();
@@ -982,8 +982,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLanguage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForProjectDone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEducation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciOk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lciCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDateAvailable)).EndInit();
@@ -997,7 +997,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPositionsUpTillNow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForFirstName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMiddleName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SourceTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1068,8 +1067,8 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForPositionsUpTillNow;
         private DevExpress.XtraLayout.LayoutControlItem ItemForProjectDone;
         private DevExpress.XtraLayout.LayoutControlItem ItemForEducation;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem lciOk;
+        private DevExpress.XtraLayout.LayoutControlItem lciCancel;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraLayout.LayoutControlItem ItemForDateAvailable;

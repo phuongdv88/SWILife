@@ -93,6 +93,8 @@
             this.colModified});
             this.gvJobOrder.GridControl = this.gcJobOrder;
             this.gvJobOrder.Name = "gvJobOrder";
+            this.gvJobOrder.OptionsBehavior.Editable = false;
+            this.gvJobOrder.OptionsSelection.EnableAppearanceFocusedCell = false;
             // 
             // colTitle
             // 

@@ -16,7 +16,7 @@ namespace SWIBLL
         /// </summary>
         /// <param name="id">id of candidate</param>
         /// <returns></returns>
-        public static void getListRegardingForCandidate(int id, ref Dictionary<string, int> listRegarding, ref Dictionary<string, string> listRegardingStatus)
+        public static void getListRegardingForCandidate(long id, ref Dictionary<string, long> listRegarding, ref Dictionary<string, string> listRegardingStatus)
         {
             string sql = string.Format("SELECT T2.Title, T1.RunningTaskId, T1.Status FROM swilifecore.runningtask T1 Join joborder T2 on T1.JobOrderId = T2.JobOrderId Where T1.CandidateId = '{0}'", id);
             DataTable tbl = DataAccess.Instance.getTable(sql);
@@ -33,7 +33,7 @@ namespace SWIBLL
             }
         }
 
-        public static bool deleteActivity(int Activityid, int ScheduleEventId)
+        public static bool deleteActivity(long Activityid, long ScheduleEventId)
         {
             string sql = string.Empty;
             if (ScheduleEventId != -1)
@@ -49,7 +49,7 @@ namespace SWIBLL
             return result > 0 ? true : false;
         }
 
-        public static bool deleteScheduleEvent(int id)
+        public static bool deleteScheduleEvent(long id)
         {
             //todo:update eventId in activity
             string sql = string.Format("UPDATE `swilifecore`.`activity` SET `ScheduleEventId`='-1' WHERE `ScheduleEventId`='id'");
@@ -64,7 +64,7 @@ namespace SWIBLL
         {
             return DataAccess.Instance.getTable("select * from swilifecore.activity limmit 1,1000");
         }
-        public static DataTable getActivitiesOfCandidate(int id)
+        public static DataTable getActivitiesOfCandidate(long id)
         {
             string sql = string.Format("select * from swilifecore.activity where ActivityOf = '{0}' and CandidateId = '{1}'", (int)Activity.TypeOfLogActivity.Candidate, id);
             return DataAccess.Instance.getTable(sql);
@@ -87,13 +87,15 @@ namespace SWIBLL
                     act.ScheduleEventId = DataAccess.Instance.executeInsertQueryTransaction(sql);
                 }
 
+                act.UserId = UserManager.ActivatedUser.Index;
+
                 // add log activity
                 sql = string.Format("INSERT INTO `swilifecore`.`activity` " +
                     "(`Regarding`, `Type`, `Notes`, `Created`, `ActivityOf`, " +
-                    "`JobOrderId`, `CandidateId`, `ContactID`, `UserId`, `ScheduleEventId`) " +
-                    "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}')",
-                    act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), act.Created.ToString("yyyy-MM-dd hh:mm:ss"), (int)act.ActivityOf,
-                    act.JobOrderId, act.CandidateId, act.ContactID, act.UserId, act.ScheduleEventId);
+                    "`JobOrderId`, `CandidateId`, `ContactID`, `UserId`, `ScheduleEventId`, `RunningTaskId`) " +
+                    "VALUES ('{0}', '{1}', '{2}', now(), '{3}', '{4}', '{5}', '{6}', '{7}', '{8}','{9}')",
+                    act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), (int)act.ActivityOf,
+                    act.JobOrderId, act.CandidateId, act.ContactID, act.UserId, act.ScheduleEventId, act.RunningTaskId);
                 DataAccess.Instance.executeInsertQueryTransaction(sql);
 
                 // change status of running task or whatever folow by type of activity

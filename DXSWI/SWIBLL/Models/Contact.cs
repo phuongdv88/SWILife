@@ -8,7 +8,7 @@ namespace SWIBLL.Models
 {
     public class Contact : BaseModel
     {
-        public int ContactId { get; set; }
+        public long ContactId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -28,8 +28,8 @@ namespace SWIBLL.Models
         public string PostalCode { get; set; }
         public string ProfileLink { get; set; }
         public string MiscNotes { get; set; }
-        public int CompanyId { get; set; }
-        public int UserId { get; set; }
+        public long CompanyId { get; set; }
+        public long UserId { get; set; }
         public Contact()
         {
 

@@ -18,8 +18,8 @@ namespace DXSWI.Forms
     {
         public delegate void updateData();
         public event updateData updateDataEvent;
-        int canId = -1;
-        public dlgAddJobOrderToPipeline(int candidateId)
+        long canId = -1;
+        public dlgAddJobOrderToPipeline(long candidateId)
         {
             InitializeComponent();
             init();
@@ -51,6 +51,12 @@ namespace DXSWI.Forms
                     int row = gvJobOrder.GetSelectedRows().First();
                     DataRow data_row = gvJobOrder.GetDataRow(row); // for test
                     int jobId = int.Parse(data_row["JobOrderId"].ToString());
+
+                    if (RunningTaskManager.isExist(canId, jobId))
+                    {
+                        throw new Exception("It has already in Pipeline!");
+                    }
+
                     // add to running task table
                     RunningTask rtask = new RunningTask { CandidateId = canId, 
                                                         JobOrderId = jobId,
@@ -66,7 +72,6 @@ namespace DXSWI.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            Close();
         }
 
         private void sbCancel_Click(object sender, EventArgs e)
