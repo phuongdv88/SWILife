@@ -20,7 +20,7 @@ namespace SWIBLL.Models
         public string State { get; set; }
         public long RecruiterId { get; set; }
         public long OwnerId { get; set; }
-                
+
         public DateTime StartDate { get; set; }
         public string Duration { get; set; }
         public string Type { get; set; } //Hire, contract to hire, contract, freelane
@@ -35,9 +35,23 @@ namespace SWIBLL.Models
 
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
-        public string  WebLink { get; set; }
+        public string WebLink { get; set; }
         public JobOrder()
         {
+            JobOrderId = -1;
+            Title = string.Empty;
+            Department = string.Empty;
+            Salary = string.Empty;
+            ContactName = string.Empty;
+            CompanyName = string.Empty;
+            City = string.Empty;
+            State = string.Empty;
+            Duration = string.Empty;
+            Description = string.Empty;
+            InternalNotes = string.Empty;
+            AttachmentLink = string.Empty;
+            Status = string.Empty;
+            WebLink = string.Empty;
 
         }
         ~JobOrder()

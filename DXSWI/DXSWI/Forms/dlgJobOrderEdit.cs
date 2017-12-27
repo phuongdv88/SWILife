@@ -43,6 +43,7 @@ namespace DXSWI.Forms
             }
             else
             {
+                isNew = false;
                 mJobOrder = JobOrderManager.getJobOrder(jobOrderId);
                 fillCurrentJoborderToUI();
                 loadAttachment();
@@ -72,12 +73,40 @@ namespace DXSWI.Forms
             this.StatusComboBoxEdit.EditValue = mJobOrder.Status;
             this.WebLinkTextEdit.Text = mJobOrder.WebLink;
             this.DescriptionMemoExEdit.Text = mJobOrder.Description;
+            this.meInternalNotes.Text = mJobOrder.InternalNotes;
         }
 
         private void getJobOrderFromUi()
         {
             if (mJobOrder == null)
-                return;
+                mJobOrder = new JobOrder();
+            mJobOrder.Title = this.TitleTextEdit.Text;
+            mJobOrder.Department = this.DepartmentTextEdit.Text;
+            mJobOrder.Salary = this.SalaryTextEdit.Text;
+            mJobOrder.ContactName = this.contactTextEdit.Text;
+            mJobOrder.CompanyName = this.companyTextEdit.Text;
+            mJobOrder.City = this.CityTextEdit.Text;
+            mJobOrder.State = this.StateTextEdit.Text;
+            if (StartDateDateEdit.Text.Length > 0)
+            {
+                mJobOrder.StartDate = DateTime.Parse(this.StartDateDateEdit.Text);
+            }
+            mJobOrder.Duration = this.DurationTextEdit.Text;
+            mJobOrder.Type = this.TypeComboBoxEdit.Text;
+            if (this.OpeningsTextEdit.Text.Length > 0)
+            {
+                mJobOrder.Openings = int.Parse(this.OpeningsTextEdit.Text);
+            }
+            mJobOrder.IsHot = this.IsHotCheckEdit.Checked;
+            mJobOrder.isPublic = this.isPublicCheckEdit.Checked;
+            if (this.ExperienceYearTextEdit.Text.Length > 0)
+            {
+                mJobOrder.ExperienceYear = int.Parse(this.ExperienceYearTextEdit.Text);
+            }
+            mJobOrder.Status = this.StatusComboBoxEdit.Text;
+            mJobOrder.WebLink = this.WebLinkTextEdit.Text;
+            mJobOrder.Description = this.DescriptionMemoExEdit.Text;
+            mJobOrder.InternalNotes = this.meInternalNotes.Text;
 
         }
 
@@ -209,9 +238,27 @@ namespace DXSWI.Forms
 
         private void sbOK_Click(object sender, EventArgs e)
         {
+            // validate data
+            try {
+                // get data from ui
+                getJobOrderFromUi();
+                // if it is new item, use inserting command, update username else use updating command
+                if (isNew)
+                {
+                    mJobOrder.OwnerId = UserManager.ActivatedUser.Index;
+                    mJobOrder.RecruiterId = UserManager.ActivatedUser.Index;
+                    JobOrderManager.createJobOrder(mJobOrder);
+                } else
+                {
+                    JobOrderManager.updateJobOrder(mJobOrder);
+                }
 
-
-
+                emitUpdateData?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             Close();
         }
 

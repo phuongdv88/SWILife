@@ -21,7 +21,12 @@ namespace DXSWI.Modules
             init();
         }
 
-              private void init()
+        private void init()
+        {
+            updateData();
+        }
+
+        private void updateData()
         {
             try
             {
@@ -38,17 +43,19 @@ namespace DXSWI.Modules
         {
             // open dialog dlgJobOrderEdit
             dlgJobOrderEdit dlg = new dlgJobOrderEdit(-1);
+            dlg.emitUpdateData += updateData;
             dlg.ShowDialog();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int jobOrderId = -1;
-            if(gvJobOrder.SelectedRowsCount > 0)
+            if (gvJobOrder.SelectedRowsCount > 0)
             {
                 jobOrderId = int.Parse(gvJobOrder.GetDataRow(gvJobOrder.GetSelectedRows().First())["JobOrderId"].ToString());
             }
             dlgJobOrderEdit dlg = new dlgJobOrderEdit(jobOrderId);
+            dlg.emitUpdateData += updateData;
             dlg.ShowDialog();
         }
 
