@@ -134,14 +134,15 @@ namespace DXSWI.Modules
         {
             if (XtraMessageBox.Show("Are you sure to delete?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //delete
-                // todo: delete all reference data from runningtash table, activities... using transaction
+                try {
 
-                if (!CandidateManager.deleteCadidate(currentCandidateId()))
+                    CandidateManager.deleteCadidate(currentCandidateId());
+                    updateData();
+                } 
+                catch (Exception ex)
                 {
-                    XtraMessageBox.Show("Cannot delete data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                updateData();
             }
         }
 

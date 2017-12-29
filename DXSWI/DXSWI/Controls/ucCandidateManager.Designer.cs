@@ -124,7 +124,6 @@
             this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.sliAttachments = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -207,7 +206,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliAttachments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -809,7 +807,7 @@
             this.addActivityToolStripMenuItem,
             this.tsmiDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(215, 70);
             // 
             // tsmiAddCandidateToPipeLine
             // 
@@ -1048,7 +1046,7 @@
             this.sbAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAttachment.ImageOptions.Image")));
             this.sbAttachment.Location = new System.Drawing.Point(12, 12);
             this.sbAttachment.Name = "sbAttachment";
-            this.sbAttachment.Size = new System.Drawing.Size(81, 22);
+            this.sbAttachment.Size = new System.Drawing.Size(146, 22);
             this.sbAttachment.StyleController = this.layoutControl2;
             this.sbAttachment.TabIndex = 5;
             this.sbAttachment.Text = "Select file";
@@ -1057,9 +1055,9 @@
             // sbAttachmentDownload
             // 
             this.sbAttachmentDownload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAttachmentDownload.ImageOptions.Image")));
-            this.sbAttachmentDownload.Location = new System.Drawing.Point(380, 12);
+            this.sbAttachmentDownload.Location = new System.Drawing.Point(794, 12);
             this.sbAttachmentDownload.Name = "sbAttachmentDownload";
-            this.sbAttachmentDownload.Size = new System.Drawing.Size(86, 22);
+            this.sbAttachmentDownload.Size = new System.Drawing.Size(166, 22);
             this.sbAttachmentDownload.StyleController = this.layoutControl2;
             this.sbAttachmentDownload.TabIndex = 6;
             this.sbAttachmentDownload.Text = "Download";
@@ -1068,9 +1066,9 @@
             // sbAttachmentDelete
             // 
             this.sbAttachmentDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAttachmentDelete.ImageOptions.Image")));
-            this.sbAttachmentDelete.Location = new System.Drawing.Point(291, 12);
+            this.sbAttachmentDelete.Location = new System.Drawing.Point(624, 12);
             this.sbAttachmentDelete.Name = "sbAttachmentDelete";
-            this.sbAttachmentDelete.Size = new System.Drawing.Size(85, 22);
+            this.sbAttachmentDelete.Size = new System.Drawing.Size(166, 22);
             this.sbAttachmentDelete.StyleController = this.layoutControl2;
             this.sbAttachmentDelete.TabIndex = 7;
             this.sbAttachmentDelete.Text = "Delete";
@@ -1084,7 +1082,6 @@
             this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem8,
             this.layoutControlItem7,
-            this.emptySpaceItem2,
             this.sliAttachments,
             this.layoutControlItem6});
             this.layoutControlGroup7.Location = new System.Drawing.Point(0, 0);
@@ -1095,28 +1092,20 @@
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.sbAttachmentDelete;
-            this.layoutControlItem8.Location = new System.Drawing.Point(279, 0);
+            this.layoutControlItem8.Location = new System.Drawing.Point(612, 0);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(89, 36);
+            this.layoutControlItem8.Size = new System.Drawing.Size(170, 36);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.sbAttachmentDownload;
-            this.layoutControlItem7.Location = new System.Drawing.Point(368, 0);
+            this.layoutControlItem7.Location = new System.Drawing.Point(782, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(90, 36);
+            this.layoutControlItem7.Size = new System.Drawing.Size(170, 36);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
-            // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(458, 0);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(494, 36);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // sliAttachments
             // 
@@ -1124,12 +1113,12 @@
             this.sliAttachments.AppearanceItemCaption.Options.UseTextOptions = true;
             this.sliAttachments.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.sliAttachments.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
-            this.sliAttachments.Location = new System.Drawing.Point(85, 0);
+            this.sliAttachments.Location = new System.Drawing.Point(150, 0);
             this.sliAttachments.Name = "sliAttachments";
             this.sliAttachments.OptionsPrint.AppearanceItemCaption.Options.UseTextOptions = true;
             this.sliAttachments.OptionsPrint.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.sliAttachments.OptionsPrint.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
-            this.sliAttachments.Size = new System.Drawing.Size(194, 36);
+            this.sliAttachments.Size = new System.Drawing.Size(462, 36);
             this.sliAttachments.Text = "No file chosen";
             this.sliAttachments.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.sliAttachments.TextSize = new System.Drawing.Size(67, 13);
@@ -1139,7 +1128,7 @@
             this.layoutControlItem6.Control = this.sbAttachment;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(85, 36);
+            this.layoutControlItem6.Size = new System.Drawing.Size(150, 36);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -1293,7 +1282,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliAttachments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -1406,6 +1394,5 @@
         private DevExpress.XtraEditors.SimpleButton sbAttachmentDelete;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
     }
 }

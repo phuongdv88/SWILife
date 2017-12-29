@@ -143,9 +143,11 @@
             this.ClientSize = new System.Drawing.Size(964, 619);
             this.Controls.Add(this.gcJobOrder);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.KeyPreview = true;
             this.Name = "dlgAddJobOrderToPipeline";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Job Order";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgAddJobOrderToPipeline_KeyDown);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcJobOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvJobOrder)).EndInit();

@@ -274,7 +274,7 @@ namespace DXSWI.Forms
             can.CurrentPosition = this.CurrentPositionTextEdit.Text;
             if (this.DateAvailableDateEdit.Text.Length > 0)
             {
-                can.DateAvailable = DateTime.Parse(this.DateAvailableDateEdit.Text);
+                can.DateAvailable = DateTime.Parse(this.DateAvailableDateEdit.DateTime.ToString("yyyy/MM/dd "));
             }
             can.CurrentEmployer = this.CurrentEmployerTextEdit.Text;
             can.KeySkills = this.KeySkillsTextEdit.Text;
@@ -317,6 +317,16 @@ namespace DXSWI.Forms
             }
         }
 
-        
+        private void dlgCandidateEdit_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

@@ -21,8 +21,10 @@ namespace DXSWI.Forms
         bool isNew = true;
         public delegate void onUpdateData();
         public event onUpdateData emitUpdateData;
+        Dictionary<string, long> companiesNameAndId; // name, id
+        Dictionary<string, long> contactsNameAndId; // contact name and id
 
-        public dlgJobOrderEdit(int jobOrderId)
+        public dlgJobOrderEdit(long jobOrderId)
         {
             InitializeComponent();
             try
@@ -35,7 +37,7 @@ namespace DXSWI.Forms
             }
         }
 
-        private void init(int jobOrderId)
+        private void init(long jobOrderId)
         {
             if (jobOrderId == -1)
             {
@@ -59,8 +61,24 @@ namespace DXSWI.Forms
             this.TitleTextEdit.Text = mJobOrder.Title;
             this.DepartmentTextEdit.Text = mJobOrder.Department;
             this.SalaryTextEdit.Text = mJobOrder.Salary;
-            this.contactTextEdit.Text = mJobOrder.ContactName;
-            this.companyTextEdit.Text = mJobOrder.CompanyName;
+            // todo:
+            if(mJobOrder.CompanyId != -1)
+            {
+                // get company name
+            } else
+            {
+                // load all company name to select in combobox
+            }
+            if(mJobOrder.ContactId != -1)
+            {
+                //get contact name
+            } else
+            {
+                // load all contact name of this company
+            }
+            //this.companyComboxEdit.EditValue = mJobOrder.CompanyName;
+            //this.contactComboboxEdit.EditValue = mJobOrder.ContactName;
+
             this.CityTextEdit.Text = mJobOrder.City;
             this.StateTextEdit.Text = mJobOrder.State;
             this.StartDateDateEdit.Text = mJobOrder.StartDate.ToString("dd/MM/yyyy");
@@ -83,13 +101,16 @@ namespace DXSWI.Forms
             mJobOrder.Title = this.TitleTextEdit.Text;
             mJobOrder.Department = this.DepartmentTextEdit.Text;
             mJobOrder.Salary = this.SalaryTextEdit.Text;
-            mJobOrder.ContactName = this.contactTextEdit.Text;
-            mJobOrder.CompanyName = this.companyTextEdit.Text;
+            //todo
+            //mJobOrder.ContactId = 
+            //mJobOrder.ContactId = 
+            mJobOrder.ContactName = this.contactComboboxEdit.Text;
+            mJobOrder.CompanyName = this.companyComboxEdit.Text;
             mJobOrder.City = this.CityTextEdit.Text;
             mJobOrder.State = this.StateTextEdit.Text;
             if (StartDateDateEdit.Text.Length > 0)
             {
-                mJobOrder.StartDate = DateTime.Parse(this.StartDateDateEdit.Text);
+                mJobOrder.StartDate = DateTime.Parse(this.StartDateDateEdit.DateTime.ToString("yyyy/MM/dd"));
             }
             mJobOrder.Duration = this.DurationTextEdit.Text;
             mJobOrder.Type = this.TypeComboBoxEdit.Text;
@@ -360,6 +381,18 @@ namespace DXSWI.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dlgJobOrderEdit_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+                default:
+                    break;
             }
         }
     }

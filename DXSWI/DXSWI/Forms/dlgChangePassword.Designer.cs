@@ -193,9 +193,11 @@
             this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.textEdit2);
             this.Controls.Add(this.textEditPassword);
+            this.KeyPreview = true;
             this.Name = "dlgChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "te";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgChangePassword_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();

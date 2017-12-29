@@ -162,9 +162,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 202);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.KeyPreview = true;
             this.Name = "dlgUser";
             this.Text = "Add User";
             this.Load += new System.EventHandler(this.dlgUser_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgUser_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();

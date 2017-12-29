@@ -149,9 +149,11 @@
             this.ClientSize = new System.Drawing.Size(1135, 698);
             this.Controls.Add(this.gcCandidates);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.KeyPreview = true;
             this.Name = "dlgAddCandidateToPipeline";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Candidate To Pipeline";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgAddCandidateToPipeline_KeyDown);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCandidates)).EndInit();

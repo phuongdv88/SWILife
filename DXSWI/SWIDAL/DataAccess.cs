@@ -449,5 +449,33 @@ namespace SWIDAL
             }
             return dt;
         }
+
+        //----------------Company---------------------
+        public DataTable getCompaniesOverview()
+        {
+            if (mCon == null) return null;
+            MySqlCommand cmd = null;
+            DataTable dt = null;
+            try
+            {
+                cmd = new MySqlCommand("spGetCompanies", mCon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                MySqlDataAdapter ad = new MySqlDataAdapter();
+                ad.SelectCommand = cmd;
+                dt = new DataTable();
+                ad.Fill(dt);
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+
+            }
+            return dt;
+        }
     }
 }

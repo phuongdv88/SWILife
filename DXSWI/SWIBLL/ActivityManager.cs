@@ -62,7 +62,7 @@ namespace SWIBLL
 
         public static DataTable getAllActivities()
         {
-            return DataAccess.Instance.getTable("select * from swilifecore.activity limmit 1,1000");
+            return DataAccess.Instance.getTable("select T1.Regarding, T1.Type, date_format(T1.Created,'%d/%m/%Y %T') as Created, T2.UserName from swilifecore.activity T1 left join swilifecore.user T2 on T1.UserId = T2.UserId order by T1.Created desc limit 1,1000");
         }
         public static DataTable getActivitiesOfCandidate(long id)
         {

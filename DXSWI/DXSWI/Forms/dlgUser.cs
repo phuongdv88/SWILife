@@ -23,5 +23,16 @@ namespace DXSWI.Forms
 
         }
 
+        private void dlgUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

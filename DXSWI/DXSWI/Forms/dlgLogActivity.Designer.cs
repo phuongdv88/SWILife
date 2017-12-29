@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.ucScheduleEvent1 = new DXSWI.Controls.ucScheduleEvent();
             this.cbeRegarding = new DevExpress.XtraEditors.ComboBoxEdit();
             this.ceChangeStatus = new DevExpress.XtraEditors.CheckEdit();
             this.cbeStatus = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -50,10 +51,9 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.ucScheduleEvent1 = new DXSWI.Controls.ucScheduleEvent();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbeRegarding.Properties)).BeginInit();
@@ -75,9 +75,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -99,6 +99,15 @@
             this.layoutControl1.Size = new System.Drawing.Size(904, 649);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // ucScheduleEvent1
+            // 
+            this.ucScheduleEvent1.Enabled = false;
+            this.ucScheduleEvent1.Location = new System.Drawing.Point(24, 370);
+            this.ucScheduleEvent1.Name = "ucScheduleEvent1";
+            this.ucScheduleEvent1.Size = new System.Drawing.Size(856, 229);
+            this.ucScheduleEvent1.TabIndex = 11;
+            this.ucScheduleEvent1.Load += new System.EventHandler(this.ucScheduleEvent1_Load);
             // 
             // cbeRegarding
             // 
@@ -335,6 +344,15 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.ucScheduleEvent1;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 23);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(860, 233);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
+            // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.sbCancel;
@@ -352,33 +370,17 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(556, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // ucScheduleEvent1
-            // 
-            this.ucScheduleEvent1.Enabled = false;
-            this.ucScheduleEvent1.Location = new System.Drawing.Point(24, 370);
-            this.ucScheduleEvent1.Name = "ucScheduleEvent1";
-            this.ucScheduleEvent1.Size = new System.Drawing.Size(856, 229);
-            this.ucScheduleEvent1.TabIndex = 11;
-            this.ucScheduleEvent1.Load += new System.EventHandler(this.ucScheduleEvent1_Load);
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.ucScheduleEvent1;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 23);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(860, 233);
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextVisible = false;
-            // 
             // dlgLogActivity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(904, 649);
             this.Controls.Add(this.layoutControl1);
+            this.KeyPreview = true;
             this.Name = "dlgLogActivity";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Log Activity";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgLogActivity_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cbeRegarding.Properties)).EndInit();
@@ -400,9 +402,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
 
         }

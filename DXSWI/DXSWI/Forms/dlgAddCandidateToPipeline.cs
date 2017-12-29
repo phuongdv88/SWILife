@@ -96,5 +96,17 @@ namespace DXSWI.Forms
             dlg.setViewMode();
             dlg.ShowDialog();
         }
+
+        private void dlgAddCandidateToPipeline_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

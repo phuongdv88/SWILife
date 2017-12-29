@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ActivityManager.cs" />
     <Compile Include="CandidateManager.cs" />
+    <Compile Include="CompanyManager.cs" />
     <Compile Include="JobOrderManager.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\BaseModel.cs" />

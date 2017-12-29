@@ -19,7 +19,10 @@ namespace DXSWI.Controls
             ScheduleEvent ev = new ScheduleEvent();
             ev.Type = cbeType.SelectedIndex;
             ev.Title = teTitle.Text.Trim();
-            ev.DateTime = DateTime.Parse(deDate.DateTime.ToString("yyyy/MM/dd ") + deTime.Text.Trim());
+            if (deDate.Text.Length > 0)
+            {
+                ev.DateTime = DateTime.Parse(deDate.DateTime.ToString("yyyy/MM/dd ") + deTime.Text.Trim());
+            }
             if (ceAllDay.Checked)
             {
                 ev.Duration = -1;

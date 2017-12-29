@@ -920,10 +920,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.dataLayoutControl1);
+            this.KeyPreview = true;
             this.Name = "dlgCandidateEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Candidates";
             this.Load += new System.EventHandler(this.dlgCandidateEdit_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgCandidateEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).EndInit();

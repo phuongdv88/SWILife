@@ -35,9 +35,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.KeyPreview = true;
             this.Name = "dlgAddScheduleEvent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "dlgAddScheduleEvent";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgAddScheduleEvent_KeyDown);
             this.ResumeLayout(false);
 
         }

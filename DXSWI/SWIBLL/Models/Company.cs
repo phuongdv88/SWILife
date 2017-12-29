@@ -8,7 +8,7 @@ namespace SWIBLL.Models
 {
     public class Company : BaseModel
     {
-        public long companyId { get; set; }
+        public long CompanyId { get; set; }
         public string Name { get; set; }
         public string PrimaryPhone { get; set; }
         public string SecondaryPhone { get; set; }
@@ -29,8 +29,11 @@ namespace SWIBLL.Models
         public bool IsHot { get; set; }
         public DateTime ContractSigingTime { get; set; }
         public string ScanLink { get; set; }
-        public long BillingContactId { get; set; }
         public long UserId { get; set; }
+
+        public string UserName { get; set;}
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
         public Company()
         {
 

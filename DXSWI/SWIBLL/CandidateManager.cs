@@ -69,12 +69,26 @@ namespace SWIBLL
             return DataAccess.Instance.getCandidatesOverview();
         }
 
-        public static bool deleteCadidate(int id)
+        public static void deleteCadidate(int CandidateId)
         {
             //DELETE FROM `swilifecore`.`candidate` WHERE `CandidateId`='5';
-            string sql = string.Format("DELETE FROM `swilifecore`.`candidate` WHERE `CandidateId`='{0}'", id);
-            int result = DataAccess.Instance.executeNonQuery(sql);
-            return result > 0 ? true : false;
+            string sql = string.Format("DELETE FROM `swilifecore`.`candidate` WHERE `CandidateId`='{0}'", CandidateId);
+            try
+            {
+                DataAccess.Instance.StartTransaction();
+
+                DataAccess.Instance.executeNonQueryTransaction(sql);
+                // delete running task 
+                sql = string.Format("DELETE FROM `swilifecore`.`runningtask` WHERE `CandidateId`='{0}'", CandidateId);
+                DataAccess.Instance.executeNonQueryTransaction(sql);
+                // commit 
+                DataAccess.Instance.commitTransaction();
+            }
+            catch
+            {
+                DataAccess.Instance.rollbackTransaction();
+                throw;
+            }
         }
 
         public static bool addCandidate(Candidate can)

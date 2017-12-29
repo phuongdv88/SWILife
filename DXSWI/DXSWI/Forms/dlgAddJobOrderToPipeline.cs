@@ -78,5 +78,17 @@ namespace DXSWI.Forms
         {
             Close();
         }
+
+        private void dlgAddJobOrderToPipeline_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

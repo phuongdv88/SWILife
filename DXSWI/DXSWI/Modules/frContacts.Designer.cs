@@ -28,150 +28,117 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gcFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcLastName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcKeySkills = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcModified = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcAddress = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcDesiredPay = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ucChangePageBar1 = new DXSWI.Controls.ucChangePageBar();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.gcContacts = new DevExpress.XtraGrid.GridControl();
+            this.gvContacts = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLastName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCompany = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPhoneNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.gcContacts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvContacts)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // gcContacts
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1193, 629);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.gcContacts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcContacts.Location = new System.Drawing.Point(0, 0);
+            this.gcContacts.MainView = this.gvContacts;
+            this.gcContacts.Name = "gcContacts";
+            this.gcContacts.Size = new System.Drawing.Size(1193, 629);
+            this.gcContacts.TabIndex = 0;
+            this.gcContacts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvContacts});
             // 
-            // gridControl1
+            // gvContacts
             // 
-            this.gridControl1.Location = new System.Drawing.Point(3, 41);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(580, 562);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvContacts.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colFirstName,
+            this.colLastName,
+            this.colCompany,
+            this.colPhoneNumber,
+            this.colEmail,
+            this.colOwner,
+            this.colModified});
+            this.gvContacts.GridControl = this.gcContacts;
+            this.gvContacts.Name = "gvContacts";
+            this.gvContacts.OptionsBehavior.Editable = false;
+            this.gvContacts.OptionsSelection.EnableAppearanceFocusedCell = false;
             // 
-            // gridView1
+            // colFirstName
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gcFirstName,
-            this.gcLastName,
-            this.gcKeySkills,
-            this.gcModified,
-            this.gcAddress,
-            this.gcDesiredPay});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.colFirstName.Caption = "First Name";
+            this.colFirstName.Name = "colFirstName";
+            this.colFirstName.Visible = true;
+            this.colFirstName.VisibleIndex = 0;
             // 
-            // gcFirstName
+            // colLastName
             // 
-            this.gcFirstName.Caption = "First Name";
-            this.gcFirstName.Name = "gcFirstName";
-            this.gcFirstName.Visible = true;
-            this.gcFirstName.VisibleIndex = 0;
+            this.colLastName.Caption = "Last Name";
+            this.colLastName.Name = "colLastName";
+            this.colLastName.Visible = true;
+            this.colLastName.VisibleIndex = 1;
             // 
-            // gcLastName
+            // colCompany
             // 
-            this.gcLastName.Caption = "Last Name";
-            this.gcLastName.Name = "gcLastName";
-            this.gcLastName.Visible = true;
-            this.gcLastName.VisibleIndex = 1;
+            this.colCompany.Caption = "Company";
+            this.colCompany.Name = "colCompany";
+            this.colCompany.Visible = true;
+            this.colCompany.VisibleIndex = 2;
             // 
-            // gcKeySkills
+            // colPhoneNumber
             // 
-            this.gcKeySkills.Caption = "Key Skills";
-            this.gcKeySkills.Name = "gcKeySkills";
-            this.gcKeySkills.Visible = true;
-            this.gcKeySkills.VisibleIndex = 2;
+            this.colPhoneNumber.Caption = "Phone Number";
+            this.colPhoneNumber.Name = "colPhoneNumber";
+            this.colPhoneNumber.Visible = true;
+            this.colPhoneNumber.VisibleIndex = 3;
             // 
-            // gcModified
+            // colEmail
             // 
-            this.gcModified.Caption = "Modified";
-            this.gcModified.Name = "gcModified";
-            this.gcModified.Visible = true;
-            this.gcModified.VisibleIndex = 3;
+            this.colEmail.Caption = "Email";
+            this.colEmail.Name = "colEmail";
+            this.colEmail.Visible = true;
+            this.colEmail.VisibleIndex = 4;
             // 
-            // gcAddress
+            // colOwner
             // 
-            this.gcAddress.Caption = "Address";
-            this.gcAddress.Name = "gcAddress";
-            this.gcAddress.Visible = true;
-            this.gcAddress.VisibleIndex = 4;
+            this.colOwner.Caption = "Owner";
+            this.colOwner.Name = "colOwner";
+            this.colOwner.Visible = true;
+            this.colOwner.VisibleIndex = 5;
             // 
-            // gcDesiredPay
+            // colModified
             // 
-            this.gcDesiredPay.Caption = "Desired Pay";
-            this.gcDesiredPay.Name = "gcDesiredPay";
-            this.gcDesiredPay.Visible = true;
-            this.gcDesiredPay.VisibleIndex = 5;
-            // 
-            // ucChangePageBar1
-            // 
-            this.ucChangePageBar1.Location = new System.Drawing.Point(3, 3);
-            this.ucChangePageBar1.Name = "ucChangePageBar1";
-            this.ucChangePageBar1.Size = new System.Drawing.Size(551, 32);
-            this.ucChangePageBar1.TabIndex = 1;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.ucChangePageBar1);
-            this.flowLayoutPanel2.Controls.Add(this.gridControl1);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(13, 13);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(580, 603);
-            this.flowLayoutPanel2.TabIndex = 2;
+            this.colModified.Caption = "Modified";
+            this.colModified.Name = "colModified";
+            this.colModified.Visible = true;
+            this.colModified.VisibleIndex = 6;
             // 
             // frContacts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.gcContacts);
             this.Name = "frContacts";
             this.Size = new System.Drawing.Size(1193, 629);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.flowLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcContacts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvContacts)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gcFirstName;
-        private DevExpress.XtraGrid.Columns.GridColumn gcLastName;
-        private DevExpress.XtraGrid.Columns.GridColumn gcKeySkills;
-        private DevExpress.XtraGrid.Columns.GridColumn gcModified;
-        private DevExpress.XtraGrid.Columns.GridColumn gcAddress;
-        private DevExpress.XtraGrid.Columns.GridColumn gcDesiredPay;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private Controls.ucChangePageBar ucChangePageBar1;
+        private DevExpress.XtraGrid.GridControl gcContacts;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvContacts;
+        private DevExpress.XtraGrid.Columns.GridColumn colFirstName;
+        private DevExpress.XtraGrid.Columns.GridColumn colLastName;
+        private DevExpress.XtraGrid.Columns.GridColumn colCompany;
+        private DevExpress.XtraGrid.Columns.GridColumn colPhoneNumber;
+        private DevExpress.XtraGrid.Columns.GridColumn colEmail;
+        private DevExpress.XtraGrid.Columns.GridColumn colOwner;
+        private DevExpress.XtraGrid.Columns.GridColumn colModified;
     }
 }

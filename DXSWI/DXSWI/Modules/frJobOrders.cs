@@ -49,10 +49,10 @@ namespace DXSWI.Modules
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int jobOrderId = -1;
+            long jobOrderId = -1;
             if (gvJobOrder.SelectedRowsCount > 0)
             {
-                jobOrderId = int.Parse(gvJobOrder.GetDataRow(gvJobOrder.GetSelectedRows().First())["JobOrderId"].ToString());
+                jobOrderId = Convert.ToInt64(gvJobOrder.GetDataRow(gvJobOrder.GetSelectedRows().First())["JobOrderId"].ToString());
             }
             dlgJobOrderEdit dlg = new dlgJobOrderEdit(jobOrderId);
             dlg.emitUpdateData += updateData;
@@ -62,6 +62,29 @@ namespace DXSWI.Modules
         private void gvJobOrder_DoubleClick(object sender, EventArgs e)
         {
             editToolStripMenuItem_Click(sender, e);
+        }
+
+        private void deleteJobOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show("System will also delete running task of this Job Order. Are you sure to delete this Job Order?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    // delete this running task data
+                    if (gvJobOrder.SelectedRowsCount > 0)
+                    {
+                        int row = gvJobOrder.GetSelectedRows().First();
+                        DataRow data_row = gvJobOrder.GetDataRow(row);
+                        int jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
+                        JobOrderManager.deleteJobOrder(jobOrderId);
+                        updateData();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

@@ -35,8 +35,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(957, 509);
+            this.KeyPreview = true;
             this.Name = "dlgContactEdit";
             this.Text = "dlgContactEdit";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgContactEdit_KeyDown);
             this.ResumeLayout(false);
 
         }

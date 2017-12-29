@@ -23,10 +23,10 @@ namespace SWIBLL
                 "`Duration`, `Type`, `Openings`, `IsHot`, `isPublic`, `Description`, `InternalNotes`, `Created`, `Modified`, `WebLink`, `Status`, `ExperienceYear`)" +
                 "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', " +
                 "'{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', now(), now(), '{17}', '{18}', '{19}')",
-                QueryBuilder.mySqlEscape(jobOrder.Title), QueryBuilder.mySqlEscape(jobOrder.Department), QueryBuilder.mySqlEscape(jobOrder.Salary), jobOrder.ContactId, 
-                jobOrder.CompanyId, QueryBuilder.mySqlEscape(jobOrder.City), QueryBuilder.mySqlEscape(jobOrder.State), jobOrder.RecruiterId, jobOrder.OwnerId, 
-                jobOrder.StartDate.ToString("yyyy-MM-dd"), QueryBuilder.mySqlEscape(jobOrder.Duration), QueryBuilder.mySqlEscape(jobOrder.Type), jobOrder.Openings, 
-                Convert.ToInt32(jobOrder.IsHot), Convert.ToInt32(jobOrder.isPublic), QueryBuilder.mySqlEscape(jobOrder.Description), QueryBuilder.mySqlEscape(jobOrder.InternalNotes), 
+                QueryBuilder.mySqlEscape(jobOrder.Title), QueryBuilder.mySqlEscape(jobOrder.Department), QueryBuilder.mySqlEscape(jobOrder.Salary), jobOrder.ContactId,
+                jobOrder.CompanyId, QueryBuilder.mySqlEscape(jobOrder.City), QueryBuilder.mySqlEscape(jobOrder.State), jobOrder.RecruiterId, jobOrder.OwnerId,
+                jobOrder.StartDate.ToString("yyyy-MM-dd"), QueryBuilder.mySqlEscape(jobOrder.Duration), QueryBuilder.mySqlEscape(jobOrder.Type), jobOrder.Openings,
+                Convert.ToInt32(jobOrder.IsHot), Convert.ToInt32(jobOrder.isPublic), QueryBuilder.mySqlEscape(jobOrder.Description), QueryBuilder.mySqlEscape(jobOrder.InternalNotes),
                 QueryBuilder.mySqlEscape(jobOrder.WebLink), QueryBuilder.mySqlEscape(jobOrder.Status), jobOrder.ExperienceYear);
             // add activity
             long rs = DataAccess.Instance.executeInsertingQuery(sql);
@@ -48,22 +48,36 @@ namespace SWIBLL
                 "`OwnerId`='{8}', `StartDate`='{9}', `Duration`='{10}', `Type`='{11}', `IsHot`='{12}', `isPublic`='{13}', `Description`='{14}', `InternalNotes`='{15}', " +
                 "`Modified`=now(), `WebLink`='{16}', `Status`='{17}', `ExperienceYear`='{18}' WHERE `JobOrderId`='{19}'",
                 QueryBuilder.mySqlEscape(jobOrder.Title), QueryBuilder.mySqlEscape(jobOrder.Department), QueryBuilder.mySqlEscape(jobOrder.Salary), jobOrder.ContactId,
-                jobOrder.CompanyId, QueryBuilder.mySqlEscape(jobOrder.City), QueryBuilder.mySqlEscape(jobOrder.State), jobOrder.RecruiterId, jobOrder.OwnerId, 
-                jobOrder.StartDate.ToString("yyyy-MM-dd"), QueryBuilder.mySqlEscape(jobOrder.Duration), QueryBuilder.mySqlEscape(jobOrder.Type), 
-                Convert.ToInt32(jobOrder.IsHot), Convert.ToInt32(jobOrder.isPublic), QueryBuilder.mySqlEscape(jobOrder.Description), QueryBuilder.mySqlEscape(jobOrder.InternalNotes), 
+                jobOrder.CompanyId, QueryBuilder.mySqlEscape(jobOrder.City), QueryBuilder.mySqlEscape(jobOrder.State), jobOrder.RecruiterId, jobOrder.OwnerId,
+                jobOrder.StartDate.ToString("yyyy-MM-dd"), QueryBuilder.mySqlEscape(jobOrder.Duration), QueryBuilder.mySqlEscape(jobOrder.Type),
+                Convert.ToInt32(jobOrder.IsHot), Convert.ToInt32(jobOrder.isPublic), QueryBuilder.mySqlEscape(jobOrder.Description), QueryBuilder.mySqlEscape(jobOrder.InternalNotes),
                 QueryBuilder.mySqlEscape(jobOrder.WebLink), QueryBuilder.mySqlEscape(jobOrder.Status), jobOrder.ExperienceYear, jobOrder.JobOrderId);
             int rs = DataAccess.Instance.executeNonQuery(sql);
             return rs > 0 ? true : false;
         }
 
-        public static bool deleteJobOrder(int jobOrderId)
+        public static void deleteJobOrder(int jobOrderId)
         {
             string sql = string.Format("delete from `swilifecore`.`joborder` where `JobOrderId`='{0}'", jobOrderId);
-            int result = DataAccess.Instance.executeNonQuery(sql);
-            return result > 0 ? true : false;
+            try
+            {
+                DataAccess.Instance.StartTransaction();
+
+                DataAccess.Instance.executeNonQueryTransaction(sql);
+                // delete running task 
+                sql = string.Format("DELETE FROM `swilifecore`.`runningtask` WHERE `JobOrderId`='{0}'", jobOrderId);
+                DataAccess.Instance.executeNonQueryTransaction(sql);
+                // commit 
+                DataAccess.Instance.commitTransaction();
+            }
+            catch
+            {
+                DataAccess.Instance.rollbackTransaction();
+                throw;
+            }
         }
 
-        public static JobOrder getJobOrder(int id)
+        public static JobOrder getJobOrder(long id)
         {
 
             JobOrder job = null;

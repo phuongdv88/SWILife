@@ -17,5 +17,17 @@ namespace DXSWI.Forms
         {
             InitializeComponent();
         }
+
+        private void dlgContactEdit_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

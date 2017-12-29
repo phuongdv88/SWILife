@@ -70,9 +70,10 @@
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
             this.sbDownload = new DevExpress.XtraEditors.SimpleButton();
             this.sbDelete = new DevExpress.XtraEditors.SimpleButton();
-            this.companyTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.contactTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.sbAddAttachment = new DevExpress.XtraEditors.SimpleButton();
+            this.meInternalNotes = new DevExpress.XtraEditors.MemoEdit();
+            this.companyComboxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.contactComboboxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForDescription = new DevExpress.XtraLayout.LayoutControlItem();
@@ -103,7 +104,6 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.meInternalNotes = new DevExpress.XtraEditors.MemoEdit();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
@@ -128,8 +128,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.StatusComboBoxEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WebLinkTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionMemoExEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.meInternalNotes.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyComboxEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactComboboxEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDescription)).BeginInit();
@@ -160,7 +161,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.meInternalNotes.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,10 +186,10 @@
             this.dataLayoutControl1.Controls.Add(this.sbCancel);
             this.dataLayoutControl1.Controls.Add(this.sbDownload);
             this.dataLayoutControl1.Controls.Add(this.sbDelete);
-            this.dataLayoutControl1.Controls.Add(this.companyTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.contactTextEdit);
             this.dataLayoutControl1.Controls.Add(this.sbAddAttachment);
             this.dataLayoutControl1.Controls.Add(this.meInternalNotes);
+            this.dataLayoutControl1.Controls.Add(this.companyComboxEdit);
+            this.dataLayoutControl1.Controls.Add(this.contactComboboxEdit);
             this.dataLayoutControl1.DataSource = this.jobOrderBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
@@ -360,7 +360,7 @@
             // TitleTextEdit
             // 
             this.TitleTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.jobOrderBindingSource, "Title", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TitleTextEdit.Location = new System.Drawing.Point(105, 42);
+            this.TitleTextEdit.Location = new System.Drawing.Point(105, 66);
             this.TitleTextEdit.Name = "TitleTextEdit";
             this.TitleTextEdit.Size = new System.Drawing.Size(633, 20);
             this.TitleTextEdit.StyleController = this.dataLayoutControl1;
@@ -373,7 +373,7 @@
             // DepartmentTextEdit
             // 
             this.DepartmentTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.jobOrderBindingSource, "Department", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DepartmentTextEdit.Location = new System.Drawing.Point(823, 42);
+            this.DepartmentTextEdit.Location = new System.Drawing.Point(823, 66);
             this.DepartmentTextEdit.Name = "DepartmentTextEdit";
             this.DepartmentTextEdit.Size = new System.Drawing.Size(393, 20);
             this.DepartmentTextEdit.StyleController = this.dataLayoutControl1;
@@ -577,22 +577,6 @@
             this.sbDelete.Text = "Delete";
             this.sbDelete.Click += new System.EventHandler(this.sbDelete_Click);
             // 
-            // companyTextEdit
-            // 
-            this.companyTextEdit.Location = new System.Drawing.Point(105, 66);
-            this.companyTextEdit.Name = "companyTextEdit";
-            this.companyTextEdit.Size = new System.Drawing.Size(633, 20);
-            this.companyTextEdit.StyleController = this.dataLayoutControl1;
-            this.companyTextEdit.TabIndex = 31;
-            // 
-            // contactTextEdit
-            // 
-            this.contactTextEdit.Location = new System.Drawing.Point(823, 66);
-            this.contactTextEdit.Name = "contactTextEdit";
-            this.contactTextEdit.Size = new System.Drawing.Size(393, 20);
-            this.contactTextEdit.StyleController = this.dataLayoutControl1;
-            this.contactTextEdit.TabIndex = 32;
-            // 
             // sbAddAttachment
             // 
             this.sbAddAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAddAttachment.ImageOptions.Image")));
@@ -603,6 +587,34 @@
             this.sbAddAttachment.TabIndex = 33;
             this.sbAddAttachment.Text = "Add Attachment";
             this.sbAddAttachment.Click += new System.EventHandler(this.sbAttachment_Click);
+            // 
+            // meInternalNotes
+            // 
+            this.meInternalNotes.Location = new System.Drawing.Point(93, 282);
+            this.meInternalNotes.Name = "meInternalNotes";
+            this.meInternalNotes.Size = new System.Drawing.Size(1228, 104);
+            this.meInternalNotes.StyleController = this.dataLayoutControl1;
+            this.meInternalNotes.TabIndex = 34;
+            // 
+            // companyComboxEdit
+            // 
+            this.companyComboxEdit.Location = new System.Drawing.Point(105, 42);
+            this.companyComboxEdit.Name = "companyComboxEdit";
+            this.companyComboxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.companyComboxEdit.Size = new System.Drawing.Size(633, 20);
+            this.companyComboxEdit.StyleController = this.dataLayoutControl1;
+            this.companyComboxEdit.TabIndex = 31;
+            // 
+            // contactComboboxEdit
+            // 
+            this.contactComboboxEdit.Location = new System.Drawing.Point(823, 42);
+            this.contactComboboxEdit.Name = "contactComboboxEdit";
+            this.contactComboboxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.contactComboboxEdit.Size = new System.Drawing.Size(393, 20);
+            this.contactComboboxEdit.StyleController = this.dataLayoutControl1;
+            this.contactComboboxEdit.TabIndex = 32;
             // 
             // layoutControlGroup1
             // 
@@ -668,7 +680,7 @@
             // ItemForTitle
             // 
             this.ItemForTitle.Control = this.TitleTextEdit;
-            this.ItemForTitle.Location = new System.Drawing.Point(0, 0);
+            this.ItemForTitle.Location = new System.Drawing.Point(0, 24);
             this.ItemForTitle.Name = "ItemForTitle";
             this.ItemForTitle.Size = new System.Drawing.Size(718, 24);
             this.ItemForTitle.Text = "Title";
@@ -677,7 +689,7 @@
             // ItemForDepartment
             // 
             this.ItemForDepartment.Control = this.DepartmentTextEdit;
-            this.ItemForDepartment.Location = new System.Drawing.Point(718, 0);
+            this.ItemForDepartment.Location = new System.Drawing.Point(718, 24);
             this.ItemForDepartment.Name = "ItemForDepartment";
             this.ItemForDepartment.Size = new System.Drawing.Size(478, 24);
             this.ItemForDepartment.Text = "Department";
@@ -785,8 +797,8 @@
             // 
             // ItemForCompany
             // 
-            this.ItemForCompany.Control = this.companyTextEdit;
-            this.ItemForCompany.Location = new System.Drawing.Point(0, 24);
+            this.ItemForCompany.Control = this.companyComboxEdit;
+            this.ItemForCompany.Location = new System.Drawing.Point(0, 0);
             this.ItemForCompany.Name = "ItemForCompany";
             this.ItemForCompany.Size = new System.Drawing.Size(718, 24);
             this.ItemForCompany.Text = "Company";
@@ -794,8 +806,8 @@
             // 
             // ItemForContact
             // 
-            this.ItemForContact.Control = this.contactTextEdit;
-            this.ItemForContact.Location = new System.Drawing.Point(718, 24);
+            this.ItemForContact.Control = this.contactComboboxEdit;
+            this.ItemForContact.Location = new System.Drawing.Point(718, 0);
             this.ItemForContact.Name = "ItemForContact";
             this.ItemForContact.Size = new System.Drawing.Size(478, 24);
             this.ItemForContact.Text = "Contact";
@@ -903,14 +915,6 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(1075, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // meInternalNotes
-            // 
-            this.meInternalNotes.Location = new System.Drawing.Point(93, 282);
-            this.meInternalNotes.Name = "meInternalNotes";
-            this.meInternalNotes.Size = new System.Drawing.Size(1228, 104);
-            this.meInternalNotes.StyleController = this.dataLayoutControl1;
-            this.meInternalNotes.TabIndex = 34;
-            // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.meInternalNotes;
@@ -926,9 +930,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1333, 917);
             this.Controls.Add(this.dataLayoutControl1);
+            this.KeyPreview = true;
             this.Name = "dlgJobOrderEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Job Order";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgJobOrderEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidatePipeline)).EndInit();
@@ -952,8 +958,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.StatusComboBoxEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WebLinkTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionMemoExEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.meInternalNotes.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyComboxEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactComboboxEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDescription)).EndInit();
@@ -984,7 +991,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.meInternalNotes.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
 
@@ -1050,8 +1056,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEnteredBy;
         private DevExpress.XtraGrid.Columns.GridColumn colStatus;
         private DevExpress.XtraGrid.Columns.GridColumn colLastActivity;
-        private DevExpress.XtraEditors.TextEdit companyTextEdit;
-        private DevExpress.XtraEditors.TextEdit contactTextEdit;
         private DevExpress.XtraLayout.LayoutControlItem ItemForContact;
         private DevExpress.XtraLayout.LayoutControlItem ItemForCompany;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -1067,5 +1071,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraEditors.MemoEdit meInternalNotes;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraEditors.ComboBoxEdit companyComboxEdit;
+        private DevExpress.XtraEditors.ComboBoxEdit contactComboboxEdit;
     }
 }

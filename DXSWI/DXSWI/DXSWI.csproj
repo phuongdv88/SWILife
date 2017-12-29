@@ -370,6 +370,7 @@
     </Compile>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SWIBLL.Models.Company.datasource" />
     <None Include="Properties\DataSources\SWIBLL.Models.JobOrder.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

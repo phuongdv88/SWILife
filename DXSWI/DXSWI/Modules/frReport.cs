@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using SWIBLL.Models;
+using SWIBLL;
 
 namespace DXSWI.Modules
 {
@@ -16,6 +18,23 @@ namespace DXSWI.Modules
         public frReport()
         {
             InitializeComponent();
+            init();
+        }
+        public void init()
+        {
+            updateData();
+        }
+
+        private void updateData()
+        {
+            try
+            {
+                gcActivites.DataSource = ActivityManager.getAllActivities();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
