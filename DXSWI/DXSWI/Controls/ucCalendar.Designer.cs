@@ -28,31 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.dateNavigator1 = new DevExpress.XtraScheduler.DateNavigator();
+            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelControl1
+            // dateNavigator1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(51, 78);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(56, 13);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "Uc calendar";
+            this.dateNavigator1.CalendarAppearance.DayCellSpecial.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.dateNavigator1.CalendarAppearance.DayCellSpecial.Options.UseFont = true;
+            this.dateNavigator1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateNavigator1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dateNavigator1.FirstDayOfWeek = System.DayOfWeek.Sunday;
+            this.dateNavigator1.Location = new System.Drawing.Point(0, 0);
+            this.dateNavigator1.Name = "dateNavigator1";
+            this.dateNavigator1.Size = new System.Drawing.Size(220, 510);
+            this.dateNavigator1.TabIndex = 0;
             // 
             // ucCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.dateNavigator1);
             this.Name = "ucCalendar";
-            this.Size = new System.Drawing.Size(150, 217);
+            this.Size = new System.Drawing.Size(226, 510);
+            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraScheduler.DateNavigator dateNavigator1;
     }
 }

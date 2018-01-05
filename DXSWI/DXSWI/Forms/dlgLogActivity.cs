@@ -223,7 +223,6 @@ namespace DXSWI.Forms
         {
             if (act == null)
                 return;
-            //todo
             try
             {
                 cbeRegarding.EditValue = act.Regarding;

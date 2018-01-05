@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::DXSWI.Forms.ssMain), true, true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgLogin));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.checkEditRememberMe = new DevExpress.XtraEditors.CheckEdit();
@@ -37,16 +38,20 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textEditPassword = new DevExpress.XtraEditors.TextEdit();
             this.textEditUserName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditRememberMe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // splashScreenManager1
+            // 
+            splashScreenManager1.ClosingDelay = 100;
             // 
             // imageList1
             // 
@@ -104,19 +109,15 @@
             this.textEditUserName.Size = new System.Drawing.Size(279, 20);
             this.textEditUserName.TabIndex = 0;
             // 
-            // labelControl3
+            // pictureBox1
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Lucida Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.AntiqueWhite;
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl3.LineVisible = true;
-            this.labelControl3.Location = new System.Drawing.Point(12, 12);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(86, 23);
-            this.labelControl3.TabIndex = 0;
-            this.labelControl3.Text = "Welcome";
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 72);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(124, 112);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // panelControl1
             // 
@@ -132,15 +133,19 @@
             this.panelControl1.Size = new System.Drawing.Size(535, 42);
             this.panelControl1.TabIndex = 9;
             // 
-            // pictureBox1
+            // labelControl3
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 72);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(124, 112);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Lucida Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.AntiqueWhite;
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.labelControl3.LineVisible = true;
+            this.labelControl3.Location = new System.Drawing.Point(12, 12);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(87, 23);
+            this.labelControl3.TabIndex = 0;
+            this.labelControl3.Text = "Welcome";
             // 
             // dlgLogin
             // 
@@ -159,16 +164,16 @@
             this.KeyPreview = true;
             this.Name = "dlgLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SWILife is sweet life";
+            this.Text = "SWILife is Sweet Life";
             this.Load += new System.EventHandler(this.dlgLogin_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgLogin_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.checkEditRememberMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -69,6 +69,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiImportFromExel = new DevExpress.XtraBars.BarButtonItem();
             this.rpUser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -89,15 +90,16 @@
             this.rpCalendar = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpUtilities = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgUsers = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgCompanies = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgJoborder = new DevExpress.XtraNavBar.NavBarGroup();
+            this.nbgUsers = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgContacts = new DevExpress.XtraNavBar.NavBarGroup();
+            this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
+            this.nbgJoborder = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgCalendar = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgReport = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgUtilites = new DevExpress.XtraNavBar.NavBarGroup();
@@ -147,9 +149,10 @@
             this.barButtonItem1,
             this.barButtonItem2,
             this.barButtonItem3,
-            this.barButtonItem5});
+            this.barButtonItem5,
+            this.bbiImportFromExel});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 84;
+            this.ribbonControlMain.MaxItemId = 85;
             this.ribbonControlMain.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -457,6 +460,14 @@
             this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_1);
             // 
+            // bbiImportFromExel
+            // 
+            this.bbiImportFromExel.Caption = "Import From Exel";
+            this.bbiImportFromExel.Id = 84;
+            this.bbiImportFromExel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiImportFromExel.ImageOptions.Image")));
+            this.bbiImportFromExel.Name = "bbiImportFromExel";
+            this.bbiImportFromExel.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
             // rpUser
             // 
             this.rpUser.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -611,9 +622,17 @@
             // 
             // rpUtilities
             // 
+            this.rpUtilities.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup11});
             this.rpUtilities.Name = "rpUtilities";
             this.rpUtilities.Tag = "utility";
             this.rpUtilities.Text = "UTILITIES";
+            // 
+            // ribbonPageGroup11
+            // 
+            this.ribbonPageGroup11.ItemLinks.Add(this.bbiImportFromExel);
+            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
+            this.ribbonPageGroup11.Text = "Utilities";
             // 
             // ribbonStatusBar
             // 
@@ -640,35 +659,36 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.nbgJoborder;
+            this.navBarControl1.ActiveGroup = this.nbgCompanies;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.nbgUsers,
-            this.nbgCandidates,
             this.nbgCompanies,
-            this.nbgJoborder,
             this.nbgContacts,
+            this.nbgCandidates,
+            this.nbgJoborder,
             this.nbgCalendar,
             this.nbgReport,
             this.nbgUtilites});
             this.navBarControl1.Location = new System.Drawing.Point(0, 143);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 150;
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 195;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(150, 593);
+            this.navBarControl1.Size = new System.Drawing.Size(195, 593);
             this.navBarControl1.TabIndex = 5;
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.CustomDrawLink += new DevExpress.XtraNavBar.ViewInfo.CustomDrawNavBarElementEventHandler(this.navBarControl1_CustomDrawLink);
             this.navBarControl1.ActiveGroupChanged += new DevExpress.XtraNavBar.NavBarGroupEventHandler(this.navBarControl1_ActiveGroupChanged);
             // 
-            // nbgCandidates
+            // nbgCompanies
             // 
-            this.nbgCandidates.Caption = "Candidates";
-            this.nbgCandidates.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgCandidates.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.LargeImage")));
-            this.nbgCandidates.Name = "nbgCandidates";
-            this.nbgCandidates.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.SmallImage")));
-            this.nbgCandidates.Tag = "candidate";
+            this.nbgCompanies.Caption = "Companies";
+            this.nbgCompanies.Expanded = true;
+            this.nbgCompanies.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgCompanies.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCompanies.LargeImage")));
+            this.nbgCompanies.Name = "nbgCompanies";
+            this.nbgCompanies.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCompanies.SmallImage")));
+            this.nbgCompanies.Tag = "company";
             // 
             // nbgUsers
             // 
@@ -679,25 +699,6 @@
             this.nbgUsers.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.SmallImage")));
             this.nbgUsers.Tag = "user";
             // 
-            // nbgCompanies
-            // 
-            this.nbgCompanies.Caption = "Companies";
-            this.nbgCompanies.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgCompanies.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCompanies.LargeImage")));
-            this.nbgCompanies.Name = "nbgCompanies";
-            this.nbgCompanies.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCompanies.SmallImage")));
-            this.nbgCompanies.Tag = "company";
-            // 
-            // nbgJoborder
-            // 
-            this.nbgJoborder.Caption = "Job Orders";
-            this.nbgJoborder.Expanded = true;
-            this.nbgJoborder.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgJoborder.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.LargeImage")));
-            this.nbgJoborder.Name = "nbgJoborder";
-            this.nbgJoborder.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.SmallImage")));
-            this.nbgJoborder.Tag = "joborder";
-            // 
             // nbgContacts
             // 
             this.nbgContacts.Caption = "Contacts";
@@ -706,6 +707,24 @@
             this.nbgContacts.Name = "nbgContacts";
             this.nbgContacts.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgContacts.SmallImage")));
             this.nbgContacts.Tag = "contact";
+            // 
+            // nbgCandidates
+            // 
+            this.nbgCandidates.Caption = "Candidates";
+            this.nbgCandidates.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgCandidates.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.LargeImage")));
+            this.nbgCandidates.Name = "nbgCandidates";
+            this.nbgCandidates.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.SmallImage")));
+            this.nbgCandidates.Tag = "candidate";
+            // 
+            // nbgJoborder
+            // 
+            this.nbgJoborder.Caption = "Job Orders";
+            this.nbgJoborder.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgJoborder.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.LargeImage")));
+            this.nbgJoborder.Name = "nbgJoborder";
+            this.nbgJoborder.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.SmallImage")));
+            this.nbgJoborder.Tag = "joborder";
             // 
             // nbgCalendar
             // 
@@ -737,9 +756,9 @@
             // pcMain
             // 
             this.pcMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pcMain.Location = new System.Drawing.Point(150, 143);
+            this.pcMain.Location = new System.Drawing.Point(195, 143);
             this.pcMain.Name = "pcMain";
-            this.pcMain.Size = new System.Drawing.Size(1200, 593);
+            this.pcMain.Size = new System.Drawing.Size(1155, 593);
             this.pcMain.TabIndex = 6;
             // 
             // ribbonPageGroup10
@@ -765,7 +784,7 @@
             this.Ribbon = this.ribbonControlMain;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "SWILife Candidate Manager V1.0";
+            this.Text = "SWILife HR Assistant V1.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SWIMain_FormClosing);
             this.Load += new System.EventHandler(this.SWIMain_Load);
@@ -849,5 +868,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgUtilities;
+        private DevExpress.XtraBars.BarButtonItem bbiImportFromExel;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
     }
 }

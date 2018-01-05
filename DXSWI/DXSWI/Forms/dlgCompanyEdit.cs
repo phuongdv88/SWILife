@@ -53,16 +53,16 @@ namespace DXSWI.Forms
             // load attachment from disk
             if (link == null || link.Length == 0)
             {
-                this.sliAttachment.Text = "No file chosen";
-                this.sbDeleteAttachment.Enabled = false;
-                this.sbDownloadAttachment.Enabled = false;
+                sliAttachment.Text = "No file chosen";
+                sbDeleteAttachment.Enabled = false;
+                sbDownloadAttachment.Enabled = false;
 
             }
             else
             {
-                this.sliAttachment.Text = link.Split('\\').Last();
-                this.sbDeleteAttachment.Enabled = true;
-                this.sbDownloadAttachment.Enabled = true;
+                sliAttachment.Text = link.Split('\\').Last();
+                sbDeleteAttachment.Enabled = true;
+                sbDownloadAttachment.Enabled = true;
             }
 
         }
@@ -71,50 +71,50 @@ namespace DXSWI.Forms
         {
             if (mCompany == null)
                 mCompany = new Company();
-            mCompany.Name = this.NameTextEdit.Text;
-            mCompany.PrimaryPhone = this.PrimaryPhoneTextEdit.Text;
-            mCompany.SecondaryPhone = this.SecondaryPhoneTextEdit.Text;
-            mCompany.FaxNumber = this.FaxNumberTextEdit.Text;
-            mCompany.Address = this.AddressTextEdit.Text;
-            mCompany.CountryOfOrigin = this.CountryOfOriginTextEdit.Text;
-            mCompany.WebSite = this.WebSiteTextEdit.Text;
-            mCompany.KeyTechnologies = this.KeyTechnologiesTextEdit.Text;
-            mCompany.Industry = this.IndustryComboBoxEdit.Text;
-            mCompany.ABC = this.ABCTextEdit.Text;
-            mCompany.IsActive = this.IsActiveCheckEdit.Checked;
-            mCompany.City = this.CityTextEdit.Text;
-            mCompany.State = this.StateTextEdit.Text;
-            mCompany.PostalCode = this.PostalCodeTextEdit.Text;
-            mCompany.IsHot = this.IsHotCheckEdit.Checked;
+            mCompany.Name = NameTextEdit.Text;
+            mCompany.PrimaryPhone = PrimaryPhoneTextEdit.Text;
+            mCompany.SecondaryPhone = SecondaryPhoneTextEdit.Text;
+            mCompany.FaxNumber = FaxNumberTextEdit.Text;
+            mCompany.Address = AddressTextEdit.Text;
+            mCompany.CountryOfOrigin = CountryOfOriginTextEdit.Text;
+            mCompany.WebSite = WebSiteTextEdit.Text;
+            mCompany.KeyTechnologies = KeyTechnologiesTextEdit.Text;
+            mCompany.Industry = IndustryComboBoxEdit.Text;
+            mCompany.ABC = ABCTextEdit.Text;
+            mCompany.IsActive = IsActiveCheckEdit.Checked;
+            mCompany.City = CityTextEdit.Text;
+            mCompany.State = StateTextEdit.Text;
+            mCompany.PostalCode = PostalCodeTextEdit.Text;
+            mCompany.IsHot = IsHotCheckEdit.Checked;
             if (ContractSigingTimeDateEdit.Text.Length > 0)
             {
-                mCompany.ContractSigingTime = DateTime.Parse(this.ContractSigingTimeDateEdit.DateTime.ToString("yyyy/MM/dd"));
+                mCompany.ContractSigingTime = DateTime.Parse(ContractSigingTimeDateEdit.DateTime.ToString("yyyy/MM/dd"));
             }
-            mCompany.MiscNotes = this.MiscNotesTextEdit.Text;
-            mCompany.ServiceContractTerms = this.ServiceContractTermsTextEdit.Text;
+            mCompany.MiscNotes = MiscNotesTextEdit.Text;
+            mCompany.ServiceContractTerms = ServiceContractTermsTextEdit.Text;
         }
 
         private void FillObjectToUi()
         {
             if (mCompany == null) return;
-            this.NameTextEdit.Text = mCompany.Name;
-            this.PrimaryPhoneTextEdit.Text = mCompany.PrimaryPhone;
-            this.SecondaryPhoneTextEdit.Text = mCompany.SecondaryPhone;
-            this.FaxNumberTextEdit.Text = mCompany.FaxNumber;
-            this.AddressTextEdit.Text = mCompany.Address;
-            this.CountryOfOriginTextEdit.Text = mCompany.CountryOfOrigin;
-            this.WebSiteTextEdit.Text = mCompany.WebSite;
-            this.KeyTechnologiesTextEdit.Text = mCompany.KeyTechnologies;
-            this.IndustryComboBoxEdit.EditValue = mCompany.Industry;
-            this.ABCTextEdit.Text = mCompany.ABC;
-            this.IsActiveCheckEdit.Checked = mCompany.IsActive;
-            this.CityTextEdit.Text = mCompany.City;
-            this.StateTextEdit.Text = mCompany.State;
-            this.PostalCodeTextEdit.Text = mCompany.PostalCode;
-            this.IsHotCheckEdit.Checked = mCompany.IsHot;
-            this.ContractSigingTimeDateEdit.Text = mCompany.ContractSigingTime.ToString("dd/MM/yyyy");
-            this.MiscNotesTextEdit.Text = mCompany.MiscNotes;
-            this.ServiceContractTermsTextEdit.Text = mCompany.ServiceContractTerms;
+            NameTextEdit.Text = mCompany.Name;
+            PrimaryPhoneTextEdit.Text = mCompany.PrimaryPhone;
+            SecondaryPhoneTextEdit.Text = mCompany.SecondaryPhone;
+            FaxNumberTextEdit.Text = mCompany.FaxNumber;
+            AddressTextEdit.Text = mCompany.Address;
+            CountryOfOriginTextEdit.Text = mCompany.CountryOfOrigin;
+            WebSiteTextEdit.Text = mCompany.WebSite;
+            KeyTechnologiesTextEdit.Text = mCompany.KeyTechnologies;
+            IndustryComboBoxEdit.EditValue = mCompany.Industry;
+            ABCTextEdit.Text = mCompany.ABC;
+            IsActiveCheckEdit.Checked = mCompany.IsActive;
+            CityTextEdit.Text = mCompany.City;
+            StateTextEdit.Text = mCompany.State;
+            PostalCodeTextEdit.Text = mCompany.PostalCode;
+            IsHotCheckEdit.Checked = mCompany.IsHot;
+            ContractSigingTimeDateEdit.Text = mCompany.ContractSigingTime.ToString("dd/MM/yyyy");
+            MiscNotesTextEdit.Text = mCompany.MiscNotes;
+            ServiceContractTermsTextEdit.Text = mCompany.ServiceContractTerms;
         }
 
         private void sbAttachFile_Click(object sender, EventArgs e)
@@ -131,7 +131,7 @@ namespace DXSWI.Forms
             // store link file , copy to server when click ok
             FileLink = openFileDlg.FileName;
             FileName = FileLink.Split('\\').Last();
-            this.sliAttachment.Text = FileName;
+            sliAttachment.Text = FileName;
         }
 
         private void sbDeleteAttachment_Click(object sender, EventArgs e)
@@ -178,7 +178,7 @@ namespace DXSWI.Forms
                 if (isNew)
                 {
                     // use inserting function
-                    mCompany.UserId = UserManager.ActivatedUser.Index;
+                    mCompany.UserId = UserManager.ActivatedUser.UserId;
                     CompanyManager.addNewCompany(mCompany);
                 }
                 else
@@ -214,7 +214,7 @@ namespace DXSWI.Forms
             switch (e.KeyCode)
             {
                 case Keys.Escape:
-                    this.Close();
+                    Close();
                     break;
                 default:
                     break;
@@ -223,28 +223,28 @@ namespace DXSWI.Forms
 
         public void setReadOnlyMode(bool value)
         {
-            this.NameTextEdit.ReadOnly = value;
-            this.PrimaryPhoneTextEdit.ReadOnly = value;
-            this.SecondaryPhoneTextEdit.ReadOnly = value;
-            this.FaxNumberTextEdit.ReadOnly = value;
-            this.AddressTextEdit.ReadOnly = value;
-            this.CountryOfOriginTextEdit.ReadOnly = value;
-            this.WebSiteTextEdit.ReadOnly = value;
-            this.KeyTechnologiesTextEdit.ReadOnly = value;
-            this.IndustryComboBoxEdit.ReadOnly = value;
-            this.ABCTextEdit.ReadOnly = value;
-            this.IsActiveCheckEdit.ReadOnly = value;
-            this.CityTextEdit.ReadOnly = value;
-            this.StateTextEdit.ReadOnly = value;
-            this.PostalCodeTextEdit.ReadOnly = value;
-            this.IsHotCheckEdit.ReadOnly = value;
-            this.ContractSigingTimeDateEdit.ReadOnly = value;
-            this.MiscNotesTextEdit.ReadOnly = value;
-            this.ServiceContractTermsTextEdit.ReadOnly = value;
-            this.sbAttachFile.Enabled = !value;
-            this.sbDeleteAttachment.Enabled = !value;
-            this.sbDownloadAttachment.Enabled = !value;
-            this.sbOK.Enabled = !value;
+            NameTextEdit.ReadOnly = value;
+            PrimaryPhoneTextEdit.ReadOnly = value;
+            SecondaryPhoneTextEdit.ReadOnly = value;
+            FaxNumberTextEdit.ReadOnly = value;
+            AddressTextEdit.ReadOnly = value;
+            CountryOfOriginTextEdit.ReadOnly = value;
+            WebSiteTextEdit.ReadOnly = value;
+            KeyTechnologiesTextEdit.ReadOnly = value;
+            IndustryComboBoxEdit.ReadOnly = value;
+            ABCTextEdit.ReadOnly = value;
+            IsActiveCheckEdit.ReadOnly = value;
+            CityTextEdit.ReadOnly = value;
+            StateTextEdit.ReadOnly = value;
+            PostalCodeTextEdit.ReadOnly = value;
+            IsHotCheckEdit.ReadOnly = value;
+            ContractSigingTimeDateEdit.ReadOnly = value;
+            MiscNotesTextEdit.ReadOnly = value;
+            ServiceContractTermsTextEdit.ReadOnly = value;
+            sbAttachFile.Enabled = !value;
+            sbDeleteAttachment.Enabled = !value;
+            sbDownloadAttachment.Enabled = !value;
+            sbOK.Enabled = !value;
         }
     }
 }

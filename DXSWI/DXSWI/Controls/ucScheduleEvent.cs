@@ -40,7 +40,6 @@ namespace DXSWI.Controls
         {
             if (ev == null)
                 return;
-            //todo
             try {
                 if (ev.Type > 0 && ev.Type < cbeType.Properties.Items.Count)
                 {

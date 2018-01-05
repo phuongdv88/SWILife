@@ -1,9 +1,10 @@
 ﻿CREATE DATABASE  IF NOT EXISTS `swilifecore` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 
 USE `swilifecore`;
+
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 192.168.1.200    Database: swilifecore
+-- Host: 192.168.1.100    Database: swilifecore
 -- ------------------------------------------------------
 -- Server version	5.7.20-log
 
@@ -99,9 +100,10 @@ CREATE TABLE `candidate` (
   `UserId` int(11) DEFAULT NULL,
   `Modified` datetime DEFAULT NULL,
   `ImageLink` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IsQualified` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`CandidateId`),
   UNIQUE KEY `CandidateId_UNIQUE` (`CandidateId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +112,7 @@ CREATE TABLE `candidate` (
 
 LOCK TABLES `candidate` WRITE;
 /*!40000 ALTER TABLE `candidate` DISABLE KEYS */;
-INSERT INTO `candidate` VALUES (1,'Đào ','Việt ','Phương','phuongdv@live.com','secondary@mail.com','phuongalas','0983949090','0123456789','11 giờ đêm','234 Phạm Văn Đồng','swilife.com','1','Tech','2018-01-21','Viettel','C++, State machine',0,'1000$','2000$','24/6/1988','interview notes...','1','notes...','Hanoi','Vietnam','\\\\192.168.1.200\\d\\swilifedata\\candidates\\resume\\2017-11-21_12-00-00eLzIHwhLCW\\SWILifeApp.docx','Nhân viên',11,'VQ; abc; xyz','Công nghệ thông tin','BKHN','English, Russian','2017-11-21 00:00:00',1,0,1,'2017-12-06 11:52:10','\\\\192.168.1.200\\d\\swilifedata\\candidates\\avatar\\2017-11-21_12-00-00PzUGX1kmY5\\IMG_6947.JPG'),(2,'Nguyễn','Hương','Trà','tra@email1.com','tra@email2.com','traSkype','0989838896','0122132132','12 giờ đêm','232 Phạm Văn Đồng','trawebsite.com.vn','2','Sale','2018-02-15','sale manager','xinh',1,'1200$','2500$','09/08/1990','note interview Trà','0','not Trà','HCM','Mỹ','','Vợ',2,'đẻ Sun Sun','Sếp','Báo chí','Tiếng Anh, Tiếng Em','2017-11-22 00:00:00',1,0,1,'2017-12-26 11:12:08','\\\\192.168.1.200\\d\\swilifedata\\candidates\\avatar\\2_2017-11-22uOGyUVYhRs\\'),(3,'test','','','','','','','','','','','','','0001-01-01','','',0,'','','','','0','','','','','',0,'','','','','2017-12-16 23:10:36',0,0,0,'2017-12-16 23:10:35','\\\\192.168.1.200\\d\\swilifedata\\candidates\\avatar\\-1_0001-01-01ZxwJdc3lZj\\IMG_7105.JPG');
+INSERT INTO `candidate` VALUES (1,'Đào ','Việt ','Phương','phuongdv@live.com','secondary@mail.com','phuongalas','0983949090','0123456789','11 giờ đêm','234 Phạm Văn Đồng','swilife.com','1','Tech','2018-01-21','Viettel','C++, State machine',0,'1000$','2000$','24/6/1988','interview notes...','1','notes...','Hanoi','Vietnam','\\\\192.168.1.200\\d\\swilifedata\\candidates\\resume\\2017-11-21_12-00-00eLzIHwhLCW\\SWILifeApp.docx','Nhân viên',11,'VQ; abc; xyz','Công nghệ thông tin','BKHN','English, Russian','2017-11-21 00:00:00',1,0,1,'2018-01-02 23:31:40','',0),(2,'Nguyễn','Hương','Trà','tra@email1.com','tra@email2.com','traSkype','0989838896','0122132132','12 giờ đêm','232 Phạm Văn Đồng','trawebsite.com.vn','2','Sale','2018-02-15','sale manager','xinh',1,'1200$','2500$','09/08/1990','note interview Trà','0','not Trà','HCM','Mỹ','','Vợ',2,'đẻ Sun Sun','Sếp','Báo chí','Tiếng Anh, Tiếng Em','2017-11-22 00:00:00',1,0,1,'2018-01-02 23:36:41','\\\\192.168.1.100\\SwilifeData\\candidates\\avatar\\NguyễnTrà2017-11-22XxfXINULxU\\26037285_10213197892453879_423453014_o.jpg',1),(3,'test','','','','','','','','','','','','','0001-01-01','','',0,'','','','','0','','','','','',0,'','','','','2017-12-16 23:10:36',0,0,0,'2018-01-02 23:40:23','',0);
 /*!40000 ALTER TABLE `candidate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +148,7 @@ CREATE TABLE `company` (
   `Created` datetime DEFAULT NULL,
   `Modified` datetime DEFAULT NULL,
   PRIMARY KEY (`CompanyId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,7 +194,7 @@ CREATE TABLE `contact` (
   `Modified` datetime DEFAULT NULL,
   `ImageLink` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ContactId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -328,7 +330,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`UserId`),
   UNIQUE KEY `idStaffUser_UNIQUE` (`UserId`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='It''s for authentication. Password is md5 of raw_pass+ salt ';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='It''s for authentication. Password is md5 of raw_pass+ salt ';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,7 +339,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'root','86EC4309A83C02FC2B514198FA93091C','123456a@',1,0),(2,'admin','86EC4309A83C02FC2B514198FA93091C','123456a@',1,0),(4,'dp','EEAFB716F93FA090D7716749A6EEFA72','123456',1,0),(5,'phuongdv','86EC4309A83C02FC2B514198FA93091C','123456a@',1,0);
+INSERT INTO `user` VALUES (1,'root','86EC4309A83C02FC2B514198FA93091C','123456a@',1,0),(2,'admin','86EC4309A83C02FC2B514198FA93091C','123456a@',1,0),(4,'dp','EEAFB716F93FA090D7716749A6EEFA72','123456',1,0),(5,'phuongdv','86EC4309A83C02FC2B514198FA93091C','123456a@',1,0),(6,'operator','86EC4309A83C02FC2B514198FA93091C','123456a@',1,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -534,4 +536,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-02  7:59:29
+-- Dump completed on 2018-01-03  8:28:29

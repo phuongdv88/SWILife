@@ -602,9 +602,11 @@
             this.companyComboxEdit.Name = "companyComboxEdit";
             this.companyComboxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.companyComboxEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.companyComboxEdit.Size = new System.Drawing.Size(633, 20);
             this.companyComboxEdit.StyleController = this.dataLayoutControl1;
             this.companyComboxEdit.TabIndex = 31;
+            this.companyComboxEdit.SelectedValueChanged += new System.EventHandler(this.companyComboxEdit_SelectedValueChanged);
             // 
             // contactComboboxEdit
             // 
@@ -612,6 +614,7 @@
             this.contactComboboxEdit.Name = "contactComboboxEdit";
             this.contactComboboxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.contactComboboxEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.contactComboboxEdit.Size = new System.Drawing.Size(393, 20);
             this.contactComboboxEdit.StyleController = this.dataLayoutControl1;
             this.contactComboboxEdit.TabIndex = 32;

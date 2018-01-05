@@ -19,12 +19,11 @@ namespace DXSWI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            //Application.Run(new SWIMain());
-            //Application.Run(new dlgLogin());
+
+
             ScreenManager.Instance.initLoginScreen();
         }
     }

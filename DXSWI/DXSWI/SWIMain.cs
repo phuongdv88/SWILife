@@ -41,8 +41,7 @@ namespace DXSWI
         void init()
         {
             // init all Modules
-            //changeGroup(tagCandidates);
-            changeGroup(tagJobOrder);
+            changeGroup(tagCompanies);
         }
 
 

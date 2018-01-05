@@ -25,7 +25,6 @@ namespace SWIBLL.Models
         public string City { get; set; }
         public string State { get; set; }
         public string PostalCode { get; set; }
-        public string Department { get; set; }
         public bool IsHot { get; set; }
         public DateTime ContractSigingTime { get; set; }
         public string ScanLink { get; set; }
@@ -36,7 +35,8 @@ namespace SWIBLL.Models
         public DateTime Modified { get; set; }
         public Company()
         {
-
+            CompanyId = -1;
+            ScanLink = string.Empty;
         }
 
         ~Company()

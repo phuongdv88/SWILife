@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using SWIDAL;
 using SWIBLL.Models;
@@ -18,7 +14,29 @@ namespace SWIBLL
 
         public static bool createJobOrder(JobOrder jobOrder)
         {
-            string sql = string.Format("INSERT INTO `swilifecore`.`joborder` " +
+            // check duplicate:
+            string sql = string.Format("select count(*) from swilifecore.joborder where (char_length(Title) > 0 and Title = '{0}') and (CompanyId != -1 and CompanyId = '{1}') ", jobOrder.Title, jobOrder.CompanyId);
+            MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);
+            try
+            {
+                while (reader.Read())
+                {
+                    if (int.Parse(reader[0].ToString()) > 0)
+                    {
+                        throw new Exception("This candidate has existed!");
+                    }
+                    break;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                reader.Dispose();
+            }
+            sql = string.Format("INSERT INTO `swilifecore`.`joborder` " +
                 "(`Title`, `Department`, `Salary`, `ContactId`, `CompanyId`, `City`, `State`, `RecruiterId`, `OwnerId`, `StartDate`, " +
                 "`Duration`, `Type`, `Openings`, `IsHot`, `isPublic`, `Description`, `InternalNotes`, `Created`, `Modified`, `WebLink`, `Status`, `ExperienceYear`)" +
                 "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', " +

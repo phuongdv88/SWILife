@@ -63,7 +63,7 @@ namespace DXSWI.Modules
                 int row = gridView1.GetSelectedRows().First();
                 DataRow data_row = gridView1.GetDataRow(row); // for test
                 //Candidate obj = Data.CreateItemFromRow<Candidate>(data_row);
-                int canID = int.Parse(data_row["CandidateId"].ToString());
+                long canID = Convert.ToInt64(data_row["CandidateId"].ToString());
                 ucCandidateManager1.setCurrentCandidate(canID,"");
             }
             // fill to ucCandidateManager form
@@ -88,12 +88,12 @@ namespace DXSWI.Modules
         //    return null;
         //}
 
-        public int currentCandidateId()
+        public long currentCandidateId()
         {
             if (gridView1.SelectedRowsCount > 0)
             {
                 int row = gridView1.GetSelectedRows().First();
-                return int.Parse(gridView1.GetDataRow(row)["CandidateId"].ToString());
+                return Convert.ToInt64(gridView1.GetDataRow(row)["CandidateId"].ToString());
             }
             return -1;
         }

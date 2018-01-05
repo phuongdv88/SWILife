@@ -30,7 +30,7 @@ namespace SWIBLL.Models
         public string DesiredPay { get; set; }
         public string DOBMarried { get; set; }
         public string InterviewNotes { get; set; }
-        public bool Gender { get; set; }
+        public bool Gender { get; set; } // male : true, female = false;
         public string MiscNotes { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
@@ -49,13 +49,50 @@ namespace SWIBLL.Models
         public long UserId { get; set; }
         public DateTime Modified { get; set; }
         public string ImageLink { get; set; }
+
+        public bool IsQualified { get; set; }
         //Listed all candidates with bad / unprofessional attitude , behaviors.
         //We will not delete those candidates from ATS, but keep to mornitor them and refrain from approaching them again.
         //This much time saving when we not spend time/efforts with those.
         public Candidate()
         {
             CandidateId = -1;
-        }
+            FirstName = string.Empty;
+            MiddleName = string.Empty;
+            LastName = string.Empty;
+            Email = string.Empty;
+            SecondaryEmail = string.Empty;
+            SkypeIM = string.Empty;
+            CellPhone = string.Empty;
+            WorkPhone = string.Empty;
+            BestTimeToCall = string.Empty;
+            Address = string.Empty;
+            WebSite = string.Empty;
+            Source = string.Empty; // linkedin, referral, apply directly, vietnamwork, other
+            CurrentPosition = string.Empty;
+            CurrentEmployer = string.Empty;
+            KeySkills = string.Empty;
+            CanRelocate = false;
+            CurrentPay = string.Empty;
+            DesiredPay = string.Empty;
+            DOBMarried = string.Empty;
+            InterviewNotes = string.Empty;
+            Gender = true;
+            MiscNotes = string.Empty;
+            City = string.Empty;
+            Country = string.Empty;
+            ResumeLink = string.Empty;
+            PositionsUpTillNow = string.Empty;
+            ProjectDone = string.Empty;
+            Industry = string.Empty;
+            Education = string.Empty;
+            Language = string.Empty;
+            CreatedId = 2;
+            IsInBlacklist = false;
+            UserId = 2;
+            ImageLink = string.Empty;
+            IsQualified = false;
+    }
 
         ~Candidate()
         {

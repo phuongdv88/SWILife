@@ -15,8 +15,7 @@ namespace SWIBLL
             var result = DataAccess.Instance.executeScalar(sql);
             if(result != null)
             {
-                Exception ex = new Exception("This Job Order has assigned!");
-                throw ex;
+                throw new Exception("This Job Order has assigned!");
             }
             sql = string.Format("INSERT INTO `swilifecore`.`runningtask` (`CandidateId`, `JobOrderId`, `Status`, `Match`, `Added`, `EnteredBy`, `isSubmitted`) " +
                 "VALUES ('{0}', '{1}', 'Not Contact', '0', now(), '{2}', '0')", 
@@ -61,7 +60,7 @@ namespace SWIBLL
         public static DataTable getRunningTaskJobs(long candidateId)
         {
             string sql = string.Format("select T1.RunningtaskId, T1.JobOrderId, T1.Status, T1.Match, T2.Title, date_format(T1.Added, '%d-%m-%Y') as Added, T1.EnteredBy, T4.UserName Owner, T3.Name CompanyName from swilifecore.runningtask T1 inner join swilifecore.joborder T2 on T1.JobOrderId = t2.JobOrderId inner join swilifecore.company T3 on T2.CompanyId = T3.CompanyId left join swilifecore.user T4 on T2.OwnerId = T4.UserId where T1.CandidateId = '{0}'", candidateId);
-            return DataAccess.Instance.getTable(sql);
+            return DataAccess.Instance.getDataTable(sql);
         }
         public static DataTable getRunningTaskCandidates(long jobId)
         {

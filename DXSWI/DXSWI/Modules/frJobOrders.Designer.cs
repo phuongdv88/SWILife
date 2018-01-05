@@ -33,8 +33,9 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newJobOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteJobOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvJobOrder = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colType = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -45,8 +46,6 @@
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLink = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.deleteJobOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gcJobOrder)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvJobOrder)).BeginInit();
@@ -72,7 +71,7 @@
             this.toolStripSeparator1,
             this.deleteJobOrderToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 76);
             // 
             // newJobOrderToolStripMenuItem
             // 
@@ -88,10 +87,21 @@
             this.editToolStripMenuItem.Text = "Edit Job Order";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
+            // 
+            // deleteJobOrderToolStripMenuItem
+            // 
+            this.deleteJobOrderToolStripMenuItem.Name = "deleteJobOrderToolStripMenuItem";
+            this.deleteJobOrderToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.deleteJobOrderToolStripMenuItem.Text = "Delete Job Order";
+            this.deleteJobOrderToolStripMenuItem.Click += new System.EventHandler(this.deleteJobOrderToolStripMenuItem_Click);
+            // 
             // gvJobOrder
             // 
             this.gvJobOrder.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colId,
             this.colTitle,
             this.colCompany,
             this.colType,
@@ -108,22 +118,13 @@
             this.gvJobOrder.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gvJobOrder.DoubleClick += new System.EventHandler(this.gvJobOrder_DoubleClick);
             // 
-            // colId
-            // 
-            this.colId.Caption = "Id";
-            this.colId.FieldName = "JobOrderId";
-            this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 0;
-            this.colId.Width = 33;
-            // 
             // colTitle
             // 
             this.colTitle.Caption = "Title";
             this.colTitle.FieldName = "Title";
             this.colTitle.Name = "colTitle";
             this.colTitle.Visible = true;
-            this.colTitle.VisibleIndex = 1;
+            this.colTitle.VisibleIndex = 0;
             this.colTitle.Width = 186;
             // 
             // colCompany
@@ -132,7 +133,7 @@
             this.colCompany.FieldName = "CompanyName";
             this.colCompany.Name = "colCompany";
             this.colCompany.Visible = true;
-            this.colCompany.VisibleIndex = 2;
+            this.colCompany.VisibleIndex = 1;
             this.colCompany.Width = 185;
             // 
             // colType
@@ -141,7 +142,7 @@
             this.colType.FieldName = "Type";
             this.colType.Name = "colType";
             this.colType.Visible = true;
-            this.colType.VisibleIndex = 3;
+            this.colType.VisibleIndex = 2;
             this.colType.Width = 25;
             // 
             // colStatus
@@ -150,7 +151,7 @@
             this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
             this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 4;
+            this.colStatus.VisibleIndex = 3;
             this.colStatus.Width = 30;
             // 
             // colAge
@@ -159,7 +160,7 @@
             this.colAge.FieldName = "DaysOld";
             this.colAge.Name = "colAge";
             this.colAge.Visible = true;
-            this.colAge.VisibleIndex = 5;
+            this.colAge.VisibleIndex = 4;
             this.colAge.Width = 60;
             // 
             // colSubmitted
@@ -168,7 +169,7 @@
             this.colSubmitted.FieldName = "Submitted";
             this.colSubmitted.Name = "colSubmitted";
             this.colSubmitted.Visible = true;
-            this.colSubmitted.VisibleIndex = 6;
+            this.colSubmitted.VisibleIndex = 5;
             this.colSubmitted.Width = 59;
             // 
             // colCanInPipeLine
@@ -177,7 +178,7 @@
             this.colCanInPipeLine.FieldName = "CanInPipeLine";
             this.colCanInPipeLine.Name = "colCanInPipeLine";
             this.colCanInPipeLine.Visible = true;
-            this.colCanInPipeLine.VisibleIndex = 7;
+            this.colCanInPipeLine.VisibleIndex = 6;
             this.colCanInPipeLine.Width = 49;
             // 
             // colOwner
@@ -186,7 +187,7 @@
             this.colOwner.FieldName = "Owner";
             this.colOwner.Name = "colOwner";
             this.colOwner.Visible = true;
-            this.colOwner.VisibleIndex = 8;
+            this.colOwner.VisibleIndex = 7;
             this.colOwner.Width = 36;
             // 
             // colCity
@@ -195,7 +196,7 @@
             this.colCity.FieldName = "City";
             this.colCity.Name = "colCity";
             this.colCity.Visible = true;
-            this.colCity.VisibleIndex = 9;
+            this.colCity.VisibleIndex = 8;
             this.colCity.Width = 38;
             // 
             // colLink
@@ -204,20 +205,8 @@
             this.colLink.FieldName = "Weblink";
             this.colLink.Name = "colLink";
             this.colLink.Visible = true;
-            this.colLink.VisibleIndex = 10;
+            this.colLink.VisibleIndex = 9;
             this.colLink.Width = 214;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
-            // 
-            // deleteJobOrderToolStripMenuItem
-            // 
-            this.deleteJobOrderToolStripMenuItem.Name = "deleteJobOrderToolStripMenuItem";
-            this.deleteJobOrderToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.deleteJobOrderToolStripMenuItem.Text = "Delete Job Order";
-            this.deleteJobOrderToolStripMenuItem.Click += new System.EventHandler(this.deleteJobOrderToolStripMenuItem_Click);
             // 
             // frJobOrders
             // 
@@ -237,7 +226,6 @@
 
         private DevExpress.XtraGrid.GridControl gcJobOrder;
         private DevExpress.XtraGrid.Views.Grid.GridView gvJobOrder;
-        private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colTitle;
         private DevExpress.XtraGrid.Columns.GridColumn colCompany;
         private DevExpress.XtraGrid.Columns.GridColumn colType;

@@ -17,11 +17,17 @@ namespace SWIBLL
             return DataAccess.Instance.getCompaniesOverview();
         }
 
+        public static DataTable getNameCompanies()
+        {
+            string sql = "SELECT CompanyId, Name From swilifecore.company  order by CompanyId desc";
+            return DataAccess.Instance.getDataTable(sql);
+        }
+
         public static Company getCompany(long companyId)
         {
             Company com = null;
             string sql = string.Format("SELECT * FROM swilifecore.company WHERE `CompanyId` = '{0}'", companyId);
-            DataTable tbl = DataAccess.Instance.getTable(sql);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
             if (tbl.Rows.Count > 0)
             {
                 DataRow datarow = tbl.Rows[0];
@@ -33,7 +39,30 @@ namespace SWIBLL
         public static void addNewCompany(Company com)
         {
             if (com == null) return;
-            string sql = string.Format("INSERT INTO `swilifecore`.`company` " +
+            // check duplicate:
+            string sql = string.Format("select count(*) from swilifecore.company where (char_length(Name) > 0 and Name = '{0}') or (char_length(PrimaryPhone) > 0 and PrimaryPhone = '{1}')", com.Name, com.PrimaryPhone);
+            MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);
+            try
+            {
+                while (reader.Read())
+                {
+                    if (int.Parse(reader[0].ToString()) > 0)
+                    {
+                        throw new Exception("This Company has existed!");
+                    }
+                    break;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                reader.Dispose();
+            }
+
+            sql = string.Format("INSERT INTO `swilifecore`.`company` " +
                 "(`Name`, `PrimaryPhone`, `SecondaryPhone`, `FaxNumber`, `Address`, `CountryOfOrigin`, `WebSite`, `KeyTechnologies`, " +
                 "`ServiceContractTerms`, `Industry`, `ABC`, `IsActive`, `MiscNotes`, `City`, `State`, `PostalCode`, `IsHot`, " +
                 "`ContractSigingTime`, `ScanLink`, `UserId`, `Created`, `Modified`) VALUES " +
@@ -69,7 +98,7 @@ namespace SWIBLL
                 DataAccess.Instance.StartTransaction();
 
                 // delete company
-                string sql = string.Format("DELETE FROM `swilifecore`.`company` WHERE `CompanyId`='{0}''", comId);
+                string sql = string.Format("DELETE FROM `swilifecore`.`company` WHERE `CompanyId`='{0}'", comId);
                 DataAccess.Instance.executeNonQueryTransaction(sql);
                 // delete contact
                 sql = string.Format("delete from `swilifecore`.`contact` where `CompanyId`='{0}'", comId);

@@ -39,7 +39,7 @@ namespace DXSWI.Controls
         //    updateData();
         //}
 
-        public void setCurrentCandidate(int CanId, string toolTip)
+        public void setCurrentCandidate(long CanId, string toolTip)
         {
             if (!string.IsNullOrEmpty(toolTip))
             {
@@ -56,14 +56,12 @@ namespace DXSWI.Controls
             //this.dataLayoutControl1.Controls.Add(this.peAvatar);
             try
             {
-                if (mCandidate.ImageLink?.Length > 0)
-                {
-                    this.peAvatar.Image = Bitmap.FromFile(mCandidate.ImageLink);
-                }
+                    peAvatar.Image = Bitmap.FromFile(mCandidate.ImageLink);
             }
             catch
             {
-                // donot do anything
+                peAvatar.Image = null;
+
             }
         }
         private void loadAttachment()
@@ -277,6 +275,22 @@ namespace DXSWI.Controls
                 this.DateAvailableDateEdit.Text = mCandidate.DateAvailable.ToShortDateString();
                 // add data to view
 
+                if (mCandidate.IsInBlacklist)
+                {
+                    lcgContactInfo.CaptionImage = DevExpress.Images.ImageResourceCache.Default.GetImage("images/status/warning_32x32.png");
+                }
+                else
+                {
+                    if (mCandidate.IsQualified)
+                    {
+                        lcgContactInfo.CaptionImage = DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/apply_32x32.png");
+                    }
+                    else
+                    {
+                        lcgContactInfo.CaptionImage = DevExpress.Images.ImageResourceCache.Default.GetImage("images/support/info_32x32.png");
+                    }
+                }
+
                 loadAvatar();
                 loadAttachment();
                 loadJobPipeLine();
@@ -308,7 +322,6 @@ namespace DXSWI.Controls
             dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Pipeline, mCandidate.CandidateId, jobOrderId, -1);
             if (regarding.Length > 0)
             {
-                //todo
                 dlg.setRegarding(regarding);
             }
             dlg.ShowDialog();

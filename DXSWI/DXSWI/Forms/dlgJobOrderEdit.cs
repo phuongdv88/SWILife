@@ -21,8 +21,8 @@ namespace DXSWI.Forms
         bool isNew = true;
         public delegate void onUpdateData();
         public event onUpdateData emitUpdateData;
-        Dictionary<string, long> companiesNameAndId; // name, id
-        Dictionary<string, long> contactsNameAndId; // contact name and id
+        Dictionary<string, long> companiesNameAndId = new Dictionary<string, long>(); // name, id
+        Dictionary<string, long> contactsNameAndId = new Dictionary<string, long>(); // contact name and id
 
         public dlgJobOrderEdit(long jobOrderId)
         {
@@ -42,11 +42,16 @@ namespace DXSWI.Forms
             if (jobOrderId == -1)
             {
                 isNew = true;
+                // load all company name to select in combobox
+                getCompanies(ref companiesNameAndId);
+                companyComboxEdit.Properties.Items.Clear();
+                companyComboxEdit.Properties.Items.AddRange(companiesNameAndId.Keys);
             }
             else
             {
                 isNew = false;
                 mJobOrder = JobOrderManager.getJobOrder(jobOrderId);
+
                 fillCurrentJoborderToUI();
                 loadAttachment();
                 updateData();
@@ -62,23 +67,15 @@ namespace DXSWI.Forms
             this.DepartmentTextEdit.Text = mJobOrder.Department;
             this.SalaryTextEdit.Text = mJobOrder.Salary;
             // todo:
-            if(mJobOrder.CompanyId != -1)
-            {
-                // get company name
-            } else
-            {
-                // load all company name to select in combobox
-            }
-            if(mJobOrder.ContactId != -1)
-            {
-                //get contact name
-            } else
-            {
-                // load all contact name of this company
-            }
-            //this.companyComboxEdit.EditValue = mJobOrder.CompanyName;
-            //this.contactComboboxEdit.EditValue = mJobOrder.ContactName;
+            // load all company name to select in combobox
+            getCompanies(ref companiesNameAndId);
+            companyComboxEdit.Properties.Items.Clear();
+            companyComboxEdit.Properties.Items.AddRange(companiesNameAndId.Keys);
 
+            if (mJobOrder.CompanyId != -1)
+            {
+                companyComboxEdit.EditValue = mJobOrder.CompanyName;
+            }
             this.CityTextEdit.Text = mJobOrder.City;
             this.StateTextEdit.Text = mJobOrder.State;
             this.StartDateDateEdit.Text = mJobOrder.StartDate.ToString("dd/MM/yyyy");
@@ -101,9 +98,22 @@ namespace DXSWI.Forms
             mJobOrder.Title = this.TitleTextEdit.Text;
             mJobOrder.Department = this.DepartmentTextEdit.Text;
             mJobOrder.Salary = this.SalaryTextEdit.Text;
-            //todo
-            //mJobOrder.ContactId = 
-            //mJobOrder.ContactId = 
+            try
+            {
+                mJobOrder.CompanyId = companiesNameAndId[companyComboxEdit.Text];
+            }
+            catch
+            {
+                mJobOrder.CompanyId = -1;
+            }
+            try
+            {
+                mJobOrder.ContactId = contactsNameAndId[contactComboboxEdit.Text];
+            }
+            catch
+            {
+                mJobOrder.ContactId = -1;
+            }
             mJobOrder.ContactName = this.contactComboboxEdit.Text;
             mJobOrder.CompanyName = this.companyComboxEdit.Text;
             mJobOrder.City = this.CityTextEdit.Text;
@@ -260,16 +270,18 @@ namespace DXSWI.Forms
         private void sbOK_Click(object sender, EventArgs e)
         {
             // validate data
-            try {
+            try
+            {
                 // get data from ui
                 getJobOrderFromUi();
                 // if it is new item, use inserting command, update username else use updating command
                 if (isNew)
                 {
-                    mJobOrder.OwnerId = UserManager.ActivatedUser.Index;
-                    mJobOrder.RecruiterId = UserManager.ActivatedUser.Index;
+                    mJobOrder.OwnerId = UserManager.ActivatedUser.UserId;
+                    mJobOrder.RecruiterId = UserManager.ActivatedUser.UserId;
                     JobOrderManager.createJobOrder(mJobOrder);
-                } else
+                }
+                else
                 {
                     JobOrderManager.updateJobOrder(mJobOrder);
                 }
@@ -309,7 +321,8 @@ namespace DXSWI.Forms
                 XtraMessageBox.Show("Have not yet selected anything", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            try {
+            try
+            {
                 int row = gvCandidatePipeline.GetSelectedRows().First();
                 DataRow data_row = gvCandidatePipeline.GetDataRow(row);
                 canId = int.Parse(data_row["CandidateId"].ToString());
@@ -317,7 +330,6 @@ namespace DXSWI.Forms
                 dlg.init(canName, Activity.TypeOfLogActivity.Pipeline, canId, mJobOrder.JobOrderId, -1);
                 if (mJobOrder.Title.Length > 0)
                 {
-                    //todo
                     dlg.setRegarding(mJobOrder.Title);
                 }
                 dlg.ShowDialog();
@@ -393,6 +405,71 @@ namespace DXSWI.Forms
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void getCompanies(ref Dictionary<string, long> listCompanyAndId)
+        {
+            listCompanyAndId.Clear();
+            try
+            {
+                DataTable dt = CompanyManager.getNameCompanies();
+                if (dt == null) return;
+                for (int i = 0; i < dt.Rows.Count; ++i)
+                {
+                    DataRow data_row = dt.Rows[i];
+                    listCompanyAndId.Add(data_row["Name"].ToString(), Convert.ToInt64(data_row["CompanyId"].ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void getContacts(long CompanyId, ref Dictionary<string, long> listContactAndId)
+        {
+            listContactAndId.Clear();
+            try
+            {
+                DataTable dt = ContactManager.getContactsNameByCompanyId(CompanyId);
+                if (dt == null) return;
+                for (int i = 0; i < dt.Rows.Count; ++i)
+                {
+                    DataRow data_row = dt.Rows[i];
+                    listContactAndId.Add(data_row["ContactName"].ToString(), Convert.ToInt64(data_row["ContactId"].ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void companyComboxEdit_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                getContacts(companiesNameAndId[companyComboxEdit.Text], ref contactsNameAndId);
+                contactComboboxEdit.Properties.Items.Clear();
+                contactComboboxEdit.Properties.Items.AddRange(contactsNameAndId.Keys);
+                if (mJobOrder == null)
+                {
+                    contactComboboxEdit.Text = string.Empty;
+                    return;
+                }
+
+                if (!contactsNameAndId.ContainsValue(mJobOrder.ContactId))
+                    contactComboboxEdit.Text = string.Empty;
+                else
+                {
+                    contactComboboxEdit.EditValue = mJobOrder?.ContactName;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

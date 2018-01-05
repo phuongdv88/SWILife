@@ -7,6 +7,7 @@ using DXSWI.Forms;
 using DXSWI.Controls;
 using DXSWI.Modules;
 using System.Windows.Forms;
+using DevExpress.XtraSplashScreen;
 
 namespace DXSWI
 {
@@ -18,6 +19,7 @@ namespace DXSWI
         SWIMain mMain;
         ScreenManager()
         {
+            //SplashScreenManager.ShowForm(null, typeof(ssMain), true, true, false, 1000);
             mdlgLogin = new dlgLogin();
             mMain = new SWIMain();
         }
@@ -38,9 +40,11 @@ namespace DXSWI
 
         public void initLoginScreen()
         {
-            //Application.Run(mdlgLogin);
-            Application.Run(mMain);
-            //showLoginScreen();
+            //SplashScreenManager.ShowForm(null, typeof(ssMain), true, true, false, 1000);
+            //SplashScreenManager.CloseForm();
+
+            Application.Run(mdlgLogin);
+            //Application.Run(mMain);
         }
         public void showLoginScreen()
         {

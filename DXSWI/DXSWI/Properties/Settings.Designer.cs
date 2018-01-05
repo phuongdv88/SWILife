@@ -26,8 +26,8 @@ namespace DXSWI.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.1.200;user id=admin;password=123456a@;persistsecurityinfo=True;dat" +
-            "abase=swilifecore;port=3306;Convert Zero Datetime=true")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.1.100;user id=admin;password=Swilife.com1!;persistsecurityinfo=Tru" +
+            "e;database=swilifecore;port=3306;Convert Zero Datetime=true")]
         public string swilifecoreConnectionString {
             get {
                 return ((string)(this["swilifecoreConnectionString"]));
@@ -108,7 +108,7 @@ namespace DXSWI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\\\192.168.1.200\\d\\swilifedata\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\192.168.1.100\\SwilifeData\\")]
         public string StorageLocation {
             get {
                 return ((string)(this["StorageLocation"]));

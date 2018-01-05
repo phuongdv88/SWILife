@@ -132,6 +132,7 @@
             this.Size = new System.Drawing.Size(150, 336);
             ((System.ComponentModel.ISupportInitialize)(this.pcCheckControls)).EndInit();
             this.pcCheckControls.ResumeLayout(false);
+            this.pcCheckControls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ceList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceAlphabetical.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ceCards.Properties)).EndInit();

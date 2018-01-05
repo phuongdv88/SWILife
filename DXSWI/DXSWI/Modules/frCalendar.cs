@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraScheduler;
 
 namespace DXSWI.Modules
 {
@@ -16,6 +17,11 @@ namespace DXSWI.Modules
         public frCalendar()
         {
             InitializeComponent();
+        }
+
+        private void schedulerControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

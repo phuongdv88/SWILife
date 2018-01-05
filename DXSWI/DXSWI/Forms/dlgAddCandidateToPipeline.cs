@@ -84,10 +84,10 @@ namespace DXSWI.Forms
 
         private void gcCandidates_DoubleClick(object sender, EventArgs e)
         {
-            int canId = -1;
+            long canId = -1;
             if (gvCandidates.SelectedRowsCount > 0)
             {
-                canId = int.Parse(gvCandidates.GetDataRow(gvCandidates.GetSelectedRows().First())["CandidateId"].ToString());
+                canId = Convert.ToInt64(gvCandidates.GetDataRow(gvCandidates.GetSelectedRows().First())["CandidateId"].ToString());
             }
             if (canId == -1)
                 return;

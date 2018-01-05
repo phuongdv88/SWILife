@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SWIDAL;
 using SWIBLL.Models;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace SWIBLL
 {
@@ -13,7 +14,7 @@ namespace SWIBLL
     {
         //public static User ActivatedUser = null;
         // todo: for dev
-        public static User ActivatedUser = new User() { UserName = "phuongdv", Index = 5, IsOnline = true};
+        public static User ActivatedUser = new User() { UserName = "phuongdv", UserId = 5, IsOnline = true};
         public static void connectoDB(string connection_string)
         {
             DataAccess.Instance.ConnectToDB(connection_string);
@@ -38,11 +39,11 @@ namespace SWIBLL
                     //string temp = string.Format("{0} {1} {2} {3} {4} {5}", reader[0], reader[1], reader[2], reader[3], reader[4], reader[5]);
                     ActivatedUser = new User()
                     {
-                        Index = int.Parse(reader[0].ToString()),
+                        UserId = int.Parse(reader[0].ToString()),
                         UserName = reader[1].ToString(),
                         Password = reader[2].ToString(),
                         Salt = reader[3].ToString(),
-                        Role = (User.UserRole)int.Parse(reader[4].ToString()),
+                        Role = int.Parse(reader[4].ToString()),
                         IsOnline = Convert.ToBoolean(int.Parse(reader[5].ToString()))
                     };
                 }
@@ -70,7 +71,7 @@ namespace SWIBLL
 
             // save to property.setting
             role = (int)ActivatedUser.Role;
-            index = ActivatedUser.Index;
+            index = ActivatedUser.UserId;
 
 
             return true;
@@ -92,6 +93,12 @@ namespace SWIBLL
         {
             string userName = DataAccess.Instance.getUserName(id);
             return userName;
+        }
+
+        public static DataTable getAllUsers()
+        {
+            string sql = "select * from swilifecore.user order by UserId";
+            return DataAccess.Instance.getDataTable(sql);
         }
 
     }

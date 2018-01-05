@@ -12,9 +12,9 @@ namespace SWIBLL.Models
         public string Title { get; set; } // senior c++ engineer
         public string Department { get; set; }
         public string Salary { get; set; }
-        public int ContactId { get; set; }
+        public long ContactId { get; set; }
         public string ContactName { get; set; }
-        public int CompanyId { get; set; }
+        public long CompanyId { get; set; }
         public string CompanyName { get; set; }
         public string City { get; set; }
         public string State { get; set; }

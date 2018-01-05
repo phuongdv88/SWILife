@@ -172,7 +172,7 @@ namespace SWIDAL
             mTran?.Rollback();
         }
 
-        public DataTable getTable(string query)
+        public DataTable getDataTable(string query)
         {
             if (mCon == null)
                 return null;

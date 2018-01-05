@@ -19,7 +19,7 @@ namespace SWIBLL
         public static void getListRegardingForCandidate(long id, ref Dictionary<string, long> listRegarding, ref Dictionary<string, string> listRegardingStatus)
         {
             string sql = string.Format("SELECT T2.Title, T1.RunningTaskId, T1.Status FROM swilifecore.runningtask T1 Join joborder T2 on T1.JobOrderId = T2.JobOrderId Where T1.CandidateId = '{0}'", id);
-            DataTable tbl = DataAccess.Instance.getTable(sql);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
             for(int i = 0; i < tbl.Rows.Count; ++i)
             {
                 if (!listRegarding.ContainsKey(tbl.Rows[i][0].ToString())){
@@ -33,41 +33,56 @@ namespace SWIBLL
             }
         }
 
-        public static bool deleteActivity(long Activityid, long ScheduleEventId)
+        public static void deleteActivity(long Activityid, long ScheduleEventId)
         {
             string sql = string.Empty;
-            if (ScheduleEventId != -1)
-            {
-                // delete scheduleEvent
-                sql = string.Format("DELETE FROM `swilifecore`.`scheduleevent` WHERE `ScheduleEventId`='{0}'", ScheduleEventId);
-                DataAccess.Instance.executeNonQuery(sql);
+            try {
+                DataAccess.Instance.StartTransaction();
+                if (ScheduleEventId != -1)
+                {
+                    // delete scheduleEvent
+                    sql = string.Format("DELETE FROM `swilifecore`.`scheduleevent` WHERE `ScheduleEventId`='{0}'", ScheduleEventId);
+                    DataAccess.Instance.executeNonQueryTransaction(sql);
+                }
+                //delete activity
+                sql = string.Format("DELETE FROM `swilifecore`.`activity` WHERE `ActivityId`='{0}'", Activityid);
+                DataAccess.Instance.executeNonQueryTransaction(sql);
 
+                DataAccess.Instance.commitTransaction();
             }
-            //delete activity
-            sql = string.Format("DELETE FROM `swilifecore`.`activity` WHERE `ActivityId`='{0}'", Activityid);
-            int result = DataAccess.Instance.executeNonQuery(sql);
-            return result > 0 ? true : false;
+            catch
+            {
+                DataAccess.Instance.rollbackTransaction();
+                throw;
+            }
         }
 
-        public static bool deleteScheduleEvent(long id)
+        public static void deleteScheduleEvent(long id)
         {
-            //todo:update eventId in activity
-            string sql = string.Format("UPDATE `swilifecore`.`activity` SET `ScheduleEventId`='-1' WHERE `ScheduleEventId`='id'");
-            DataAccess.Instance.executeNonQuery(sql);
-            // delete 
-            sql = string.Format("DELETE FROM `swilifecore`.`scheduleevent` WHERE `ScheduleEventId`='{0}'", id);
-            int result = DataAccess.Instance.executeNonQuery(sql);
-            return result > 0 ? true : false;
+            try {
+                DataAccess.Instance.StartTransaction();
+                string sql = string.Format("UPDATE `swilifecore`.`activity` SET `ScheduleEventId`='-1' WHERE `ScheduleEventId`='id'");
+                DataAccess.Instance.executeNonQueryTransaction(sql);
+                // delete 
+                sql = string.Format("DELETE FROM `swilifecore`.`scheduleevent` WHERE `ScheduleEventId`='{0}'", id);
+                DataAccess.Instance.executeNonQueryTransaction(sql);
+                DataAccess.Instance.commitTransaction();
+            }
+            catch
+            {
+                DataAccess.Instance.rollbackTransaction();
+                throw;
+            }
         }
 
         public static DataTable getAllActivities()
         {
-            return DataAccess.Instance.getTable("select T1.Regarding, T1.Type, date_format(T1.Created,'%d/%m/%Y %T') as Created, T2.UserName from swilifecore.activity T1 left join swilifecore.user T2 on T1.UserId = T2.UserId order by T1.Created desc limit 1,1000");
+            return DataAccess.Instance.getDataTable("select T1.ActivityId, T1.Regarding, T1.Type, date_format(T1.Created,'%d/%m/%Y %T') as Created, T2.UserName from swilifecore.activity T1 left join swilifecore.user T2 on T1.UserId = T2.UserId order by T1.ActivityId desc limit 1,1000");
         }
         public static DataTable getActivitiesOfCandidate(long id)
         {
-            string sql = string.Format("select * from swilifecore.activity where ActivityOf = '{0}' and CandidateId = '{1}'", (int)Activity.TypeOfLogActivity.Candidate, id);
-            return DataAccess.Instance.getTable(sql);
+            string sql = string.Format("select * from swilifecore.activity where ActivityOf = '{0}' and CandidateId = '{1}' order by ActivityId desc", (int)Activity.TypeOfLogActivity.Candidate, id);
+            return DataAccess.Instance.getDataTable(sql);
         }
 
 
@@ -87,7 +102,7 @@ namespace SWIBLL
                     act.ScheduleEventId = DataAccess.Instance.executeInsertQueryTransaction(sql);
                 }
 
-                act.UserId = UserManager.ActivatedUser.Index;
+                act.UserId = UserManager.ActivatedUser.UserId;
 
                 // add log activity
                 sql = string.Format("INSERT INTO `swilifecore`.`activity` " +
@@ -156,7 +171,7 @@ namespace SWIBLL
         public static Activity getActivityById(int id)
         {
             string sql = string.Format("select * from `swilifecore`.`activity` where `ActivityId`='{0}' ", id);
-            DataTable tbl = DataAccess.Instance.getTable(sql);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
             if(tbl.Rows.Count > 0)
             {
                 DataRow data_row = tbl.Rows[0];
@@ -168,7 +183,7 @@ namespace SWIBLL
         public static ScheduleEvent getScheduleEventById(int id)
         {
             string sql = string.Format("select * from `swilifecore`.`scheduleevent` where `ScheduleEventId`='{0}' ", id);
-            DataTable tbl = DataAccess.Instance.getTable(sql);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
             if (tbl.Rows.Count > 0)
             {
                 DataRow data_row = tbl.Rows[0];
