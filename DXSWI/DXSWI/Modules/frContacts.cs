@@ -115,5 +115,10 @@ namespace DXSWI.Modules
         {
             init();
         }
+
+        private void refreshContactsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            updateData();
+        }
     }
 }

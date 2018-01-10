@@ -28,18 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
             this.sbOK = new DevExpress.XtraEditors.SimpleButton();
             this.gcCandidates = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvCandidates = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKeySkill = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCurrentPosition = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCurrentEmployer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDesiredPay = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCellPhone = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYear = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInterviewNotes = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCandidates)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +84,7 @@
             // 
             // gcCandidates
             // 
+            this.gcCandidates.ContextMenuStrip = this.contextMenuStrip1;
             this.gcCandidates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcCandidates.Location = new System.Drawing.Point(0, 0);
             this.gcCandidates.MainView = this.gvCandidates;
@@ -83,19 +94,39 @@
             this.gcCandidates.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCandidates});
             this.gcCandidates.DoubleClick += new System.EventHandler(this.gcCandidates_DoubleClick);
+            this.gcCandidates.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gcCandidates_KeyDown);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyEmailToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 26);
+            // 
+            // copyEmailToolStripMenuItem
+            // 
+            this.copyEmailToolStripMenuItem.Name = "copyEmailToolStripMenuItem";
+            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.copyEmailToolStripMenuItem.Text = "Copy Email";
+            this.copyEmailToolStripMenuItem.Click += new System.EventHandler(this.copyEmailToolStripMenuItem_Click);
             // 
             // gvCandidates
             // 
             this.gvCandidates.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colName,
             this.colKeySkill,
+            this.colCurrentPosition,
+            this.colCurrentEmployer,
             this.colDesiredPay,
+            this.colCellPhone,
+            this.colEmail,
             this.colYear,
-            this.colInterviewNotes});
+            this.colInterviewNotes,
+            this.colCity,
+            this.colModified});
             this.gvCandidates.GridControl = this.gcCandidates;
             this.gvCandidates.Name = "gvCandidates";
             this.gvCandidates.OptionsBehavior.Editable = false;
-            this.gvCandidates.OptionsSelection.EnableAppearanceFocusedCell = false;
             // 
             // colName
             // 
@@ -104,7 +135,7 @@
             this.colName.Name = "colName";
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
-            this.colName.Width = 150;
+            this.colName.Width = 139;
             // 
             // colKeySkill
             // 
@@ -112,8 +143,26 @@
             this.colKeySkill.FieldName = "KeySkills";
             this.colKeySkill.Name = "colKeySkill";
             this.colKeySkill.Visible = true;
-            this.colKeySkill.VisibleIndex = 1;
-            this.colKeySkill.Width = 150;
+            this.colKeySkill.VisibleIndex = 3;
+            this.colKeySkill.Width = 128;
+            // 
+            // colCurrentPosition
+            // 
+            this.colCurrentPosition.Caption = "Current Position";
+            this.colCurrentPosition.FieldName = "CurrentPosition";
+            this.colCurrentPosition.Name = "colCurrentPosition";
+            this.colCurrentPosition.Visible = true;
+            this.colCurrentPosition.VisibleIndex = 2;
+            this.colCurrentPosition.Width = 98;
+            // 
+            // colCurrentEmployer
+            // 
+            this.colCurrentEmployer.Caption = "Current Employer";
+            this.colCurrentEmployer.FieldName = "CurrentEmployer";
+            this.colCurrentEmployer.Name = "colCurrentEmployer";
+            this.colCurrentEmployer.Visible = true;
+            this.colCurrentEmployer.VisibleIndex = 1;
+            this.colCurrentEmployer.Width = 100;
             // 
             // colDesiredPay
             // 
@@ -121,8 +170,26 @@
             this.colDesiredPay.FieldName = "DesiredPay";
             this.colDesiredPay.Name = "colDesiredPay";
             this.colDesiredPay.Visible = true;
-            this.colDesiredPay.VisibleIndex = 2;
-            this.colDesiredPay.Width = 87;
+            this.colDesiredPay.VisibleIndex = 4;
+            this.colDesiredPay.Width = 73;
+            // 
+            // colCellPhone
+            // 
+            this.colCellPhone.Caption = "CellPhone";
+            this.colCellPhone.FieldName = "CellPhone";
+            this.colCellPhone.Name = "colCellPhone";
+            this.colCellPhone.Visible = true;
+            this.colCellPhone.VisibleIndex = 5;
+            this.colCellPhone.Width = 126;
+            // 
+            // colEmail
+            // 
+            this.colEmail.Caption = "Email";
+            this.colEmail.FieldName = "Email";
+            this.colEmail.Name = "colEmail";
+            this.colEmail.Visible = true;
+            this.colEmail.VisibleIndex = 6;
+            this.colEmail.Width = 82;
             // 
             // colYear
             // 
@@ -130,8 +197,8 @@
             this.colYear.FieldName = "Years";
             this.colYear.Name = "colYear";
             this.colYear.Visible = true;
-            this.colYear.VisibleIndex = 3;
-            this.colYear.Width = 135;
+            this.colYear.VisibleIndex = 7;
+            this.colYear.Width = 42;
             // 
             // colInterviewNotes
             // 
@@ -139,8 +206,26 @@
             this.colInterviewNotes.FieldName = "InterviewNotes";
             this.colInterviewNotes.Name = "colInterviewNotes";
             this.colInterviewNotes.Visible = true;
-            this.colInterviewNotes.VisibleIndex = 4;
-            this.colInterviewNotes.Width = 228;
+            this.colInterviewNotes.VisibleIndex = 8;
+            this.colInterviewNotes.Width = 186;
+            // 
+            // colCity
+            // 
+            this.colCity.Caption = "City";
+            this.colCity.FieldName = "City";
+            this.colCity.Name = "colCity";
+            this.colCity.Visible = true;
+            this.colCity.VisibleIndex = 9;
+            this.colCity.Width = 56;
+            // 
+            // colModified
+            // 
+            this.colModified.Caption = "Modified";
+            this.colModified.FieldName = "Modified";
+            this.colModified.Name = "colModified";
+            this.colModified.Visible = true;
+            this.colModified.VisibleIndex = 10;
+            this.colModified.Width = 87;
             // 
             // dlgAddCandidateToPipeline
             // 
@@ -156,6 +241,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgAddCandidateToPipeline_KeyDown);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvCandidates)).EndInit();
             this.ResumeLayout(false);
 
@@ -173,5 +259,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDesiredPay;
         private DevExpress.XtraGrid.Columns.GridColumn colYear;
         private DevExpress.XtraGrid.Columns.GridColumn colInterviewNotes;
+        private DevExpress.XtraGrid.Columns.GridColumn colCurrentPosition;
+        private DevExpress.XtraGrid.Columns.GridColumn colCurrentEmployer;
+        private DevExpress.XtraGrid.Columns.GridColumn colCellPhone;
+        private DevExpress.XtraGrid.Columns.GridColumn colEmail;
+        private DevExpress.XtraGrid.Columns.GridColumn colCity;
+        private DevExpress.XtraGrid.Columns.GridColumn colModified;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyEmailToolStripMenuItem;
     }
 }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.FirstNameTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MiddleNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.LastNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.TitleTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -79,10 +80,10 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiddleNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TitleTextEdit.Properties)).BeginInit();
@@ -129,7 +130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -173,6 +173,10 @@
             this.FirstNameTextEdit.Size = new System.Drawing.Size(850, 20);
             this.FirstNameTextEdit.StyleController = this.dataLayoutControl1;
             this.FirstNameTextEdit.TabIndex = 4;
+            // 
+            // contactBindingSource
+            // 
+            this.contactBindingSource.DataSource = typeof(SWIBLL.Models.Contact);
             // 
             // MiddleNameTextEdit
             // 
@@ -360,7 +364,7 @@
             this.sbCancel.Size = new System.Drawing.Size(161, 22);
             this.sbCancel.StyleController = this.dataLayoutControl1;
             this.sbCancel.TabIndex = 25;
-            this.sbCancel.Text = "Cancel";
+            this.sbCancel.Text = "Exit";
             this.sbCancel.Click += new System.EventHandler(this.sbCancel_Click);
             // 
             // CompanyNameComboboxEdit
@@ -646,10 +650,6 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(769, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // contactBindingSource
-            // 
-            this.contactBindingSource.DataSource = typeof(SWIBLL.Models.Contact);
-            // 
             // dlgContactEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -663,6 +663,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiddleNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TitleTextEdit.Properties)).EndInit();
@@ -709,7 +710,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

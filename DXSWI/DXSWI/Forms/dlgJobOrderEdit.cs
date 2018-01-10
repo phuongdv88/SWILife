@@ -12,6 +12,9 @@ using SWIBLL.Models;
 using SWIBLL;
 using System.IO;
 using System.Security.Principal;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.Utils;
 
 namespace DXSWI.Forms
 {
@@ -46,6 +49,7 @@ namespace DXSWI.Forms
                 getCompanies(ref companiesNameAndId);
                 companyComboxEdit.Properties.Items.Clear();
                 companyComboxEdit.Properties.Items.AddRange(companiesNameAndId.Keys);
+                gcCandidatePipeline.Enabled = false;
             }
             else
             {
@@ -89,6 +93,20 @@ namespace DXSWI.Forms
             this.WebLinkTextEdit.Text = mJobOrder.WebLink;
             this.DescriptionMemoExEdit.Text = mJobOrder.Description;
             this.meInternalNotes.Text = mJobOrder.InternalNotes;
+
+            // tooltip
+            this.TitleTextEdit.ToolTip = mJobOrder.Title;
+            this.DepartmentTextEdit.ToolTip = mJobOrder.Department;
+            this.SalaryTextEdit.ToolTip = mJobOrder.Salary;
+            this.CityTextEdit.ToolTip = mJobOrder.City;
+            this.StateTextEdit.ToolTip = mJobOrder.State;
+            this.StartDateDateEdit.ToolTip = mJobOrder.StartDate.ToString("dd/MM/yyyy");
+            this.DurationTextEdit.ToolTip = mJobOrder.Duration;
+            this.OpeningsTextEdit.ToolTip = mJobOrder.Openings.ToString();
+            this.ExperienceYearTextEdit.ToolTip = mJobOrder.ExperienceYear.ToString();
+            this.WebLinkTextEdit.ToolTip = mJobOrder.WebLink;
+            this.DescriptionMemoExEdit.ToolTip = mJobOrder.Description;
+            this.meInternalNotes.ToolTip = mJobOrder.InternalNotes;
         }
 
         private void getJobOrderFromUi()
@@ -312,8 +330,13 @@ namespace DXSWI.Forms
         {
             dlgLogActivity dlg = new dlgLogActivity();
             dlg.updateDataEvent += updateData;
+            //todo: support multiselection
+            List<long> candidatesId = new List<long>();
+
+
+
             string regarding = mJobOrder.Title;
-            int canId = -1;
+            long canId = -1;
             string canName = string.Empty;
 
             if (gvCandidatePipeline.SelectedRowsCount == 0)
@@ -323,11 +346,21 @@ namespace DXSWI.Forms
             }
             try
             {
-                int row = gvCandidatePipeline.GetSelectedRows().First();
-                DataRow data_row = gvCandidatePipeline.GetDataRow(row);
-                canId = int.Parse(data_row["CandidateId"].ToString());
-                canName = data_row["FirstName"].ToString() + " " + data_row["MiddleName"].ToString() + " " + data_row["LastName"].ToString();
-                dlg.init(canName, Activity.TypeOfLogActivity.Pipeline, canId, mJobOrder.JobOrderId, -1);
+                foreach (var row in gvCandidatePipeline.GetSelectedRows())
+                {
+                    DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                    canId = Convert.ToInt64(data_row["CandidateId"].ToString());
+                    candidatesId.Add(canId);
+                    if (candidatesId.Count == 1)
+                    {
+                        canName = data_row["FirstName"].ToString() + " " + data_row["MiddleName"].ToString() + " " + data_row["LastName"].ToString();
+                    }
+                    else
+                    {
+                        canName = "Update Multi Candidates";
+                    }
+                }
+                dlg.initForListCandidateInPipeline(canName, mJobOrder.Title, mJobOrder.JobOrderId, candidatesId);
                 if (mJobOrder.Title.Length > 0)
                 {
                     dlg.setRegarding(mJobOrder.Title);
@@ -470,6 +503,39 @@ namespace DXSWI.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gcCandidatePipeline_DoubleClick(object sender, EventArgs e)
+        {
+            long canId = -1;
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
+            {
+                canId = Convert.ToInt64(gvCandidatePipeline.GetDataRow(gvCandidatePipeline.GetSelectedRows().First())["CandidateId"].ToString());
+            }
+            if (canId == -1)
+                return;
+            // todo show dlgCandidateEdit but in mode view only
+            dlgCandidateEdit dlg = new dlgCandidateEdit(canId, null);
+            dlg.setViewMode();
+            dlg.ShowDialog();
+        }
+
+        private void toolTipController1_GetActiveObjectInfo(object sender, DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventArgs e)
+        {
+            if (e.Info != null || e.SelectedControl != gcCandidatePipeline) return;
+
+            //Get the view at the current mouse position
+            GridView view = gcCandidatePipeline.FocusedView as GridView;
+            if (view == null) return;
+            //Get the view's element information that resides at the current position
+            GridHitInfo info = view.CalcHitInfo(e.ControlMousePosition);
+            //Display a hint for row indicator cells
+            if (info.InRowCell)
+            {
+                string text = view.GetRowCellDisplayText(info.RowHandle, info.Column);
+                string cellKey = info.RowHandle.ToString() + " - " + info.Column.ToString();
+                e.Info = new ToolTipControlInfo(cellKey, text);
             }
         }
     }

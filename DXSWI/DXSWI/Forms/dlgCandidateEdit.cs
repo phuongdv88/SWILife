@@ -68,6 +68,7 @@ namespace DXSWI.Forms
             CurrentEmployerTextEdit.ReadOnly = true;
             KeySkillsTextEdit.ReadOnly = true;
             CanRelocateCheckEdit.ReadOnly = true;
+            IsQualifiedCheckEdit.ReadOnly = true;
             CurrentPayTextEdit.ReadOnly = true;
             DesiredPayTextEdit.ReadOnly = true;
             DOBMarriedTextEdit.ReadOnly = true;
@@ -90,33 +91,32 @@ namespace DXSWI.Forms
 
         }
 
-        private void FillUpToUi()
+        private void FillUpToUi(Candidate can)
         {
-            if (mCandidate == null)
+            if (can == null)
                 return;
-            FirstNameTextEdit.Text = mCandidate.FirstName;
-            MiddleNameTextEdit.Text = mCandidate.MiddleName;
-            LastNameTextEdit.Text = mCandidate.LastName;
-            EmailTextEdit.Text = mCandidate.Email;
-            SecondaryEmailTextEdit.Text = mCandidate.SecondaryEmail;
-            SkypeIMTextEdit.Text = mCandidate.SkypeIM;
-            CellPhoneTextEdit.Text = mCandidate.CellPhone;
-            WorkPhoneTextEdit.Text = mCandidate.WorkPhone;
-            BestTimeToCallTextEdit.Text = mCandidate.BestTimeToCall;
-            AddressTextEdit.Text = mCandidate.Address;
-            WebSiteTextEdit.Text = mCandidate.WebSite;
-            SourceTextEdit.Text = mCandidate.Source;
-            CurrentPositionTextEdit.Text = mCandidate.CurrentPosition;
-            DateAvailableDateEdit.Text = mCandidate.DateAvailable.ToShortDateString();
-            CurrentEmployerTextEdit.Text = mCandidate.CurrentEmployer;
-            KeySkillsTextEdit.Text = mCandidate.KeySkills;
-            KeySkillsTextEdit.ToolTip = mCandidate.KeySkills;
-            CanRelocateCheckEdit.Checked = mCandidate.CanRelocate;
-            CurrentPayTextEdit.Text = mCandidate.CurrentPay;
-            DesiredPayTextEdit.Text = mCandidate.DesiredPay;
-            DOBMarriedTextEdit.Text = mCandidate.DOBMarried;
-            InterviewNotesMemoEdit.Text = mCandidate.InterviewNotes;
-            if (mCandidate.Gender)
+            FirstNameTextEdit.Text = can.FirstName;
+            MiddleNameTextEdit.Text = can.MiddleName;
+            LastNameTextEdit.Text = can.LastName;
+            EmailTextEdit.Text = can.Email;
+            SecondaryEmailTextEdit.Text = can.SecondaryEmail;
+            SkypeIMTextEdit.Text = can.SkypeIM;
+            CellPhoneTextEdit.Text = can.CellPhone;
+            WorkPhoneTextEdit.Text = can.WorkPhone;
+            BestTimeToCallTextEdit.Text = can.BestTimeToCall;
+            AddressTextEdit.Text = can.Address;
+            WebSiteTextEdit.Text = can.WebSite;
+            SourceTextEdit.Text = can.Source;
+            CurrentPositionTextEdit.Text = can.CurrentPosition;
+            DateAvailableDateEdit.Text = can.DateAvailable.ToShortDateString();
+            CurrentEmployerTextEdit.Text = can.CurrentEmployer;
+            KeySkillsTextEdit.Text = can.KeySkills;
+            CanRelocateCheckEdit.Checked = can.CanRelocate;
+            CurrentPayTextEdit.Text = can.CurrentPay;
+            DesiredPayTextEdit.Text = can.DesiredPay;
+            DOBMarriedTextEdit.Text = can.DOBMarried;
+            InterviewNotesMemoEdit.Text = can.InterviewNotes;
+            if (can.Gender)
             {
                 GenderComboBoxEdit.SelectedIndex = 1; // male
             }
@@ -124,27 +124,55 @@ namespace DXSWI.Forms
             {
                 GenderComboBoxEdit.SelectedIndex = 0; // female
             }
-            MiscNotesMemoEdit.Text = mCandidate.MiscNotes;
-            CityTextEdit.Text = mCandidate.City;
-            CountryTextEdit.Text = mCandidate.Country;
-            PositionsUpTillNowTextEdit.Text = mCandidate.PositionsUpTillNow;
-            ProjectDoneMemoEdit.Text = mCandidate.ProjectDone;
-            ProjectDoneMemoEdit.ToolTip = mCandidate.ProjectDone;
-            IndustryTextEdit.Text = mCandidate.Industry;
-            EducationMemoEdit.Text = mCandidate.Education;
-            EducationMemoEdit.ToolTip = mCandidate.Education;
-            LanguageTextEdit.Text = mCandidate.Language;
-            IsInBlacklistCheckEdit.Checked = mCandidate.IsInBlacklist;
-            IsQualifiedCheckEdit.Checked = mCandidate.IsQualified;
+            MiscNotesMemoEdit.Text = can.MiscNotes;
+            CityTextEdit.Text = can.City;
+            CountryTextEdit.Text = can.Country;
+            PositionsUpTillNowTextEdit.Text = can.PositionsUpTillNow;
+            ProjectDoneMemoEdit.Text = can.ProjectDone;
+            IndustryTextEdit.Text = can.Industry;
+            EducationMemoEdit.Text = can.Education;
+            LanguageTextEdit.Text = can.Language;
+            IsInBlacklistCheckEdit.Checked = can.IsInBlacklist;
+            IsQualifiedCheckEdit.Checked = can.IsQualified;
             // load image
             try
             {
-                peAvatar.Image = Bitmap.FromFile(mCandidate.ImageLink);
+                peAvatar.Image = Bitmap.FromFile(can.ImageLink);
             }
             catch
             {
                 peAvatar.Image = null;
             };
+
+            // set tooltip
+            FirstNameTextEdit.ToolTip = can.FirstName;
+            MiddleNameTextEdit.ToolTip = can.MiddleName;
+            LastNameTextEdit.ToolTip = can.LastName;
+            EmailTextEdit.ToolTip = can.Email;
+            SecondaryEmailTextEdit.ToolTip = can.SecondaryEmail;
+            SkypeIMTextEdit.ToolTip = can.SkypeIM;
+            CellPhoneTextEdit.ToolTip = can.CellPhone;
+            WorkPhoneTextEdit.ToolTip = can.WorkPhone;
+            BestTimeToCallTextEdit.ToolTip = can.BestTimeToCall;
+            AddressTextEdit.ToolTip = can.Address;
+            WebSiteTextEdit.ToolTip = can.WebSite;
+            SourceTextEdit.ToolTip = can.Source;
+            CurrentPositionTextEdit.ToolTip = can.CurrentPosition;
+            DateAvailableDateEdit.ToolTip = can.DateAvailable.ToShortDateString();
+            CurrentEmployerTextEdit.ToolTip = can.CurrentEmployer;
+            KeySkillsTextEdit.ToolTip = can.KeySkills;
+            CurrentPayTextEdit.ToolTip = can.CurrentPay;
+            DesiredPayTextEdit.ToolTip = can.DesiredPay;
+            DOBMarriedTextEdit.ToolTip = can.DOBMarried;
+            InterviewNotesMemoEdit.ToolTip = can.InterviewNotes;
+            MiscNotesMemoEdit.ToolTip = can.MiscNotes;
+            CityTextEdit.ToolTip = can.City;
+            CountryTextEdit.ToolTip = can.Country;
+            PositionsUpTillNowTextEdit.ToolTip = can.PositionsUpTillNow;
+            ProjectDoneMemoEdit.ToolTip = can.ProjectDone;
+            IndustryTextEdit.ToolTip = can.Industry;
+            EducationMemoEdit.ToolTip = can.Education;
+            LanguageTextEdit.ToolTip = can.Language;
         }
 
         public void setCurrentCandidate(long canId, string toolTip)
@@ -174,7 +202,6 @@ namespace DXSWI.Forms
                 DateAvailableDateEdit.Text = string.Empty;
                 CurrentEmployerTextEdit.Text = string.Empty;
                 KeySkillsTextEdit.Text = string.Empty;
-                KeySkillsTextEdit.ToolTip = string.Empty;
                 CanRelocateCheckEdit.Checked = false;
                 CurrentPayTextEdit.Text = string.Empty;
                 DesiredPayTextEdit.Text = string.Empty;
@@ -186,13 +213,41 @@ namespace DXSWI.Forms
                 CountryTextEdit.Text = string.Empty;
                 PositionsUpTillNowTextEdit.Text = string.Empty;
                 ProjectDoneMemoEdit.Text = string.Empty;
-                ProjectDoneMemoEdit.ToolTip = string.Empty;
                 IndustryTextEdit.Text = string.Empty;
                 EducationMemoEdit.Text = string.Empty;
-                EducationMemoEdit.ToolTip = string.Empty;
                 LanguageTextEdit.Text = string.Empty;
                 IsInBlacklistCheckEdit.Checked = false;
                 peAvatar.Image = null;
+
+                // clear tool tip
+                FirstNameTextEdit.ToolTip = string.Empty;
+                MiddleNameTextEdit.ToolTip = string.Empty;
+                LastNameTextEdit.ToolTip = string.Empty;
+                EmailTextEdit.ToolTip = string.Empty;
+                SecondaryEmailTextEdit.ToolTip = string.Empty;
+                SkypeIMTextEdit.ToolTip = string.Empty;
+                CellPhoneTextEdit.ToolTip = string.Empty;
+                WorkPhoneTextEdit.ToolTip = string.Empty;
+                BestTimeToCallTextEdit.ToolTip = string.Empty;
+                AddressTextEdit.ToolTip = string.Empty;
+                WebSiteTextEdit.ToolTip = string.Empty;
+                SourceTextEdit.ToolTip = string.Empty;
+                CurrentPositionTextEdit.ToolTip = string.Empty;
+                DateAvailableDateEdit.ToolTip = string.Empty;
+                CurrentEmployerTextEdit.ToolTip = string.Empty;
+                KeySkillsTextEdit.ToolTip = string.Empty;
+                CurrentPayTextEdit.ToolTip = string.Empty;
+                DesiredPayTextEdit.ToolTip = string.Empty;
+                DOBMarriedTextEdit.ToolTip = string.Empty;
+                InterviewNotesMemoEdit.ToolTip = string.Empty;
+                MiscNotesMemoEdit.ToolTip = string.Empty;
+                CityTextEdit.ToolTip = string.Empty;
+                CountryTextEdit.ToolTip = string.Empty;
+                PositionsUpTillNowTextEdit.ToolTip = string.Empty;
+                ProjectDoneMemoEdit.ToolTip = string.Empty;
+                IndustryTextEdit.ToolTip = string.Empty;
+                EducationMemoEdit.ToolTip = string.Empty;
+                LanguageTextEdit.ToolTip = string.Empty;
 
                 mCandidate = new Candidate();
                 isNew = true;
@@ -201,7 +256,7 @@ namespace DXSWI.Forms
             // fill data to ui
             mCandidate = CandidateManager.getCandidate(canId);
             isNew = false;
-            FillUpToUi();
+            FillUpToUi(mCandidate);
         }
 
         private void sbCancel_Click(object sender, EventArgs e)
@@ -347,14 +402,25 @@ namespace DXSWI.Forms
                 case Keys.Escape:
                     Close();
                     break;
+                case Keys.D:
+                    if (e.Control)
+                    {
+                        try
+                        {
+                            Candidate can = new Candidate();
+                            getCandidateFromClipboard(ref can);
+                            FillUpToUi(can);
+                            SourceTextEdit.SelectedIndex = 1;
+                        }
+                        catch (Exception ex)
+                        {
+                            XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    break;
                 default:
                     break;
             }
-        }
-
-        private void IsInBlacklistCheckEdit_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void IsQualifiedCheckEdit_CheckedChanged(object sender, EventArgs e)
@@ -391,26 +457,6 @@ namespace DXSWI.Forms
             }
         }
 
-        private void sbImportLinkedInClipboard_Click(object sender, EventArgs e)
-        {
-            // open textbox and paste clipboard to this
-            //dlgImportFromClipboard dlg = new dlgImportFromClipboard(dlgImportFromClipboard.ImportType.CANDIDATE);
-            //dlg.FillUpObjectDataEvent += fillUpObjectData;
-            //dlg.ShowDialog();
-            try
-            {
-                mCandidate = new Candidate();
-                getCandidateFromClipboard(ref mCandidate);
-                FillUpToUi();
-                SourceTextEdit.SelectedIndex = 1;
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
         private bool getParseState(string line, ref ParseCandidateInfoStep state)
         {
             line = line.Trim();
@@ -441,6 +487,11 @@ namespace DXSWI.Forms
 
             return true;
         }
+        /// <summary>
+        /// parse candidate information from linkedin data in clipboard
+        /// It may don't work correctly when linkedin changes data fomat
+        /// </summary>
+        /// <param name="can"></param>
         private void getCandidateFromClipboard(ref Candidate can)
         {
             // parse can from memoINfo.Text
@@ -456,6 +507,7 @@ namespace DXSWI.Forms
                     if (string.Equals(line.Trim(), "Messaging"))
                     {
                         line = line.Trim();
+
                         // get name
                         do
                         {
@@ -465,17 +517,33 @@ namespace DXSWI.Forms
                             }
                             ++i;
                             line = lines[i].Trim();
-                            if (!line.Contains("account") && !line.Contains("upgrade") && !line.Contains("Background Image"))
+                            if (line.Length > 0 && !line.Contains("account") && !line.Contains("upgrade") && !line.Contains("Background Image")
+                                && !line.Contains("message") && !line.Contains("setting"))
                                 break;
                         } while (true);
 
+                        if (line.Contains("otification"))
+                        {
+                            continue;
+                        }
+                        string name = line;
                         string[] names = line.Split(' ');
                         can.FirstName = names.Last();
                         can.LastName = names.First();
                         can.MiddleName = line.Replace(can.FirstName, "").Replace(can.LastName, "").Trim();
                         // get position
-                        i += 2;
-                        line = lines[i].Trim();
+                        ++i;
+                        do
+                        {
+                            if (i == lines.Count() - 1)
+                            {
+                                break;
+                            }
+                            ++i;
+                            line = lines[i].Trim();
+                            if (line.Length > 0 && !line.Contains("1st") && !line.Contains(name))
+                                break;
+                        } while (true);
                         can.CurrentPosition = line;
                         //string[] test = line.Split('\n');
                         // get current company and education
@@ -498,10 +566,7 @@ namespace DXSWI.Forms
                 {
                     if (!getParseState(line, ref state))
                     {
-                        if (can.ProjectDone.Length + line.Length < 2000 - 2)
-                        {
-                            can.ProjectDone += line.TrimStart() + "\r\n";
-                        }
+                        can.ProjectDone += line.TrimStart() + "\r\n";
                     }
                     continue;
                 }
@@ -509,7 +574,7 @@ namespace DXSWI.Forms
                 {
                     if (!getParseState(line, ref state))
                     {
-                        if (can.Education.Length + line.Length < 2000 - 2 && !can.Education.Contains(line.Trim()))
+                        if (!can.Education.Contains(line.Trim()))
                         {
                             can.Education += line.TrimStart() + "\r\n";
                             if (can.CurrentEmployer.Contains(line.Trim()))
@@ -525,8 +590,10 @@ namespace DXSWI.Forms
                     line = line.Trim();
                     if (!getParseState(line, ref state))
                     {
-                        if (can.KeySkills.Length + line.Length < 1000 - 2 && !can.KeySkills.Contains(line))
+                        if (!can.KeySkills.Contains(line))
                         {
+                            //Featured Skills & Endorsements
+                            //                            PCI DSS See 3 endorsements for PCI DSS 3
                             if (line.Contains("See"))
                             {
                                 line = line.Split(new[] { "See" }, StringSplitOptions.None).First();
@@ -536,22 +603,39 @@ namespace DXSWI.Forms
                                 }
                                 can.KeySkills += line;
                             }
+                            else
+                            {
+                                //LTE
+                                //See 18 endorsements for LTE
+                                //18
+                                //Endorse
+                                int j = i + 1;
+                                if (j < lines.Length && string.Equals(lines[j].Trim()?.Split(' ').First(), "See") && lines[j].Contains("endorsement"))
+                                {
+                                    i = j;
+                                    if (can.KeySkills.Length > 0)
+                                    {
+                                        can.KeySkills += "; ";
+                                    }
+                                    can.KeySkills += line;
+                                }
+                            }
                         }
                     }
                     continue;
                 }
                 else if (state == ParseCandidateInfoStep.ACCOMPLISHMENT)
                 {
-                    i ++;
+                    i++;
                     line = lines[i];
-                    if(string.Equals(line, "Certifications"))
+                    if (string.Equals(line, "Certifications") || string.Equals(line, "Certification"))
                     {
                         i++;
                         line = lines[i];
 
-                        if (can.Education.Length + line.Length < 2000 - 2 && !can.Education.Contains(line.Trim()))
+                        if (!can.Education.Contains(line.Trim()))
                         {
-                            can.Education += "Certifications: " +line.TrimStart() + "\r\n";
+                            can.Education += "Certifications: " + line.TrimStart() + "\r\n";
                             if (can.CurrentEmployer.Contains(line.Trim()))
                             {
                                 can.CurrentEmployer = can.CurrentEmployer.Replace(line.Trim(), "").Trim();
@@ -602,13 +686,5 @@ namespace DXSWI.Forms
             }
         }
 
-        private void fillUpObjectData(object obj)
-        {
-            if (obj is Candidate)
-            {
-                mCandidate = obj as Candidate;
-                FillUpToUi();
-            }
-        }
     }
 }

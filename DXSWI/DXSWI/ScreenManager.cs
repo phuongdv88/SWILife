@@ -40,14 +40,15 @@ namespace DXSWI
 
         public void initLoginScreen()
         {
-            //SplashScreenManager.ShowForm(null, typeof(ssMain), true, true, false, 1000);
-            //SplashScreenManager.CloseForm();
-
             Application.Run(mdlgLogin);
             //Application.Run(mMain);
         }
-        public void showLoginScreen()
+        public void showLoginScreen(bool NeedClearData = true)
         {
+            if (NeedClearData)
+            {
+                mdlgLogin.clearUiData();
+            }
             mdlgLogin?.Show();
             mMain?.Hide();
         }

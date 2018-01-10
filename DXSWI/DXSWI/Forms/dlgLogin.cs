@@ -114,10 +114,15 @@ namespace DXSWI.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textEditUserName.Focus();
-                textEditUserName.Text = "";
-                textEditPassword.Text = "";
+                clearUiData();
             }
+        }
+
+        public void clearUiData()
+        {
+            textEditUserName.Focus();
+            textEditUserName.Text = "";
+            textEditPassword.Text = "";
         }
 
         private void dlgLogin_KeyDown(object sender, KeyEventArgs e)

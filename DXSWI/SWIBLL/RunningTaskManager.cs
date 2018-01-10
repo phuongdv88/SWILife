@@ -17,8 +17,8 @@ namespace SWIBLL
             {
                 throw new Exception("This Job Order has assigned!");
             }
-            sql = string.Format("INSERT INTO `swilifecore`.`runningtask` (`CandidateId`, `JobOrderId`, `Status`, `Match`, `Added`, `EnteredBy`, `isSubmitted`) " +
-                "VALUES ('{0}', '{1}', 'Not Contact', '0', now(), '{2}', '0')", 
+            sql = string.Format("INSERT INTO `swilifecore`.`runningtask` (`CandidateId`, `JobOrderId`, `Status`, `Match`, `Added`, `EnteredBy`, `isSubmitted`, `Modified`) " +
+                "VALUES ('{0}', '{1}', 'Not Contact', '0', now(), '{2}', '0', now())", 
                 rtask.CandidateId, rtask.JobOrderId, rtask.EnteredBy);
             long rs = DataAccess.Instance.executeInsertingQuery(sql);
 
@@ -39,21 +39,33 @@ namespace SWIBLL
         public static bool updateRunningTask(RunningTask rtask)
         {
             //string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `CandidateId`='{0}', `JobOrderId`='{1}', `Status`='{2}', `Match`='{3}' WHERE `RunningtaskId`='{4}';", rtask.CandidateId, rtask.JobOrderId, rtask.Status, rtask.Match, rtask.RunningtaskId);
-            string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `CandidateId`='{0}', `JobOrderId`='{1}', `Status`='{2}', `Match`='{3}', `isSubmitted`='{4}' WHERE `RunningTaskId`='{5}'",
+            string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `CandidateId`='{0}', `JobOrderId`='{1}', `Status`='{2}', `Match`='{3}', `isSubmitted`='{4}', `Modified`=now() WHERE `RunningTaskId`='{5}'",
                 rtask.CandidateId, rtask.JobOrderId, rtask.Status, rtask.Match, Convert.ToInt32(rtask.isSubmitted), rtask.RunningtaskId);
             int result = DataAccess.Instance.executeNonQuery(sql);
+
+            Activity act = new Activity()
+            {
+                Type = "Update Candidate to Job Pipeline",
+                ActivityOf = Activity.TypeOfLogActivity.Pipeline,
+                JobOrderId = rtask.JobOrderId,
+                CandidateId = rtask.CandidateId,
+                RunningTaskId = rtask.RunningtaskId
+            };
+            // add activity to db
+            ActivityManager.insert(act, null);
+
             return result > 0 ? true : false;
         }
 
         public static bool updateStatusWithTransaction(string status, long id)
         {
-            string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `Status`='{0}' WHERE `RunningtaskId`='{1}';", status, id);
+            string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `Status`='{0}', `Modified`=now() WHERE `RunningtaskId`='{1}';", status, id);
             return DataAccess.Instance.executeNonQueryTransaction(sql);
         }
 
         public static bool updateSubmittedStateWithTransaction(bool isSubmitted, long id)
         {
-            string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `isSubmitted`='{0}' WHERE `RunningtaskId`='{1}';", Convert.ToInt32(isSubmitted), id);
+            string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `isSubmitted`='{0}', `Modified`=now() WHERE `RunningtaskId`='{1}';", Convert.ToInt32(isSubmitted), id);
             return DataAccess.Instance.executeNonQueryTransaction(sql);
         }
 
@@ -71,6 +83,14 @@ namespace SWIBLL
         {            
             string sql = string.Format("DELETE FROM `swilifecore`.`runningtask` WHERE `RunningTaskId`='{0}'", id);
             int result = DataAccess.Instance.executeNonQuery(sql);
+            Activity act = new Activity()
+            {
+                Type = "Delete Running Task",
+                ActivityOf = Activity.TypeOfLogActivity.Pipeline,
+                RunningTaskId = id
+            };
+            // add activity to db
+            ActivityManager.insert(act, null);
             return result > 0 ? true : false;
 
         }

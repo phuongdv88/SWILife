@@ -30,13 +30,32 @@ namespace SWIBLL.Models
         public string ScanLink { get; set; }
         public long UserId { get; set; }
 
-        public string UserName { get; set;}
+        public string UserName { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
         public Company()
         {
             CompanyId = -1;
+            Name = string.Empty;
+            PrimaryPhone = string.Empty;
+            SecondaryPhone = string.Empty;
+            FaxNumber = string.Empty;
+            Address = string.Empty;
+            CountryOfOrigin = string.Empty;
+            WebSite = string.Empty;
+            KeyTechnologies = string.Empty;
+            ServiceContractTerms = string.Empty;
+            Industry = string.Empty; //computer game, computer hardware, computer networking, sofware, consumer electronics, it and services, internet, nanotechnology, network security, online media, semiconductors, telecommunications, end users, biotechnology, electrical/ electrical manufacturing, wireless
+            ABC = string.Empty;
+            IsActive = false;
+            MiscNotes = string.Empty;
+            City = string.Empty;
+            State = string.Empty;
+            PostalCode = string.Empty;
+            IsHot = false;
             ScanLink = string.Empty;
+            UserId = -1;
+            UserName = string.Empty;
         }
 
         ~Company()

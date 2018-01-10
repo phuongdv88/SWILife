@@ -108,5 +108,62 @@ namespace DXSWI.Forms
                     break;
             }
         }
+
+        private void copyEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                //get current selection object
+                if (gvCandidates.SelectedRowsCount > 0)
+                {
+                    int row = gvCandidates.GetSelectedRows().First();
+                    DataRow data_row = gvCandidates.GetDataRow(row); // for test
+                    Clipboard.SetText(data_row["Email"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void gcCandidates_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+
+                //get current selection object
+                if (gvCandidates.SelectedRowsCount > 0)
+                {
+                    int row = gvCandidates.GetSelectedRows().First();
+                    DataRow data_row = gvCandidates.GetDataRow(row); // for test
+                    int CandidateId = int.Parse(data_row["CandidateId"].ToString());
+
+                    if (RunningTaskManager.isExist(CandidateId, jobId))
+                    {
+                        throw new Exception("It has already in Pipeline!");
+                    }
+
+                    // add to running task table
+                    RunningTask rtask = new RunningTask
+                    {
+                        CandidateId = CandidateId,
+                        JobOrderId = jobId,
+                        Added = DateTime.Now,
+                        EnteredBy = UserManager.ActivatedUser?.UserName
+                    };
+
+                    RunningTaskManager.createRunningTask(rtask);
+                    // emit to update data
+                    updateDataEvent?.Invoke();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

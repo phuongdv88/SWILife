@@ -16,6 +16,8 @@ using DXSWI.Forms;
 using DevExpress.XtraBars.Ribbon;
 using SWIBLL;
 using SWIBLL.Models;
+using System.Reflection;
+using System.IO;
 
 namespace DXSWI
 {
@@ -60,14 +62,11 @@ namespace DXSWI
         {
             initializeTheme();
             init();
+            // show version
+            DateTime buildDate = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
+            Text = string.Format("SWILIFE HR Assistant - Version {0} - Build time: {1}", Assembly.GetExecutingAssembly().GetName().Version.ToString(), buildDate.ToString("dd/MM/yyy hh:mm:ss"));
+            Text = string.Format("SWILIFE HR Assistant - Version {0} - Build time: {1}", Application.ProductVersion, buildDate.ToString("dd/MM/yyy hh:mm:ss"));
 
-        }
-
-        private void skinRibbonGalleryBarItem1_GalleryItemCheckedChanged(object sender, DevExpress.XtraBars.Ribbon.GalleryItemEventArgs e)
-        {
-            //if (e == null)
-            //    return;
-            //Properties.Settings.Default.theme = e.Item.Caption.ToString();
         }
 
         private void skinRibbonGalleryBarItem1_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
@@ -80,16 +79,20 @@ namespace DXSWI
 
         private void SWIMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
             if (XtraMessageBox.Show("Are you sure to want to quit?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 e.Cancel = true;
             }
-            try
+            else
             {
-                SWIBLL.UserManager.logout();
-                ScreenManager.Instance.quit();
+                try
+                {
+                    SWIBLL.UserManager.logout();
+                    ScreenManager.Instance.quit();
+                }
+                catch { }
             }
-            catch { }
         }
 
         private void SWIMain_KeyDown(object sender, KeyEventArgs e)
@@ -128,39 +131,50 @@ namespace DXSWI
         {
             if (e.Group.Tag == null)
                 return;
-            changeGroup(e.Group.Tag.ToString());
-        }
-        private void changeGroup(string tag)
-        {
-            // change ribbon panel pages
-            //set invisible all ribbon control
+            string tag = e.Group.Tag.ToString();
             foreach (RibbonPage page in ribbonControlMain.Pages)
             {
                 string page_tag = page.Tag.ToString();
                 if (!string.IsNullOrEmpty(page_tag))
                 {
-                    if (!page_tag.Equals(tag))
+                    if (page_tag.Equals(tag))
                     {
-                        page.Visible = false;
-                    }
-                    else
-                    {
-                        page.Visible = true;
+                        ribbonControlMain.SelectedPage = page;
                     }
                 }
             }
 
-            // select the first visible ribbon page
-            foreach (RibbonPage page in ribbonControlMain.Pages)
-            {
-                if (page.Visible)
-                {
-                    ribbonControlMain.SelectedPage = page;
-                    break;
-                }
-            }
+            changeGroup(e.Group.Tag.ToString());
+        }
+        private void changeGroup(string tag)
+        {
+            // change ribbon panel pages
+            ////set invisible all ribbon control
+            //foreach (RibbonPage page in ribbonControlMain.Pages)
+            //{
+            //    string page_tag = page.Tag.ToString();
+            //    if (!string.IsNullOrEmpty(page_tag))
+            //    {
+            //        if (!page_tag.Equals(tag))
+            //        {
+            //            page.Visible = false;
+            //        }
+            //        else
+            //        {
+            //            page.Visible = true;
+            //        }
+            //    }
+            //}
 
-
+            //// select the first visible ribbon page
+            //foreach (RibbonPage page in ribbonControlMain.Pages)
+            //{
+            //    if (page.Visible)
+            //    {
+            //        ribbonControlMain.SelectedPage = page;
+            //        break;
+            //    }
+            //}
 
             // change pcMain
             if (tag.Equals(tagCandidates))
@@ -276,6 +290,63 @@ namespace DXSWI
         private void barButtonItem5_ItemClick_1(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        private void bbiUserAdd_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // add new user
+        }
+
+        private void bbiUserEdit_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // edit current user
+        }
+
+        private void bbiUserDelete_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // delete selected user
+            
+        }
+
+        private void bbiUserHelp_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            XtraMessageBox.Show("This app was writed by PhuongDV for internal process in his wife's company.");
+        }
+
+        private void bbiAddCompany_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // add company
+            mfrCompanies.newCompany();
+        }
+
+        private void bbiEditCompany_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            mfrCompanies.editCompany();
+        }
+
+        private void bbiDeleteCompany_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            mfrCompanies.deleteCompany();
+        }
+
+        private void ribbonControlMain_SelectedPageChanged(object sender, EventArgs e)
+        {
+            changeGroup(ribbonControlMain.SelectedPage.Tag.ToString());
+        }
+
+        private void bbiAddJobOrder0_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            mfrJobOrder.newJobOrder();
+        }
+
+        private void bbiEditJobOrder0_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            mfrJobOrder.EditJobOrder();
+        }
+
+        private void bbiDeleteJobOrder0_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            mfrJobOrder.deleteJobOrder();
         }
     }
 }

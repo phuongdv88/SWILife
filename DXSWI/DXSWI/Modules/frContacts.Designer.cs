@@ -44,6 +44,7 @@
             this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.refreshContactsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gcContacts)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvContacts)).BeginInit();
@@ -67,34 +68,35 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newContactToolStripMenuItem,
             this.editContactToolStripMenuItem,
+            this.refreshContactsToolStripMenuItem,
             this.toolStripSeparator1,
             this.deleteContactToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 120);
             // 
             // newContactToolStripMenuItem
             // 
             this.newContactToolStripMenuItem.Name = "newContactToolStripMenuItem";
-            this.newContactToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newContactToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.newContactToolStripMenuItem.Text = "New Contact";
             this.newContactToolStripMenuItem.Click += new System.EventHandler(this.newContactToolStripMenuItem_Click);
             // 
             // editContactToolStripMenuItem
             // 
             this.editContactToolStripMenuItem.Name = "editContactToolStripMenuItem";
-            this.editContactToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editContactToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.editContactToolStripMenuItem.Text = "Edit Contact";
             this.editContactToolStripMenuItem.Click += new System.EventHandler(this.editContactToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
             // 
             // deleteContactToolStripMenuItem
             // 
             this.deleteContactToolStripMenuItem.Name = "deleteContactToolStripMenuItem";
-            this.deleteContactToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteContactToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.deleteContactToolStripMenuItem.Text = "Delete Contact";
             this.deleteContactToolStripMenuItem.Click += new System.EventHandler(this.deleteContactToolStripMenuItem_Click);
             // 
@@ -186,6 +188,13 @@
             this.colModified.VisibleIndex = 7;
             this.colModified.Width = 182;
             // 
+            // refreshContactsToolStripMenuItem
+            // 
+            this.refreshContactsToolStripMenuItem.Name = "refreshContactsToolStripMenuItem";
+            this.refreshContactsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.refreshContactsToolStripMenuItem.Text = "Refresh Contacts";
+            this.refreshContactsToolStripMenuItem.Click += new System.EventHandler(this.refreshContactsToolStripMenuItem_Click);
+            // 
             // frContacts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,5 +227,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem deleteContactToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn colTitle;
+        private System.Windows.Forms.ToolStripMenuItem refreshContactsToolStripMenuItem;
     }
 }

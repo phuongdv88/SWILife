@@ -41,21 +41,21 @@ namespace SWIBLL
                 
         }
 
-        public DataTable getCurrentPages()
-        {
-            return GetLimitedCandidates(mPageNumber, mPageSize);
-        }
+        //public DataTable getCurrentPages()
+        //{
+        //    return GetLimitedCandidates(mPageNumber, mPageSize);
+        //}
 
-        public DataTable getNextPage()
-        {
-            ++mPageNumber;
-            return  getCurrentPages();
-        }
-        public DataTable getPreviewPage()
-        {
-            --mPageNumber;
-            return getCurrentPages();
-        }
+        //public DataTable getNextPage()
+        //{
+        //    ++mPageNumber;
+        //    return  getCurrentPages();
+        //}
+        //public DataTable getPreviewPage()
+        //{
+        //    --mPageNumber;
+        //    return getCurrentPages();
+        //}
 
         public int getNumberOfPages()
         {
@@ -65,7 +65,11 @@ namespace SWIBLL
 
         public DataTable  GetLimitedCandidates(int page_count, int page_size)
         {
-            //return DataAccess.Instance.getLimitedCandidates((page_count - 1) * page_size, page_size);
+            return DataAccess.Instance.getLimitedCandidates((page_count - 1) * page_size, page_size);
+        }
+
+        public DataTable GetAllCandidatesOverView()
+        {
             return DataAccess.Instance.getCandidatesOverview();
         }
 
@@ -83,6 +87,14 @@ namespace SWIBLL
                 DataAccess.Instance.executeNonQueryTransaction(sql);
                 // commit 
                 DataAccess.Instance.commitTransaction();
+                Activity act = new Activity()
+                {
+                    Type = "Delete Candidate",
+                    ActivityOf = Activity.TypeOfLogActivity.Candidate,
+                    CandidateId = CandidateId,
+                };
+
+                ActivityManager.insert(act, null);
             }
             catch
             {
@@ -139,7 +151,15 @@ namespace SWIBLL
                 QueryBuilder.mySqlEscape(can.PositionsUpTillNow), can.Years, QueryBuilder.mySqlEscape(can.ProjectDone), QueryBuilder.mySqlEscape(can.Industry), QueryBuilder.mySqlEscape(can.Education),
                 QueryBuilder.mySqlEscape(can.Language), can.CreatedId, Convert.ToInt32(can.IsInBlacklist), can.UserId,
                 QueryBuilder.mySqlEscape(can.ImageLink), Convert.ToInt32(can.IsQualified));
-            DataAccess.Instance.executeNonQuery(sql);
+            long can_id = DataAccess.Instance.executeInsertingQuery(sql);
+            Activity act = new Activity()
+            {
+                Type = "Insert new Candidate",
+                ActivityOf = Activity.TypeOfLogActivity.Candidate,
+                CandidateId = can_id,
+            };
+
+            ActivityManager.insert(act, null);
         }
         public static void updateCandidate(Candidate can)
         {
@@ -157,7 +177,7 @@ namespace SWIBLL
                 "`ProjectDone`='{28}', `Industry`='{29}', `Education`='{30}', `Language`='{31}', " +
                 "`CreatedId`='{32}', `IsInBlacklist`='{33}', " +
                 "`UserId`='{34}', `Modified`=now(), `ImageLink`='{35}', `IsQualified`='{36}' " +
-                "WHERE `CandidateId`='{39}'",
+                "WHERE `CandidateId`='{37}'",
                 QueryBuilder.mySqlEscape(can.FirstName), QueryBuilder.mySqlEscape(can.MiddleName), QueryBuilder.mySqlEscape(can.LastName), QueryBuilder.mySqlEscape(can.Email), QueryBuilder.mySqlEscape(can.SecondaryEmail),
                 QueryBuilder.mySqlEscape(can.SkypeIM), QueryBuilder.mySqlEscape(can.CellPhone), QueryBuilder.mySqlEscape(can.WorkPhone), QueryBuilder.mySqlEscape(can.BestTimeToCall), QueryBuilder.mySqlEscape(can.Address),
                 QueryBuilder.mySqlEscape(can.WebSite), QueryBuilder.mySqlEscape(can.Source), QueryBuilder.mySqlEscape(can.CurrentPosition), can.DateAvailable.ToString("yyyy-MM-dd H:mm:ss"), 
@@ -168,6 +188,14 @@ namespace SWIBLL
                 can.CreatedId, Convert.ToInt32(can.IsInBlacklist),
                 can.UserId, QueryBuilder.mySqlEscape(can.ImageLink), Convert.ToInt32(can.IsQualified), can.CandidateId);
             DataAccess.Instance.executeNonQuery(sql);
+            Activity act = new Activity()
+            {
+                Type = "Update Candidate",
+                ActivityOf = Activity.TypeOfLogActivity.Candidate,
+                CandidateId = can.CandidateId,
+            };
+
+            ActivityManager.insert(act, null);
         }
 
         public static bool updateResumeLink(Candidate can)

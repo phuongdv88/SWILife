@@ -13,6 +13,7 @@ namespace SWIBLL.Models
             Contact = 1, // add, edit, delete contact
             Candidate = 2, // add, edit, delete candidate
             Pipeline = 3, // add running task
+            Company = 4, // add, edit, delete company
         }
 
         public enum RunningTaskStatus
@@ -39,21 +40,23 @@ namespace SWIBLL.Models
         public TypeOfLogActivity ActivityOf { get; set; } // job order, contact, company, running task, candidate,
         public long JobOrderId { get; set; }
         public long CandidateId { get; set; }
-        public long ContactID { get; set; }
+        public long ContactId { get; set; }
         public long UserId { get; set; }
 
         public long RunningTaskId { get; set; }
 
         public long ScheduleEventId { get; set; }
 
+        public long CompanyId { get; set; }
         public Activity()
         {
             JobOrderId = -1;
             CandidateId = -1;
-            ContactID = -1;
+            ContactId = -1;
             UserId = -1;
             ScheduleEventId = -1;
             RunningTaskId = -1;
+            CompanyId = -1;
             Regarding = "General";
             Status = Activity.RunningTaskStatus.NOT_CONTACT;
             Notes = string.Empty;

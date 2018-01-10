@@ -71,7 +71,8 @@ namespace DXSWI.Modules
         }
         private void importCompany(string filePath)
         {
-
+            //parseCompanies(@"D:\BACKUP\CATS Vo beo\Demo\");
+            //parseCompanies(@"D:\BACKUP\CATS Vo beo\CompanyLink\");
         }
 
         private void importContact(string filePath)
@@ -103,9 +104,9 @@ namespace DXSWI.Modules
 
                     if (nodes != null)
                     {
-                        name = nodes[0].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.').Replace("  "," ");
+                        name = nodes[0].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.').Replace("  ", " ");
                         name = Regex.Replace(name, @"\s+", " ");
-                        can.FirstName = name.Split(' ').Last();
+                        can.FirstName = name.Split(' ').First();
                         can.LastName = name.Replace(can.FirstName, "").Trim();
                         can.Email = nodes[1].InnerText.Trim();
                         can.SecondaryEmail = nodes[2].InnerText.Trim();
@@ -122,14 +123,14 @@ namespace DXSWI.Modules
                         can.KeySkills = nodes[15].InnerText.Trim();
                         can_relocate = nodes[16].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.');
                         can.CanRelocate = false;
-                        if(string.Equals(can_relocate.ToUpper(),"YES"))
+                        if (string.Equals(can_relocate.ToUpper(), "YES"))
                         {
                             can.CanRelocate = true;
                         }
                         can.CurrentPay = nodes[17].InnerText.Trim();
                         can.DesiredPay = nodes[18].InnerText.Trim();
                         can.DOBMarried = nodes[23].InnerText.Trim();
-                        if(can.DOBMarried.Length > 255)
+                        if (can.DOBMarried.Length > 255)
                         {
                             can.InterviewNotes = can.DOBMarried;
                             can.DOBMarried = string.Empty;
@@ -140,7 +141,7 @@ namespace DXSWI.Modules
                         can.InterviewNotes += interview_notes;
                         gender = nodes[25].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.');
                         can.Gender = true; // male
-                        if(string.Equals(gender.ToUpper(), "FEMALE"))
+                        if (string.Equals(gender.ToUpper(), "FEMALE"))
                         {
                             can.Gender = false;
                         }
@@ -151,7 +152,8 @@ namespace DXSWI.Modules
 
 
                         // insert to database
-                        try {
+                        try
+                        {
                             CandidateManager.InsertCandidate(can);
                         }
                         catch (Exception ex)
@@ -170,6 +172,125 @@ namespace DXSWI.Modules
 
             }
             printMessage(string.Format("number of error parse file {0}", counter));
+        }
+
+        private void parseCompanies(string sorce_folder)
+        {
+            // parse data from html and save to file
+            string[] list_file = Directory.GetFiles(sorce_folder);
+            int counter = 0;
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            int index = 0;
+
+            foreach (var file_name in list_file)
+            {
+                Company com = new Company() { UserId = UserManager.ActivatedUser.UserId };
+                string billing_contact = "";
+                string active = "";
+                string misc_notes = "";
+                string job_order_string = "";
+                string contacts_string = "";
+
+                try
+                {
+                    doc.Load(file_name);
+                    ++index;
+                    //parse general information
+                    var nodes = doc.DocumentNode.SelectNodes("//table[@class='detailsInside']//td[@class='data']");
+                    if (nodes != null)
+                    {
+
+                        com.Name = nodes[0].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.');
+                        com.PrimaryPhone = nodes[1].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.');
+                        com.SecondaryPhone = nodes[2].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.');
+                        com.FaxNumber = nodes[3].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.');
+                        com.Address = nodes[4].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.').Replace("&nbsp;", "");
+                        com.City = nodes[5].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.').Replace("&nbsp;", ""); //?
+                        com.CountryOfOrigin = nodes[6].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.');
+                        active = nodes[7].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.');
+                        if (string.Equals(active.ToUpper(), "NO"))
+                        {
+                            com.IsActive = false;
+                        }
+                        else
+                        {
+                            com.IsActive = true;
+                        }
+                        billing_contact = nodes[8].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.').Replace("&nbsp;", "");
+                        if (billing_contact.Length > 0)
+                        {
+                            com.MiscNotes = "Billing Contact: " + billing_contact + "\r\n";
+                        }
+                        com.WebSite = nodes[9].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.');
+                        com.KeyTechnologies = nodes[10].InnerText.Trim().Replace("&nbsp;", ""); ;
+                        com.ServiceContractTerms = nodes[14].InnerText.Trim().Replace("&nbsp;", ""); ;
+                        com.Industry = nodes[15].InnerText.Trim().Replace("&nbsp;", ""); ;
+                        com.ABC = nodes[16].InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace('\n', '.');
+                        misc_notes = nodes[18].InnerText.Trim();
+                        byte[] bytes = Encoding.Default.GetBytes(misc_notes);
+                        misc_notes = Encoding.UTF8.GetString(bytes);
+                        com.MiscNotes += misc_notes;
+                    }
+
+
+                    //parse list job orders
+
+                    nodes = doc.DocumentNode.SelectNodes("//table[@class='sortable']//tr[contains(@class,'TableRow')][not (@id)]");
+                    if (nodes != null)
+                    {
+                        foreach (var node in nodes)
+                        {
+                            var ls = node.InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace("\n\n", "\n").Split('\n');
+                            job_order_string += String.Join(" ", ls) + "; ";
+                        }
+                    }
+
+
+                    if (job_order_string.Length > 1)
+                    {
+                        job_order_string = job_order_string.Remove(job_order_string.Length - 2, 2);
+                        job_order_string = Regex.Replace(job_order_string, @"\s+", " ");
+
+                        com.MiscNotes += "Job Orders: " + job_order_string + "\r\n";
+
+                    }
+
+
+
+                    //parse list contacts
+                    nodes = doc.DocumentNode.SelectNodes("//table[@class='sortable']//tr[contains(@class,'TableRow') and contains(@id,'ContactsDefault')]");
+
+                    if (nodes != null)
+                    {
+                        foreach (var node in nodes)
+                        {
+                            var ls = node.InnerText.Trim().Replace('\t', ' ').Replace('\r', ' ').Replace("\n\n", "\n").Split('\n');
+                            contacts_string += String.Join(" ", ls) + "; ";
+                        }
+                    }
+
+
+                    if (contacts_string.Length > 1)
+                    {
+                        contacts_string = contacts_string.Remove(contacts_string.Length - 2, 2);
+                        contacts_string = Regex.Replace(contacts_string, @"\s+", " ");
+                        com.MiscNotes += "Lis Contact: " + contacts_string + "\r\n";
+                    }
+
+                    com.MiscNotes = com.MiscNotes.Replace("&nbsp;", "").Replace("&amp;", "").Replace("Henry N.", "");
+                    com.MiscNotes = Regex.Replace(com.MiscNotes, @"\s+", " ");
+
+                    CompanyManager.addNewCompany(com);
+
+                }
+                catch (Exception ex)
+                {
+                    printMessage(string.Format("error when parse file {0}: {1}", file_name, ex.Message));
+                    ++counter;
+                }
+            }
+            printMessage(string.Format("number of error parse file {0}", counter));
+
         }
     }
 }

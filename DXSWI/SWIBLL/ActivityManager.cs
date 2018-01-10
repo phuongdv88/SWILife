@@ -18,11 +18,14 @@ namespace SWIBLL
         /// <returns></returns>
         public static void getListRegardingForCandidate(long id, ref Dictionary<string, long> listRegarding, ref Dictionary<string, string> listRegardingStatus)
         {
-            string sql = string.Format("SELECT T2.Title, T1.RunningTaskId, T1.Status FROM swilifecore.runningtask T1 Join joborder T2 on T1.JobOrderId = T2.JobOrderId Where T1.CandidateId = '{0}'", id);
+            string sql = string.Format("SELECT T2.Title, T1.RunningTaskId, T1.Status " +
+                "FROM swilifecore.runningtask T1 Join joborder T2 on T1.JobOrderId = T2.JobOrderId " +
+                "Where T1.CandidateId = '{0}'", id);
             DataTable tbl = DataAccess.Instance.getDataTable(sql);
-            for(int i = 0; i < tbl.Rows.Count; ++i)
+            for (int i = 0; i < tbl.Rows.Count; ++i)
             {
-                if (!listRegarding.ContainsKey(tbl.Rows[i][0].ToString())){
+                if (!listRegarding.ContainsKey(tbl.Rows[i][0].ToString()))
+                {
                     listRegarding.Add(tbl.Rows[i][0].ToString(), int.Parse(tbl.Rows[i][1].ToString()));
                 }
 
@@ -33,10 +36,25 @@ namespace SWIBLL
             }
         }
 
+        public static void getListRunningTaskForJobOrder(long jobOrderId, ref Dictionary<long, long> listCandidateRunningTaskId)
+        {
+            string sql = string.Format("SELECT CandidateId, RunningTaskId FROM swilifecore.runningtask where JobOrderId = {0}", jobOrderId);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
+            for (int i = 0; i < tbl.Rows.Count; ++i)
+            {
+                long canId = Convert.ToInt64(tbl.Rows[i][0].ToString());
+                if (!listCandidateRunningTaskId.ContainsKey(canId))
+                {
+                    listCandidateRunningTaskId.Add(canId, Convert.ToInt64(tbl.Rows[i][1].ToString()));
+                }
+            }
+        }
+
         public static void deleteActivity(long Activityid, long ScheduleEventId)
         {
             string sql = string.Empty;
-            try {
+            try
+            {
                 DataAccess.Instance.StartTransaction();
                 if (ScheduleEventId != -1)
                 {
@@ -59,7 +77,8 @@ namespace SWIBLL
 
         public static void deleteScheduleEvent(long id)
         {
-            try {
+            try
+            {
                 DataAccess.Instance.StartTransaction();
                 string sql = string.Format("UPDATE `swilifecore`.`activity` SET `ScheduleEventId`='-1' WHERE `ScheduleEventId`='id'");
                 DataAccess.Instance.executeNonQueryTransaction(sql);
@@ -90,7 +109,8 @@ namespace SWIBLL
         {
             string sql = string.Empty;
             // insert to database by transaction
-            try {
+            try
+            {
                 DataAccess.Instance.StartTransaction();
                 if (ev != null)
                 {
@@ -110,11 +130,11 @@ namespace SWIBLL
                     "`JobOrderId`, `CandidateId`, `ContactID`, `UserId`, `ScheduleEventId`, `RunningTaskId`) " +
                     "VALUES ('{0}', '{1}', '{2}', now(), '{3}', '{4}', '{5}', '{6}', '{7}', '{8}','{9}')",
                     act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), (int)act.ActivityOf,
-                    act.JobOrderId, act.CandidateId, act.ContactID, act.UserId, act.ScheduleEventId, act.RunningTaskId);
+                    act.JobOrderId, act.CandidateId, act.ContactId, act.UserId, act.ScheduleEventId, act.RunningTaskId);
                 DataAccess.Instance.executeInsertQueryTransaction(sql);
 
                 // change status of running task or whatever folow by type of activity
-                if(act.ActivityOf == Activity.TypeOfLogActivity.Candidate)
+                if (act.ActivityOf == Activity.TypeOfLogActivity.Pipeline)
                 {
                     // check type of status to set data in running task
                     // if type of status is submitted -> set to running task also
@@ -136,7 +156,7 @@ namespace SWIBLL
                         case Activity.RunningTaskStatus.SUBMITTED:
                             RunningTaskManager.updateStatusWithTransaction("Submitted", act.RunningTaskId);
                             RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId);
-                            
+
                             break;
                         case Activity.RunningTaskStatus.INTERVIEWING:
                             RunningTaskManager.updateStatusWithTransaction("Interviewing", act.RunningTaskId);
@@ -167,12 +187,89 @@ namespace SWIBLL
             }
 
         }
-        
+
+        public static void insertMultiActionForCandidates(Activity act, long jobOrderId, List<long> listCandidateId)
+        {
+            string sql = string.Empty;
+            // insert to database by transaction
+            try
+            {
+                DataAccess.Instance.StartTransaction();
+                act.UserId = UserManager.ActivatedUser.UserId;
+                Dictionary<long, long> listCandidateIdRunningTaskId = new Dictionary<long, long>();
+                getListRunningTaskForJobOrder(jobOrderId, ref listCandidateIdRunningTaskId);
+                // add log activity
+                foreach (long canId in listCandidateId)
+                {
+                    if (listCandidateIdRunningTaskId.ContainsKey(canId))
+                    {
+                        long runningTaskId = listCandidateIdRunningTaskId[canId];
+                        sql = string.Format("INSERT INTO `swilifecore`.`activity` " +
+                            "(`Regarding`, `Type`, `Notes`, `Created`, `ActivityOf`, " +
+                            "`JobOrderId`, `CandidateId`, `ContactID`, `UserId`, `ScheduleEventId`, `RunningTaskId`) " +
+                            "VALUES ('{0}', '{1}', '{2}', now(), '{3}', '{4}', '{5}', '{6}', '{7}', '{8}','{9}')",
+                            act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), (int)Activity.TypeOfLogActivity.Pipeline,
+                            jobOrderId, canId, act.ContactId, act.UserId, act.ScheduleEventId, runningTaskId);
+                        DataAccess.Instance.executeInsertQueryTransaction(sql);
+
+                        // check type of status to set data in running task
+                        // if type of status is submitted -> set to running task also
+
+                        switch (act.Status)
+                        {
+                            case Activity.RunningTaskStatus.NOT_CONTACT:
+                                RunningTaskManager.updateStatusWithTransaction("Not Contact", runningTaskId);
+                                break;
+                            case Activity.RunningTaskStatus.CONTACTED:
+                                RunningTaskManager.updateStatusWithTransaction("Contacted",runningTaskId);
+                                break;
+                            case Activity.RunningTaskStatus.CANDIDATE_RESPONDED:
+                                RunningTaskManager.updateStatusWithTransaction("Candidate Responded", runningTaskId);
+                                break;
+                            case Activity.RunningTaskStatus.QUALIFYING:
+                                RunningTaskManager.updateStatusWithTransaction("Qualifying", runningTaskId);
+                                break;
+                            case Activity.RunningTaskStatus.SUBMITTED:
+                                RunningTaskManager.updateStatusWithTransaction("Submitted", runningTaskId);
+                                RunningTaskManager.updateSubmittedStateWithTransaction(true, runningTaskId);
+
+                                break;
+                            case Activity.RunningTaskStatus.INTERVIEWING:
+                                RunningTaskManager.updateStatusWithTransaction("Interviewing", runningTaskId);
+                                break;
+                            case Activity.RunningTaskStatus.OFFERED:
+                                RunningTaskManager.updateStatusWithTransaction("Offered", runningTaskId);
+                                break;
+                            case Activity.RunningTaskStatus.NOT_IN_CONSIDERATION:
+                                RunningTaskManager.updateStatusWithTransaction("Not In Consideration", runningTaskId);
+                                break;
+                            case Activity.RunningTaskStatus.CLIENT_DECLINED:
+                                RunningTaskManager.updateStatusWithTransaction("Client Declined", runningTaskId);
+                                break;
+                            case Activity.RunningTaskStatus.PLACED:
+                                RunningTaskManager.updateStatusWithTransaction("Placed", runningTaskId);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                // commit 
+                DataAccess.Instance.commitTransaction();
+            }
+            catch
+            {
+                DataAccess.Instance.rollbackTransaction();
+                throw;
+            }
+
+        }
+
         public static Activity getActivityById(int id)
         {
             string sql = string.Format("select * from `swilifecore`.`activity` where `ActivityId`='{0}' ", id);
             DataTable tbl = DataAccess.Instance.getDataTable(sql);
-            if(tbl.Rows.Count > 0)
+            if (tbl.Rows.Count > 0)
             {
                 DataRow data_row = tbl.Rows[0];
                 return Data.CreateItemFromRow<Activity>(data_row);
@@ -226,7 +323,7 @@ namespace SWIBLL
                         "`Regarding`='{0}', `Type`='{1}', `Notes`='{2}', `Created`='{3}', `ActivityOf`='{4}', `JobOrderId`='{5}', `CandidateId`='{6}', `ContactID`='{7}', `UserId`='{8}', `ScheduleEventId`='{9}'" +
                         "WHERE `ActivityId`='{10}'",
                     act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), act.Created.ToString("yyyy-MM-dd hh:mm:ss"), (int)act.ActivityOf,
-                    act.JobOrderId, act.CandidateId, act.ContactID, act.UserId,act.ScheduleEventId, act.ActivityId);
+                    act.JobOrderId, act.CandidateId, act.ContactId, act.UserId, act.ScheduleEventId, act.ActivityId);
                 DataAccess.Instance.executeNonQueryTransaction(sql);
 
                 // change status of running task or whatever folow by type of activity

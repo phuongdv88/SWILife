@@ -75,7 +75,17 @@ namespace SWIBLL
                 QueryBuilder.mySqlEscape(com.MiscNotes), QueryBuilder.mySqlEscape(com.City), QueryBuilder.mySqlEscape(com.State),
                 QueryBuilder.mySqlEscape(com.PostalCode), Convert.ToInt32(com.IsHot), com.ContractSigingTime.ToString("yyyy/MM/dd"),
                 QueryBuilder.mySqlEscape(com.ScanLink), com.UserId);
-            DataAccess.Instance.executeNonQuery(sql);
+            long company_Id = DataAccess.Instance.executeInsertingQuery(sql);
+
+            Activity act = new Activity()
+            {
+                Type = "Insert new Company",
+                ActivityOf = Activity.TypeOfLogActivity.Company,
+                CompanyId = company_Id,
+            };
+
+            ActivityManager.insert(act, null);
+
         }
 
         public static void UpdateCompany(Company com)
@@ -90,6 +100,14 @@ namespace SWIBLL
                 QueryBuilder.mySqlEscape(com.ABC), Convert.ToInt32(com.IsActive), QueryBuilder.mySqlEscape(com.MiscNotes), QueryBuilder.mySqlEscape(com.City), QueryBuilder.mySqlEscape(com.State), QueryBuilder.mySqlEscape(com.PostalCode), Convert.ToInt32(com.IsHot), com.ContractSigingTime.ToString("yyyy/MM/dd"),
                 QueryBuilder.mySqlEscape(com.ScanLink),com.UserId, com.CompanyId);
             DataAccess.Instance.executeNonQuery(sql);
+            Activity act = new Activity()
+            {
+                Type = "Update Company",
+                ActivityOf = Activity.TypeOfLogActivity.Company,
+                CompanyId = com.CompanyId,
+            };
+
+            ActivityManager.insert(act, null);
         }
         public static void deleteCompany(long comId)
         {
@@ -126,6 +144,15 @@ namespace SWIBLL
                 DataAccess.Instance.executeNonQueryTransaction(sql);
                 // commit 
                 DataAccess.Instance.commitTransaction();
+
+                Activity act = new Activity()
+                {
+                    Type = "Delete Company",
+                    ActivityOf = Activity.TypeOfLogActivity.Company,
+                    CompanyId = comId,
+                };
+
+                ActivityManager.insert(act, null);
             }
             catch
             {

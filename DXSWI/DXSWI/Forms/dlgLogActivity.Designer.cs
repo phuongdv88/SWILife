@@ -221,7 +221,7 @@
             this.sbCancel.Size = new System.Drawing.Size(163, 22);
             this.sbCancel.StyleController = this.layoutControl1;
             this.sbCancel.TabIndex = 13;
-            this.sbCancel.Text = "Cancel";
+            this.sbCancel.Text = "Exit";
             this.sbCancel.Click += new System.EventHandler(this.sbCancel_Click);
             // 
             // layoutControlGroup1

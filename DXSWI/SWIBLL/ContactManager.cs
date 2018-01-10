@@ -77,7 +77,16 @@ namespace SWIBLL
                 QueryBuilder.mySqlEscape(con.City), QueryBuilder.mySqlEscape(con.State), QueryBuilder.mySqlEscape(con.PostalCode), 
                 QueryBuilder.mySqlEscape(con.ProfileLink), QueryBuilder.mySqlEscape(con.MiscNotes), con.CompanyId, con.UserId, QueryBuilder.mySqlEscape(con.ImageLink));
 
-            DataAccess.Instance.executeNonQuery(sql);
+            long contact_id = DataAccess.Instance.executeInsertingQuery(sql);
+
+            Activity act = new Activity()
+            {
+                Type = "Insert new Contact",
+                ActivityOf = Activity.TypeOfLogActivity.Contact,
+                ContactId = contact_id,
+            };
+
+            ActivityManager.insert(act, null);
         }
 
         public static void UpdateContact(Contact con)
@@ -92,12 +101,30 @@ namespace SWIBLL
                 QueryBuilder.mySqlEscape(con.Address), QueryBuilder.mySqlEscape(con.City), QueryBuilder.mySqlEscape(con.State), QueryBuilder.mySqlEscape(con.PostalCode), 
                 QueryBuilder.mySqlEscape(con.ProfileLink), QueryBuilder.mySqlEscape(con.MiscNotes), con.CompanyId, con.UserId, QueryBuilder.mySqlEscape(con.ImageLink), con.ContactId);
             DataAccess.Instance.executeNonQuery(sql);
+
+            Activity act = new Activity()
+            {
+                Type = "Update Contact",
+                ActivityOf = Activity.TypeOfLogActivity.Contact,
+                ContactId = con.ContactId,
+            };
+
+            ActivityManager.insert(act, null);
         }
 
         public static void DeleteContact(long conId)
         {
             string sql = string.Format("DELETE FROM `swilifecore`.`contact` WHERE `ContactId`='{0}'", conId);
             DataAccess.Instance.executeNonQuery(sql);
+
+            Activity act = new Activity()
+            {
+                Type = "Delete Contact",
+                ActivityOf = Activity.TypeOfLogActivity.Contact,
+                ContactId = conId,
+            };
+
+            ActivityManager.insert(act, null);
         }
     }
 }

@@ -41,6 +41,10 @@ namespace DXSWI.Modules
 
         private void newJobOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            newJobOrder();
+        }
+        public void newJobOrder()
+        {
             // open dialog dlgJobOrderEdit
             dlgJobOrderEdit dlg = new dlgJobOrderEdit(-1);
             dlg.emitUpdateData += updateData;
@@ -48,6 +52,11 @@ namespace DXSWI.Modules
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditJobOrder();
+        }
+
+        public void EditJobOrder()
         {
             long jobOrderId = -1;
             if (gvJobOrder.SelectedRowsCount > 0)
@@ -66,23 +75,28 @@ namespace DXSWI.Modules
 
         private void deleteJobOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (XtraMessageBox.Show("System will also delete running task of this Job Order. Are you sure to delete this Job Order?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            deleteJobOrder();
+        }
+        public void deleteJobOrder()
+        {
+            // delete this running task data
+            if (gvJobOrder.SelectedRowsCount > 0)
             {
-                try
+                if (XtraMessageBox.Show("System will also delete running task of this Job Order. Are you sure to delete this Job Order?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    // delete this running task data
-                    if (gvJobOrder.SelectedRowsCount > 0)
+                    try
                     {
+
                         int row = gvJobOrder.GetSelectedRows().First();
                         DataRow data_row = gvJobOrder.GetDataRow(row);
                         int jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
                         JobOrderManager.deleteJobOrder(jobOrderId);
                         updateData();
                     }
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

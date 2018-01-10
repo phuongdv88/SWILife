@@ -25,7 +25,7 @@ namespace DXSWI.Modules
         {
             try {
                 // load data in candidate table and show in grid control
-                gcCandidates.DataSource = mCandidateManager.getCurrentPages();
+                gcCandidates.DataSource = mCandidateManager.GetAllCandidatesOverView();
             }
             catch(Exception ex)
             {
@@ -57,36 +57,20 @@ namespace DXSWI.Modules
             //frCandidates.
             if (gcCandidates.MainView == gridView1)
                 gridView1.MakeRowVisible(gridView1.FocusedRowHandle);
-            //get current selection object
-            if (gridView1.SelectedRowsCount > 0)
-            {
-                int row = gridView1.GetSelectedRows().First();
-                DataRow data_row = gridView1.GetDataRow(row); // for test
-                //Candidate obj = Data.CreateItemFromRow<Candidate>(data_row);
-                long canID = Convert.ToInt64(data_row["CandidateId"].ToString());
-                ucCandidateManager1.setCurrentCandidate(canID,"");
-            }
-            // fill to ucCandidateManager form
-
-
-            //OwnerForm.EnableEditContact(CurrentContact != null); // enable edit button
+            ////get current selection object
+            //if (gridView1.SelectedRowsCount > 0)
+            //{
+            //    int row = gridView1.GetSelectedRows().First();
+            //    DataRow data_row = gridView1.GetDataRow(row); // for test
+            //    long canID = Convert.ToInt64(data_row["CandidateId"].ToString());
+            //    ucCandidateManager1.setCurrentCandidate(canID,"");
+            //}
         }
 
         private void ucCandidateManager1_Load(object sender, EventArgs e)
         {
 
         }
-
-        //public Candidate currentCandidate()
-        //{
-        //    if (gridView1.SelectedRowsCount > 0)
-        //    {
-        //        int row = gridView1.GetSelectedRows().First();
-        //        DataRow data_row = gridView1.GetDataRow(row); // for test
-        //        return Data.CreateItemFromRow<Candidate>(data_row);
-        //    }
-        //    return null;
-        //}
 
         public long currentCandidateId()
         {
@@ -148,12 +132,19 @@ namespace DXSWI.Modules
 
         public void AddJobToPipeLine()
         {
-            ucCandidateManager1.AddJobToPipeLine();
+            //todo: open dialog to add job to pipe line
+            //ucCandidateManager1.AddJobToPipeLine();
         }
 
         public void logActivity()
         {
-            ucCandidateManager1.logActivity();
+            // todo: open dialog to add job to pipe line
+            //ucCandidateManager1.logActivity();
+        }
+
+        private void refreshTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            updateData();
         }
     }
 }

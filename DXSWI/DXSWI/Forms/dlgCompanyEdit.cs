@@ -115,6 +115,23 @@ namespace DXSWI.Forms
             ContractSigingTimeDateEdit.Text = mCompany.ContractSigingTime.ToString("dd/MM/yyyy");
             MiscNotesTextEdit.Text = mCompany.MiscNotes;
             ServiceContractTermsTextEdit.Text = mCompany.ServiceContractTerms;
+
+            // tooltip
+            NameTextEdit.ToolTip = mCompany.Name;
+            PrimaryPhoneTextEdit.ToolTip = mCompany.PrimaryPhone;
+            SecondaryPhoneTextEdit.ToolTip = mCompany.SecondaryPhone;
+            FaxNumberTextEdit.ToolTip = mCompany.FaxNumber;
+            AddressTextEdit.ToolTip = mCompany.Address;
+            CountryOfOriginTextEdit.ToolTip = mCompany.CountryOfOrigin;
+            WebSiteTextEdit.ToolTip = mCompany.WebSite;
+            KeyTechnologiesTextEdit.ToolTip = mCompany.KeyTechnologies;
+            ABCTextEdit.ToolTip = mCompany.ABC;
+            CityTextEdit.ToolTip = mCompany.City;
+            StateTextEdit.ToolTip = mCompany.State;
+            PostalCodeTextEdit.ToolTip = mCompany.PostalCode;
+            ContractSigingTimeDateEdit.ToolTip = mCompany.ContractSigingTime.ToString("dd/MM/yyyy");
+            MiscNotesTextEdit.ToolTip = mCompany.MiscNotes;
+            ServiceContractTermsTextEdit.ToolTip = mCompany.ServiceContractTerms;
         }
 
         private void sbAttachFile_Click(object sender, EventArgs e)

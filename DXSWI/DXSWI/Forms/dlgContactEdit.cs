@@ -124,6 +124,25 @@ namespace DXSWI.Forms
                 {
                     ImagePictureEdit.Image = null;
                 };
+
+                // tooltip
+                FirstNameTextEdit.ToolTip = mContact.FirstName;
+                MiddleNameTextEdit.ToolTip = mContact.MiddleName;
+                LastNameTextEdit.ToolTip = mContact.LastName;
+                TitleTextEdit.ToolTip = mContact.Title;
+                DepartmentTextEdit.ToolTip = mContact.Department;
+                ReportToTextEdit.ToolTip = mContact.ReportTo;
+                EmailTextEdit.ToolTip = mContact.Email;
+                SecondaryEmailTextEdit.ToolTip = mContact.SecondaryEmail;
+                CellPhoneTextEdit.ToolTip = mContact.CellPhone;
+                WorkPhoneTextEdit.ToolTip = mContact.WorkPhone;
+                OtherPhoneTextEdit.ToolTip = mContact.OtherPhone;
+                AddressTextEdit.ToolTip = mContact.Address;
+                CityTextEdit.ToolTip = mContact.City;
+                StateTextEdit.ToolTip = mContact.State;
+                PostalCodeTextEdit.ToolTip = mContact.PostalCode;
+                ProfileLinkTextEdit.ToolTip = mContact.ProfileLink;
+                MiscNotesMemoEdit.ToolTip = mContact.MiscNotes;
             }
         }
 

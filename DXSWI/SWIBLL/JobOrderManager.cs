@@ -71,6 +71,14 @@ namespace SWIBLL
                 Convert.ToInt32(jobOrder.IsHot), Convert.ToInt32(jobOrder.isPublic), QueryBuilder.mySqlEscape(jobOrder.Description), QueryBuilder.mySqlEscape(jobOrder.InternalNotes),
                 QueryBuilder.mySqlEscape(jobOrder.WebLink), QueryBuilder.mySqlEscape(jobOrder.Status), jobOrder.ExperienceYear, jobOrder.JobOrderId);
             int rs = DataAccess.Instance.executeNonQuery(sql);
+            Activity act = new Activity()
+            {
+                Type = "Update Job Order",
+                ActivityOf = Activity.TypeOfLogActivity.JobOrder,
+                JobOrderId = jobOrder.JobOrderId,
+            };
+            // add activity to db
+            ActivityManager.insert(act, null);
             return rs > 0 ? true : false;
         }
 
@@ -87,6 +95,16 @@ namespace SWIBLL
                 DataAccess.Instance.executeNonQueryTransaction(sql);
                 // commit 
                 DataAccess.Instance.commitTransaction();
+
+                Activity act = new Activity()
+                {
+                    Type = "Delete Job Order",
+                    ActivityOf = Activity.TypeOfLogActivity.JobOrder,
+                    JobOrderId = jobOrderId,
+                };
+                // add activity to db
+                ActivityManager.insert(act, null);
+
             }
             catch
             {

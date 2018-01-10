@@ -40,12 +40,20 @@ namespace DXSWI.Modules
 
         private void newCompanyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            newCompany();
+        }
+        public void newCompany()
+        {
             dlgCompanyEdit dlg = new dlgCompanyEdit(-1);
             dlg.UpdateDataEvent += updateData;
             dlg.ShowDialog();
         }
 
         private void editCompanyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editCompany();
+        }
+        public void editCompany()
         {
             try
             {
@@ -68,23 +76,28 @@ namespace DXSWI.Modules
         private void deleteCompanyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //be careful: delete Contact, Job order, running task also
-            if (XtraMessageBox.Show("System will also delete all of Job orders, running tasks and contacts related to this company. Are you sure to delete this Job Order?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            deleteCompany();
+
+        }
+        public void deleteCompany()
+        {
+            if (gvCompanies.SelectedRowsCount > 0)
             {
-                try
+                if (XtraMessageBox.Show("System will also delete all of Job orders, running tasks and contacts related to this company. Are you sure to delete this Job Order?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    // delete this running task data
-                    if (gvCompanies.SelectedRowsCount > 0)
+                    try
                     {
+                        // delete this running task data
                         int row = gvCompanies.GetSelectedRows().First();
                         DataRow data_row = gvCompanies.GetDataRow(row);
                         int comId = int.Parse(data_row["CompanyId"].ToString());
                         CompanyManager.deleteCompany(comId);
                         updateData();
                     }
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -123,6 +136,11 @@ namespace DXSWI.Modules
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void refreshDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            updateData();
         }
     }
 }

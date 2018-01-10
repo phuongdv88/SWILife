@@ -58,7 +58,7 @@
             this.sbCancel.Name = "sbCancel";
             this.sbCancel.Size = new System.Drawing.Size(75, 23);
             this.sbCancel.TabIndex = 1;
-            this.sbCancel.Text = "Cancel";
+            this.sbCancel.Text = "Exit";
             this.sbCancel.Click += new System.EventHandler(this.sbCancel_Click);
             // 
             // flowLayoutPanel1

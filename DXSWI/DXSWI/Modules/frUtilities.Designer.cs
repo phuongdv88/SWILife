@@ -108,6 +108,7 @@
             // 
             this.InfoMemoEdit.Location = new System.Drawing.Point(24, 84);
             this.InfoMemoEdit.Name = "InfoMemoEdit";
+            this.InfoMemoEdit.Properties.ReadOnly = true;
             this.InfoMemoEdit.Size = new System.Drawing.Size(1107, 521);
             this.InfoMemoEdit.StyleController = this.layoutControl1;
             this.InfoMemoEdit.TabIndex = 7;

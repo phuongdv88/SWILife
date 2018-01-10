@@ -16,7 +16,7 @@ namespace DXSWI.Forms
     public partial class dlgLogActivity : DevExpress.XtraEditors.XtraForm
     {
 
-        Dictionary<string, long> listRegarding = new Dictionary<string, long>();   // title of regarding , IdOfRunningTask in database
+        Dictionary<string, long> listRegardingRunningTaskId = new Dictionary<string, long>();   // title of regarding , IdOfRunningTask in database
         Dictionary<string, string> listRegardingStatus = new Dictionary<string, string>(); // status of regarding
         Activity.TypeOfLogActivity typeOfActivity;
         long CurrentCandidateId = -1;
@@ -28,13 +28,16 @@ namespace DXSWI.Forms
         public delegate void updateData();
         public event updateData updateDataEvent;
 
+        List<long> listCandidateId;
+        bool isMultiSelected = false;
+
         public void init(string name, Activity.TypeOfLogActivity type, long CandidateId, long JobOrderId, long ContactId)
         {
             try
             {
-                listRegarding.Clear();
+                listRegardingRunningTaskId.Clear();
                 listRegardingStatus.Clear();
-                listRegarding.Add("General", -1);
+                listRegardingRunningTaskId.Add("General", -1);
                 listRegardingStatus.Add("General", "None");
                 typeOfActivity = type;
                 CurrentCandidateId = CandidateId;
@@ -43,17 +46,13 @@ namespace DXSWI.Forms
                 this.Text = name;
                 switch (type)
                 {
-                    case Activity.TypeOfLogActivity.JobOrder:
-                        break;
-                    case Activity.TypeOfLogActivity.Contact:
-                        break;
                     case Activity.TypeOfLogActivity.Candidate:
                         // get list job order in pipeline
-                        ActivityManager.getListRegardingForCandidate(CandidateId, ref listRegarding, ref listRegardingStatus);
+                        ActivityManager.getListRegardingForCandidate(CandidateId, ref listRegardingRunningTaskId, ref listRegardingStatus);
                         break;
                     case Activity.TypeOfLogActivity.Pipeline:
                         // get list job order in pipeline
-                        ActivityManager.getListRegardingForCandidate(CandidateId, ref listRegarding, ref listRegardingStatus);
+                        ActivityManager.getListRegardingForCandidate(CandidateId, ref listRegardingRunningTaskId, ref listRegardingStatus);
                         break;
                     default:
                         break;
@@ -62,11 +61,41 @@ namespace DXSWI.Forms
                 cbeRegarding.Properties.Items.BeginUpdate();
                 cbeRegarding.Properties.Items.Clear();
                 // add to combobox
-                foreach (var item in listRegarding.Keys)
+                foreach (var item in listRegardingRunningTaskId.Keys)
                 {
                     cbeRegarding.Properties.Items.Add(item);
                 }
                 cbeRegarding.Properties.Items.EndUpdate();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public void initForListCandidateInPipeline(string name, string regarding, long jobOrderId, List<long> CandidatesId)
+        {
+            try
+            {
+                isMultiSelected = true;
+                listRegardingRunningTaskId.Clear();
+                listRegardingStatus.Clear();
+                this.Text = name;
+                typeOfActivity = Activity.TypeOfLogActivity.Pipeline;
+                CurrentJobOrderId = jobOrderId;
+                listCandidateId = CandidatesId;
+                // do not change regarding
+                cbeRegarding.Properties.Items.BeginUpdate();
+                cbeRegarding.Properties.Items.Clear();
+                cbeRegarding.Properties.Items.Add(regarding);
+                cbeRegarding.Properties.Items.EndUpdate();
+                cbeRegarding.ReadOnly = true;
+
+                // disable event schedule
+                ceScheduleEvent.ReadOnly = true;
+                // enable change status checkbox
+                ceChangeStatus.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -81,7 +110,7 @@ namespace DXSWI.Forms
             {
                 cbeRegarding.EditValue = regarding;
             }
-            catch 
+            catch
             {
                 //XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -102,8 +131,8 @@ namespace DXSWI.Forms
                 currentScheduleEvent = ActivityManager.getScheduleEventById(ScheduleEventId);
 
                 // fill data to UI
-                    setActivityToUI(currentActivity);
-                    ucScheduleEvent1.setScheduleEventToUI(currentScheduleEvent);
+                setActivityToUI(currentActivity);
+                ucScheduleEvent1.setScheduleEventToUI(currentScheduleEvent);
             }
             catch (Exception ex)
             {
@@ -174,7 +203,15 @@ namespace DXSWI.Forms
                 if (isAddNew)
                 {
                     // insert to db by transaction
-                    ActivityManager.insert(act, ev);
+                    if (isMultiSelected)
+                    {
+                        // add multi action
+                        ActivityManager.insertMultiActionForCandidates(act, CurrentJobOrderId, listCandidateId);
+                    }
+                    else
+                    {
+                        ActivityManager.insert(act, ev);
+                    }
                 }
                 else
                 {
@@ -212,10 +249,13 @@ namespace DXSWI.Forms
             act.Notes = meActivityNote.Text;
             act.Created = DateTime.Now;
             act.ActivityOf = typeOfActivity;
-            act.RunningTaskId = listRegarding[cbeRegarding.SelectedText];  // get running task id of this activity
-            act.CandidateId = CurrentCandidateId;
-            act.JobOrderId = CurrentJobOrderId;
-            act.ContactID = CurrentContactId;
+            if (!isMultiSelected)
+            {
+                act.RunningTaskId = listRegardingRunningTaskId[cbeRegarding.SelectedText];  // get running task id of this activity
+                act.CandidateId = CurrentCandidateId;
+                act.JobOrderId = CurrentJobOrderId;
+                act.ContactId = CurrentContactId;
+            }
             return act;
         }
 
@@ -246,17 +286,20 @@ namespace DXSWI.Forms
         }
         private void cbeRegarding_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbeRegarding.SelectedIndex == 0)
+            if (!isMultiSelected)
             {
-                ceChangeStatus.Enabled = false;
-                cbeStatus.Enabled = false;
-                cbeStatus.SelectedIndex = -1;
-            }
-            else
-            {
-                ceChangeStatus.Enabled = true;
-                cbeStatus.Enabled = ceChangeStatus.Checked;
-                cbeStatus.Text = listRegardingStatus[cbeRegarding.SelectedText];
+                if (cbeRegarding.SelectedIndex == 0)
+                {
+                    ceChangeStatus.Enabled = false;
+                    cbeStatus.Enabled = false;
+                    cbeStatus.SelectedIndex = -1;
+                }
+                else
+                {
+                    ceChangeStatus.Enabled = true;
+                    cbeStatus.Enabled = ceChangeStatus.Checked;
+                    cbeStatus.Text = listRegardingStatus[cbeRegarding.SelectedText];
+                }
             }
 
         }

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgCompanyEdit));
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PrimaryPhoneTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.SecondaryPhoneTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.FaxNumberTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -83,10 +84,10 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrimaryPhoneTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondaryPhoneTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FaxNumberTextEdit.Properties)).BeginInit();
@@ -134,7 +135,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -179,6 +179,10 @@
             this.NameTextEdit.Size = new System.Drawing.Size(842, 20);
             this.NameTextEdit.StyleController = this.dataLayoutControl1;
             this.NameTextEdit.TabIndex = 4;
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(SWIBLL.Models.Company);
             // 
             // PrimaryPhoneTextEdit
             // 
@@ -347,18 +351,18 @@
             // MiscNotesTextEdit
             // 
             this.MiscNotesTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "MiscNotes", true));
-            this.MiscNotesTextEdit.Location = new System.Drawing.Point(139, 316);
+            this.MiscNotesTextEdit.Location = new System.Drawing.Point(598, 178);
             this.MiscNotesTextEdit.Name = "MiscNotesTextEdit";
-            this.MiscNotesTextEdit.Size = new System.Drawing.Size(1051, 175);
+            this.MiscNotesTextEdit.Size = new System.Drawing.Size(592, 313);
             this.MiscNotesTextEdit.StyleController = this.dataLayoutControl1;
             this.MiscNotesTextEdit.TabIndex = 16;
             // 
             // ServiceContractTermsTextEdit
             // 
             this.ServiceContractTermsTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "ServiceContractTerms", true));
-            this.ServiceContractTermsTextEdit.Location = new System.Drawing.Point(139, 162);
+            this.ServiceContractTermsTextEdit.Location = new System.Drawing.Point(24, 178);
             this.ServiceContractTermsTextEdit.Name = "ServiceContractTermsTextEdit";
-            this.ServiceContractTermsTextEdit.Size = new System.Drawing.Size(1051, 150);
+            this.ServiceContractTermsTextEdit.Size = new System.Drawing.Size(570, 313);
             this.ServiceContractTermsTextEdit.StyleController = this.dataLayoutControl1;
             this.ServiceContractTermsTextEdit.TabIndex = 12;
             // 
@@ -414,7 +418,7 @@
             this.sbCancel.Size = new System.Drawing.Size(257, 22);
             this.sbCancel.StyleController = this.dataLayoutControl1;
             this.sbCancel.TabIndex = 29;
-            this.sbCancel.Text = "Cancel";
+            this.sbCancel.Text = "Exit";
             this.sbCancel.Click += new System.EventHandler(this.sbCancel_Click);
             // 
             // layoutControlGroup1
@@ -460,9 +464,9 @@
             this.ItemForKeyTechnologies,
             this.ItemForIndustry,
             this.ItemForABC,
-            this.ItemForMiscNotes,
             this.ItemForContractSigingTime,
-            this.ItemForServiceContractTerms});
+            this.ItemForServiceContractTerms,
+            this.ItemForMiscNotes});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Size = new System.Drawing.Size(1194, 495);
@@ -608,10 +612,11 @@
             // ItemForMiscNotes
             // 
             this.ItemForMiscNotes.Control = this.MiscNotesTextEdit;
-            this.ItemForMiscNotes.Location = new System.Drawing.Point(0, 274);
+            this.ItemForMiscNotes.Location = new System.Drawing.Point(574, 120);
             this.ItemForMiscNotes.Name = "ItemForMiscNotes";
-            this.ItemForMiscNotes.Size = new System.Drawing.Size(1170, 179);
+            this.ItemForMiscNotes.Size = new System.Drawing.Size(596, 333);
             this.ItemForMiscNotes.Text = "Misc Notes";
+            this.ItemForMiscNotes.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForMiscNotes.TextSize = new System.Drawing.Size(112, 13);
             // 
             // ItemForContractSigingTime
@@ -628,8 +633,9 @@
             this.ItemForServiceContractTerms.Control = this.ServiceContractTermsTextEdit;
             this.ItemForServiceContractTerms.Location = new System.Drawing.Point(0, 120);
             this.ItemForServiceContractTerms.Name = "ItemForServiceContractTerms";
-            this.ItemForServiceContractTerms.Size = new System.Drawing.Size(1170, 154);
+            this.ItemForServiceContractTerms.Size = new System.Drawing.Size(574, 333);
             this.ItemForServiceContractTerms.Text = "Service Contract Terms";
+            this.ItemForServiceContractTerms.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForServiceContractTerms.TextSize = new System.Drawing.Size(112, 13);
             // 
             // layoutControlGroup4
@@ -706,10 +712,6 @@
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
-            // companyBindingSource
-            // 
-            this.companyBindingSource.DataSource = typeof(SWIBLL.Models.Company);
-            // 
             // dlgCompanyEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -724,6 +726,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrimaryPhoneTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondaryPhoneTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FaxNumberTextEdit.Properties)).EndInit();
@@ -771,7 +774,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
