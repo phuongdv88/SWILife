@@ -15,7 +15,8 @@ namespace SWIBLL
         public static bool createJobOrder(JobOrder jobOrder)
         {
             // check duplicate:
-            string sql = string.Format("select count(*) from swilifecore.joborder where (char_length(Title) > 0 and Title = '{0}') and (CompanyId != -1 and CompanyId = '{1}') ", jobOrder.Title, jobOrder.CompanyId);
+            string sql = string.Format("select count(*) from swilifecore.joborder where (char_length(Title) > 0 and Title = '{0}') and (CompanyId != -1 and CompanyId = '{1}') "
+                , QueryBuilder.mySqlEscape(jobOrder.Title), jobOrder.CompanyId);
             MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);
             try
             {

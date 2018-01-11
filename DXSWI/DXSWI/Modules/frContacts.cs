@@ -40,12 +40,22 @@ namespace DXSWI.Modules
 
         private void newContactToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            NewContact();
+        }
+
+        public void NewContact()
+        {
             dlgContactEdit dlg = new dlgContactEdit(-1, null);
             dlg.emitUpdateData += updateData;
             dlg.ShowDialog();
         }
 
         private void editContactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditContact();
+        }
+
+        public void EditContact()
         {
             try
             {
@@ -68,6 +78,11 @@ namespace DXSWI.Modules
 
         private void deleteContactToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DeleteContact();
+        }
+
+        public void DeleteContact()
+        {
             if (XtraMessageBox.Show("Are you sure to delete this Contact?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
@@ -88,6 +103,7 @@ namespace DXSWI.Modules
                 }
             }
         }
+
 
         private void gcContacts_DoubleClick(object sender, EventArgs e)
         {

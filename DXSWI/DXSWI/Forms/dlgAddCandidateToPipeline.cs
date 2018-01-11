@@ -42,41 +42,49 @@ namespace DXSWI.Forms
 
         private void sbOK_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-                //get current selection object
-                if (gvCandidates.SelectedRowsCount > 0)
-                {
-                    int row = gvCandidates.GetSelectedRows().First();
-                    DataRow data_row = gvCandidates.GetDataRow(row); // for test
-                    int CandidateId = int.Parse(data_row["CandidateId"].ToString());
-
-                    if(RunningTaskManager.isExist(CandidateId, jobId))
-                    {
-                        throw new Exception("It has already in Pipeline!");
-                    }
-
-                    // add to running task table
-                    RunningTask rtask = new RunningTask
-                    {
-                        CandidateId = CandidateId,
-                        JobOrderId = jobId,
-                        Added = DateTime.Now,
-                        EnteredBy = UserManager.ActivatedUser?.UserName
-                    };
-
-                    RunningTaskManager.createRunningTask(rtask);
-                    // emit to update data
-                    updateDataEvent?.Invoke();
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            InsertCandidates();
         }
 
+        private void InsertCandidates()
+        {
+
+            //multi insert
+            if (gvCandidates.SelectedRowsCount > 0)
+            {
+                var rows = gvCandidates.GetSelectedRows();
+                foreach (var row in rows)
+                {
+                    try
+                    {
+                        DataRow data_row = gvCandidates.GetDataRow(row); // for test
+                        int CandidateId = int.Parse(data_row["CandidateId"].ToString());
+
+                        if (RunningTaskManager.isExist(CandidateId, jobId))
+                        {
+                            throw new Exception("It has already in Pipeline!");
+                        }
+
+                        // add to running task table
+                        RunningTask rtask = new RunningTask
+                        {
+                            CandidateId = CandidateId,
+                            JobOrderId = jobId,
+                            Added = DateTime.Now,
+                            EnteredBy = UserManager.ActivatedUser?.UserName
+                        };
+
+                        RunningTaskManager.createRunningTask(rtask);
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                // emit to update data
+                updateDataEvent?.Invoke();
+            }
+
+        }
         private void sbCancel_Click(object sender, EventArgs e)
         {
             Close();
@@ -93,7 +101,7 @@ namespace DXSWI.Forms
                 return;
             // todo show dlgCandidateEdit but in mode view only
             dlgCandidateEdit dlg = new dlgCandidateEdit(canId, null);
-            dlg.setViewMode();
+            //dlg.setViewMode();
             dlg.ShowDialog();
         }
 
@@ -126,43 +134,17 @@ namespace DXSWI.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void gcCandidates_KeyDown(object sender, KeyEventArgs e)
         {
-            try
+            if (e.KeyCode == Keys.Enter)
             {
-
-                //get current selection object
-                if (gvCandidates.SelectedRowsCount > 0)
-                {
-                    int row = gvCandidates.GetSelectedRows().First();
-                    DataRow data_row = gvCandidates.GetDataRow(row); // for test
-                    int CandidateId = int.Parse(data_row["CandidateId"].ToString());
-
-                    if (RunningTaskManager.isExist(CandidateId, jobId))
-                    {
-                        throw new Exception("It has already in Pipeline!");
-                    }
-
-                    // add to running task table
-                    RunningTask rtask = new RunningTask
-                    {
-                        CandidateId = CandidateId,
-                        JobOrderId = jobId,
-                        Added = DateTime.Now,
-                        EnteredBy = UserManager.ActivatedUser?.UserName
-                    };
-
-                    RunningTaskManager.createRunningTask(rtask);
-                    // emit to update data
-                    updateDataEvent?.Invoke();
-                }
-            }
-            catch (Exception ex)
+                sbOK.PerformClick();
+            } else if (e.KeyCode == Keys.Escape)
             {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
             }
         }
     }

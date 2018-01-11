@@ -13,7 +13,7 @@ namespace SWIBLL
     {
         public static DataTable getContacts()
         {
-            string sql = string.Format("SELECT T1.ContactId, T1.FirstName, T1.LastName, T2.Name as CompanyName, T1.WorkPhone, T1.Email, T1.Title, T1.Modified, T3.UserName as Owner FROM swilifecore.contact T1 " +
+            string sql = string.Format("SELECT T1.ContactId, T1.FirstName, T1.LastName, T2.Name as CompanyName, T1.CellPhone, T1.Email, T1.Title, T1.Modified, T1.MiscNotes,  T3.UserName as Owner FROM swilifecore.contact T1 " +
                                         "left join swilifecore.company T2 on T1.CompanyId = T2.CompanyId " +
                                         "left join swilifecore.user T3 on T1.UserId = T3.UserId  order by ContactId desc");
             return DataAccess.Instance.getDataTable(sql);
@@ -43,7 +43,8 @@ namespace SWIBLL
         public static void InsertContact(Contact con)
         {
              // check duplicate:
-            string sql = string.Format("select count(*) from swilifecore.contact where (char_length(CellPhone) > 0 and CellPhone = '{0}') or (char_length(Email) > 0 and Email = '{1}') or (char_length(WorkPhone) > 0 and WorkPhone = '{2}')", con.CellPhone, con.Email, con.WorkPhone);
+            string sql = string.Format("select count(*) from swilifecore.contact where (char_length(CellPhone) > 0 and CellPhone = '{0}') or (char_length(Email) > 0 and Email = '{1}') or (char_length(WorkPhone) > 0 and WorkPhone = '{2}')", 
+                QueryBuilder.mySqlEscape(con.CellPhone), QueryBuilder.mySqlEscape(con.Email), QueryBuilder.mySqlEscape(con.WorkPhone));
             MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);
             try
             {

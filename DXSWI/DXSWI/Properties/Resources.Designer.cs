@@ -125,7 +125,7 @@ namespace DXSWI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap user_female_5 {
             get {
-                object obj = ResourceManager.GetObject("user-female-5", resourceCulture);
+                object obj = ResourceManager.GetObject("user_female_5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -135,7 +135,7 @@ namespace DXSWI.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap user_male_3 {
             get {
-                object obj = ResourceManager.GetObject("user-male-3", resourceCulture);
+                object obj = ResourceManager.GetObject("user_male_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

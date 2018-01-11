@@ -13,15 +13,17 @@ using HtmlAgilityPack;
 using SWIBLL;
 using SWIBLL.Models;
 using System.Text.RegularExpressions;
+using OfficeOpenXml;
 
 namespace DXSWI.Modules
 {
     public partial class frUtilities : DevExpress.XtraEditors.XtraUserControl
     {
-        string FilePath;
         public frUtilities()
         {
             InitializeComponent();
+            // fortest:
+            FileNameTextEdit.Text = @"C:\Users\phuon\Documents\Developer.xlsx";
         }
 
         private void sbBrowse_Click(object sender, EventArgs e)
@@ -29,28 +31,35 @@ namespace DXSWI.Modules
             OpenFileDialog openFileDlg = new OpenFileDialog();
             if (openFileDlg.ShowDialog() != DialogResult.OK)
                 return;
-            FilePath = openFileDlg.FileName;
-            FileNameTextEdit.Text = FilePath;
-            printMessage("Load file: " + FilePath);
+            FileNameTextEdit.Text = openFileDlg.FileName;
+            printMessage("Load file: " + openFileDlg.FileName);
 
         }
 
         private void sbImport_Click(object sender, EventArgs e)
         {
+
             // typeofdata: 0: candidate, 1: company, 2: contact
-            switch (FileTypeComboBoxEdit.SelectedIndex)
+            try
             {
-                case 0:
-                    importCandiate(FilePath);
-                    break;
-                case 1:
-                    importCompany(FilePath);
-                    break;
-                case 2:
-                    importContact(FilePath);
-                    break;
-                default:
-                    break;
+                switch (FileTypeComboBoxEdit.SelectedIndex)
+                {
+                    case 0:
+                        importCandiate(FileNameTextEdit.Text);
+                        break;
+                    case 1:
+                        importCompany(FileNameTextEdit.Text);
+                        break;
+                    case 2:
+                        importContact(FileNameTextEdit.Text);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                printMessage(string.Format("Error: {0}", ex.Message));
             }
 
         }
@@ -63,11 +72,7 @@ namespace DXSWI.Modules
         private void importCandiate(string filePath)
         {
             //parseCandidateFromLinks(@"D:\BACKUP\CATS Vo beo\links\");
-            // parse line file and create object
-
-            // check duplicate and then import to db
-
-            // print result;
+            parseCandidateFromExel(filePath);
         }
         private void importCompany(string filePath)
         {
@@ -77,7 +82,42 @@ namespace DXSWI.Modules
 
         private void importContact(string filePath)
         {
+            using (ExcelPackage package = new ExcelPackage(new FileInfo(filePath)))
+            {
+                if (package.Workbook.Worksheets.Count <= 1)
+                    return;
+                ExcelWorksheet workSheet = package.Workbook.Worksheets["Contacts"];
+                //ExcelWorksheet workSheet = package.Workbook.Worksheets.FirstOrDefault();
+                // read all data begin from row 2
+                for (var rowNumber = 2; rowNumber < workSheet.Dimension.End.Row; rowNumber++)
+                {
+                    var row = workSheet.Cells[rowNumber, 1, rowNumber, workSheet.Dimension.End.Column];
+                    var cells = row.ToList();
+                    Contact con = new Contact();
 
+                    con.FirstName = cells[0].Text.Trim(); //first name
+                    con.LastName = cells[1].Text.Trim(); // lastname
+                    con.CompanyName = cells[2].Text.Trim(); // company
+                    if (con.CompanyName.Length == 0) continue;
+                    con.Title = cells[3].Text.Trim(); // title
+                    con.Email = cells[4].Text.Trim(); // email address
+                    con.CellPhone = cells[5].Text.Trim(); // phone numbers
+                    con.MiscNotes = con.CompanyName;
+                    con.MiscNotes += "\r\n" + cells[6].Text;
+
+                    con.UserId = UserManager.ActivatedUser.UserId;
+                    // insert to database
+                    try
+                    {
+                        ContactManager.InsertContact(con);
+                    }
+                    catch (Exception ex)
+                    {
+                        printMessage(string.Format("Error: {0} of row = {1}", ex.Message, rowNumber));
+                    }
+                }
+
+            };
         }
 
         private void parseCandidateFromLinks(string sourceFolder)
@@ -292,5 +332,97 @@ namespace DXSWI.Modules
             printMessage(string.Format("number of error parse file {0}", counter));
 
         }
+
+        private void parseCandidateFromExel(string sourceFile)
+        {
+            using (ExcelPackage package = new ExcelPackage(new FileInfo(sourceFile)))
+            {
+                if (package.Workbook.Worksheets.Count <= 1)
+                    return;
+
+                ExcelWorksheet workSheet = package.Workbook.Worksheets["Software Engineer"];
+                //ExcelWorksheet workSheet = package.Workbook.Worksheets.FirstOrDefault();
+                // read all data begin from row 2
+                for (var rowNumber = 2; rowNumber < workSheet.Dimension.End.Row; rowNumber++)
+                {
+                    var row = workSheet.Cells[rowNumber, 1, rowNumber, workSheet.Dimension.End.Column];
+                    var cells = row.ToList();
+                    if (cells.Count == 0)
+                        continue;
+                    Candidate can = new Candidate();
+                    can.FirstName = cells[0].Text.Trim(); //first name
+                    can.LastName = cells[1].Text.Trim(); // lastname
+                    can.CurrentEmployer = cells[2].Text.Trim(); // companies
+                    can.CurrentPosition = cells[3].Text.Trim(); // title
+                    can.WebSite = cells[4].Text.Trim(); // link
+                    can.Email = cells[5].Text.Trim(); // email address
+                    string phone_imskype = cells[6].Text.Trim(); //phone numbers
+                    if (phone_imskype.Length > 0)
+                    {
+                        string[] items = phone_imskype.Split('/');
+                        can.CellPhone = items.First();
+                        if (items.Count() > 1)
+                        {
+                            can.SkypeIM = items.Last();
+                        }
+                    }
+                    string keyskill = cells[7].Text.Trim(); // tags
+                    if (keyskill == null || keyskill.Length == 0)
+                    {
+                        keyskill = "Hanoi, Software Engineer";
+                    }
+                    can.KeySkills = keyskill;
+                    can.ProjectDone = cells[8].Text.Trim(); // note
+                    can.MiscNotes = cells[9].Text.Trim();  // comment
+                    can.CurrentPay = cells[11].Text.Trim(); // current pay
+                    can.DOBMarried = cells[13].Text.Trim(); // dob
+                    can.City = "Hanoi";
+                    can.Country = "Vietnam";
+                    can.Source = "LinkedIn";
+                    can.UserId = UserManager.ActivatedUser.UserId;
+
+                    // insert to database
+                    try
+                    {
+                        CandidateManager.InsertCandidate(can);
+                    }
+                    catch (Exception ex)
+                    {
+                        printMessage(string.Format("Error: {0} of row = {1}", ex.Message, rowNumber));
+                    }
+                }
+            }
     }
+
+    private DataTable ReadFromExelFile(string path, string sheetName)
+    {
+        DataTable dt = new DataTable();
+        using (ExcelPackage package = new ExcelPackage(new FileInfo(path)))
+        {
+            if (package.Workbook.Worksheets.Count <= 1)
+                return null;
+            ExcelWorksheet workSheet = sheetName != null ? package.Workbook.Worksheets[sheetName] : package.Workbook.Worksheets.FirstOrDefault();
+            // read all of the headers
+            foreach (var firstRowCell in workSheet.Cells[1, 1, 1, workSheet.Dimension.End.Column])
+            {
+                dt.Columns.Add(firstRowCell.Text);
+            }
+
+            // read all data begin from row 2
+
+            for (var rowNumber = 2; rowNumber < workSheet.Dimension.End.Row; rowNumber++)
+            {
+                var row = workSheet.Cells[rowNumber, 1, rowNumber, workSheet.Dimension.End.Column];
+                var newrow = dt.NewRow();
+                foreach (var cell in row)
+                {
+                    newrow[cell.Start.Column - 1] = cell.Text;
+                }
+                dt.Rows.Add(newrow);
+            }
+
+        };
+        return dt;
+    }
+}
 }

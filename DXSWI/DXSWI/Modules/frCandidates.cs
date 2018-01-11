@@ -109,6 +109,7 @@ namespace DXSWI.Modules
 
         public void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (currentCandidateId() == -1) return;
             dlgCandidateEdit dlg = new dlgCandidateEdit(currentCandidateId(), null);
             dlg.emitUpdateData += updateData;
             dlg.ShowDialog();
@@ -116,6 +117,7 @@ namespace DXSWI.Modules
 
         public void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (currentCandidateId() == -1) return;
             if (XtraMessageBox.Show("Are you sure to delete?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try {
@@ -145,6 +147,15 @@ namespace DXSWI.Modules
         private void refreshTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             updateData();
+        }
+
+        private void frCandidates_DoubleClick(object sender, EventArgs e)
+        {
+            // view candidate edit
+            if (currentCandidateId() == -1) return;
+            dlgCandidateEdit dlg = new dlgCandidateEdit(currentCandidateId(), null);
+            dlg.emitUpdateData += updateData;
+            dlg.ShowDialog();
         }
     }
 }

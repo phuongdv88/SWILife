@@ -517,7 +517,7 @@ namespace DXSWI.Forms
                 return;
             // todo show dlgCandidateEdit but in mode view only
             dlgCandidateEdit dlg = new dlgCandidateEdit(canId, null);
-            dlg.setViewMode();
+            //dlg.setViewMode();
             dlg.ShowDialog();
         }
 
@@ -537,6 +537,21 @@ namespace DXSWI.Forms
                 string cellKey = info.RowHandle.ToString() + " - " + info.Column.ToString();
                 e.Info = new ToolTipControlInfo(cellKey, text);
             }
+        }
+
+        private void editCandidateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            long canId = -1;
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
+            {
+                canId = Convert.ToInt64(gvCandidatePipeline.GetDataRow(gvCandidatePipeline.GetSelectedRows().First())["CandidateId"].ToString());
+            }
+            if (canId == -1)
+                return;
+            // todo show dlgCandidateEdit but in mode view only
+            dlgCandidateEdit dlg = new dlgCandidateEdit(canId, null);
+            //dlg.setViewMode();
+            dlg.ShowDialog();
         }
     }
 }

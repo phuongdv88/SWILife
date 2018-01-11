@@ -86,6 +86,9 @@ namespace DXSWI.Forms
                 case Keys.Escape:
                     this.Close();
                     break;
+                case Keys.Enter:
+                    sbAdd.PerformClick();
+                    break;
                 default:
                     break;
             }

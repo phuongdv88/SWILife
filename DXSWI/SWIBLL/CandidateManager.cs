@@ -106,7 +106,8 @@ namespace SWIBLL
         public static void InsertCandidate(Candidate can)
         {
             // check duplicate:
-            string sql = string.Format("select count(*) from swilifecore.candidate where (char_length(CellPhone) > 0 and CellPhone = '{0}') or (char_length(Email) > 0 and Email = '{1}') or (char_length(WorkPhone) > 0 and WorkPhone = '{2}')", can.CellPhone, can.Email, can.WorkPhone);
+            string sql = string.Format("select count(*) from swilifecore.candidate where (char_length(CellPhone) > 0 and CellPhone = '{0}') or (char_length(Email) > 0 and Email = '{1}') or (char_length(WorkPhone) > 0 and WorkPhone = '{2}')"
+                , QueryBuilder.mySqlEscape(can.CellPhone), QueryBuilder.mySqlEscape(can.Email), QueryBuilder.mySqlEscape(can.WorkPhone));
             MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);
             try
             {

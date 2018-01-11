@@ -37,11 +37,33 @@ namespace SWIBLL.Models
         public Contact()
         {
             ContactId = -1;
+            FirstName = string.Empty;
+            MiddleName = string.Empty;
+            LastName = string.Empty;
+            Title = string.Empty;
+            Department = string.Empty;
+            ReportTo = string.Empty;
+            isHot = false;
+            Email = string.Empty;
+            SecondaryEmail = string.Empty;
+            CellPhone = string.Empty;
+            WorkPhone = string.Empty;
+            OtherPhone = string.Empty;
+            Address = string.Empty;
+            City = string.Empty;
+            State = string.Empty;
+            PostalCode = string.Empty;
+            ProfileLink = string.Empty;
+            MiscNotes = string.Empty;
+            CompanyId = -1;
+            CompanyName = string.Empty;
+            UserId = -1;
+            Owner = string.Empty;
             ImageLink = string.Empty;
         }
         ~Contact()
         {
-                
+
         }
     }
 }

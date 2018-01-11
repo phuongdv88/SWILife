@@ -127,6 +127,7 @@
             this.gvCandidates.GridControl = this.gcCandidates;
             this.gvCandidates.Name = "gvCandidates";
             this.gvCandidates.OptionsBehavior.Editable = false;
+            this.gvCandidates.OptionsSelection.MultiSelect = true;
             // 
             // colName
             // 

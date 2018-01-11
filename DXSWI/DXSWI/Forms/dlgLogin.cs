@@ -21,10 +21,9 @@ namespace DXSWI.Forms
 
             textEditUserName.Text = Properties.Settings.Default.userName;
             textEditPassword.Text = Properties.Settings.Default.password.Length > 0 ? "******" : "";
-            string connection_string = Properties.Settings.Default.swilifecoreConnectionString;
             try
             {
-                UserManager.connectoDB(connection_string);
+                UserManager.connectoDB(Properties.Settings.Default.swilifecoreConnectionString);
             }
             catch (Exception ex)
             {

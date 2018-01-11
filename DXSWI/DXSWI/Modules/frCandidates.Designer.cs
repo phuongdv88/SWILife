@@ -234,6 +234,7 @@
             this.Controls.Add(this.gcCandidates);
             this.Name = "frCandidates";
             this.Size = new System.Drawing.Size(1243, 839);
+            this.DoubleClick += new System.EventHandler(this.frCandidates_DoubleClick);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

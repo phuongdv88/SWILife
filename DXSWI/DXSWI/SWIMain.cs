@@ -43,7 +43,20 @@ namespace DXSWI
         void init()
         {
             // init all Modules
-            changeGroup(tagCompanies);
+            string tag = tagCompanies;
+
+            foreach (RibbonPage page in ribbonControlMain.Pages)
+            {
+                string page_tag = page.Tag.ToString();
+                if (!string.IsNullOrEmpty(page_tag))
+                {
+                    if (page_tag.Equals(tag))
+                    {
+                        ribbonControlMain.SelectedPage = page;
+                    }
+                }
+            }
+            changeGroup(tag);
         }
 
 
@@ -64,7 +77,7 @@ namespace DXSWI
             init();
             // show version
             DateTime buildDate = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
-            Text = string.Format("SWILIFE HR Assistant - Version {0} - Build time: {1}", Assembly.GetExecutingAssembly().GetName().Version.ToString(), buildDate.ToString("dd/MM/yyy hh:mm:ss"));
+            //Text = string.Format("SWILIFE HR Assistant - Version {0} - Build time: {1}", Assembly.GetExecutingAssembly().GetName().Version.ToString(), buildDate.ToString("dd/MM/yyy hh:mm:ss"));
             Text = string.Format("SWILIFE HR Assistant - Version {0} - Build time: {1}", Application.ProductVersion, buildDate.ToString("dd/MM/yyy hh:mm:ss"));
 
         }
@@ -347,6 +360,22 @@ namespace DXSWI
         private void bbiDeleteJobOrder0_ItemClick(object sender, ItemClickEventArgs e)
         {
             mfrJobOrder.deleteJobOrder();
+        }
+
+        private void barButtonItem1_ItemClick_2(object sender, ItemClickEventArgs e)
+        {
+            mfrContacts.NewContact();
+            
+        }
+
+        private void barButtonItem2_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            mfrContacts.EditContact();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            mfrContacts.DeleteContact();
         }
     }
 }

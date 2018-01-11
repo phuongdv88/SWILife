@@ -15,6 +15,7 @@ namespace SWIDAL
         private static DataAccess instance = null;
         private static readonly object padlock = new object();
         private static MySqlTransaction mTran = null;
+        private static string mConnectionString = string.Empty;
         public DataAccess()
         {
 
@@ -43,6 +44,7 @@ namespace SWIDAL
         //------------------------------- nomal command-------------------
         public void ConnectToDB(string connection_string)
         {
+            mConnectionString = connection_string;
             mCon = ConnectToDatabase(connection_string);
             mCon.Open();
         }
@@ -57,11 +59,18 @@ namespace SWIDAL
             return new MySqlConnection(string_connection);
         }
 
+        private void retryConnectToDb()
+        {
+            if(mConnectionString.Length > 0)
+            {
+                mCon = ConnectToDatabase(mConnectionString);
+                mCon.Open();
+            }
+        }
 
         public object executeScalar(string query)
         {
-            if (mCon == null)
-                return -1;
+            if (mCon == null) retryConnectToDb();
             MySqlCommand cmd = new MySqlCommand(query, mCon);
             object result = cmd.ExecuteScalar();
             cmd.Dispose();
@@ -70,7 +79,7 @@ namespace SWIDAL
         public int executeNonQuery(string query)
         {
             if (mCon == null)
-                return -1;
+                retryConnectToDb();
             MySqlCommand cmd = new MySqlCommand(query, mCon);
             int result = cmd.ExecuteNonQuery();
             cmd.Dispose();
@@ -80,7 +89,7 @@ namespace SWIDAL
         public long executeInsertingQuery(string query)
         {
             if (mCon == null)
-                return -1;
+                retryConnectToDb();
             MySqlCommand cmd = new MySqlCommand(query, mCon);
             int result = cmd.ExecuteNonQuery();
             cmd.Dispose();
@@ -115,13 +124,13 @@ namespace SWIDAL
 
         public void StartTransaction()
         {
-            if (mCon == null)
-                return;
+            if (mCon == null) retryConnectToDb();
             mTran =  mCon.BeginTransaction();
         }
 
         public bool executeNonQueryTransaction(string querry)
         {
+            if(mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             try {
                 cmd = new MySqlCommand(querry, mCon);
@@ -140,6 +149,7 @@ namespace SWIDAL
         }
         public long executeInsertQueryTransaction(string querry)
         {
+            if(mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             try
             {
@@ -161,21 +171,21 @@ namespace SWIDAL
         public void commitTransaction()
         {
             if (mCon == null)
-                return;
+                retryConnectToDb();
             mTran?.Commit();
         }
 
         public void rollbackTransaction()
         {
             if (mCon == null)
-                return;
+                retryConnectToDb();
             mTran?.Rollback();
         }
 
         public DataTable getDataTable(string query)
         {
             if (mCon == null)
-                return null;
+                retryConnectToDb();
             MySqlDataAdapter ad = new MySqlDataAdapter(query, mCon);
             DataTable dt = new DataTable();
             ad.Fill(dt);
@@ -185,7 +195,7 @@ namespace SWIDAL
         public DataSet getDataSet(string query)
         {
             if (mCon == null)
-                return null;
+                retryConnectToDb();
             MySqlDataAdapter ad = new MySqlDataAdapter(query, mCon);
             DataSet dt = new DataSet();
             ad.Fill(dt);
@@ -195,7 +205,7 @@ namespace SWIDAL
         public MySqlDataReader getReader(string query)
         {
             if (mCon == null)
-                return null;
+                retryConnectToDb();
             MySqlCommand cmd = new MySqlCommand(query, mCon);
             var result = cmd.ExecuteReader();
             cmd.Dispose();
@@ -205,7 +215,7 @@ namespace SWIDAL
         // function to call store procedure in user table
         public MySqlDataReader getDataByUserName(string userName)
         {
-            if (mCon == null) return null;
+            if (mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             try
             {
@@ -290,7 +300,7 @@ namespace SWIDAL
         // get data to show on main table
         public DataTable getLimitedCandidates(int offset, int len)
         {
-            if (mCon == null) return null;
+            if (mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
@@ -319,7 +329,7 @@ namespace SWIDAL
 
         public DataTable getCandidatesOverview()
         {
-            if (mCon == null) return null;
+            if (mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
@@ -345,7 +355,7 @@ namespace SWIDAL
 
         public int getNumberOfCandidates()
         {
-            if (mCon == null) return -1;
+            if (mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             try
             {
@@ -371,7 +381,7 @@ namespace SWIDAL
         /// <returns></returns>
         public DataTable getJobOrders()
         {
-            if (mCon == null) return null;
+            if (mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
@@ -397,7 +407,7 @@ namespace SWIDAL
 
         public DataTable getJobOrderById(long id)
         {
-            if (mCon == null) return null;
+            if (mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
@@ -424,7 +434,7 @@ namespace SWIDAL
 
         public DataTable getPipelineCandidates(long jobOrderId)
         {
-            if (mCon == null) return null;
+            if (mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
@@ -453,7 +463,7 @@ namespace SWIDAL
         //----------------Company---------------------
         public DataTable getCompaniesOverview()
         {
-            if (mCon == null) return null;
+            if (mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try

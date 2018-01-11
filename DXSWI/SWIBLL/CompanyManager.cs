@@ -40,7 +40,8 @@ namespace SWIBLL
         {
             if (com == null) return;
             // check duplicate:
-            string sql = string.Format("select count(*) from swilifecore.company where (char_length(Name) > 0 and Name = '{0}') or (char_length(PrimaryPhone) > 0 and PrimaryPhone = '{1}')", com.Name, com.PrimaryPhone);
+            string sql = string.Format("select count(*) from swilifecore.company where (char_length(Name) > 0 and Name = '{0}') or (char_length(PrimaryPhone) > 0 and PrimaryPhone = '{1}')"
+                , QueryBuilder.mySqlEscape(com.Name), QueryBuilder.mySqlEscape(com.PrimaryPhone));
             MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);
             try
             {

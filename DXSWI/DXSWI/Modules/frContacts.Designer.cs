@@ -33,6 +33,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshContactsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvContacts = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -44,7 +45,7 @@
             this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.refreshContactsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colMisc = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcContacts)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvContacts)).BeginInit();
@@ -72,7 +73,7 @@
             this.toolStripSeparator1,
             this.deleteContactToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 120);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 98);
             // 
             // newContactToolStripMenuItem
             // 
@@ -87,6 +88,13 @@
             this.editContactToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.editContactToolStripMenuItem.Text = "Edit Contact";
             this.editContactToolStripMenuItem.Click += new System.EventHandler(this.editContactToolStripMenuItem_Click);
+            // 
+            // refreshContactsToolStripMenuItem
+            // 
+            this.refreshContactsToolStripMenuItem.Name = "refreshContactsToolStripMenuItem";
+            this.refreshContactsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.refreshContactsToolStripMenuItem.Text = "Refresh Contacts";
+            this.refreshContactsToolStripMenuItem.Click += new System.EventHandler(this.refreshContactsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -110,7 +118,8 @@
             this.colTitle,
             this.colEmail,
             this.colOwner,
-            this.colModified});
+            this.colModified,
+            this.colMisc});
             this.gvContacts.GridControl = this.gcContacts;
             this.gvContacts.Name = "gvContacts";
             this.gvContacts.OptionsBehavior.Editable = false;
@@ -123,7 +132,7 @@
             this.colFirstName.Name = "colFirstName";
             this.colFirstName.Visible = true;
             this.colFirstName.VisibleIndex = 0;
-            this.colFirstName.Width = 103;
+            this.colFirstName.Width = 96;
             // 
             // colLastName
             // 
@@ -132,7 +141,7 @@
             this.colLastName.Name = "colLastName";
             this.colLastName.Visible = true;
             this.colLastName.VisibleIndex = 1;
-            this.colLastName.Width = 81;
+            this.colLastName.Width = 76;
             // 
             // colCompany
             // 
@@ -141,16 +150,16 @@
             this.colCompany.Name = "colCompany";
             this.colCompany.Visible = true;
             this.colCompany.VisibleIndex = 2;
-            this.colCompany.Width = 163;
+            this.colCompany.Width = 153;
             // 
             // colPhoneNumber
             // 
-            this.colPhoneNumber.Caption = "Work Phone";
-            this.colPhoneNumber.FieldName = "WorkPhone";
+            this.colPhoneNumber.Caption = "Cell Phone";
+            this.colPhoneNumber.FieldName = "CellPhone";
             this.colPhoneNumber.Name = "colPhoneNumber";
             this.colPhoneNumber.Visible = true;
             this.colPhoneNumber.VisibleIndex = 3;
-            this.colPhoneNumber.Width = 145;
+            this.colPhoneNumber.Width = 112;
             // 
             // colTitle
             // 
@@ -159,7 +168,7 @@
             this.colTitle.Name = "colTitle";
             this.colTitle.Visible = true;
             this.colTitle.VisibleIndex = 4;
-            this.colTitle.Width = 167;
+            this.colTitle.Width = 161;
             // 
             // colEmail
             // 
@@ -168,7 +177,7 @@
             this.colEmail.Name = "colEmail";
             this.colEmail.Visible = true;
             this.colEmail.VisibleIndex = 5;
-            this.colEmail.Width = 167;
+            this.colEmail.Width = 117;
             // 
             // colOwner
             // 
@@ -176,8 +185,8 @@
             this.colOwner.FieldName = "Owner";
             this.colOwner.Name = "colOwner";
             this.colOwner.Visible = true;
-            this.colOwner.VisibleIndex = 6;
-            this.colOwner.Width = 167;
+            this.colOwner.VisibleIndex = 7;
+            this.colOwner.Width = 78;
             // 
             // colModified
             // 
@@ -185,15 +194,17 @@
             this.colModified.FieldName = "Modified";
             this.colModified.Name = "colModified";
             this.colModified.Visible = true;
-            this.colModified.VisibleIndex = 7;
-            this.colModified.Width = 182;
+            this.colModified.VisibleIndex = 8;
+            this.colModified.Width = 95;
             // 
-            // refreshContactsToolStripMenuItem
+            // colMisc
             // 
-            this.refreshContactsToolStripMenuItem.Name = "refreshContactsToolStripMenuItem";
-            this.refreshContactsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.refreshContactsToolStripMenuItem.Text = "Refresh Contacts";
-            this.refreshContactsToolStripMenuItem.Click += new System.EventHandler(this.refreshContactsToolStripMenuItem_Click);
+            this.colMisc.Caption = "Misc";
+            this.colMisc.FieldName = "MiscNotes";
+            this.colMisc.Name = "colMisc";
+            this.colMisc.Visible = true;
+            this.colMisc.VisibleIndex = 6;
+            this.colMisc.Width = 287;
             // 
             // frContacts
             // 
@@ -228,5 +239,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteContactToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn colTitle;
         private System.Windows.Forms.ToolStripMenuItem refreshContactsToolStripMenuItem;
+        private DevExpress.XtraGrid.Columns.GridColumn colMisc;
     }
 }

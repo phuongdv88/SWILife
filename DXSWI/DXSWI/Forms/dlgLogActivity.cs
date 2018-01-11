@@ -93,7 +93,7 @@ namespace DXSWI.Forms
                 cbeRegarding.ReadOnly = true;
 
                 // disable event schedule
-                ceScheduleEvent.ReadOnly = true;
+                //ceScheduleEvent.ReadOnly = true;
                 // enable change status checkbox
                 ceChangeStatus.Enabled = true;
             }
@@ -132,7 +132,7 @@ namespace DXSWI.Forms
 
                 // fill data to UI
                 setActivityToUI(currentActivity);
-                ucScheduleEvent1.setScheduleEventToUI(currentScheduleEvent);
+                ucScheduleEvent2.setScheduleEventToUI(currentScheduleEvent);
             }
             catch (Exception ex)
             {
@@ -176,8 +176,8 @@ namespace DXSWI.Forms
 
         private void ceScheduleEvent_CheckedChanged(object sender, EventArgs e)
         {
-            ucScheduleEvent1.Enabled = ceScheduleEvent.Checked;
-            ucScheduleEvent1.Visible = ceScheduleEvent.Checked;
+            ucScheduleEvent2.Enabled = ceScheduleEvent.Checked;
+            ucScheduleEvent2.Visible = ceScheduleEvent.Checked;
         }
 
         private void ucScheduleEvent1_Load(object sender, EventArgs e)
@@ -195,7 +195,7 @@ namespace DXSWI.Forms
                 // get object from UI
                 if (ceScheduleEvent.Checked)
                 {
-                    ev = ucScheduleEvent1.GetScheduleEventFromUI();
+                    ev = ucScheduleEvent2.GetScheduleEventFromUI();
                     ev.ScheduleEventId = currentScheduleEvent.ScheduleEventId;
                 }
                 act = getActivityFromUI();

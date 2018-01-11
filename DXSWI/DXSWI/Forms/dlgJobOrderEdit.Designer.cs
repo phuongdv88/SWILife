@@ -106,6 +106,7 @@
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.editCandidateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidatePipeline)).BeginInit();
@@ -222,12 +223,13 @@
             this.addCandidateToPipelineToolStripMenuItem,
             this.addActivityToolStripMenuItem,
             this.toolStripSeparator2,
+            this.editCandidateToolStripMenuItem,
             this.emailToCandidateToolStripMenuItem,
             this.emailToAllCandidatesToolStripMenuItem,
             this.toolStripSeparator1,
             this.deleteCandidateFromPipelineToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(251, 126);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(251, 170);
             // 
             // addCandidateToPipelineToolStripMenuItem
             // 
@@ -946,6 +948,13 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // editCandidateToolStripMenuItem
+            // 
+            this.editCandidateToolStripMenuItem.Name = "editCandidateToolStripMenuItem";
+            this.editCandidateToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.editCandidateToolStripMenuItem.Text = "Edit Candidate";
+            this.editCandidateToolStripMenuItem.Click += new System.EventHandler(this.editCandidateToolStripMenuItem_Click);
+            // 
             // dlgJobOrderEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1096,5 +1105,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit contactComboboxEdit;
         private DevExpress.XtraGrid.Columns.GridColumn colEmail;
         private DevExpress.Utils.ToolTipController toolTipController1;
+        private System.Windows.Forms.ToolStripMenuItem editCandidateToolStripMenuItem;
     }
 }
