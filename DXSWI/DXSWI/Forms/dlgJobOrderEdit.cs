@@ -23,7 +23,7 @@ namespace DXSWI.Forms
         JobOrder mJobOrder = null;
         bool isNew = true;
         public delegate void onUpdateData();
-        public event onUpdateData emitUpdateData;
+        public event onUpdateData UpdateDataEvent;
         Dictionary<string, long> companiesNameAndId = new Dictionary<string, long>(); // name, id
         Dictionary<string, long> contactsNameAndId = new Dictionary<string, long>(); // contact name and id
 
@@ -304,7 +304,7 @@ namespace DXSWI.Forms
                     JobOrderManager.updateJobOrder(mJobOrder);
                 }
 
-                emitUpdateData?.Invoke();
+                UpdateDataEvent?.Invoke();
             }
             catch (Exception ex)
             {
@@ -385,23 +385,24 @@ namespace DXSWI.Forms
 
         private void deleteCandidateFromPipelineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (XtraMessageBox.Show("Are you sure to delete this item?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
             {
-                try
+                if (XtraMessageBox.Show("Are you sure to delete this item?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    // delete this running task data
-                    if (gvCandidatePipeline.SelectedRowsCount > 0)
+                    try
                     {
+                        // delete this running task data
+
                         int row = gvCandidatePipeline.GetSelectedRows().First();
                         DataRow data_row = gvCandidatePipeline.GetDataRow(row);
                         int id = int.Parse(data_row["RunningTaskId"].ToString());
                         RunningTaskManager.deleteRunningTask(id);
                         updateData();
                     }
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -518,6 +519,7 @@ namespace DXSWI.Forms
             // todo show dlgCandidateEdit but in mode view only
             dlgCandidateEdit dlg = new dlgCandidateEdit(canId, null);
             //dlg.setViewMode();
+            dlg.setEditInfoOnlyState();
             dlg.ShowDialog();
         }
 
@@ -552,6 +554,31 @@ namespace DXSWI.Forms
             dlgCandidateEdit dlg = new dlgCandidateEdit(canId, null);
             //dlg.setViewMode();
             dlg.ShowDialog();
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            updateData();
+        }
+
+        private void gvCandidatePipeline_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            // if match value is changed, then update to DB
+            try
+            {
+                if (e.Column.FieldName == "Match")
+                {
+                    int row = e.RowHandle;
+                    DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                    int id = int.Parse(data_row["RunningTaskId"].ToString());
+                    RunningTaskManager.updateMatchValue(Convert.ToInt32(e.Value.ToString()), id);
+                    //updateData();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

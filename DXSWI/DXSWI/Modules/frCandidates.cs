@@ -82,22 +82,10 @@ namespace DXSWI.Modules
             return -1;
         }
 
-        private void gridView1_DoubleClick(object sender, EventArgs e)
-        {
-            dlgCandidateEdit dlg = new dlgCandidateEdit(currentCandidateId(), null);
-            dlg.emitUpdateData += updateData;
-            dlg.ShowDialog();
-        }
-
         public void updateData()
         {
             init();
             updateCurrentCandidate();
-        }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         public void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -149,13 +137,9 @@ namespace DXSWI.Modules
             updateData();
         }
 
-        private void frCandidates_DoubleClick(object sender, EventArgs e)
+        private void gcCandidates_DoubleClick(object sender, EventArgs e)
         {
-            // view candidate edit
-            if (currentCandidateId() == -1) return;
-            dlgCandidateEdit dlg = new dlgCandidateEdit(currentCandidateId(), null);
-            dlg.emitUpdateData += updateData;
-            dlg.ShowDialog();
+            editToolStripMenuItem_Click(sender, e);
         }
     }
 }

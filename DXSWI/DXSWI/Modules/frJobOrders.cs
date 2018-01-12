@@ -47,7 +47,7 @@ namespace DXSWI.Modules
         {
             // open dialog dlgJobOrderEdit
             dlgJobOrderEdit dlg = new dlgJobOrderEdit(-1);
-            dlg.emitUpdateData += updateData;
+            dlg.UpdateDataEvent += updateData;
             dlg.ShowDialog();
         }
 
@@ -64,7 +64,7 @@ namespace DXSWI.Modules
                 jobOrderId = Convert.ToInt64(gvJobOrder.GetDataRow(gvJobOrder.GetSelectedRows().First())["JobOrderId"].ToString());
             }
             dlgJobOrderEdit dlg = new dlgJobOrderEdit(jobOrderId);
-            dlg.emitUpdateData += updateData;
+            dlg.UpdateDataEvent += updateData;
             dlg.ShowDialog();
         }
 
@@ -99,6 +99,11 @@ namespace DXSWI.Modules
                     }
                 }
             }
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            updateData();
         }
     }
 }

@@ -100,7 +100,7 @@ namespace SWIBLL
         }
         public static DataTable getActivitiesOfCandidate(long id)
         {
-            string sql = string.Format("select * from swilifecore.activity where ActivityOf = '{0}' and CandidateId = '{1}' order by ActivityId desc", (int)Activity.TypeOfLogActivity.Candidate, id);
+            string sql = string.Format("select T1.ActivityId, T1.Regarding, T1.Type, T1.Notes, date_format(T1.Created,'%d/%m/%Y %T') as Created, T2.UserName from swilifecore.activity T1 left join swilifecore.user T2 on T1.UserId = T2.UserId where CandidateId = '{0}' order by T1.ActivityId desc;", id);
             return DataAccess.Instance.getDataTable(sql);
         }
 
@@ -160,18 +160,23 @@ namespace SWIBLL
                             break;
                         case Activity.RunningTaskStatus.INTERVIEWING:
                             RunningTaskManager.updateStatusWithTransaction("Interviewing", act.RunningTaskId);
+                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId);
                             break;
                         case Activity.RunningTaskStatus.OFFERED:
                             RunningTaskManager.updateStatusWithTransaction("Offered", act.RunningTaskId);
+                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId);
                             break;
                         case Activity.RunningTaskStatus.NOT_IN_CONSIDERATION:
                             RunningTaskManager.updateStatusWithTransaction("Not In Consideration", act.RunningTaskId);
+                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId);
                             break;
                         case Activity.RunningTaskStatus.CLIENT_DECLINED:
                             RunningTaskManager.updateStatusWithTransaction("Client Declined", act.RunningTaskId);
+                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId);
                             break;
                         case Activity.RunningTaskStatus.PLACED:
                             RunningTaskManager.updateStatusWithTransaction("Placed", act.RunningTaskId);
+                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId);
                             break;
                         default:
                             break;

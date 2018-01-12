@@ -60,6 +60,7 @@ namespace SWIBLL.Models
             Regarding = "General";
             Status = Activity.RunningTaskStatus.NOT_CONTACT;
             Notes = string.Empty;
+            CompanyId = -1;
         }
         ~Activity()
         {

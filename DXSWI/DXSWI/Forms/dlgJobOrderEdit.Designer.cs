@@ -33,9 +33,11 @@
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.gcCandidatePipeline = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCandidateToPipelineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.editCandidateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emailToCandidateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emailToAllCandidatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -98,15 +100,15 @@
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.sliAttachment = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.sliAttachment = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.editCandidateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidatePipeline)).BeginInit();
@@ -156,14 +158,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliAttachment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliAttachment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -210,7 +213,7 @@
             this.gcCandidatePipeline.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemRatingControl1});
             this.gcCandidatePipeline.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gcCandidatePipeline.Size = new System.Drawing.Size(724, 851);
+            this.gcCandidatePipeline.Size = new System.Drawing.Size(724, 825);
             this.gcCandidatePipeline.TabIndex = 27;
             this.gcCandidatePipeline.ToolTipController = this.toolTipController1;
             this.gcCandidatePipeline.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -220,6 +223,7 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshToolStripMenuItem,
             this.addCandidateToPipelineToolStripMenuItem,
             this.addActivityToolStripMenuItem,
             this.toolStripSeparator2,
@@ -230,6 +234,13 @@
             this.deleteCandidateFromPipelineToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(251, 170);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // addCandidateToPipelineToolStripMenuItem
             // 
@@ -249,6 +260,13 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(247, 6);
+            // 
+            // editCandidateToolStripMenuItem
+            // 
+            this.editCandidateToolStripMenuItem.Name = "editCandidateToolStripMenuItem";
+            this.editCandidateToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.editCandidateToolStripMenuItem.Text = "Edit Candidate";
+            this.editCandidateToolStripMenuItem.Click += new System.EventHandler(this.editCandidateToolStripMenuItem_Click);
             // 
             // emailToCandidateToolStripMenuItem
             // 
@@ -289,8 +307,8 @@
             this.colLastActivity});
             this.gvCandidatePipeline.GridControl = this.gcCandidatePipeline;
             this.gvCandidatePipeline.Name = "gvCandidatePipeline";
-            this.gvCandidatePipeline.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gvCandidatePipeline.OptionsSelection.MultiSelect = true;
+            this.gvCandidatePipeline.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvCandidatePipeline_CellValueChanging);
             // 
             // colMatch
             // 
@@ -298,7 +316,6 @@
             this.colMatch.ColumnEdit = this.repositoryItemRatingControl1;
             this.colMatch.FieldName = "Match";
             this.colMatch.Name = "colMatch";
-            this.colMatch.OptionsColumn.AllowEdit = false;
             this.colMatch.Visible = true;
             this.colMatch.VisibleIndex = 0;
             this.colMatch.Width = 115;
@@ -550,15 +567,15 @@
             this.DescriptionMemoExEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.jobOrderBindingSource, "Description", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.DescriptionMemoExEdit.Location = new System.Drawing.Point(12, 238);
             this.DescriptionMemoExEdit.Name = "DescriptionMemoExEdit";
-            this.DescriptionMemoExEdit.Size = new System.Drawing.Size(557, 425);
+            this.DescriptionMemoExEdit.Size = new System.Drawing.Size(557, 399);
             this.DescriptionMemoExEdit.StyleController = this.dataLayoutControl1;
             this.DescriptionMemoExEdit.TabIndex = 19;
             // 
             // sbOK
             // 
-            this.sbOK.Location = new System.Drawing.Point(325, 883);
+            this.sbOK.Location = new System.Drawing.Point(978, 883);
             this.sbOK.Name = "sbOK";
-            this.sbOK.Size = new System.Drawing.Size(118, 22);
+            this.sbOK.Size = new System.Drawing.Size(142, 22);
             this.sbOK.StyleController = this.dataLayoutControl1;
             this.sbOK.TabIndex = 25;
             this.sbOK.Text = "OK";
@@ -566,9 +583,9 @@
             // 
             // sbCancel
             // 
-            this.sbCancel.Location = new System.Drawing.Point(447, 883);
+            this.sbCancel.Location = new System.Drawing.Point(1143, 883);
             this.sbCancel.Name = "sbCancel";
-            this.sbCancel.Size = new System.Drawing.Size(122, 22);
+            this.sbCancel.Size = new System.Drawing.Size(178, 22);
             this.sbCancel.StyleController = this.dataLayoutControl1;
             this.sbCancel.TabIndex = 26;
             this.sbCancel.Text = "Exit";
@@ -577,9 +594,9 @@
             // sbDownload
             // 
             this.sbDownload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDownload.ImageOptions.Image")));
-            this.sbDownload.Location = new System.Drawing.Point(469, 845);
+            this.sbDownload.Location = new System.Drawing.Point(444, 845);
             this.sbDownload.Name = "sbDownload";
-            this.sbDownload.Size = new System.Drawing.Size(88, 22);
+            this.sbDownload.Size = new System.Drawing.Size(113, 22);
             this.sbDownload.StyleController = this.dataLayoutControl1;
             this.sbDownload.TabIndex = 28;
             this.sbDownload.Text = "Download";
@@ -588,9 +605,9 @@
             // sbDelete
             // 
             this.sbDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDelete.ImageOptions.Image")));
-            this.sbDelete.Location = new System.Drawing.Point(365, 845);
+            this.sbDelete.Location = new System.Drawing.Point(321, 845);
             this.sbDelete.Name = "sbDelete";
-            this.sbDelete.Size = new System.Drawing.Size(100, 22);
+            this.sbDelete.Size = new System.Drawing.Size(119, 22);
             this.sbDelete.StyleController = this.dataLayoutControl1;
             this.sbDelete.TabIndex = 29;
             this.sbDelete.Text = "Delete";
@@ -601,7 +618,7 @@
             this.sbAddAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAddAttachment.ImageOptions.Image")));
             this.sbAddAttachment.Location = new System.Drawing.Point(24, 845);
             this.sbAddAttachment.Name = "sbAddAttachment";
-            this.sbAddAttachment.Size = new System.Drawing.Size(112, 22);
+            this.sbAddAttachment.Size = new System.Drawing.Size(111, 22);
             this.sbAddAttachment.StyleController = this.dataLayoutControl1;
             this.sbAddAttachment.TabIndex = 33;
             this.sbAddAttachment.Text = "Add Attachment";
@@ -609,9 +626,9 @@
             // 
             // meInternalNotes
             // 
-            this.meInternalNotes.Location = new System.Drawing.Point(12, 683);
+            this.meInternalNotes.Location = new System.Drawing.Point(12, 657);
             this.meInternalNotes.Name = "meInternalNotes";
-            this.meInternalNotes.Size = new System.Drawing.Size(557, 128);
+            this.meInternalNotes.Size = new System.Drawing.Size(557, 154);
             this.meInternalNotes.StyleController = this.dataLayoutControl1;
             this.meInternalNotes.TabIndex = 34;
             // 
@@ -657,11 +674,12 @@
             this.ItemForDescription,
             this.layoutControlGroup3,
             this.layoutControlGroup4,
+            this.layoutControlItem7,
+            this.layoutControlGroup5,
             this.layoutControlItem1,
             this.layoutControlItem2,
             this.emptySpaceItem1,
-            this.layoutControlItem7,
-            this.layoutControlGroup5});
+            this.emptySpaceItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
             this.layoutControlGroup2.Size = new System.Drawing.Size(1313, 897);
@@ -671,7 +689,7 @@
             this.ItemForDescription.Control = this.DescriptionMemoExEdit;
             this.ItemForDescription.Location = new System.Drawing.Point(0, 210);
             this.ItemForDescription.Name = "ItemForDescription";
-            this.ItemForDescription.Size = new System.Drawing.Size(561, 445);
+            this.ItemForDescription.Size = new System.Drawing.Size(561, 419);
             this.ItemForDescription.Text = "Description";
             this.ItemForDescription.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForDescription.TextSize = new System.Drawing.Size(78, 13);
@@ -851,8 +869,8 @@
             this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem5,
             this.layoutControlItem4,
-            this.sliAttachment,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.sliAttachment});
             this.layoutControlGroup4.Location = new System.Drawing.Point(0, 803);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
             this.layoutControlGroup4.Size = new System.Drawing.Size(561, 68);
@@ -861,71 +879,45 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.sbDelete;
-            this.layoutControlItem5.Location = new System.Drawing.Point(341, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(297, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(104, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(123, 26);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.sbDownload;
-            this.layoutControlItem4.Location = new System.Drawing.Point(445, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(420, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(92, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(117, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
-            // 
-            // sliAttachment
-            // 
-            this.sliAttachment.AllowHotTrack = false;
-            this.sliAttachment.Location = new System.Drawing.Point(116, 0);
-            this.sliAttachment.Name = "sliAttackment";
-            this.sliAttachment.Size = new System.Drawing.Size(225, 26);
-            this.sliAttachment.Text = "No file is chosen";
-            this.sliAttachment.TextSize = new System.Drawing.Size(78, 13);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.sbAddAttachment;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(116, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(115, 26);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
-            // layoutControlItem1
+            // sliAttachment
             // 
-            this.layoutControlItem1.Control = this.sbOK;
-            this.layoutControlItem1.Location = new System.Drawing.Point(313, 871);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(122, 26);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.sbCancel;
-            this.layoutControlItem2.Location = new System.Drawing.Point(435, 871);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(126, 26);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 871);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(313, 26);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.sliAttachment.AllowHotTrack = false;
+            this.sliAttachment.Location = new System.Drawing.Point(115, 0);
+            this.sliAttachment.Name = "sliAttackment";
+            this.sliAttachment.Size = new System.Drawing.Size(182, 26);
+            this.sliAttachment.Text = "No file is chosen";
+            this.sliAttachment.TextSize = new System.Drawing.Size(78, 13);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.meInternalNotes;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 655);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 629);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(561, 148);
+            this.layoutControlItem7.Size = new System.Drawing.Size(561, 174);
             this.layoutControlItem7.Text = "Internal Notes";
             this.layoutControlItem7.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem7.TextSize = new System.Drawing.Size(78, 13);
@@ -936,7 +928,7 @@
             this.layoutControlItem3});
             this.layoutControlGroup5.Location = new System.Drawing.Point(561, 0);
             this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(752, 897);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(752, 871);
             this.layoutControlGroup5.Text = "Candidates in pipeline";
             // 
             // layoutControlItem3
@@ -944,16 +936,43 @@
             this.layoutControlItem3.Control = this.gcCandidatePipeline;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(728, 855);
+            this.layoutControlItem3.Size = new System.Drawing.Size(728, 829);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // editCandidateToolStripMenuItem
+            // layoutControlItem1
             // 
-            this.editCandidateToolStripMenuItem.Name = "editCandidateToolStripMenuItem";
-            this.editCandidateToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.editCandidateToolStripMenuItem.Text = "Edit Candidate";
-            this.editCandidateToolStripMenuItem.Click += new System.EventHandler(this.editCandidateToolStripMenuItem_Click);
+            this.layoutControlItem1.Control = this.sbOK;
+            this.layoutControlItem1.Location = new System.Drawing.Point(966, 871);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(146, 26);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.sbCancel;
+            this.layoutControlItem2.Location = new System.Drawing.Point(1131, 871);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(182, 26);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 871);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(966, 26);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(1112, 871);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(19, 26);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // dlgJobOrderEdit
             // 
@@ -1015,14 +1034,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliAttachment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliAttachment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1106,5 +1126,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEmail;
         private DevExpress.Utils.ToolTipController toolTipController1;
         private System.Windows.Forms.ToolStripMenuItem editCandidateToolStripMenuItem;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }

@@ -109,6 +109,7 @@
             this.gcCandidates.TabIndex = 1;
             this.gcCandidates.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gcCandidates.DoubleClick += new System.EventHandler(this.gcCandidates_DoubleClick);
             // 
             // gridView1
             // 
@@ -234,7 +235,6 @@
             this.Controls.Add(this.gcCandidates);
             this.Name = "frCandidates";
             this.Size = new System.Drawing.Size(1243, 839);
-            this.DoubleClick += new System.EventHandler(this.frCandidates_DoubleClick);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();

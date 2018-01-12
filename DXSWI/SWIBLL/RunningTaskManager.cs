@@ -57,6 +57,13 @@ namespace SWIBLL
             return result > 0 ? true : false;
         }
 
+        public static void updateMatchValue(int value, long RunningTaskId)
+        {
+            if (value > 5 || value < 0) return;
+            string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `Match`='{0}', `Modified`=now() WHERE `RunningtaskId`='{1}';", value, RunningTaskId);
+            DataAccess.Instance.executeNonQuery(sql);
+        }
+
         public static bool updateStatusWithTransaction(string status, long id)
         {
             string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `Status`='{0}', `Modified`=now() WHERE `RunningtaskId`='{1}';", status, id);

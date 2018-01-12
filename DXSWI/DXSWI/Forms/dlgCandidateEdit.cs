@@ -22,7 +22,11 @@ namespace DXSWI.Forms
         Candidate mCandidate;
         string fileNameAvatar = string.Empty;
         string link = string.Empty;
-        bool isNew = true;
+        bool isNew = false;
+        // store link file 
+        string linkAttachment = string.Empty;
+        string fileNameAttachment = string.Empty;
+        string deleteAttachmentPath = string.Empty;
         public enum ParseCandidateInfoStep
         {
             INIT,
@@ -41,6 +45,27 @@ namespace DXSWI.Forms
             try
             {
                 setCurrentCandidate(canId, toolTip);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void setEditInfoOnlyState()
+        {
+            gcActivities.ContextMenuStrip = null;
+            gcJobOrderPipeline.ContextMenuStrip = null;
+        }
+        /// <summary>
+        /// update joborder and activities
+        /// </summary>
+        private void updateData()
+        {
+            try
+            {
+                loadJobPipeLine();
+                loadActivities();
             }
             catch (Exception ex)
             {
@@ -185,78 +210,81 @@ namespace DXSWI.Forms
             else peAvatar.Cursor = Cursors.Default;
             if (canId == -1)
             {
-                //clear all ui
-                FirstNameTextEdit.Text = string.Empty;
-                MiddleNameTextEdit.Text = string.Empty;
-                LastNameTextEdit.Text = string.Empty;
-                EmailTextEdit.Text = string.Empty;
-                SecondaryEmailTextEdit.Text = string.Empty;
-                SkypeIMTextEdit.Text = string.Empty;
-                CellPhoneTextEdit.Text = string.Empty;
-                WorkPhoneTextEdit.Text = string.Empty;
-                BestTimeToCallTextEdit.Text = string.Empty;
-                AddressTextEdit.Text = string.Empty;
-                WebSiteTextEdit.Text = string.Empty;
-                SourceTextEdit.Text = string.Empty;
-                CurrentPositionTextEdit.Text = string.Empty;
-                DateAvailableDateEdit.Text = string.Empty;
-                CurrentEmployerTextEdit.Text = string.Empty;
-                KeySkillsTextEdit.Text = string.Empty;
-                CanRelocateCheckEdit.Checked = false;
-                CurrentPayTextEdit.Text = string.Empty;
-                DesiredPayTextEdit.Text = string.Empty;
-                DOBMarriedTextEdit.Text = string.Empty;
-                InterviewNotesMemoEdit.Text = string.Empty;
-                GenderComboBoxEdit.SelectedIndex = 0;
-                MiscNotesMemoEdit.Text = string.Empty;
-                CityTextEdit.Text = string.Empty;
-                CountryTextEdit.Text = string.Empty;
-                PositionsUpTillNowTextEdit.Text = string.Empty;
-                ProjectDoneMemoEdit.Text = string.Empty;
-                IndustryTextEdit.Text = string.Empty;
-                EducationMemoEdit.Text = string.Empty;
-                LanguageTextEdit.Text = string.Empty;
-                IsInBlacklistCheckEdit.Checked = false;
-                peAvatar.Image = null;
+                ////clear all ui
+                //FirstNameTextEdit.Text = string.Empty;
+                //MiddleNameTextEdit.Text = string.Empty;
+                //LastNameTextEdit.Text = string.Empty;
+                //EmailTextEdit.Text = string.Empty;
+                //SecondaryEmailTextEdit.Text = string.Empty;
+                //SkypeIMTextEdit.Text = string.Empty;
+                //CellPhoneTextEdit.Text = string.Empty;
+                //WorkPhoneTextEdit.Text = string.Empty;
+                //BestTimeToCallTextEdit.Text = string.Empty;
+                //AddressTextEdit.Text = string.Empty;
+                //WebSiteTextEdit.Text = string.Empty;
+                //SourceTextEdit.Text = string.Empty;
+                //CurrentPositionTextEdit.Text = string.Empty;
+                //DateAvailableDateEdit.Text = string.Empty;
+                //CurrentEmployerTextEdit.Text = string.Empty;
+                //KeySkillsTextEdit.Text = string.Empty;
+                //CanRelocateCheckEdit.Checked = false;
+                //CurrentPayTextEdit.Text = string.Empty;
+                //DesiredPayTextEdit.Text = string.Empty;
+                //DOBMarriedTextEdit.Text = string.Empty;
+                //InterviewNotesMemoEdit.Text = string.Empty;
+                //GenderComboBoxEdit.SelectedIndex = 0;
+                //MiscNotesMemoEdit.Text = string.Empty;
+                //CityTextEdit.Text = string.Empty;
+                //CountryTextEdit.Text = string.Empty;
+                //PositionsUpTillNowTextEdit.Text = string.Empty;
+                //ProjectDoneMemoEdit.Text = string.Empty;
+                //IndustryTextEdit.Text = string.Empty;
+                //EducationMemoEdit.Text = string.Empty;
+                //LanguageTextEdit.Text = string.Empty;
+                //IsInBlacklistCheckEdit.Checked = false;
+                //peAvatar.Image = null;
 
-                // clear tool tip
-                FirstNameTextEdit.ToolTip = string.Empty;
-                MiddleNameTextEdit.ToolTip = string.Empty;
-                LastNameTextEdit.ToolTip = string.Empty;
-                EmailTextEdit.ToolTip = string.Empty;
-                SecondaryEmailTextEdit.ToolTip = string.Empty;
-                SkypeIMTextEdit.ToolTip = string.Empty;
-                CellPhoneTextEdit.ToolTip = string.Empty;
-                WorkPhoneTextEdit.ToolTip = string.Empty;
-                BestTimeToCallTextEdit.ToolTip = string.Empty;
-                AddressTextEdit.ToolTip = string.Empty;
-                WebSiteTextEdit.ToolTip = string.Empty;
-                SourceTextEdit.ToolTip = string.Empty;
-                CurrentPositionTextEdit.ToolTip = string.Empty;
-                DateAvailableDateEdit.ToolTip = string.Empty;
-                CurrentEmployerTextEdit.ToolTip = string.Empty;
-                KeySkillsTextEdit.ToolTip = string.Empty;
-                CurrentPayTextEdit.ToolTip = string.Empty;
-                DesiredPayTextEdit.ToolTip = string.Empty;
-                DOBMarriedTextEdit.ToolTip = string.Empty;
-                InterviewNotesMemoEdit.ToolTip = string.Empty;
-                MiscNotesMemoEdit.ToolTip = string.Empty;
-                CityTextEdit.ToolTip = string.Empty;
-                CountryTextEdit.ToolTip = string.Empty;
-                PositionsUpTillNowTextEdit.ToolTip = string.Empty;
-                ProjectDoneMemoEdit.ToolTip = string.Empty;
-                IndustryTextEdit.ToolTip = string.Empty;
-                EducationMemoEdit.ToolTip = string.Empty;
-                LanguageTextEdit.ToolTip = string.Empty;
+                //// clear tool tip
+                //FirstNameTextEdit.ToolTip = string.Empty;
+                //MiddleNameTextEdit.ToolTip = string.Empty;
+                //LastNameTextEdit.ToolTip = string.Empty;
+                //EmailTextEdit.ToolTip = string.Empty;
+                //SecondaryEmailTextEdit.ToolTip = string.Empty;
+                //SkypeIMTextEdit.ToolTip = string.Empty;
+                //CellPhoneTextEdit.ToolTip = string.Empty;
+                //WorkPhoneTextEdit.ToolTip = string.Empty;
+                //BestTimeToCallTextEdit.ToolTip = string.Empty;
+                //AddressTextEdit.ToolTip = string.Empty;
+                //WebSiteTextEdit.ToolTip = string.Empty;
+                //SourceTextEdit.ToolTip = string.Empty;
+                //CurrentPositionTextEdit.ToolTip = string.Empty;
+                //DateAvailableDateEdit.ToolTip = string.Empty;
+                //CurrentEmployerTextEdit.ToolTip = string.Empty;
+                //KeySkillsTextEdit.ToolTip = string.Empty;
+                //CurrentPayTextEdit.ToolTip = string.Empty;
+                //DesiredPayTextEdit.ToolTip = string.Empty;
+                //DOBMarriedTextEdit.ToolTip = string.Empty;
+                //InterviewNotesMemoEdit.ToolTip = string.Empty;
+                //MiscNotesMemoEdit.ToolTip = string.Empty;
+                //CityTextEdit.ToolTip = string.Empty;
+                //CountryTextEdit.ToolTip = string.Empty;
+                //PositionsUpTillNowTextEdit.ToolTip = string.Empty;
+                //ProjectDoneMemoEdit.ToolTip = string.Empty;
+                //IndustryTextEdit.ToolTip = string.Empty;
+                //EducationMemoEdit.ToolTip = string.Empty;
+                //LanguageTextEdit.ToolTip = string.Empty;
 
                 mCandidate = new Candidate();
                 isNew = true;
+                gcActivities.Enabled = false;
+                gcJobOrderPipeline.Enabled = false;
                 return;
             }
             // fill data to ui
             mCandidate = CandidateManager.getCandidate(canId);
-            isNew = false;
             FillUpToUi(mCandidate);
+            loadAttachment(mCandidate.ResumeLink);
+            updateData();
         }
 
         private void sbCancel_Click(object sender, EventArgs e)
@@ -271,6 +299,8 @@ namespace DXSWI.Forms
             try
             {
                 getDataFromUI(ref mCandidate);
+
+                //upload avatar
                 if (fileNameAvatar.Length > 0)
                 {
                     if (mCandidate.ImageLink.Length == 0)
@@ -296,6 +326,52 @@ namespace DXSWI.Forms
                         File.Copy(link, mCandidate.ImageLink, true);
                     }
                 }
+                // delete attachment 
+                // delete file in server
+                if (deleteAttachmentPath.Length > 0)
+                {
+                    File.Delete(mCandidate.ResumeLink);
+                    mCandidate.ResumeLink = string.Empty;
+                }
+
+                // upload attachment
+
+                if (fileNameAttachment.Length > 0)
+                {
+                    // create link file and folder in server
+                    if (mCandidate.ResumeLink.Length == 0)
+                    {
+                        // save resum to hardisk: folder = createedtime + candidateName + randomstring
+                        string folderName = mCandidate.FirstName + mCandidate.LastName + mCandidate.CreatedDate.ToString(@"_yyyy-MM-dd") + Utils.getRandomAlphaNumeric(10);
+                        string dir = string.Format(@"{0}candidates\resume\{1}\{2}", Properties.Settings.Default.StorageLocation, folderName, fileNameAttachment);
+                        mCandidate.ResumeLink = dir;
+                    }
+                    else
+                    {
+                        // delete old file
+                        try
+                        {
+                            File.Delete(mCandidate.ResumeLink);
+                        }
+                        catch { }
+
+                        // update link of avatar
+                        if (fileNameAttachment.Length > 0)
+                        {
+                            var link = mCandidate.ResumeLink.Split('\\');
+                            mCandidate.ResumeLink = mCandidate.ResumeLink.Replace(link.Last(), fileNameAttachment);
+                        }
+                    }
+
+                    // copy image to server
+
+                    if (linkAttachment.Length > 0)
+                    {
+                        AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);
+                        Directory.CreateDirectory(mCandidate.ResumeLink.Replace(mCandidate.ResumeLink.Split('\\').Last(), ""));
+                        File.Copy(linkAttachment, mCandidate.ResumeLink, true);
+                    }
+                }
 
                 // save candidate to database: if it is new candidate -> use inserting function, else use updating function
                 if (isNew)
@@ -303,8 +379,6 @@ namespace DXSWI.Forms
                     mCandidate.UserId = Properties.Settings.Default.userId;
                     mCandidate.CreatedId = Properties.Settings.Default.userId;
                     mCandidate.CreatedDate = DateTime.Now;
-                    mCandidate.ResumeLink = "";
-
                     CandidateManager.InsertCandidate(mCandidate);
                 }
                 else
@@ -686,5 +760,271 @@ namespace DXSWI.Forms
             }
         }
 
+        private void sbAttachment_Click(object sender, EventArgs e)
+        {
+            //todo version sau cho phep tai nhieu file len server
+            OpenFileDialog openFileDlg = new OpenFileDialog();
+            if (openFileDlg.ShowDialog() != DialogResult.OK)
+                return;
+            // check size of file
+            if (new System.IO.FileInfo(openFileDlg.FileName).Length > 10e6) // 10MB
+            {
+                XtraMessageBox.Show("Attactment is too big (more than 10 MB)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // store link file 
+            linkAttachment = openFileDlg.FileName;
+            fileNameAttachment = linkAttachment.Split('\\').Last();
+            sliAttachments.Text = fileNameAttachment;
+            sbAttachmentDownload.Enabled = false;
+        }
+
+        private void sbAttachmentDelete_Click(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show("Are you sure to delete this file?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    deleteAttachmentPath = mCandidate.ResumeLink;
+                    fileNameAttachment = string.Empty;
+                    linkAttachment = string.Empty;
+                    // update to UI
+                    loadAttachment(string.Empty);
+
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void sbAttachmentDownload_Click(object sender, EventArgs e)
+        {
+            // download to local or open this file
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Title = "Save resume to";
+            dlg.RestoreDirectory = true;
+            dlg.Filter = "All files (*.*)|*.*";
+            dlg.FileName = mCandidate.ResumeLink.Split('\\').Last();
+            if (dlg.ShowDialog() != DialogResult.OK)
+                return;
+            string save_link = dlg.FileName;
+            File.Copy(mCandidate.ResumeLink, save_link);
+        }
+
+        private void loadAttachment(string path)
+        {
+            if (path == null) return;
+            // load attachment from disk
+            if (path.Length == 0)
+            {
+                sliAttachments.Text = "No file chosen";
+                sbAttachmentDelete.Enabled = false;
+                sbAttachmentDownload.Enabled = false;
+
+            }
+            else
+            {
+                sliAttachments.Text = path.Split(new[] { '\\' }, StringSplitOptions.None).Last();
+                sbAttachmentDelete.Enabled = true;
+                sbAttachmentDownload.Enabled = true;
+            }
+        }
+        private void loadJobPipeLine()
+        {
+            // load job pipe line from running task by candidate id
+            try
+            {
+                gcJobOrderPipeline.DataSource = RunningTaskManager.getRunningTaskJobs(mCandidate.CandidateId);
+            }
+            catch
+            {
+                // donot do anything
+                throw;
+            }
+        }
+        private void loadActivities()
+        {
+            // load activities from activities by 
+            try
+            {
+                gcActivities.DataSource = ActivityManager.getActivitiesOfCandidate(mCandidate.CandidateId);
+            }
+            catch
+            {
+                // donot do anything
+                throw;
+            }
+        }
+
+        private void setGender(bool isMan)
+        {
+            if (isMan)
+            {
+                this.lciAvatar.Image = DXSWI.Properties.Resources.user_male_3;
+            }
+            else
+            {
+                this.lciAvatar.Image = DXSWI.Properties.Resources.user_female_5;
+            }
+        }
+
+        private void GenderComboBoxEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool ismale = false;
+            if (GenderComboBoxEdit.SelectedIndex == 1)
+            {
+                ismale = true;
+            }
+            setGender(ismale);
+        }
+        public void AddJobToPipeLine()
+        {
+            dlgAddJobOrderToPipeline dlg = new dlgAddJobOrderToPipeline(mCandidate.CandidateId);
+            dlg.updateDataEvent += updateData;
+            dlg.ShowDialog();
+        }
+
+        public void logActivity()
+        {
+            dlgLogActivity dlg = new dlgLogActivity();
+            dlg.updateDataEvent += updateData;
+            dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate, mCandidate.CandidateId, -1, -1);
+            dlg.ShowDialog();
+        }
+
+        private void tsmiAddCandidateToPipeLine_Click(object sender, EventArgs e)
+        {
+            AddJobToPipeLine();
+        }
+
+        private void addActivityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dlgLogActivity dlg = new dlgLogActivity();
+            dlg.updateDataEvent += updateData;
+            string regarding = string.Empty;
+            int jobOrderId = -1;
+
+            if (gvJobOrderPipeline.SelectedRowsCount == 0)
+            {
+                XtraMessageBox.Show("Have not yet selected anything", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            int row = gvJobOrderPipeline.GetSelectedRows().First();
+            DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
+            regarding = data_row["Title"].ToString();
+            jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
+
+            dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Pipeline, mCandidate.CandidateId, jobOrderId, -1);
+            if (regarding.Length > 0)
+            {
+                dlg.setRegarding(regarding);
+            }
+            dlg.ShowDialog();
+        }
+
+        private void tsmiDelete_Click(object sender, EventArgs e)
+        {
+            if (gvJobOrderPipeline.SelectedRowsCount > 0)
+            {
+                if (XtraMessageBox.Show("Are you sure to delete this item?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        // delete this running task data
+
+                        int row = gvJobOrderPipeline.GetSelectedRows().First();
+                        DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
+                        int id = int.Parse(data_row["RunningTaskId"].ToString());
+                        RunningTaskManager.deleteRunningTask(id);
+                        updateData();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void logActivityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            logActivity();
+        }
+
+        private void editActivityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (gvActivities.SelectedRowsCount > 0)
+                {
+                    int row = gvActivities.GetSelectedRows().First();
+                    DataRow data_row = gvActivities.GetDataRow(row);
+                    int activity_index = int.Parse(data_row["ActivityId"].ToString());
+                    int scheduleEvent_index = int.Parse(data_row["ScheduleEventId"].ToString());
+
+                    dlgLogActivity dlg = new dlgLogActivity();
+                    dlg.updateDataEvent += updateData;
+                    dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate, mCandidate.CandidateId, -1, -1);
+                    dlg.setData(activity_index, scheduleEvent_index);
+                    dlg.ShowDialog();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void deleteActivityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (gvActivities.SelectedRowsCount > 0)
+            {
+                if (XtraMessageBox.Show("Are you sure to delete this item?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        // delete this running task data
+
+                        int row = gvActivities.GetSelectedRows().First();
+                        DataRow data_row = gvActivities.GetDataRow(row);
+                        int activity_index = int.Parse(data_row["ActivityId"].ToString());
+                        int scheduleEvent_index = int.Parse(data_row["ScheduleEventId"].ToString());
+                        ActivityManager.deleteActivity(activity_index, scheduleEvent_index);
+                        updateData();
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void gvJobOrderPipeline_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            // if match value is changed, then update to DB
+            try
+            {
+                if (e.Column.FieldName == "Match")
+                {
+                    int row = e.RowHandle;
+                    DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
+                    int id = int.Parse(data_row["RunningTaskId"].ToString());
+                    RunningTaskManager.updateMatchValue(Convert.ToInt32(e.Value.ToString()), id);
+                    //updateData();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

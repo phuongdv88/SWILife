@@ -36,7 +36,7 @@ namespace DXSWI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Office 2013 Light Gray")]
         public string theme {
             get {
                 return ((string)(this["theme"]));
