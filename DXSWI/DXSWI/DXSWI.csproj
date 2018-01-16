@@ -223,11 +223,17 @@
     <Compile Include="Forms\dlgLogin.Designer.cs">
       <DependentUpon>dlgLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\dlgUser.cs">
+    <Compile Include="Forms\dlgPasswordEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\dlgUser.Designer.cs">
-      <DependentUpon>dlgUser.cs</DependentUpon>
+    <Compile Include="Forms\dlgPasswordEdit.Designer.cs">
+      <DependentUpon>dlgPasswordEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\dlgUserEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgUserEdit.Designer.cs">
+      <DependentUpon>dlgUserEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ssMain.cs">
       <SubType>Form</SubType>
@@ -367,6 +373,12 @@
     <EmbeddedResource Include="Forms\dlgLogin.resx">
       <DependentUpon>dlgLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgPasswordEdit.resx">
+      <DependentUpon>dlgPasswordEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgUserEdit.resx">
+      <DependentUpon>dlgUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ssMain.resx">
       <DependentUpon>ssMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -396,9 +408,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SWIMain.resx">
       <DependentUpon>SWIMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\dlgUser.resx">
-      <DependentUpon>dlgUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\frUser.resx">
       <DependentUpon>frUser.cs</DependentUpon>

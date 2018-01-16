@@ -209,7 +209,7 @@ namespace SWIBLL
         public static Candidate getCandidate(long id)
         {
             Candidate can = null;
-            string sql = string.Format("select * from `swilifecore`.`candidate` where `CandidateId`='{0}'", id);
+            string sql = string.Format("select T1.*, T2.UserName as Owner from `swilifecore`.`candidate` T1 left join user T2 on T1.UserId = T2.UserId where `CandidateId`='{0}'", id);
             DataTable tbl = DataAccess.Instance.getDataTable(sql);
             if(tbl.Rows.Count > 0)
             {

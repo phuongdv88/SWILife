@@ -151,7 +151,7 @@ namespace DXSWI.Forms
             if (mContact == null)
             {
                 mContact = new Contact();
-                mContact.UserId = UserManager.ActivatedUser.UserId;
+                mContact.UserId = UserManager._ActivatedUser.UserId;
                 mContact.Created = DateTime.Now;
             }
             mContact.FirstName = FirstNameTextEdit.Text;

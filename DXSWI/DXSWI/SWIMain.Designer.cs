@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SWIMain));
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -184,9 +184,9 @@
             this.bbiUserAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserAdd.ImageOptions.LargeImage")));
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem5.Text = "Add new user";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            this.bbiUserAdd.SuperTip = superToolTip5;
+            toolTipTitleItem1.Text = "Add new user";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.bbiUserAdd.SuperTip = superToolTip1;
             this.bbiUserAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserAdd_ItemClick);
             // 
             // bbiUserEdit
@@ -198,9 +198,9 @@
             this.bbiUserEdit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserEdit.ImageOptions.LargeImage")));
             this.bbiUserEdit.Name = "bbiUserEdit";
             this.bbiUserEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem6.Text = "Edit current selected user";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.bbiUserEdit.SuperTip = superToolTip6;
+            toolTipTitleItem2.Text = "Edit current selected user";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.bbiUserEdit.SuperTip = superToolTip2;
             this.bbiUserEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserEdit_ItemClick);
             // 
             // bbiUserDelete
@@ -240,6 +240,7 @@
             this.bbiUserChangePassword.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserChangePassword.ImageOptions.LargeImage")));
             this.bbiUserChangePassword.Name = "bbiUserChangePassword";
             this.bbiUserChangePassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiUserChangePassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserChangePassword_ItemClick);
             // 
             // skinRibbonGalleryBarItem1
             // 

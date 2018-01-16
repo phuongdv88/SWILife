@@ -7,55 +7,30 @@ using SWIDAL;
 using SWIBLL.Models;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Security.Cryptography;
 
 namespace SWIBLL
 {
     public class UserManager
     {
-        //public static User ActivatedUser = null;
-        // todo: for dev
-        public static User ActivatedUser = new User() { UserName = "phuongdv", UserId = 5, IsOnline = true};
-        public static void connectoDB(string connection_string)
+        public static User _ActivatedUser = null;
+        //public static User ActivatedUser = new User() { UserName = "phuongdv", UserId = 5, IsOnline = true};
+        public static void ConnectoDB(string connection_string)
         {
             DataAccess.Instance.ConnectToDB(connection_string);
         }
 
-        public static void closeConnectionToDB()
+        public static void CloseConnectionToDB()
         {
             DataAccess.Instance.closeConnectionToDB();
         }
-        public static bool login(string userName, string password, ref long index, ref int role)
+        public static bool Login(string userName, string password)
         {
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
             // get user info
-            //ActivatedUser = DataAccess.Instance.getDataByUserName(userName);
-            //User user_info = null;
-            ActivatedUser = null;
-            try
-            {
-                MySqlDataReader reader = DataAccess.Instance.getDataByUserName(userName);
-                if (reader.Read())
-                {
-                    //string temp = string.Format("{0} {1} {2} {3} {4} {5}", reader[0], reader[1], reader[2], reader[3], reader[4], reader[5]);
-                    ActivatedUser = new User()
-                    {
-                        UserId = int.Parse(reader[0].ToString()),
-                        UserName = reader[1].ToString(),
-                        Password = reader[2].ToString(),
-                        Salt = reader[3].ToString(),
-                        Role = int.Parse(reader[4].ToString()),
-                        IsOnline = Convert.ToBoolean(int.Parse(reader[5].ToString()))
-                    };
-                }
-
-                reader.Dispose();
-            }
-            catch
-            {
-                throw;
-            }
+            _ActivatedUser = getUserByName(userName);
             // check user info
-            if (ActivatedUser == null || comparer.Compare(password, ActivatedUser.Password) != 0)
+            if (_ActivatedUser == null || comparer.Compare(password, _ActivatedUser.Password) != 0)
             {
                 Exception ex = new Exception("User name or password is incorrect!");
                 throw ex;
@@ -66,40 +41,112 @@ namespace SWIBLL
             //    throw ex;
             //}
             // if correct , update login state of user
-            DataAccess.Instance.updateLoginState(userName, true);
-            ActivatedUser.IsOnline = true;
-
-            // save to property.setting
-            role = (int)ActivatedUser.Role;
-            index = ActivatedUser.UserId;
-
-
+            DataAccess.Instance.updateLoginState(_ActivatedUser.UserId, true);
+            _ActivatedUser.IsOnline = true;
             return true;
         }
 
-        public static bool logout()
+        public static bool Logout()
         {
-            if (ActivatedUser == null) return false;
+            if (_ActivatedUser == null) return false;
             // if correct , update login state of user
-            if (DataAccess.Instance.updateLoginState(ActivatedUser.UserName, false))
+            if (DataAccess.Instance.updateLoginState(_ActivatedUser.UserId, false))
             {
-                ActivatedUser.IsOnline = false;
+                _ActivatedUser.IsOnline = false;
                 return true;
             }
             return false;
         }
 
-        public static string getUserName(long id)
+        public static string GetSaltByUserName(string userName)
         {
-            string userName = DataAccess.Instance.getUserName(id);
-            return userName;
+            string sql = string.Format("select salt from swilifecore.user where UserName = '{0}'", QueryBuilder.mySqlEscape(userName));
+            return DataAccess.Instance.executeScalar(sql)?.ToString();
         }
 
-        public static DataTable getAllUsers()
+        public static User GetUser(long UserId)
         {
-            string sql = "select * from swilifecore.user order by UserId";
+            User user = null;
+            string sql = string.Format("select * from swilifecore.user T1 left join userrole T2 on T1.Role = T2.RoleId where UserId = '{0}'", UserId);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
+            if (tbl.Rows.Count > 0)
+            {
+                DataRow datarow = tbl.Rows[0];
+                user = Data.CreateItemFromRow<User>(datarow);
+            }
+            return user;
+        }
+
+        public static void DeleteUser(long UserId)
+        {
+            string sql = string.Format("DELETE FROM `swilifecore`.`user` WHERE `UserId`='{0}'", UserId);
+            DataAccess.Instance.executeNonQuery(sql);
+        }
+
+        public static DataTable GetAllUsers()
+        {
+            string sql = "select T1.UserId, T1.UserName, T1.Password, T1.IsOnline,T1.LastLogin, T2.RoleName, T2.RoleValue from swilifecore.user T1 left join userrole T2 on T1.Role = T2.RoleId order by UserId";
             return DataAccess.Instance.getDataTable(sql);
         }
+
+        public static string createMD5Hash(string input_string)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] hash_bytes = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(input_string));
+                //convert the byte array to hexadecimal string
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hash_bytes.Length; ++i)
+                {
+                    sb.Append(hash_bytes[i].ToString("X2"));
+                }
+                return sb.ToString();
+            }
+        }
+
+        public static bool verifyMd5Hash(string input, string hash)
+        {
+            string hashOfInput = createMD5Hash(input);
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+            if (0 == comparer.Compare(hashOfInput, hash))
+            {
+                return true;
+            }
+            return false;
+
+        }
+
+        public static void UpdateUser(User user)
+        {
+            if (user == null) return;
+            string sql = string.Format("UPDATE `swilifecore`.`user` SET `UserName`='{0}', `Password`='{1}', `Salt`='{2}', `Role`='{3}' WHERE `UserId`='{4}'"
+                , QueryBuilder.mySqlEscape(user.UserName), user.Password, user.Salt, user.Role, user.UserId);
+            DataAccess.Instance.executeNonQuery(sql);
+        }
+
+        public static void InsertUser(User user)
+        {
+            if (user == null) return;
+            string sql = string.Format("INSERT INTO `swilifecore`.`user` (`UserName`, `Password`, `Salt`, `Role`, `IsOnline`) VALUES ('{0}', '{1}', '{2}', '{3}', 0)"
+                , QueryBuilder.mySqlEscape(user.UserName), user.Password, user.Salt, user.Role);
+            DataAccess.Instance.executeNonQuery(sql);
+
+        }
+
+
+        public static User getUserByName(string userName)
+        {
+            User user = null;
+            string sql = string.Format("select * from swilifecore.user T1 left join userrole T2 on T1.Role = T2.RoleId where UserName = '{0}'", userName);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
+            if (tbl.Rows.Count > 0)
+            {
+                DataRow datarow = tbl.Rows[0];
+                user = Data.CreateItemFromRow<User>(datarow);
+            }
+            return user;
+        }
+
 
     }
 }

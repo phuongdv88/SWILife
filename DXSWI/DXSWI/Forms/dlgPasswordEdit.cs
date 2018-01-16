@@ -12,14 +12,14 @@ using SWIBLL;
 
 namespace DXSWI.Forms
 {
-    public partial class dlgChangePassword : DevExpress.XtraEditors.XtraForm
+    public partial class dlgPasswordEdit : DevExpress.XtraEditors.XtraForm
     {
-        public dlgChangePassword()
+        public dlgPasswordEdit()
         {
             InitializeComponent();
         }
 
-        private void dlgChangePassword_KeyDown(object sender, KeyEventArgs e)
+        private void dlgPasswordEdit_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -27,19 +27,14 @@ namespace DXSWI.Forms
                     this.Close();
                     break;
                 case Keys.Enter:
-                    sbOK.PerformClick();
+                    sbUpdate.PerformClick();
                     break;
                 default:
                     break;
             }
         }
 
-        private void sbCancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void sbOK_Click(object sender, EventArgs e)
+        private void sbUpdate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -53,7 +48,7 @@ namespace DXSWI.Forms
                     textEditNew.Focus();
                     throw new Exception("This field can not be blank!");
                 }
-                
+
                 if (textEditConfirm.Text.Length == 0)
                 {
                     textEditConfirm.Focus();
@@ -63,11 +58,18 @@ namespace DXSWI.Forms
                 // check old password;
                 if (!UserManager.verifyMd5Hash(textEditOld.Text.Trim() + UserManager._ActivatedUser.Salt, UserManager._ActivatedUser.Password))
                 {
-                    throw new Exception("This field can not be blank!");
+                    textEditOld.Focus();
+                    textEditOld.Text = string.Empty;
+                    textEditNew.Text = string.Empty;
+                    textEditConfirm.Text = string.Empty;
+                    throw new Exception("Old password is not correct!");
                 }
 
                 if (textEditConfirm.Text != textEditNew.Text)
                 {
+                    textEditNew.Focus();
+                    textEditNew.Text = string.Empty;
+                    textEditConfirm.Text = string.Empty;
                     throw new Exception("Confirm password is not match");
                 }
                 UserManager._ActivatedUser.Salt = Utils.getRandomAlphaNumeric(10);
@@ -82,10 +84,21 @@ namespace DXSWI.Forms
             }
         }
 
-        private void dlgChangePassword_Load(object sender, EventArgs e)
+        private void sbCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void dlgPasswordEdit_Load(object sender, EventArgs e)
         {
             Text = UserManager._ActivatedUser.UserName;
+            lcUserName.Text = Text;
             textEditOld.Focus();
+        }
+
+        private void textEditOld_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

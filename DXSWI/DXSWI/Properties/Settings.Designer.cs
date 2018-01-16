@@ -26,89 +26,53 @@ namespace DXSWI.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.1.100;user id=admin;password=Swilife.com1!;persistsecurityinfo=Tru" +
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.0.101;user id=admin;password=Swilife.com1!;persistsecurityinfo=Tru" +
             "e;database=swilifecore;port=3306;Convert Zero Datetime=true")]
-        public string swilifecoreConnectionString {
+        public string SwilifecoreConnectionString {
             get {
-                return ((string)(this["swilifecoreConnectionString"]));
+                return ((string)(this["SwilifecoreConnectionString"]));
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Office 2013 Light Gray")]
-        public string theme {
+        public string Theme {
             get {
-                return ((string)(this["theme"]));
+                return ((string)(this["Theme"]));
             }
             set {
-                this["theme"] = value;
+                this["Theme"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string userName {
+        public string UserName {
             get {
-                return ((string)(this["userName"]));
+                return ((string)(this["UserName"]));
             }
             set {
-                this["userName"] = value;
+                this["UserName"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string password {
+        public string HashPassword {
             get {
-                return ((string)(this["password"]));
+                return ((string)(this["HashPassword"]));
             }
             set {
-                this["password"] = value;
+                this["HashPassword"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int role {
-            get {
-                return ((int)(this["role"]));
-            }
-            set {
-                this["role"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool isOnline {
-            get {
-                return ((bool)(this["isOnline"]));
-            }
-            set {
-                this["isOnline"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public long userId {
-            get {
-                return ((long)(this["userId"]));
-            }
-            set {
-                this["userId"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\\\192.168.1.100\\SwilifeData\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\192.168.0.101\\SwilifeData\\")]
         public string StorageLocation {
             get {
                 return ((string)(this["StorageLocation"]));

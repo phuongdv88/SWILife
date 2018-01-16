@@ -53,7 +53,7 @@ namespace DXSWI.Controls
 
         private void loadAvatar()
         {
-            //this.dataLayoutControl1.Controls.Add(this.peAvatar);
+            //dataLayoutControl1.Controls.Add(peAvatar);
             try
             {
                     peAvatar.Image = Bitmap.FromFile(mCandidate.ImageLink);
@@ -134,11 +134,11 @@ namespace DXSWI.Controls
         {
             if (isMan)
             {
-                this.locAvatar.Image = DXSWI.Properties.Resources.user_male_3;
+                locAvatar.Image = DXSWI.Properties.Resources.user_male_3;
             }
             else
             {
-                this.locAvatar.Image = DXSWI.Properties.Resources.user_female_5;
+                locAvatar.Image = DXSWI.Properties.Resources.user_female_5;
             }
         }
 
@@ -243,36 +243,36 @@ namespace DXSWI.Controls
         {
             try
             {
-                this.locAvatar.Text = string.Format("{0} {1} {2}", mCandidate.FirstName, mCandidate.MiddleName, mCandidate.LastName);
-                this.EmailTextEdit.Text = mCandidate.Email;
-                this.SecondaryEmailTextEdit.Text = mCandidate.SecondaryEmail;
-                this.SkypeIMTextEdit.Text = mCandidate.SkypeIM;
-                this.CellPhoneTextEdit.Text = mCandidate.CellPhone;
-                this.WorkPhoneTextEdit.Text = mCandidate.WorkPhone;
-                this.BestTimeToCallTextEdit.Text = mCandidate.BestTimeToCall;
-                this.AddressTextEdit.Text = mCandidate.Address;
-                this.WebSiteTextEdit.Text = mCandidate.WebSite;
-                this.SourceTextEdit.Text = mCandidate.Source;
-                this.CurrentPositionTextEdit.Text = mCandidate.CurrentPosition;
-                this.CurrentEmployerTextEdit.Text = mCandidate.CurrentEmployer;
-                this.KeySkillsTextEdit.Text = mCandidate.KeySkills;
+                locAvatar.Text = string.Format("{0} {1} {2}", mCandidate.FirstName, mCandidate.MiddleName, mCandidate.LastName);
+                EmailTextEdit.Text = mCandidate.Email;
+                SecondaryEmailTextEdit.Text = mCandidate.SecondaryEmail;
+                SkypeIMTextEdit.Text = mCandidate.SkypeIM;
+                CellPhoneTextEdit.Text = mCandidate.CellPhone;
+                WorkPhoneTextEdit.Text = mCandidate.WorkPhone;
+                BestTimeToCallTextEdit.Text = mCandidate.BestTimeToCall;
+                AddressTextEdit.Text = mCandidate.Address;
+                WebSiteTextEdit.Text = mCandidate.WebSite;
+                SourceTextEdit.Text = mCandidate.Source;
+                CurrentPositionTextEdit.Text = mCandidate.CurrentPosition;
+                CurrentEmployerTextEdit.Text = mCandidate.CurrentEmployer;
+                KeySkillsTextEdit.Text = mCandidate.KeySkills;
                 setGender(mCandidate.Gender);
                 if (mCandidate.CanRelocate)
                 {
-                    this.CanRelocateTextEdit.Text = "Yes";
+                    CanRelocateTextEdit.Text = "Yes";
                 }
                 else
                 {
-                    this.CanRelocateTextEdit.Text = "No";
+                    CanRelocateTextEdit.Text = "No";
                 }
-                this.CurrentPayTextEdit.Text = mCandidate.CurrentPay;
-                this.DesiredPayTextEdit.Text = mCandidate.DesiredPay;
-                this.DOBMarriedTextEdit.Text = mCandidate.DOBMarried;
-                this.InterviewNotesMemoEdit.Text = mCandidate.InterviewNotes;
-                this.UserOwnerTexEdit.Text = UserManager.getUserName(mCandidate.UserId); // owner
-                this.MiscNotesMemoExEdit.Text = mCandidate.MiscNotes;
-                this.CreatedDateDateEdit.Text = mCandidate.CreatedDate.ToShortDateString();
-                this.DateAvailableDateEdit.Text = mCandidate.DateAvailable.ToShortDateString();
+                CurrentPayTextEdit.Text = mCandidate.CurrentPay;
+                DesiredPayTextEdit.Text = mCandidate.DesiredPay;
+                DOBMarriedTextEdit.Text = mCandidate.DOBMarried;
+                InterviewNotesMemoEdit.Text = mCandidate.InterviewNotes;
+                UserOwnerTexEdit.Text = mCandidate.Owner;
+                MiscNotesMemoExEdit.Text = mCandidate.MiscNotes;
+                CreatedDateDateEdit.Text = mCandidate.CreatedDate.ToShortDateString();
+                DateAvailableDateEdit.Text = mCandidate.DateAvailable.ToShortDateString();
                 // add data to view
 
                 if (mCandidate.IsInBlacklist)

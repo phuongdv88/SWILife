@@ -47,6 +47,8 @@ namespace SWIBLL.Models
         public bool IsInBlacklist { get; set; }
 
         public long UserId { get; set; }
+
+        public string Owner { get; set; }
         public DateTime Modified { get; set; }
         public string ImageLink { get; set; }
 

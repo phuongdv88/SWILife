@@ -46,6 +46,7 @@
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMisc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.gcContacts)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvContacts)).BeginInit();
@@ -69,11 +70,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newContactToolStripMenuItem,
             this.editContactToolStripMenuItem,
-            this.refreshContactsToolStripMenuItem,
             this.toolStripSeparator1,
-            this.deleteContactToolStripMenuItem});
+            this.deleteContactToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.refreshContactsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 104);
             // 
             // newContactToolStripMenuItem
             // 
@@ -206,6 +208,11 @@
             this.colMisc.VisibleIndex = 6;
             this.colMisc.Width = 287;
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(160, 6);
+            // 
             // frContacts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,5 +247,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTitle;
         private System.Windows.Forms.ToolStripMenuItem refreshContactsToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn colMisc;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

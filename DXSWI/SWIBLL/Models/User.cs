@@ -10,6 +10,7 @@ namespace SWIBLL.Models
     public class User : BaseModel
     {
         public long UserId { get; set; }
+
         public string UserName { get; set; }
 
         public string Password { get; set; }
@@ -17,28 +18,26 @@ namespace SWIBLL.Models
         public string Salt { get; set; }
 
         public bool IsOnline { get; set; }
-        public enum UserRole
-        {
-            ROLE_ADMIN = 0, // ADD, MODIFY, DELETE DB
-            ROLE_MANAGER = 1, // VIEW ONLY
-            ROLE_SALE = 2,
-            ROLE_SUPPORTER = 3,
-            ROLE_COMPANY = 4,
-            ROLE_CANDIDATE = 5,
-            ROLE_DEACTIVE = 6,
-
-        }
-        // may be use flag to set permission of user like linux
 
         public int Role { get; set; }
 
+        public string RoleName { get; set; }
+
+        public int RoleValue { get; set; }
         public User()
         {
-
+            UserId = -1;
+            UserName = string.Empty;
+            Password = string.Empty;
+            Salt = string.Empty;
+            IsOnline = false;
+            Role = -1;
+            RoleName = string.Empty;
+            RoleValue = -1;
         }
         ~User()
         {
-                
+
         }
     }
 }

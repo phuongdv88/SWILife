@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet1 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet1 = new DevExpress.XtraEditors.FormatConditionIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon3 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
             this.sbOK = new DevExpress.XtraEditors.SimpleButton();
@@ -47,6 +53,7 @@
             this.colInterviewNotes = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -123,7 +130,36 @@
             this.colYear,
             this.colInterviewNotes,
             this.colCity,
-            this.colModified});
+            this.colModified,
+            this.colState});
+            gridFormatRule1.Column = this.colState;
+            gridFormatRule1.ColumnApplyTo = this.colName;
+            gridFormatRule1.Name = "FormatValidate";
+            formatConditionIconSet1.CategoryName = "Symbols";
+            formatConditionIconSetIcon1.PredefinedName = "Signs3_1.png";
+            formatConditionIconSetIcon1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            formatConditionIconSetIcon1.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon2.PredefinedName = "RedToBlack4_3.png";
+            formatConditionIconSetIcon2.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon3.PredefinedName = "RedToBlack4_1.png";
+            formatConditionIconSetIcon3.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            formatConditionIconSetIcon3.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon1);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon2);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon3);
+            formatConditionIconSet1.Name = "Symbols3Circled";
+            formatConditionIconSet1.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRuleIconSet1.IconSet = formatConditionIconSet1;
+            gridFormatRule1.Rule = formatConditionRuleIconSet1;
+            this.gvCandidates.FormatRules.Add(gridFormatRule1);
             this.gvCandidates.GridControl = this.gcCandidates;
             this.gvCandidates.Name = "gvCandidates";
             this.gvCandidates.OptionsBehavior.Editable = false;
@@ -228,6 +264,12 @@
             this.colModified.VisibleIndex = 10;
             this.colModified.Width = 87;
             // 
+            // colState
+            // 
+            this.colState.Caption = "State";
+            this.colState.FieldName = "State";
+            this.colState.Name = "colState";
+            // 
             // dlgAddCandidateToPipeline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,5 +310,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colModified;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem copyEmailToolStripMenuItem;
+        private DevExpress.XtraGrid.Columns.GridColumn colState;
     }
 }

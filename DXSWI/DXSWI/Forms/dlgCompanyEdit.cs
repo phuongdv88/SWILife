@@ -195,7 +195,7 @@ namespace DXSWI.Forms
                 if (isNew)
                 {
                     // use inserting function
-                    mCompany.UserId = UserManager.ActivatedUser.UserId;
+                    mCompany.UserId = UserManager._ActivatedUser.UserId;
                     CompanyManager.addNewCompany(mCompany);
                 }
                 else

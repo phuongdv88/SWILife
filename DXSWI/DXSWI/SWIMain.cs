@@ -68,7 +68,7 @@ namespace DXSWI
         private void initializeTheme()
         {
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
-            themes.LookAndFeel.SkinName = Properties.Settings.Default.theme.ToString();
+            themes.LookAndFeel.SkinName = Properties.Settings.Default.Theme.ToString();
         }
 
         private void SWIMain_Load(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace DXSWI
         {
             if (e == null)
                 return;
-            Properties.Settings.Default.theme = e.Item.Caption.ToString();
+            Properties.Settings.Default.Theme = e.Item.Caption.ToString();
             Properties.Settings.Default.Save();
         }
 
@@ -101,7 +101,7 @@ namespace DXSWI
             {
                 try
                 {
-                    SWIBLL.UserManager.logout();
+                    SWIBLL.UserManager.Logout();
                     ScreenManager.Instance.quit();
                 }
                 catch { }
@@ -128,7 +128,7 @@ namespace DXSWI
             }
             try
             {
-                if (SWIBLL.UserManager.logout())
+                if (SWIBLL.UserManager.Logout())
                 {
                     ScreenManager.Instance.showLoginScreen();
                 }
@@ -308,16 +308,19 @@ namespace DXSWI
         private void bbiUserAdd_ItemClick(object sender, ItemClickEventArgs e)
         {
             // add new user
+            mfrUser.NewUser();
         }
 
         private void bbiUserEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
             // edit current user
+            mfrUser.EditUser();
         }
 
         private void bbiUserDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
             // delete selected user
+            mfrUser.DeleteUser();
             
         }
 
@@ -376,6 +379,11 @@ namespace DXSWI
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
             mfrContacts.DeleteContact();
+        }
+
+        private void bbiUserChangePassword_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            mfrUser.changePassword();
         }
     }
 }

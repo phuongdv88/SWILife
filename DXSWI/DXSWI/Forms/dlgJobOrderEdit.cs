@@ -295,8 +295,8 @@ namespace DXSWI.Forms
                 // if it is new item, use inserting command, update username else use updating command
                 if (isNew)
                 {
-                    mJobOrder.OwnerId = UserManager.ActivatedUser.UserId;
-                    mJobOrder.RecruiterId = UserManager.ActivatedUser.UserId;
+                    mJobOrder.OwnerId = UserManager._ActivatedUser.UserId;
+                    mJobOrder.RecruiterId = UserManager._ActivatedUser.UserId;
                     JobOrderManager.createJobOrder(mJobOrder);
                 }
                 else
@@ -509,18 +509,7 @@ namespace DXSWI.Forms
 
         private void gcCandidatePipeline_DoubleClick(object sender, EventArgs e)
         {
-            long canId = -1;
-            if (gvCandidatePipeline.SelectedRowsCount > 0)
-            {
-                canId = Convert.ToInt64(gvCandidatePipeline.GetDataRow(gvCandidatePipeline.GetSelectedRows().First())["CandidateId"].ToString());
-            }
-            if (canId == -1)
-                return;
-            // todo show dlgCandidateEdit but in mode view only
-            dlgCandidateEdit dlg = new dlgCandidateEdit(canId, null);
-            //dlg.setViewMode();
-            dlg.setEditInfoOnlyState();
-            dlg.ShowDialog();
+            editCandidateToolStripMenuItem.PerformClick();
         }
 
         private void toolTipController1_GetActiveObjectInfo(object sender, DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventArgs e)
@@ -552,7 +541,7 @@ namespace DXSWI.Forms
                 return;
             // todo show dlgCandidateEdit but in mode view only
             dlgCandidateEdit dlg = new dlgCandidateEdit(canId, null);
-            //dlg.setViewMode();
+            dlg.emitUpdateData += updateData;
             dlg.ShowDialog();
         }
 

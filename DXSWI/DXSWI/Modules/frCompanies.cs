@@ -90,7 +90,7 @@ namespace DXSWI.Modules
                         // delete this running task data
                         int row = gvCompanies.GetSelectedRows().First();
                         DataRow data_row = gvCompanies.GetDataRow(row);
-                        int comId = int.Parse(data_row["CompanyId"].ToString());
+                        long comId = int.Parse(data_row["CompanyId"].ToString());
                         CompanyManager.deleteCompany(comId);
                         updateData();
                     }

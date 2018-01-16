@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgCandidateEdit));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.gcActivities = new DevExpress.XtraGrid.GridControl();
@@ -71,8 +71,8 @@
             this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.sliAttachments = new DevExpress.XtraLayout.SimpleLabelItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.sliAttachments = new DevExpress.XtraLayout.SimpleLabelItem();
             this.FirstNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.MiddleNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.LastNameTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -174,8 +174,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliAttachments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliAttachments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiddleNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameTextEdit.Properties)).BeginInit();
@@ -536,17 +536,17 @@
             // ribeAction
             // 
             this.ribeAction.AutoHeight = false;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
-            serializableAppearanceObject9.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject9.Image")));
-            serializableAppearanceObject9.Options.UseImage = true;
-            serializableAppearanceObject10.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject10.Image")));
-            serializableAppearanceObject10.Options.UseImage = true;
-            serializableAppearanceObject11.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject11.Image")));
-            serializableAppearanceObject11.Options.UseImage = true;
-            serializableAppearanceObject12.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject12.Image")));
-            serializableAppearanceObject12.Options.UseImage = true;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
+            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
+            serializableAppearanceObject2.Options.UseImage = true;
+            serializableAppearanceObject3.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject3.Image")));
+            serializableAppearanceObject3.Options.UseImage = true;
+            serializableAppearanceObject4.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject4.Image")));
+            serializableAppearanceObject4.Options.UseImage = true;
             this.ribeAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null)});
             this.ribeAction.Name = "ribeAction";
             this.ribeAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -577,7 +577,7 @@
             this.sbAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAttachment.ImageOptions.Image")));
             this.sbAttachment.Location = new System.Drawing.Point(12, 12);
             this.sbAttachment.Name = "sbAttachment";
-            this.sbAttachment.Size = new System.Drawing.Size(104, 22);
+            this.sbAttachment.Size = new System.Drawing.Size(103, 22);
             this.sbAttachment.StyleController = this.layoutControl2;
             this.sbAttachment.TabIndex = 5;
             this.sbAttachment.Text = "Select file";
@@ -587,9 +587,9 @@
             // 
             this.sbAttachmentDownload.Enabled = false;
             this.sbAttachmentDownload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAttachmentDownload.ImageOptions.Image")));
-            this.sbAttachmentDownload.Location = new System.Drawing.Point(491, 12);
+            this.sbAttachmentDownload.Location = new System.Drawing.Point(501, 12);
             this.sbAttachmentDownload.Name = "sbAttachmentDownload";
-            this.sbAttachmentDownload.Size = new System.Drawing.Size(126, 22);
+            this.sbAttachmentDownload.Size = new System.Drawing.Size(116, 22);
             this.sbAttachmentDownload.StyleController = this.layoutControl2;
             this.sbAttachmentDownload.TabIndex = 6;
             this.sbAttachmentDownload.Text = "Download";
@@ -599,9 +599,9 @@
             // 
             this.sbAttachmentDelete.Enabled = false;
             this.sbAttachmentDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAttachmentDelete.ImageOptions.Image")));
-            this.sbAttachmentDelete.Location = new System.Drawing.Point(120, 12);
+            this.sbAttachmentDelete.Location = new System.Drawing.Point(381, 12);
             this.sbAttachmentDelete.Name = "sbAttachmentDelete";
-            this.sbAttachmentDelete.Size = new System.Drawing.Size(367, 22);
+            this.sbAttachmentDelete.Size = new System.Drawing.Size(116, 22);
             this.sbAttachmentDelete.StyleController = this.layoutControl2;
             this.sbAttachmentDelete.TabIndex = 7;
             this.sbAttachmentDelete.Text = "Delete";
@@ -615,8 +615,8 @@
             this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem8,
             this.layoutControlItem7,
-            this.sliAttachments,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.sliAttachments});
             this.layoutControlGroup7.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup7.Name = "Root";
             this.layoutControlGroup7.Size = new System.Drawing.Size(629, 63);
@@ -625,20 +625,29 @@
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.sbAttachmentDelete;
-            this.layoutControlItem8.Location = new System.Drawing.Point(108, 0);
+            this.layoutControlItem8.Location = new System.Drawing.Point(369, 0);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(371, 26);
+            this.layoutControlItem8.Size = new System.Drawing.Size(120, 43);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.sbAttachmentDownload;
-            this.layoutControlItem7.Location = new System.Drawing.Point(479, 0);
+            this.layoutControlItem7.Location = new System.Drawing.Point(489, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(130, 26);
+            this.layoutControlItem7.Size = new System.Drawing.Size(120, 43);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.sbAttachment;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(107, 43);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
             // 
             // sliAttachments
             // 
@@ -646,24 +655,15 @@
             this.sliAttachments.AppearanceItemCaption.Options.UseTextOptions = true;
             this.sliAttachments.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.sliAttachments.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
-            this.sliAttachments.Location = new System.Drawing.Point(0, 26);
+            this.sliAttachments.Location = new System.Drawing.Point(107, 0);
             this.sliAttachments.Name = "sliAttachments";
             this.sliAttachments.OptionsPrint.AppearanceItemCaption.Options.UseTextOptions = true;
             this.sliAttachments.OptionsPrint.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.sliAttachments.OptionsPrint.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
-            this.sliAttachments.Size = new System.Drawing.Size(609, 17);
+            this.sliAttachments.Size = new System.Drawing.Size(262, 43);
             this.sliAttachments.Text = "No file chosen";
             this.sliAttachments.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.sliAttachments.TextSize = new System.Drawing.Size(67, 13);
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.sbAttachment;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(108, 26);
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
             // 
             // FirstNameTextEdit
             // 
@@ -1478,8 +1478,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliAttachments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliAttachments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiddleNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameTextEdit.Properties)).EndInit();

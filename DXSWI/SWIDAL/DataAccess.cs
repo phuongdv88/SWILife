@@ -213,32 +213,6 @@ namespace SWIDAL
         }
 
         // function to call store procedure in user table
-        public MySqlDataReader getDataByUserName(string userName)
-        {
-            if (mCon == null) retryConnectToDb();
-            MySqlCommand cmd = null;
-            try
-            {
-                cmd = new MySqlCommand("spGetUserByName", mCon);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("UserName", userName);
-                //cmd.Parameters.Add(userName);
-                //cmd.Parameters["UserName"].Direction = ParameterDirection.Input;
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-                return reader;
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                cmd?.Dispose();
-
-            }
-        }
-
         public string getUserName(long id)
         {
             if (mCon == null) return string.Empty;
@@ -268,7 +242,7 @@ namespace SWIDAL
         }
 
 
-        public bool updateLoginState(string userName, bool value)
+        public bool updateLoginState(long UserId, bool value)
         {
             if (mCon == null) return false;
             MySqlCommand cmd = null;
@@ -276,7 +250,7 @@ namespace SWIDAL
             {
                 cmd = new MySqlCommand("spLoginLogout", mCon);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("UserName", userName);
+                cmd.Parameters.AddWithValue("UserId", UserId);
                 cmd.Parameters.AddWithValue("IsOnline", value);
                 //cmd.Parameters.Add(userName);
                 //cmd.Parameters.Add(value);

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRule3ColorScale formatConditionRule3ColorScale1 = new DevExpress.XtraEditors.FormatConditionRule3ColorScale();
             this.gcCompanies = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newCompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,9 +43,11 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.viewJobOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addJobOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvCompanies = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPrimaryPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colJobs = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIndustry = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,7 +55,7 @@
             this.colPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPrimaryPhone = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCompanyState = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcCompanies)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCompanies)).BeginInit();
@@ -83,9 +87,10 @@
             this.toolStripSeparator3,
             this.viewJobOrdersToolStripMenuItem,
             this.addJobOrderToolStripMenuItem,
+            this.toolStripSeparator4,
             this.refreshDataToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 198);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 204);
             // 
             // newCompanyToolStripMenuItem
             // 
@@ -150,6 +155,11 @@
             this.addJobOrderToolStripMenuItem.Text = "Add Job Order";
             this.addJobOrderToolStripMenuItem.Click += new System.EventHandler(this.addJobOrderToolStripMenuItem_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(159, 6);
+            // 
             // refreshDataToolStripMenuItem
             // 
             this.refreshDataToolStripMenuItem.Name = "refreshDataToolStripMenuItem";
@@ -168,7 +178,30 @@
             this.colContactName,
             this.colPhone,
             this.colOwner,
-            this.colModified});
+            this.colModified,
+            this.colCompanyState});
+            gridFormatRule1.Column = this.colCompanyState;
+            gridFormatRule1.ColumnApplyTo = this.colName;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRule3ColorScale1.AutomaticType = DevExpress.XtraEditors.FormatConditionAutomaticType.ValueBased;
+            formatConditionRule3ColorScale1.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            formatConditionRule3ColorScale1.MaximumColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            formatConditionRule3ColorScale1.MaximumType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRule3ColorScale1.Middle = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            formatConditionRule3ColorScale1.MiddleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            formatConditionRule3ColorScale1.MiddleType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRule3ColorScale1.MinimumColor = System.Drawing.Color.White;
+            formatConditionRule3ColorScale1.MinimumType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            gridFormatRule1.Rule = formatConditionRule3ColorScale1;
+            this.gvCompanies.FormatRules.Add(gridFormatRule1);
             this.gvCompanies.GridControl = this.gcCompanies;
             this.gvCompanies.Name = "gvCompanies";
             this.gvCompanies.OptionsBehavior.Editable = false;
@@ -182,6 +215,15 @@
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
             this.colName.Width = 176;
+            // 
+            // colPrimaryPhone
+            // 
+            this.colPrimaryPhone.Caption = "Primary Phone";
+            this.colPrimaryPhone.FieldName = "PrimaryPhone";
+            this.colPrimaryPhone.Name = "colPrimaryPhone";
+            this.colPrimaryPhone.Visible = true;
+            this.colPrimaryPhone.VisibleIndex = 1;
+            this.colPrimaryPhone.Width = 96;
             // 
             // colJobs
             // 
@@ -246,14 +288,11 @@
             this.colModified.VisibleIndex = 8;
             this.colModified.Width = 120;
             // 
-            // colPrimaryPhone
+            // colCompanyState
             // 
-            this.colPrimaryPhone.Caption = "Primary Phone";
-            this.colPrimaryPhone.FieldName = "PrimaryPhone";
-            this.colPrimaryPhone.Name = "colPrimaryPhone";
-            this.colPrimaryPhone.Visible = true;
-            this.colPrimaryPhone.VisibleIndex = 1;
-            this.colPrimaryPhone.Width = 96;
+            this.colCompanyState.Caption = "Com State";
+            this.colCompanyState.FieldName = "CompanyState";
+            this.colCompanyState.Name = "colCompanyState";
             // 
             // frCompanies
             // 
@@ -294,5 +333,7 @@
         private System.Windows.Forms.ToolStripMenuItem viewJobOrdersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshDataToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn colPrimaryPhone;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private DevExpress.XtraGrid.Columns.GridColumn colCompanyState;
     }
 }

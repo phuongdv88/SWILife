@@ -6,6 +6,8 @@ using DevExpress.UserSkins;
 using DevExpress.Skins;
 using DevExpress.LookAndFeel;
 using DXSWI.Forms;
+using System.Threading;
+using DevExpress.XtraEditors;
 
 namespace DXSWI
 {
@@ -23,8 +25,18 @@ namespace DXSWI
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
 
-
-            ScreenManager.Instance.initLoginScreen();
+            // check has another instance yet?
+            var createdNew = false;
+            string appGuid = "84KJF-LKAJF-W4EROIEJRL-ALKFJALSL-IH348ALF";
+            using (Mutex mutex = new Mutex(false, appGuid, out createdNew))
+            {
+                if (!createdNew)
+                {
+                    XtraMessageBox.Show("Application is already running!", "Multiple Instances", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                ScreenManager.Instance.initLoginScreen();
+            }
         }
     }
 }

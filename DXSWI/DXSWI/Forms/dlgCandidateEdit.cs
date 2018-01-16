@@ -33,6 +33,7 @@ namespace DXSWI.Forms
             EXPERIENCE,
             EDUCATION,
             SKILL,
+            SKILL_EXTEND,
             ACCOMPLISHMENT,
             CONTACT,
             INTEREST,
@@ -210,70 +211,6 @@ namespace DXSWI.Forms
             else peAvatar.Cursor = Cursors.Default;
             if (canId == -1)
             {
-                ////clear all ui
-                //FirstNameTextEdit.Text = string.Empty;
-                //MiddleNameTextEdit.Text = string.Empty;
-                //LastNameTextEdit.Text = string.Empty;
-                //EmailTextEdit.Text = string.Empty;
-                //SecondaryEmailTextEdit.Text = string.Empty;
-                //SkypeIMTextEdit.Text = string.Empty;
-                //CellPhoneTextEdit.Text = string.Empty;
-                //WorkPhoneTextEdit.Text = string.Empty;
-                //BestTimeToCallTextEdit.Text = string.Empty;
-                //AddressTextEdit.Text = string.Empty;
-                //WebSiteTextEdit.Text = string.Empty;
-                //SourceTextEdit.Text = string.Empty;
-                //CurrentPositionTextEdit.Text = string.Empty;
-                //DateAvailableDateEdit.Text = string.Empty;
-                //CurrentEmployerTextEdit.Text = string.Empty;
-                //KeySkillsTextEdit.Text = string.Empty;
-                //CanRelocateCheckEdit.Checked = false;
-                //CurrentPayTextEdit.Text = string.Empty;
-                //DesiredPayTextEdit.Text = string.Empty;
-                //DOBMarriedTextEdit.Text = string.Empty;
-                //InterviewNotesMemoEdit.Text = string.Empty;
-                //GenderComboBoxEdit.SelectedIndex = 0;
-                //MiscNotesMemoEdit.Text = string.Empty;
-                //CityTextEdit.Text = string.Empty;
-                //CountryTextEdit.Text = string.Empty;
-                //PositionsUpTillNowTextEdit.Text = string.Empty;
-                //ProjectDoneMemoEdit.Text = string.Empty;
-                //IndustryTextEdit.Text = string.Empty;
-                //EducationMemoEdit.Text = string.Empty;
-                //LanguageTextEdit.Text = string.Empty;
-                //IsInBlacklistCheckEdit.Checked = false;
-                //peAvatar.Image = null;
-
-                //// clear tool tip
-                //FirstNameTextEdit.ToolTip = string.Empty;
-                //MiddleNameTextEdit.ToolTip = string.Empty;
-                //LastNameTextEdit.ToolTip = string.Empty;
-                //EmailTextEdit.ToolTip = string.Empty;
-                //SecondaryEmailTextEdit.ToolTip = string.Empty;
-                //SkypeIMTextEdit.ToolTip = string.Empty;
-                //CellPhoneTextEdit.ToolTip = string.Empty;
-                //WorkPhoneTextEdit.ToolTip = string.Empty;
-                //BestTimeToCallTextEdit.ToolTip = string.Empty;
-                //AddressTextEdit.ToolTip = string.Empty;
-                //WebSiteTextEdit.ToolTip = string.Empty;
-                //SourceTextEdit.ToolTip = string.Empty;
-                //CurrentPositionTextEdit.ToolTip = string.Empty;
-                //DateAvailableDateEdit.ToolTip = string.Empty;
-                //CurrentEmployerTextEdit.ToolTip = string.Empty;
-                //KeySkillsTextEdit.ToolTip = string.Empty;
-                //CurrentPayTextEdit.ToolTip = string.Empty;
-                //DesiredPayTextEdit.ToolTip = string.Empty;
-                //DOBMarriedTextEdit.ToolTip = string.Empty;
-                //InterviewNotesMemoEdit.ToolTip = string.Empty;
-                //MiscNotesMemoEdit.ToolTip = string.Empty;
-                //CityTextEdit.ToolTip = string.Empty;
-                //CountryTextEdit.ToolTip = string.Empty;
-                //PositionsUpTillNowTextEdit.ToolTip = string.Empty;
-                //ProjectDoneMemoEdit.ToolTip = string.Empty;
-                //IndustryTextEdit.ToolTip = string.Empty;
-                //EducationMemoEdit.ToolTip = string.Empty;
-                //LanguageTextEdit.ToolTip = string.Empty;
-
                 mCandidate = new Candidate();
                 isNew = true;
                 gcActivities.Enabled = false;
@@ -376,8 +313,8 @@ namespace DXSWI.Forms
                 // save candidate to database: if it is new candidate -> use inserting function, else use updating function
                 if (isNew)
                 {
-                    mCandidate.UserId = Properties.Settings.Default.userId;
-                    mCandidate.CreatedId = Properties.Settings.Default.userId;
+                    mCandidate.UserId = UserManager._ActivatedUser.UserId;
+                    mCandidate.CreatedId = UserManager._ActivatedUser.UserId;
                     mCandidate.CreatedDate = DateTime.Now;
                     CandidateManager.InsertCandidate(mCandidate);
                 }
@@ -482,7 +419,7 @@ namespace DXSWI.Forms
                         try
                         {
                             Candidate can = new Candidate();
-                            getCandidateFromClipboard(ref can);
+                            getCandidateLinkedInFromClipboard(ref can);
                             FillUpToUi(can);
                             SourceTextEdit.SelectedIndex = 1;
                         }
@@ -550,6 +487,14 @@ namespace DXSWI.Forms
             {
                 state = ParseCandidateInfoStep.SKILL;
             }
+            else if (line.Contains(" is also good at…"))
+            {
+                state = ParseCandidateInfoStep.SKILL_EXTEND;
+            }
+            else if (string.Equals(line, "Interests"))
+            {
+                state = ParseCandidateInfoStep.INTEREST;
+            }
             else if (string.Equals(line, "Accomplishments"))
             {
                 state = ParseCandidateInfoStep.ACCOMPLISHMENT;
@@ -566,7 +511,7 @@ namespace DXSWI.Forms
         /// It may don't work correctly when linkedin changes data fomat
         /// </summary>
         /// <param name="can"></param>
-        private void getCandidateFromClipboard(ref Candidate can)
+        private void getCandidateLinkedInFromClipboard(ref Candidate can)
         {
             // parse can from memoINfo.Text
             ParseCandidateInfoStep state = ParseCandidateInfoStep.INIT;
@@ -615,7 +560,7 @@ namespace DXSWI.Forms
                             }
                             ++i;
                             line = lines[i].Trim();
-                            if (line.Length > 0 && !line.Contains("1st") && !line.Contains(name))
+                            if (line.Length > 0 && !line.Contains("1st") && !line.Contains(name) && !line.Contains("degree connection"))
                                 break;
                         } while (true);
                         can.CurrentPosition = line;
@@ -684,19 +629,41 @@ namespace DXSWI.Forms
                                 //18
                                 //Endorse
                                 int j = i + 1;
-                                if (j < lines.Length && string.Equals(lines[j].Trim()?.Split(' ').First(), "See") && lines[j].Contains("endorsement"))
+                                if (j < lines.Length)
                                 {
-                                    i = j;
-                                    if (can.KeySkills.Length > 0)
+                                    string stemp = lines[j].Split(' ').First();
+                                    if (lines[j].Contains("endorsement") && (stemp.ToUpper() == "NO" || stemp.ToUpper() == "SEE"))
                                     {
-                                        can.KeySkills += "; ";
+                                        i = j;
+                                        if (can.KeySkills.Length > 0)
+                                        {
+                                            can.KeySkills += "; ";
+                                        }
+                                        can.KeySkills += line;
                                     }
-                                    can.KeySkills += line;
                                 }
                             }
                         }
                     }
                     continue;
+                }
+                else if (state == ParseCandidateInfoStep.SKILL_EXTEND)
+                {
+                    if (!getParseState(line, ref state))
+                    {
+                        if (can.KeySkills.Length > 0)
+                        {
+                            can.KeySkills += "; ";
+                        }
+                        can.KeySkills += line.Trim();
+                    }
+                }
+                else if (state == ParseCandidateInfoStep.INTEREST)
+                {
+                    if (!getParseState(line, ref state))
+                    {
+                        // do nothing
+                    }
                 }
                 else if (state == ParseCandidateInfoStep.ACCOMPLISHMENT)
                 {
@@ -741,7 +708,7 @@ namespace DXSWI.Forms
                     {
                         ++i;
                         line = lines[i].Trim();
-                        can.WorkPhone = line.Split(new[] { " (" }, StringSplitOptions.RemoveEmptyEntries).First();
+                        can.CellPhone = line.Split(new[] { " (" }, StringSplitOptions.RemoveEmptyEntries).First();
                     }
                     else if (string.Equals(line, "Email"))
                     {

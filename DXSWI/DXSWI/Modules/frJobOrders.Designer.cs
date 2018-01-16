@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRule2ColorScale formatConditionRule2ColorScale1 = new DevExpress.XtraEditors.FormatConditionRule2ColorScale();
             this.gcJobOrder = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newJobOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteJobOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvJobOrder = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompany = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -46,7 +50,7 @@
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLink = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colIsHot = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcJobOrder)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvJobOrder)).BeginInit();
@@ -67,39 +71,52 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.refreshToolStripMenuItem,
             this.newJobOrderToolStripMenuItem,
             this.editToolStripMenuItem,
             this.toolStripSeparator1,
-            this.deleteJobOrderToolStripMenuItem});
+            this.deleteJobOrderToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.refreshToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 120);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 104);
             // 
             // newJobOrderToolStripMenuItem
             // 
             this.newJobOrderToolStripMenuItem.Name = "newJobOrderToolStripMenuItem";
-            this.newJobOrderToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.newJobOrderToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.newJobOrderToolStripMenuItem.Text = "New Job Order";
             this.newJobOrderToolStripMenuItem.Click += new System.EventHandler(this.newJobOrderToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.editToolStripMenuItem.Text = "Edit Job Order";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
             // 
             // deleteJobOrderToolStripMenuItem
             // 
             this.deleteJobOrderToolStripMenuItem.Name = "deleteJobOrderToolStripMenuItem";
-            this.deleteJobOrderToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.deleteJobOrderToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.deleteJobOrderToolStripMenuItem.Text = "Delete Job Order";
             this.deleteJobOrderToolStripMenuItem.Click += new System.EventHandler(this.deleteJobOrderToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(169, 6);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh Job Orders";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // gvJobOrder
             // 
@@ -113,7 +130,22 @@
             this.colCanInPipeLine,
             this.colOwner,
             this.colCity,
-            this.colLink});
+            this.colLink,
+            this.colIsHot});
+            gridFormatRule1.Column = this.colIsHot;
+            gridFormatRule1.ColumnApplyTo = this.colTitle;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRule2ColorScale1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            formatConditionRule2ColorScale1.MaximumColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            formatConditionRule2ColorScale1.MaximumType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRule2ColorScale1.MinimumType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRule2ColorScale1.PredefinedName = "White, Green";
+            gridFormatRule1.Rule = formatConditionRule2ColorScale1;
+            this.gvJobOrder.FormatRules.Add(gridFormatRule1);
             this.gvJobOrder.GridControl = this.gcJobOrder;
             this.gvJobOrder.Name = "gvJobOrder";
             this.gvJobOrder.OptionsBehavior.Editable = false;
@@ -210,12 +242,11 @@
             this.colLink.VisibleIndex = 9;
             this.colLink.Width = 214;
             // 
-            // refreshToolStripMenuItem
+            // colIsHot
             // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.refreshToolStripMenuItem.Text = "Refresh";
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            this.colIsHot.Caption = "Is Hot";
+            this.colIsHot.FieldName = "IsHot";
+            this.colIsHot.Name = "colIsHot";
             // 
             // frJobOrders
             // 
@@ -251,5 +282,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem deleteJobOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsHot;
     }
 }

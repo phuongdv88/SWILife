@@ -15,15 +15,17 @@ namespace DXSWI.Forms
 {
     public partial class dlgLogin : DevExpress.XtraEditors.XtraForm
     {
+        bool _isInputPassword = false;
         public dlgLogin()
         {
             InitializeComponent();
 
-            textEditUserName.Text = Properties.Settings.Default.userName;
-            textEditPassword.Text = Properties.Settings.Default.password.Length > 0 ? "******" : "";
+            textEditUserName.Text = Properties.Settings.Default.UserName;
+            textEditPassword.Text = Properties.Settings.Default.HashPassword.Length > 0 ? "******" : "";
+            _isInputPassword = false;
             try
             {
-                UserManager.connectoDB(Properties.Settings.Default.swilifecoreConnectionString);
+                UserManager.ConnectoDB(Properties.Settings.Default.SwilifecoreConnectionString);
             }
             catch (Exception ex)
             {
@@ -39,81 +41,56 @@ namespace DXSWI.Forms
 
         }
 
-        private string createMD5Hash(string input_string)
-        {
-            using (MD5 md5 = MD5.Create())
-            {
-                byte[] hash_bytes = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(input_string));
-                //convert the byte array to hexadecimal string
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hash_bytes.Length; ++i)
-                {
-                    sb.Append(hash_bytes[i].ToString("X2"));
-                }
-                return sb.ToString();
-            }
-        }
-
-        private bool verifyMd5Hash(string input, string hash)
-        {
-            string hashOfInput = createMD5Hash(input);
-            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-            if (0 == comparer.Compare(hashOfInput, hash))
-            {
-                return true;
-            }
-            return false;
-
-        }
-
-
         private void sbLogin_Click(object sender, EventArgs e)
         {
             //validate input
 
-            // todo check exist and get salt
-            string salt = "123456a@";  //todo: this salt need get from db by username
-
-            // gen password
-            string hashPassword = Properties.Settings.Default.password;
-            if (hashPassword.Length == 0)
-            {
-                hashPassword = createMD5Hash(textEditPassword.Text + salt);
-            }
             try
             {
+                if (textEditUserName.Text.Length == 0 || textEditPassword.Text.Length == 0)
+                    throw new Exception("User name or password is incorrect!");
+                // get salt by user name
+                string salt = UserManager.GetSaltByUserName(textEditUserName.Text.Trim());
+                if (salt == null)
+                {
+                    throw new Exception("User name or password is incorrect!");
+                }
+                // gen password
+                string hashPassword = Properties.Settings.Default.HashPassword;
+
+                if (_isInputPassword)
+                {
+                    hashPassword = UserManager.createMD5Hash(textEditPassword.Text + salt);
+                }
                 //login
-                long id = 0;
-                int role = 0;
-                if (UserManager.login(textEditUserName.Text, hashPassword, ref id, ref role))
+                if (UserManager.Login(textEditUserName.Text, hashPassword))
                 {
                     // if login successfully, save username and hash password if necessary
-                    if (checkEditRememberMe.Checked == true)
+                    if (checkEditRememberMe.Checked)
                     {
-                        Properties.Settings.Default.userName = textEditUserName.Text;
-                        Properties.Settings.Default.password = hashPassword;
+                        Properties.Settings.Default.UserName = textEditUserName.Text;
+                        Properties.Settings.Default.HashPassword = hashPassword;
                     }
                     else
                     {
-                        Properties.Settings.Default.userName = "";
-                        Properties.Settings.Default.password = "";
+                        Properties.Settings.Default.UserName = "";
+                        Properties.Settings.Default.HashPassword = "";
                     }
 
                     Properties.Settings.Default.Save();
-                    Properties.Settings.Default.userId = id;
-                    Properties.Settings.Default.role = role;
                     //show main window
                     ScreenManager.Instance.showMainScreen();
-                } else
+                }
+                else
                 {
-                    XtraMessageBox.Show("Can not login!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textEditUserName.Focus();
+                    throw new Exception("Can not login!");
                 }
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clearUiData();
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -122,6 +99,13 @@ namespace DXSWI.Forms
             textEditUserName.Focus();
             textEditUserName.Text = "";
             textEditPassword.Text = "";
+        }
+        public void logout()
+        {
+            if(!checkEditRememberMe.Checked)
+            {
+                clearUiData();
+            }
         }
 
         private void dlgLogin_KeyDown(object sender, KeyEventArgs e)
@@ -142,6 +126,11 @@ namespace DXSWI.Forms
         private void dlgLogin_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textEditPassword_EditValueChanged(object sender, EventArgs e)
+        {
+            _isInputPassword = true;
         }
     }
 }

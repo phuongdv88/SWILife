@@ -32,22 +32,22 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.sbLogin = new DevExpress.XtraEditors.SimpleButton();
+            this.sbOK = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.textEditPassword = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.textEditNew = new DevExpress.XtraEditors.TextEdit();
+            this.textEditConfirm = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.textEditOld = new DevExpress.XtraEditors.TextEdit();
+            this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPassword.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNew.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditConfirm.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditOld.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl3
@@ -82,13 +82,14 @@
             this.panelControl1.Size = new System.Drawing.Size(500, 42);
             this.panelControl1.TabIndex = 17;
             // 
-            // sbLogin
+            // sbOK
             // 
-            this.sbLogin.Location = new System.Drawing.Point(176, 215);
-            this.sbLogin.Name = "sbLogin";
-            this.sbLogin.Size = new System.Drawing.Size(117, 23);
-            this.sbLogin.TabIndex = 14;
-            this.sbLogin.Text = "OK";
+            this.sbOK.Location = new System.Drawing.Point(176, 215);
+            this.sbOK.Name = "sbOK";
+            this.sbOK.Size = new System.Drawing.Size(117, 23);
+            this.sbOK.TabIndex = 14;
+            this.sbOK.Text = "OK";
+            this.sbOK.Click += new System.EventHandler(this.sbOK_Click);
             // 
             // labelControl2
             // 
@@ -106,21 +107,21 @@
             this.labelControl1.TabIndex = 16;
             this.labelControl1.Text = "Old password";
             // 
-            // textEditPassword
+            // textEditNew
             // 
-            this.textEditPassword.Location = new System.Drawing.Point(176, 110);
-            this.textEditPassword.Name = "textEditPassword";
-            this.textEditPassword.Properties.UseSystemPasswordChar = true;
-            this.textEditPassword.Size = new System.Drawing.Size(278, 20);
-            this.textEditPassword.TabIndex = 12;
+            this.textEditNew.Location = new System.Drawing.Point(176, 110);
+            this.textEditNew.Name = "textEditNew";
+            this.textEditNew.Properties.UseSystemPasswordChar = true;
+            this.textEditNew.Size = new System.Drawing.Size(278, 20);
+            this.textEditNew.TabIndex = 12;
             // 
-            // textEdit1
+            // textEditConfirm
             // 
-            this.textEdit1.Location = new System.Drawing.Point(176, 157);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.UseSystemPasswordChar = true;
-            this.textEdit1.Size = new System.Drawing.Size(278, 20);
-            this.textEdit1.TabIndex = 12;
+            this.textEditConfirm.Location = new System.Drawing.Point(176, 157);
+            this.textEditConfirm.Name = "textEditConfirm";
+            this.textEditConfirm.Properties.UseSystemPasswordChar = true;
+            this.textEditConfirm.Size = new System.Drawing.Size(278, 20);
+            this.textEditConfirm.TabIndex = 12;
             // 
             // labelControl4
             // 
@@ -130,21 +131,22 @@
             this.labelControl4.TabIndex = 15;
             this.labelControl4.Text = "Confirm password";
             // 
-            // textEdit2
+            // textEditOld
             // 
-            this.textEdit2.Location = new System.Drawing.Point(176, 66);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.UseSystemPasswordChar = true;
-            this.textEdit2.Size = new System.Drawing.Size(278, 20);
-            this.textEdit2.TabIndex = 12;
+            this.textEditOld.Location = new System.Drawing.Point(176, 66);
+            this.textEditOld.Name = "textEditOld";
+            this.textEditOld.Properties.UseSystemPasswordChar = true;
+            this.textEditOld.Size = new System.Drawing.Size(278, 20);
+            this.textEditOld.TabIndex = 12;
             // 
-            // simpleButton1
+            // sbCancel
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(337, 215);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(117, 23);
-            this.simpleButton1.TabIndex = 14;
-            this.simpleButton1.Text = "Cancel";
+            this.sbCancel.Location = new System.Drawing.Point(337, 215);
+            this.sbCancel.Name = "sbCancel";
+            this.sbCancel.Size = new System.Drawing.Size(117, 23);
+            this.sbCancel.TabIndex = 14;
+            this.sbCancel.Text = "Cancel";
+            this.sbCancel.Click += new System.EventHandler(this.sbCancel_Click);
             // 
             // labelControl5
             // 
@@ -185,25 +187,26 @@
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.panelControl1);
-            this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.sbLogin);
+            this.Controls.Add(this.sbCancel);
+            this.Controls.Add(this.sbOK);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.textEdit1);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.textEditPassword);
+            this.Controls.Add(this.textEditConfirm);
+            this.Controls.Add(this.textEditOld);
+            this.Controls.Add(this.textEditNew);
             this.KeyPreview = true;
             this.Name = "dlgChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "te";
+            this.Load += new System.EventHandler(this.dlgChangePassword_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgChangePassword_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditPassword.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNew.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditConfirm.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditOld.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,14 +217,14 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.ImageList imageList1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton sbLogin;
+        private DevExpress.XtraEditors.SimpleButton sbOK;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit textEditPassword;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit textEditNew;
+        private DevExpress.XtraEditors.TextEdit textEditConfirm;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.TextEdit textEditOld;
+        private DevExpress.XtraEditors.SimpleButton sbCancel;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl7;

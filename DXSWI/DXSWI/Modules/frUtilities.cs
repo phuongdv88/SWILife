@@ -23,7 +23,7 @@ namespace DXSWI.Modules
         {
             InitializeComponent();
             // fortest:
-            FileNameTextEdit.Text = @"C:\Users\phuon\Documents\Developer.xlsx";
+            //FileNameTextEdit.Text = @"C:\Users\phuon\Documents\PR2610.xlsx";
         }
 
         private void sbBrowse_Click(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace DXSWI.Modules
             {
                 if (package.Workbook.Worksheets.Count <= 1)
                     return;
-                ExcelWorksheet workSheet = package.Workbook.Worksheets["Contacts"];
+                ExcelWorksheet workSheet = package.Workbook.Worksheets["PR tl"];
                 //ExcelWorksheet workSheet = package.Workbook.Worksheets.FirstOrDefault();
                 // read all data begin from row 2
                 for (var rowNumber = 2; rowNumber < workSheet.Dimension.End.Row; rowNumber++)
@@ -105,7 +105,7 @@ namespace DXSWI.Modules
                     con.MiscNotes = con.CompanyName;
                     con.MiscNotes += "\r\n" + cells[6].Text;
 
-                    con.UserId = UserManager.ActivatedUser.UserId;
+                    con.UserId = UserManager._ActivatedUser.UserId;
                     // insert to database
                     try
                     {
@@ -115,6 +115,30 @@ namespace DXSWI.Modules
                     {
                         printMessage(string.Format("Error: {0} of row = {1}", ex.Message, rowNumber));
                     }
+
+                    //Candidate can = new Candidate();
+
+                    //can.FirstName = cells[0].Text.Trim(); //first name
+                    //can.LastName = cells[1].Text.Trim(); // lastname
+                    //can.CurrentEmployer = cells[2].Text.Trim(); // company
+                    //if (can.CurrentEmployer.Length == 0) continue;
+                    //can.CurrentPosition = cells[3].Text.Trim(); // title
+                    //can.Email = cells[4].Text.Trim(); // email address
+                    //can.CellPhone = cells[5].Text.Trim(); // phone numbers
+                    //can.MiscNotes = can.CurrentEmployer;
+                    //can.MiscNotes += "\r\n" + cells[6].Text;
+                    //can.ProjectDone = "Need to update";
+
+                    //can.UserId = UserManager.ActivatedUser.UserId;
+                    //// insert to database
+                    //try
+                    //{
+                    //    CandidateManager.InsertCandidate(can);
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    printMessage(string.Format("Error: {0} of row = {1}", ex.Message, rowNumber));
+                    //}
                 }
 
             };
@@ -224,7 +248,7 @@ namespace DXSWI.Modules
 
             foreach (var file_name in list_file)
             {
-                Company com = new Company() { UserId = UserManager.ActivatedUser.UserId };
+                Company com = new Company() { UserId = UserManager._ActivatedUser.UserId };
                 string billing_contact = "";
                 string active = "";
                 string misc_notes = "";
@@ -337,13 +361,12 @@ namespace DXSWI.Modules
         {
             using (ExcelPackage package = new ExcelPackage(new FileInfo(sourceFile)))
             {
-                if (package.Workbook.Worksheets.Count <= 1)
+                if (package.Workbook.Worksheets.Count < 1)
                     return;
 
-                ExcelWorksheet workSheet = package.Workbook.Worksheets["Software Engineer"];
-                //ExcelWorksheet workSheet = package.Workbook.Worksheets.FirstOrDefault();
+                ExcelWorksheet workSheet = package.Workbook.Worksheets["Head of VN wallet"];
                 // read all data begin from row 2
-                for (var rowNumber = 2; rowNumber < workSheet.Dimension.End.Row; rowNumber++)
+                for (var rowNumber = 2; rowNumber <= workSheet.Dimension.End.Row; rowNumber++)
                 {
                     var row = workSheet.Cells[rowNumber, 1, rowNumber, workSheet.Dimension.End.Column];
                     var cells = row.ToList();
@@ -352,6 +375,7 @@ namespace DXSWI.Modules
                     Candidate can = new Candidate();
                     can.FirstName = cells[0].Text.Trim(); //first name
                     can.LastName = cells[1].Text.Trim(); // lastname
+                    if (can.FirstName.Length == 0) continue;
                     can.CurrentEmployer = cells[2].Text.Trim(); // companies
                     can.CurrentPosition = cells[3].Text.Trim(); // title
                     can.WebSite = cells[4].Text.Trim(); // link
@@ -360,31 +384,38 @@ namespace DXSWI.Modules
                     if (phone_imskype.Length > 0)
                     {
                         string[] items = phone_imskype.Split('/');
-                        can.CellPhone = items.First();
+                        can.CellPhone = items.First().Trim();
                         if (items.Count() > 1)
                         {
-                            can.SkypeIM = items.Last();
+                            can.SkypeIM = items.Last().Trim();
                         }
                     }
                     string keyskill = cells[7].Text.Trim(); // tags
                     if (keyskill == null || keyskill.Length == 0)
                     {
-                        keyskill = "Hanoi, Software Engineer";
+                        keyskill = "Head of VN wallet";
                     }
                     can.KeySkills = keyskill;
                     can.ProjectDone = cells[8].Text.Trim(); // note
                     can.MiscNotes = cells[9].Text.Trim();  // comment
-                    can.CurrentPay = cells[11].Text.Trim(); // current pay
-                    can.DOBMarried = cells[13].Text.Trim(); // dob
+                    //string gender = cells[10].Text.Trim(); // gender
+                    //if(string.Equals(gender, "f"))
+                    //{
+                    //    can.Gender = false;
+                    //}
+                    //can.CurrentPay = cells[11].Text.Trim(); // current pay
+                    //can.DesiredPay = cells[12].Text.Trim(); // desired
+                    //can.DOBMarried = cells[13].Text.Trim(); // dob
                     can.City = "Hanoi";
                     can.Country = "Vietnam";
                     can.Source = "LinkedIn";
-                    can.UserId = UserManager.ActivatedUser.UserId;
+                    can.UserId = UserManager._ActivatedUser.UserId;
 
                     // insert to database
                     try
                     {
                         CandidateManager.InsertCandidate(can);
+                        printMessage(string.Format("Insert row = {0}", rowNumber));
                     }
                     catch (Exception ex)
                     {

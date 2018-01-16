@@ -36,24 +36,23 @@ namespace DXSWI
                 return instance;
             }
         }
-        
+
 
         public void initLoginScreen()
         {
             Application.Run(mdlgLogin);
             //Application.Run(mMain);
         }
-        public void showLoginScreen(bool NeedClearData = true)
+        public void showLoginScreen()
         {
-            if (NeedClearData)
-            {
-                mdlgLogin.clearUiData();
-            }
+            mdlgLogin.logout();
             mdlgLogin?.Show();
             mMain?.Hide();
         }
         public void showMainScreen()
         {
+            //todo: update data
+            // setup ui by role
             mMain?.Show();
             mdlgLogin?.Hide();
 
