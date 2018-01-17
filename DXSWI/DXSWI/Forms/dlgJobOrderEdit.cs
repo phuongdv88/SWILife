@@ -420,8 +420,20 @@ namespace DXSWI.Forms
             try
             {
                 // load data in candidate table and show in grid control
+                int[] rows = null;
+                if (gvCandidatePipeline.SelectedRowsCount > 0)
+                    rows = gvCandidatePipeline.GetSelectedRows();
                 gcCandidatePipeline.DataSource = RunningTaskManager.getRunningTaskCandidates(mJobOrder.JobOrderId);
                 //gcCandidatePipeline.Refresh();
+                if(rows != null)
+                {
+                    if (rows.First() < gvCandidatePipeline.RowCount)
+                    {
+                        gvCandidatePipeline.ClearSelection();
+                        gvCandidatePipeline.SelectRow(rows.First());
+                        gvCandidatePipeline.FocusedRowHandle = rows.First();
+                    }
+                }
 
             }
             catch (Exception ex)

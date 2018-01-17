@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.ucScheduleEvent2 = new DXSWI.Controls.ucScheduleEvent();
             this.cbeRegarding = new DevExpress.XtraEditors.ComboBoxEdit();
             this.ceChangeStatus = new DevExpress.XtraEditors.CheckEdit();
             this.cbeStatus = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -50,10 +51,9 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.ucScheduleEvent2 = new DXSWI.Controls.ucScheduleEvent();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbeRegarding.Properties)).BeginInit();
@@ -75,9 +75,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -99,6 +99,14 @@
             this.layoutControl1.Size = new System.Drawing.Size(904, 649);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // ucScheduleEvent2
+            // 
+            this.ucScheduleEvent2.Enabled = false;
+            this.ucScheduleEvent2.Location = new System.Drawing.Point(24, 370);
+            this.ucScheduleEvent2.Name = "ucScheduleEvent2";
+            this.ucScheduleEvent2.Size = new System.Drawing.Size(856, 229);
+            this.ucScheduleEvent2.TabIndex = 14;
             // 
             // cbeRegarding
             // 
@@ -335,6 +343,15 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.ucScheduleEvent2;
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 23);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(860, 233);
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem10.TextVisible = false;
+            // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.sbCancel;
@@ -351,23 +368,6 @@
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(556, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // ucScheduleEvent2
-            // 
-            this.ucScheduleEvent2.Enabled = false;
-            this.ucScheduleEvent2.Location = new System.Drawing.Point(24, 370);
-            this.ucScheduleEvent2.Name = "ucScheduleEvent2";
-            this.ucScheduleEvent2.Size = new System.Drawing.Size(856, 229);
-            this.ucScheduleEvent2.TabIndex = 14;
-            // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.Control = this.ucScheduleEvent2;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 23);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(860, 233);
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem10.TextVisible = false;
             // 
             // dlgLogActivity
             // 
@@ -401,9 +401,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             this.ResumeLayout(false);
 
         }

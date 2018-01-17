@@ -32,6 +32,21 @@ namespace DXSWI.Modules
             updateData();
         }
 
+        public void SetupUi()
+        {
+            if (UserManager._ActivatedUser != null)
+            {
+                if (UserManager._ActivatedUser.RoleName != "ADMIN")
+                {
+                    gcUser.ContextMenuStrip = null;
+                }
+                else
+                {
+                    gcUser.ContextMenuStrip = contextMenuStrip1;
+                }
+            }
+        }
+
         private void updateData()
         {
             try
@@ -46,6 +61,7 @@ namespace DXSWI.Modules
                 {
                     gvUser.ClearSelection();
                     gvUser.SelectRow(row);
+                    gvUser.FocusedRowHandle = row;
                 }
             }
             catch (Exception ex)

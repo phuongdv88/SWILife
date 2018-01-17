@@ -53,6 +53,7 @@ namespace DXSWI
         {
             //todo: update data
             // setup ui by role
+            mMain?.SetupUiByRole();
             mMain?.Show();
             mdlgLogin?.Hide();
 

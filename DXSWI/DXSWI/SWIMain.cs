@@ -65,6 +65,22 @@ namespace DXSWI
             InitializeComponent();
         }
 
+        public void SetupUiByRole()
+        {
+            if(UserManager._ActivatedUser != null)
+            {
+                if(UserManager._ActivatedUser.RoleName != "ADMIN")
+                {
+                    rpgEditUser.Visible = false;
+                } else
+                {
+                    rpgEditUser.Visible = true;
+                }
+            }
+            mfrUser.SetupUi();
+
+        }
+
         private void initializeTheme()
         {
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
@@ -326,7 +342,7 @@ namespace DXSWI
 
         private void bbiUserHelp_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("This app was writed by PhuongDV for internal process in his wife's company.");
+            XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.");
         }
 
         private void bbiAddCompany_ItemClick(object sender, ItemClickEventArgs e)
@@ -384,6 +400,11 @@ namespace DXSWI
         private void bbiUserChangePassword_ItemClick(object sender, ItemClickEventArgs e)
         {
             mfrUser.changePassword();
+        }
+
+        private void pcMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

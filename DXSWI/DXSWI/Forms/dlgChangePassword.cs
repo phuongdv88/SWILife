@@ -39,37 +39,69 @@ namespace DXSWI.Forms
             Close();
         }
 
-        private void sbOK_Click(object sender, EventArgs e)
+        private bool validateUi()
         {
             try
             {
                 if (textEditOld.Text.Length == 0)
                 {
                     textEditOld.Focus();
-                    throw new Exception("This field can not be blank!");
+                    throw new Exception("Old password can not be blank!");
                 }
                 if (textEditNew.Text.Length == 0)
                 {
                     textEditNew.Focus();
-                    throw new Exception("This field can not be blank!");
+                    throw new Exception("New password can not be blank!");
                 }
-                
+
                 if (textEditConfirm.Text.Length == 0)
                 {
                     textEditConfirm.Focus();
-                    throw new Exception("This field can not be blank!");
-                }
-
-                // check old password;
-                if (!UserManager.verifyMd5Hash(textEditOld.Text.Trim() + UserManager._ActivatedUser.Salt, UserManager._ActivatedUser.Password))
-                {
-                    throw new Exception("This field can not be blank!");
+                    throw new Exception("Confirm password can not be blank!");
                 }
 
                 if (textEditConfirm.Text != textEditNew.Text)
                 {
+                    textEditNew.Text = string.Empty;
+                    textEditConfirm.Text = string.Empty;
+                    textEditNew.Focus();
                     throw new Exception("Confirm password is not match");
                 }
+                // check old password;
+                if (!UserManager.verifyMd5Hash(textEditOld.Text.Trim() + UserManager._ActivatedUser.Salt, UserManager._ActivatedUser.Password))
+                {
+                    textEditOld.Focus();
+                    clearUi();
+                    throw new Exception("Old password is incorrect!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private void clearUi()
+        {
+            textEditOld.Text = string.Empty;
+            textEditNew.Text = string.Empty;
+            textEditConfirm.Text = string.Empty;
+        }
+
+        private void sbOK_Click(object sender, EventArgs e)
+        {
+            if (!validateUi()) return;
+            try
+            {
+                // check old password;
+                if (!UserManager.verifyMd5Hash(textEditOld.Text.Trim() + UserManager._ActivatedUser.Salt, UserManager._ActivatedUser.Password))
+                {
+                    throw new Exception("Old password is incorrect!");
+                }
+
                 UserManager._ActivatedUser.Salt = Utils.getRandomAlphaNumeric(10);
                 UserManager._ActivatedUser.Password = UserManager.createMD5Hash(textEditNew.Text.Trim() + UserManager._ActivatedUser.Salt);
                 UserManager.UpdateUser(UserManager._ActivatedUser);

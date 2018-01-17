@@ -36,19 +36,34 @@ namespace DXSWI.Forms
 
         }
 
-        private void checkEdit1_CheckedChanged(object sender, EventArgs e)
+        private bool validateInput()
         {
-
+            try
+            {
+                if (textEditUserName.Text.Length == 0)
+                {
+                    throw new Exception("User name must not be blank!");
+                }
+                if (textEditPassword.Text.Length == 0)
+                {
+                    throw new Exception("Password must not be blank!");
+                }
+            }
+            catch (Exception ex)
+            {
+                clearUiData();
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
 
         private void sbLogin_Click(object sender, EventArgs e)
         {
-            //validate input
-
+            if (!validateInput()) return;
             try
             {
-                if (textEditUserName.Text.Length == 0 || textEditPassword.Text.Length == 0)
-                    throw new Exception("User name or password is incorrect!");
+
                 // get salt by user name
                 string salt = UserManager.GetSaltByUserName(textEditUserName.Text.Trim());
                 if (salt == null)
@@ -102,7 +117,7 @@ namespace DXSWI.Forms
         }
         public void logout()
         {
-            if(!checkEditRememberMe.Checked)
+            if (!checkEditRememberMe.Checked)
             {
                 clearUiData();
             }
@@ -131,6 +146,16 @@ namespace DXSWI.Forms
         private void textEditPassword_EditValueChanged(object sender, EventArgs e)
         {
             _isInputPassword = true;
+        }
+
+        private void textEditPassword_Enter(object sender, EventArgs e)
+        {
+            textEditPassword.SelectAll();
+        }
+
+        private void textEditUserName_Enter(object sender, EventArgs e)
+        {
+            textEditUserName.SelectAll();
         }
     }
 }

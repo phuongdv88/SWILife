@@ -71,7 +71,7 @@
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.bbiImportFromExel = new DevExpress.XtraBars.BarButtonItem();
             this.rpUser = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpgEditUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpCompanies = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -488,20 +488,20 @@
             // rpUser
             // 
             this.rpUser.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
+            this.rpgEditUser,
             this.ribbonPageGroup2,
             this.ribbonPageGroup4});
             this.rpUser.Name = "rpUser";
             this.rpUser.Tag = "user";
             this.rpUser.Text = "USER";
             // 
-            // ribbonPageGroup1
+            // rpgEditUser
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiUserAdd);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiUserEdit);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiUserDelete);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Edit Users";
+            this.rpgEditUser.ItemLinks.Add(this.bbiUserAdd);
+            this.rpgEditUser.ItemLinks.Add(this.bbiUserEdit);
+            this.rpgEditUser.ItemLinks.Add(this.bbiUserDelete);
+            this.rpgEditUser.Name = "rpgEditUser";
+            this.rpgEditUser.Text = "Edit Users";
             // 
             // ribbonPageGroup2
             // 
@@ -773,6 +773,7 @@
             this.pcMain.Name = "pcMain";
             this.pcMain.Size = new System.Drawing.Size(1296, 593);
             this.pcMain.TabIndex = 6;
+            this.pcMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pcMain_Paint);
             // 
             // ribbonPageGroup10
             // 
@@ -825,7 +826,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiUserAdd;
         private DevExpress.XtraBars.BarButtonItem bbiUserEdit;
         private DevExpress.XtraBars.BarButtonItem bbiUserDelete;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgEditUser;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem bbiUserHelp;

@@ -102,6 +102,7 @@
             this.textEditPassword.Size = new System.Drawing.Size(278, 20);
             this.textEditPassword.TabIndex = 1;
             this.textEditPassword.EditValueChanged += new System.EventHandler(this.textEditPassword_EditValueChanged);
+            this.textEditPassword.Enter += new System.EventHandler(this.textEditPassword_Enter);
             // 
             // textEditUserName
             // 
@@ -109,6 +110,7 @@
             this.textEditUserName.Name = "textEditUserName";
             this.textEditUserName.Size = new System.Drawing.Size(279, 20);
             this.textEditUserName.TabIndex = 0;
+            this.textEditUserName.Enter += new System.EventHandler(this.textEditUserName_Enter);
             // 
             // pictureBox1
             // 

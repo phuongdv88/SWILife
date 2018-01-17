@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.textEditUserName = new DevExpress.XtraEditors.TextEdit();
             this.comboBoxEditRole = new DevExpress.XtraEditors.ComboBoxEdit();
             this.textEditPassword = new DevExpress.XtraEditors.TextEdit();
             this.sbOk = new DevExpress.XtraEditors.SimpleButton();
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.checkEditChangePassword = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -48,16 +51,16 @@
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEditChangePassword = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditRole.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditChangePassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
@@ -72,10 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditChangePassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,6 +95,35 @@
             this.layoutControl1.Size = new System.Drawing.Size(454, 252);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Appearance.BackColor = System.Drawing.Color.LightGray;
+            this.panelControl1.Appearance.BorderColor = System.Drawing.Color.LightSeaGreen;
+            this.panelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.Appearance.Options.UseBorderColor = true;
+            this.panelControl1.Appearance.Options.UseForeColor = true;
+            this.panelControl1.Controls.Add(this.labelControl3);
+            this.panelControl1.Location = new System.Drawing.Point(12, 12);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(430, 55);
+            this.panelControl1.TabIndex = 25;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Lucida Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.DimGray;
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelControl3.LineVisible = true;
+            this.labelControl3.Location = new System.Drawing.Point(2, 2);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(165, 23);
+            this.labelControl3.TabIndex = 1;
+            this.labelControl3.Text = "User Information";
+            this.labelControl3.Click += new System.EventHandler(this.labelControl3_Click);
             // 
             // textEditUserName
             // 
@@ -151,6 +180,16 @@
             this.sbCancel.TabIndex = 24;
             this.sbCancel.Text = "Cancel";
             this.sbCancel.Click += new System.EventHandler(this.sbCancel_Click);
+            // 
+            // checkEditChangePassword
+            // 
+            this.checkEditChangePassword.Location = new System.Drawing.Point(12, 105);
+            this.checkEditChangePassword.Name = "checkEditChangePassword";
+            this.checkEditChangePassword.Properties.Caption = "New Password";
+            this.checkEditChangePassword.Size = new System.Drawing.Size(430, 19);
+            this.checkEditChangePassword.StyleController = this.layoutControl1;
+            this.checkEditChangePassword.TabIndex = 26;
+            this.checkEditChangePassword.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
             // layoutControlGroup1
             // 
@@ -285,19 +324,6 @@
             this.emptySpaceItem7.Size = new System.Drawing.Size(434, 10);
             this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // panelControl1
-            // 
-            this.panelControl1.Appearance.BackColor = System.Drawing.Color.LightGray;
-            this.panelControl1.Appearance.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.panelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panelControl1.Appearance.Options.UseBackColor = true;
-            this.panelControl1.Appearance.Options.UseBorderColor = true;
-            this.panelControl1.Controls.Add(this.labelControl3);
-            this.panelControl1.Location = new System.Drawing.Point(12, 12);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(430, 55);
-            this.panelControl1.TabIndex = 25;
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.panelControl1;
@@ -306,31 +332,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(434, 59);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Lucida Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.DimGray;
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelControl3.LineVisible = true;
-            this.labelControl3.Location = new System.Drawing.Point(2, 2);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(165, 23);
-            this.labelControl3.TabIndex = 1;
-            this.labelControl3.Text = "User Information";
-            this.labelControl3.Click += new System.EventHandler(this.labelControl3_Click);
-            // 
-            // checkEditChangePassword
-            // 
-            this.checkEditChangePassword.Location = new System.Drawing.Point(12, 105);
-            this.checkEditChangePassword.Name = "checkEditChangePassword";
-            this.checkEditChangePassword.Properties.Caption = "New Password";
-            this.checkEditChangePassword.Size = new System.Drawing.Size(430, 19);
-            this.checkEditChangePassword.StyleController = this.layoutControl1;
-            this.checkEditChangePassword.TabIndex = 26;
-            this.checkEditChangePassword.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
             // layoutControlItem7
             // 
@@ -354,9 +355,13 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgUserEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditRole.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditChangePassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
@@ -371,11 +376,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditChangePassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
 

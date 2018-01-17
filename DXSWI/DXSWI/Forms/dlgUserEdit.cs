@@ -56,9 +56,41 @@ namespace DXSWI.Forms
             }
         }
 
+        private bool ValidateUiData()
+        {
+            try
+            {
+                textEditUserName.Text = textEditUserName.Text.Trim();
+                textEditPassword.Text = textEditPassword.Text.Trim();
+                if (textEditUserName.Text.Length == 0)
+                {
+                    textEditUserName.Focus();
+                    throw new Exception("User name cannot be blank!");
+                }
+                if (textEditPassword.Text.Length == 0 && _isNew)
+                {
+                    textEditPassword.Focus();
+                    throw new Exception("Password cannot be blank!");
+                }
+                if (comboBoxEditRole.Text.Length == 0)
+                {
+                    comboBoxEditRole.Focus();
+                    throw new Exception("Role cannot be blank!");
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
         private void getObjectFromUi()
         {
-            //todo: validate ui
+            
+
+
             if (_currentUser == null)
             {
                 _currentUser = new User();
@@ -92,6 +124,7 @@ namespace DXSWI.Forms
         private void sbOk_Click(object sender, EventArgs e)
         {
             //todo validate data
+            if (!ValidateUiData()) return;
             // update user
             try
             {
