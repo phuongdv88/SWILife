@@ -114,15 +114,19 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Lucida Sans", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.DimGray;
+            this.labelControl3.Appearance.Image = global::DXSWI.Properties.Resources.users_business_32;
+            this.labelControl3.Appearance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.Appearance.Options.UseImage = true;
+            this.labelControl3.Appearance.Options.UseImageAlign = true;
             this.labelControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelControl3.LineVisible = true;
             this.labelControl3.Location = new System.Drawing.Point(2, 2);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(165, 23);
+            this.labelControl3.Size = new System.Drawing.Size(213, 32);
             this.labelControl3.TabIndex = 1;
-            this.labelControl3.Text = "User Information";
+            this.labelControl3.Text = "        User Information";
             this.labelControl3.Click += new System.EventHandler(this.labelControl3_Click);
             // 
             // textEditUserName

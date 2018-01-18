@@ -35,6 +35,8 @@
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon3 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +46,6 @@
             this.refreshTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gcCandidates = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKeySkills = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,11 +56,25 @@
             this.colCellPhoneNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colState
+            // 
+            this.colState.Caption = "State";
+            this.colState.FieldName = "State";
+            this.colState.Name = "colState";
+            // 
+            // colFirstName
+            // 
+            this.colFirstName.Caption = "First Name";
+            this.colFirstName.FieldName = "FirstName";
+            this.colFirstName.Name = "colFirstName";
+            this.colFirstName.Visible = true;
+            this.colFirstName.VisibleIndex = 0;
+            this.colFirstName.Width = 99;
             // 
             // contextMenuStrip1
             // 
@@ -71,10 +86,11 @@
             this.toolStripSeparator2,
             this.refreshTableToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(165, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(165, 126);
             // 
             // newToolStripMenuItem
             // 
+            this.newToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_user_group_new_icon1;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.newToolStripMenuItem.Text = "New Candidate";
@@ -82,6 +98,7 @@
             // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_user_group_properties_icon1;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.editToolStripMenuItem.Text = "Edit Candidate";
@@ -94,6 +111,7 @@
             // 
             // deleteToolStripMenuItem
             // 
+            this.deleteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_user_group_delete_icon1;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.deleteToolStripMenuItem.Text = "Delete Candidate";
@@ -106,6 +124,7 @@
             // 
             // refreshTableToolStripMenuItem
             // 
+            this.refreshTableToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Refresh_icon1;
             this.refreshTableToolStripMenuItem.Name = "refreshTableToolStripMenuItem";
             this.refreshTableToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.refreshTableToolStripMenuItem.Text = "Refresh Table";
@@ -172,15 +191,6 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            // 
-            // colFirstName
-            // 
-            this.colFirstName.Caption = "First Name";
-            this.colFirstName.FieldName = "FirstName";
-            this.colFirstName.Name = "colFirstName";
-            this.colFirstName.Visible = true;
-            this.colFirstName.VisibleIndex = 0;
-            this.colFirstName.Width = 99;
             // 
             // colLastName
             // 
@@ -270,12 +280,6 @@
             this.colCity.Name = "colCity";
             this.colCity.Visible = true;
             this.colCity.VisibleIndex = 10;
-            // 
-            // colState
-            // 
-            this.colState.Caption = "State";
-            this.colState.FieldName = "State";
-            this.colState.Name = "colState";
             // 
             // frCandidates
             // 

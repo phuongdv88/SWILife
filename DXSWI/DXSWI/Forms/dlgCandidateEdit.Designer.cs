@@ -40,7 +40,6 @@
             this.gcActivities = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.logActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvActivities = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -329,24 +328,17 @@
             // contextMenuStrip2
             // 
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logActivityToolStripMenuItem,
-            this.deleteActivityToolStripMenuItem});
+            this.logActivityToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(151, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 48);
             // 
             // logActivityToolStripMenuItem
             // 
+            this.logActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_document_edit_icon1;
             this.logActivityToolStripMenuItem.Name = "logActivityToolStripMenuItem";
-            this.logActivityToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.logActivityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logActivityToolStripMenuItem.Text = "New Activity";
             this.logActivityToolStripMenuItem.Click += new System.EventHandler(this.logActivityToolStripMenuItem_Click);
-            // 
-            // deleteActivityToolStripMenuItem
-            // 
-            this.deleteActivityToolStripMenuItem.Name = "deleteActivityToolStripMenuItem";
-            this.deleteActivityToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.deleteActivityToolStripMenuItem.Text = "Delete Activity";
-            this.deleteActivityToolStripMenuItem.Click += new System.EventHandler(this.deleteActivityToolStripMenuItem_Click);
             // 
             // gvActivities
             // 
@@ -437,6 +429,7 @@
             // 
             // tsmiAddCandidateToPipeLine
             // 
+            this.tsmiAddCandidateToPipeLine.Image = global::DXSWI.Properties.Resources.Button_Add_icon1;
             this.tsmiAddCandidateToPipeLine.Name = "tsmiAddCandidateToPipeLine";
             this.tsmiAddCandidateToPipeLine.Size = new System.Drawing.Size(214, 22);
             this.tsmiAddCandidateToPipeLine.Text = "Add Job To Pipeline";
@@ -444,6 +437,7 @@
             // 
             // addActivityToolStripMenuItem
             // 
+            this.addActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_document_edit_icon1;
             this.addActivityToolStripMenuItem.Name = "addActivityToolStripMenuItem";
             this.addActivityToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.addActivityToolStripMenuItem.Text = "Add Activity";
@@ -451,6 +445,7 @@
             // 
             // tsmiDelete
             // 
+            this.tsmiDelete.Image = global::DXSWI.Properties.Resources.Actions_dialog_close_ico1n;
             this.tsmiDelete.Name = "tsmiDelete";
             this.tsmiDelete.Size = new System.Drawing.Size(214, 22);
             this.tsmiDelete.Text = "Remove Job From Pipeline";
@@ -1676,7 +1671,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem logActivityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteActivityToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsmiAddCandidateToPipeLine;
         private System.Windows.Forms.ToolStripMenuItem addActivityToolStripMenuItem;

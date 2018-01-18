@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRule2ColorScale formatConditionRule2ColorScale1 = new DevExpress.XtraEditors.FormatConditionRule2ColorScale();
+            this.colIsHot = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcJobOrder = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newJobOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +42,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvJobOrder = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,11 +51,25 @@
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLink = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsHot = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcJobOrder)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvJobOrder)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colIsHot
+            // 
+            this.colIsHot.Caption = "Is Hot";
+            this.colIsHot.FieldName = "IsHot";
+            this.colIsHot.Name = "colIsHot";
+            // 
+            // colTitle
+            // 
+            this.colTitle.Caption = "Title";
+            this.colTitle.FieldName = "Title";
+            this.colTitle.Name = "colTitle";
+            this.colTitle.Visible = true;
+            this.colTitle.VisibleIndex = 0;
+            this.colTitle.Width = 186;
             // 
             // gcJobOrder
             // 
@@ -78,10 +93,12 @@
             this.toolStripSeparator2,
             this.refreshToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 126);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // newJobOrderToolStripMenuItem
             // 
+            this.newJobOrderToolStripMenuItem.Image = global::DXSWI.Properties.Resources.new_job1;
             this.newJobOrderToolStripMenuItem.Name = "newJobOrderToolStripMenuItem";
             this.newJobOrderToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.newJobOrderToolStripMenuItem.Text = "New Job Order";
@@ -89,6 +106,7 @@
             // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.Image = global::DXSWI.Properties.Resources.edit1;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.editToolStripMenuItem.Text = "Edit Job Order";
@@ -101,6 +119,7 @@
             // 
             // deleteJobOrderToolStripMenuItem
             // 
+            this.deleteJobOrderToolStripMenuItem.Image = global::DXSWI.Properties.Resources.delete1;
             this.deleteJobOrderToolStripMenuItem.Name = "deleteJobOrderToolStripMenuItem";
             this.deleteJobOrderToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.deleteJobOrderToolStripMenuItem.Text = "Delete Job Order";
@@ -113,6 +132,7 @@
             // 
             // refreshToolStripMenuItem
             // 
+            this.refreshToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Refresh_icon1;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.refreshToolStripMenuItem.Text = "Refresh Job Orders";
@@ -151,15 +171,6 @@
             this.gvJobOrder.OptionsBehavior.Editable = false;
             this.gvJobOrder.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gvJobOrder.DoubleClick += new System.EventHandler(this.gvJobOrder_DoubleClick);
-            // 
-            // colTitle
-            // 
-            this.colTitle.Caption = "Title";
-            this.colTitle.FieldName = "Title";
-            this.colTitle.Name = "colTitle";
-            this.colTitle.Visible = true;
-            this.colTitle.VisibleIndex = 0;
-            this.colTitle.Width = 186;
             // 
             // colCompany
             // 
@@ -241,12 +252,6 @@
             this.colLink.Visible = true;
             this.colLink.VisibleIndex = 9;
             this.colLink.Width = 214;
-            // 
-            // colIsHot
-            // 
-            this.colIsHot.Caption = "Is Hot";
-            this.colIsHot.FieldName = "IsHot";
-            this.colIsHot.Name = "colIsHot";
             // 
             // frJobOrders
             // 

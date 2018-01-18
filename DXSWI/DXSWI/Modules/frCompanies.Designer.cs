@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRule3ColorScale formatConditionRule3ColorScale1 = new DevExpress.XtraEditors.FormatConditionRule3ColorScale();
+            this.colCompanyState = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcCompanies = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newCompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +48,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvCompanies = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrimaryPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colJobs = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,11 +56,25 @@
             this.colPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCompanyState = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcCompanies)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCompanies)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colCompanyState
+            // 
+            this.colCompanyState.Caption = "Com State";
+            this.colCompanyState.FieldName = "CompanyState";
+            this.colCompanyState.Name = "colCompanyState";
+            // 
+            // colName
+            // 
+            this.colName.Caption = "Name";
+            this.colName.FieldName = "Name";
+            this.colName.Name = "colName";
+            this.colName.Visible = true;
+            this.colName.VisibleIndex = 0;
+            this.colName.Width = 176;
             // 
             // gcCompanies
             // 
@@ -91,9 +106,11 @@
             this.refreshDataToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(163, 204);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // newCompanyToolStripMenuItem
             // 
+            this.newCompanyToolStripMenuItem.Image = global::DXSWI.Properties.Resources.addbuilding1;
             this.newCompanyToolStripMenuItem.Name = "newCompanyToolStripMenuItem";
             this.newCompanyToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.newCompanyToolStripMenuItem.Text = "New Company";
@@ -101,6 +118,7 @@
             // 
             // editCompanyToolStripMenuItem
             // 
+            this.editCompanyToolStripMenuItem.Image = global::DXSWI.Properties.Resources.editbuilding1;
             this.editCompanyToolStripMenuItem.Name = "editCompanyToolStripMenuItem";
             this.editCompanyToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.editCompanyToolStripMenuItem.Text = "Edit Company";
@@ -113,6 +131,7 @@
             // 
             // deleteCompanyToolStripMenuItem
             // 
+            this.deleteCompanyToolStripMenuItem.Image = global::DXSWI.Properties.Resources.deletebuilding1;
             this.deleteCompanyToolStripMenuItem.Name = "deleteCompanyToolStripMenuItem";
             this.deleteCompanyToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.deleteCompanyToolStripMenuItem.Text = "Delete Company";
@@ -125,6 +144,7 @@
             // 
             // viewContactToolStripMenuItem
             // 
+            this.viewContactToolStripMenuItem.Image = global::DXSWI.Properties.Resources.contact3;
             this.viewContactToolStripMenuItem.Name = "viewContactToolStripMenuItem";
             this.viewContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.viewContactToolStripMenuItem.Text = "View Contacts";
@@ -132,6 +152,7 @@
             // 
             // addContactToolStripMenuItem
             // 
+            this.addContactToolStripMenuItem.Image = global::DXSWI.Properties.Resources.newcontact1;
             this.addContactToolStripMenuItem.Name = "addContactToolStripMenuItem";
             this.addContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.addContactToolStripMenuItem.Text = "Add Contact";
@@ -144,12 +165,14 @@
             // 
             // viewJobOrdersToolStripMenuItem
             // 
+            this.viewJobOrdersToolStripMenuItem.Image = global::DXSWI.Properties.Resources.task1;
             this.viewJobOrdersToolStripMenuItem.Name = "viewJobOrdersToolStripMenuItem";
             this.viewJobOrdersToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.viewJobOrdersToolStripMenuItem.Text = "View Job Orders";
             // 
             // addJobOrderToolStripMenuItem
             // 
+            this.addJobOrderToolStripMenuItem.Image = global::DXSWI.Properties.Resources.new_job1;
             this.addJobOrderToolStripMenuItem.Name = "addJobOrderToolStripMenuItem";
             this.addJobOrderToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.addJobOrderToolStripMenuItem.Text = "Add Job Order";
@@ -162,6 +185,7 @@
             // 
             // refreshDataToolStripMenuItem
             // 
+            this.refreshDataToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Refresh_icon1;
             this.refreshDataToolStripMenuItem.Name = "refreshDataToolStripMenuItem";
             this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.refreshDataToolStripMenuItem.Text = "Refresh Data";
@@ -206,15 +230,6 @@
             this.gvCompanies.Name = "gvCompanies";
             this.gvCompanies.OptionsBehavior.Editable = false;
             this.gvCompanies.OptionsSelection.EnableAppearanceFocusedCell = false;
-            // 
-            // colName
-            // 
-            this.colName.Caption = "Name";
-            this.colName.FieldName = "Name";
-            this.colName.Name = "colName";
-            this.colName.Visible = true;
-            this.colName.VisibleIndex = 0;
-            this.colName.Width = 176;
             // 
             // colPrimaryPhone
             // 
@@ -287,12 +302,6 @@
             this.colModified.Visible = true;
             this.colModified.VisibleIndex = 8;
             this.colModified.Width = 120;
-            // 
-            // colCompanyState
-            // 
-            this.colCompanyState.Caption = "Com State";
-            this.colCompanyState.FieldName = "CompanyState";
-            this.colCompanyState.Name = "colCompanyState";
             // 
             // frCompanies
             // 

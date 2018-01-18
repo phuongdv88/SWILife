@@ -94,16 +94,17 @@
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.nbgCompanies = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgUsers = new DevExpress.XtraNavBar.NavBarGroup();
+            this.nbgCompanies = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgContacts = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgJoborder = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
+            this.ngbCandidates = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgCalendar = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgReport = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgUtilites = new DevExpress.XtraNavBar.NavBarGroup();
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).BeginInit();
@@ -165,7 +166,7 @@
             this.rpUtilities});
             this.ribbonControlMain.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControlMain.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControlMain.Size = new System.Drawing.Size(1350, 143);
+            this.ribbonControlMain.Size = new System.Drawing.Size(1350, 146);
             this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
             this.ribbonControlMain.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             this.ribbonControlMain.SelectedPageChanged += new System.EventHandler(this.ribbonControlMain_SelectedPageChanged);
@@ -179,9 +180,9 @@
             // 
             this.bbiUserAdd.Caption = "Add";
             this.bbiUserAdd.Id = 48;
-            this.bbiUserAdd.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            this.bbiUserAdd.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.False;
             this.bbiUserAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserAdd.ImageOptions.Image")));
-            this.bbiUserAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserAdd.ImageOptions.LargeImage")));
+            this.bbiUserAdd.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.Add_Male_User_icon;
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             toolTipTitleItem1.Text = "Add new user";
@@ -193,9 +194,8 @@
             // 
             this.bbiUserEdit.Caption = "Edit";
             this.bbiUserEdit.Id = 49;
-            this.bbiUserEdit.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.bbiUserEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserEdit.ImageOptions.Image")));
-            this.bbiUserEdit.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserEdit.ImageOptions.LargeImage")));
+            this.bbiUserEdit.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.False;
+            this.bbiUserEdit.ImageOptions.Image = global::DXSWI.Properties.Resources.Edit_Male_User_icon;
             this.bbiUserEdit.Name = "bbiUserEdit";
             this.bbiUserEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             toolTipTitleItem2.Text = "Edit current selected user";
@@ -207,9 +207,8 @@
             // 
             this.bbiUserDelete.Caption = "Delete";
             this.bbiUserDelete.Id = 50;
-            this.bbiUserDelete.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.bbiUserDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserDelete.ImageOptions.Image")));
-            this.bbiUserDelete.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserDelete.ImageOptions.LargeImage")));
+            this.bbiUserDelete.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.Remove_Male_User_icon;
             this.bbiUserDelete.Name = "bbiUserDelete";
             this.bbiUserDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiUserDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserDelete_ItemClick);
@@ -228,7 +227,7 @@
             this.bbiUserHelp.Caption = "Help";
             this.bbiUserHelp.Id = 52;
             this.bbiUserHelp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserHelp.ImageOptions.Image")));
-            this.bbiUserHelp.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserHelp.ImageOptions.LargeImage")));
+            this.bbiUserHelp.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.help;
             this.bbiUserHelp.Name = "bbiUserHelp";
             this.bbiUserHelp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserHelp_ItemClick);
             // 
@@ -237,7 +236,7 @@
             this.bbiUserChangePassword.Caption = "Change Password";
             this.bbiUserChangePassword.Id = 53;
             this.bbiUserChangePassword.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserChangePassword.ImageOptions.Image")));
-            this.bbiUserChangePassword.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUserChangePassword.ImageOptions.LargeImage")));
+            this.bbiUserChangePassword.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.password_icon;
             this.bbiUserChangePassword.Name = "bbiUserChangePassword";
             this.bbiUserChangePassword.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiUserChangePassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserChangePassword_ItemClick);
@@ -254,6 +253,7 @@
             this.bbiUserLogout.Caption = "Logout";
             this.bbiUserLogout.Id = 56;
             this.bbiUserLogout.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiUserLogout.ImageOptions.Image")));
+            this.bbiUserLogout.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.logout;
             this.bbiUserLogout.Name = "bbiUserLogout";
             this.bbiUserLogout.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiUserLogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBILogout_ItemClick);
@@ -262,7 +262,7 @@
             // 
             this.bbiCandidatesCreate.Caption = "Create";
             this.bbiCandidatesCreate.Id = 57;
-            this.bbiCandidatesCreate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesCreate.ImageOptions.Image")));
+            this.bbiCandidatesCreate.ImageOptions.Image = global::DXSWI.Properties.Resources.Actions_user_group_new_icon;
             this.bbiCandidatesCreate.Name = "bbiCandidatesCreate";
             this.bbiCandidatesCreate.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiCandidatesCreate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidatesCreate_ItemClick);
@@ -271,7 +271,7 @@
             // 
             this.bbiCandidatesEdit.Caption = "Edit";
             this.bbiCandidatesEdit.Id = 58;
-            this.bbiCandidatesEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesEdit.ImageOptions.Image")));
+            this.bbiCandidatesEdit.ImageOptions.Image = global::DXSWI.Properties.Resources.Actions_user_group_properties_icon;
             this.bbiCandidatesEdit.Name = "bbiCandidatesEdit";
             this.bbiCandidatesEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiCandidatesEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidatesEdit_ItemClick);
@@ -280,7 +280,7 @@
             // 
             this.bbiCandidatesAddEvent.Caption = "Schedule Event";
             this.bbiCandidatesAddEvent.Id = 59;
-            this.bbiCandidatesAddEvent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidatesAddEvent.ImageOptions.Image")));
+            this.bbiCandidatesAddEvent.ImageOptions.Image = global::DXSWI.Properties.Resources.Calendar_icon;
             this.bbiCandidatesAddEvent.Name = "bbiCandidatesAddEvent";
             this.bbiCandidatesAddEvent.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiCandidatesAddEvent.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidatesAddEvent_ItemClick);
@@ -306,7 +306,7 @@
             // 
             this.bbiCandidateLogActivity.Caption = "Log An Activity";
             this.bbiCandidateLogActivity.Id = 63;
-            this.bbiCandidateLogActivity.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCandidateLogActivity.ImageOptions.Image")));
+            this.bbiCandidateLogActivity.ImageOptions.Image = global::DXSWI.Properties.Resources.edit_icon1;
             this.bbiCandidateLogActivity.Name = "bbiCandidateLogActivity";
             this.bbiCandidateLogActivity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidateLogActivity_ItemClick);
             // 
@@ -314,7 +314,7 @@
             // 
             this.bbiDelete.Caption = "Delete";
             this.bbiDelete.Id = 64;
-            this.bbiDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDelete.ImageOptions.Image")));
+            this.bbiDelete.ImageOptions.Image = global::DXSWI.Properties.Resources.Actions_user_group_delete_icon;
             this.bbiDelete.Name = "bbiDelete";
             this.bbiDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDelete_ItemClick);
@@ -323,7 +323,7 @@
             // 
             this.bbiAddCompany.Caption = "Add Company";
             this.bbiAddCompany.Id = 65;
-            this.bbiAddCompany.ImageOptions.Image = global::DXSWI.Properties.Resources.addCompany;
+            this.bbiAddCompany.ImageOptions.Image = global::DXSWI.Properties.Resources.addbuilding;
             this.bbiAddCompany.Name = "bbiAddCompany";
             this.bbiAddCompany.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiAddCompany.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddCompany_ItemClick);
@@ -332,7 +332,7 @@
             // 
             this.bbiEditCompany.Caption = "Edit Company";
             this.bbiEditCompany.Id = 66;
-            this.bbiEditCompany.ImageOptions.Image = global::DXSWI.Properties.Resources.changeCompany;
+            this.bbiEditCompany.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.editbuilding;
             this.bbiEditCompany.Name = "bbiEditCompany";
             this.bbiEditCompany.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditCompany_ItemClick);
             // 
@@ -341,6 +341,7 @@
             this.bbiDeleteCompany.Caption = "Delete Company";
             this.bbiDeleteCompany.Id = 67;
             this.bbiDeleteCompany.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDeleteCompany.ImageOptions.Image")));
+            this.bbiDeleteCompany.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.deletebuilding;
             this.bbiDeleteCompany.Name = "bbiDeleteCompany";
             this.bbiDeleteCompany.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDeleteCompany_ItemClick);
             // 
@@ -348,7 +349,7 @@
             // 
             this.bbiAddContact.Caption = "AddContact";
             this.bbiAddContact.Id = 68;
-            this.bbiAddContact.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAddContact.ImageOptions.Image")));
+            this.bbiAddContact.ImageOptions.Image = global::DXSWI.Properties.Resources.newcontact;
             this.bbiAddContact.Name = "bbiAddContact";
             this.bbiAddContact.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiAddContact.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
@@ -357,21 +358,21 @@
             // 
             this.bbiEditContact.Caption = "Edit contact";
             this.bbiEditContact.Id = 69;
-            this.bbiEditContact.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiEditContact.ImageOptions.Image")));
+            this.bbiEditContact.ImageOptions.Image = global::DXSWI.Properties.Resources.editcontact;
             this.bbiEditContact.Name = "bbiEditContact";
             // 
             // bbiDeleteContact
             // 
             this.bbiDeleteContact.Caption = "Delete Contact";
             this.bbiDeleteContact.Id = 70;
-            this.bbiDeleteContact.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDeleteContact.ImageOptions.Image")));
+            this.bbiDeleteContact.ImageOptions.Image = global::DXSWI.Properties.Resources.deletevcard;
             this.bbiDeleteContact.Name = "bbiDeleteContact";
             // 
             // bbiAddJobOrder
             // 
             this.bbiAddJobOrder.Caption = "Add Job Order";
             this.bbiAddJobOrder.Id = 71;
-            this.bbiAddJobOrder.ImageOptions.Image = global::DXSWI.Properties.Resources.job;
+            this.bbiAddJobOrder.ImageOptions.Image = global::DXSWI.Properties.Resources.new_job;
             this.bbiAddJobOrder.Name = "bbiAddJobOrder";
             this.bbiAddJobOrder.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiAddJobOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
@@ -380,7 +381,7 @@
             // 
             this.bbiEditJobOrder.Caption = "Edit Job Order";
             this.bbiEditJobOrder.Id = 72;
-            this.bbiEditJobOrder.ImageOptions.Image = global::DXSWI.Properties.Resources.activity;
+            this.bbiEditJobOrder.ImageOptions.Image = global::DXSWI.Properties.Resources.edit;
             this.bbiEditJobOrder.Name = "bbiEditJobOrder";
             this.bbiEditJobOrder.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -388,7 +389,7 @@
             // 
             this.bbiDeleteJobOrder.Caption = "Delete Job Order";
             this.bbiDeleteJobOrder.Id = 73;
-            this.bbiDeleteJobOrder.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDeleteJobOrder.ImageOptions.Image")));
+            this.bbiDeleteJobOrder.ImageOptions.Image = global::DXSWI.Properties.Resources.delete;
             this.bbiDeleteJobOrder.Name = "bbiDeleteJobOrder";
             this.bbiDeleteJobOrder.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -396,7 +397,7 @@
             // 
             this.bbiAddJobOrder0.Caption = "Add Job Order";
             this.bbiAddJobOrder0.Id = 74;
-            this.bbiAddJobOrder0.ImageOptions.Image = global::DXSWI.Properties.Resources.job;
+            this.bbiAddJobOrder0.ImageOptions.Image = global::DXSWI.Properties.Resources.new_job;
             this.bbiAddJobOrder0.Name = "bbiAddJobOrder0";
             this.bbiAddJobOrder0.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiAddJobOrder0.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddJobOrder0_ItemClick);
@@ -405,7 +406,7 @@
             // 
             this.bbiEditJobOrder0.Caption = "Edit Job Order";
             this.bbiEditJobOrder0.Id = 75;
-            this.bbiEditJobOrder0.ImageOptions.Image = global::DXSWI.Properties.Resources.activity;
+            this.bbiEditJobOrder0.ImageOptions.Image = global::DXSWI.Properties.Resources.edit;
             this.bbiEditJobOrder0.Name = "bbiEditJobOrder0";
             this.bbiEditJobOrder0.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiEditJobOrder0.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditJobOrder0_ItemClick);
@@ -414,16 +415,15 @@
             // 
             this.bbiDeleteJobOrder0.Caption = "Delete Job Order";
             this.bbiDeleteJobOrder0.Id = 76;
-            this.bbiDeleteJobOrder0.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDeleteJobOrder0.ImageOptions.Image")));
+            this.bbiDeleteJobOrder0.ImageOptions.Image = global::DXSWI.Properties.Resources.delete;
             this.bbiDeleteJobOrder0.Name = "bbiDeleteJobOrder0";
-            this.bbiDeleteJobOrder0.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbiDeleteJobOrder0.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiDeleteJobOrder0.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDeleteJobOrder0_ItemClick);
             // 
             // bbiJobOrderAddPipeline
             // 
             this.bbiJobOrderAddPipeline.Caption = "Add Candidate To Pipeline";
             this.bbiJobOrderAddPipeline.Id = 77;
-            this.bbiJobOrderAddPipeline.ImageOptions.Image = global::DXSWI.Properties.Resources.Candidates;
             this.bbiJobOrderAddPipeline.Name = "bbiJobOrderAddPipeline";
             this.bbiJobOrderAddPipeline.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiJobOrderAddPipeline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_1);
@@ -447,7 +447,7 @@
             // 
             this.barButtonItem1.Caption = "Create Contact";
             this.barButtonItem1.Id = 80;
-            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.Image = global::DXSWI.Properties.Resources.newcontact;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_2);
@@ -456,7 +456,7 @@
             // 
             this.barButtonItem2.Caption = "Edit Contact";
             this.barButtonItem2.Id = 81;
-            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.barButtonItem2.ImageOptions.Image = global::DXSWI.Properties.Resources.editcontact;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
             // 
@@ -464,7 +464,7 @@
             // 
             this.barButtonItem3.Caption = "Delete Contact";
             this.barButtonItem3.Id = 82;
-            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
+            this.barButtonItem3.ImageOptions.Image = global::DXSWI.Properties.Resources.deletevcard;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -491,6 +491,7 @@
             this.rpgEditUser,
             this.ribbonPageGroup2,
             this.ribbonPageGroup4});
+            this.rpUser.Image = global::DXSWI.Properties.Resources.cryptography1;
             this.rpUser.Name = "rpUser";
             this.rpUser.Tag = "user";
             this.rpUser.Text = "USER";
@@ -523,6 +524,7 @@
             this.ribbonPageGroup7,
             this.rpgContact,
             this.JobOrder});
+            this.rpCompanies.Image = global::DXSWI.Properties.Resources.officebuilding1;
             this.rpCompanies.Name = "rpCompanies";
             this.rpCompanies.Tag = "company";
             this.rpCompanies.Text = "COMPANIES";
@@ -555,6 +557,7 @@
             // 
             this.rpContacts.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup8});
+            this.rpContacts.Image = global::DXSWI.Properties.Resources.contact3;
             this.rpContacts.Name = "rpContacts";
             this.rpContacts.Tag = "contact";
             this.rpContacts.Text = "CONTACTS";
@@ -572,6 +575,7 @@
             this.rpJobOrders.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.rpgJobOrder0,
             this.rpgUtilities});
+            this.rpJobOrders.Image = global::DXSWI.Properties.Resources.task1;
             this.rpJobOrders.Name = "rpJobOrders";
             this.rpJobOrders.Tag = "joborder";
             this.rpJobOrders.Text = "JOB ORDERS";
@@ -595,6 +599,7 @@
             this.rpCandidates.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup6,
             this.ribbonPageGroup9});
+            this.rpCandidates.Image = global::DXSWI.Properties.Resources.App_user_icon1;
             this.rpCandidates.Name = "rpCandidates";
             this.rpCandidates.Tag = "candidate";
             this.rpCandidates.Text = "CANDIDATES";
@@ -618,12 +623,14 @@
             // 
             // rpCalendar
             // 
+            this.rpCalendar.Image = global::DXSWI.Properties.Resources.Calendar_icon4;
             this.rpCalendar.Name = "rpCalendar";
             this.rpCalendar.Tag = "calendar";
             this.rpCalendar.Text = "CALENDAR";
             // 
             // rpReport
             // 
+            this.rpReport.Image = global::DXSWI.Properties.Resources.report1;
             this.rpReport.Name = "rpReport";
             this.rpReport.Tag = "report";
             this.rpReport.Text = "REPORT";
@@ -632,6 +639,7 @@
             // 
             this.rpUtilities.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup11});
+            this.rpUtilities.Image = global::DXSWI.Properties.Resources.system1;
             this.rpUtilities.Name = "rpUtilities";
             this.rpUtilities.Tag = "utility";
             this.rpUtilities.Text = "UTILITIES";
@@ -667,7 +675,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.nbgCompanies;
+            this.navBarControl1.ActiveGroup = this.nbgUsers;
             this.navBarControl1.AllowHorizontalResizing = DevExpress.Utils.DefaultBoolean.False;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -675,48 +683,48 @@
             this.nbgCompanies,
             this.nbgContacts,
             this.nbgJoborder,
-            this.nbgCandidates,
+            this.ngbCandidates,
             this.nbgCalendar,
             this.nbgReport,
             this.nbgUtilites});
             this.navBarControl1.HideGroupCaptions = true;
-            this.navBarControl1.Location = new System.Drawing.Point(0, 143);
+            this.navBarControl1.Location = new System.Drawing.Point(0, 146);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 195;
             this.navBarControl1.OptionsNavPane.NavPaneState = DevExpress.XtraNavBar.NavPaneState.Collapsed;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
             this.navBarControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.navBarControl1.Size = new System.Drawing.Size(54, 593);
+            this.navBarControl1.Size = new System.Drawing.Size(54, 590);
             this.navBarControl1.StoreDefaultPaintStyleName = true;
             this.navBarControl1.TabIndex = 5;
             this.navBarControl1.Text = "Functions";
             this.navBarControl1.CustomDrawLink += new DevExpress.XtraNavBar.ViewInfo.CustomDrawNavBarElementEventHandler(this.navBarControl1_CustomDrawLink);
             this.navBarControl1.ActiveGroupChanged += new DevExpress.XtraNavBar.NavBarGroupEventHandler(this.navBarControl1_ActiveGroupChanged);
             // 
-            // nbgCompanies
-            // 
-            this.nbgCompanies.Caption = "Companies";
-            this.nbgCompanies.Expanded = true;
-            this.nbgCompanies.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgCompanies.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCompanies.LargeImage")));
-            this.nbgCompanies.Name = "nbgCompanies";
-            this.nbgCompanies.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCompanies.SmallImage")));
-            this.nbgCompanies.Tag = "company";
-            // 
             // nbgUsers
             // 
             this.nbgUsers.Caption = "Users";
+            this.nbgUsers.Expanded = true;
             this.nbgUsers.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgUsers.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.LargeImage")));
+            this.nbgUsers.LargeImage = global::DXSWI.Properties.Resources.cryptography;
             this.nbgUsers.Name = "nbgUsers";
             this.nbgUsers.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.SmallImage")));
             this.nbgUsers.Tag = "user";
+            // 
+            // nbgCompanies
+            // 
+            this.nbgCompanies.Caption = "Companies";
+            this.nbgCompanies.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgCompanies.LargeImage = global::DXSWI.Properties.Resources.building;
+            this.nbgCompanies.LargeImageSize = new System.Drawing.Size(40, 40);
+            this.nbgCompanies.Name = "nbgCompanies";
+            this.nbgCompanies.Tag = "company";
             // 
             // nbgContacts
             // 
             this.nbgContacts.Caption = "Contacts";
             this.nbgContacts.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgContacts.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgContacts.LargeImage")));
+            this.nbgContacts.LargeImage = global::DXSWI.Properties.Resources.contac2;
             this.nbgContacts.Name = "nbgContacts";
             this.nbgContacts.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgContacts.SmallImage")));
             this.nbgContacts.Tag = "contact";
@@ -725,25 +733,23 @@
             // 
             this.nbgJoborder.Caption = "Job Orders";
             this.nbgJoborder.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgJoborder.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.LargeImage")));
+            this.nbgJoborder.LargeImage = global::DXSWI.Properties.Resources.task;
             this.nbgJoborder.Name = "nbgJoborder";
             this.nbgJoborder.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.SmallImage")));
             this.nbgJoborder.Tag = "joborder";
             // 
-            // nbgCandidates
+            // ngbCandidates
             // 
-            this.nbgCandidates.Caption = "Candidates";
-            this.nbgCandidates.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgCandidates.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.LargeImage")));
-            this.nbgCandidates.Name = "nbgCandidates";
-            this.nbgCandidates.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.SmallImage")));
-            this.nbgCandidates.Tag = "candidate";
+            this.ngbCandidates.Caption = "Candidates";
+            this.ngbCandidates.LargeImage = global::DXSWI.Properties.Resources.App_user_icon;
+            this.ngbCandidates.Name = "ngbCandidates";
+            this.ngbCandidates.Tag = "candidate";
             // 
             // nbgCalendar
             // 
             this.nbgCalendar.Caption = "Calendar";
             this.nbgCalendar.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgCalendar.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCalendar.LargeImage")));
+            this.nbgCalendar.LargeImage = global::DXSWI.Properties.Resources.Calendar_icon3;
             this.nbgCalendar.Name = "nbgCalendar";
             this.nbgCalendar.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCalendar.SmallImage")));
             this.nbgCalendar.Tag = "calendar";
@@ -752,7 +758,7 @@
             // 
             this.nbgReport.Caption = "Report";
             this.nbgReport.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgReport.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgReport.LargeImage")));
+            this.nbgReport.LargeImage = global::DXSWI.Properties.Resources.report;
             this.nbgReport.Name = "nbgReport";
             this.nbgReport.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgReport.SmallImage")));
             this.nbgReport.Tag = "report";
@@ -761,17 +767,17 @@
             // 
             this.nbgUtilites.Caption = "Utilities";
             this.nbgUtilites.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgUtilites.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgUtilites.LargeImage")));
+            this.nbgUtilites.LargeImage = global::DXSWI.Properties.Resources.system;
             this.nbgUtilites.Name = "nbgUtilites";
-            this.nbgUtilites.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgUtilites.SmallImage")));
+            this.nbgUtilites.SmallImage = global::DXSWI.Properties.Resources.system;
             this.nbgUtilites.Tag = "utility";
             // 
             // pcMain
             // 
             this.pcMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pcMain.Location = new System.Drawing.Point(54, 143);
+            this.pcMain.Location = new System.Drawing.Point(54, 146);
             this.pcMain.Name = "pcMain";
-            this.pcMain.Size = new System.Drawing.Size(1296, 593);
+            this.pcMain.Size = new System.Drawing.Size(1296, 590);
             this.pcMain.TabIndex = 6;
             this.pcMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pcMain_Paint);
             // 
@@ -782,6 +788,15 @@
             this.ribbonPageGroup10.ItemLinks.Add(this.bbiDeleteContact);
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
             this.ribbonPageGroup10.Text = "Contact";
+            // 
+            // nbgCandidates
+            // 
+            this.nbgCandidates.Caption = "Candidates";
+            this.nbgCandidates.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgCandidates.LargeImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.LargeImage")));
+            this.nbgCandidates.Name = "nbgCandidates";
+            this.nbgCandidates.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.SmallImage")));
+            this.nbgCandidates.Tag = "candidate";
             // 
             // SWIMain
             // 
@@ -838,7 +853,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiUserLogout;
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraNavBar.NavBarGroup nbgUsers;
-        private DevExpress.XtraNavBar.NavBarGroup nbgCandidates;
         private DevExpress.XtraNavBar.NavBarGroup nbgCompanies;
         private DevExpress.XtraNavBar.NavBarGroup nbgJoborder;
         private DevExpress.XtraNavBar.NavBarGroup nbgContacts;
@@ -883,5 +897,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgUtilities;
         private DevExpress.XtraBars.BarButtonItem bbiImportFromExel;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraNavBar.NavBarGroup nbgCandidates;
+        private DevExpress.XtraNavBar.NavBarGroup ngbCandidates;
     }
 }

@@ -142,5 +142,10 @@ namespace DXSWI.Modules
         {
             updateData();
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

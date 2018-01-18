@@ -35,6 +35,8 @@
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon3 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
             this.sbOK = new DevExpress.XtraEditors.SimpleButton();
@@ -42,7 +44,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvCandidates = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKeySkill = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCurrentPosition = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCurrentEmployer = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,12 +54,26 @@
             this.colInterviewNotes = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCandidates)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colState
+            // 
+            this.colState.Caption = "State";
+            this.colState.FieldName = "State";
+            this.colState.Name = "colState";
+            // 
+            // colName
+            // 
+            this.colName.Caption = "Name";
+            this.colName.FieldName = "Name";
+            this.colName.Name = "colName";
+            this.colName.Visible = true;
+            this.colName.VisibleIndex = 0;
+            this.colName.Width = 139;
             // 
             // flowLayoutPanel1
             // 
@@ -108,12 +123,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyEmailToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
             // 
             // copyEmailToolStripMenuItem
             // 
+            this.copyEmailToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Copy_icon;
             this.copyEmailToolStripMenuItem.Name = "copyEmailToolStripMenuItem";
-            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyEmailToolStripMenuItem.Text = "Copy Email";
             this.copyEmailToolStripMenuItem.Click += new System.EventHandler(this.copyEmailToolStripMenuItem_Click);
             // 
@@ -164,15 +180,6 @@
             this.gvCandidates.Name = "gvCandidates";
             this.gvCandidates.OptionsBehavior.Editable = false;
             this.gvCandidates.OptionsSelection.MultiSelect = true;
-            // 
-            // colName
-            // 
-            this.colName.Caption = "Name";
-            this.colName.FieldName = "Name";
-            this.colName.Name = "colName";
-            this.colName.Visible = true;
-            this.colName.VisibleIndex = 0;
-            this.colName.Width = 139;
             // 
             // colKeySkill
             // 
@@ -263,12 +270,6 @@
             this.colModified.Visible = true;
             this.colModified.VisibleIndex = 10;
             this.colModified.Width = 87;
-            // 
-            // colState
-            // 
-            this.colState.Caption = "State";
-            this.colState.FieldName = "State";
-            this.colState.Name = "colState";
             // 
             // dlgAddCandidateToPipeline
             // 

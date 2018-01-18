@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet1 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet1 = new DevExpress.XtraEditors.FormatConditionIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon3 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgJobOrderEdit));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet2 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
-            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet2 = new DevExpress.XtraEditors.FormatConditionIconSet();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon4 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon5 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon6 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.gcCandidatePipeline = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -52,7 +54,6 @@
             this.gvCandidatePipeline = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMatch = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemRatingControl1 = new DevExpress.XtraEditors.Repository.RepositoryItemRatingControl();
-            this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -116,7 +117,6 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidatePipeline)).BeginInit();
@@ -176,6 +176,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colState
+            // 
+            this.colState.Caption = "State";
+            this.colState.FieldName = "State";
+            this.colState.Name = "colState";
+            // 
+            // colFirstName
+            // 
+            this.colFirstName.Caption = "First Name";
+            this.colFirstName.FieldName = "FirstName";
+            this.colFirstName.Name = "colFirstName";
+            this.colFirstName.Visible = true;
+            this.colFirstName.VisibleIndex = 1;
+            this.colFirstName.Width = 76;
             // 
             // dataLayoutControl1
             // 
@@ -246,7 +261,7 @@
             // 
             // addCandidateToPipelineToolStripMenuItem
             // 
-            this.addCandidateToPipelineToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Candidates;
+            this.addCandidateToPipelineToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Add_icon1;
             this.addCandidateToPipelineToolStripMenuItem.Name = "addCandidateToPipelineToolStripMenuItem";
             this.addCandidateToPipelineToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.addCandidateToPipelineToolStripMenuItem.Text = "Add Candidate To Pipeline";
@@ -254,7 +269,7 @@
             // 
             // addActivityToolStripMenuItem
             // 
-            this.addActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.activity;
+            this.addActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_document_edit_icon1;
             this.addActivityToolStripMenuItem.Name = "addActivityToolStripMenuItem";
             this.addActivityToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.addActivityToolStripMenuItem.Text = "Add Activity";
@@ -267,7 +282,7 @@
             // 
             // editCandidateToolStripMenuItem
             // 
-            this.editCandidateToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("editCandidateToolStripMenuItem.Image")));
+            this.editCandidateToolStripMenuItem.Image = global::DXSWI.Properties.Resources.App_user_icon1;
             this.editCandidateToolStripMenuItem.Name = "editCandidateToolStripMenuItem";
             this.editCandidateToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.editCandidateToolStripMenuItem.Text = "View Candidate";
@@ -275,6 +290,7 @@
             // 
             // emailToCandidateToolStripMenuItem
             // 
+            this.emailToCandidateToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Mail_icon1;
             this.emailToCandidateToolStripMenuItem.Name = "emailToCandidateToolStripMenuItem";
             this.emailToCandidateToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.emailToCandidateToolStripMenuItem.Text = "Email To Candidate";
@@ -282,6 +298,7 @@
             // 
             // emailToAllCandidatesToolStripMenuItem
             // 
+            this.emailToAllCandidatesToolStripMenuItem.Image = global::DXSWI.Properties.Resources.E_mail_icon1;
             this.emailToAllCandidatesToolStripMenuItem.Name = "emailToAllCandidatesToolStripMenuItem";
             this.emailToAllCandidatesToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.emailToAllCandidatesToolStripMenuItem.Text = "Email To All Candidates";
@@ -294,6 +311,7 @@
             // 
             // deleteCandidateFromPipelineToolStripMenuItem
             // 
+            this.deleteCandidateFromPipelineToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_dialog_close_ico1n;
             this.deleteCandidateFromPipelineToolStripMenuItem.Name = "deleteCandidateFromPipelineToolStripMenuItem";
             this.deleteCandidateFromPipelineToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.deleteCandidateFromPipelineToolStripMenuItem.Text = "Remove Candidate From Pipeline";
@@ -306,6 +324,7 @@
             // 
             // refreshToolStripMenuItem
             // 
+            this.refreshToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Refresh_icon1;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
@@ -323,34 +342,34 @@
             this.colStatus,
             this.colLastActivity,
             this.colState});
-            gridFormatRule2.Column = this.colState;
-            gridFormatRule2.ColumnApplyTo = this.colFirstName;
-            gridFormatRule2.Name = "Format0";
-            formatConditionIconSet2.CategoryName = "Shapes";
-            formatConditionIconSetIcon4.PredefinedName = "TrafficLights4_3.png";
-            formatConditionIconSetIcon4.Value = new decimal(new int[] {
+            gridFormatRule1.Column = this.colState;
+            gridFormatRule1.ColumnApplyTo = this.colFirstName;
+            gridFormatRule1.Name = "Format0";
+            formatConditionIconSet1.CategoryName = "Shapes";
+            formatConditionIconSetIcon1.PredefinedName = "TrafficLights4_3.png";
+            formatConditionIconSetIcon1.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            formatConditionIconSetIcon4.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSetIcon5.PredefinedName = "TrafficLights23_1.png";
-            formatConditionIconSetIcon5.Value = new decimal(new int[] {
+            formatConditionIconSetIcon1.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon2.PredefinedName = "TrafficLights23_1.png";
+            formatConditionIconSetIcon2.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            formatConditionIconSetIcon5.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSetIcon6.PredefinedName = "RedToBlack4_3.png";
-            formatConditionIconSetIcon6.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon4);
-            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon5);
-            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon6);
-            formatConditionIconSet2.Name = "TrafficLights3Unrimmed";
-            formatConditionIconSet2.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
-            formatConditionRuleIconSet2.IconSet = formatConditionIconSet2;
-            gridFormatRule2.Rule = formatConditionRuleIconSet2;
-            this.gvCandidatePipeline.FormatRules.Add(gridFormatRule2);
+            formatConditionIconSetIcon2.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon3.PredefinedName = "RedToBlack4_3.png";
+            formatConditionIconSetIcon3.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon1);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon2);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon3);
+            formatConditionIconSet1.Name = "TrafficLights3Unrimmed";
+            formatConditionIconSet1.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRuleIconSet1.IconSet = formatConditionIconSet1;
+            gridFormatRule1.Rule = formatConditionRuleIconSet1;
+            this.gvCandidatePipeline.FormatRules.Add(gridFormatRule1);
             this.gvCandidatePipeline.GridControl = this.gcCandidatePipeline;
             this.gvCandidatePipeline.Name = "gvCandidatePipeline";
             this.gvCandidatePipeline.OptionsSelection.MultiSelect = true;
@@ -370,15 +389,6 @@
             // 
             this.repositoryItemRatingControl1.AutoHeight = false;
             this.repositoryItemRatingControl1.Name = "repositoryItemRatingControl1";
-            // 
-            // colFirstName
-            // 
-            this.colFirstName.Caption = "First Name";
-            this.colFirstName.FieldName = "FirstName";
-            this.colFirstName.Name = "colFirstName";
-            this.colFirstName.Visible = true;
-            this.colFirstName.VisibleIndex = 1;
-            this.colFirstName.Width = 76;
             // 
             // colLastName
             // 
@@ -1019,12 +1029,6 @@
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(19, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // colState
-            // 
-            this.colState.Caption = "State";
-            this.colState.FieldName = "State";
-            this.colState.Name = "colState";
             // 
             // dlgJobOrderEdit
             // 
