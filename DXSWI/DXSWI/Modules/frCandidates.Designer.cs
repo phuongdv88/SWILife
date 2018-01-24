@@ -90,7 +90,7 @@
             // 
             // newToolStripMenuItem
             // 
-            this.newToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_user_group_new_icon1;
+            this.newToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actionsusergroupnew1;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.newToolStripMenuItem.Text = "New Candidate";
@@ -98,7 +98,7 @@
             // 
             // editToolStripMenuItem
             // 
-            this.editToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_user_group_properties_icon1;
+            this.editToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actionsusergroupproperties1;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.editToolStripMenuItem.Text = "Edit Candidate";
@@ -111,7 +111,7 @@
             // 
             // deleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_user_group_delete_icon1;
+            this.deleteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actionsusergroupdelete1;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.deleteToolStripMenuItem.Text = "Delete Candidate";
@@ -124,7 +124,7 @@
             // 
             // refreshTableToolStripMenuItem
             // 
-            this.refreshTableToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Refresh_icon1;
+            this.refreshTableToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonRefresh1;
             this.refreshTableToolStripMenuItem.Name = "refreshTableToolStripMenuItem";
             this.refreshTableToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.refreshTableToolStripMenuItem.Text = "Refresh Table";

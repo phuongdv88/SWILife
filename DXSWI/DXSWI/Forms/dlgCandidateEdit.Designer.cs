@@ -330,13 +330,13 @@
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logActivityToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(142, 26);
             // 
             // logActivityToolStripMenuItem
             // 
-            this.logActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_document_edit_icon1;
+            this.logActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actionsdocumentedit1;
             this.logActivityToolStripMenuItem.Name = "logActivityToolStripMenuItem";
-            this.logActivityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logActivityToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.logActivityToolStripMenuItem.Text = "New Activity";
             this.logActivityToolStripMenuItem.Click += new System.EventHandler(this.logActivityToolStripMenuItem_Click);
             // 
@@ -429,7 +429,7 @@
             // 
             // tsmiAddCandidateToPipeLine
             // 
-            this.tsmiAddCandidateToPipeLine.Image = global::DXSWI.Properties.Resources.Button_Add_icon1;
+            this.tsmiAddCandidateToPipeLine.Image = global::DXSWI.Properties.Resources.ButtonAdd1;
             this.tsmiAddCandidateToPipeLine.Name = "tsmiAddCandidateToPipeLine";
             this.tsmiAddCandidateToPipeLine.Size = new System.Drawing.Size(214, 22);
             this.tsmiAddCandidateToPipeLine.Text = "Add Job To Pipeline";
@@ -437,7 +437,7 @@
             // 
             // addActivityToolStripMenuItem
             // 
-            this.addActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_document_edit_icon1;
+            this.addActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actionsdocumentedit1;
             this.addActivityToolStripMenuItem.Name = "addActivityToolStripMenuItem";
             this.addActivityToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.addActivityToolStripMenuItem.Text = "Add Activity";
@@ -445,7 +445,7 @@
             // 
             // tsmiDelete
             // 
-            this.tsmiDelete.Image = global::DXSWI.Properties.Resources.Actions_dialog_close_ico1n;
+            this.tsmiDelete.Image = global::DXSWI.Properties.Resources.Actions_dialog_close1;
             this.tsmiDelete.Name = "tsmiDelete";
             this.tsmiDelete.Size = new System.Drawing.Size(214, 22);
             this.tsmiDelete.Text = "Remove Job From Pipeline";

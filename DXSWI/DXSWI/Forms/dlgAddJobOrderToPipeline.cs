@@ -61,7 +61,7 @@ namespace DXSWI.Forms
                     RunningTask rtask = new RunningTask { CandidateId = canId, 
                                                         JobOrderId = jobId,
                     Added = DateTime.Now,
-                    EnteredBy = UserManager._ActivatedUser?.UserName};
+                    EnteredBy = UserManager.ActivatedUser?.UserName};
                     
                     RunningTaskManager.createRunningTask(rtask);
                     // emit to update data

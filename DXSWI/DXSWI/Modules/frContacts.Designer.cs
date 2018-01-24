@@ -113,7 +113,7 @@
             // 
             // refreshContactsToolStripMenuItem
             // 
-            this.refreshContactsToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Refresh_icon1;
+            this.refreshContactsToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonRefresh1;
             this.refreshContactsToolStripMenuItem.Name = "refreshContactsToolStripMenuItem";
             this.refreshContactsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.refreshContactsToolStripMenuItem.Text = "Refresh Contacts";

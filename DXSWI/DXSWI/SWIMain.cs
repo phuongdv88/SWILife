@@ -23,27 +23,27 @@ namespace DXSWI
 {
     public partial class SWIMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        frCalendar mfrCalendar = new frCalendar();
-        readonly string tagCalendar = "calendar";
-        frCandidates mfrCandidate = new frCandidates();
-        readonly string tagCandidates = "candidate";
-        frCompanies mfrCompanies = new frCompanies();
-        readonly string tagCompanies = "company";
-        frContacts mfrContacts = new frContacts();
-        readonly string tagContacts = "contact";
-        frJobOrders mfrJobOrder = new frJobOrders();
-        readonly string tagJobOrder = "joborder";
-        frReport mfrReport = new frReport();
-        readonly string tagReport = "report";
-        frUser mfrUser = new frUser();
-        readonly string tagUser = "user";
-        frUtilities mfrUtilities = new frUtilities();
-        readonly string tagUtilities = "utility";
+        frCalendar _frCalendar = new frCalendar();
+        readonly string _tagCalendar = "calendar";
+        frCandidates _frCandidate = new frCandidates();
+        readonly string _tagCandidates = "candidate";
+        frCompanies _frCompanies = new frCompanies();
+        readonly string _tagCompanies = "company";
+        frContacts _frContacts = new frContacts();
+        readonly string _tagContacts = "contact";
+        frJobOrders _frJobOrder = new frJobOrders();
+        readonly string _tagJobOrder = "joborder";
+        frReport _frReport = new frReport();
+        readonly string _tagReport = "report";
+        frUser _frUser = new frUser();
+        readonly string _tagUser = "user";
+        frUtilities _frUtilities = new frUtilities();
+        readonly string _tagUtilities = "utility";
 
         void init()
         {
             // init all Modules
-            string tag = tagCompanies;
+            string tag = _tagCompanies;
 
             foreach (RibbonPage page in ribbonControlMain.Pages)
             {
@@ -67,9 +67,10 @@ namespace DXSWI
 
         public void SetupUiByRole()
         {
-            if(UserManager._ActivatedUser != null)
+            if(UserManager.ActivatedUser != null)
             {
-                if(UserManager._ActivatedUser.RoleName != "ADMIN")
+                rpUser.Text = string.Format("{0} (F1)", UserManager.ActivatedUser.UserName.ToUpper());
+                if(UserManager.ActivatedUser.RoleName != "ADMIN")
                 {
                     rpgEditUser.Visible = false;
                 } else
@@ -77,7 +78,7 @@ namespace DXSWI
                     rpgEditUser.Visible = true;
                 }
             }
-            mfrUser.SetupUi();
+            _frUser.SetupUi();
 
         }
 
@@ -131,6 +132,30 @@ namespace DXSWI
                 case Keys.Escape:
                     this.Close();
                     break;
+                case Keys.F1:
+                    changeGroupByCode(_tagUser);
+                    break;
+                case Keys.F2:
+                    changeGroupByCode(_tagCompanies);
+                    break;
+                case Keys.F3:
+                    changeGroupByCode(_tagContacts);
+                    break;
+                case Keys.F4:
+                    changeGroupByCode(_tagJobOrder);
+                    break;
+                case Keys.F5:
+                    changeGroupByCode(_tagCandidates);
+                    break;
+                case Keys.F6:
+                    changeGroupByCode(_tagCalendar);
+                    break;
+                case Keys.F7:
+                    changeGroupByCode(_tagReport);
+                    break;
+                case Keys.F8:
+                    changeGroupByCode(_tagUtilities);
+                    break;
                 default:
                     break;
             }
@@ -161,6 +186,11 @@ namespace DXSWI
             if (e.Group.Tag == null)
                 return;
             string tag = e.Group.Tag.ToString();
+            changeGroupByCode(tag);
+        }
+
+        private void changeGroupByCode(string tag)
+        {
             foreach (RibbonPage page in ribbonControlMain.Pages)
             {
                 string page_tag = page.Tag.ToString();
@@ -172,8 +202,7 @@ namespace DXSWI
                     }
                 }
             }
-
-            changeGroup(e.Group.Tag.ToString());
+            changeGroup(tag);
         }
         private void changeGroup(string tag)
         {
@@ -206,53 +235,53 @@ namespace DXSWI
             //}
 
             // change pcMain
-            if (tag.Equals(tagCandidates))
+            if (tag.Equals(_tagCandidates))
             {
                 pcMain.Controls.Clear();
-                pcMain.Controls.Add(mfrCandidate);
-                mfrCandidate.Dock = DockStyle.Fill;
+                pcMain.Controls.Add(_frCandidate);
+                _frCandidate.Dock = DockStyle.Fill;
             }
-            if (tag.Equals(tagCalendar))
+            if (tag.Equals(_tagCalendar))
             {
                 pcMain.Controls.Clear();
-                pcMain.Controls.Add(mfrCalendar);
-                mfrCalendar.Dock = DockStyle.Fill;
+                pcMain.Controls.Add(_frCalendar);
+                _frCalendar.Dock = DockStyle.Fill;
             }
-            if (tag.Equals(tagCompanies))
+            if (tag.Equals(_tagCompanies))
             {
                 pcMain.Controls.Clear();
-                pcMain.Controls.Add(mfrCompanies);
-                mfrCompanies.Dock = DockStyle.Fill;
+                pcMain.Controls.Add(_frCompanies);
+                _frCompanies.Dock = DockStyle.Fill;
             }
-            if (tag.Equals(tagContacts))
+            if (tag.Equals(_tagContacts))
             {
                 pcMain.Controls.Clear();
-                pcMain.Controls.Add(mfrContacts);
-                mfrContacts.Dock = DockStyle.Fill;
+                pcMain.Controls.Add(_frContacts);
+                _frContacts.Dock = DockStyle.Fill;
             }
-            if (tag.Equals(tagJobOrder))
+            if (tag.Equals(_tagJobOrder))
             {
                 pcMain.Controls.Clear();
-                pcMain.Controls.Add(mfrJobOrder);
-                mfrJobOrder.Dock = DockStyle.Fill;
+                pcMain.Controls.Add(_frJobOrder);
+                _frJobOrder.Dock = DockStyle.Fill;
             }
-            if (tag.Equals(tagReport))
+            if (tag.Equals(_tagReport))
             {
                 pcMain.Controls.Clear();
-                pcMain.Controls.Add(mfrReport);
-                mfrReport.Dock = DockStyle.Fill;
+                pcMain.Controls.Add(_frReport);
+                _frReport.Dock = DockStyle.Fill;
             }
-            if (tag.Equals(tagUser))
+            if (tag.Equals(_tagUser))
             {
                 pcMain.Controls.Clear();
-                pcMain.Controls.Add(mfrUser);
-                mfrUser.Dock = DockStyle.Fill;
+                pcMain.Controls.Add(_frUser);
+                _frUser.Dock = DockStyle.Fill;
             }
-            if (tag.Equals(tagUtilities))
+            if (tag.Equals(_tagUtilities))
             {
                 pcMain.Controls.Clear();
-                pcMain.Controls.Add(mfrUtilities);
-                mfrUtilities.Dock = DockStyle.Fill;
+                pcMain.Controls.Add(_frUtilities);
+                _frUtilities.Dock = DockStyle.Fill;
             }
         }
 
@@ -264,46 +293,39 @@ namespace DXSWI
 
         private void bbiCandidatesEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrCandidate.editToolStripMenuItem_Click(sender, e);
+            _frCandidate.editToolStripMenuItem_Click(sender, e);
         }
 
         private void bbiCandidatesCreate_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrCandidate.newToolStripMenuItem_Click(sender, e);
+            _frCandidate.newToolStripMenuItem_Click(sender, e);
         }
 
         private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrCandidate.deleteToolStripMenuItem_Click(sender, e);
-        }
-
-        private void bbiCandidatesAddEvent_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
-        private void bbiCandidatesAddAttachment_ItemClick(object sender, ItemClickEventArgs e)
-        {
+            _frCandidate.deleteToolStripMenuItem_Click(sender, e);
         }
 
         private void bbiCandidatesAddPipeline_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrCandidate.AddJobToPipeLine();
+            _frCandidate.AddJobToPipeLine();
         }
 
         private void bbiCandidateLogActivity_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrCandidate.logActivity();
+            _frCandidate.logActivity();
         }
 
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            // add contact
+            _frCompanies.newContact();
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            // add joborder
+            _frCompanies.newJobOrder();
         }
 
         private void barButtonItem1_ItemClick_1(object sender, ItemClickEventArgs e)
@@ -316,27 +338,22 @@ namespace DXSWI
 
         }
 
-        private void barButtonItem5_ItemClick_1(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
         private void bbiUserAdd_ItemClick(object sender, ItemClickEventArgs e)
         {
             // add new user
-            mfrUser.NewUser();
+            _frUser.NewUser();
         }
 
         private void bbiUserEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
             // edit current user
-            mfrUser.EditUser();
+            _frUser.EditUser();
         }
 
         private void bbiUserDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
             // delete selected user
-            mfrUser.DeleteUser();
+            _frUser.DeleteUser();
             
         }
 
@@ -348,17 +365,17 @@ namespace DXSWI
         private void bbiAddCompany_ItemClick(object sender, ItemClickEventArgs e)
         {
             // add company
-            mfrCompanies.newCompany();
+            _frCompanies.newCompany();
         }
 
         private void bbiEditCompany_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrCompanies.editCompany();
+            _frCompanies.editCompany();
         }
 
         private void bbiDeleteCompany_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrCompanies.deleteCompany();
+            _frCompanies.deleteCompany();
         }
 
         private void ribbonControlMain_SelectedPageChanged(object sender, EventArgs e)
@@ -368,43 +385,44 @@ namespace DXSWI
 
         private void bbiAddJobOrder0_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrJobOrder.newJobOrder();
+            _frJobOrder.newJobOrder();
         }
 
         private void bbiEditJobOrder0_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrJobOrder.EditJobOrder();
+            _frJobOrder.EditJobOrder();
         }
 
         private void bbiDeleteJobOrder0_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrJobOrder.deleteJobOrder();
+            _frJobOrder.deleteJobOrder();
         }
 
         private void barButtonItem1_ItemClick_2(object sender, ItemClickEventArgs e)
         {
-            mfrContacts.NewContact();
+            _frContacts.NewContact();
             
         }
 
         private void barButtonItem2_ItemClick_1(object sender, ItemClickEventArgs e)
         {
-            mfrContacts.EditContact();
+            _frContacts.EditContact();
         }
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrContacts.DeleteContact();
+            _frContacts.DeleteContact();
         }
 
         private void bbiUserChangePassword_ItemClick(object sender, ItemClickEventArgs e)
         {
-            mfrUser.changePassword();
+            _frUser.changePassword();
         }
 
         private void pcMain_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
     }
 }

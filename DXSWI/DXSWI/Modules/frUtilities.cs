@@ -105,7 +105,7 @@ namespace DXSWI.Modules
                     con.MiscNotes = con.CompanyName;
                     con.MiscNotes += "\r\n" + cells[6].Text;
 
-                    con.UserId = UserManager._ActivatedUser.UserId;
+                    con.UserId = UserManager.ActivatedUser.UserId;
                     // insert to database
                     try
                     {
@@ -248,7 +248,7 @@ namespace DXSWI.Modules
 
             foreach (var file_name in list_file)
             {
-                Company com = new Company() { UserId = UserManager._ActivatedUser.UserId };
+                Company com = new Company() { UserId = UserManager.ActivatedUser.UserId };
                 string billing_contact = "";
                 string active = "";
                 string misc_notes = "";
@@ -409,7 +409,7 @@ namespace DXSWI.Modules
                     can.City = "Hanoi";
                     can.Country = "Vietnam";
                     can.Source = "LinkedIn";
-                    can.UserId = UserManager._ActivatedUser.UserId;
+                    can.UserId = UserManager.ActivatedUser.UserId;
 
                     // insert to database
                     try

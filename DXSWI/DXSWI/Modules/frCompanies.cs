@@ -49,6 +49,48 @@ namespace DXSWI.Modules
             dlg.ShowDialog();
         }
 
+        public void newContact()
+        {
+            try
+            {
+                if (gvCompanies.SelectedRowsCount > 0)
+                {
+                    dlgContactEdit dlg = new dlgContactEdit(-1, null);
+
+                    int row = gvCompanies.GetSelectedRows().First();
+                    DataRow data_row = gvCompanies.GetDataRow(row);
+                    string comName = data_row["Name"].ToString();
+                    dlg.SetCompanyName(comName);
+                    dlg.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void newJobOrder()
+        {
+            try
+            {
+                if (gvCompanies.SelectedRowsCount > 0)
+                {
+                    dlgJobOrderEdit dlg = new dlgJobOrderEdit(-1);
+
+                    int row = gvCompanies.GetSelectedRows().First();
+                    DataRow data_row = gvCompanies.GetDataRow(row);
+                    string comName = data_row["Name"].ToString();
+                    dlg.SetCompanyName(comName);
+                    dlg.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void editCompanyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             editCompany();
@@ -102,19 +144,14 @@ namespace DXSWI.Modules
             }
         }
 
-        private void viewContactToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void addContactToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            newContact();
         }
 
         private void addJobOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            newJobOrder();
         }
 
         private void gcCompanies_DoubleClick(object sender, EventArgs e)

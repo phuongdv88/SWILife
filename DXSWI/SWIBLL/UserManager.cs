@@ -13,7 +13,7 @@ namespace SWIBLL
 {
     public class UserManager
     {
-        public static User _ActivatedUser = null;
+        public static User ActivatedUser = null;
         //public static User ActivatedUser = new User() { UserName = "phuongdv", UserId = 5, IsOnline = true};
         public static void ConnectoDB(string connection_string)
         {
@@ -28,9 +28,9 @@ namespace SWIBLL
         {
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
             // get user info
-            _ActivatedUser = getUserByName(userName);
+            ActivatedUser = getUserByName(userName);
             // check user info
-            if (_ActivatedUser == null || comparer.Compare(password, _ActivatedUser.Password) != 0)
+            if (ActivatedUser == null || comparer.Compare(password, ActivatedUser.Password) != 0)
             {
                 Exception ex = new Exception("User name or password is incorrect!");
                 throw ex;
@@ -41,18 +41,18 @@ namespace SWIBLL
             //    throw ex;
             //}
             // if correct , update login state of user
-            DataAccess.Instance.updateLoginState(_ActivatedUser.UserId, true);
-            _ActivatedUser.IsOnline = true;
+            DataAccess.Instance.updateLoginState(ActivatedUser.UserId, true);
+            ActivatedUser.IsOnline = true;
             return true;
         }
 
         public static bool Logout()
         {
-            if (_ActivatedUser == null) return false;
+            if (ActivatedUser == null) return false;
             // if correct , update login state of user
-            if (DataAccess.Instance.updateLoginState(_ActivatedUser.UserId, false))
+            if (DataAccess.Instance.updateLoginState(ActivatedUser.UserId, false))
             {
-                _ActivatedUser.IsOnline = false;
+                ActivatedUser.IsOnline = false;
                 return true;
             }
             return false;
@@ -119,16 +119,16 @@ namespace SWIBLL
         public static void UpdateUser(User user)
         {
             if (user == null) return;
-            string sql = string.Format("UPDATE `swilifecore`.`user` SET `UserName`='{0}', `Password`='{1}', `Salt`='{2}', `Role`='{3}' WHERE `UserId`='{4}'"
-                , QueryBuilder.mySqlEscape(user.UserName), user.Password, user.Salt, user.Role, user.UserId);
+            string sql = string.Format("UPDATE `swilifecore`.`user` SET `UserName`='{0}', `Password`='{1}', `Salt`='{2}', `Role`='{3}', `EmailAccount`='{4}' WHERE `UserId`='{5}'"
+                , QueryBuilder.mySqlEscape(user.UserName), user.Password, user.Salt, user.Role, QueryBuilder.mySqlEscape(user.EmailAccount), user.UserId);
             DataAccess.Instance.executeNonQuery(sql);
         }
 
         public static void InsertUser(User user)
         {
             if (user == null) return;
-            string sql = string.Format("INSERT INTO `swilifecore`.`user` (`UserName`, `Password`, `Salt`, `Role`, `IsOnline`) VALUES ('{0}', '{1}', '{2}', '{3}', 0)"
-                , QueryBuilder.mySqlEscape(user.UserName), user.Password, user.Salt, user.Role);
+            string sql = string.Format("INSERT INTO `swilifecore`.`user` (`UserName`, `Password`, `Salt`, `Role`, `IsOnline`, `EmailAccount`) VALUES ('{0}', '{1}', '{2}', '{3}', 0, '{4}')"
+                , QueryBuilder.mySqlEscape(user.UserName), user.Password, user.Salt, user.Role, QueryBuilder.mySqlEscape(user.EmailAccount));
             DataAccess.Instance.executeNonQuery(sql);
 
         }

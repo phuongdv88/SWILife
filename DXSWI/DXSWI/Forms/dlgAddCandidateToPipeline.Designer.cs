@@ -127,7 +127,7 @@
             // 
             // copyEmailToolStripMenuItem
             // 
-            this.copyEmailToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Copy_icon;
+            this.copyEmailToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Copyicon;
             this.copyEmailToolStripMenuItem.Name = "copyEmailToolStripMenuItem";
             this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyEmailToolStripMenuItem.Text = "Copy Email";

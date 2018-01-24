@@ -53,6 +53,8 @@
             this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.textEditEmail = new DevExpress.XtraEditors.TextEdit();
+            this.Email = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -77,6 +79,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditEmail.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Email)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -88,11 +92,12 @@
             this.layoutControl1.Controls.Add(this.sbOk);
             this.layoutControl1.Controls.Add(this.sbCancel);
             this.layoutControl1.Controls.Add(this.checkEditChangePassword);
+            this.layoutControl1.Controls.Add(this.textEditEmail);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(454, 252);
+            this.layoutControl1.Size = new System.Drawing.Size(454, 288);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -107,7 +112,7 @@
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Location = new System.Drawing.Point(12, 12);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(430, 55);
+            this.panelControl1.Size = new System.Drawing.Size(430, 64);
             this.panelControl1.TabIndex = 25;
             // 
             // labelControl3
@@ -131,7 +136,7 @@
             // 
             // textEditUserName
             // 
-            this.textEditUserName.Location = new System.Drawing.Point(92, 81);
+            this.textEditUserName.Location = new System.Drawing.Point(92, 92);
             this.textEditUserName.Name = "textEditUserName";
             this.textEditUserName.Size = new System.Drawing.Size(350, 20);
             this.textEditUserName.StyleController = this.layoutControl1;
@@ -139,7 +144,7 @@
             // 
             // comboBoxEditRole
             // 
-            this.comboBoxEditRole.Location = new System.Drawing.Point(92, 172);
+            this.comboBoxEditRole.Location = new System.Drawing.Point(92, 184);
             this.comboBoxEditRole.Name = "comboBoxEditRole";
             this.comboBoxEditRole.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -159,7 +164,7 @@
             // textEditPassword
             // 
             this.textEditPassword.Enabled = false;
-            this.textEditPassword.Location = new System.Drawing.Point(92, 138);
+            this.textEditPassword.Location = new System.Drawing.Point(92, 150);
             this.textEditPassword.Name = "textEditPassword";
             this.textEditPassword.Size = new System.Drawing.Size(350, 20);
             this.textEditPassword.StyleController = this.layoutControl1;
@@ -167,7 +172,7 @@
             // 
             // sbOk
             // 
-            this.sbOk.Location = new System.Drawing.Point(157, 206);
+            this.sbOk.Location = new System.Drawing.Point(157, 242);
             this.sbOk.Name = "sbOk";
             this.sbOk.Size = new System.Drawing.Size(130, 22);
             this.sbOk.StyleController = this.layoutControl1;
@@ -177,7 +182,7 @@
             // 
             // sbCancel
             // 
-            this.sbCancel.Location = new System.Drawing.Point(310, 206);
+            this.sbCancel.Location = new System.Drawing.Point(310, 242);
             this.sbCancel.Name = "sbCancel";
             this.sbCancel.Size = new System.Drawing.Size(132, 22);
             this.sbCancel.StyleController = this.layoutControl1;
@@ -187,7 +192,7 @@
             // 
             // checkEditChangePassword
             // 
-            this.checkEditChangePassword.Location = new System.Drawing.Point(12, 105);
+            this.checkEditChangePassword.Location = new System.Drawing.Point(12, 116);
             this.checkEditChangePassword.Name = "checkEditChangePassword";
             this.checkEditChangePassword.Properties.Caption = "New Password";
             this.checkEditChangePassword.Size = new System.Drawing.Size(430, 19);
@@ -214,16 +219,17 @@
             this.emptySpaceItem6,
             this.emptySpaceItem7,
             this.layoutControlItem1,
-            this.layoutControlItem7});
+            this.layoutControlItem7,
+            this.Email});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(454, 252);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(454, 288);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.textEditUserName;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 69);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 80);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(434, 24);
             this.layoutControlItem3.Text = "User Name (*)";
@@ -232,7 +238,7 @@
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.comboBoxEditRole;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 160);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 172);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(434, 24);
             this.layoutControlItem4.Text = "Role (*)";
@@ -241,7 +247,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.textEditPassword;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 126);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 138);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(434, 24);
             this.layoutControlItem2.Text = "Reset Password";
@@ -250,14 +256,14 @@
             // simpleSeparator1
             // 
             this.simpleSeparator1.AllowHotTrack = false;
-            this.simpleSeparator1.Location = new System.Drawing.Point(0, 230);
+            this.simpleSeparator1.Location = new System.Drawing.Point(0, 266);
             this.simpleSeparator1.Name = "simpleSeparator1";
             this.simpleSeparator1.Size = new System.Drawing.Size(434, 2);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.sbOk;
-            this.layoutControlItem5.Location = new System.Drawing.Point(145, 194);
+            this.layoutControlItem5.Location = new System.Drawing.Point(145, 230);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(134, 26);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
@@ -266,7 +272,7 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.sbCancel;
-            this.layoutControlItem6.Location = new System.Drawing.Point(298, 194);
+            this.layoutControlItem6.Location = new System.Drawing.Point(298, 230);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(136, 26);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
@@ -275,7 +281,7 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 194);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 230);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(145, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -283,7 +289,7 @@
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 220);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 256);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
             this.emptySpaceItem3.Size = new System.Drawing.Size(434, 10);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -291,15 +297,15 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 116);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 127);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(434, 10);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(434, 11);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem5
             // 
             this.emptySpaceItem5.AllowHotTrack = false;
-            this.emptySpaceItem5.Location = new System.Drawing.Point(0, 150);
+            this.emptySpaceItem5.Location = new System.Drawing.Point(0, 162);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
             this.emptySpaceItem5.Size = new System.Drawing.Size(434, 10);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
@@ -307,7 +313,7 @@
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 184);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 220);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
             this.emptySpaceItem4.Size = new System.Drawing.Size(434, 10);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -315,7 +321,7 @@
             // emptySpaceItem6
             // 
             this.emptySpaceItem6.AllowHotTrack = false;
-            this.emptySpaceItem6.Location = new System.Drawing.Point(279, 194);
+            this.emptySpaceItem6.Location = new System.Drawing.Point(279, 230);
             this.emptySpaceItem6.Name = "emptySpaceItem6";
             this.emptySpaceItem6.Size = new System.Drawing.Size(19, 26);
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
@@ -323,9 +329,9 @@
             // emptySpaceItem7
             // 
             this.emptySpaceItem7.AllowHotTrack = false;
-            this.emptySpaceItem7.Location = new System.Drawing.Point(0, 59);
+            this.emptySpaceItem7.Location = new System.Drawing.Point(0, 68);
             this.emptySpaceItem7.Name = "emptySpaceItem7";
-            this.emptySpaceItem7.Size = new System.Drawing.Size(434, 10);
+            this.emptySpaceItem7.Size = new System.Drawing.Size(434, 12);
             this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem1
@@ -333,24 +339,41 @@
             this.layoutControlItem1.Control = this.panelControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(434, 59);
+            this.layoutControlItem1.Size = new System.Drawing.Size(434, 68);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.checkEditChangePassword;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 93);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 104);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(434, 23);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
+            // textEditEmail
+            // 
+            this.textEditEmail.Location = new System.Drawing.Point(92, 208);
+            this.textEditEmail.Name = "textEditEmail";
+            this.textEditEmail.Size = new System.Drawing.Size(350, 20);
+            this.textEditEmail.StyleController = this.layoutControl1;
+            this.textEditEmail.TabIndex = 27;
+            // 
+            // Email
+            // 
+            this.Email.Control = this.textEditEmail;
+            this.Email.Location = new System.Drawing.Point(0, 196);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(434, 24);
+            this.Email.Text = "Email (*)";
+            this.Email.TextSize = new System.Drawing.Size(77, 13);
+            // 
             // dlgUserEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 252);
+            this.ClientSize = new System.Drawing.Size(454, 288);
             this.Controls.Add(this.layoutControl1);
             this.KeyPreview = true;
             this.Name = "dlgUserEdit";
@@ -382,6 +405,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditEmail.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Email)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -413,5 +438,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.CheckEdit checkEditChangePassword;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraEditors.TextEdit textEditEmail;
+        private DevExpress.XtraLayout.LayoutControlItem Email;
     }
 }

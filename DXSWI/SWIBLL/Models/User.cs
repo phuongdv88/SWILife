@@ -24,6 +24,9 @@ namespace SWIBLL.Models
         public string RoleName { get; set; }
 
         public int RoleValue { get; set; }
+
+        public string EmailAccount { get; set; }
+
         public User()
         {
             UserId = -1;
@@ -34,6 +37,7 @@ namespace SWIBLL.Models
             Role = -1;
             RoleName = string.Empty;
             RoleValue = -1;
+            EmailAccount = string.Empty;
         }
         ~User()
         {

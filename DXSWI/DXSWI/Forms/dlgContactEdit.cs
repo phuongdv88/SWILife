@@ -46,16 +46,23 @@ namespace DXSWI.Forms
                 ImagePictureEdit.ToolTip = toolTip;
                 ImagePictureEdit.Cursor = Cursors.Hand;
             }
-            else ImagePictureEdit.Cursor = Cursors.Default;
-            if (contactId == -1)
+            else
             {
-                return;
+                ImagePictureEdit.Cursor = Cursors.Default;
             }
-            mContact = ContactManager.getContactById(contactId);
             getlistCompany(ref listCompanyNameAndId);
+            CompanyNameComboboxEdit.Properties.Items.Clear();
+            CompanyNameComboboxEdit.Properties.Items.AddRange(listCompanyNameAndId.Keys);
+
+            mContact = ContactManager.getContactById(contactId);
             FillObjectToUi();
         }
 
+        public void SetCompanyName(string companyName)
+        {
+            CompanyNameComboboxEdit.EditValue = companyName;
+            CompanyNameComboboxEdit.ReadOnly = true;
+        }
         private void dlgContactEdit_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -93,6 +100,7 @@ namespace DXSWI.Forms
 
         private void FillObjectToUi()
         {
+            
             if (mContact != null)
             {
                 FirstNameTextEdit.Text = mContact.FirstName;
@@ -113,9 +121,8 @@ namespace DXSWI.Forms
                 PostalCodeTextEdit.Text = mContact.PostalCode;
                 ProfileLinkTextEdit.Text = mContact.ProfileLink;
                 MiscNotesMemoEdit.Text = mContact.MiscNotes;
-                CompanyNameComboboxEdit.Properties.Items.Clear();
-                CompanyNameComboboxEdit.Properties.Items.AddRange(listCompanyNameAndId.Keys);
                 CompanyNameComboboxEdit.EditValue = mContact.CompanyName; // companyId
+
                 try
                 {
                     ImagePictureEdit.Image = Bitmap.FromFile(mContact.ImageLink);
@@ -151,7 +158,7 @@ namespace DXSWI.Forms
             if (mContact == null)
             {
                 mContact = new Contact();
-                mContact.UserId = UserManager._ActivatedUser.UserId;
+                mContact.UserId = UserManager.ActivatedUser.UserId;
                 mContact.Created = DateTime.Now;
             }
             mContact.FirstName = FirstNameTextEdit.Text;
@@ -260,9 +267,10 @@ namespace DXSWI.Forms
             isReadOnlyMod = value;
         }
         // get list company
-        private void getlistCompany(ref Dictionary<string, long> listCompany )
+        private void getlistCompany(ref Dictionary<string, long> listCompany)
         {
-            try {
+            try
+            {
                 listCompany.Clear();
                 DataTable dt = CompanyManager.getNameCompanies();
                 if (dt == null) return;

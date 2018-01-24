@@ -34,9 +34,9 @@ namespace DXSWI.Modules
 
         public void SetupUi()
         {
-            if (UserManager._ActivatedUser != null)
+            if (UserManager.ActivatedUser != null)
             {
-                if (UserManager._ActivatedUser.RoleName != "ADMIN")
+                if (UserManager.ActivatedUser.RoleName != "ADMIN")
                 {
                     gcUser.ContextMenuStrip = null;
                 }
@@ -132,7 +132,7 @@ namespace DXSWI.Modules
 
         public void DeleteUser()
         {
-            if (UserManager._ActivatedUser.RoleName != "ADMIN")
+            if (UserManager.ActivatedUser.RoleName != "ADMIN")
                 return;
             if (gvUser.SelectedRowsCount > 0)
             {
@@ -145,7 +145,7 @@ namespace DXSWI.Modules
                         DataRow data_row = gvUser.GetDataRow(row);
                         long UserId = Convert.ToInt64(data_row["UserId"].ToString());
                         bool isOnline = Convert.ToBoolean(int.Parse(data_row["IsOnline"].ToString()));
-                        if(UserId == UserManager._ActivatedUser.UserId || isOnline)
+                        if(UserId == UserManager.ActivatedUser.UserId || isOnline)
                         {
                             throw new Exception("This account is online!");
                         }

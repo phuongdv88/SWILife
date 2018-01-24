@@ -132,7 +132,7 @@
             // 
             // refreshToolStripMenuItem
             // 
-            this.refreshToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Refresh_icon1;
+            this.refreshToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonRefresh1;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.refreshToolStripMenuItem.Text = "Refresh Job Orders";

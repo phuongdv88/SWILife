@@ -122,7 +122,7 @@ namespace SWIBLL
                     act.ScheduleEventId = DataAccess.Instance.executeInsertQueryTransaction(sql);
                 }
 
-                act.UserId = UserManager._ActivatedUser.UserId;
+                act.UserId = UserManager.ActivatedUser.UserId;
 
                 // add log activity
                 sql = string.Format("INSERT INTO `swilifecore`.`activity` " +
@@ -200,7 +200,7 @@ namespace SWIBLL
             try
             {
                 DataAccess.Instance.StartTransaction();
-                act.UserId = UserManager._ActivatedUser.UserId;
+                act.UserId = UserManager.ActivatedUser.UserId;
                 Dictionary<long, long> listCandidateIdRunningTaskId = new Dictionary<long, long>();
                 getListRunningTaskForJobOrder(jobOrderId, ref listCandidateIdRunningTaskId);
                 // add log activity

@@ -40,6 +40,7 @@ namespace DXSWI.Forms
                 // edit
                 textEditUserName.Text = _currentUser.UserName;
                 comboBoxEditRole.EditValue = _currentUser.RoleName;
+                textEditEmail.Text = _currentUser.EmailAccount;
                 Text = _currentUser.UserName;
                 sbOk.Text = "Update";
                 _isNew = false;
@@ -77,7 +78,12 @@ namespace DXSWI.Forms
                     comboBoxEditRole.Focus();
                     throw new Exception("Role cannot be blank!");
                 }
-               
+                if (textEditEmail.Text.Length == 0)
+                {
+                    textEditEmail.Focus();
+                    throw new Exception("Email cannot be blank!");
+                }
+
             }
             catch (Exception ex)
             {
@@ -88,14 +94,11 @@ namespace DXSWI.Forms
         }
         private void getObjectFromUi()
         {
-            
-
-
             if (_currentUser == null)
             {
                 _currentUser = new User();
             }
-            _currentUser.UserName = textEditUserName.Text;
+            _currentUser.UserName = textEditUserName.Text.Trim();
             if (checkEditChangePassword.Checked && textEditPassword.Text.Length > 0)
             {
                 // set new password
@@ -104,6 +107,7 @@ namespace DXSWI.Forms
 
             }
             _currentUser.Role = comboBoxEditRole.SelectedIndex + 1;
+            _currentUser.EmailAccount = textEditEmail.Text.Trim();
 
         }
         private void dlgUserEdit_KeyDown(object sender, KeyEventArgs e)

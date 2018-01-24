@@ -81,5 +81,53 @@ namespace DXSWI.Properties {
                 this["StorageLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("smtp.yandex.com")]
+        public string EmailSmtpServer {
+            get {
+                return ((string)(this["EmailSmtpServer"]));
+            }
+            set {
+                this["EmailSmtpServer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("587")]
+        public int EmailSmtpServerPort {
+            get {
+                return ((int)(this["EmailSmtpServerPort"]));
+            }
+            set {
+                this["EmailSmtpServerPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("swilifeco@swilife.com")]
+        public string EmailAccount {
+            get {
+                return ((string)(this["EmailAccount"]));
+            }
+            set {
+                this["EmailAccount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("123456a@")]
+        public string EmailPassword {
+            get {
+                return ((string)(this["EmailPassword"]));
+            }
+            set {
+                this["EmailPassword"] = value;
+            }
+        }
     }
 }

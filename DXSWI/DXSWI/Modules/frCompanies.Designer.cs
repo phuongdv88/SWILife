@@ -40,10 +40,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteCompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.viewContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.viewJobOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addJobOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,15 +94,12 @@
             this.toolStripSeparator1,
             this.deleteCompanyToolStripMenuItem,
             this.toolStripSeparator2,
-            this.viewContactToolStripMenuItem,
             this.addContactToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.viewJobOrdersToolStripMenuItem,
             this.addJobOrderToolStripMenuItem,
             this.toolStripSeparator4,
             this.refreshDataToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 204);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 176);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // newCompanyToolStripMenuItem
@@ -142,14 +136,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(159, 6);
             // 
-            // viewContactToolStripMenuItem
-            // 
-            this.viewContactToolStripMenuItem.Image = global::DXSWI.Properties.Resources.contact3;
-            this.viewContactToolStripMenuItem.Name = "viewContactToolStripMenuItem";
-            this.viewContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.viewContactToolStripMenuItem.Text = "View Contacts";
-            this.viewContactToolStripMenuItem.Click += new System.EventHandler(this.viewContactToolStripMenuItem_Click);
-            // 
             // addContactToolStripMenuItem
             // 
             this.addContactToolStripMenuItem.Image = global::DXSWI.Properties.Resources.newcontact1;
@@ -157,18 +143,6 @@
             this.addContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.addContactToolStripMenuItem.Text = "Add Contact";
             this.addContactToolStripMenuItem.Click += new System.EventHandler(this.addContactToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(159, 6);
-            // 
-            // viewJobOrdersToolStripMenuItem
-            // 
-            this.viewJobOrdersToolStripMenuItem.Image = global::DXSWI.Properties.Resources.task1;
-            this.viewJobOrdersToolStripMenuItem.Name = "viewJobOrdersToolStripMenuItem";
-            this.viewJobOrdersToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.viewJobOrdersToolStripMenuItem.Text = "View Job Orders";
             // 
             // addJobOrderToolStripMenuItem
             // 
@@ -185,7 +159,7 @@
             // 
             // refreshDataToolStripMenuItem
             // 
-            this.refreshDataToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Refresh_icon1;
+            this.refreshDataToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonRefresh1;
             this.refreshDataToolStripMenuItem.Name = "refreshDataToolStripMenuItem";
             this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.refreshDataToolStripMenuItem.Text = "Refresh Data";
@@ -335,11 +309,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem deleteCompanyToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem viewContactToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addContactToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem addJobOrderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewJobOrdersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshDataToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn colPrimaryPhone;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;

@@ -102,6 +102,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ucAttachmentFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucAttachmentFile.Designer.cs">
+      <DependentUpon>ucAttachmentFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ucCalendar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -210,6 +216,12 @@
     <Compile Include="Forms\dlgContactEdit.Designer.cs">
       <DependentUpon>dlgContactEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\dlgEmailSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgEmailSetting.Designer.cs">
+      <DependentUpon>dlgEmailSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\dlgJobOrderEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +239,12 @@
     </Compile>
     <Compile Include="Forms\dlgLogin.Designer.cs">
       <DependentUpon>dlgLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\dlgMailEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgMailEdit.Designer.cs">
+      <DependentUpon>dlgMailEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\dlgPasswordEdit.cs">
       <SubType>Form</SubType>
@@ -315,6 +333,9 @@
       <DependentUpon>swilifecoreDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="Controls\ucAttachmentFile.resx">
+      <DependentUpon>ucAttachmentFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucCalendar.resx">
       <DependentUpon>ucCalendar.cs</DependentUpon>
     </EmbeddedResource>
@@ -369,6 +390,9 @@
     <EmbeddedResource Include="Forms\dlgContactEdit.resx">
       <DependentUpon>dlgContactEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgEmailSetting.resx">
+      <DependentUpon>dlgEmailSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgJobOrderEdit.resx">
       <DependentUpon>dlgJobOrderEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgLogin.resx">
       <DependentUpon>dlgLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgMailEdit.resx">
+      <DependentUpon>dlgMailEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgPasswordEdit.resx">
       <DependentUpon>dlgPasswordEdit.cs</DependentUpon>
@@ -457,6 +484,23 @@
   <ItemGroup>
     <Content Include="logo_tron_0Pv_icon.ico" />
     <Content Include="lollipop_candy.ico" />
+    <None Include="Resources\Actions-resource-group-icon1.png" />
+    <None Include="Resources\delete_16x16.png" />
+    <None Include="Resources\delete_32x32.png" />
+    <None Include="Resources\File-delete-icon1.png" />
+    <None Include="Resources\File-delete-icon.png" />
+    <None Include="Resources\trash-icon1.png" />
+    <None Include="Resources\trash-icon.png" />
+    <None Include="Resources\signature-icon11.png" />
+    <None Include="Resources\signature-icon1.png" />
+    <None Include="Resources\email-send-icon1.png" />
+    <None Include="Resources\email-send-icon.png" />
+    <None Include="Resources\mail-settings-icon1.png" />
+    <None Include="Resources\mail-settings-icon.png" />
+    <None Include="Resources\settings-icon1.png" />
+    <None Include="Resources\settings-icon.png" />
+    <None Include="Resources\Places-folder-templates-icon1.png" />
+    <None Include="Resources\Places-folder-templates-icon.png" />
     <None Include="Resources\Mail-icon1.png" />
     <None Include="Resources\Mail-icon.png" />
     <None Include="Resources\E-mail-icon1.png" />

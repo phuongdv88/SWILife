@@ -261,7 +261,7 @@
             // 
             // addCandidateToPipelineToolStripMenuItem
             // 
-            this.addCandidateToPipelineToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Add_icon1;
+            this.addCandidateToPipelineToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonAdd1;
             this.addCandidateToPipelineToolStripMenuItem.Name = "addCandidateToPipelineToolStripMenuItem";
             this.addCandidateToPipelineToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.addCandidateToPipelineToolStripMenuItem.Text = "Add Candidate To Pipeline";
@@ -269,7 +269,7 @@
             // 
             // addActivityToolStripMenuItem
             // 
-            this.addActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_document_edit_icon1;
+            this.addActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actionsdocumentedit1;
             this.addActivityToolStripMenuItem.Name = "addActivityToolStripMenuItem";
             this.addActivityToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.addActivityToolStripMenuItem.Text = "Add Activity";
@@ -282,7 +282,7 @@
             // 
             // editCandidateToolStripMenuItem
             // 
-            this.editCandidateToolStripMenuItem.Image = global::DXSWI.Properties.Resources.App_user_icon1;
+            this.editCandidateToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Appuser1;
             this.editCandidateToolStripMenuItem.Name = "editCandidateToolStripMenuItem";
             this.editCandidateToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.editCandidateToolStripMenuItem.Text = "View Candidate";
@@ -290,7 +290,7 @@
             // 
             // emailToCandidateToolStripMenuItem
             // 
-            this.emailToCandidateToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Mail_icon1;
+            this.emailToCandidateToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Mailicon1;
             this.emailToCandidateToolStripMenuItem.Name = "emailToCandidateToolStripMenuItem";
             this.emailToCandidateToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.emailToCandidateToolStripMenuItem.Text = "Email To Candidate";
@@ -298,7 +298,7 @@
             // 
             // emailToAllCandidatesToolStripMenuItem
             // 
-            this.emailToAllCandidatesToolStripMenuItem.Image = global::DXSWI.Properties.Resources.E_mail_icon1;
+            this.emailToAllCandidatesToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Emailicon1;
             this.emailToAllCandidatesToolStripMenuItem.Name = "emailToAllCandidatesToolStripMenuItem";
             this.emailToAllCandidatesToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.emailToAllCandidatesToolStripMenuItem.Text = "Email To All Candidates";
@@ -311,7 +311,7 @@
             // 
             // deleteCandidateFromPipelineToolStripMenuItem
             // 
-            this.deleteCandidateFromPipelineToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_dialog_close_ico1n;
+            this.deleteCandidateFromPipelineToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_dialog_close1;
             this.deleteCandidateFromPipelineToolStripMenuItem.Name = "deleteCandidateFromPipelineToolStripMenuItem";
             this.deleteCandidateFromPipelineToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.deleteCandidateFromPipelineToolStripMenuItem.Text = "Remove Candidate From Pipeline";
@@ -324,7 +324,7 @@
             // 
             // refreshToolStripMenuItem
             // 
-            this.refreshToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Button_Refresh_icon1;
+            this.refreshToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonRefresh1;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";

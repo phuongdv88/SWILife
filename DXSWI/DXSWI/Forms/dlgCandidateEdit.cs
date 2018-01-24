@@ -313,8 +313,8 @@ namespace DXSWI.Forms
                 // save candidate to database: if it is new candidate -> use inserting function, else use updating function
                 if (isNew)
                 {
-                    mCandidate.UserId = UserManager._ActivatedUser.UserId;
-                    mCandidate.CreatedId = UserManager._ActivatedUser.UserId;
+                    mCandidate.UserId = UserManager.ActivatedUser.UserId;
+                    mCandidate.CreatedId = UserManager.ActivatedUser.UserId;
                     mCandidate.CreatedDate = DateTime.Now;
                     CandidateManager.InsertCandidate(mCandidate);
                 }

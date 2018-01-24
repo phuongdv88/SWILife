@@ -70,7 +70,7 @@ namespace DXSWI.Forms
                             CandidateId = CandidateId,
                             JobOrderId = jobId,
                             Added = DateTime.Now,
-                            EnteredBy = UserManager._ActivatedUser?.UserName
+                            EnteredBy = UserManager.ActivatedUser?.UserName
                         };
 
                         RunningTaskManager.createRunningTask(rtask);

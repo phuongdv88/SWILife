@@ -63,6 +63,12 @@ namespace DXSWI.Forms
 
         }
 
+        public void SetCompanyName(string comName)
+        {
+            companyComboxEdit.EditValue = comName;
+            companyComboxEdit.ReadOnly = true;
+        }
+
         private void fillCurrentJoborderToUI()
         {
             if (mJobOrder == null)
@@ -295,8 +301,8 @@ namespace DXSWI.Forms
                 // if it is new item, use inserting command, update username else use updating command
                 if (isNew)
                 {
-                    mJobOrder.OwnerId = UserManager._ActivatedUser.UserId;
-                    mJobOrder.RecruiterId = UserManager._ActivatedUser.UserId;
+                    mJobOrder.OwnerId = UserManager.ActivatedUser.UserId;
+                    mJobOrder.RecruiterId = UserManager.ActivatedUser.UserId;
                     JobOrderManager.createJobOrder(mJobOrder);
                 }
                 else
@@ -375,12 +381,57 @@ namespace DXSWI.Forms
 
         private void emailToCandidateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            List<string> emails = new List<string>();
+            List<string> names = new List<string>();
+            List<long> runningTaskIds = new List<long>();
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
+            {
+                try
+                {
+                    int row = gvCandidatePipeline.GetSelectedRows().First();
+                    DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                    emails.Add(data_row["Email"].ToString());
+                    runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
+                    names.Add(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString()));
 
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            EmailToCandidates(runningTaskIds, emails, names);
+        }
+
+        public void EmailToCandidates(List<long> runningTaskIds, List<string> emails, List<string> names)
+        {
+            dlgMailEdit dlg = new dlgMailEdit(runningTaskIds, emails, names);
+            dlg.ShowDialog();
         }
 
         private void emailToAllCandidatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            List<string> emails = new List<string>();
+            List<string> names = new List<string>();
+            List<long> runningTaskIds = new List<long>();
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
+            {
+                try
+                {
+                    foreach (var row in gvCandidatePipeline.GetSelectedRows())
+                    {
+                        DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                        emails.Add(data_row["Email"].ToString());
+                        runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
+                        names.Add(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString()));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            EmailToCandidates(runningTaskIds, emails, names);
         }
 
         private void deleteCandidateFromPipelineToolStripMenuItem_Click(object sender, EventArgs e)
@@ -425,7 +476,7 @@ namespace DXSWI.Forms
                     rows = gvCandidatePipeline.GetSelectedRows();
                 gcCandidatePipeline.DataSource = RunningTaskManager.getRunningTaskCandidates(mJobOrder.JobOrderId);
                 //gcCandidatePipeline.Refresh();
-                if(rows != null)
+                if (rows != null)
                 {
                     if (rows.First() < gvCandidatePipeline.RowCount)
                     {
@@ -571,7 +622,7 @@ namespace DXSWI.Forms
                 {
                     int row = e.RowHandle;
                     DataRow data_row = gvCandidatePipeline.GetDataRow(row);
-                    int id = int.Parse(data_row["RunningTaskId"].ToString());
+                    long id = Convert.ToInt64(data_row["RunningTaskId"].ToString());
                     RunningTaskManager.updateMatchValue(Convert.ToInt32(e.Value.ToString()), id);
                     //updateData();
                 }

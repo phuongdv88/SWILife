@@ -93,7 +93,7 @@
             // 
             // newUserToolStripMenuItem
             // 
-            this.newUserToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Add_Male_User_icon1;
+            this.newUserToolStripMenuItem.Image = global::DXSWI.Properties.Resources.AddMaleUser1;
             this.newUserToolStripMenuItem.Name = "newUserToolStripMenuItem";
             this.newUserToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.newUserToolStripMenuItem.Text = "New User";
@@ -101,7 +101,7 @@
             // 
             // editUserToolStripMenuItem
             // 
-            this.editUserToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Edit_Male_User_icon1;
+            this.editUserToolStripMenuItem.Image = global::DXSWI.Properties.Resources.EditMaleUsericon1;
             this.editUserToolStripMenuItem.Name = "editUserToolStripMenuItem";
             this.editUserToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.editUserToolStripMenuItem.Text = "Edit User";
@@ -109,7 +109,7 @@
             // 
             // deleteUserToolStripMenuItem
             // 
-            this.deleteUserToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Remove_Male_User_icon1;
+            this.deleteUserToolStripMenuItem.Image = global::DXSWI.Properties.Resources.RemoveMaleUsericon1;
             this.deleteUserToolStripMenuItem.Name = "deleteUserToolStripMenuItem";
             this.deleteUserToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.deleteUserToolStripMenuItem.Text = "Delete User";

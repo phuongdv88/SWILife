@@ -68,7 +68,7 @@ namespace DXSWI.Forms
                     throw new Exception("Confirm password is not match");
                 }
                 // check old password;
-                if (!UserManager.verifyMd5Hash(textEditOld.Text.Trim() + UserManager._ActivatedUser.Salt, UserManager._ActivatedUser.Password))
+                if (!UserManager.verifyMd5Hash(textEditOld.Text.Trim() + UserManager.ActivatedUser.Salt, UserManager.ActivatedUser.Password))
                 {
                     textEditOld.Focus();
                     clearUi();
@@ -97,14 +97,14 @@ namespace DXSWI.Forms
             try
             {
                 // check old password;
-                if (!UserManager.verifyMd5Hash(textEditOld.Text.Trim() + UserManager._ActivatedUser.Salt, UserManager._ActivatedUser.Password))
+                if (!UserManager.verifyMd5Hash(textEditOld.Text.Trim() + UserManager.ActivatedUser.Salt, UserManager.ActivatedUser.Password))
                 {
                     throw new Exception("Old password is incorrect!");
                 }
 
-                UserManager._ActivatedUser.Salt = Utils.getRandomAlphaNumeric(10);
-                UserManager._ActivatedUser.Password = UserManager.createMD5Hash(textEditNew.Text.Trim() + UserManager._ActivatedUser.Salt);
-                UserManager.UpdateUser(UserManager._ActivatedUser);
+                UserManager.ActivatedUser.Salt = Utils.getRandomAlphaNumeric(10);
+                UserManager.ActivatedUser.Password = UserManager.createMD5Hash(textEditNew.Text.Trim() + UserManager.ActivatedUser.Salt);
+                UserManager.UpdateUser(UserManager.ActivatedUser);
 
                 Close();
             }
@@ -116,7 +116,7 @@ namespace DXSWI.Forms
 
         private void dlgChangePassword_Load(object sender, EventArgs e)
         {
-            Text = UserManager._ActivatedUser.UserName;
+            Text = UserManager.ActivatedUser.UserName;
             textEditOld.Focus();
         }
     }

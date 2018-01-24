@@ -27,6 +27,7 @@ namespace SWIBLL
 
         public static Contact getContactById(long contactId)
         {
+            if (contactId < 0) return null;
             string sql = string.Format("SELECT T1.*, T2.Name as CompanyName, T3.UserName as Owner FROM swilifecore.contact T1 " +
                                         "left join swilifecore.company T2 on T1.CompanyId = T2.CompanyId " +
                                         "left join swilifecore.user T3 on T1.UserId = T3.UserId where T1.ContactId = '{0}'", contactId);
