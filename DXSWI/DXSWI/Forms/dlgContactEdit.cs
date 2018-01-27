@@ -225,7 +225,10 @@ namespace DXSWI.Forms
                 //update to db
                 if (mContact.ContactId == -1)
                 {
-                    ContactManager.InsertContact(mContact);
+                    if (!ContactManager.IsContactExisted(mContact))
+                    {
+                        ContactManager.InsertContact(mContact);
+                    }
                 }
                 else
                 {

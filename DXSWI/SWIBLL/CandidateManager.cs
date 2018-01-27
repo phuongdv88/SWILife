@@ -102,8 +102,7 @@ namespace SWIBLL
                 throw;
             }
         }
-
-        public static void InsertCandidate(Candidate can)
+        public static bool IsCandidateExist(Candidate can)
         {
             // check duplicate:
             string sql = string.Format("select count(*) from swilifecore.candidate where (char_length(CellPhone) > 0 and CellPhone = '{0}') or (char_length(Email) > 0 and Email = '{1}') or (char_length(WorkPhone) > 0 and WorkPhone = '{2}')"
@@ -115,7 +114,7 @@ namespace SWIBLL
                 {
                     if (int.Parse(reader[0].ToString()) > 0)
                     {
-                        throw new Exception("This candidate has existed!");
+                        return true;
                     }
                     break;
                 }
@@ -128,11 +127,14 @@ namespace SWIBLL
             {
                 reader.Dispose();
             }
+            return false;
+        }
 
-
+        public static void InsertCandidate(Candidate can)
+        {
             //INSERT INTO `swilifecore`.`candidate` (`FirstName`, `MiddleName`, `LastName`, `Email`, `SecondaryEmail`, `SkypeIM`, `CellPhone`, `WorkPhone`, `BestTimeToCall`, `Address`, `WebSite`, `Source`, `CurrentPosition`, `DateAvailable`, `CurrentEmployer`, `KeySkills`, `CanRelocate`, `CurrentPay`, `DesiredPay`, `DOBMarried`, `InterviewNotes`, `Gender`, `MiscNotes`, `City`, `Country`, `ResumeLink`, `PositionsUpTillNow`, `Years`, `ProjectDone`, `Industry`, `Education`, `Language`, `CreatedDate`, `CreatedId`, `IsInBlacklist`, `UserId`, `Modified`, `ImageLink`) 
             //VALUES('1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
-           sql = string.Format("INSERT INTO `swilifecore`.`candidate` " +
+           string sql = string.Format("INSERT INTO `swilifecore`.`candidate` " +
                 "(`FirstName`, `MiddleName`, `LastName`, `Email`, `SecondaryEmail`, " +
                 "`SkypeIM`, `CellPhone`, `WorkPhone`, `BestTimeToCall`, `Address`, " +
                 "`WebSite`, `Source`, `CurrentPosition`, `DateAvailable`, `CurrentEmployer`, " +
@@ -208,6 +210,7 @@ namespace SWIBLL
 
         public static Candidate getCandidate(long id)
         {
+            if (id < 0) return null;
             Candidate can = null;
             string sql = string.Format("select T1.*, T2.UserName as Owner from `swilifecore`.`candidate` T1 left join user T2 on T1.UserId = T2.UserId where `CandidateId`='{0}'", id);
             DataTable tbl = DataAccess.Instance.getDataTable(sql);
@@ -216,6 +219,32 @@ namespace SWIBLL
                 DataRow datarow = tbl.Rows[0];
                 can = Data.CreateItemFromRow<Candidate>(datarow);
             }              
+            return can;
+        }
+
+        public static Candidate getCandidateByEmail(string email)
+        {
+            Candidate can = null;
+            string sql = string.Format("select T1.*, T2.UserName as Owner from `swilifecore`.`candidate` T1 left join user T2 on T1.UserId = T2.UserId where `Email`='{0}'", email);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
+            if (tbl.Rows.Count > 0)
+            {
+                DataRow datarow = tbl.Rows[0];
+                can = Data.CreateItemFromRow<Candidate>(datarow);
+            }
+            return can;
+        }
+
+        public static Candidate getCandidateByCellPhone(string cellphone)
+        {
+            Candidate can = null;
+            string sql = string.Format("select T1.*, T2.UserName as Owner from `swilifecore`.`candidate` T1 left join user T2 on T1.UserId = T2.UserId where `CellPhone`='{0}'", cellphone);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
+            if (tbl.Rows.Count > 0)
+            {
+                DataRow datarow = tbl.Rows[0];
+                can = Data.CreateItemFromRow<Candidate>(datarow);
+            }
             return can;
         }
 

@@ -41,10 +41,10 @@ namespace SWIBLL
             return con;
         }
 
-        public static void InsertContact(Contact con)
+        public static bool IsContactExisted(Contact con)
         {
-             // check duplicate:
-            string sql = string.Format("select count(*) from swilifecore.contact where (char_length(CellPhone) > 0 and CellPhone = '{0}') or (char_length(Email) > 0 and Email = '{1}') or (char_length(WorkPhone) > 0 and WorkPhone = '{2}')", 
+            // check duplicate:
+            string sql = string.Format("select count(*) from swilifecore.contact where (char_length(CellPhone) > 0 and CellPhone = '{0}') or (char_length(Email) > 0 and Email = '{1}') or (char_length(WorkPhone) > 0 and WorkPhone = '{2}')",
                 QueryBuilder.mySqlEscape(con.CellPhone), QueryBuilder.mySqlEscape(con.Email), QueryBuilder.mySqlEscape(con.WorkPhone));
             MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);
             try
@@ -53,7 +53,7 @@ namespace SWIBLL
                 {
                     if (int.Parse(reader[0].ToString()) > 0)
                     {
-                        throw new Exception("This Contact has existed!");
+                        return true;
                     }
                     break;
                 }
@@ -66,7 +66,12 @@ namespace SWIBLL
             {
                 reader.Dispose();
             }
-            sql = string.Format("INSERT INTO `swilifecore`.`contact` " +
+            return false;
+        }
+        public static void InsertContact(Contact con)
+        {
+           
+           string sql = string.Format("INSERT INTO `swilifecore`.`contact` " +
                 "(`FirstName`, `MiddleName`, `LastName`, `Title`, `Department`, `ReportTo`, `isHot`, `Email`, " +
                 "`SecondaryEmail`, `CellPhone`, `WorkPhone`, `OtherPhone`, `Address`, `City`, `State`, `PostalCode`, " +
                 "`ProfileLink`, `MiscNotes`, `CompanyId`, `UserId`, `Created`, `Modified`, `ImageLink`) " +

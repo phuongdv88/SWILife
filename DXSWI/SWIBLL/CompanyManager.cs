@@ -36,9 +36,8 @@ namespace SWIBLL
             return com;
         }
 
-        public static void addNewCompany(Company com)
+        public static bool IsCompanyExisted(Company com)
         {
-            if (com == null) return;
             // check duplicate:
             string sql = string.Format("select count(*) from swilifecore.company where (char_length(Name) > 0 and Name = '{0}') or (char_length(PrimaryPhone) > 0 and PrimaryPhone = '{1}')"
                 , QueryBuilder.mySqlEscape(com.Name), QueryBuilder.mySqlEscape(com.PrimaryPhone));
@@ -49,7 +48,7 @@ namespace SWIBLL
                 {
                     if (int.Parse(reader[0].ToString()) > 0)
                     {
-                        throw new Exception("This Company has existed!");
+                        return true;
                     }
                     break;
                 }
@@ -63,19 +62,25 @@ namespace SWIBLL
                 reader.Dispose();
             }
 
-            sql = string.Format("INSERT INTO `swilifecore`.`company` " +
-                "(`Name`, `PrimaryPhone`, `SecondaryPhone`, `FaxNumber`, `Address`, `CountryOfOrigin`, `WebSite`, `KeyTechnologies`, " +
-                "`ServiceContractTerms`, `Industry`, `ABC`, `IsActive`, `MiscNotes`, `City`, `State`, `PostalCode`, `IsHot`, " +
-                "`ContractSigingTime`, `ScanLink`, `UserId`, `Created`, `Modified`) VALUES " +
-                "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', " +
-                "'{15}', '{16}', '{17}', '{18}', '{19}', now(), now())",
-                QueryBuilder.mySqlEscape(com.Name), QueryBuilder.mySqlEscape(com.PrimaryPhone), QueryBuilder.mySqlEscape(com.SecondaryPhone),
-                QueryBuilder.mySqlEscape(com.FaxNumber), QueryBuilder.mySqlEscape(com.Address), QueryBuilder.mySqlEscape(com.CountryOfOrigin),
-                QueryBuilder.mySqlEscape(com.WebSite), QueryBuilder.mySqlEscape(com.KeyTechnologies), QueryBuilder.mySqlEscape(com.ServiceContractTerms),
-                QueryBuilder.mySqlEscape(com.Industry), QueryBuilder.mySqlEscape(com.ABC), Convert.ToInt32(com.IsActive),
-                QueryBuilder.mySqlEscape(com.MiscNotes), QueryBuilder.mySqlEscape(com.City), QueryBuilder.mySqlEscape(com.State),
-                QueryBuilder.mySqlEscape(com.PostalCode), Convert.ToInt32(com.IsHot), com.ContractSigingTime.ToString("yyyy/MM/dd"),
-                QueryBuilder.mySqlEscape(com.ScanLink), com.UserId);
+            return false;
+        }
+
+        public static void addNewCompany(Company com)
+        {
+            if (com == null) return;
+            string sql = string.Format("INSERT INTO `swilifecore`.`company` " +
+                 "(`Name`, `PrimaryPhone`, `SecondaryPhone`, `FaxNumber`, `Address`, `CountryOfOrigin`, `WebSite`, `KeyTechnologies`, " +
+                 "`ServiceContractTerms`, `Industry`, `ABC`, `IsActive`, `MiscNotes`, `City`, `State`, `PostalCode`, `IsHot`, " +
+                 "`ContractSigingTime`, `ScanLink`, `UserId`, `Created`, `Modified`) VALUES " +
+                 "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', " +
+                 "'{15}', '{16}', '{17}', '{18}', '{19}', now(), now())",
+                 QueryBuilder.mySqlEscape(com.Name), QueryBuilder.mySqlEscape(com.PrimaryPhone), QueryBuilder.mySqlEscape(com.SecondaryPhone),
+                 QueryBuilder.mySqlEscape(com.FaxNumber), QueryBuilder.mySqlEscape(com.Address), QueryBuilder.mySqlEscape(com.CountryOfOrigin),
+                 QueryBuilder.mySqlEscape(com.WebSite), QueryBuilder.mySqlEscape(com.KeyTechnologies), QueryBuilder.mySqlEscape(com.ServiceContractTerms),
+                 QueryBuilder.mySqlEscape(com.Industry), QueryBuilder.mySqlEscape(com.ABC), Convert.ToInt32(com.IsActive),
+                 QueryBuilder.mySqlEscape(com.MiscNotes), QueryBuilder.mySqlEscape(com.City), QueryBuilder.mySqlEscape(com.State),
+                 QueryBuilder.mySqlEscape(com.PostalCode), Convert.ToInt32(com.IsHot), com.ContractSigingTime.ToString("yyyy/MM/dd"),
+                 QueryBuilder.mySqlEscape(com.ScanLink), com.UserId);
             long company_Id = DataAccess.Instance.executeInsertingQuery(sql);
 
             Activity act = new Activity()
@@ -99,7 +104,7 @@ namespace SWIBLL
                 , QueryBuilder.mySqlEscape(com.Name), QueryBuilder.mySqlEscape(com.PrimaryPhone), QueryBuilder.mySqlEscape(com.SecondaryPhone), QueryBuilder.mySqlEscape(com.FaxNumber),
                 QueryBuilder.mySqlEscape(com.Address), QueryBuilder.mySqlEscape(com.CountryOfOrigin), QueryBuilder.mySqlEscape(com.WebSite), QueryBuilder.mySqlEscape(com.KeyTechnologies), QueryBuilder.mySqlEscape(com.ServiceContractTerms), QueryBuilder.mySqlEscape(com.Industry),
                 QueryBuilder.mySqlEscape(com.ABC), Convert.ToInt32(com.IsActive), QueryBuilder.mySqlEscape(com.MiscNotes), QueryBuilder.mySqlEscape(com.City), QueryBuilder.mySqlEscape(com.State), QueryBuilder.mySqlEscape(com.PostalCode), Convert.ToInt32(com.IsHot), com.ContractSigingTime.ToString("yyyy/MM/dd"),
-                QueryBuilder.mySqlEscape(com.ScanLink),com.UserId, com.CompanyId);
+                QueryBuilder.mySqlEscape(com.ScanLink), com.UserId, com.CompanyId);
             DataAccess.Instance.executeNonQuery(sql);
             Activity act = new Activity()
             {

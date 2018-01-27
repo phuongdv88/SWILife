@@ -12,7 +12,7 @@ namespace SWIBLL
             return DataAccess.Instance.getJobOrders();
         }
 
-        public static bool createJobOrder(JobOrder jobOrder)
+        public static bool IsJobOrderExist(JobOrder jobOrder)
         {
             // check duplicate:
             string sql = string.Format("select count(*) from swilifecore.joborder where (char_length(Title) > 0 and Title = '{0}') and (CompanyId != -1 and CompanyId = '{1}') "
@@ -24,7 +24,7 @@ namespace SWIBLL
                 {
                     if (int.Parse(reader[0].ToString()) > 0)
                     {
-                        throw new Exception("This candidate has existed!");
+                        return true;
                     }
                     break;
                 }
@@ -37,16 +37,21 @@ namespace SWIBLL
             {
                 reader.Dispose();
             }
-            sql = string.Format("INSERT INTO `swilifecore`.`joborder` " +
-                "(`Title`, `Department`, `Salary`, `ContactId`, `CompanyId`, `City`, `State`, `RecruiterId`, `OwnerId`, `StartDate`, " +
-                "`Duration`, `Type`, `Openings`, `IsHot`, `isPublic`, `Description`, `InternalNotes`, `Created`, `Modified`, `WebLink`, `Status`, `ExperienceYear`)" +
-                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', " +
-                "'{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', now(), now(), '{17}', '{18}', '{19}')",
-                QueryBuilder.mySqlEscape(jobOrder.Title), QueryBuilder.mySqlEscape(jobOrder.Department), QueryBuilder.mySqlEscape(jobOrder.Salary), jobOrder.ContactId,
-                jobOrder.CompanyId, QueryBuilder.mySqlEscape(jobOrder.City), QueryBuilder.mySqlEscape(jobOrder.State), jobOrder.RecruiterId, jobOrder.OwnerId,
-                jobOrder.StartDate.ToString("yyyy-MM-dd"), QueryBuilder.mySqlEscape(jobOrder.Duration), QueryBuilder.mySqlEscape(jobOrder.Type), jobOrder.Openings,
-                Convert.ToInt32(jobOrder.IsHot), Convert.ToInt32(jobOrder.isPublic), QueryBuilder.mySqlEscape(jobOrder.Description), QueryBuilder.mySqlEscape(jobOrder.InternalNotes),
-                QueryBuilder.mySqlEscape(jobOrder.WebLink), QueryBuilder.mySqlEscape(jobOrder.Status), jobOrder.ExperienceYear);
+            return false;
+        }
+        public static bool createJobOrder(JobOrder jobOrder)
+        {
+
+            string sql = string.Format("INSERT INTO `swilifecore`.`joborder` " +
+                 "(`Title`, `Department`, `Salary`, `ContactId`, `CompanyId`, `City`, `State`, `RecruiterId`, `OwnerId`, `StartDate`, " +
+                 "`Duration`, `Type`, `Openings`, `IsHot`, `isPublic`, `Description`, `InternalNotes`, `Created`, `Modified`, `WebLink`, `Status`, `ExperienceYear`)" +
+                 "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', " +
+                 "'{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', now(), now(), '{17}', '{18}', '{19}')",
+                 QueryBuilder.mySqlEscape(jobOrder.Title), QueryBuilder.mySqlEscape(jobOrder.Department), QueryBuilder.mySqlEscape(jobOrder.Salary), jobOrder.ContactId,
+                 jobOrder.CompanyId, QueryBuilder.mySqlEscape(jobOrder.City), QueryBuilder.mySqlEscape(jobOrder.State), jobOrder.RecruiterId, jobOrder.OwnerId,
+                 jobOrder.StartDate.ToString("yyyy-MM-dd"), QueryBuilder.mySqlEscape(jobOrder.Duration), QueryBuilder.mySqlEscape(jobOrder.Type), jobOrder.Openings,
+                 Convert.ToInt32(jobOrder.IsHot), Convert.ToInt32(jobOrder.isPublic), QueryBuilder.mySqlEscape(jobOrder.Description), QueryBuilder.mySqlEscape(jobOrder.InternalNotes),
+                 QueryBuilder.mySqlEscape(jobOrder.WebLink), QueryBuilder.mySqlEscape(jobOrder.Status), jobOrder.ExperienceYear);
             // add activity
             long rs = DataAccess.Instance.executeInsertingQuery(sql);
             Activity act = new Activity()
@@ -119,6 +124,24 @@ namespace SWIBLL
 
             JobOrder job = null;
             DataTable tbl = DataAccess.Instance.getJobOrderById(id);
+            if (tbl.Rows.Count > 0)
+            {
+                DataRow datarow = tbl.Rows[0];
+                job = Data.CreateItemFromRow<JobOrder>(datarow);
+            }
+            return job;
+        }
+        public static JobOrder getJobOrderByTitle(string title, long comId)
+        {
+
+            JobOrder job = null;
+            string sql = string.Format("select T1.*, T2.Name CompanyName, concat(T3.FirstName , T3.LastName) as ContactName, " +
+                                        "(select count(RunningTaskId) from runningtask where runningtask.JobOrderId = T1.JobOrderId) as CanInPipeLine, " +
+                                        "(select count(*) from runningtask where runningtask.JobOrderId = T1.JobOrderId and runningtask.IsSubmitted = '1') as Submitted " +
+                                        "from swilifecore.joborder T1 left join swilifecore.company T2 on T1.CompanyId = T2.CompanyId " +
+                                        "left join swilifecore.contact T3 on T1.ContactId = T3.ContactId " +
+                                        "where T1.Title = {0} and T1.CompanyId = {1}", title, comId);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
             if (tbl.Rows.Count > 0)
             {
                 DataRow datarow = tbl.Rows[0];

@@ -303,7 +303,28 @@ namespace DXSWI.Forms
                 {
                     mJobOrder.OwnerId = UserManager.ActivatedUser.UserId;
                     mJobOrder.RecruiterId = UserManager.ActivatedUser.UserId;
-                    JobOrderManager.createJobOrder(mJobOrder);
+                    if (!JobOrderManager.IsJobOrderExist(mJobOrder))
+                    {
+                        JobOrderManager.createJobOrder(mJobOrder);
+                    }
+                    else
+                    {
+                        if (XtraMessageBox.Show("This job order has already existed. Would you want to load this candidate data?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            gcCandidatePipeline.Enabled = true;
+                            isNew = false;
+                            mJobOrder = JobOrderManager.getJobOrderByTitle(TitleTextEdit.Text.Trim(), companiesNameAndId[companyComboxEdit.Text]);
+                            if (mJobOrder == null)
+                            {
+                                XtraMessageBox.Show("Load data fail", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Close();
+                            }
+                            fillCurrentJoborderToUI();
+                            loadAttachment();
+                            updateData();
+                            return;
+                        }
+                    }
                 }
                 else
                 {
@@ -384,6 +405,7 @@ namespace DXSWI.Forms
             List<string> emails = new List<string>();
             List<string> names = new List<string>();
             List<long> runningTaskIds = new List<long>();
+            List<long> canIds = new List<long>();
             if (gvCandidatePipeline.SelectedRowsCount > 0)
             {
                 try
@@ -393,19 +415,20 @@ namespace DXSWI.Forms
                     emails.Add(data_row["Email"].ToString());
                     runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
                     names.Add(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString()));
-
+                    canIds.Add(Convert.ToInt64(data_row["CandidateId"].ToString()));
+                    EmailToCandidates(runningTaskIds, emails, names, canIds);
                 }
                 catch (Exception ex)
                 {
                     XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            EmailToCandidates(runningTaskIds, emails, names);
         }
 
-        public void EmailToCandidates(List<long> runningTaskIds, List<string> emails, List<string> names)
+        public void EmailToCandidates(List<long> runningTaskIds, List<string> emails, List<string> names, List<long> canIds)
         {
-            dlgMailEdit dlg = new dlgMailEdit(runningTaskIds, emails, names);
+            // test:
+            dlgMailEdit dlg = new dlgMailEdit(runningTaskIds, emails, names,canIds, mJobOrder.CompanyName, mJobOrder.Title, mJobOrder.JobOrderId);
             dlg.ShowDialog();
         }
 
@@ -414,6 +437,7 @@ namespace DXSWI.Forms
             List<string> emails = new List<string>();
             List<string> names = new List<string>();
             List<long> runningTaskIds = new List<long>();
+            List<long> canIds = new List<long>();
             if (gvCandidatePipeline.SelectedRowsCount > 0)
             {
                 try
@@ -424,14 +448,15 @@ namespace DXSWI.Forms
                         emails.Add(data_row["Email"].ToString());
                         runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
                         names.Add(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString()));
+                        canIds.Add(Convert.ToInt64(data_row["CandidateId"].ToString()));
                     }
+                    EmailToCandidates(runningTaskIds, emails, names, canIds);
                 }
                 catch (Exception ex)
                 {
                     XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            EmailToCandidates(runningTaskIds, emails, names);
         }
 
         private void deleteCandidateFromPipelineToolStripMenuItem_Click(object sender, EventArgs e)

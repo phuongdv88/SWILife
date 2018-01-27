@@ -20,61 +20,80 @@ namespace DXSWI.Forms
 {
     public partial class dlgMailEdit : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        private SmtpClient _client = null;
-        private MailMessage _emailMessage = null;
+        //private SmtpClient _client = null;
+        //private MailMessage _emailMessage = null;
         private Dictionary<string, string> _indexAndAttachments = new Dictionary<string, string>();
         LayoutControlGroup lcgAttachments;
         int _indexAttachmentName = 0;
         int _numberOfSentMail = -1;
         string _finalMessage = string.Empty;
-
+        string _companyName = string.Empty;
+        string _jobTitle = string.Empty;
+        long _jobOrderId = -1;
         List<long> _runningTaskIds;
         List<string> _candidateEmails;
         List<string> _candidateNames;
+        List<long> _candidateIds;
+        private static readonly object padlock = new object();
 
-        public dlgMailEdit(List<long> runningTaskIds, List<string> emails, List<string> names)
+        public dlgMailEdit(List<long> runningTaskIds, List<string> emails, List<string> names, List<long> candidateIds, string companyName, string jobTitle, long jobOrderId)
         {
             InitializeComponent();
-            initMailServer();
+            //initMailServer();
             _candidateEmails = emails;
             _candidateNames = names;
+            _candidateIds = candidateIds;
             _runningTaskIds = runningTaskIds;
             _numberOfSentMail = _candidateEmails.Count;
+            _companyName = companyName;
+            _jobTitle = jobTitle;
+            _jobOrderId = jobOrderId;
             init(emails);
         }
         private void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
         {
             // Get the unique identifier for this asynchronous operation.
-            int index = (int)e.UserState;
-            _numberOfSentMail--;
-            if (e.Error != null)
-            {
-                _finalMessage = string.Format("[{0}] {1}", _candidateEmails[index], e.Error.ToString());
-            }
-            else
-            {
-                try
+            try {
+                int index = (int)e.UserState;
+                _numberOfSentMail--;
+                if (e.Error != null)
                 {
-                    // todo: add activity when send ok
-                    Activity act = new Activity()
+                    _finalMessage = string.Format("[{0}] {1}", _candidateEmails[index], e.Error.ToString());
+                }
+                else
+                {
+                    try
                     {
-                        Type = "E-mail",
-                        ActivityOf = Activity.TypeOfLogActivity.Pipeline,
-                        RunningTaskId = _runningTaskIds[index],
-                        Status = Activity.RunningTaskStatus.CONTACTED,
-                        Notes = string.Format("[{0}] Message sent {1}.\r\n{3}", _candidateEmails[index], DateTime.Now.ToString("hh:mm:ss dd/MM/yyy"), _emailMessage.Body),
-                    };
-                    ActivityManager.insert(act, null);
+                        Activity act = new Activity()
+                        {
+                            Type = "E-mail",
+                            ActivityOf = Activity.TypeOfLogActivity.Pipeline,
+                            RunningTaskId = _runningTaskIds[index],
+                            CandidateId = _candidateIds[index],
+                            JobOrderId = _jobOrderId,
+                            Status = Activity.RunningTaskStatus.CONTACTED,
+                            Notes = string.Format("[{0}] Message sent {1}.", _candidateEmails[index], DateTime.Now.ToString("hh:mm:ss dd/MM/yyy")),
+                        };
+                        ActivityManager.insert(act, null);
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
+                if (_numberOfSentMail == 0)
                 {
-                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (_finalMessage.Length > 0)
+                    {
+                        XtraMessageBox.Show(_finalMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    //_emailMessage?.Dispose();
+                    Close();
                 }
             }
-            if (_numberOfSentMail == 0)
+            catch (Exception ex)
             {
-                _emailMessage?.Dispose();
-                Close();
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -103,24 +122,22 @@ namespace DXSWI.Forms
             }
 
             // add button add name, add 
-
-            //textEditTo.Text = "phuongdv@live.com";
             //textEditSubject.Text = "Test";
             //recMailContent.LoadDocument(@"C:\Users\phuon\Documents\testmail.docx");
         }
 
-        private void initMailServer()
-        {
-            _client = new SmtpClient();
-            _client.Port = Properties.Settings.Default.EmailSmtpServerPort;
-            _client.Host = Properties.Settings.Default.EmailSmtpServer;
-            _client.EnableSsl = true;
-            _client.Timeout = 10000;
-            _client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            _client.UseDefaultCredentials = false;
-            _client.Credentials = new NetworkCredential(Properties.Settings.Default.EmailAccount, Properties.Settings.Default.EmailPassword);
+        //private void initMailServer()
+        //{
+        //    _client = new SmtpClient();
+        //    _client.Port = Properties.Settings.Default.EmailSmtpServerPort;
+        //    _client.Host = Properties.Settings.Default.EmailSmtpServer;
+        //    _client.EnableSsl = true;
+        //    _client.Timeout = 10000;
+        //    _client.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //    _client.UseDefaultCredentials = false;
+        //    _client.Credentials = new NetworkCredential(Properties.Settings.Default.EmailAccount, Properties.Settings.Default.EmailPassword);
 
-        }
+        //}
 
         private void bbiMailSetting_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -170,20 +187,44 @@ namespace DXSWI.Forms
             return true;
         }
 
-        private void sendMailViaSmptClient(int index)
+        private void sendMailViaSmptClient(int index, bool isAutoGenerate = false)
         {
+            SmtpClient client = new SmtpClient();
+            client.Port = Properties.Settings.Default.EmailSmtpServerPort;
+            client.Host = Properties.Settings.Default.EmailSmtpServer;
+            client.EnableSsl = true;
+            client.Timeout = 10000;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential(Properties.Settings.Default.EmailAccount, Properties.Settings.Default.EmailPassword);
+
             MailAddress senderAddress = new MailAddress(textEditFrom.Text.Trim(), UserManager.ActivatedUser.UserName, Encoding.UTF8);
             MailAddress recipientAddress = new MailAddress(_candidateEmails[index], _candidateNames[index]);
 
-            _emailMessage = new MailMessage(senderAddress, recipientAddress);
-            _emailMessage.SubjectEncoding = UTF8Encoding.UTF8;
-            _emailMessage.BodyEncoding = UTF8Encoding.UTF8;
+            MailMessage emailMessage = new MailMessage(senderAddress, recipientAddress);
+            emailMessage.SubjectEncoding = UTF8Encoding.UTF8;
+            emailMessage.BodyEncoding = UTF8Encoding.UTF8;
+            if (isAutoGenerate)
+            {
 
-            _emailMessage.Subject = textEditSubject.Text.Trim();
-            _emailMessage.Body = recMailContent.Text; // use 2 view to avoid go to spam folder?
-                                                      //email.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-            RichEditMailMessageExporter exporter = new RichEditMailMessageExporter(recMailContent, _emailMessage);
-            exporter.Export();
+                emailMessage.Subject = autoGenerateEmail(textEditSubject.Text.Trim(), index);
+                emailMessage.Body = autoGenerateEmail(recMailContent.Text, index); // use 2 view to avoid go to spam folder?
+                                                                                    //email.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+
+                string temp = recMailContent.HtmlText;
+                recMailContent.HtmlText = autoGenerateEmail(temp, index);
+
+                RichEditMailMessageExporter exporter = new RichEditMailMessageExporter(recMailContent, emailMessage);
+                exporter.Export();
+
+                recMailContent.HtmlText = temp;
+            } else
+            {
+                emailMessage.Subject = textEditSubject.Text.Trim();
+                emailMessage.Body = recMailContent.Text; // use 2 view to avoid go to spam folder?
+                RichEditMailMessageExporter exporter = new RichEditMailMessageExporter(recMailContent, emailMessage);
+                exporter.Export();
+            }
 
             // add attachments
             foreach (var filePath in _indexAndAttachments.Values)
@@ -193,19 +234,18 @@ namespace DXSWI.Forms
                 disposition.CreationDate = File.GetCreationTime(filePath);
                 disposition.ModificationDate = File.GetLastWriteTime(filePath);
                 disposition.ReadDate = File.GetLastAccessTime(filePath);
-                _emailMessage.Attachments.Add(data);
+                emailMessage.Attachments.Add(data);
             }
 
             // add bcc
-            _emailMessage.Bcc.Add(textEditFrom.Text.Trim());
+            emailMessage.Bcc.Add(textEditFrom.Text.Trim());
             // Set the method that is called back when the send operation ends.
-            _client.SendCompleted += new SendCompletedEventHandler(SendCompletedCallback);
+            client.SendCompleted += new SendCompletedEventHandler(SendCompletedCallback);
             // The userState can be any object that allows your callback 
             // method to identify this send operation.
             // For this example, the userToken is a string constant.
             //string userState = candidateEmail + ": " + _emailMessage.Subject + ";" + runningTaskId.ToString();
-            _client.SendAsync(_emailMessage, index);
-            this.Hide();
+            client.SendAsync(emailMessage, index);
         }
         //private static bool RedirectionUrlValidationCallback(string redirectionUrl)
         //{
@@ -245,31 +285,49 @@ namespace DXSWI.Forms
         //}
         private void sbSend_Click(object sender, EventArgs e)
         {
+            //todo if multisending mail need to preview content first
             try
             {
                 if (!validateUi()) return;
                 if (_candidateEmails.Count == 1)
                 {
+                    Hide();
                     sendMailViaSmptClient(0);
                 }
                 else if (_candidateEmails.Count > 1)
                 {
-                    for (var i = 0; i < _candidateEmails.Count; ++i)
-                    {
-                        string canEmail = _candidateEmails[i];
-                        string canName = _candidateNames[i];
-                        long runId = _runningTaskIds[i];
-                        // todo: generate Email from template
-
-                        // send mail
-                        sendMailViaSmptClient(i);
-                    }
+                    dlgPreviewEmail dlg = new dlgPreviewEmail(textEditSubject.Text, recMailContent.HtmlText, _candidateNames[0], _companyName, _jobTitle);
+                    dlg.sendEmailEvent += startSendEmails;
+                    dlg.ShowDialog();
                 }
+
+                //this.Hide();
+
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
+            }
+        }
+
+        private void startSendEmails()
+        {
+            try {
+                Hide();
+                for (var i = 0; i < _candidateEmails.Count; ++i)
+                {
+                    string canEmail = _candidateEmails[i];
+                    string canName = _candidateNames[i];
+                    long runId = _runningTaskIds[i];
+                    // send mail
+                    sendMailViaSmptClient(i, true);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -360,6 +418,32 @@ namespace DXSWI.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void bbiInsertTemplate_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            dlgTemplateSetting dlg = new dlgTemplateSetting();
+            dlg.updateDataEvent += insertTemplate;
+            dlg.ShowDialog();
+        }
+
+        private void insertTemplate(string subject, string content)
+        {
+            // if send to many candidates, use original form of template, else auto generate to final mail
+            if(_candidateEmails.Count > 1)
+            {
+                recMailContent.HtmlText = content;
+                textEditSubject.Text = subject;
+            } else
+            {
+                recMailContent.HtmlText = autoGenerateEmail(content, 0);
+                textEditSubject.Text = autoGenerateEmail(subject, 0);
+            }
+        }
+
+        private string autoGenerateEmail(string template, int canIndex)
+        {
+            return template.Replace("[name]", _candidateNames[canIndex]).Replace("[company]",_companyName).Replace("[job]", _jobTitle);
         }
     }
 }

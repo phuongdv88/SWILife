@@ -162,6 +162,12 @@
     <Compile Include="Controls\ucScheduleEvent.Designer.cs">
       <DependentUpon>ucScheduleEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ucTemplateEditText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucTemplateEditText.Designer.cs">
+      <DependentUpon>ucTemplateEditText.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ucUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,6 +228,12 @@
     <Compile Include="Forms\dlgEmailSetting.Designer.cs">
       <DependentUpon>dlgEmailSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\dlgEmailTemplateEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgEmailTemplateEdit.Designer.cs">
+      <DependentUpon>dlgEmailTemplateEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\dlgJobOrderEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +263,18 @@
     </Compile>
     <Compile Include="Forms\dlgPasswordEdit.Designer.cs">
       <DependentUpon>dlgPasswordEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\dlgPreviewEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgPreviewEmail.Designer.cs">
+      <DependentUpon>dlgPreviewEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\dlgTemplateSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgTemplateSetting.Designer.cs">
+      <DependentUpon>dlgTemplateSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\dlgUserEdit.cs">
       <SubType>Form</SubType>
@@ -363,6 +387,9 @@
     <EmbeddedResource Include="Controls\ucScheduleEvent.resx">
       <DependentUpon>ucScheduleEvent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucTemplateEditText.resx">
+      <DependentUpon>ucTemplateEditText.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucUser.resx">
       <DependentUpon>ucUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -393,6 +420,9 @@
     <EmbeddedResource Include="Forms\dlgEmailSetting.resx">
       <DependentUpon>dlgEmailSetting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgEmailTemplateEdit.resx">
+      <DependentUpon>dlgEmailTemplateEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgJobOrderEdit.resx">
       <DependentUpon>dlgJobOrderEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -407,6 +437,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgPasswordEdit.resx">
       <DependentUpon>dlgPasswordEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgPreviewEmail.resx">
+      <DependentUpon>dlgPreviewEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgTemplateSetting.resx">
+      <DependentUpon>dlgTemplateSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgUserEdit.resx">
       <DependentUpon>dlgUserEdit.cs</DependentUpon>
@@ -484,6 +520,8 @@
   <ItemGroup>
     <Content Include="logo_tron_0Pv_icon.ico" />
     <Content Include="lollipop_candy.ico" />
+    <None Include="Resources\mails-icon1.png" />
+    <None Include="Resources\mails-icon.png" />
     <None Include="Resources\Actions-resource-group-icon1.png" />
     <None Include="Resources\delete_16x16.png" />
     <None Include="Resources\delete_32x32.png" />

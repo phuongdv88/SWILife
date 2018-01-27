@@ -27,9 +27,9 @@ namespace DXSWI.Modules
                 // load data in candidate table and show in grid control
                 gcCandidates.DataSource = mCandidateManager.GetAllCandidatesOverView();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

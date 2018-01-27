@@ -45,8 +45,6 @@
             this.bbiUserLogout = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCandidatesCreate = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCandidatesEdit = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiCandidatesAddPipeline = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiCandidateLogActivity = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAddCompany = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEditCompany = new DevExpress.XtraBars.BarButtonItem();
@@ -76,7 +74,6 @@
             this.rpgJobOrder0 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpCandidates = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpCalendar = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpUtilities = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -117,8 +114,6 @@
             this.bbiUserLogout,
             this.bbiCandidatesCreate,
             this.bbiCandidatesEdit,
-            this.bbiCandidatesAddPipeline,
-            this.bbiCandidateLogActivity,
             this.bbiDelete,
             this.bbiAddCompany,
             this.bbiEditCompany,
@@ -258,24 +253,6 @@
             this.bbiCandidatesEdit.Name = "bbiCandidatesEdit";
             this.bbiCandidatesEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiCandidatesEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidatesEdit_ItemClick);
-            // 
-            // bbiCandidatesAddPipeline
-            // 
-            this.bbiCandidatesAddPipeline.Caption = "Add Job Order To Pipeline";
-            this.bbiCandidatesAddPipeline.Id = 61;
-            this.bbiCandidatesAddPipeline.ImageOptions.Image = global::DXSWI.Properties.Resources.Actions_resource_group_icon;
-            this.bbiCandidatesAddPipeline.Name = "bbiCandidatesAddPipeline";
-            this.bbiCandidatesAddPipeline.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.bbiCandidatesAddPipeline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidatesAddPipeline_ItemClick);
-            // 
-            // bbiCandidateLogActivity
-            // 
-            this.bbiCandidateLogActivity.Caption = "Log An Activity";
-            this.bbiCandidateLogActivity.Id = 63;
-            this.bbiCandidateLogActivity.ImageOptions.Image = global::DXSWI.Properties.Resources.Actionsdocumentedit;
-            this.bbiCandidateLogActivity.Name = "bbiCandidateLogActivity";
-            this.bbiCandidateLogActivity.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.bbiCandidateLogActivity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCandidateLogActivity_ItemClick);
             // 
             // bbiDelete
             // 
@@ -505,8 +482,7 @@
             // rpCandidates
             // 
             this.rpCandidates.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup6,
-            this.ribbonPageGroup9});
+            this.ribbonPageGroup6});
             this.rpCandidates.Image = global::DXSWI.Properties.Resources.Appuser1;
             this.rpCandidates.Name = "rpCandidates";
             this.rpCandidates.Tag = "candidate";
@@ -519,13 +495,6 @@
             this.ribbonPageGroup6.ItemLinks.Add(this.bbiDelete);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.Text = "Edit candidates";
-            // 
-            // ribbonPageGroup9
-            // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.bbiCandidatesAddPipeline);
-            this.ribbonPageGroup9.ItemLinks.Add(this.bbiCandidateLogActivity);
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
-            this.ribbonPageGroup9.Text = "Manager";
             // 
             // rpCalendar
             // 
@@ -769,9 +738,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem bbiCandidatesCreate;
         private DevExpress.XtraBars.BarButtonItem bbiCandidatesEdit;
-        private DevExpress.XtraBars.BarButtonItem bbiCandidatesAddPipeline;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
-        private DevExpress.XtraBars.BarButtonItem bbiCandidateLogActivity;
         private DevExpress.XtraBars.BarButtonItem bbiDelete;
         private DevExpress.XtraBars.BarButtonItem bbiAddCompany;
         private DevExpress.XtraBars.BarButtonItem bbiEditCompany;

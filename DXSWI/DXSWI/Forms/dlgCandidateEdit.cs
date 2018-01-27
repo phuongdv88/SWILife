@@ -316,7 +316,34 @@ namespace DXSWI.Forms
                     mCandidate.UserId = UserManager.ActivatedUser.UserId;
                     mCandidate.CreatedId = UserManager.ActivatedUser.UserId;
                     mCandidate.CreatedDate = DateTime.Now;
-                    CandidateManager.InsertCandidate(mCandidate);
+                    if (!CandidateManager.IsCandidateExist(mCandidate))
+                    {
+                        CandidateManager.InsertCandidate(mCandidate);
+                    }
+                    else
+                    {
+                        if (XtraMessageBox.Show("This candiate has already existed. Would you want to load this candidate data?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            // fill data to ui
+                            mCandidate = CandidateManager.getCandidateByEmail(EmailTextEdit.Text.Trim());
+                            if(mCandidate == null)
+                            {
+                                mCandidate = CandidateManager.getCandidateByCellPhone(CellPhoneTextEdit.Text.Trim());
+                            }
+                            if(mCandidate == null)
+                            {
+                                XtraMessageBox.Show("Load data fail.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            isNew = false;
+                            gcActivities.Enabled = true;
+                            gcJobOrderPipeline.Enabled = true;
+                            FillUpToUi(mCandidate);
+                            loadAttachment(mCandidate.ResumeLink);
+                            updateData();
+                            return;
+                        }
+                    }
                 }
                 else
                 {
@@ -334,8 +361,6 @@ namespace DXSWI.Forms
             }
 
             Close();
-
-
         }
 
         private void getDataFromUI(ref Candidate can)

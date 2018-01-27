@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgMailEdit));
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation2 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
-            this.stylesRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.StylesRibbonPageGroup();
+            DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation1 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
             this.galleryChangeStyleItem1 = new DevExpress.XtraRichEdit.UI.GalleryChangeStyleItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.undoItem1 = new DevExpress.XtraRichEdit.UI.UndoItem();
@@ -143,7 +142,6 @@
             this.showAllFieldCodesItem1 = new DevExpress.XtraRichEdit.UI.ShowAllFieldCodesItem();
             this.showAllFieldResultsItem1 = new DevExpress.XtraRichEdit.UI.ShowAllFieldResultsItem();
             this.toggleViewMergedDataItem1 = new DevExpress.XtraRichEdit.UI.ToggleViewMergedDataItem();
-            this.bbiChooseTemplate = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFiles = new DevExpress.XtraBars.BarButtonItem();
             this.bbiMailSetting = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
@@ -163,6 +161,8 @@
             this.reviewersItem1 = new DevExpress.XtraRichEdit.UI.ReviewersItem();
             this.reviewingPaneItem1 = new DevExpress.XtraRichEdit.UI.ReviewingPaneItem();
             this.bbiSignatureSetting = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiInsertTemplate = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTemplateSetting = new DevExpress.XtraBars.BarButtonItem();
             this.homeRibbonPage1 = new DevExpress.XtraRichEdit.UI.HomeRibbonPage();
             this.clipboardRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.ClipboardRibbonPageGroup();
             this.fontRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.FontRibbonPageGroup();
@@ -174,11 +174,11 @@
             this.illustrationsRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.IllustrationsRibbonPageGroup();
             this.linksRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.LinksRibbonPageGroup();
             this.symbolsRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.SymbolsRibbonPageGroup();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.reviewRibbonPage1 = new DevExpress.XtraRichEdit.UI.ReviewRibbonPage();
             this.documentProofingRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.DocumentProofingRibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.lcMain = new DevExpress.XtraLayout.LayoutControl();
@@ -212,12 +212,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.richEditBarController1)).BeginInit();
             this.SuspendLayout();
             // 
-            // stylesRibbonPageGroup1
-            // 
-            this.stylesRibbonPageGroup1.Glyph = ((System.Drawing.Image)(resources.GetObject("stylesRibbonPageGroup1.Glyph")));
-            this.stylesRibbonPageGroup1.ItemLinks.Add(this.galleryChangeStyleItem1);
-            this.stylesRibbonPageGroup1.Name = "stylesRibbonPageGroup1";
-            // 
             // galleryChangeStyleItem1
             // 
             // 
@@ -225,7 +219,7 @@
             // 
             this.galleryChangeStyleItem1.Gallery.ColumnCount = 10;
             this.galleryChangeStyleItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            galleryItemGroup2});
+            galleryItemGroup1});
             this.galleryChangeStyleItem1.Gallery.ImageSize = new System.Drawing.Size(65, 46);
             this.galleryChangeStyleItem1.Id = 62;
             this.galleryChangeStyleItem1.Name = "galleryChangeStyleItem1";
@@ -342,7 +336,6 @@
             this.showAllFieldCodesItem1,
             this.showAllFieldResultsItem1,
             this.toggleViewMergedDataItem1,
-            this.bbiChooseTemplate,
             this.bbiFiles,
             this.bbiMailSetting,
             this.barSubItem1,
@@ -361,9 +354,11 @@
             this.changeCommentItem1,
             this.reviewersItem1,
             this.reviewingPaneItem1,
-            this.bbiSignatureSetting});
+            this.bbiSignatureSetting,
+            this.bbiInsertTemplate,
+            this.bbiTemplateSetting});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 130;
+            this.ribbon.MaxItemId = 134;
             this.ribbon.Name = "ribbon";
             this.ribbon.PageHeaderItemLinks.Add(this.barSubItem1);
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -1008,14 +1003,6 @@
             this.toggleViewMergedDataItem1.Id = 109;
             this.toggleViewMergedDataItem1.Name = "toggleViewMergedDataItem1";
             // 
-            // bbiChooseTemplate
-            // 
-            this.bbiChooseTemplate.Caption = "Choose Template";
-            this.bbiChooseTemplate.Id = 110;
-            this.bbiChooseTemplate.ImageOptions.Image = global::DXSWI.Properties.Resources.Placesfoldertemplatesicon;
-            this.bbiChooseTemplate.Name = "bbiChooseTemplate";
-            this.bbiChooseTemplate.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
             // bbiFiles
             // 
             this.bbiFiles.Caption = "Files";
@@ -1128,21 +1115,36 @@
             this.bbiSignatureSetting.Name = "bbiSignatureSetting";
             this.bbiSignatureSetting.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // bbiInsertTemplate
+            // 
+            this.bbiInsertTemplate.Caption = "Template";
+            this.bbiInsertTemplate.Id = 132;
+            this.bbiInsertTemplate.ImageOptions.Image = global::DXSWI.Properties.Resources.mails_icon;
+            this.bbiInsertTemplate.Name = "bbiInsertTemplate";
+            this.bbiInsertTemplate.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiInsertTemplate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiInsertTemplate_ItemClick);
+            // 
+            // bbiTemplateSetting
+            // 
+            this.bbiTemplateSetting.Caption = "Template Setting";
+            this.bbiTemplateSetting.Id = 133;
+            this.bbiTemplateSetting.ImageOptions.Image = global::DXSWI.Properties.Resources.mails_icon;
+            this.bbiTemplateSetting.Name = "bbiTemplateSetting";
+            this.bbiTemplateSetting.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
             // homeRibbonPage1
             // 
             this.homeRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.clipboardRibbonPageGroup1,
             this.fontRibbonPageGroup1,
             this.paragraphRibbonPageGroup1,
-            this.stylesRibbonPageGroup1,
             this.editingRibbonPageGroup1});
             this.homeRibbonPage1.Name = "homeRibbonPage1";
-            reduceOperation2.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.UntilAvailable;
-            reduceOperation2.Group = this.stylesRibbonPageGroup1;
-            reduceOperation2.ItemLinkIndex = 0;
-            reduceOperation2.ItemLinksCount = 0;
-            reduceOperation2.Operation = DevExpress.XtraBars.Ribbon.ReduceOperationType.Gallery;
-            this.homeRibbonPage1.ReduceOperations.Add(reduceOperation2);
+            reduceOperation1.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.UntilAvailable;
+            reduceOperation1.ItemLinkIndex = 0;
+            reduceOperation1.ItemLinksCount = 0;
+            reduceOperation1.Operation = DevExpress.XtraBars.Ribbon.ReduceOperationType.Gallery;
+            this.homeRibbonPage1.ReduceOperations.Add(reduceOperation1);
             // 
             // clipboardRibbonPageGroup1
             // 
@@ -1182,7 +1184,8 @@
             this.tablesRibbonPageGroup1,
             this.illustrationsRibbonPageGroup1,
             this.linksRibbonPageGroup1,
-            this.symbolsRibbonPageGroup1});
+            this.symbolsRibbonPageGroup1,
+            this.ribbonPageGroup5});
             this.insertRibbonPage1.Name = "insertRibbonPage1";
             // 
             // ribbonPageGroup2
@@ -1213,6 +1216,12 @@
             this.symbolsRibbonPageGroup1.ItemLinks.Add(this.insertSymbolItem1, "U");
             this.symbolsRibbonPageGroup1.Name = "symbolsRibbonPageGroup1";
             // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.bbiInsertTemplate);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "Templates";
+            // 
             // reviewRibbonPage1
             // 
             this.reviewRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -1229,7 +1238,6 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup3,
-            this.ribbonPageGroup1,
             this.ribbonPageGroup4});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Mail";
@@ -1239,12 +1247,6 @@
             this.ribbonPageGroup3.ItemLinks.Add(this.bbiMailSetting);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "Setting";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiChooseTemplate);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Template";
             // 
             // ribbonPageGroup4
             // 
@@ -1663,7 +1665,6 @@
         private DevExpress.XtraRichEdit.UI.ClipboardRibbonPageGroup clipboardRibbonPageGroup1;
         private DevExpress.XtraRichEdit.UI.FontRibbonPageGroup fontRibbonPageGroup1;
         private DevExpress.XtraRichEdit.UI.ParagraphRibbonPageGroup paragraphRibbonPageGroup1;
-        private DevExpress.XtraRichEdit.UI.StylesRibbonPageGroup stylesRibbonPageGroup1;
         private DevExpress.XtraRichEdit.UI.EditingRibbonPageGroup editingRibbonPageGroup1;
         private DevExpress.XtraRichEdit.UI.InsertRibbonPage insertRibbonPage1;
         private DevExpress.XtraRichEdit.UI.TablesRibbonPageGroup tablesRibbonPageGroup1;
@@ -1677,9 +1678,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraRichEdit.UI.RichEditBarController richEditBarController1;
-        private DevExpress.XtraBars.BarButtonItem bbiChooseTemplate;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem bbiFiles;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraEditors.TextEdit textEditSubject;
@@ -1711,5 +1710,8 @@
         private DevExpress.XtraRichEdit.RichEditControl recMailContent;
         private DevExpress.XtraLayout.LayoutControlItem lciMailContent;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraBars.BarButtonItem bbiInsertTemplate;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
+        private DevExpress.XtraBars.BarButtonItem bbiTemplateSetting;
     }
 }

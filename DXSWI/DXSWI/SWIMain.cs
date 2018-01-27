@@ -306,16 +306,6 @@ namespace DXSWI
             _frCandidate.deleteToolStripMenuItem_Click(sender, e);
         }
 
-        private void bbiCandidatesAddPipeline_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            _frCandidate.AddJobToPipeLine();
-        }
-
-        private void bbiCandidateLogActivity_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            _frCandidate.logActivity();
-        }
-
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
             // add contact
