@@ -37,6 +37,7 @@
             this.sbOk = new DevExpress.XtraEditors.SimpleButton();
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
             this.checkEditChangePassword = new DevExpress.XtraEditors.CheckEdit();
+            this.textEditEmail = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -53,7 +54,6 @@
             this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEditEmail = new DevExpress.XtraEditors.TextEdit();
             this.Email = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -63,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditRole.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditChangePassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
@@ -79,7 +80,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Email)).BeginInit();
             this.SuspendLayout();
             // 
@@ -199,6 +199,14 @@
             this.checkEditChangePassword.StyleController = this.layoutControl1;
             this.checkEditChangePassword.TabIndex = 26;
             this.checkEditChangePassword.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
+            // 
+            // textEditEmail
+            // 
+            this.textEditEmail.Location = new System.Drawing.Point(92, 208);
+            this.textEditEmail.Name = "textEditEmail";
+            this.textEditEmail.Size = new System.Drawing.Size(350, 20);
+            this.textEditEmail.StyleController = this.layoutControl1;
+            this.textEditEmail.TabIndex = 27;
             // 
             // layoutControlGroup1
             // 
@@ -352,14 +360,6 @@
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
-            // textEditEmail
-            // 
-            this.textEditEmail.Location = new System.Drawing.Point(92, 208);
-            this.textEditEmail.Name = "textEditEmail";
-            this.textEditEmail.Size = new System.Drawing.Size(350, 20);
-            this.textEditEmail.StyleController = this.layoutControl1;
-            this.textEditEmail.TabIndex = 27;
-            // 
             // Email
             // 
             this.Email.Control = this.textEditEmail;
@@ -389,6 +389,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditRole.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditChangePassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
@@ -405,7 +406,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Email)).EndInit();
             this.ResumeLayout(false);
 

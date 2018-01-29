@@ -13,6 +13,8 @@ using SWIBLL;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.Utils;
+using HtmlAgilityPack;
+using System.Text.RegularExpressions;
 
 namespace DXSWI.Forms
 {
@@ -67,7 +69,63 @@ namespace DXSWI.Forms
             }
         }
 
-        private void sbEdit_Click(object sender, EventArgs e)
+        private void updateListTemplate()
+        {
+            try
+            {
+                // load data in candidate table and show in grid control
+                gcTemplates.DataSource = EmailTemplateManager.GetEmailTemplates();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gcTemplates_DoubleClick(object sender, EventArgs e)
+        {
+            bbiEdit.PerformClick();
+        }
+
+        private void toolTipController1_GetActiveObjectInfo(object sender, DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventArgs e)
+        {
+            if (e.Info != null || e.SelectedControl != gcTemplates) return;
+            try
+            {
+                //Get the view at the current mouse position
+                GridView view = gcTemplates.FocusedView as GridView;
+                if (view == null) return;
+                //Get the view's element information that resides at the current position
+                GridHitInfo info = view.CalcHitInfo(e.ControlMousePosition);
+                //Display a hint for row indicator cells
+                if (info.InRowCell)
+                {
+                    int row = info.RowHandle;
+                    DataRow data_row = gvTemplate.GetDataRow(row);
+                    string subject = data_row["Subject"].ToString();
+                    HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                    doc.LoadHtml(data_row["Content"].ToString());
+                    var bodySegment = doc.DocumentNode.Descendants("body").FirstOrDefault();
+                    if (bodySegment != null)
+                    {
+                        string content = bodySegment.InnerText.Trim();
+                        content = Regex.Replace(content, @"^\s*$\n", string.Empty, RegexOptions.Multiline).Replace("&nbsp;", "\n");
+                        string cellKey = info.RowHandle.ToString() + " - " + info.Column.ToString();
+                        e.Info = new ToolTipControlInfo(cellKey, string.Format("Subject: {0} \r\nContent:{1}", subject, content));
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void bbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            dlgEmailTemplateEdit dlg = new dlgEmailTemplateEdit(-1);
+            dlg.updateDataEvent += updateListTemplate;
+            dlg.ShowDialog();
+        }
+
+        private void bbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (gvTemplate.SelectedRowsCount > 0)
             {
@@ -88,50 +146,29 @@ namespace DXSWI.Forms
             }
         }
 
-        private void sbNew_Click(object sender, EventArgs e)
+        private void bbiDeleteTemplate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            dlgEmailTemplateEdit dlg = new dlgEmailTemplateEdit(-1);
-            dlg.updateDataEvent += updateListTemplate;
-            dlg.ShowDialog();
-        }
-
-        private void updateListTemplate()
-        {
-            try
+            if (gvTemplate.SelectedRowsCount > 0)
             {
-                // load data in candidate table and show in grid control
-                gcTemplates.DataSource = EmailTemplateManager.GetEmailTemplates();
+                if (XtraMessageBox.Show("Are you sure to delete this Template?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        // delete this running task data
+                        int row = gvTemplate.GetSelectedRows().First();
+                        DataRow data_row = gvTemplate.GetDataRow(row);
+                        int emailTemplateID = int.Parse(data_row["EmailTemplateId"].ToString());
+                        EmailTemplateManager.DeleteEmailTemplate(emailTemplateID);
+                        updateListTemplate();
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
-        private void gcTemplates_DoubleClick(object sender, EventArgs e)
-        {
-            sbEdit.PerformClick();
-        }
-
-        private void toolTipController1_GetActiveObjectInfo(object sender, DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventArgs e)
-        {
-            if (e.Info != null || e.SelectedControl != gcTemplates) return;
-
-            //Get the view at the current mouse position
-            GridView view = gcTemplates.FocusedView as GridView;
-            if (view == null) return;
-            //Get the view's element information that resides at the current position
-            GridHitInfo info = view.CalcHitInfo(e.ControlMousePosition);
-            //Display a hint for row indicator cells
-            if (info.InRowCell)
-            {
-                int row = info.RowHandle;
-                DataRow data_row = gvTemplate.GetDataRow(row);
-                string subject = data_row["Subject"].ToString();
-                string content = data_row["Content"].ToString();
-                string cellKey = info.RowHandle.ToString() + " - " + info.Column.ToString();
-                e.Info = new ToolTipControlInfo(cellKey, string.Format("Subject: {0} \r\nContent:{1}",subject, content));
-            }
         }
     }
+
 }

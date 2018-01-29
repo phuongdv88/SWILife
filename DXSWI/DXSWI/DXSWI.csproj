@@ -520,6 +520,8 @@
   <ItemGroup>
     <Content Include="logo_tron_0Pv_icon.ico" />
     <Content Include="lollipop_candy.ico" />
+    <None Include="Resources\Actions-edit-copy-icon1.png" />
+    <None Include="Resources\Actions-edit-copy-icon.png" />
     <None Include="Resources\mails-icon1.png" />
     <None Include="Resources\mails-icon.png" />
     <None Include="Resources\Actions-resource-group-icon1.png" />

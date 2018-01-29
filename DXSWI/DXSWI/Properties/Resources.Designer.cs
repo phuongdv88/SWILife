@@ -83,6 +83,26 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Actions_edit_copy_icon {
+            get {
+                object obj = ResourceManager.GetObject("Actions-edit-copy-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Actions_edit_copy_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("Actions-edit-copy-icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Actions_resource_group_icon {
             get {
                 object obj = ResourceManager.GetObject("Actions-resource-group-icon", resourceCulture);

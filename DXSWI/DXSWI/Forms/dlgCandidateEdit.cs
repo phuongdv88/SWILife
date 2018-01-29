@@ -887,12 +887,37 @@ namespace DXSWI.Forms
             dlg.ShowDialog();
         }
 
-        private void tsmiAddCandidateToPipeLine_Click(object sender, EventArgs e)
+        private void logActivityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            logActivity();
+        }
+
+        private void gvJobOrderPipeline_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            // if match value is changed, then update to DB
+            try
+            {
+                if (e.Column.FieldName == "Match")
+                {
+                    int row = e.RowHandle;
+                    DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
+                    int id = int.Parse(data_row["RunningTaskId"].ToString());
+                    RunningTaskManager.updateMatchValue(Convert.ToInt32(e.Value.ToString()), id);
+                    //updateData();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiAddJobToPipeline_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             AddJobToPipeLine();
         }
 
-        private void addActivityToolStripMenuItem_Click(object sender, EventArgs e)
+        private void bbiAddActivity_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             dlgLogActivity dlg = new dlgLogActivity();
             dlg.updateDataEvent += updateData;
@@ -917,11 +942,11 @@ namespace DXSWI.Forms
             dlg.ShowDialog();
         }
 
-        private void tsmiDelete_Click(object sender, EventArgs e)
+        private void bbiRemoveJobOrderFromPipeline_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (gvJobOrderPipeline.SelectedRowsCount > 0)
             {
-                if (XtraMessageBox.Show("Are you sure to delete this item?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (XtraMessageBox.Show("Are you sure to delete this job order from pipeline?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
                     try
@@ -940,82 +965,6 @@ namespace DXSWI.Forms
                         XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            }
-        }
-
-        private void logActivityToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            logActivity();
-        }
-
-        private void editActivityToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (gvActivities.SelectedRowsCount > 0)
-                {
-                    int row = gvActivities.GetSelectedRows().First();
-                    DataRow data_row = gvActivities.GetDataRow(row);
-                    int activity_index = int.Parse(data_row["ActivityId"].ToString());
-                    int scheduleEvent_index = int.Parse(data_row["ScheduleEventId"].ToString());
-
-                    dlgLogActivity dlg = new dlgLogActivity();
-                    dlg.updateDataEvent += updateData;
-                    dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate, mCandidate.CandidateId, -1, -1);
-                    dlg.setData(activity_index, scheduleEvent_index);
-                    dlg.ShowDialog();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void deleteActivityToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (gvActivities.SelectedRowsCount > 0)
-            {
-                if (XtraMessageBox.Show("Are you sure to delete this item?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-
-                    try
-                    {
-                        // delete this running task data
-
-                        int row = gvActivities.GetSelectedRows().First();
-                        DataRow data_row = gvActivities.GetDataRow(row);
-                        int activity_index = int.Parse(data_row["ActivityId"].ToString());
-                        int scheduleEvent_index = int.Parse(data_row["ScheduleEventId"].ToString());
-                        ActivityManager.deleteActivity(activity_index, scheduleEvent_index);
-                        updateData();
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-
-        private void gvJobOrderPipeline_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            // if match value is changed, then update to DB
-            try
-            {
-                if (e.Column.FieldName == "Match")
-                {
-                    int row = e.RowHandle;
-                    DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
-                    int id = int.Parse(data_row["RunningTaskId"].ToString());
-                    RunningTaskManager.updateMatchValue(Convert.ToInt32(e.Value.ToString()), id);
-                    //updateData();
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

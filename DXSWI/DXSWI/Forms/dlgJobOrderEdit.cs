@@ -345,142 +345,12 @@ namespace DXSWI.Forms
             Close();
         }
 
-        private void addCandidateToPipelineToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (mJobOrder == null) return;
-            dlgAddCandidateToPipeline dlg = new dlgAddCandidateToPipeline(mJobOrder.JobOrderId);
-            dlg.updateDataEvent += updateData;
-            dlg.ShowDialog();
-        }
-
-        private void addActivityToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            dlgLogActivity dlg = new dlgLogActivity();
-            dlg.updateDataEvent += updateData;
-            //todo: support multiselection
-            List<long> candidatesId = new List<long>();
-
-
-
-            string regarding = mJobOrder.Title;
-            long canId = -1;
-            string canName = string.Empty;
-
-            if (gvCandidatePipeline.SelectedRowsCount == 0)
-            {
-                XtraMessageBox.Show("Have not yet selected anything", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            try
-            {
-                foreach (var row in gvCandidatePipeline.GetSelectedRows())
-                {
-                    DataRow data_row = gvCandidatePipeline.GetDataRow(row);
-                    canId = Convert.ToInt64(data_row["CandidateId"].ToString());
-                    candidatesId.Add(canId);
-                    if (candidatesId.Count == 1)
-                    {
-                        canName = data_row["FirstName"].ToString() + " " + data_row["MiddleName"].ToString() + " " + data_row["LastName"].ToString();
-                    }
-                    else
-                    {
-                        canName = "Update Multi Candidates";
-                    }
-                }
-                dlg.initForListCandidateInPipeline(canName, mJobOrder.Title, mJobOrder.JobOrderId, candidatesId);
-                if (mJobOrder.Title.Length > 0)
-                {
-                    dlg.setRegarding(mJobOrder.Title);
-                }
-                dlg.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void emailToCandidateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            List<string> emails = new List<string>();
-            List<string> names = new List<string>();
-            List<long> runningTaskIds = new List<long>();
-            List<long> canIds = new List<long>();
-            if (gvCandidatePipeline.SelectedRowsCount > 0)
-            {
-                try
-                {
-                    int row = gvCandidatePipeline.GetSelectedRows().First();
-                    DataRow data_row = gvCandidatePipeline.GetDataRow(row);
-                    emails.Add(data_row["Email"].ToString());
-                    runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
-                    names.Add(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString()));
-                    canIds.Add(Convert.ToInt64(data_row["CandidateId"].ToString()));
-                    EmailToCandidates(runningTaskIds, emails, names, canIds);
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         public void EmailToCandidates(List<long> runningTaskIds, List<string> emails, List<string> names, List<long> canIds)
         {
-            // test:
-            dlgMailEdit dlg = new dlgMailEdit(runningTaskIds, emails, names,canIds, mJobOrder.CompanyName, mJobOrder.Title, mJobOrder.JobOrderId);
+            //dlgMailEdit dlg = new dlgMailEdit();
+            dlgMailEdit dlg = ScreenManager.EmailEdit;
+            dlg.Init(runningTaskIds, emails, names, canIds, mJobOrder.CompanyName, mJobOrder.Title, mJobOrder.JobOrderId);
             dlg.ShowDialog();
-        }
-
-        private void emailToAllCandidatesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            List<string> emails = new List<string>();
-            List<string> names = new List<string>();
-            List<long> runningTaskIds = new List<long>();
-            List<long> canIds = new List<long>();
-            if (gvCandidatePipeline.SelectedRowsCount > 0)
-            {
-                try
-                {
-                    foreach (var row in gvCandidatePipeline.GetSelectedRows())
-                    {
-                        DataRow data_row = gvCandidatePipeline.GetDataRow(row);
-                        emails.Add(data_row["Email"].ToString());
-                        runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
-                        names.Add(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString()));
-                        canIds.Add(Convert.ToInt64(data_row["CandidateId"].ToString()));
-                    }
-                    EmailToCandidates(runningTaskIds, emails, names, canIds);
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void deleteCandidateFromPipelineToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (gvCandidatePipeline.SelectedRowsCount > 0)
-            {
-                if (XtraMessageBox.Show("Are you sure to delete this item?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    try
-                    {
-                        // delete this running task data
-
-                        int row = gvCandidatePipeline.GetSelectedRows().First();
-                        DataRow data_row = gvCandidatePipeline.GetDataRow(row);
-                        int id = int.Parse(data_row["RunningTaskId"].ToString());
-                        RunningTaskManager.deleteRunningTask(id);
-                        updateData();
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
         }
 
         private void updateData()
@@ -597,7 +467,7 @@ namespace DXSWI.Forms
 
         private void gcCandidatePipeline_DoubleClick(object sender, EventArgs e)
         {
-            editCandidateToolStripMenuItem.PerformClick();
+            bbiViewCandidate.PerformClick();
         }
 
         private void toolTipController1_GetActiveObjectInfo(object sender, DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventArgs e)
@@ -616,21 +486,6 @@ namespace DXSWI.Forms
                 string cellKey = info.RowHandle.ToString() + " - " + info.Column.ToString();
                 e.Info = new ToolTipControlInfo(cellKey, text);
             }
-        }
-
-        private void editCandidateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            long canId = -1;
-            if (gvCandidatePipeline.SelectedRowsCount > 0)
-            {
-                canId = Convert.ToInt64(gvCandidatePipeline.GetDataRow(gvCandidatePipeline.GetSelectedRows().First())["CandidateId"].ToString());
-            }
-            if (canId == -1)
-                return;
-            // todo show dlgCandidateEdit but in mode view only
-            dlgCandidateEdit dlg = new dlgCandidateEdit(canId, null);
-            dlg.emitUpdateData += updateData;
-            dlg.ShowDialog();
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
@@ -655,6 +510,174 @@ namespace DXSWI.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiAddCandidateToPipeline_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (mJobOrder == null) return;
+            dlgAddCandidateToPipeline dlg = new dlgAddCandidateToPipeline(mJobOrder.JobOrderId);
+            dlg.updateDataEvent += updateData;
+            dlg.ShowDialog();
+        }
+
+        private void bbiAddActivity_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            dlgLogActivity dlg = new dlgLogActivity();
+            dlg.updateDataEvent += updateData;
+            //todo: support multiselection
+            List<long> candidatesId = new List<long>();
+
+
+
+            string regarding = mJobOrder.Title;
+            long canId = -1;
+            string canName = string.Empty;
+
+            if (gvCandidatePipeline.SelectedRowsCount == 0)
+            {
+                XtraMessageBox.Show("Have not yet selected anything", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                foreach (var row in gvCandidatePipeline.GetSelectedRows())
+                {
+                    DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                    canId = Convert.ToInt64(data_row["CandidateId"].ToString());
+                    candidatesId.Add(canId);
+                    if (candidatesId.Count == 1)
+                    {
+                        canName = data_row["FirstName"].ToString() + " " + data_row["MiddleName"].ToString() + " " + data_row["LastName"].ToString();
+                    }
+                    else
+                    {
+                        canName = "Update Multi Candidates";
+                    }
+                }
+                dlg.initForListCandidateInPipeline(canName, mJobOrder.Title, mJobOrder.JobOrderId, candidatesId);
+                if (mJobOrder.Title.Length > 0)
+                {
+                    dlg.setRegarding(mJobOrder.Title);
+                }
+                dlg.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiViewCandidate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            long canId = -1;
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
+            {
+                canId = Convert.ToInt64(gvCandidatePipeline.GetDataRow(gvCandidatePipeline.GetSelectedRows().First())["CandidateId"].ToString());
+            }
+            if (canId == -1)
+                return;
+            // todo show dlgCandidateEdit but in mode view only
+            dlgCandidateEdit dlg = new dlgCandidateEdit(canId, null);
+            dlg.emitUpdateData += updateData;
+            dlg.ShowDialog();
+        }
+
+        private void bbiEmailToCandidate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            List<string> emails = new List<string>();
+            List<string> names = new List<string>();
+            List<long> runningTaskIds = new List<long>();
+            List<long> canIds = new List<long>();
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
+            {
+                try
+                {
+                    int row = gvCandidatePipeline.GetSelectedRows().First();
+                    DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                    emails.Add(data_row["Email"].ToString());
+                    runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
+                    names.Add(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString()));
+                    canIds.Add(Convert.ToInt64(data_row["CandidateId"].ToString()));
+                    EmailToCandidates(runningTaskIds, emails, names, canIds);
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void bbiAutoEmailToCandidate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            List<string> emails = new List<string>();
+            List<string> names = new List<string>();
+            List<long> runningTaskIds = new List<long>();
+            List<long> canIds = new List<long>();
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
+            {
+                try
+                {
+                    foreach (var row in gvCandidatePipeline.GetSelectedRows())
+                    {
+                        DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                        emails.Add(data_row["Email"].ToString());
+                        runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
+                        names.Add(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString()));
+                        canIds.Add(Convert.ToInt64(data_row["CandidateId"].ToString()));
+                    }
+                    EmailToCandidates(runningTaskIds, emails, names, canIds);
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void bbiDeleteCandidate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
+            {
+                if (XtraMessageBox.Show("Are you sure to remove this candidate from this pipeline?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        // delete this running task data
+
+                        int row = gvCandidatePipeline.GetSelectedRows().First();
+                        DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                        int id = int.Parse(data_row["RunningTaskId"].ToString());
+                        RunningTaskManager.deleteRunningTask(id);
+                        updateData();
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void bbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            updateData();
+        }
+
+        private void copyEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
+            {
+                try
+                {
+                    int row = gvCandidatePipeline.GetSelectedRows().First();
+                    DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                    Clipboard.SetText(data_row["Email"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

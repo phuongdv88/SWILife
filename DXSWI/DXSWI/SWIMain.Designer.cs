@@ -93,6 +93,8 @@
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
+            this.rpgSetting = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiEmailSetting = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).BeginInit();
@@ -128,9 +130,10 @@
             this.barButtonItem1,
             this.barButtonItem2,
             this.barButtonItem3,
-            this.bbiImportFromExel});
+            this.bbiImportFromExel,
+            this.bbiEmailSetting});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 85;
+            this.ribbonControlMain.MaxItemId = 87;
             this.ribbonControlMain.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -386,6 +389,7 @@
             this.rpUser.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.rpgEditUser,
             this.ribbonPageGroup2,
+            this.rpgSetting,
             this.ribbonPageGroup4});
             this.rpUser.Image = global::DXSWI.Properties.Resources.cryptography1;
             this.rpUser.Name = "rpUser";
@@ -654,7 +658,6 @@
             this.pcMain.Name = "pcMain";
             this.pcMain.Size = new System.Drawing.Size(1296, 590);
             this.pcMain.TabIndex = 6;
-            this.pcMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pcMain_Paint);
             // 
             // ribbonPageGroup10
             // 
@@ -670,6 +673,21 @@
             this.nbgCandidates.Name = "nbgCandidates";
             this.nbgCandidates.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.SmallImage")));
             this.nbgCandidates.Tag = "candidate";
+            // 
+            // rpgSetting
+            // 
+            this.rpgSetting.ItemLinks.Add(this.bbiEmailSetting);
+            this.rpgSetting.Name = "rpgSetting";
+            this.rpgSetting.Text = "Setting";
+            // 
+            // bbiEmailSetting
+            // 
+            this.bbiEmailSetting.Caption = "Email Setting";
+            this.bbiEmailSetting.Id = 85;
+            this.bbiEmailSetting.ImageOptions.Image = global::DXSWI.Properties.Resources.mailsettingsicon;
+            this.bbiEmailSetting.Name = "bbiEmailSetting";
+            this.bbiEmailSetting.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiEmailSetting.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEmailSetting_ItemClick);
             // 
             // SWIMain
             // 
@@ -761,5 +779,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraNavBar.NavBarGroup nbgCandidates;
         private DevExpress.XtraNavBar.NavBarGroup ngbCandidates;
+        private DevExpress.XtraBars.BarButtonItem bbiEmailSetting;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgSetting;
     }
 }

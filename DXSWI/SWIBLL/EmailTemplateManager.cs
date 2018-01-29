@@ -17,9 +17,20 @@ namespace SWIBLL
             return DataAccess.Instance.getDataTable(sql);
         }
 
-        public static EmailTemplate GetEmailTemplateById(int tempId)
+        public static EmailTemplate GetEmailTemplateById(int tempId, ref List<string> listTitle)
         {
-            if (tempId < 0) return null;
+            if (tempId < 0)
+            {
+                string sql1 = string.Format("SELECT Title FROM swilifecore.emailtemplate");
+                DataTable dt = DataAccess.Instance.getDataTable(sql1);
+                if (dt == null) return null;
+                for (int i = 0; i < dt.Rows.Count; ++i)
+                {
+                    DataRow data_row = dt.Rows[i];
+                    listTitle.Add(data_row["Title"].ToString());
+                }
+                return null;
+            }
             string sql = string.Format("SELECT T1.*, T2.UserName as Owner FROM swilifecore.emailtemplate T1 left join swilifecore.user T2 on T1.UserId = T2.UserId where T1.EmailTemplateId = '{0}'", tempId);
             DataTable tbl = DataAccess.Instance.getDataTable(sql);
             EmailTemplate temp = null;

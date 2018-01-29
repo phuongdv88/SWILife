@@ -18,10 +18,14 @@ namespace DXSWI.Forms
         private EmailTemplate _emailTemplate = null;
         public delegate void updateData();
         public event updateData updateDataEvent;
+        private List<string> _listTile = new List<string>();
         public dlgEmailTemplateEdit(int emailTemplateId)
         {
             InitializeComponent();
-            _emailTemplate = EmailTemplateManager.GetEmailTemplateById(emailTemplateId);
+            _listTile.Clear();
+            _emailTemplate = EmailTemplateManager.GetEmailTemplateById(emailTemplateId,ref _listTile);
+            //textEditTitle.Properties.Items.Clear();
+            //textEditTitle.Properties.Items.AddRange(_listTile);
             fillObjectToUi();
         }
 
@@ -33,7 +37,7 @@ namespace DXSWI.Forms
             }
             _emailTemplate.Language = cbeLanguage.Text.Trim();
             _emailTemplate.Type = cbeType.Text.Trim();
-            _emailTemplate.Title = cbeTitle.Text.Trim();
+            _emailTemplate.Title = TextEditTitle.Text.Trim();
             _emailTemplate.Subject = textEditSubject.Text.Trim();
             _emailTemplate.Content = ucTemplateEditText1.recMain.HtmlText;
         }
@@ -52,10 +56,16 @@ namespace DXSWI.Forms
                 XtraMessageBox.Show("Type can not be blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (cbeTitle.Text.Trim() == "")
+            if (TextEditTitle.Text.Trim() == "")
             {
-                cbeTitle.Focus();
+                TextEditTitle.Focus();
                 XtraMessageBox.Show("Title can not be blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (_listTile.Contains(TextEditTitle.Text.Trim()))
+            {
+                TextEditTitle.Focus();
+                XtraMessageBox.Show("This title has been existed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (textEditSubject.Text.Trim() == "")
@@ -70,6 +80,8 @@ namespace DXSWI.Forms
                 XtraMessageBox.Show("Content can not be blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            
             return true;
         }
 
@@ -79,7 +91,7 @@ namespace DXSWI.Forms
                 return;
             cbeLanguage.EditValue = _emailTemplate.Language;
             cbeType.EditValue = _emailTemplate.Type;
-            cbeTitle.EditValue = _emailTemplate.Title;
+            TextEditTitle.Text = _emailTemplate.Title;
             textEditSubject.Text = _emailTemplate.Subject;
             ucTemplateEditText1.recMain.HtmlText = _emailTemplate.Content;
         }

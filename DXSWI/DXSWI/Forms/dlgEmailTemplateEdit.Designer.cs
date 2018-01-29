@@ -42,7 +42,6 @@
             this.sbPreview = new DevExpress.XtraEditors.SimpleButton();
             this.sbSave = new DevExpress.XtraEditors.SimpleButton();
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.cbeTitle = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cbeLanguage = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cbeType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.sbHelp = new DevExpress.XtraEditors.SimpleButton();
@@ -57,6 +56,7 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.TextEditTitle = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -68,7 +68,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbeTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeLanguage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -82,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEditTitle.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -91,10 +91,10 @@
             this.layoutControl1.Controls.Add(this.sbPreview);
             this.layoutControl1.Controls.Add(this.sbSave);
             this.layoutControl1.Controls.Add(this.sbCancel);
-            this.layoutControl1.Controls.Add(this.cbeTitle);
             this.layoutControl1.Controls.Add(this.cbeLanguage);
             this.layoutControl1.Controls.Add(this.cbeType);
             this.layoutControl1.Controls.Add(this.sbHelp);
+            this.layoutControl1.Controls.Add(this.TextEditTitle);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -138,6 +138,7 @@
             this.ucTemplateEditText1.Name = "ucTemplateEditText1";
             this.ucTemplateEditText1.Size = new System.Drawing.Size(965, 431);
             this.ucTemplateEditText1.TabIndex = 4;
+            this.ucTemplateEditText1.Tooltip = null;
             // 
             // textEditSubject
             // 
@@ -216,16 +217,6 @@
             this.sbCancel.TabIndex = 8;
             this.sbCancel.Text = "Cancel";
             this.sbCancel.Click += new System.EventHandler(this.sbCancel_Click);
-            // 
-            // cbeTitle
-            // 
-            this.cbeTitle.Location = new System.Drawing.Point(62, 38);
-            this.cbeTitle.Name = "cbeTitle";
-            this.cbeTitle.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbeTitle.Size = new System.Drawing.Size(945, 20);
-            this.cbeTitle.StyleController = this.layoutControl1;
-            this.cbeTitle.TabIndex = 9;
             // 
             // cbeLanguage
             // 
@@ -369,7 +360,7 @@
             // 
             // layoutControlItem6
             // 
-            this.layoutControlItem6.Control = this.cbeTitle;
+            this.layoutControlItem6.Control = this.TextEditTitle;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(999, 24);
@@ -384,6 +375,14 @@
             this.layoutControlItem10.Size = new System.Drawing.Size(56, 26);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
+            // 
+            // TextEditTitle
+            // 
+            this.TextEditTitle.Location = new System.Drawing.Point(62, 38);
+            this.TextEditTitle.Name = "TextEditTitle";
+            this.TextEditTitle.Size = new System.Drawing.Size(945, 20);
+            this.TextEditTitle.StyleController = this.layoutControl1;
+            this.TextEditTitle.TabIndex = 9;
             // 
             // dlgEmailTemplateEdit
             // 
@@ -408,7 +407,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbeTitle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeLanguage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -422,6 +420,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEditTitle.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -434,7 +433,6 @@
         private DevExpress.XtraEditors.SimpleButton sbPreview;
         private DevExpress.XtraEditors.SimpleButton sbSave;
         private DevExpress.XtraEditors.SimpleButton sbCancel;
-        private DevExpress.XtraEditors.ComboBoxEdit cbeTitle;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
@@ -456,5 +454,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraEditors.TextEdit textEditSubject;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private DevExpress.XtraEditors.TextEdit TextEditTitle;
     }
 }

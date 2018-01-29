@@ -120,4 +120,45 @@
   <metadata name="toolTipController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>168, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bbiNew.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAPXRFWHRUaXRsZQBOZXc7UGFn
+        ZTtCYXJzO1JpYmJvbjtTdGFuZGFyZDtJdGVtO0JsYW5rO0RlZmF1bHQ7RW1wdHk7EwRS7QAAAKpJREFU
+        WEftkkEKhTAMRD2f5+q2R+jRuhL+IXQRM2DhWwdRkXGTwEM6NslbdDCzT6GhEhoqoaESGiqhIUgp2U0m
+        Z3TQe4DtADQE3uSf64X7OeellDL6sZ+1O/9DQ/BEoNZKJWQCKCYhFUD1EnIB1CYxQ+ITAVST8H+Hh9mg
+        IXgicMLPr9A9NARofKu2WXQPDUEIhEAIhEAIhEAIoOlN+vkNGiqhoRIa6rBhBTJ6HSbL46IIAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="bbiEdit.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAIHRFWHRUaXRsZQBFZGl0O0Jh
+        cnM7UmliYm9uO1N0YW5kYXJkOzATw9sAAAEmSURBVFhH7ZJBDoIwEEW5E7cw8VKGLUfgHt7FsDJh71YX
+        9X9kkraM0DZt2TDJCzAw859IY4w5FLVZE7VZE7VZE7VJuq4zkTzBBXB2hZZB1CbBEA7hxef7vv8Mw3DB
+        pb/LubZRmyRFYBxHVaKaAEuTqCrA8iWqC7AWiTclDhFgiQTurT5MQW2SFIENJjyi5qhNwsFctexSc9Qm
+        OQVOgZwCrOvt3gIe5XzOWQULOQUe00uCbVrcKi9ghdtvYAZVVkD55Y4EqpzAn9dORKLcX7ARLpT7CEPD
+        CR7PKxATTjCSTyAlnDihNjECseEEYzNOqA0F9mClhBPJcUJTwDIJ8YOlvwonMu8sSwHL7LCgcCLzzrIU
+        sMwP3Q0nMu8sSwHLbIGgcPKbN80XNOGDvft2XdIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="bbiDeleteTemplate.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAWnRFWHRUaXRsZQBEZWxldGU7
+        RGVsZXRlSXRlbTtSZW1vdmU7UmVtb3ZlSXRlbTtEZWxldGVMaXN0O0xpc3Q7UmVtb3ZlTGlzdDtJdGVt
+        O0xpc3Q7Q2xlYXI7RXJhc2VY4hcLAAABdklEQVRYR+2UvUrEQBSF83DCyoK+hIWtuIqgoE3aPEIaF0RL
+        f1gfwdZSi1SCVbYSFLUYzwm56/zclc1EZptc+NA5N5nzsStmxpi1ooYpUcOUqGFK1DAlakjyPDcdeQFj
+        wHcDtA6ihgQv4cfqw+eLovguy3KMo3+Xc7ZRQxIjUFWVKpFMgKNJJBXg+BLJBTitxBcl1iLAEQnsgj9M
+        QQ1JjMAfvOIRtUcNCV/8r2nvUnvUkAwCg8AgECPw9vhg6ruL9hRM9rSzcQK2+LvglNp0FWD58+6mQYGp
+        b6dt+jvIz7gDn2AbUdMTFAtdBeb3V025YEvU1+fODuwjbnqCYiHmK5jPLp2i+maqlR/g0UWPU2oTI8Dx
+        JTyccuIcbGIFOEskgnISBEIfAeVjJ6dYBT1BIMQKLCkXAgnnYEOBVZFRyifgyMscCae0D7iY/2Tsoom1
+        8yWOZedc0gdcOgLvbcGi3NqLxAcYSe481BdeDPa0HcHu0C43xmQ/sxfV1/5rs00AAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

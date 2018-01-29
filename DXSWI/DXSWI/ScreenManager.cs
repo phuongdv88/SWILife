@@ -17,6 +17,8 @@ namespace DXSWI
         static ScreenManager instance = null;
         dlgLogin mdlgLogin;
         SWIMain mMain;
+        public static dlgMailEdit EmailEdit = new dlgMailEdit();
+        
         ScreenManager()
         {
             //SplashScreenManager.ShowForm(null, typeof(ssMain), true, true, false, 1000);

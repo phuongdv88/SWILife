@@ -39,17 +39,25 @@
             this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.bbiAddCandidateToPipeline = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAddActivity = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiViewCandidate = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiEmailToCandidate = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAutoEmailToCandidate = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDeleteCandidateFromPipeLine = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.bar3 = new DevExpress.XtraBars.Bar();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gcCandidatePipeline = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addCandidateToPipelineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.editCandidateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.emailToCandidateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.emailToAllCandidatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.deleteCandidateFromPipelineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvCandidatePipeline = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMatch = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -113,12 +121,14 @@
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidatePipeline)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCandidatePipeline)).BeginInit();
@@ -171,6 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
@@ -194,6 +205,7 @@
             // 
             // dataLayoutControl1
             // 
+            this.dataLayoutControl1.Controls.Add(this.standaloneBarDockControl1);
             this.dataLayoutControl1.Controls.Add(this.gcCandidatePipeline);
             this.dataLayoutControl1.Controls.Add(this.TitleTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DepartmentTextEdit);
@@ -223,20 +235,172 @@
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1333, 917);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1333, 894);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // standaloneBarDockControl1
+            // 
+            this.standaloneBarDockControl1.CausesValidation = false;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(585, 42);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
+            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(724, 40);
+            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // barManager1
+            // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar2,
+            this.bar3});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.bbiAddCandidateToPipeline,
+            this.bbiAddActivity,
+            this.bbiViewCandidate,
+            this.bbiEmailToCandidate,
+            this.bbiAutoEmailToCandidate,
+            this.bbiDeleteCandidateFromPipeLine,
+            this.bbiRefresh});
+            this.barManager1.MainMenu = this.bar2;
+            this.barManager1.MaxItemId = 8;
+            this.barManager1.StatusBar = this.bar3;
+            // 
+            // bar2
+            // 
+            this.bar2.BarName = "Main menu";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar2.FloatLocation = new System.Drawing.Point(699, 243);
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddCandidateToPipeline),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddActivity),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiViewCandidate),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiEmailToCandidate),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAutoEmailToCandidate),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDeleteCandidateFromPipeLine),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiRefresh)});
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.StandaloneBarDockControl = this.standaloneBarDockControl1;
+            this.bar2.Text = "Main menu";
+            // 
+            // bbiAddCandidateToPipeline
+            // 
+            this.bbiAddCandidateToPipeline.Caption = "Add Candidate To Pipeline";
+            this.bbiAddCandidateToPipeline.Id = 0;
+            this.bbiAddCandidateToPipeline.ImageOptions.Image = global::DXSWI.Properties.Resources.ButtonAdd;
+            this.bbiAddCandidateToPipeline.Name = "bbiAddCandidateToPipeline";
+            this.bbiAddCandidateToPipeline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddCandidateToPipeline_ItemClick);
+            // 
+            // bbiAddActivity
+            // 
+            this.bbiAddActivity.Caption = "Add Activity";
+            this.bbiAddActivity.Id = 1;
+            this.bbiAddActivity.ImageOptions.Image = global::DXSWI.Properties.Resources.Actionsdocumentedit;
+            this.bbiAddActivity.Name = "bbiAddActivity";
+            this.bbiAddActivity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddActivity_ItemClick);
+            // 
+            // bbiViewCandidate
+            // 
+            this.bbiViewCandidate.Caption = "View Candidate";
+            this.bbiViewCandidate.Id = 3;
+            this.bbiViewCandidate.ImageOptions.Image = global::DXSWI.Properties.Resources.Appuser;
+            this.bbiViewCandidate.Name = "bbiViewCandidate";
+            this.bbiViewCandidate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCandidate_ItemClick);
+            // 
+            // bbiEmailToCandidate
+            // 
+            this.bbiEmailToCandidate.Caption = "Email To Candidate";
+            this.bbiEmailToCandidate.Id = 4;
+            this.bbiEmailToCandidate.ImageOptions.Image = global::DXSWI.Properties.Resources.Mailicon;
+            this.bbiEmailToCandidate.Name = "bbiEmailToCandidate";
+            this.bbiEmailToCandidate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEmailToCandidate_ItemClick);
+            // 
+            // bbiAutoEmailToCandidate
+            // 
+            this.bbiAutoEmailToCandidate.Caption = "Auto Send Emails";
+            this.bbiAutoEmailToCandidate.Id = 5;
+            this.bbiAutoEmailToCandidate.ImageOptions.Image = global::DXSWI.Properties.Resources.Emailicon;
+            this.bbiAutoEmailToCandidate.Name = "bbiAutoEmailToCandidate";
+            this.bbiAutoEmailToCandidate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAutoEmailToCandidate_ItemClick);
+            // 
+            // bbiDeleteCandidateFromPipeLine
+            // 
+            this.bbiDeleteCandidateFromPipeLine.Caption = "Remove Candidate From Pipeline";
+            this.bbiDeleteCandidateFromPipeLine.Id = 6;
+            this.bbiDeleteCandidateFromPipeLine.ImageOptions.Image = global::DXSWI.Properties.Resources.Actions_dialog_close;
+            this.bbiDeleteCandidateFromPipeLine.Name = "bbiDeleteCandidateFromPipeLine";
+            this.bbiDeleteCandidateFromPipeLine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDeleteCandidate_ItemClick);
+            // 
+            // bbiRefresh
+            // 
+            this.bbiRefresh.Caption = "Refresh";
+            this.bbiRefresh.Id = 7;
+            this.bbiRefresh.ImageOptions.Image = global::DXSWI.Properties.Resources.ButtonRefresh;
+            this.bbiRefresh.Name = "bbiRefresh";
+            this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRefresh_ItemClick);
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1333, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 894);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1333, 23);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 894);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1333, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 894);
             // 
             // gcCandidatePipeline
             // 
             this.gcCandidatePipeline.ContextMenuStrip = this.contextMenuStrip1;
-            this.gcCandidatePipeline.Location = new System.Drawing.Point(585, 42);
+            this.gcCandidatePipeline.Location = new System.Drawing.Point(585, 86);
             this.gcCandidatePipeline.MainView = this.gvCandidatePipeline;
             this.gcCandidatePipeline.Name = "gcCandidatePipeline";
             this.gcCandidatePipeline.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemRatingControl1});
             this.gcCandidatePipeline.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gcCandidatePipeline.Size = new System.Drawing.Size(724, 825);
+            this.gcCandidatePipeline.Size = new System.Drawing.Size(724, 758);
             this.gcCandidatePipeline.TabIndex = 27;
             this.gcCandidatePipeline.ToolTipController = this.toolTipController1;
             this.gcCandidatePipeline.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -246,87 +410,30 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addCandidateToPipelineToolStripMenuItem,
-            this.addActivityToolStripMenuItem,
+            this.copyEmailToolStripMenuItem,
             this.toolStripSeparator2,
-            this.editCandidateToolStripMenuItem,
-            this.emailToCandidateToolStripMenuItem,
-            this.emailToAllCandidatesToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.deleteCandidateFromPipelineToolStripMenuItem,
-            this.toolStripSeparator3,
             this.refreshToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(251, 176);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 54);
             // 
-            // addCandidateToPipelineToolStripMenuItem
+            // copyEmailToolStripMenuItem
             // 
-            this.addCandidateToPipelineToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonAdd1;
-            this.addCandidateToPipelineToolStripMenuItem.Name = "addCandidateToPipelineToolStripMenuItem";
-            this.addCandidateToPipelineToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.addCandidateToPipelineToolStripMenuItem.Text = "Add Candidate To Pipeline";
-            this.addCandidateToPipelineToolStripMenuItem.Click += new System.EventHandler(this.addCandidateToPipelineToolStripMenuItem_Click);
-            // 
-            // addActivityToolStripMenuItem
-            // 
-            this.addActivityToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actionsdocumentedit1;
-            this.addActivityToolStripMenuItem.Name = "addActivityToolStripMenuItem";
-            this.addActivityToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.addActivityToolStripMenuItem.Text = "Add Activity";
-            this.addActivityToolStripMenuItem.Click += new System.EventHandler(this.addActivityToolStripMenuItem_Click);
+            this.copyEmailToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_edit_copy_icon1;
+            this.copyEmailToolStripMenuItem.Name = "copyEmailToolStripMenuItem";
+            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.copyEmailToolStripMenuItem.Text = "Copy Email";
+            this.copyEmailToolStripMenuItem.Click += new System.EventHandler(this.copyEmailToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(247, 6);
-            // 
-            // editCandidateToolStripMenuItem
-            // 
-            this.editCandidateToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Appuser1;
-            this.editCandidateToolStripMenuItem.Name = "editCandidateToolStripMenuItem";
-            this.editCandidateToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.editCandidateToolStripMenuItem.Text = "View Candidate";
-            this.editCandidateToolStripMenuItem.Click += new System.EventHandler(this.editCandidateToolStripMenuItem_Click);
-            // 
-            // emailToCandidateToolStripMenuItem
-            // 
-            this.emailToCandidateToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Mailicon1;
-            this.emailToCandidateToolStripMenuItem.Name = "emailToCandidateToolStripMenuItem";
-            this.emailToCandidateToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.emailToCandidateToolStripMenuItem.Text = "Email To Candidate";
-            this.emailToCandidateToolStripMenuItem.Click += new System.EventHandler(this.emailToCandidateToolStripMenuItem_Click);
-            // 
-            // emailToAllCandidatesToolStripMenuItem
-            // 
-            this.emailToAllCandidatesToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Emailicon1;
-            this.emailToAllCandidatesToolStripMenuItem.Name = "emailToAllCandidatesToolStripMenuItem";
-            this.emailToAllCandidatesToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.emailToAllCandidatesToolStripMenuItem.Text = "Auto Email To Candidates";
-            this.emailToAllCandidatesToolStripMenuItem.Click += new System.EventHandler(this.emailToAllCandidatesToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(247, 6);
-            // 
-            // deleteCandidateFromPipelineToolStripMenuItem
-            // 
-            this.deleteCandidateFromPipelineToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_dialog_close1;
-            this.deleteCandidateFromPipelineToolStripMenuItem.Name = "deleteCandidateFromPipelineToolStripMenuItem";
-            this.deleteCandidateFromPipelineToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.deleteCandidateFromPipelineToolStripMenuItem.Text = "Remove Candidate From Pipeline";
-            this.deleteCandidateFromPipelineToolStripMenuItem.Click += new System.EventHandler(this.deleteCandidateFromPipelineToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(247, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(131, 6);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonRefresh1;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
@@ -624,13 +731,13 @@
             this.DescriptionMemoExEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.jobOrderBindingSource, "Description", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.DescriptionMemoExEdit.Location = new System.Drawing.Point(12, 238);
             this.DescriptionMemoExEdit.Name = "DescriptionMemoExEdit";
-            this.DescriptionMemoExEdit.Size = new System.Drawing.Size(557, 399);
+            this.DescriptionMemoExEdit.Size = new System.Drawing.Size(557, 384);
             this.DescriptionMemoExEdit.StyleController = this.dataLayoutControl1;
             this.DescriptionMemoExEdit.TabIndex = 19;
             // 
             // sbOK
             // 
-            this.sbOK.Location = new System.Drawing.Point(978, 883);
+            this.sbOK.Location = new System.Drawing.Point(978, 860);
             this.sbOK.Name = "sbOK";
             this.sbOK.Size = new System.Drawing.Size(142, 22);
             this.sbOK.StyleController = this.dataLayoutControl1;
@@ -640,7 +747,7 @@
             // 
             // sbCancel
             // 
-            this.sbCancel.Location = new System.Drawing.Point(1143, 883);
+            this.sbCancel.Location = new System.Drawing.Point(1143, 860);
             this.sbCancel.Name = "sbCancel";
             this.sbCancel.Size = new System.Drawing.Size(178, 22);
             this.sbCancel.StyleController = this.dataLayoutControl1;
@@ -651,7 +758,7 @@
             // sbDownload
             // 
             this.sbDownload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDownload.ImageOptions.Image")));
-            this.sbDownload.Location = new System.Drawing.Point(444, 845);
+            this.sbDownload.Location = new System.Drawing.Point(444, 822);
             this.sbDownload.Name = "sbDownload";
             this.sbDownload.Size = new System.Drawing.Size(113, 22);
             this.sbDownload.StyleController = this.dataLayoutControl1;
@@ -662,7 +769,7 @@
             // sbDelete
             // 
             this.sbDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDelete.ImageOptions.Image")));
-            this.sbDelete.Location = new System.Drawing.Point(321, 845);
+            this.sbDelete.Location = new System.Drawing.Point(321, 822);
             this.sbDelete.Name = "sbDelete";
             this.sbDelete.Size = new System.Drawing.Size(119, 22);
             this.sbDelete.StyleController = this.dataLayoutControl1;
@@ -673,7 +780,7 @@
             // sbAddAttachment
             // 
             this.sbAddAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAddAttachment.ImageOptions.Image")));
-            this.sbAddAttachment.Location = new System.Drawing.Point(24, 845);
+            this.sbAddAttachment.Location = new System.Drawing.Point(24, 822);
             this.sbAddAttachment.Name = "sbAddAttachment";
             this.sbAddAttachment.Size = new System.Drawing.Size(111, 22);
             this.sbAddAttachment.StyleController = this.dataLayoutControl1;
@@ -683,9 +790,9 @@
             // 
             // meInternalNotes
             // 
-            this.meInternalNotes.Location = new System.Drawing.Point(12, 657);
+            this.meInternalNotes.Location = new System.Drawing.Point(12, 642);
             this.meInternalNotes.Name = "meInternalNotes";
-            this.meInternalNotes.Size = new System.Drawing.Size(557, 154);
+            this.meInternalNotes.Size = new System.Drawing.Size(557, 146);
             this.meInternalNotes.StyleController = this.dataLayoutControl1;
             this.meInternalNotes.TabIndex = 34;
             // 
@@ -720,7 +827,7 @@
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1333, 917);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1333, 894);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -739,14 +846,14 @@
             this.emptySpaceItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1313, 897);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1313, 874);
             // 
             // ItemForDescription
             // 
             this.ItemForDescription.Control = this.DescriptionMemoExEdit;
             this.ItemForDescription.Location = new System.Drawing.Point(0, 210);
             this.ItemForDescription.Name = "ItemForDescription";
-            this.ItemForDescription.Size = new System.Drawing.Size(561, 419);
+            this.ItemForDescription.Size = new System.Drawing.Size(561, 404);
             this.ItemForDescription.Text = "Description";
             this.ItemForDescription.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForDescription.TextSize = new System.Drawing.Size(78, 13);
@@ -928,7 +1035,7 @@
             this.layoutControlItem4,
             this.layoutControlItem6,
             this.sliAttachment});
-            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 803);
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 780);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
             this.layoutControlGroup4.Size = new System.Drawing.Size(561, 68);
             this.layoutControlGroup4.Text = "Attachment";
@@ -972,9 +1079,9 @@
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.meInternalNotes;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 629);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 614);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(561, 174);
+            this.layoutControlItem7.Size = new System.Drawing.Size(561, 166);
             this.layoutControlItem7.Text = "Internal Notes";
             this.layoutControlItem7.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem7.TextSize = new System.Drawing.Size(78, 13);
@@ -982,25 +1089,35 @@
             // layoutControlGroup5
             // 
             this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem3});
+            this.layoutControlItem3,
+            this.layoutControlItem8});
             this.layoutControlGroup5.Location = new System.Drawing.Point(561, 0);
             this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(752, 871);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(752, 848);
             this.layoutControlGroup5.Text = "Candidates in pipeline";
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.gcCandidatePipeline;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 44);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(728, 829);
+            this.layoutControlItem3.Size = new System.Drawing.Size(728, 762);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.standaloneBarDockControl1;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(728, 44);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.sbOK;
-            this.layoutControlItem1.Location = new System.Drawing.Point(966, 871);
+            this.layoutControlItem1.Location = new System.Drawing.Point(966, 848);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(146, 26);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -1009,7 +1126,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.sbCancel;
-            this.layoutControlItem2.Location = new System.Drawing.Point(1131, 871);
+            this.layoutControlItem2.Location = new System.Drawing.Point(1131, 848);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(182, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -1018,7 +1135,7 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 871);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 848);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(966, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -1026,7 +1143,7 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(1112, 871);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(1112, 848);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(19, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -1037,6 +1154,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1333, 917);
             this.Controls.Add(this.dataLayoutControl1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.KeyPreview = true;
             this.Name = "dlgJobOrderEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1044,6 +1165,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgJobOrderEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidatePipeline)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvCandidatePipeline)).EndInit();
@@ -1096,11 +1218,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1166,13 +1290,7 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForContact;
         private DevExpress.XtraLayout.LayoutControlItem ItemForCompany;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem addCandidateToPipelineToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteCandidateFromPipelineToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem emailToCandidateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem emailToAllCandidatesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addActivityToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private DevExpress.XtraLayout.SimpleLabelItem sliAttachment;
         private DevExpress.XtraEditors.SimpleButton sbAddAttachment;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
@@ -1182,10 +1300,25 @@
         private DevExpress.XtraEditors.ComboBoxEdit contactComboboxEdit;
         private DevExpress.XtraGrid.Columns.GridColumn colEmail;
         private DevExpress.Utils.ToolTipController toolTipController1;
-        private System.Windows.Forms.ToolStripMenuItem editCandidateToolStripMenuItem;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private DevExpress.XtraGrid.Columns.GridColumn colState;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.BarButtonItem bbiAddCandidateToPipeline;
+        private DevExpress.XtraBars.BarButtonItem bbiAddActivity;
+        private DevExpress.XtraBars.Bar bar3;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraBars.BarButtonItem bbiViewCandidate;
+        private DevExpress.XtraBars.BarButtonItem bbiEmailToCandidate;
+        private DevExpress.XtraBars.BarButtonItem bbiAutoEmailToCandidate;
+        private DevExpress.XtraBars.BarButtonItem bbiDeleteCandidateFromPipeLine;
+        private DevExpress.XtraBars.BarButtonItem bbiRefresh;
+        private System.Windows.Forms.ToolStripMenuItem copyEmailToolStripMenuItem;
     }
 }

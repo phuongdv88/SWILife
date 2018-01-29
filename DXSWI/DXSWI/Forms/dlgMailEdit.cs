@@ -23,7 +23,8 @@ namespace DXSWI.Forms
         //private SmtpClient _client = null;
         //private MailMessage _emailMessage = null;
         private Dictionary<string, string> _indexAndAttachments = new Dictionary<string, string>();
-        LayoutControlGroup lcgAttachments;
+        List<SimpleButton> _listRemoveAttachmentsButton = new List<SimpleButton>();
+        LayoutControlGroup lcgAttachments = null;
         int _indexAttachmentName = 0;
         int _numberOfSentMail = -1;
         string _finalMessage = string.Empty;
@@ -34,12 +35,33 @@ namespace DXSWI.Forms
         List<string> _candidateEmails;
         List<string> _candidateNames;
         List<long> _candidateIds;
-        private static readonly object padlock = new object();
 
-        public dlgMailEdit(List<long> runningTaskIds, List<string> emails, List<string> names, List<long> candidateIds, string companyName, string jobTitle, long jobOrderId)
+        public dlgMailEdit()
         {
             InitializeComponent();
             //initMailServer();
+
+        }
+        public void Init(List<long> runningTaskIds, List<string> emails, List<string> names, List<long> candidateIds, string companyName, string jobTitle, long jobOrderId)
+        {
+            if(lcgAttachments != null)
+            {
+                _indexAndAttachments.Clear();
+                foreach(var btn in _listRemoveAttachmentsButton)
+                {
+                    btn.Dispose();
+                }
+                _listRemoveAttachmentsButton.Clear();
+
+                lcgMain.BeginUpdate();
+                lcgMain.Remove(lcgAttachments);
+                lcgAttachments.Dispose();
+                lcgMain.EndUpdate();
+            }
+            _indexAttachmentName = 0;
+            _numberOfSentMail = -1;
+            _finalMessage = string.Empty;
+
             _candidateEmails = emails;
             _candidateNames = names;
             _candidateIds = candidateIds;
@@ -48,12 +70,32 @@ namespace DXSWI.Forms
             _companyName = companyName;
             _jobTitle = jobTitle;
             _jobOrderId = jobOrderId;
-            init(emails);
+            if (Properties.Settings.Default.EmailAccount == "" || UserManager.ActivatedUser.EmailAccount != Properties.Settings.Default.EmailAccount)
+            {
+                // setup mail:
+                XtraMessageBox.Show("Setup email information for this account", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dlgEmailSetting dlg = new dlgEmailSetting();
+                dlg.SetEmailAddress(UserManager.ActivatedUser.EmailAccount);
+                dlg.ShowDialog();
+            }
+
+            textEditFrom.Text = Properties.Settings.Default.EmailAccount;
+            textEditTo.Text = String.Join("; ", _candidateEmails);
+            if (textEditTo.Text.Trim() == "")
+            {
+                textEditSubject.Focus();
+            }
+            else
+            {
+                textEditTo.Focus();
+            }
         }
+
         private void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
         {
             // Get the unique identifier for this asynchronous operation.
-            try {
+            try
+            {
                 int index = (int)e.UserState;
                 _numberOfSentMail--;
                 if (e.Error != null)
@@ -88,7 +130,8 @@ namespace DXSWI.Forms
                         XtraMessageBox.Show(_finalMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     //_emailMessage?.Dispose();
-                    Close();
+                    //Close();
+                    Hide();
                 }
             }
             catch (Exception ex)
@@ -97,47 +140,6 @@ namespace DXSWI.Forms
             }
         }
 
-
-        private void init(List<string> candidates)
-        {
-            // check email
-            if (Properties.Settings.Default.EmailAccount == "" || UserManager.ActivatedUser.EmailAccount != Properties.Settings.Default.EmailAccount)
-            {
-                // setup mail:
-                XtraMessageBox.Show("Setup email information for this account", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dlgEmailSetting dlg = new dlgEmailSetting();
-                dlg.SetEmailAddress(UserManager.ActivatedUser.EmailAccount);
-                dlg.ShowDialog();
-            }
-
-            textEditFrom.Text = Properties.Settings.Default.EmailAccount;
-            textEditTo.Text = String.Join("; ", _candidateEmails);
-            if (textEditTo.Text.Trim() == "")
-            {
-                textEditSubject.Focus();
-            }
-            else
-            {
-                textEditTo.Focus();
-            }
-
-            // add button add name, add 
-            //textEditSubject.Text = "Test";
-            //recMailContent.LoadDocument(@"C:\Users\phuon\Documents\testmail.docx");
-        }
-
-        //private void initMailServer()
-        //{
-        //    _client = new SmtpClient();
-        //    _client.Port = Properties.Settings.Default.EmailSmtpServerPort;
-        //    _client.Host = Properties.Settings.Default.EmailSmtpServer;
-        //    _client.EnableSsl = true;
-        //    _client.Timeout = 10000;
-        //    _client.DeliveryMethod = SmtpDeliveryMethod.Network;
-        //    _client.UseDefaultCredentials = false;
-        //    _client.Credentials = new NetworkCredential(Properties.Settings.Default.EmailAccount, Properties.Settings.Default.EmailPassword);
-
-        //}
 
         private void bbiMailSetting_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -151,7 +153,8 @@ namespace DXSWI.Forms
             switch (e.KeyCode)
             {
                 case Keys.Escape:
-                    this.Close();
+                    //this.Close();
+                    Hide();
                     break;
                 default:
                     break;
@@ -209,7 +212,7 @@ namespace DXSWI.Forms
 
                 emailMessage.Subject = autoGenerateEmail(textEditSubject.Text.Trim(), index);
                 emailMessage.Body = autoGenerateEmail(recMailContent.Text, index); // use 2 view to avoid go to spam folder?
-                                                                                    //email.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                                                                                   //email.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
                 string temp = recMailContent.HtmlText;
                 recMailContent.HtmlText = autoGenerateEmail(temp, index);
@@ -218,7 +221,8 @@ namespace DXSWI.Forms
                 exporter.Export();
 
                 recMailContent.HtmlText = temp;
-            } else
+            }
+            else
             {
                 emailMessage.Subject = textEditSubject.Text.Trim();
                 emailMessage.Body = recMailContent.Text; // use 2 view to avoid go to spam folder?
@@ -247,42 +251,6 @@ namespace DXSWI.Forms
             //string userState = candidateEmail + ": " + _emailMessage.Subject + ";" + runningTaskId.ToString();
             client.SendAsync(emailMessage, index);
         }
-        //private static bool RedirectionUrlValidationCallback(string redirectionUrl)
-        //{
-        //var redirectionUri = new Uri(redirectionUrl);
-        //var result = redirectionUri.Scheme == "https";
-        //return result;
-        //}
-        //private void sendMailViaWES()
-        //{
-        //try
-        //{
-        //    ExchangeService service = new ExchangeService();
-        //    //// In case you have a dodgy SSL certificate:
-        //    //System.Net.ServicePointManager.ServerCertificateValidationCallback =
-        //    //            delegate (Object obj, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
-        //    //            {
-        //    //                return true;
-        //    //            };
-        //    service.Credentials = new WebCredentials(Properties.Settings.Default.EmailAccount, Properties.Settings.Default.EmailPassword);
-        //    service.TraceEnabled = true;
-        //    service.TraceFlags = TraceFlags.All;
-        //    service.AutodiscoverUrl(textEditFrom.Text.Trim(), RedirectionUrlValidationCallback);
-
-        //    EmailMessage mes = new EmailMessage(service);
-        //    mes.Subject = textEditSubject.Text.Trim();
-        //    mes.Body = new MessageBody("Test send from add via wes");
-        //    mes.Sender = new EmailAddress(textEditFrom.Text.Trim());
-        //    mes.ToRecipients.Add(textEditTo.Text.Trim());
-        //    //mes.Save();
-        //    mes.SendAndSaveCopy(WellKnownFolderName.SentItems);
-        //    this.Close();
-        //}
-        //catch (Exception ex)
-        //{
-        //    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //}
-        //}
         private void sbSend_Click(object sender, EventArgs e)
         {
             //todo if multisending mail need to preview content first
@@ -307,13 +275,15 @@ namespace DXSWI.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
+                //Close();
+                Hide();
             }
         }
 
         private void startSendEmails()
         {
-            try {
+            try
+            {
                 Hide();
                 for (var i = 0; i < _candidateEmails.Count; ++i)
                 {
@@ -383,6 +353,7 @@ namespace DXSWI.Forms
                     btn.ImageOptions.Location = ImageLocation.MiddleCenter;
                     btn.Click += Delete_Attachment_Click;
                     btn.Name = index;
+                    _listRemoveAttachmentsButton.Add(btn);
                     //this.sbDelete.Click += new System.EventHandler(this.sbDelete_Click);
                     it1.Control = btn;
                     it1.Text = fileName;
@@ -402,6 +373,7 @@ namespace DXSWI.Forms
             {
                 SimpleButton btn = sender as SimpleButton;
                 _indexAndAttachments.Remove(btn.Name);
+                _listRemoveAttachmentsButton.Remove(btn);
                 lcgAttachments.BeginUpdate();
                 lcMain.GetItemByControl(btn).Dispose();
                 btn.Dispose();
@@ -430,11 +402,12 @@ namespace DXSWI.Forms
         private void insertTemplate(string subject, string content)
         {
             // if send to many candidates, use original form of template, else auto generate to final mail
-            if(_candidateEmails.Count > 1)
+            if (_candidateEmails.Count > 1)
             {
                 recMailContent.HtmlText = content;
                 textEditSubject.Text = subject;
-            } else
+            }
+            else
             {
                 recMailContent.HtmlText = autoGenerateEmail(content, 0);
                 textEditSubject.Text = autoGenerateEmail(subject, 0);
@@ -443,7 +416,7 @@ namespace DXSWI.Forms
 
         private string autoGenerateEmail(string template, int canIndex)
         {
-            return template.Replace("[name]", _candidateNames[canIndex]).Replace("[company]",_companyName).Replace("[job]", _jobTitle);
+            return template.Replace("[name]", _candidateNames[canIndex]).Replace("[company]", _companyName).Replace("[job]", _jobTitle);
         }
     }
 }

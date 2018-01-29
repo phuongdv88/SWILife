@@ -409,10 +409,11 @@ namespace DXSWI
             _frUser.changePassword();
         }
 
-        private void pcMain_Paint(object sender, PaintEventArgs e)
+        private void bbiEmailSetting_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            // setup mail:
+            dlgEmailSetting dlg = new dlgEmailSetting();
+            dlg.ShowDialog();
         }
-
     }
 }
