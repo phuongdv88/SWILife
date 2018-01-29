@@ -257,7 +257,7 @@
             this.toolStripSeparator3,
             this.refreshToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(251, 198);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(251, 176);
             // 
             // addCandidateToPipelineToolStripMenuItem
             // 
@@ -372,6 +372,7 @@
             this.gvCandidatePipeline.FormatRules.Add(gridFormatRule1);
             this.gvCandidatePipeline.GridControl = this.gcCandidatePipeline;
             this.gvCandidatePipeline.Name = "gvCandidatePipeline";
+            this.gvCandidatePipeline.OptionsBehavior.Editable = false;
             this.gvCandidatePipeline.OptionsSelection.MultiSelect = true;
             this.gvCandidatePipeline.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvCandidatePipeline_CellValueChanging);
             // 
