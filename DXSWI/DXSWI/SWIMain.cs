@@ -349,7 +349,25 @@ namespace DXSWI
 
         private void bbiUserHelp_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.");
+            XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void showNotice(string message, string caption, MessageBoxIcon icon)
+        {
+            //lcInfo.Text = message;
+            //fpNotify.ShowPopup();
+            Image image = null;
+            if (icon == MessageBoxIcon.Information)
+            {
+                image = global::DXSWI.Properties.Resources.Notice_Info_icon;
+            } else if(icon == MessageBoxIcon.Warning)
+            {
+                image = global::DXSWI.Properties.Resources.Button_Warning_icon;
+            } else {
+
+                image = global::DXSWI.Properties.Resources.Notice_Support_icon;
+            }
+            alertControlNotify.Show(this, caption, message, image);
         }
 
         private void bbiAddCompany_ItemClick(object sender, ItemClickEventArgs e)
@@ -415,5 +433,6 @@ namespace DXSWI
             dlgEmailSetting dlg = new dlgEmailSetting();
             dlg.ShowDialog();
         }
+
     }
 }

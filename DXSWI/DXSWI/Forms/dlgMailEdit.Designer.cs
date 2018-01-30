@@ -144,7 +144,6 @@
             this.toggleViewMergedDataItem1 = new DevExpress.XtraRichEdit.UI.ToggleViewMergedDataItem();
             this.bbiFiles = new DevExpress.XtraBars.BarButtonItem();
             this.bbiMailSetting = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.checkSpellingItem1 = new DevExpress.XtraRichEdit.UI.CheckSpellingItem();
             this.changeLanguageItem1 = new DevExpress.XtraRichEdit.UI.ChangeLanguageItem();
             this.protectDocumentItem1 = new DevExpress.XtraRichEdit.UI.ProtectDocumentItem();
@@ -180,7 +179,6 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.lcMain = new DevExpress.XtraLayout.LayoutControl();
             this.textEditFrom = new DevExpress.XtraEditors.TextEdit();
             this.textEditTo = new DevExpress.XtraEditors.TextEdit();
@@ -338,7 +336,6 @@
             this.toggleViewMergedDataItem1,
             this.bbiFiles,
             this.bbiMailSetting,
-            this.barSubItem1,
             this.checkSpellingItem1,
             this.changeLanguageItem1,
             this.protectDocumentItem1,
@@ -360,7 +357,6 @@
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 134;
             this.ribbon.Name = "ribbon";
-            this.ribbon.PageHeaderItemLinks.Add(this.barSubItem1);
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.homeRibbonPage1,
             this.insertRibbonPage1,
@@ -370,7 +366,6 @@
             this.repositoryItemFontEdit1,
             this.repositoryItemRichEditFontSizeEdit1});
             this.ribbon.Size = new System.Drawing.Size(947, 143);
-            this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // undoItem1
             // 
@@ -486,7 +481,7 @@
             this.recMailContent.Name = "recMailContent";
             this.recMailContent.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
             this.recMailContent.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
-            this.recMailContent.Size = new System.Drawing.Size(923, 417);
+            this.recMailContent.Size = new System.Drawing.Size(923, 444);
             this.recMailContent.TabIndex = 8;
             // 
             // fontSizeIncreaseItem1
@@ -1021,13 +1016,6 @@
             this.bbiMailSetting.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiMailSetting.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiMailSetting_ItemClick);
             // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Send";
-            this.barSubItem1.Id = 113;
-            this.barSubItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.Image")));
-            this.barSubItem1.Name = "barSubItem1";
-            // 
             // checkSpellingItem1
             // 
             this.checkSpellingItem1.Id = 114;
@@ -1111,7 +1099,7 @@
             // 
             this.bbiSignatureSetting.Caption = "Signature";
             this.bbiSignatureSetting.Id = 129;
-            this.bbiSignatureSetting.ImageOptions.Image = global::DXSWI.Properties.Resources.signature_icon;
+            this.bbiSignatureSetting.ImageOptions.Image = global::DXSWI.Properties.Resources.signatureicon;
             this.bbiSignatureSetting.Name = "bbiSignatureSetting";
             this.bbiSignatureSetting.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -1119,7 +1107,7 @@
             // 
             this.bbiInsertTemplate.Caption = "Template";
             this.bbiInsertTemplate.Id = 132;
-            this.bbiInsertTemplate.ImageOptions.Image = global::DXSWI.Properties.Resources.mails_icon;
+            this.bbiInsertTemplate.ImageOptions.Image = global::DXSWI.Properties.Resources.mailsicon;
             this.bbiInsertTemplate.Name = "bbiInsertTemplate";
             this.bbiInsertTemplate.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiInsertTemplate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiInsertTemplate_ItemClick);
@@ -1128,7 +1116,7 @@
             // 
             this.bbiTemplateSetting.Caption = "Template Setting";
             this.bbiTemplateSetting.Id = 133;
-            this.bbiTemplateSetting.ImageOptions.Image = global::DXSWI.Properties.Resources.mails_icon;
+            this.bbiTemplateSetting.ImageOptions.Image = global::DXSWI.Properties.Resources.mailsicon;
             this.bbiTemplateSetting.Name = "bbiTemplateSetting";
             this.bbiTemplateSetting.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
@@ -1255,13 +1243,6 @@
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Signature";
             // 
-            // ribbonStatusBar
-            // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 656);
-            this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(947, 31);
-            // 
             // lcMain
             // 
             this.lcMain.Controls.Add(this.recMailContent);
@@ -1273,7 +1254,7 @@
             this.lcMain.Location = new System.Drawing.Point(0, 143);
             this.lcMain.Name = "lcMain";
             this.lcMain.Root = this.lcgMain;
-            this.lcMain.Size = new System.Drawing.Size(947, 513);
+            this.lcMain.Size = new System.Drawing.Size(947, 540);
             this.lcMain.TabIndex = 2;
             this.lcMain.Text = "layoutControl1";
             // 
@@ -1311,7 +1292,7 @@
             this.sbSend.Appearance.Options.UseTextOptions = true;
             this.sbSend.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.sbSend.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.sbSend.ImageOptions.Image = global::DXSWI.Properties.Resources.email_send_icon;
+            this.sbSend.ImageOptions.Image = global::DXSWI.Properties.Resources.emailsendicon;
             this.sbSend.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.sbSend.Location = new System.Drawing.Point(867, 12);
             this.sbSend.Name = "sbSend";
@@ -1334,7 +1315,7 @@
             this.lciMailContent});
             this.lcgMain.Location = new System.Drawing.Point(0, 0);
             this.lcgMain.Name = "lcgMain";
-            this.lcgMain.Size = new System.Drawing.Size(947, 513);
+            this.lcgMain.Size = new System.Drawing.Size(947, 540);
             this.lcgMain.TextVisible = false;
             // 
             // layoutControlItem1
@@ -1390,7 +1371,7 @@
             this.lciMailContent.Control = this.recMailContent;
             this.lciMailContent.Location = new System.Drawing.Point(0, 72);
             this.lciMailContent.Name = "lciMailContent";
-            this.lciMailContent.Size = new System.Drawing.Size(927, 421);
+            this.lciMailContent.Size = new System.Drawing.Size(927, 448);
             this.lciMailContent.TextSize = new System.Drawing.Size(0, 0);
             this.lciMailContent.TextVisible = false;
             // 
@@ -1517,15 +1498,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 687);
+            this.ClientSize = new System.Drawing.Size(947, 683);
             this.Controls.Add(this.lcMain);
-            this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.KeyPreview = true;
             this.Name = "dlgMailEdit";
             this.Ribbon = this.ribbon;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.StatusBar = this.ribbonStatusBar;
             this.Text = "Mail";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgMailEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
@@ -1552,7 +1531,6 @@
         #endregion
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraRichEdit.UI.UndoItem undoItem1;
         private DevExpress.XtraRichEdit.UI.RedoItem redoItem1;
         private DevExpress.XtraRichEdit.UI.FileNewItem fileNewItem1;
@@ -1686,7 +1664,6 @@
         private DevExpress.XtraLayout.LayoutControlItem lciSubject;
         private DevExpress.XtraBars.BarButtonItem bbiMailSetting;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraEditors.SimpleButton sbSend;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraRichEdit.UI.CheckSpellingItem checkSpellingItem1;

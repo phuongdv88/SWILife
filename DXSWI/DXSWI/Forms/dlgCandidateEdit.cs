@@ -215,6 +215,8 @@ namespace DXSWI.Forms
                 isNew = true;
                 gcActivities.Enabled = false;
                 gcJobOrderPipeline.Enabled = false;
+                barJobOrder.Dispose();
+                standaloneBarDockControl1.Dispose();
                 return;
             }
             // fill data to ui

@@ -89,6 +89,8 @@ namespace DXSWI.Forms
             {
                 textEditTo.Focus();
             }
+            textEditSubject.Text = string.Empty;
+            recMailContent.Text = string.Empty;
         }
 
         private void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
@@ -100,7 +102,9 @@ namespace DXSWI.Forms
                 _numberOfSentMail--;
                 if (e.Error != null)
                 {
-                    _finalMessage = string.Format("[{0}] {1}", _candidateEmails[index], e.Error.ToString());
+                    var msg = string.Format("[{0}] {1}", _candidateEmails[index], e.Error.ToString());
+                    ScreenManager.Instance.showNoticeMessage(msg, "Send Email Fail", MessageBoxIcon.Information);
+                    _finalMessage += msg;
                 }
                 else
                 {
@@ -117,6 +121,7 @@ namespace DXSWI.Forms
                             Notes = string.Format("[{0}] Message sent {1}.", _candidateEmails[index], DateTime.Now.ToString("hh:mm:ss dd/MM/yyy")),
                         };
                         ActivityManager.insert(act, null);
+                        ScreenManager.Instance.showNoticeMessage(act.Notes, "Email sent successfully", MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
@@ -253,7 +258,6 @@ namespace DXSWI.Forms
         }
         private void sbSend_Click(object sender, EventArgs e)
         {
-            //todo if multisending mail need to preview content first
             try
             {
                 if (!validateUi()) return;

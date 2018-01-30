@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SWIMain));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -60,9 +62,11 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bbiImportFromExel = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiEmailSetting = new DevExpress.XtraBars.BarButtonItem();
             this.rpUser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgEditUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpgSetting = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpCompanies = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -91,13 +95,27 @@
             this.nbgReport = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgUtilites = new DevExpress.XtraNavBar.NavBarGroup();
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
+            this.fpNotify = new DevExpress.Utils.FlyoutPanel();
+            this.fpcNotify = new DevExpress.Utils.FlyoutPanelControl();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.lcInfo = new DevExpress.XtraEditors.LabelControl();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
-            this.rpgSetting = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiEmailSetting = new DevExpress.XtraBars.BarButtonItem();
+            this.alertControlNotify = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).BeginInit();
+            this.pcMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fpNotify)).BeginInit();
+            this.fpNotify.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fpcNotify)).BeginInit();
+            this.fpcNotify.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControlMain
@@ -166,9 +184,9 @@
             this.bbiUserAdd.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.AddMaleUser;
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem1.Text = "Add new user";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.bbiUserAdd.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Add new user";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.bbiUserAdd.SuperTip = superToolTip3;
             this.bbiUserAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserAdd_ItemClick);
             // 
             // bbiUserEdit
@@ -179,9 +197,9 @@
             this.bbiUserEdit.ImageOptions.Image = global::DXSWI.Properties.Resources.EditMaleUsericon;
             this.bbiUserEdit.Name = "bbiUserEdit";
             this.bbiUserEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem2.Text = "Edit current selected user";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.bbiUserEdit.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "Edit current selected user";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.bbiUserEdit.SuperTip = superToolTip4;
             this.bbiUserEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserEdit_ItemClick);
             // 
             // bbiUserDelete
@@ -384,6 +402,15 @@
             this.bbiImportFromExel.Name = "bbiImportFromExel";
             this.bbiImportFromExel.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
+            // bbiEmailSetting
+            // 
+            this.bbiEmailSetting.Caption = "Email Setting";
+            this.bbiEmailSetting.Id = 85;
+            this.bbiEmailSetting.ImageOptions.Image = global::DXSWI.Properties.Resources.mailsettingsicon;
+            this.bbiEmailSetting.Name = "bbiEmailSetting";
+            this.bbiEmailSetting.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiEmailSetting.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEmailSetting_ItemClick);
+            // 
             // rpUser
             // 
             this.rpUser.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -411,6 +438,12 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiUserHelp);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "System";
+            // 
+            // rpgSetting
+            // 
+            this.rpgSetting.ItemLinks.Add(this.bbiEmailSetting);
+            this.rpgSetting.Name = "rpgSetting";
+            this.rpgSetting.Text = "Setting";
             // 
             // ribbonPageGroup4
             // 
@@ -653,11 +686,88 @@
             // 
             // pcMain
             // 
+            this.pcMain.Controls.Add(this.fpNotify);
             this.pcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pcMain.Location = new System.Drawing.Point(54, 146);
             this.pcMain.Name = "pcMain";
             this.pcMain.Size = new System.Drawing.Size(1296, 590);
             this.pcMain.TabIndex = 6;
+            // 
+            // fpNotify
+            // 
+            this.fpNotify.Controls.Add(this.fpcNotify);
+            this.fpNotify.Location = new System.Drawing.Point(747, 27);
+            this.fpNotify.Name = "fpNotify";
+            this.fpNotify.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Bottom;
+            this.fpNotify.Options.CloseOnOuterClick = true;
+            this.fpNotify.OptionsButtonPanel.ButtonPanelContentAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.fpNotify.OptionsButtonPanel.ButtonPanelLocation = DevExpress.Utils.FlyoutPanelButtonPanelLocation.Bottom;
+            buttonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions2.Image")));
+            this.fpNotify.OptionsButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.Utils.PeekFormButton("OK", true, buttonImageOptions2, true, null)});
+            this.fpNotify.OwnerControl = this.pcMain;
+            this.fpNotify.Size = new System.Drawing.Size(352, 67);
+            this.fpNotify.TabIndex = 0;
+            // 
+            // fpcNotify
+            // 
+            this.fpcNotify.Controls.Add(this.layoutControl1);
+            this.fpcNotify.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fpcNotify.FlyoutPanel = this.fpNotify;
+            this.fpcNotify.Location = new System.Drawing.Point(0, 0);
+            this.fpcNotify.Name = "fpcNotify";
+            this.fpcNotify.Size = new System.Drawing.Size(352, 67);
+            this.fpcNotify.TabIndex = 0;
+            // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.lcInfo);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(2, 2);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.layoutControlGroup1;
+            this.layoutControl1.Size = new System.Drawing.Size(348, 63);
+            this.layoutControl1.TabIndex = 1;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // lcInfo
+            // 
+            this.lcInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lcInfo.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("lcInfo.Appearance.Image")));
+            this.lcInfo.Appearance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lcInfo.Appearance.Options.UseImage = true;
+            this.lcInfo.Appearance.Options.UseImageAlign = true;
+            this.lcInfo.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.lcInfo.Location = new System.Drawing.Point(12, 12);
+            this.lcInfo.Name = "lcInfo";
+            this.lcInfo.Size = new System.Drawing.Size(324, 39);
+            this.lcInfo.StyleController = this.layoutControl1;
+            this.lcInfo.TabIndex = 0;
+            this.lcInfo.Text = "a";
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "Root";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(348, 63);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.lcInfo;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.MinSize = new System.Drawing.Size(41, 40);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(328, 43);
+            this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
             // 
             // ribbonPageGroup10
             // 
@@ -674,20 +784,11 @@
             this.nbgCandidates.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCandidates.SmallImage")));
             this.nbgCandidates.Tag = "candidate";
             // 
-            // rpgSetting
+            // alertControlNotify
             // 
-            this.rpgSetting.ItemLinks.Add(this.bbiEmailSetting);
-            this.rpgSetting.Name = "rpgSetting";
-            this.rpgSetting.Text = "Setting";
-            // 
-            // bbiEmailSetting
-            // 
-            this.bbiEmailSetting.Caption = "Email Setting";
-            this.bbiEmailSetting.Id = 85;
-            this.bbiEmailSetting.ImageOptions.Image = global::DXSWI.Properties.Resources.mailsettingsicon;
-            this.bbiEmailSetting.Name = "bbiEmailSetting";
-            this.bbiEmailSetting.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.bbiEmailSetting.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEmailSetting_ItemClick);
+            this.alertControlNotify.AppearanceText.Image = ((System.Drawing.Image)(resources.GetObject("alertControlNotify.AppearanceText.Image")));
+            this.alertControlNotify.AppearanceText.Options.UseImage = true;
+            this.alertControlNotify.FormLocation = DevExpress.XtraBars.Alerter.AlertFormLocation.TopRight;
             // 
             // SWIMain
             // 
@@ -712,6 +813,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).EndInit();
+            this.pcMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fpNotify)).EndInit();
+            this.fpNotify.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fpcNotify)).EndInit();
+            this.fpcNotify.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -781,5 +891,12 @@
         private DevExpress.XtraNavBar.NavBarGroup ngbCandidates;
         private DevExpress.XtraBars.BarButtonItem bbiEmailSetting;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgSetting;
+        private DevExpress.Utils.FlyoutPanel fpNotify;
+        private DevExpress.Utils.FlyoutPanelControl fpcNotify;
+        private DevExpress.XtraEditors.LabelControl lcInfo;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraBars.Alerter.AlertControl alertControlNotify;
     }
 }

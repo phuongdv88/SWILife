@@ -50,6 +50,8 @@ namespace DXSWI.Forms
                 companyComboxEdit.Properties.Items.Clear();
                 companyComboxEdit.Properties.Items.AddRange(companiesNameAndId.Keys);
                 gcCandidatePipeline.Enabled = false;
+                standaloneBarDockControl1.Dispose();
+                bar2.Dispose();
             }
             else
             {

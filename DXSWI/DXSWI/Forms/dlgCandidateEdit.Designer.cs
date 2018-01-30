@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgCandidateEdit));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.gcActivities = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -58,7 +58,10 @@
             this.ribeAction = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barJobOrder = new DevExpress.XtraBars.Bar();
+            this.bbiAddJobToPipeline = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAddActivity = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiRemoveJobOrderFromPipeline = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -157,9 +160,6 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bbiAddJobToPipeline = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiAddActivity = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiRemoveJobOrderFromPipeline = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcActivities)).BeginInit();
@@ -485,17 +485,17 @@
             // ribeAction
             // 
             this.ribeAction.AutoHeight = false;
-            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
-            serializableAppearanceObject13.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject13.Image")));
-            serializableAppearanceObject13.Options.UseImage = true;
-            serializableAppearanceObject14.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject14.Image")));
-            serializableAppearanceObject14.Options.UseImage = true;
-            serializableAppearanceObject15.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject15.Image")));
-            serializableAppearanceObject15.Options.UseImage = true;
-            serializableAppearanceObject16.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject16.Image")));
-            serializableAppearanceObject16.Options.UseImage = true;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
+            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
+            serializableAppearanceObject2.Options.UseImage = true;
+            serializableAppearanceObject3.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject3.Image")));
+            serializableAppearanceObject3.Options.UseImage = true;
+            serializableAppearanceObject4.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject4.Image")));
+            serializableAppearanceObject4.Options.UseImage = true;
             this.ribeAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null)});
             this.ribeAction.Name = "ribeAction";
             this.ribeAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -511,7 +511,7 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
+            this.barJobOrder,
             this.bar3});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
@@ -523,25 +523,49 @@
             this.bbiAddJobToPipeline,
             this.bbiAddActivity,
             this.bbiRemoveJobOrderFromPipeline});
-            this.barManager1.MainMenu = this.bar2;
+            this.barManager1.MainMenu = this.barJobOrder;
             this.barManager1.MaxItemId = 3;
             this.barManager1.StatusBar = this.bar3;
             // 
-            // bar2
+            // barJobOrder
             // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.bar2.FloatLocation = new System.Drawing.Point(595, 171);
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.barJobOrder.BarName = "Main menu";
+            this.barJobOrder.DockCol = 0;
+            this.barJobOrder.DockRow = 0;
+            this.barJobOrder.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.barJobOrder.FloatLocation = new System.Drawing.Point(595, 171);
+            this.barJobOrder.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddJobToPipeline),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddActivity),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiRemoveJobOrderFromPipeline)});
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.StandaloneBarDockControl = this.standaloneBarDockControl1;
-            this.bar2.Text = "Main menu";
+            this.barJobOrder.OptionsBar.MultiLine = true;
+            this.barJobOrder.OptionsBar.UseWholeRow = true;
+            this.barJobOrder.StandaloneBarDockControl = this.standaloneBarDockControl1;
+            this.barJobOrder.Text = "Main menu";
+            // 
+            // bbiAddJobToPipeline
+            // 
+            this.bbiAddJobToPipeline.Caption = "Add Job To Pipline";
+            this.bbiAddJobToPipeline.Id = 0;
+            this.bbiAddJobToPipeline.ImageOptions.Image = global::DXSWI.Properties.Resources.ButtonAdd;
+            this.bbiAddJobToPipeline.Name = "bbiAddJobToPipeline";
+            this.bbiAddJobToPipeline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddJobToPipeline_ItemClick);
+            // 
+            // bbiAddActivity
+            // 
+            this.bbiAddActivity.Caption = "Add Activity";
+            this.bbiAddActivity.Id = 1;
+            this.bbiAddActivity.ImageOptions.Image = global::DXSWI.Properties.Resources.Actionsdocumentedit;
+            this.bbiAddActivity.Name = "bbiAddActivity";
+            this.bbiAddActivity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddActivity_ItemClick);
+            // 
+            // bbiRemoveJobOrderFromPipeline
+            // 
+            this.bbiRemoveJobOrderFromPipeline.Caption = "Remove Job Order From Pipeline";
+            this.bbiRemoveJobOrderFromPipeline.Id = 2;
+            this.bbiRemoveJobOrderFromPipeline.ImageOptions.Image = global::DXSWI.Properties.Resources.Actions_dialog_close;
+            this.bbiRemoveJobOrderFromPipeline.Name = "bbiRemoveJobOrderFromPipeline";
+            this.bbiRemoveJobOrderFromPipeline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRemoveJobOrderFromPipeline_ItemClick);
             // 
             // bar3
             // 
@@ -1472,6 +1496,7 @@
             this.layoutControlGroup3.Location = new System.Drawing.Point(649, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Size = new System.Drawing.Size(650, 303);
+            this.layoutControlGroup3.Text = "Job Order In Pipeline";
             // 
             // layoutControlItem9
             // 
@@ -1509,30 +1534,6 @@
             this.layoutControlItem11.Size = new System.Drawing.Size(626, 414);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
-            // 
-            // bbiAddJobToPipeline
-            // 
-            this.bbiAddJobToPipeline.Caption = "Add Job To Pipline";
-            this.bbiAddJobToPipeline.Id = 0;
-            this.bbiAddJobToPipeline.ImageOptions.Image = global::DXSWI.Properties.Resources.ButtonAdd;
-            this.bbiAddJobToPipeline.Name = "bbiAddJobToPipeline";
-            this.bbiAddJobToPipeline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddJobToPipeline_ItemClick);
-            // 
-            // bbiAddActivity
-            // 
-            this.bbiAddActivity.Caption = "Add Activity";
-            this.bbiAddActivity.Id = 1;
-            this.bbiAddActivity.ImageOptions.Image = global::DXSWI.Properties.Resources.Actionsdocumentedit;
-            this.bbiAddActivity.Name = "bbiAddActivity";
-            this.bbiAddActivity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddActivity_ItemClick);
-            // 
-            // bbiRemoveJobOrderFromPipeline
-            // 
-            this.bbiRemoveJobOrderFromPipeline.Caption = "Remove Job Order From Pipeline";
-            this.bbiRemoveJobOrderFromPipeline.Id = 2;
-            this.bbiRemoveJobOrderFromPipeline.ImageOptions.Image = global::DXSWI.Properties.Resources.Actions_dialog_close;
-            this.bbiRemoveJobOrderFromPipeline.Name = "bbiRemoveJobOrderFromPipeline";
-            this.bbiRemoveJobOrderFromPipeline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRemoveJobOrderFromPipeline_ItemClick);
             // 
             // dlgCandidateEdit
             // 
@@ -1774,7 +1775,6 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -1783,5 +1783,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiAddJobToPipeline;
         private DevExpress.XtraBars.BarButtonItem bbiAddActivity;
         private DevExpress.XtraBars.BarButtonItem bbiRemoveJobOrderFromPipeline;
+        public DevExpress.XtraBars.Bar barJobOrder;
     }
 }

@@ -67,6 +67,11 @@ namespace DXSWI
             //Application.Exit();
         }
 
+        public void showNoticeMessage(string message, string caption, MessageBoxIcon icon)
+        {
+            mMain?.showNotice(message, caption, icon);
+        }
+
     }
 
 }

@@ -520,6 +520,12 @@
   <ItemGroup>
     <Content Include="logo_tron_0Pv_icon.ico" />
     <Content Include="lollipop_candy.ico" />
+    <None Include="Resources\Notice-Support-icon1.png" />
+    <None Include="Resources\Notice-Support-icon.png" />
+    <None Include="Resources\Notice-Info-icon1.png" />
+    <None Include="Resources\Notice-Info-icon.png" />
+    <None Include="Resources\Button-Warning-icon1.png" />
+    <None Include="Resources\Button-Warning-icon.png" />
     <None Include="Resources\Actions-edit-copy-icon1.png" />
     <None Include="Resources\Actions-edit-copy-icon.png" />
     <None Include="Resources\mails-icon1.png" />

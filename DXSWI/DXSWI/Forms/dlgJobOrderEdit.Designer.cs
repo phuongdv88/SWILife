@@ -49,7 +49,6 @@
             this.bbiAutoEmailToCandidate = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDeleteCandidateFromPipeLine = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -235,7 +234,7 @@
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1333, 894);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1333, 917);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -251,8 +250,7 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar3});
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -269,7 +267,6 @@
             this.bbiRefresh});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 8;
-            this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
             // 
@@ -347,18 +344,6 @@
             this.bbiRefresh.Name = "bbiRefresh";
             this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRefresh_ItemClick);
             // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -371,9 +356,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 894);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 917);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1333, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1333, 0);
             // 
             // barDockControlLeft
             // 
@@ -381,7 +366,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 894);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 917);
             // 
             // barDockControlRight
             // 
@@ -389,7 +374,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1333, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 894);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 917);
             // 
             // gcCandidatePipeline
             // 
@@ -400,7 +385,7 @@
             this.gcCandidatePipeline.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemRatingControl1});
             this.gcCandidatePipeline.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gcCandidatePipeline.Size = new System.Drawing.Size(724, 758);
+            this.gcCandidatePipeline.Size = new System.Drawing.Size(724, 781);
             this.gcCandidatePipeline.TabIndex = 27;
             this.gcCandidatePipeline.ToolTipController = this.toolTipController1;
             this.gcCandidatePipeline.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -418,7 +403,7 @@
             // 
             // copyEmailToolStripMenuItem
             // 
-            this.copyEmailToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_edit_copy_icon1;
+            this.copyEmailToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actionseditcopyicon1;
             this.copyEmailToolStripMenuItem.Name = "copyEmailToolStripMenuItem";
             this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.copyEmailToolStripMenuItem.Text = "Copy Email";
@@ -731,13 +716,13 @@
             this.DescriptionMemoExEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.jobOrderBindingSource, "Description", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.DescriptionMemoExEdit.Location = new System.Drawing.Point(12, 238);
             this.DescriptionMemoExEdit.Name = "DescriptionMemoExEdit";
-            this.DescriptionMemoExEdit.Size = new System.Drawing.Size(557, 384);
+            this.DescriptionMemoExEdit.Size = new System.Drawing.Size(557, 399);
             this.DescriptionMemoExEdit.StyleController = this.dataLayoutControl1;
             this.DescriptionMemoExEdit.TabIndex = 19;
             // 
             // sbOK
             // 
-            this.sbOK.Location = new System.Drawing.Point(978, 860);
+            this.sbOK.Location = new System.Drawing.Point(978, 883);
             this.sbOK.Name = "sbOK";
             this.sbOK.Size = new System.Drawing.Size(142, 22);
             this.sbOK.StyleController = this.dataLayoutControl1;
@@ -747,7 +732,7 @@
             // 
             // sbCancel
             // 
-            this.sbCancel.Location = new System.Drawing.Point(1143, 860);
+            this.sbCancel.Location = new System.Drawing.Point(1143, 883);
             this.sbCancel.Name = "sbCancel";
             this.sbCancel.Size = new System.Drawing.Size(178, 22);
             this.sbCancel.StyleController = this.dataLayoutControl1;
@@ -758,7 +743,7 @@
             // sbDownload
             // 
             this.sbDownload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDownload.ImageOptions.Image")));
-            this.sbDownload.Location = new System.Drawing.Point(444, 822);
+            this.sbDownload.Location = new System.Drawing.Point(444, 845);
             this.sbDownload.Name = "sbDownload";
             this.sbDownload.Size = new System.Drawing.Size(113, 22);
             this.sbDownload.StyleController = this.dataLayoutControl1;
@@ -769,7 +754,7 @@
             // sbDelete
             // 
             this.sbDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDelete.ImageOptions.Image")));
-            this.sbDelete.Location = new System.Drawing.Point(321, 822);
+            this.sbDelete.Location = new System.Drawing.Point(321, 845);
             this.sbDelete.Name = "sbDelete";
             this.sbDelete.Size = new System.Drawing.Size(119, 22);
             this.sbDelete.StyleController = this.dataLayoutControl1;
@@ -780,7 +765,7 @@
             // sbAddAttachment
             // 
             this.sbAddAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAddAttachment.ImageOptions.Image")));
-            this.sbAddAttachment.Location = new System.Drawing.Point(24, 822);
+            this.sbAddAttachment.Location = new System.Drawing.Point(24, 845);
             this.sbAddAttachment.Name = "sbAddAttachment";
             this.sbAddAttachment.Size = new System.Drawing.Size(111, 22);
             this.sbAddAttachment.StyleController = this.dataLayoutControl1;
@@ -790,9 +775,9 @@
             // 
             // meInternalNotes
             // 
-            this.meInternalNotes.Location = new System.Drawing.Point(12, 642);
+            this.meInternalNotes.Location = new System.Drawing.Point(12, 657);
             this.meInternalNotes.Name = "meInternalNotes";
-            this.meInternalNotes.Size = new System.Drawing.Size(557, 146);
+            this.meInternalNotes.Size = new System.Drawing.Size(557, 154);
             this.meInternalNotes.StyleController = this.dataLayoutControl1;
             this.meInternalNotes.TabIndex = 34;
             // 
@@ -827,7 +812,7 @@
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1333, 894);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1333, 917);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -846,14 +831,14 @@
             this.emptySpaceItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1313, 874);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1313, 897);
             // 
             // ItemForDescription
             // 
             this.ItemForDescription.Control = this.DescriptionMemoExEdit;
             this.ItemForDescription.Location = new System.Drawing.Point(0, 210);
             this.ItemForDescription.Name = "ItemForDescription";
-            this.ItemForDescription.Size = new System.Drawing.Size(561, 404);
+            this.ItemForDescription.Size = new System.Drawing.Size(561, 419);
             this.ItemForDescription.Text = "Description";
             this.ItemForDescription.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForDescription.TextSize = new System.Drawing.Size(78, 13);
@@ -1035,7 +1020,7 @@
             this.layoutControlItem4,
             this.layoutControlItem6,
             this.sliAttachment});
-            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 780);
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 803);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
             this.layoutControlGroup4.Size = new System.Drawing.Size(561, 68);
             this.layoutControlGroup4.Text = "Attachment";
@@ -1079,9 +1064,9 @@
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.meInternalNotes;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 614);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 629);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(561, 166);
+            this.layoutControlItem7.Size = new System.Drawing.Size(561, 174);
             this.layoutControlItem7.Text = "Internal Notes";
             this.layoutControlItem7.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem7.TextSize = new System.Drawing.Size(78, 13);
@@ -1093,7 +1078,7 @@
             this.layoutControlItem8});
             this.layoutControlGroup5.Location = new System.Drawing.Point(561, 0);
             this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(752, 848);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(752, 871);
             this.layoutControlGroup5.Text = "Candidates in pipeline";
             // 
             // layoutControlItem3
@@ -1101,7 +1086,7 @@
             this.layoutControlItem3.Control = this.gcCandidatePipeline;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 44);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(728, 762);
+            this.layoutControlItem3.Size = new System.Drawing.Size(728, 785);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -1117,7 +1102,7 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.sbOK;
-            this.layoutControlItem1.Location = new System.Drawing.Point(966, 848);
+            this.layoutControlItem1.Location = new System.Drawing.Point(966, 871);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(146, 26);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -1126,7 +1111,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.sbCancel;
-            this.layoutControlItem2.Location = new System.Drawing.Point(1131, 848);
+            this.layoutControlItem2.Location = new System.Drawing.Point(1131, 871);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(182, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -1135,7 +1120,7 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 848);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 871);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(966, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -1143,7 +1128,7 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(1112, 848);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(1112, 871);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(19, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -1308,7 +1293,6 @@
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem bbiAddCandidateToPipeline;
         private DevExpress.XtraBars.BarButtonItem bbiAddActivity;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
