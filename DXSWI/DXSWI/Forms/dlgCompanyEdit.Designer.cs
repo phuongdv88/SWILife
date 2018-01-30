@@ -31,6 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgCompanyEdit));
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.sbDownloadAttachment = new DevExpress.XtraEditors.SimpleButton();
+            this.sbViewFile = new DevExpress.XtraEditors.SimpleButton();
+            this.sbDeleteAttachment = new DevExpress.XtraEditors.SimpleButton();
+            this.sbAttachFile = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.sliAttachment = new DevExpress.XtraLayout.SimpleLabelItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PrimaryPhoneTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -50,9 +62,6 @@
             this.ContractSigingTimeDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.MiscNotesTextEdit = new DevExpress.XtraEditors.MemoEdit();
             this.ServiceContractTermsTextEdit = new DevExpress.XtraEditors.MemoEdit();
-            this.sbAttachFile = new DevExpress.XtraEditors.SimpleButton();
-            this.sbDeleteAttachment = new DevExpress.XtraEditors.SimpleButton();
-            this.sbDownloadAttachment = new DevExpress.XtraEditors.SimpleButton();
             this.sbOK = new DevExpress.XtraEditors.SimpleButton();
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -76,16 +85,22 @@
             this.ItemForContractSigingTime = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForServiceContractTerms = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForMiscNotes = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.sliAttachment = new DevExpress.XtraLayout.SimpleLabelItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliAttachment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrimaryPhoneTextEdit.Properties)).BeginInit();
@@ -127,18 +142,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForContractSigingTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForServiceContractTerms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMiscNotes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliAttachment)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
             // 
+            this.dataLayoutControl1.Controls.Add(this.groupControl1);
             this.dataLayoutControl1.Controls.Add(this.NameTextEdit);
             this.dataLayoutControl1.Controls.Add(this.PrimaryPhoneTextEdit);
             this.dataLayoutControl1.Controls.Add(this.SecondaryPhoneTextEdit);
@@ -157,9 +169,6 @@
             this.dataLayoutControl1.Controls.Add(this.ContractSigingTimeDateEdit);
             this.dataLayoutControl1.Controls.Add(this.MiscNotesTextEdit);
             this.dataLayoutControl1.Controls.Add(this.ServiceContractTermsTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.sbAttachFile);
-            this.dataLayoutControl1.Controls.Add(this.sbDeleteAttachment);
-            this.dataLayoutControl1.Controls.Add(this.sbDownloadAttachment);
             this.dataLayoutControl1.Controls.Add(this.sbOK);
             this.dataLayoutControl1.Controls.Add(this.sbCancel);
             this.dataLayoutControl1.DataSource = this.companyBindingSource;
@@ -170,6 +179,136 @@
             this.dataLayoutControl1.Size = new System.Drawing.Size(1214, 609);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.layoutControl1);
+            this.groupControl1.Location = new System.Drawing.Point(12, 499);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(1190, 72);
+            this.groupControl1.TabIndex = 31;
+            this.groupControl1.Text = "Contract Attachment";
+            // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.sbDownloadAttachment);
+            this.layoutControl1.Controls.Add(this.sbViewFile);
+            this.layoutControl1.Controls.Add(this.sbDeleteAttachment);
+            this.layoutControl1.Controls.Add(this.sbAttachFile);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(2, 20);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.layoutControlGroup5;
+            this.layoutControl1.Size = new System.Drawing.Size(1186, 50);
+            this.layoutControl1.TabIndex = 0;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // sbDownloadAttachment
+            // 
+            this.sbDownloadAttachment.Enabled = false;
+            this.sbDownloadAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDownloadAttachment.ImageOptions.Image")));
+            this.sbDownloadAttachment.Location = new System.Drawing.Point(1066, 12);
+            this.sbDownloadAttachment.Name = "sbDownloadAttachment";
+            this.sbDownloadAttachment.Size = new System.Drawing.Size(108, 22);
+            this.sbDownloadAttachment.StyleController = this.layoutControl1;
+            this.sbDownloadAttachment.TabIndex = 32;
+            this.sbDownloadAttachment.Text = "Download";
+            this.sbDownloadAttachment.Click += new System.EventHandler(this.sbDownloadAttachment_Click);
+            // 
+            // sbViewFile
+            // 
+            this.sbViewFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbViewFile.ImageOptions.Image")));
+            this.sbViewFile.Location = new System.Drawing.Point(952, 12);
+            this.sbViewFile.Name = "sbViewFile";
+            this.sbViewFile.Size = new System.Drawing.Size(110, 22);
+            this.sbViewFile.StyleController = this.layoutControl1;
+            this.sbViewFile.TabIndex = 31;
+            this.sbViewFile.Text = "View";
+            this.sbViewFile.Click += new System.EventHandler(this.sbViewFile_Click);
+            // 
+            // sbDeleteAttachment
+            // 
+            this.sbDeleteAttachment.Enabled = false;
+            this.sbDeleteAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDeleteAttachment.ImageOptions.Image")));
+            this.sbDeleteAttachment.Location = new System.Drawing.Point(831, 12);
+            this.sbDeleteAttachment.Name = "sbDeleteAttachment";
+            this.sbDeleteAttachment.Size = new System.Drawing.Size(117, 22);
+            this.sbDeleteAttachment.StyleController = this.layoutControl1;
+            this.sbDeleteAttachment.TabIndex = 27;
+            this.sbDeleteAttachment.Text = "Delete";
+            this.sbDeleteAttachment.Click += new System.EventHandler(this.sbDeleteAttachment_Click);
+            // 
+            // sbAttachFile
+            // 
+            this.sbAttachFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAttachFile.ImageOptions.Image")));
+            this.sbAttachFile.Location = new System.Drawing.Point(12, 12);
+            this.sbAttachFile.Name = "sbAttachFile";
+            this.sbAttachFile.Size = new System.Drawing.Size(109, 22);
+            this.sbAttachFile.StyleController = this.layoutControl1;
+            this.sbAttachFile.TabIndex = 26;
+            this.sbAttachFile.Text = "Attach File";
+            this.sbAttachFile.Click += new System.EventHandler(this.sbAttachFile_Click);
+            // 
+            // layoutControlGroup5
+            // 
+            this.layoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup5.GroupBordersVisible = false;
+            this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem2,
+            this.sliAttachment,
+            this.layoutControlItem3,
+            this.layoutControlItem6,
+            this.layoutControlItem4});
+            this.layoutControlGroup5.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup5.Name = "Root";
+            this.layoutControlGroup5.Size = new System.Drawing.Size(1186, 50);
+            this.layoutControlGroup5.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.sbAttachFile;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(113, 30);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // sliAttachment
+            // 
+            this.sliAttachment.AllowHotTrack = false;
+            this.sliAttachment.CustomizationFormText = "No file is chosen";
+            this.sliAttachment.Location = new System.Drawing.Point(113, 0);
+            this.sliAttachment.Name = "sliAttachment";
+            this.sliAttachment.Size = new System.Drawing.Size(706, 30);
+            this.sliAttachment.Text = "No file is chosen";
+            this.sliAttachment.TextSize = new System.Drawing.Size(77, 13);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.sbDeleteAttachment;
+            this.layoutControlItem3.Location = new System.Drawing.Point(819, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(121, 30);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.sbViewFile;
+            this.layoutControlItem6.Location = new System.Drawing.Point(940, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(114, 30);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.sbDownloadAttachment;
+            this.layoutControlItem4.Location = new System.Drawing.Point(1054, 0);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(112, 30);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
             // 
             // NameTextEdit
             // 
@@ -353,7 +492,7 @@
             this.MiscNotesTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "MiscNotes", true));
             this.MiscNotesTextEdit.Location = new System.Drawing.Point(598, 178);
             this.MiscNotesTextEdit.Name = "MiscNotesTextEdit";
-            this.MiscNotesTextEdit.Size = new System.Drawing.Size(592, 313);
+            this.MiscNotesTextEdit.Size = new System.Drawing.Size(592, 305);
             this.MiscNotesTextEdit.StyleController = this.dataLayoutControl1;
             this.MiscNotesTextEdit.TabIndex = 16;
             // 
@@ -362,50 +501,15 @@
             this.ServiceContractTermsTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "ServiceContractTerms", true));
             this.ServiceContractTermsTextEdit.Location = new System.Drawing.Point(24, 178);
             this.ServiceContractTermsTextEdit.Name = "ServiceContractTermsTextEdit";
-            this.ServiceContractTermsTextEdit.Size = new System.Drawing.Size(570, 313);
+            this.ServiceContractTermsTextEdit.Size = new System.Drawing.Size(570, 305);
             this.ServiceContractTermsTextEdit.StyleController = this.dataLayoutControl1;
             this.ServiceContractTermsTextEdit.TabIndex = 12;
             // 
-            // sbAttachFile
-            // 
-            this.sbAttachFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAttachFile.ImageOptions.Image")));
-            this.sbAttachFile.Location = new System.Drawing.Point(24, 537);
-            this.sbAttachFile.Name = "sbAttachFile";
-            this.sbAttachFile.Size = new System.Drawing.Size(117, 22);
-            this.sbAttachFile.StyleController = this.dataLayoutControl1;
-            this.sbAttachFile.TabIndex = 25;
-            this.sbAttachFile.Text = "Attach File";
-            this.sbAttachFile.Click += new System.EventHandler(this.sbAttachFile_Click);
-            // 
-            // sbDeleteAttachment
-            // 
-            this.sbDeleteAttachment.Enabled = false;
-            this.sbDeleteAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDeleteAttachment.ImageOptions.Image")));
-            this.sbDeleteAttachment.Location = new System.Drawing.Point(729, 537);
-            this.sbDeleteAttachment.Name = "sbDeleteAttachment";
-            this.sbDeleteAttachment.Size = new System.Drawing.Size(215, 22);
-            this.sbDeleteAttachment.StyleController = this.dataLayoutControl1;
-            this.sbDeleteAttachment.TabIndex = 26;
-            this.sbDeleteAttachment.Text = "Delete";
-            this.sbDeleteAttachment.Click += new System.EventHandler(this.sbDeleteAttachment_Click);
-            // 
-            // sbDownloadAttachment
-            // 
-            this.sbDownloadAttachment.Enabled = false;
-            this.sbDownloadAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDownloadAttachment.ImageOptions.Image")));
-            this.sbDownloadAttachment.Location = new System.Drawing.Point(948, 537);
-            this.sbDownloadAttachment.Name = "sbDownloadAttachment";
-            this.sbDownloadAttachment.Size = new System.Drawing.Size(242, 22);
-            this.sbDownloadAttachment.StyleController = this.dataLayoutControl1;
-            this.sbDownloadAttachment.TabIndex = 27;
-            this.sbDownloadAttachment.Text = "Download";
-            this.sbDownloadAttachment.Click += new System.EventHandler(this.sbDownloadAttachment_Click);
-            // 
             // sbOK
             // 
-            this.sbOK.Location = new System.Drawing.Point(730, 575);
+            this.sbOK.Location = new System.Drawing.Point(910, 575);
             this.sbOK.Name = "sbOK";
-            this.sbOK.Size = new System.Drawing.Size(211, 22);
+            this.sbOK.Size = new System.Drawing.Size(142, 22);
             this.sbOK.StyleController = this.dataLayoutControl1;
             this.sbOK.TabIndex = 28;
             this.sbOK.Text = "OK";
@@ -413,9 +517,9 @@
             // 
             // sbCancel
             // 
-            this.sbCancel.Location = new System.Drawing.Point(945, 575);
+            this.sbCancel.Location = new System.Drawing.Point(1056, 575);
             this.sbCancel.Name = "sbCancel";
-            this.sbCancel.Size = new System.Drawing.Size(257, 22);
+            this.sbCancel.Size = new System.Drawing.Size(146, 22);
             this.sbCancel.StyleController = this.dataLayoutControl1;
             this.sbCancel.TabIndex = 29;
             this.sbCancel.Text = "Exit";
@@ -428,7 +532,7 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1214, 609);
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -438,10 +542,10 @@
             this.layoutControlGroup2.GroupBordersVisible = false;
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup3,
-            this.layoutControlGroup4,
             this.emptySpaceItem1,
             this.layoutControlItem1,
-            this.layoutControlItem5});
+            this.layoutControlItem5,
+            this.layoutControlItem7});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
             this.layoutControlGroup2.Size = new System.Drawing.Size(1194, 589);
@@ -469,7 +573,7 @@
             this.ItemForMiscNotes});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(1194, 495);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(1194, 487);
             this.layoutControlGroup3.Text = "Information";
             // 
             // ItemForName
@@ -623,7 +727,7 @@
             this.ItemForServiceContractTerms.Control = this.ServiceContractTermsTextEdit;
             this.ItemForServiceContractTerms.Location = new System.Drawing.Point(0, 120);
             this.ItemForServiceContractTerms.Name = "ItemForServiceContractTerms";
-            this.ItemForServiceContractTerms.Size = new System.Drawing.Size(574, 333);
+            this.ItemForServiceContractTerms.Size = new System.Drawing.Size(574, 325);
             this.ItemForServiceContractTerms.Text = "Service Contract Terms";
             this.ItemForServiceContractTerms.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForServiceContractTerms.TextSize = new System.Drawing.Size(112, 13);
@@ -633,84 +737,45 @@
             this.ItemForMiscNotes.Control = this.MiscNotesTextEdit;
             this.ItemForMiscNotes.Location = new System.Drawing.Point(574, 120);
             this.ItemForMiscNotes.Name = "ItemForMiscNotes";
-            this.ItemForMiscNotes.Size = new System.Drawing.Size(596, 333);
+            this.ItemForMiscNotes.Size = new System.Drawing.Size(596, 325);
             this.ItemForMiscNotes.Text = "Misc Notes";
             this.ItemForMiscNotes.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForMiscNotes.TextSize = new System.Drawing.Size(112, 13);
-            // 
-            // layoutControlGroup4
-            // 
-            this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.sliAttachment,
-            this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.layoutControlItem4});
-            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 495);
-            this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(1194, 68);
-            this.layoutControlGroup4.Text = "Contract Information";
-            // 
-            // sliAttachment
-            // 
-            this.sliAttachment.AllowHotTrack = false;
-            this.sliAttachment.Location = new System.Drawing.Point(121, 0);
-            this.sliAttachment.Name = "sliAttachment";
-            this.sliAttachment.Size = new System.Drawing.Size(584, 26);
-            this.sliAttachment.Text = "No file is chosen";
-            this.sliAttachment.TextSize = new System.Drawing.Size(112, 13);
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.sbAttachFile;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(121, 26);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.sbDeleteAttachment;
-            this.layoutControlItem3.Location = new System.Drawing.Point(705, 0);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(219, 26);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.sbDownloadAttachment;
-            this.layoutControlItem4.Location = new System.Drawing.Point(924, 0);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(246, 26);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 563);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(718, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(898, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.sbOK;
-            this.layoutControlItem1.Location = new System.Drawing.Point(718, 563);
+            this.layoutControlItem1.Location = new System.Drawing.Point(898, 563);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(215, 26);
+            this.layoutControlItem1.Size = new System.Drawing.Size(146, 26);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.sbCancel;
-            this.layoutControlItem5.Location = new System.Drawing.Point(933, 563);
+            this.layoutControlItem5.Location = new System.Drawing.Point(1044, 563);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(261, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(150, 26);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.groupControl1;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 487);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(1194, 76);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
             // 
             // dlgCompanyEdit
             // 
@@ -725,6 +790,16 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgCompanyEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sliAttachment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrimaryPhoneTextEdit.Properties)).EndInit();
@@ -766,14 +841,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForContractSigingTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForServiceContractTerms)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMiscNotes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliAttachment)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -821,18 +892,23 @@
         private DevExpress.XtraEditors.MemoEdit MiscNotesTextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
         private DevExpress.XtraEditors.MemoEdit ServiceContractTermsTextEdit;
-        private DevExpress.XtraEditors.SimpleButton sbAttachFile;
-        private DevExpress.XtraEditors.SimpleButton sbDeleteAttachment;
-        private DevExpress.XtraEditors.SimpleButton sbDownloadAttachment;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
-        private DevExpress.XtraLayout.SimpleLabelItem sliAttachment;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.SimpleButton sbOK;
         private DevExpress.XtraEditors.SimpleButton sbCancel;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
+        private DevExpress.XtraEditors.SimpleButton sbAttachFile;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraEditors.SimpleButton sbDownloadAttachment;
+        private DevExpress.XtraEditors.SimpleButton sbViewFile;
+        private DevExpress.XtraEditors.SimpleButton sbDeleteAttachment;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraLayout.SimpleLabelItem sliAttachment;
     }
 }

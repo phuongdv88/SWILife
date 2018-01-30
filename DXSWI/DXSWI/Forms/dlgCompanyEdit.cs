@@ -12,6 +12,7 @@ using SWIBLL;
 using SWIBLL.Models;
 using System.IO;
 using System.Security.Principal;
+using System.Diagnostics;
 
 namespace DXSWI.Forms
 {
@@ -56,6 +57,7 @@ namespace DXSWI.Forms
                 sliAttachment.Text = "No file chosen";
                 sbDeleteAttachment.Enabled = false;
                 sbDownloadAttachment.Enabled = false;
+                sbViewFile.Enabled = false;
 
             }
             else
@@ -63,6 +65,7 @@ namespace DXSWI.Forms
                 sliAttachment.Text = link.Split('\\').Last();
                 sbDeleteAttachment.Enabled = true;
                 sbDownloadAttachment.Enabled = true;
+                sbViewFile.Enabled = true;
             }
 
         }
@@ -265,6 +268,23 @@ namespace DXSWI.Forms
             sbDeleteAttachment.Enabled = !value;
             sbDownloadAttachment.Enabled = !value;
             sbOK.Enabled = !value;
+        }
+
+        private void sbViewFile_Click(object sender, EventArgs e)
+        {
+             try {
+                if(mCompany.ScanLink == "")
+                {
+                    return;
+                }
+                Process p = new Process();
+                p.StartInfo.FileName = mCompany.ScanLink;
+                p.Start();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

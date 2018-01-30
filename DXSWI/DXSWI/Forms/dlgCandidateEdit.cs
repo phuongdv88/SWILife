@@ -12,6 +12,7 @@ using SWIBLL.Models;
 using SWIBLL;
 using System.Security.Principal;
 using System.IO;
+using System.Diagnostics;
 
 namespace DXSWI.Forms
 {
@@ -817,13 +818,14 @@ namespace DXSWI.Forms
                 sliAttachments.Text = "No file chosen";
                 sbAttachmentDelete.Enabled = false;
                 sbAttachmentDownload.Enabled = false;
-
+                sbView.Enabled = false;
             }
             else
             {
                 sliAttachments.Text = path.Split(new[] { '\\' }, StringSplitOptions.None).Last();
                 sbAttachmentDelete.Enabled = true;
                 sbAttachmentDownload.Enabled = true;
+                sbView.Enabled = true;
             }
         }
         private void loadJobPipeLine()
@@ -1012,6 +1014,23 @@ namespace DXSWI.Forms
                     link = "https://" + link;
                 }
                 System.Diagnostics.Process.Start(link);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void sbOpenFile_Click(object sender, EventArgs e)
+        {
+            try {
+                if(_Candidate.ResumeLink == "")
+                {
+                    return;
+                }
+                Process p = new Process();
+                p.StartInfo.FileName = _Candidate.ResumeLink;
+                p.Start();
             }
             catch (Exception ex)
             {

@@ -15,6 +15,7 @@ using System.Security.Principal;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.Utils;
+using System.Diagnostics;
 
 namespace DXSWI.Forms
 {
@@ -75,9 +76,9 @@ namespace DXSWI.Forms
         {
             if (mJobOrder == null)
                 return;
-            this.TitleTextEdit.Text = mJobOrder.Title;
-            this.DepartmentTextEdit.Text = mJobOrder.Department;
-            this.SalaryTextEdit.Text = mJobOrder.Salary;
+            TitleTextEdit.Text = mJobOrder.Title;
+            DepartmentTextEdit.Text = mJobOrder.Department;
+            SalaryTextEdit.Text = mJobOrder.Salary;
             // todo:
             // load all company name to select in combobox
             getCompanies(ref companiesNameAndId);
@@ -88,42 +89,42 @@ namespace DXSWI.Forms
             {
                 companyComboxEdit.EditValue = mJobOrder.CompanyName;
             }
-            this.CityTextEdit.Text = mJobOrder.City;
-            this.StateTextEdit.Text = mJobOrder.State;
-            this.StartDateDateEdit.Text = mJobOrder.StartDate.ToString("dd/MM/yyyy");
-            this.DurationTextEdit.Text = mJobOrder.Duration;
-            this.TypeComboBoxEdit.EditValue = mJobOrder.Type;
-            this.OpeningsTextEdit.Text = mJobOrder.Openings.ToString();
-            this.IsHotCheckEdit.Checked = mJobOrder.IsHot;
-            this.isPublicCheckEdit.Checked = mJobOrder.isPublic;
-            this.ExperienceYearTextEdit.Text = mJobOrder.ExperienceYear.ToString();
-            this.StatusComboBoxEdit.EditValue = mJobOrder.Status;
-            this.WebLinkTextEdit.Text = mJobOrder.WebLink;
-            this.DescriptionMemoExEdit.Text = mJobOrder.Description;
-            this.meInternalNotes.Text = mJobOrder.InternalNotes;
+            CityTextEdit.Text = mJobOrder.City;
+            StateTextEdit.Text = mJobOrder.State;
+            StartDateDateEdit.Text = mJobOrder.StartDate.ToString("dd/MM/yyyy");
+            DurationTextEdit.Text = mJobOrder.Duration;
+            TypeComboBoxEdit.EditValue = mJobOrder.Type;
+            OpeningsTextEdit.Text = mJobOrder.Openings.ToString();
+            IsHotCheckEdit.Checked = mJobOrder.IsHot;
+            isPublicCheckEdit.Checked = mJobOrder.isPublic;
+            ExperienceYearTextEdit.Text = mJobOrder.ExperienceYear.ToString();
+            StatusComboBoxEdit.EditValue = mJobOrder.Status;
+            WebLinkTextEdit.Text = mJobOrder.WebLink;
+            DescriptionMemoExEdit.Text = mJobOrder.Description;
+            meInternalNotes.Text = mJobOrder.InternalNotes;
 
             // tooltip
-            this.TitleTextEdit.ToolTip = mJobOrder.Title;
-            this.DepartmentTextEdit.ToolTip = mJobOrder.Department;
-            this.SalaryTextEdit.ToolTip = mJobOrder.Salary;
-            this.CityTextEdit.ToolTip = mJobOrder.City;
-            this.StateTextEdit.ToolTip = mJobOrder.State;
-            this.StartDateDateEdit.ToolTip = mJobOrder.StartDate.ToString("dd/MM/yyyy");
-            this.DurationTextEdit.ToolTip = mJobOrder.Duration;
-            this.OpeningsTextEdit.ToolTip = mJobOrder.Openings.ToString();
-            this.ExperienceYearTextEdit.ToolTip = mJobOrder.ExperienceYear.ToString();
-            this.WebLinkTextEdit.ToolTip = mJobOrder.WebLink;
-            this.DescriptionMemoExEdit.ToolTip = mJobOrder.Description;
-            this.meInternalNotes.ToolTip = mJobOrder.InternalNotes;
+            TitleTextEdit.ToolTip = mJobOrder.Title;
+            DepartmentTextEdit.ToolTip = mJobOrder.Department;
+            SalaryTextEdit.ToolTip = mJobOrder.Salary;
+            CityTextEdit.ToolTip = mJobOrder.City;
+            StateTextEdit.ToolTip = mJobOrder.State;
+            StartDateDateEdit.ToolTip = mJobOrder.StartDate.ToString("dd/MM/yyyy");
+            DurationTextEdit.ToolTip = mJobOrder.Duration;
+            OpeningsTextEdit.ToolTip = mJobOrder.Openings.ToString();
+            ExperienceYearTextEdit.ToolTip = mJobOrder.ExperienceYear.ToString();
+            WebLinkTextEdit.ToolTip = mJobOrder.WebLink;
+            DescriptionMemoExEdit.ToolTip = mJobOrder.Description;
+            meInternalNotes.ToolTip = mJobOrder.InternalNotes;
         }
 
         private void getJobOrderFromUi()
         {
             if (mJobOrder == null)
                 mJobOrder = new JobOrder();
-            mJobOrder.Title = this.TitleTextEdit.Text;
-            mJobOrder.Department = this.DepartmentTextEdit.Text;
-            mJobOrder.Salary = this.SalaryTextEdit.Text;
+            mJobOrder.Title = TitleTextEdit.Text;
+            mJobOrder.Department = DepartmentTextEdit.Text;
+            mJobOrder.Salary = SalaryTextEdit.Text;
             try
             {
                 mJobOrder.CompanyId = companiesNameAndId[companyComboxEdit.Text];
@@ -140,96 +141,31 @@ namespace DXSWI.Forms
             {
                 mJobOrder.ContactId = -1;
             }
-            mJobOrder.ContactName = this.contactComboboxEdit.Text;
-            mJobOrder.CompanyName = this.companyComboxEdit.Text;
-            mJobOrder.City = this.CityTextEdit.Text;
-            mJobOrder.State = this.StateTextEdit.Text;
+            mJobOrder.ContactName = contactComboboxEdit.Text;
+            mJobOrder.CompanyName = companyComboxEdit.Text;
+            mJobOrder.City = CityTextEdit.Text;
+            mJobOrder.State = StateTextEdit.Text;
             if (StartDateDateEdit.Text.Length > 0)
             {
-                mJobOrder.StartDate = DateTime.Parse(this.StartDateDateEdit.DateTime.ToString("yyyy/MM/dd"));
+                mJobOrder.StartDate = DateTime.Parse(StartDateDateEdit.DateTime.ToString("yyyy/MM/dd"));
             }
-            mJobOrder.Duration = this.DurationTextEdit.Text;
-            mJobOrder.Type = this.TypeComboBoxEdit.Text;
-            if (this.OpeningsTextEdit.Text.Length > 0)
+            mJobOrder.Duration = DurationTextEdit.Text;
+            mJobOrder.Type = TypeComboBoxEdit.Text;
+            if (OpeningsTextEdit.Text.Length > 0)
             {
-                mJobOrder.Openings = int.Parse(this.OpeningsTextEdit.Text);
+                mJobOrder.Openings = int.Parse(OpeningsTextEdit.Text);
             }
-            mJobOrder.IsHot = this.IsHotCheckEdit.Checked;
-            mJobOrder.isPublic = this.isPublicCheckEdit.Checked;
-            if (this.ExperienceYearTextEdit.Text.Length > 0)
+            mJobOrder.IsHot = IsHotCheckEdit.Checked;
+            mJobOrder.isPublic = isPublicCheckEdit.Checked;
+            if (ExperienceYearTextEdit.Text.Length > 0)
             {
-                mJobOrder.ExperienceYear = int.Parse(this.ExperienceYearTextEdit.Text);
+                mJobOrder.ExperienceYear = int.Parse(ExperienceYearTextEdit.Text);
             }
-            mJobOrder.Status = this.StatusComboBoxEdit.Text;
-            mJobOrder.WebLink = this.WebLinkTextEdit.Text;
-            mJobOrder.Description = this.DescriptionMemoExEdit.Text;
-            mJobOrder.InternalNotes = this.meInternalNotes.Text;
+            mJobOrder.Status = StatusComboBoxEdit.Text;
+            mJobOrder.WebLink = WebLinkTextEdit.Text;
+            mJobOrder.Description = DescriptionMemoExEdit.Text;
+            mJobOrder.InternalNotes = meInternalNotes.Text;
 
-        }
-
-        private void sbAttachment_Click(object sender, EventArgs e)
-        {
-            //todo version sau cho phep tai nhieu file len server
-            OpenFileDialog openFileDlg = new OpenFileDialog();
-            if (openFileDlg.ShowDialog() != DialogResult.OK)
-                return;
-            // check size of file
-            if (new System.IO.FileInfo(openFileDlg.FileName).Length > 10e6) // 10MB
-            {
-                XtraMessageBox.Show("Attactment is too big (more than 10 MB)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            // store link file 
-            string linkAttachment = openFileDlg.FileName;
-            string fileNameAttachment = linkAttachment.Split('\\').Last();
-            try
-            {
-                // create link file and folder in server
-                if (mJobOrder.AttachmentLink == null || mJobOrder.AttachmentLink.Length == 0)
-                {
-                    // save resum to hardisk: folder = createedtime + candidateName + randomstring
-                    string folderName = mJobOrder.JobOrderId.ToString() + mJobOrder.Created.ToString(@"_yyyy-MM-dd") + Utils.getRandomAlphaNumeric(10);
-                    string dir = string.Format(@"{0}joborder\attachment\{1}\{2}", Properties.Settings.Default.StorageLocation, folderName, fileNameAttachment);
-                    mJobOrder.AttachmentLink = dir;
-                }
-                else
-                {
-                    // delete old file
-                    File.Delete(mJobOrder.AttachmentLink);
-
-                    // update link of avatar
-                    if (fileNameAttachment.Length > 0)
-                    {
-                        var link = mJobOrder.AttachmentLink.Split('\\');
-                        mJobOrder.AttachmentLink = mJobOrder.AttachmentLink.Replace(link.Last(), fileNameAttachment);
-                    }
-                }
-
-                // copy image to server
-                if (fileNameAttachment.Length > 0)
-                {
-                    if (linkAttachment.Length > 0)
-                    {
-                        AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);
-                        Directory.CreateDirectory(mJobOrder.AttachmentLink.Replace(mJobOrder.AttachmentLink.Split('\\').Last(), ""));
-                        File.Copy(linkAttachment, mJobOrder.AttachmentLink, true);
-                    }
-                }
-                // update to database
-                if (JobOrderManager.updateAttactmentLink(mJobOrder))
-                {
-                    // update attackment
-                    loadAttachment();
-                }
-                else
-                {
-                    throw new Exception("Cannot update attachment link");
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void loadAttachment()
@@ -238,16 +174,18 @@ namespace DXSWI.Forms
             // load attachment from disk
             if (mJobOrder.AttachmentLink.Length == 0)
             {
-                this.sliAttachment.Text = "No file chosen";
-                this.sbDelete.Enabled = false;
-                this.sbDownload.Enabled = false;
+                sliAttachment.Text = "No file chosen";
+                sbDelete.Enabled = false;
+                sbDownload.Enabled = false;
+                sbAttachmentView.Enabled = false;
 
             }
             else
             {
-                this.sliAttachment.Text = mJobOrder.AttachmentLink.Split('\\').Last();
-                this.sbDelete.Enabled = true;
-                this.sbDownload.Enabled = true;
+                sliAttachment.Text = mJobOrder.AttachmentLink.Split('\\').Last();
+                sbDelete.Enabled = true;
+                sbDownload.Enabled = true;
+                sbAttachmentView.Enabled = true;
             }
         }
 
@@ -281,16 +219,23 @@ namespace DXSWI.Forms
 
         private void sbDownload_Click(object sender, EventArgs e)
         {
-            // download to local or open this file
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Title = "Save resume to";
-            dlg.RestoreDirectory = true;
-            dlg.Filter = "All files (*.*)|*.*";
-            dlg.FileName = mJobOrder.AttachmentLink.Split('\\').Last();
-            if (dlg.ShowDialog() != DialogResult.OK)
-                return;
-            string save_link = dlg.FileName;
-            File.Copy(mJobOrder.AttachmentLink, save_link);
+            try
+            {
+                // download to local or open this file
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Title = "Save resume to";
+                dlg.RestoreDirectory = true;
+                dlg.Filter = "All files (*.*)|*.*";
+                dlg.FileName = mJobOrder.AttachmentLink.Split('\\').Last();
+                if (dlg.ShowDialog() != DialogResult.OK)
+                    return;
+                string save_link = dlg.FileName;
+                File.Copy(mJobOrder.AttachmentLink, save_link);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void sbOK_Click(object sender, EventArgs e)
@@ -395,7 +340,7 @@ namespace DXSWI.Forms
             switch (e.KeyCode)
             {
                 case Keys.Escape:
-                    this.Close();
+                    Close();
                     break;
                 default:
                     break;
@@ -682,5 +627,89 @@ namespace DXSWI.Forms
                 }
             }
         }
+
+        private void sbAttachmentView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (mJobOrder.AttachmentLink == "")
+                {
+                    return;
+                }
+                Process p = new Process();
+                p.StartInfo.FileName = mJobOrder.AttachmentLink;
+                p.Start();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void sbAddAttachment_Click(object sender, EventArgs e)
+        {
+            //todo version sau cho phep tai nhieu file len server
+            OpenFileDialog openFileDlg = new OpenFileDialog();
+            if (openFileDlg.ShowDialog() != DialogResult.OK)
+                return;
+            // check size of file
+            if (new System.IO.FileInfo(openFileDlg.FileName).Length > 10e6) // 10MB
+            {
+                XtraMessageBox.Show("Attactment is too big (more than 10 MB)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // store link file 
+            string linkAttachment = openFileDlg.FileName;
+            string fileNameAttachment = linkAttachment.Split('\\').Last();
+            try
+            {
+                // create link file and folder in server
+                if (mJobOrder.AttachmentLink == null || mJobOrder.AttachmentLink.Length == 0)
+                {
+                    // save resum to hardisk: folder = createedtime + candidateName + randomstring
+                    string folderName = mJobOrder.JobOrderId.ToString() + mJobOrder.Created.ToString(@"_yyyy-MM-dd") + Utils.getRandomAlphaNumeric(10);
+                    string dir = string.Format(@"{0}joborder\attachment\{1}\{2}", Properties.Settings.Default.StorageLocation, folderName, fileNameAttachment);
+                    mJobOrder.AttachmentLink = dir;
+                }
+                else
+                {
+                    // delete old file
+                    File.Delete(mJobOrder.AttachmentLink);
+
+                    // update link of avatar
+                    if (fileNameAttachment.Length > 0)
+                    {
+                        var link = mJobOrder.AttachmentLink.Split('\\');
+                        mJobOrder.AttachmentLink = mJobOrder.AttachmentLink.Replace(link.Last(), fileNameAttachment);
+                    }
+                }
+
+                // copy image to server
+                if (fileNameAttachment.Length > 0)
+                {
+                    if (linkAttachment.Length > 0)
+                    {
+                        AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);
+                        Directory.CreateDirectory(mJobOrder.AttachmentLink.Replace(mJobOrder.AttachmentLink.Split('\\').Last(), ""));
+                        File.Copy(linkAttachment, mJobOrder.AttachmentLink, true);
+                    }
+                }
+                // update to database
+                if (JobOrderManager.updateAttactmentLink(mJobOrder))
+                {
+                    // update attackment
+                    loadAttachment();
+                }
+                else
+                {
+                    throw new Exception("Cannot update attachment link");
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+       
     }
 }
