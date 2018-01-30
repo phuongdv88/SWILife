@@ -19,14 +19,14 @@ namespace DXSWI.Forms
     {
         public delegate void onUpdateData();
         public event onUpdateData emitUpdateData;
-        Candidate mCandidate;
-        string fileNameAvatar = string.Empty;
-        string link = string.Empty;
-        bool isNew = false;
+        Candidate _Candidate;
+        string _fileNameAvatar = string.Empty;
+        string _link = string.Empty;
+        bool _isNew = false;
         // store link file 
-        string linkAttachment = string.Empty;
-        string fileNameAttachment = string.Empty;
-        string deleteAttachmentPath = string.Empty;
+        string _linkAttachment = string.Empty;
+        string _fileNameAttachment = string.Empty;
+        string _deleteAttachmentPath = string.Empty;
         public enum ParseCandidateInfoStep
         {
             INIT,
@@ -211,8 +211,8 @@ namespace DXSWI.Forms
             else peAvatar.Cursor = Cursors.Default;
             if (canId == -1)
             {
-                mCandidate = new Candidate();
-                isNew = true;
+                _Candidate = new Candidate();
+                _isNew = true;
                 gcActivities.Enabled = false;
                 gcJobOrderPipeline.Enabled = false;
                 barJobOrder.Dispose();
@@ -220,9 +220,9 @@ namespace DXSWI.Forms
                 return;
             }
             // fill data to ui
-            mCandidate = CandidateManager.getCandidate(canId);
-            FillUpToUi(mCandidate);
-            loadAttachment(mCandidate.ResumeLink);
+            _Candidate = CandidateManager.getCandidate(canId);
+            FillUpToUi(_Candidate);
+            loadAttachment(_Candidate.ResumeLink);
             updateData();
         }
 
@@ -237,111 +237,111 @@ namespace DXSWI.Forms
             //get data from ui to mcandidate
             try
             {
-                getDataFromUI(ref mCandidate);
+                getDataFromUI(ref _Candidate);
 
                 //upload avatar
-                if (fileNameAvatar.Length > 0)
+                if (_fileNameAvatar.Length > 0)
                 {
-                    if (mCandidate.ImageLink.Length == 0)
+                    if (_Candidate.ImageLink.Length == 0)
                     {
                         // save image to hardisk: folder = createedtime + candidateName + randomstring
-                        string folderName = mCandidate.FirstName + mCandidate.LastName + mCandidate.CreatedDate.ToString(@"yyyy-MM-dd") + Utils.getRandomAlphaNumeric(10);
-                        string dir = string.Format(@"{0}candidates\avatar\{1}\{2}", Properties.Settings.Default.StorageLocation, folderName, fileNameAvatar);
-                        mCandidate.ImageLink = dir;
+                        string folderName = _Candidate.FirstName + _Candidate.LastName + _Candidate.CreatedDate.ToString(@"yyyy-MM-dd") + Utils.getRandomAlphaNumeric(10);
+                        string dir = string.Format(@"{0}candidates\avatar\{1}\{2}", Properties.Settings.Default.StorageLocation, folderName, _fileNameAvatar);
+                        _Candidate.ImageLink = dir;
                     }
                     else
                     {
                         // update link of avatar
-                        var link = mCandidate.ImageLink.Split('\\');
-                        mCandidate.ImageLink = mCandidate.ImageLink.Replace(link.Last(), fileNameAvatar);
+                        var link = _Candidate.ImageLink.Split('\\');
+                        _Candidate.ImageLink = _Candidate.ImageLink.Replace(link.Last(), _fileNameAvatar);
                     }
 
                     // copy image to server
                     //peAvatar.Image.Save(mCandidate.ImageLink);
-                    if (link.Length > 0)
+                    if (_link.Length > 0)
                     {
                         AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);
-                        Directory.CreateDirectory(mCandidate.ImageLink.Replace(mCandidate.ImageLink.Split('\\').Last(), ""));
-                        File.Copy(link, mCandidate.ImageLink, true);
+                        Directory.CreateDirectory(_Candidate.ImageLink.Replace(_Candidate.ImageLink.Split('\\').Last(), ""));
+                        File.Copy(_link, _Candidate.ImageLink, true);
                     }
                 }
                 // delete attachment 
                 // delete file in server
-                if (deleteAttachmentPath.Length > 0)
+                if (_deleteAttachmentPath.Length > 0)
                 {
-                    File.Delete(mCandidate.ResumeLink);
-                    mCandidate.ResumeLink = string.Empty;
+                    File.Delete(_Candidate.ResumeLink);
+                    _Candidate.ResumeLink = string.Empty;
                 }
 
                 // upload attachment
 
-                if (fileNameAttachment.Length > 0)
+                if (_fileNameAttachment.Length > 0)
                 {
                     // create link file and folder in server
-                    if (mCandidate.ResumeLink.Length == 0)
+                    if (_Candidate.ResumeLink.Length == 0)
                     {
                         // save resum to hardisk: folder = createedtime + candidateName + randomstring
-                        string folderName = mCandidate.FirstName + mCandidate.LastName + mCandidate.CreatedDate.ToString(@"_yyyy-MM-dd") + Utils.getRandomAlphaNumeric(10);
-                        string dir = string.Format(@"{0}candidates\resume\{1}\{2}", Properties.Settings.Default.StorageLocation, folderName, fileNameAttachment);
-                        mCandidate.ResumeLink = dir;
+                        string folderName = _Candidate.FirstName + _Candidate.LastName + _Candidate.CreatedDate.ToString(@"_yyyy-MM-dd") + Utils.getRandomAlphaNumeric(10);
+                        string dir = string.Format(@"{0}candidates\resume\{1}\{2}", Properties.Settings.Default.StorageLocation, folderName, _fileNameAttachment);
+                        _Candidate.ResumeLink = dir;
                     }
                     else
                     {
                         // delete old file
                         try
                         {
-                            File.Delete(mCandidate.ResumeLink);
+                            File.Delete(_Candidate.ResumeLink);
                         }
                         catch { }
 
                         // update link of avatar
-                        if (fileNameAttachment.Length > 0)
+                        if (_fileNameAttachment.Length > 0)
                         {
-                            var link = mCandidate.ResumeLink.Split('\\');
-                            mCandidate.ResumeLink = mCandidate.ResumeLink.Replace(link.Last(), fileNameAttachment);
+                            var link = _Candidate.ResumeLink.Split('\\');
+                            _Candidate.ResumeLink = _Candidate.ResumeLink.Replace(link.Last(), _fileNameAttachment);
                         }
                     }
 
                     // copy image to server
 
-                    if (linkAttachment.Length > 0)
+                    if (_linkAttachment.Length > 0)
                     {
                         AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);
-                        Directory.CreateDirectory(mCandidate.ResumeLink.Replace(mCandidate.ResumeLink.Split('\\').Last(), ""));
-                        File.Copy(linkAttachment, mCandidate.ResumeLink, true);
+                        Directory.CreateDirectory(_Candidate.ResumeLink.Replace(_Candidate.ResumeLink.Split('\\').Last(), ""));
+                        File.Copy(_linkAttachment, _Candidate.ResumeLink, true);
                     }
                 }
 
                 // save candidate to database: if it is new candidate -> use inserting function, else use updating function
-                if (isNew)
+                if (_isNew)
                 {
-                    mCandidate.UserId = UserManager.ActivatedUser.UserId;
-                    mCandidate.CreatedId = UserManager.ActivatedUser.UserId;
-                    mCandidate.CreatedDate = DateTime.Now;
-                    if (!CandidateManager.IsCandidateExist(mCandidate))
+                    _Candidate.UserId = UserManager.ActivatedUser.UserId;
+                    _Candidate.CreatedId = UserManager.ActivatedUser.UserId;
+                    _Candidate.CreatedDate = DateTime.Now;
+                    if (!CandidateManager.IsCandidateExist(_Candidate))
                     {
-                        CandidateManager.InsertCandidate(mCandidate);
+                        CandidateManager.InsertCandidate(_Candidate);
                     }
                     else
                     {
                         if (XtraMessageBox.Show("This candiate has already existed. Would you want to load this candidate data?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             // fill data to ui
-                            mCandidate = CandidateManager.getCandidateByEmail(EmailTextEdit.Text.Trim());
-                            if(mCandidate == null)
+                            _Candidate = CandidateManager.getCandidateByEmail(EmailTextEdit.Text.Trim());
+                            if (_Candidate == null)
                             {
-                                mCandidate = CandidateManager.getCandidateByCellPhone(CellPhoneTextEdit.Text.Trim());
+                                _Candidate = CandidateManager.getCandidateByCellPhone(CellPhoneTextEdit.Text.Trim());
                             }
-                            if(mCandidate == null)
+                            if (_Candidate == null)
                             {
                                 XtraMessageBox.Show("Load data fail.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            isNew = false;
+                            _isNew = false;
                             gcActivities.Enabled = true;
                             gcJobOrderPipeline.Enabled = true;
-                            FillUpToUi(mCandidate);
-                            loadAttachment(mCandidate.ResumeLink);
+                            FillUpToUi(_Candidate);
+                            loadAttachment(_Candidate.ResumeLink);
                             updateData();
                             return;
                         }
@@ -350,7 +350,7 @@ namespace DXSWI.Forms
                 else
                 {
 
-                    CandidateManager.updateCandidate(mCandidate);
+                    CandidateManager.updateCandidate(_Candidate);
                 }
 
                 //emit main form reload gridview control
@@ -423,8 +423,8 @@ namespace DXSWI.Forms
                 if (openFileDlg.ShowDialog() == DialogResult.OK)
                 {
                     peAvatar.Image = Bitmap.FromFile(openFileDlg.FileName);
-                    fileNameAvatar = openFileDlg.FileName.Split('\\').Last();
-                    link = openFileDlg.FileName;
+                    _fileNameAvatar = openFileDlg.FileName.Split('\\').Last();
+                    _link = openFileDlg.FileName;
                 }
             }
             catch
@@ -767,9 +767,9 @@ namespace DXSWI.Forms
                 return;
             }
             // store link file 
-            linkAttachment = openFileDlg.FileName;
-            fileNameAttachment = linkAttachment.Split('\\').Last();
-            sliAttachments.Text = fileNameAttachment;
+            _linkAttachment = openFileDlg.FileName;
+            _fileNameAttachment = _linkAttachment.Split('\\').Last();
+            sliAttachments.Text = _fileNameAttachment;
             sbAttachmentDownload.Enabled = false;
         }
 
@@ -779,9 +779,9 @@ namespace DXSWI.Forms
             {
                 try
                 {
-                    deleteAttachmentPath = mCandidate.ResumeLink;
-                    fileNameAttachment = string.Empty;
-                    linkAttachment = string.Empty;
+                    _deleteAttachmentPath = _Candidate.ResumeLink;
+                    _fileNameAttachment = string.Empty;
+                    _linkAttachment = string.Empty;
                     // update to UI
                     loadAttachment(string.Empty);
 
@@ -801,11 +801,11 @@ namespace DXSWI.Forms
             dlg.Title = "Save resume to";
             dlg.RestoreDirectory = true;
             dlg.Filter = "All files (*.*)|*.*";
-            dlg.FileName = mCandidate.ResumeLink.Split('\\').Last();
+            dlg.FileName = _Candidate.ResumeLink.Split('\\').Last();
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
             string save_link = dlg.FileName;
-            File.Copy(mCandidate.ResumeLink, save_link);
+            File.Copy(_Candidate.ResumeLink, save_link);
         }
 
         private void loadAttachment(string path)
@@ -831,7 +831,7 @@ namespace DXSWI.Forms
             // load job pipe line from running task by candidate id
             try
             {
-                gcJobOrderPipeline.DataSource = RunningTaskManager.getRunningTaskJobs(mCandidate.CandidateId);
+                gcJobOrderPipeline.DataSource = RunningTaskManager.getRunningTaskJobs(_Candidate.CandidateId);
             }
             catch
             {
@@ -844,7 +844,7 @@ namespace DXSWI.Forms
             // load activities from activities by 
             try
             {
-                gcActivities.DataSource = ActivityManager.getActivitiesOfCandidate(mCandidate.CandidateId);
+                gcActivities.DataSource = ActivityManager.getActivitiesOfCandidate(_Candidate.CandidateId);
             }
             catch
             {
@@ -876,7 +876,7 @@ namespace DXSWI.Forms
         }
         public void AddJobToPipeLine()
         {
-            dlgAddJobOrderToPipeline dlg = new dlgAddJobOrderToPipeline(mCandidate.CandidateId);
+            dlgAddJobOrderToPipeline dlg = new dlgAddJobOrderToPipeline(_Candidate.CandidateId);
             dlg.updateDataEvent += updateData;
             dlg.ShowDialog();
         }
@@ -885,7 +885,7 @@ namespace DXSWI.Forms
         {
             dlgLogActivity dlg = new dlgLogActivity();
             dlg.updateDataEvent += updateData;
-            dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate, mCandidate.CandidateId, -1, -1);
+            dlg.init(_Candidate.FirstName + " " + _Candidate.MiddleName + " " + _Candidate.LastName, Activity.TypeOfLogActivity.Candidate, _Candidate.CandidateId, -1, -1);
             dlg.ShowDialog();
         }
 
@@ -936,7 +936,7 @@ namespace DXSWI.Forms
             regarding = data_row["Title"].ToString();
             jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
 
-            dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Pipeline, mCandidate.CandidateId, jobOrderId, -1);
+            dlg.init(_Candidate.FirstName + " " + _Candidate.MiddleName + " " + _Candidate.LastName, Activity.TypeOfLogActivity.Pipeline, _Candidate.CandidateId, jobOrderId, -1);
             if (regarding.Length > 0)
             {
                 dlg.setRegarding(regarding);
@@ -967,6 +967,55 @@ namespace DXSWI.Forms
                         XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void bbiEmail_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            List<string> emails = new List<string>();
+            List<string> names = new List<string>();
+            List<long> runningTaskIds = new List<long>();
+            List<long> canIds = new List<long>();
+            emails.Add(_Candidate.Email);
+            names.Add(string.Join(" ", _Candidate.FirstName, _Candidate.LastName));
+            canIds.Add(_Candidate.CandidateId);
+
+            if (gvJobOrderPipeline.SelectedRowsCount > 0)
+            {
+                try
+                {
+                    int row = gvJobOrderPipeline.GetSelectedRows().First();
+                    DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
+                    runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
+                    string companyName = data_row["CompanyName"].ToString();
+                    string jobTitle = data_row["Title"].ToString();
+                    long jobOrderId = Convert.ToInt64(data_row["JobOrderId"].ToString());
+                    dlgMailEdit dlg = ScreenManager.EmailEdit;
+                    dlg.Init(runningTaskIds, emails, names, canIds, companyName, jobTitle, jobOrderId);
+                    dlg.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void sbView_Click(object sender, EventArgs e)
+        {
+            // view site
+            try
+            {
+                string link = _Candidate.WebSite;
+                if (!link.Contains("http"))
+                {
+                    link = "https://" + link;
+                }
+                System.Diagnostics.Process.Start(link);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

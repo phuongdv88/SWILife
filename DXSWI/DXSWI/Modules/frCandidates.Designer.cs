@@ -43,9 +43,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.viewWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gcCandidates = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvCandidates = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colLastName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKeySkills = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,7 +59,7 @@
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCandidates)).BeginInit();
             this.SuspendLayout();
             // 
             // colState
@@ -84,6 +85,7 @@
             this.toolStripSeparator1,
             this.deleteToolStripMenuItem,
             this.toolStripSeparator2,
+            this.viewWebsiteToolStripMenuItem,
             this.refreshTableToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(165, 126);
@@ -122,6 +124,14 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
             // 
+            // viewWebsiteToolStripMenuItem
+            // 
+            this.viewWebsiteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Linkedin_icon1;
+            this.viewWebsiteToolStripMenuItem.Name = "viewWebsiteToolStripMenuItem";
+            this.viewWebsiteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.viewWebsiteToolStripMenuItem.Text = "View Website";
+            this.viewWebsiteToolStripMenuItem.Click += new System.EventHandler(this.viewWebsiteToolStripMenuItem_Click);
+            // 
             // refreshTableToolStripMenuItem
             // 
             this.refreshTableToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonRefresh1;
@@ -136,17 +146,17 @@
             this.gcCandidates.DataMember = "swilifecore_spGetCandidates";
             this.gcCandidates.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcCandidates.Location = new System.Drawing.Point(0, 0);
-            this.gcCandidates.MainView = this.gridView1;
+            this.gcCandidates.MainView = this.gvCandidates;
             this.gcCandidates.Name = "gcCandidates";
             this.gcCandidates.Size = new System.Drawing.Size(1243, 839);
             this.gcCandidates.TabIndex = 1;
             this.gcCandidates.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvCandidates});
             this.gcCandidates.DoubleClick += new System.EventHandler(this.gcCandidates_DoubleClick);
             // 
-            // gridView1
+            // gvCandidates
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvCandidates.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colFirstName,
             this.colLastName,
             this.colKeySkills,
@@ -186,11 +196,11 @@
             formatConditionIconSet1.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
             formatConditionRuleIconSet1.IconSet = formatConditionIconSet1;
             gridFormatRule1.Rule = formatConditionRuleIconSet1;
-            this.gridView1.FormatRules.Add(gridFormatRule1);
-            this.gridView1.GridControl = this.gcCandidates;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvCandidates.FormatRules.Add(gridFormatRule1);
+            this.gvCandidates.GridControl = this.gcCandidates;
+            this.gvCandidates.Name = "gvCandidates";
+            this.gvCandidates.OptionsBehavior.Editable = false;
+            this.gvCandidates.OptionsSelection.EnableAppearanceFocusedCell = false;
             // 
             // colLastName
             // 
@@ -290,7 +300,7 @@
             this.Size = new System.Drawing.Size(1243, 839);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCandidates)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -303,7 +313,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem refreshTableToolStripMenuItem;
         private DevExpress.XtraGrid.GridControl gcCandidates;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvCandidates;
         private DevExpress.XtraGrid.Columns.GridColumn colFirstName;
         private DevExpress.XtraGrid.Columns.GridColumn colLastName;
         private DevExpress.XtraGrid.Columns.GridColumn colKeySkills;
@@ -317,5 +327,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCity;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private DevExpress.XtraGrid.Columns.GridColumn colState;
+        private System.Windows.Forms.ToolStripMenuItem viewWebsiteToolStripMenuItem;
     }
 }

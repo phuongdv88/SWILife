@@ -53,6 +53,7 @@
             this.colPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.viewWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gcCompanies)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCompanies)).BeginInit();
@@ -97,9 +98,10 @@
             this.addContactToolStripMenuItem,
             this.addJobOrderToolStripMenuItem,
             this.toolStripSeparator4,
-            this.refreshDataToolStripMenuItem});
+            this.refreshDataToolStripMenuItem,
+            this.viewWebsiteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 176);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 198);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // newCompanyToolStripMenuItem
@@ -277,6 +279,14 @@
             this.colModified.VisibleIndex = 8;
             this.colModified.Width = 120;
             // 
+            // viewWebsiteToolStripMenuItem
+            // 
+            this.viewWebsiteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Insert_hyperlink_icon1;
+            this.viewWebsiteToolStripMenuItem.Name = "viewWebsiteToolStripMenuItem";
+            this.viewWebsiteToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.viewWebsiteToolStripMenuItem.Text = "View Website";
+            this.viewWebsiteToolStripMenuItem.Click += new System.EventHandler(this.viewWebsiteToolStripMenuItem_Click);
+            // 
             // frCompanies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,5 +325,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPrimaryPhone;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private DevExpress.XtraGrid.Columns.GridColumn colCompanyState;
+        private System.Windows.Forms.ToolStripMenuItem viewWebsiteToolStripMenuItem;
     }
 }

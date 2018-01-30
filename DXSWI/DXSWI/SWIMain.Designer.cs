@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SWIMain));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -104,6 +104,10 @@
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
             this.alertControlNotify = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiViewCandidateWebsite = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiViewCompanyWebsite = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).BeginInit();
@@ -149,9 +153,11 @@
             this.barButtonItem2,
             this.barButtonItem3,
             this.bbiImportFromExel,
-            this.bbiEmailSetting});
+            this.bbiEmailSetting,
+            this.bbiViewCandidateWebsite,
+            this.bbiViewCompanyWebsite});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 87;
+            this.ribbonControlMain.MaxItemId = 89;
             this.ribbonControlMain.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -184,9 +190,9 @@
             this.bbiUserAdd.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.AddMaleUser;
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem3.Text = "Add new user";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.bbiUserAdd.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Add new user";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.bbiUserAdd.SuperTip = superToolTip1;
             this.bbiUserAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserAdd_ItemClick);
             // 
             // bbiUserEdit
@@ -197,9 +203,9 @@
             this.bbiUserEdit.ImageOptions.Image = global::DXSWI.Properties.Resources.EditMaleUsericon;
             this.bbiUserEdit.Name = "bbiUserEdit";
             this.bbiUserEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem4.Text = "Edit current selected user";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            this.bbiUserEdit.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = "Edit current selected user";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.bbiUserEdit.SuperTip = superToolTip2;
             this.bbiUserEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserEdit_ItemClick);
             // 
             // bbiUserDelete
@@ -384,6 +390,7 @@
             this.barButtonItem2.Id = 81;
             this.barButtonItem2.ImageOptions.Image = global::DXSWI.Properties.Resources.editcontact;
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
             // 
             // barButtonItem3
@@ -392,6 +399,7 @@
             this.barButtonItem3.Id = 82;
             this.barButtonItem3.ImageOptions.Image = global::DXSWI.Properties.Resources.deletevcard;
             this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // bbiImportFromExel
@@ -456,7 +464,8 @@
             this.rpCompanies.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup7,
             this.rpgContact,
-            this.JobOrder});
+            this.JobOrder,
+            this.ribbonPageGroup9});
             this.rpCompanies.Image = global::DXSWI.Properties.Resources.officebuilding1;
             this.rpCompanies.Name = "rpCompanies";
             this.rpCompanies.Tag = "company";
@@ -519,7 +528,8 @@
             // rpCandidates
             // 
             this.rpCandidates.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup6});
+            this.ribbonPageGroup6,
+            this.ribbonPageGroup1});
             this.rpCandidates.Image = global::DXSWI.Properties.Resources.Appuser1;
             this.rpCandidates.Name = "rpCandidates";
             this.rpCandidates.Tag = "candidate";
@@ -702,9 +712,9 @@
             this.fpNotify.Options.CloseOnOuterClick = true;
             this.fpNotify.OptionsButtonPanel.ButtonPanelContentAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.fpNotify.OptionsButtonPanel.ButtonPanelLocation = DevExpress.Utils.FlyoutPanelButtonPanelLocation.Bottom;
-            buttonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions2.Image")));
+            buttonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions1.Image")));
             this.fpNotify.OptionsButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.Utils.PeekFormButton("OK", true, buttonImageOptions2, true, null)});
+            new DevExpress.Utils.PeekFormButton("OK", true, buttonImageOptions1, true, null)});
             this.fpNotify.OwnerControl = this.pcMain;
             this.fpNotify.Size = new System.Drawing.Size(352, 67);
             this.fpNotify.TabIndex = 0;
@@ -789,6 +799,36 @@
             this.alertControlNotify.AppearanceText.Image = ((System.Drawing.Image)(resources.GetObject("alertControlNotify.AppearanceText.Image")));
             this.alertControlNotify.AppearanceText.Options.UseImage = true;
             this.alertControlNotify.FormLocation = DevExpress.XtraBars.Alerter.AlertFormLocation.TopRight;
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiViewCandidateWebsite);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Link";
+            // 
+            // bbiViewCandidateWebsite
+            // 
+            this.bbiViewCandidateWebsite.Caption = "View Website";
+            this.bbiViewCandidateWebsite.Id = 87;
+            this.bbiViewCandidateWebsite.ImageOptions.Image = global::DXSWI.Properties.Resources.Linkedin_icon;
+            this.bbiViewCandidateWebsite.Name = "bbiViewCandidateWebsite";
+            this.bbiViewCandidateWebsite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiViewCandidateWebsite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCandidateWebsite_ItemClick);
+            // 
+            // ribbonPageGroup9
+            // 
+            this.ribbonPageGroup9.ItemLinks.Add(this.bbiViewCompanyWebsite);
+            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
+            this.ribbonPageGroup9.Text = "ribbonPageGroup9";
+            // 
+            // bbiViewCompanyWebsite
+            // 
+            this.bbiViewCompanyWebsite.Caption = "View Website";
+            this.bbiViewCompanyWebsite.Id = 88;
+            this.bbiViewCompanyWebsite.ImageOptions.Image = global::DXSWI.Properties.Resources.Insert_hyperlink_icon;
+            this.bbiViewCompanyWebsite.Name = "bbiViewCompanyWebsite";
+            this.bbiViewCompanyWebsite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiViewCompanyWebsite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCompanyWebsite_ItemClick);
             // 
             // SWIMain
             // 
@@ -898,5 +938,9 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraBars.Alerter.AlertControl alertControlNotify;
+        private DevExpress.XtraBars.BarButtonItem bbiViewCandidateWebsite;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.BarButtonItem bbiViewCompanyWebsite;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
     }
 }

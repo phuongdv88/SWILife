@@ -813,6 +813,46 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Insert_hyperlink_icon {
+            get {
+                object obj = ResourceManager.GetObject("Insert-hyperlink-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Insert_hyperlink_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("Insert-hyperlink-icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Linkedin_icon {
+            get {
+                object obj = ResourceManager.GetObject("Linkedin-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Linkedin_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("Linkedin-icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Lock {
             get {
                 object obj = ResourceManager.GetObject("Lock", resourceCulture);

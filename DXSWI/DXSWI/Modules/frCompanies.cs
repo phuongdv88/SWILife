@@ -184,5 +184,32 @@ namespace DXSWI.Modules
         {
 
         }
+
+        private void viewWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GotoSite();
+        }
+
+        public void GotoSite()
+        {
+            try
+            {
+                if (gvCompanies.SelectedRowsCount > 0)
+                {
+                    int row = gvCompanies.GetSelectedRows().First();
+                    DataRow data_row = gvCompanies.GetDataRow(row);
+                    string link = data_row["WebSite"].ToString();
+                    if (!link.Contains("http"))
+                    {
+                        link = "https://" + link;
+                    }
+                    System.Diagnostics.Process.Start(link);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

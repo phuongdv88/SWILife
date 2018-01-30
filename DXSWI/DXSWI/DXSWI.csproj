@@ -520,6 +520,10 @@
   <ItemGroup>
     <Content Include="logo_tron_0Pv_icon.ico" />
     <Content Include="lollipop_candy.ico" />
+    <None Include="Resources\Linkedin-icon1.png" />
+    <None Include="Resources\Linkedin-icon.png" />
+    <None Include="Resources\Insert-hyperlink-icon1.png" />
+    <None Include="Resources\Insert-hyperlink-icon.png" />
     <None Include="Resources\Notice-Support-icon1.png" />
     <None Include="Resources\Notice-Support-icon.png" />
     <None Include="Resources\Notice-Info-icon1.png" />

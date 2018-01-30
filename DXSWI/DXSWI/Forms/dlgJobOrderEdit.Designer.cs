@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet1 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
-            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet1 = new DevExpress.XtraEditors.FormatConditionIconSet();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon3 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet2 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet2 = new DevExpress.XtraEditors.FormatConditionIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon4 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon5 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon6 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgJobOrderEdit));
             this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -266,7 +266,7 @@
             this.bbiDeleteCandidateFromPipeLine,
             this.bbiRefresh});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 9;
             // 
             // bar2
             // 
@@ -434,34 +434,34 @@
             this.colStatus,
             this.colLastActivity,
             this.colState});
-            gridFormatRule1.Column = this.colState;
-            gridFormatRule1.ColumnApplyTo = this.colFirstName;
-            gridFormatRule1.Name = "Format0";
-            formatConditionIconSet1.CategoryName = "Shapes";
-            formatConditionIconSetIcon1.PredefinedName = "TrafficLights4_3.png";
-            formatConditionIconSetIcon1.Value = new decimal(new int[] {
+            gridFormatRule2.Column = this.colState;
+            gridFormatRule2.ColumnApplyTo = this.colFirstName;
+            gridFormatRule2.Name = "Format0";
+            formatConditionIconSet2.CategoryName = "Shapes";
+            formatConditionIconSetIcon4.PredefinedName = "TrafficLights4_3.png";
+            formatConditionIconSetIcon4.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            formatConditionIconSetIcon1.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSetIcon2.PredefinedName = "TrafficLights23_1.png";
-            formatConditionIconSetIcon2.Value = new decimal(new int[] {
+            formatConditionIconSetIcon4.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon5.PredefinedName = "TrafficLights23_1.png";
+            formatConditionIconSetIcon5.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            formatConditionIconSetIcon2.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSetIcon3.PredefinedName = "RedToBlack4_3.png";
-            formatConditionIconSetIcon3.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon1);
-            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon2);
-            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon3);
-            formatConditionIconSet1.Name = "TrafficLights3Unrimmed";
-            formatConditionIconSet1.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
-            formatConditionRuleIconSet1.IconSet = formatConditionIconSet1;
-            gridFormatRule1.Rule = formatConditionRuleIconSet1;
-            this.gvCandidatePipeline.FormatRules.Add(gridFormatRule1);
+            formatConditionIconSetIcon5.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon6.PredefinedName = "RedToBlack4_3.png";
+            formatConditionIconSetIcon6.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon4);
+            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon5);
+            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon6);
+            formatConditionIconSet2.Name = "TrafficLights3Unrimmed";
+            formatConditionIconSet2.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRuleIconSet2.IconSet = formatConditionIconSet2;
+            gridFormatRule2.Rule = formatConditionRuleIconSet2;
+            this.gvCandidatePipeline.FormatRules.Add(gridFormatRule2);
             this.gvCandidatePipeline.GridControl = this.gcCandidatePipeline;
             this.gvCandidatePipeline.Name = "gvCandidatePipeline";
             this.gvCandidatePipeline.OptionsBehavior.Editable = false;

@@ -350,12 +350,12 @@ namespace DXSWI
         private void bbiUserHelp_ItemClick(object sender, ItemClickEventArgs e)
         {
             XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            System.Diagnostics.Process.Start("https://swilife.com");
         }
 
         public void showNotice(string message, string caption, MessageBoxIcon icon)
         {
-            //lcInfo.Text = message;
-            //fpNotify.ShowPopup();
+
             Image image = null;
             if (icon == MessageBoxIcon.Information)
             {
@@ -368,6 +368,12 @@ namespace DXSWI
                 image = global::DXSWI.Properties.Resources.Notice_Support_icon;
             }
             alertControlNotify.Show(this, caption, message, image);
+        }
+
+        public void ShowFlyoutMessage(string message)
+        {
+            lcInfo.Text = message;
+            fpNotify.ShowPopup();
         }
 
         private void bbiAddCompany_ItemClick(object sender, ItemClickEventArgs e)
@@ -434,5 +440,14 @@ namespace DXSWI
             dlg.ShowDialog();
         }
 
+        private void bbiViewCandidateWebsite_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            _frCandidate.GotoSite();
+        }
+
+        private void bbiViewCompanyWebsite_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            _frCompanies.GotoSite();
+        }
     }
 }

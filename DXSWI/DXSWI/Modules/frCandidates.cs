@@ -41,9 +41,9 @@ namespace DXSWI.Modules
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (e.FocusedRowHandle == DevExpress.XtraGrid.GridControl.AutoFilterRowHandle)
-                gridView1.FocusedColumn = colFirstName;
+                gvCandidates.FocusedColumn = colFirstName;
             else if (e.FocusedRowHandle >= 0)
-                gridView1.FocusedColumn = null;
+                gvCandidates.FocusedColumn = null;
             updateCurrentCandidate();
 
         }
@@ -55,8 +55,8 @@ namespace DXSWI.Modules
         void updateCurrentCandidate()
         {
             //frCandidates.
-            if (gcCandidates.MainView == gridView1)
-                gridView1.MakeRowVisible(gridView1.FocusedRowHandle);
+            if (gcCandidates.MainView == gvCandidates)
+                gvCandidates.MakeRowVisible(gvCandidates.FocusedRowHandle);
             ////get current selection object
             //if (gridView1.SelectedRowsCount > 0)
             //{
@@ -74,10 +74,10 @@ namespace DXSWI.Modules
 
         public long currentCandidateId()
         {
-            if (gridView1.SelectedRowsCount > 0)
+            if (gvCandidates.SelectedRowsCount > 0)
             {
-                int row = gridView1.GetSelectedRows().First();
-                return Convert.ToInt64(gridView1.GetDataRow(row)["CandidateId"].ToString());
+                int row = gvCandidates.GetSelectedRows().First();
+                return Convert.ToInt64(gvCandidates.GetDataRow(row)["CandidateId"].ToString());
             }
             return -1;
         }
@@ -120,18 +120,6 @@ namespace DXSWI.Modules
             }
         }
 
-        public void AddJobToPipeLine()
-        {
-            //todo: open dialog to add job to pipe line
-            //ucCandidateManager1.AddJobToPipeLine();
-        }
-
-        public void logActivity()
-        {
-            // todo: open dialog to add job to pipe line
-            //ucCandidateManager1.logActivity();
-        }
-
         private void refreshTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             updateData();
@@ -140,6 +128,33 @@ namespace DXSWI.Modules
         private void gcCandidates_DoubleClick(object sender, EventArgs e)
         {
             editToolStripMenuItem_Click(sender, e);
+        }
+
+        private void viewWebsiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GotoSite();
+        }
+
+        public void GotoSite()
+        {
+            try
+            {
+                if (gvCandidates.SelectedRowsCount > 0)
+                {
+                    int row = gvCandidates.GetSelectedRows().First();
+                    DataRow data_row = gvCandidates.GetDataRow(row);
+                    string link = data_row["WebSite"].ToString();
+                    if (!link.Contains("http"))
+                    {
+                        link = "https://" + link;
+                    }
+                    System.Diagnostics.Process.Start(link);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
