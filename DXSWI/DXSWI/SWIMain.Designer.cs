@@ -63,6 +63,8 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bbiImportFromExel = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEmailSetting = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiViewCandidateWebsite = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiViewCompanyWebsite = new DevExpress.XtraBars.BarButtonItem();
             this.rpUser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgEditUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -72,12 +74,14 @@
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgContact = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.JobOrder = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpContacts = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpJobOrders = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgJobOrder0 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpCandidates = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpCalendar = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpUtilities = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -104,10 +108,6 @@
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
             this.alertControlNotify = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiViewCandidateWebsite = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiViewCompanyWebsite = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).BeginInit();
@@ -419,6 +419,24 @@
             this.bbiEmailSetting.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiEmailSetting.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEmailSetting_ItemClick);
             // 
+            // bbiViewCandidateWebsite
+            // 
+            this.bbiViewCandidateWebsite.Caption = "View Website";
+            this.bbiViewCandidateWebsite.Id = 87;
+            this.bbiViewCandidateWebsite.ImageOptions.Image = global::DXSWI.Properties.Resources.Linkedin_icon;
+            this.bbiViewCandidateWebsite.Name = "bbiViewCandidateWebsite";
+            this.bbiViewCandidateWebsite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiViewCandidateWebsite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCandidateWebsite_ItemClick);
+            // 
+            // bbiViewCompanyWebsite
+            // 
+            this.bbiViewCompanyWebsite.Caption = "View Website";
+            this.bbiViewCompanyWebsite.Id = 88;
+            this.bbiViewCompanyWebsite.ImageOptions.Image = global::DXSWI.Properties.Resources.Insert_hyperlink_icon;
+            this.bbiViewCompanyWebsite.Name = "bbiViewCompanyWebsite";
+            this.bbiViewCompanyWebsite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiViewCompanyWebsite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCompanyWebsite_ItemClick);
+            // 
             // rpUser
             // 
             this.rpUser.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -491,6 +509,12 @@
             this.JobOrder.Name = "JobOrder";
             this.JobOrder.Text = "Job Order";
             // 
+            // ribbonPageGroup9
+            // 
+            this.ribbonPageGroup9.ItemLinks.Add(this.bbiViewCompanyWebsite);
+            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
+            this.ribbonPageGroup9.Text = "Link";
+            // 
             // rpContacts
             // 
             this.rpContacts.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -542,6 +566,12 @@
             this.ribbonPageGroup6.ItemLinks.Add(this.bbiDelete);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.Text = "Edit candidates";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiViewCandidateWebsite);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Link";
             // 
             // rpCalendar
             // 
@@ -799,36 +829,6 @@
             this.alertControlNotify.AppearanceText.Image = ((System.Drawing.Image)(resources.GetObject("alertControlNotify.AppearanceText.Image")));
             this.alertControlNotify.AppearanceText.Options.UseImage = true;
             this.alertControlNotify.FormLocation = DevExpress.XtraBars.Alerter.AlertFormLocation.TopRight;
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiViewCandidateWebsite);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Link";
-            // 
-            // bbiViewCandidateWebsite
-            // 
-            this.bbiViewCandidateWebsite.Caption = "View Website";
-            this.bbiViewCandidateWebsite.Id = 87;
-            this.bbiViewCandidateWebsite.ImageOptions.Image = global::DXSWI.Properties.Resources.Linkedin_icon;
-            this.bbiViewCandidateWebsite.Name = "bbiViewCandidateWebsite";
-            this.bbiViewCandidateWebsite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.bbiViewCandidateWebsite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCandidateWebsite_ItemClick);
-            // 
-            // ribbonPageGroup9
-            // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.bbiViewCompanyWebsite);
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
-            this.ribbonPageGroup9.Text = "ribbonPageGroup9";
-            // 
-            // bbiViewCompanyWebsite
-            // 
-            this.bbiViewCompanyWebsite.Caption = "View Website";
-            this.bbiViewCompanyWebsite.Id = 88;
-            this.bbiViewCompanyWebsite.ImageOptions.Image = global::DXSWI.Properties.Resources.Insert_hyperlink_icon;
-            this.bbiViewCompanyWebsite.Name = "bbiViewCompanyWebsite";
-            this.bbiViewCompanyWebsite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.bbiViewCompanyWebsite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCompanyWebsite_ItemClick);
             // 
             // SWIMain
             // 

@@ -14,6 +14,7 @@ using System.Net.Mime;
 using System.IO;
 using DevExpress.XtraLayout;
 using SWIBLL.Models;
+using DevExpress.XtraRichEdit;
 //using Microsoft.Exchange.WebServices.Data;
 
 namespace DXSWI.Forms
@@ -40,6 +41,7 @@ namespace DXSWI.Forms
         {
             InitializeComponent();
             //initMailServer();
+           
 
         }
         public void Init(List<long> runningTaskIds, List<string> emails, List<string> names, List<long> candidateIds, string companyName, string jobTitle, long jobOrderId)
@@ -91,6 +93,19 @@ namespace DXSWI.Forms
             }
             textEditSubject.Text = string.Empty;
             recMailContent.Text = string.Empty;
+
+            try
+            {
+                string linkSignatureFile = string.Format(@"{0}user\signature\{1}\signature.doc", Properties.Settings.Default.StorageLocation, UserManager.ActivatedUser.UserName);
+                if (File.Exists(linkSignatureFile))
+                {
+                    recMailContent.LoadDocument(linkSignatureFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
@@ -421,6 +436,19 @@ namespace DXSWI.Forms
         private string autoGenerateEmail(string template, int canIndex)
         {
             return template.Replace("[name]", _candidateNames[canIndex]).Replace("[company]", _companyName).Replace("[job]", _jobTitle);
+        }
+
+        private void bbiSignatureSetting_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            dlgSignatureEdit dlg = new dlgSignatureEdit();
+            dlg.updateSignatureEvent += updateSignature;
+            dlg.ShowDialog();
+        }
+
+        private void updateSignature(string signature)
+        {
+            recMailContent.Document.AppendText("\r\n");
+            recMailContent.Document.AppendHtmlText(signature);
         }
     }
 }

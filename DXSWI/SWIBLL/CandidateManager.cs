@@ -253,5 +253,12 @@ namespace SWIBLL
             return DataAccess.Instance.getCandidatesOverview();
         }
 
+        public static void correctDatabase(long canId, string city, string cellphone, string keyskills)
+        {
+            string sql = string.Format("UPDATE `swilifecore`.`candidate` SET `CellPhone`='{0}', `KeySkills`='{1}', `City`='{2}' WHERE `CandidateId`='{3}';"
+                , QueryBuilder.mySqlEscape(cellphone), QueryBuilder.mySqlEscape(keyskills), QueryBuilder.mySqlEscape(city), canId);
+            DataAccess.Instance.executeNonQuery(sql);
+        }
+
     }
 }

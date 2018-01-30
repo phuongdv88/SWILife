@@ -270,6 +270,12 @@
     <Compile Include="Forms\dlgPreviewEmail.Designer.cs">
       <DependentUpon>dlgPreviewEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\dlgSignatureEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgSignatureEdit.Designer.cs">
+      <DependentUpon>dlgSignatureEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\dlgTemplateSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -440,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgPreviewEmail.resx">
       <DependentUpon>dlgPreviewEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgSignatureEdit.resx">
+      <DependentUpon>dlgSignatureEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgTemplateSetting.resx">
       <DependentUpon>dlgTemplateSetting.cs</DependentUpon>

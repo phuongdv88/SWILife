@@ -38,32 +38,72 @@ namespace DXSWI.Modules
 
         private void sbImport_Click(object sender, EventArgs e)
         {
-
-            // typeofdata: 0: candidate, 1: company, 2: contact
-            try
-            {
-                switch (FileTypeComboBoxEdit.SelectedIndex)
-                {
-                    case 0:
-                        importCandiate(FileNameTextEdit.Text);
-                        break;
-                    case 1:
-                        importCompany(FileNameTextEdit.Text);
-                        break;
-                    case 2:
-                        importContact(FileNameTextEdit.Text);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                printMessage(string.Format("Error: {0}", ex.Message));
-            }
+            //// typeofdata: 0: candidate, 1: company, 2: contact
+            //try
+            //{
+            //    switch (FileTypeComboBoxEdit.SelectedIndex)
+            //    {
+            //        case 0:
+            //            importCandiate(FileNameTextEdit.Text);
+            //            break;
+            //        case 1:
+            //            importCompany(FileNameTextEdit.Text);
+            //            break;
+            //        case 2:
+            //            importContact(FileNameTextEdit.Text);
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    printMessage(string.Format("Error: {0}", ex.Message));
+            //}
 
         }
 
+
+        private void correctDB()
+        {
+            // get all candidateId, City, Cellphone
+            DataTable dt = CandidateManager.getCandidatesOverview();
+            string msg = string.Empty;
+            int counter = 0;
+            try
+            {
+                for (int i = 0; i < dt.Rows.Count; ++i)
+                {
+                    // corect db
+                    DataRow data_row = dt.Rows[i];
+                    long candiateId = Convert.ToInt64(data_row["CandidateId"].ToString());
+                    string city = data_row["City"].ToString();
+                    string cellphone = data_row["CellPhone"].ToString();
+                    string keySkills = data_row["KeySkills"].ToString();
+
+                    city = city.Replace("Da nang", "Danang").Replace("Da Nang", "Danang").Replace("DA NANG", "Danang").Replace("DANANG", "Danang");
+                    city = city.Replace("Ha Noi", "Hanoi").Replace("hanoi", "Hanoi").Replace("hANOI", "Hanoi").Replace("HaNoi", "Hanoi").Replace("HANOI", "Hanoi").Replace("HN", "Hanoi");
+                    city = city.Replace("hcm", "HCM").Replace("Hcm", "HCM").Replace("HcM", "HCM").Replace("HCm", "HCM").Replace("HCMC", "HCM").Replace("HCN", "HCM").Replace("Ho Chi Minh", "HCM");
+                    city = city.Trim();
+
+                    cellphone = cellphone.Replace("(Mobile)", "").Replace("(Home)", "").Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "").Replace(".", "");
+                    cellphone = cellphone.Trim();
+                    keySkills = keySkills.Replace("Hanoi, ", "").Replace("HCM, ", "").Trim();
+
+                    msg += string.Format("{0}\t\t{1}\t\t{2}\t\t{3} \r\n", candiateId, city, cellphone, keySkills);
+                    counter = i;
+                    // update to db
+                    CandidateManager.correctDatabase(candiateId, city, cellphone, keySkills);
+                }
+                printMessage("Finish");
+            }
+            catch (Exception ex)
+            {
+                printMessage(string.Format("error id = {0}: {1}",counter, ex.Message));
+                //++counter;
+            }
+
+        }
         private void printMessage(string msg)
         {
             InfoMemoEdit.Text += msg + "\r\n";
@@ -423,37 +463,37 @@ namespace DXSWI.Modules
                     }
                 }
             }
-    }
+        }
 
-    private DataTable ReadFromExelFile(string path, string sheetName)
-    {
-        DataTable dt = new DataTable();
-        using (ExcelPackage package = new ExcelPackage(new FileInfo(path)))
+        private DataTable ReadFromExelFile(string path, string sheetName)
         {
-            if (package.Workbook.Worksheets.Count <= 1)
-                return null;
-            ExcelWorksheet workSheet = sheetName != null ? package.Workbook.Worksheets[sheetName] : package.Workbook.Worksheets.FirstOrDefault();
-            // read all of the headers
-            foreach (var firstRowCell in workSheet.Cells[1, 1, 1, workSheet.Dimension.End.Column])
+            DataTable dt = new DataTable();
+            using (ExcelPackage package = new ExcelPackage(new FileInfo(path)))
             {
-                dt.Columns.Add(firstRowCell.Text);
-            }
-
-            // read all data begin from row 2
-
-            for (var rowNumber = 2; rowNumber < workSheet.Dimension.End.Row; rowNumber++)
-            {
-                var row = workSheet.Cells[rowNumber, 1, rowNumber, workSheet.Dimension.End.Column];
-                var newrow = dt.NewRow();
-                foreach (var cell in row)
+                if (package.Workbook.Worksheets.Count <= 1)
+                    return null;
+                ExcelWorksheet workSheet = sheetName != null ? package.Workbook.Worksheets[sheetName] : package.Workbook.Worksheets.FirstOrDefault();
+                // read all of the headers
+                foreach (var firstRowCell in workSheet.Cells[1, 1, 1, workSheet.Dimension.End.Column])
                 {
-                    newrow[cell.Start.Column - 1] = cell.Text;
+                    dt.Columns.Add(firstRowCell.Text);
                 }
-                dt.Rows.Add(newrow);
-            }
 
-        };
-        return dt;
+                // read all data begin from row 2
+
+                for (var rowNumber = 2; rowNumber < workSheet.Dimension.End.Row; rowNumber++)
+                {
+                    var row = workSheet.Cells[rowNumber, 1, rowNumber, workSheet.Dimension.End.Column];
+                    var newrow = dt.NewRow();
+                    foreach (var cell in row)
+                    {
+                        newrow[cell.Start.Column - 1] = cell.Text;
+                    }
+                    dt.Rows.Add(newrow);
+                }
+
+            };
+            return dt;
+        }
     }
-}
 }

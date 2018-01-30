@@ -1102,6 +1102,7 @@
             this.bbiSignatureSetting.ImageOptions.Image = global::DXSWI.Properties.Resources.signatureicon;
             this.bbiSignatureSetting.Name = "bbiSignatureSetting";
             this.bbiSignatureSetting.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiSignatureSetting.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSignatureSetting_ItemClick);
             // 
             // bbiInsertTemplate
             // 
@@ -1229,7 +1230,7 @@
             this.ribbonPageGroup3,
             this.ribbonPageGroup4});
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Mail";
+            this.ribbonPage1.Text = "Mail Setting";
             // 
             // ribbonPageGroup3
             // 
