@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgCandidateEdit));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.gcActivities = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -73,11 +73,13 @@
             this.sbAttachment = new DevExpress.XtraEditors.SimpleButton();
             this.sbAttachmentDownload = new DevExpress.XtraEditors.SimpleButton();
             this.sbAttachmentDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.sbOpenFile = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.sliAttachments = new DevExpress.XtraLayout.SimpleLabelItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.FirstNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.MiddleNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.LastNameTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -163,8 +165,6 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.sbOpenFile = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcActivities)).BeginInit();
@@ -184,6 +184,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliAttachments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiddleNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameTextEdit.Properties)).BeginInit();
@@ -267,7 +268,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -493,17 +493,17 @@
             // ribeAction
             // 
             this.ribeAction.AutoHeight = false;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
-            serializableAppearanceObject9.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject9.Image")));
-            serializableAppearanceObject9.Options.UseImage = true;
-            serializableAppearanceObject10.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject10.Image")));
-            serializableAppearanceObject10.Options.UseImage = true;
-            serializableAppearanceObject11.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject11.Image")));
-            serializableAppearanceObject11.Options.UseImage = true;
-            serializableAppearanceObject12.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject12.Image")));
-            serializableAppearanceObject12.Options.UseImage = true;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
+            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
+            serializableAppearanceObject2.Options.UseImage = true;
+            serializableAppearanceObject3.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject3.Image")));
+            serializableAppearanceObject3.Options.UseImage = true;
+            serializableAppearanceObject4.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject4.Image")));
+            serializableAppearanceObject4.Options.UseImage = true;
             this.ribeAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null)});
             this.ribeAction.Name = "ribeAction";
             this.ribeAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -687,6 +687,18 @@
             this.sbAttachmentDelete.Text = "Delete";
             this.sbAttachmentDelete.Click += new System.EventHandler(this.sbAttachmentDelete_Click);
             // 
+            // sbOpenFile
+            // 
+            this.sbOpenFile.Enabled = false;
+            this.sbOpenFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbOpenFile.ImageOptions.Image")));
+            this.sbOpenFile.Location = new System.Drawing.Point(449, 12);
+            this.sbOpenFile.Name = "sbOpenFile";
+            this.sbOpenFile.Size = new System.Drawing.Size(89, 22);
+            this.sbOpenFile.StyleController = this.layoutControl2;
+            this.sbOpenFile.TabIndex = 8;
+            this.sbOpenFile.Text = "View";
+            this.sbOpenFile.Click += new System.EventHandler(this.sbOpenFile_Click);
+            // 
             // layoutControlGroup7
             // 
             this.layoutControlGroup7.CustomizationFormText = "lcgAttachments";
@@ -745,6 +757,15 @@
             this.sliAttachments.Text = "No file chosen";
             this.sliAttachments.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.sliAttachments.TextSize = new System.Drawing.Size(67, 13);
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.sbOpenFile;
+            this.layoutControlItem12.Location = new System.Drawing.Point(437, 0);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(93, 26);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem12.TextVisible = false;
             // 
             // FirstNameTextEdit
             // 
@@ -1576,27 +1597,6 @@
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
-            // sbOpenFile
-            // 
-            this.sbOpenFile.Enabled = false;
-            this.sbOpenFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbOpenFile.ImageOptions.Image")));
-            this.sbOpenFile.Location = new System.Drawing.Point(449, 12);
-            this.sbOpenFile.Name = "sbOpenFile";
-            this.sbOpenFile.Size = new System.Drawing.Size(89, 22);
-            this.sbOpenFile.StyleController = this.layoutControl2;
-            this.sbOpenFile.TabIndex = 8;
-            this.sbOpenFile.Text = "View";
-            this.sbOpenFile.Click += new System.EventHandler(this.sbOpenFile_Click);
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.Control = this.sbOpenFile;
-            this.layoutControlItem12.Location = new System.Drawing.Point(437, 0);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(93, 26);
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem12.TextVisible = false;
-            // 
             // dlgCandidateEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1632,6 +1632,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliAttachments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiddleNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameTextEdit.Properties)).EndInit();
@@ -1715,7 +1716,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

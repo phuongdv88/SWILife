@@ -12,16 +12,11 @@ using DevExpress.XtraScheduler;
 
 namespace DXSWI.Modules
 {
-    public partial class frCalendar : DevExpress.XtraEditors.XtraUserControl
+    public partial class frSchedule : DevExpress.XtraEditors.XtraUserControl
     {
-        public frCalendar()
+        public frSchedule()
         {
             InitializeComponent();
-        }
-
-        private void schedulerControl1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

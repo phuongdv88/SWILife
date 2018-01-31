@@ -82,10 +82,7 @@
             this.rpCandidates = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rpCalendar = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.rpUtilities = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -95,9 +92,8 @@
             this.nbgContacts = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgJoborder = new DevExpress.XtraNavBar.NavBarGroup();
             this.ngbCandidates = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgCalendar = new DevExpress.XtraNavBar.NavBarGroup();
+            this.nbgSchedule = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgReport = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgUtilites = new DevExpress.XtraNavBar.NavBarGroup();
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
             this.fpNotify = new DevExpress.Utils.FlyoutPanel();
             this.fpcNotify = new DevExpress.Utils.FlyoutPanelControl();
@@ -166,15 +162,14 @@
             this.rpContacts,
             this.rpJobOrders,
             this.rpCandidates,
-            this.rpCalendar,
-            this.rpReport,
-            this.rpUtilities});
+            this.rpReport});
             this.ribbonControlMain.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControlMain.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControlMain.Size = new System.Drawing.Size(1350, 146);
             this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
             this.ribbonControlMain.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             this.ribbonControlMain.SelectedPageChanged += new System.EventHandler(this.ribbonControlMain_SelectedPageChanged);
+            this.ribbonControlMain.Click += new System.EventHandler(this.ribbonControlMain_Click);
             // 
             // skinRibbonGalleryBarItem
             // 
@@ -447,7 +442,7 @@
             this.rpUser.Image = global::DXSWI.Properties.Resources.cryptography1;
             this.rpUser.Name = "rpUser";
             this.rpUser.Tag = "user";
-            this.rpUser.Text = "USER (F1)";
+            this.rpUser.Text = "USER";
             // 
             // rpgEditUser
             // 
@@ -487,7 +482,7 @@
             this.rpCompanies.Image = global::DXSWI.Properties.Resources.officebuilding1;
             this.rpCompanies.Name = "rpCompanies";
             this.rpCompanies.Tag = "company";
-            this.rpCompanies.Text = "COMPANIES (F2)";
+            this.rpCompanies.Text = "COMPANIES";
             // 
             // ribbonPageGroup7
             // 
@@ -522,7 +517,7 @@
             this.rpContacts.Image = global::DXSWI.Properties.Resources.contact3;
             this.rpContacts.Name = "rpContacts";
             this.rpContacts.Tag = "contact";
-            this.rpContacts.Text = "CONTACTS (F3)";
+            this.rpContacts.Text = "CONTACTS";
             // 
             // ribbonPageGroup8
             // 
@@ -539,7 +534,7 @@
             this.rpJobOrders.Image = global::DXSWI.Properties.Resources.task1;
             this.rpJobOrders.Name = "rpJobOrders";
             this.rpJobOrders.Tag = "joborder";
-            this.rpJobOrders.Text = "JOB ORDERS (F4)";
+            this.rpJobOrders.Text = "JOB ORDERS";
             // 
             // rpgJobOrder0
             // 
@@ -557,7 +552,7 @@
             this.rpCandidates.Image = global::DXSWI.Properties.Resources.Appuser1;
             this.rpCandidates.Name = "rpCandidates";
             this.rpCandidates.Tag = "candidate";
-            this.rpCandidates.Text = "CANDIDATES (F5)";
+            this.rpCandidates.Text = "CANDIDATES";
             // 
             // ribbonPageGroup6
             // 
@@ -573,34 +568,12 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Link";
             // 
-            // rpCalendar
-            // 
-            this.rpCalendar.Image = global::DXSWI.Properties.Resources.Calendaricon4;
-            this.rpCalendar.Name = "rpCalendar";
-            this.rpCalendar.Tag = "calendar";
-            this.rpCalendar.Text = "CALENDAR (F6)";
-            // 
             // rpReport
             // 
             this.rpReport.Image = global::DXSWI.Properties.Resources.report1;
             this.rpReport.Name = "rpReport";
             this.rpReport.Tag = "report";
-            this.rpReport.Text = "REPORT (F7)";
-            // 
-            // rpUtilities
-            // 
-            this.rpUtilities.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup11});
-            this.rpUtilities.Image = global::DXSWI.Properties.Resources.system1;
-            this.rpUtilities.Name = "rpUtilities";
-            this.rpUtilities.Tag = "utility";
-            this.rpUtilities.Text = "UTILITIES (F8)";
-            // 
-            // ribbonPageGroup11
-            // 
-            this.ribbonPageGroup11.ItemLinks.Add(this.bbiImportFromExel);
-            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
-            this.ribbonPageGroup11.Text = "Utilities";
+            this.rpReport.Text = "REPORT";
             // 
             // ribbonStatusBar
             // 
@@ -636,9 +609,8 @@
             this.nbgContacts,
             this.nbgJoborder,
             this.ngbCandidates,
-            this.nbgCalendar,
             this.nbgReport,
-            this.nbgUtilites});
+            this.nbgSchedule});
             this.navBarControl1.HideGroupCaptions = true;
             this.navBarControl1.Location = new System.Drawing.Point(0, 146);
             this.navBarControl1.Name = "navBarControl1";
@@ -697,14 +669,14 @@
             this.ngbCandidates.Name = "ngbCandidates";
             this.ngbCandidates.Tag = "candidate";
             // 
-            // nbgCalendar
+            // nbgSchedule
             // 
-            this.nbgCalendar.Caption = "Calendar";
-            this.nbgCalendar.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgCalendar.LargeImage = global::DXSWI.Properties.Resources.Calendaricon3;
-            this.nbgCalendar.Name = "nbgCalendar";
-            this.nbgCalendar.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgCalendar.SmallImage")));
-            this.nbgCalendar.Tag = "calendar";
+            this.nbgSchedule.Caption = "Schedule";
+            this.nbgSchedule.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgSchedule.LargeImage = global::DXSWI.Properties.Resources.Calendaricon3;
+            this.nbgSchedule.Name = "nbgSchedule";
+            this.nbgSchedule.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgSchedule.SmallImage")));
+            this.nbgSchedule.Tag = "schedule";
             // 
             // nbgReport
             // 
@@ -714,15 +686,6 @@
             this.nbgReport.Name = "nbgReport";
             this.nbgReport.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgReport.SmallImage")));
             this.nbgReport.Tag = "report";
-            // 
-            // nbgUtilites
-            // 
-            this.nbgUtilites.Caption = "Utilities";
-            this.nbgUtilites.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgUtilites.LargeImage = global::DXSWI.Properties.Resources.system;
-            this.nbgUtilites.Name = "nbgUtilites";
-            this.nbgUtilites.SmallImage = global::DXSWI.Properties.Resources.system;
-            this.nbgUtilites.Tag = "utility";
             // 
             // pcMain
             // 
@@ -876,9 +839,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage rpCompanies;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpContacts;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpJobOrders;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rpCalendar;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpReport;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rpUtilities;
         private DevExpress.XtraBars.BarButtonItem bbiUserAdd;
         private DevExpress.XtraBars.BarButtonItem bbiUserEdit;
         private DevExpress.XtraBars.BarButtonItem bbiUserDelete;
@@ -897,9 +858,8 @@
         private DevExpress.XtraNavBar.NavBarGroup nbgCompanies;
         private DevExpress.XtraNavBar.NavBarGroup nbgJoborder;
         private DevExpress.XtraNavBar.NavBarGroup nbgContacts;
-        private DevExpress.XtraNavBar.NavBarGroup nbgCalendar;
+        private DevExpress.XtraNavBar.NavBarGroup nbgSchedule;
         private DevExpress.XtraNavBar.NavBarGroup nbgReport;
-        private DevExpress.XtraNavBar.NavBarGroup nbgUtilites;
         private DevExpress.XtraEditors.PanelControl pcMain;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
@@ -926,7 +886,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem bbiImportFromExel;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraNavBar.NavBarGroup nbgCandidates;
         private DevExpress.XtraNavBar.NavBarGroup ngbCandidates;
         private DevExpress.XtraBars.BarButtonItem bbiEmailSetting;

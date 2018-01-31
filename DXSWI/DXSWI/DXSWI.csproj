@@ -79,6 +79,7 @@
     <Reference Include="DevExpress.XtraRichEdit.v17.1.Extensions, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v17.1.Extensions, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EPPlus, Version=4.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.1.1\lib\net40\EPPlus.dll</HintPath>
       <Private>True</Private>
@@ -310,12 +311,6 @@
     <Compile Include="Forms\wfMain.Designer.cs">
       <DependentUpon>wfMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modules\frCalendar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Modules\frCalendar.Designer.cs">
-      <DependentUpon>frCalendar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Modules\frCandidates.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -357,6 +352,12 @@
     </Compile>
     <Compile Include="Modules\frUtilities.Designer.cs">
       <DependentUpon>frUtilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\frSchedule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\frSchedule.Designer.cs">
+      <DependentUpon>frSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -475,9 +476,6 @@
     <EmbeddedResource Include="Forms\wfMain.resx">
       <DependentUpon>wfMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\frCalendar.resx">
-      <DependentUpon>frCalendar.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Modules\frCandidates.resx">
       <DependentUpon>frCandidates.cs</DependentUpon>
     </EmbeddedResource>
@@ -495,6 +493,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\frUtilities.resx">
       <DependentUpon>frUtilities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\frSchedule.resx">
+      <DependentUpon>frSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SWIMain.resx">
       <DependentUpon>SWIMain.cs</DependentUpon>

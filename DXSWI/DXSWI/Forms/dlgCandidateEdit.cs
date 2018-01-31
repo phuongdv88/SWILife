@@ -818,14 +818,14 @@ namespace DXSWI.Forms
                 sliAttachments.Text = "No file chosen";
                 sbAttachmentDelete.Enabled = false;
                 sbAttachmentDownload.Enabled = false;
-                sbView.Enabled = false;
+                sbOpenFile.Enabled = false;
             }
             else
             {
                 sliAttachments.Text = path.Split(new[] { '\\' }, StringSplitOptions.None).Last();
                 sbAttachmentDelete.Enabled = true;
                 sbAttachmentDownload.Enabled = true;
-                sbView.Enabled = true;
+                sbOpenFile.Enabled = true;
             }
         }
         private void loadJobPipeLine()

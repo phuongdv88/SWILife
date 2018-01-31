@@ -23,8 +23,11 @@ namespace DXSWI
 {
     public partial class SWIMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        frCalendar _frCalendar = new frCalendar();
-        readonly string _tagCalendar = "calendar";
+        //frCalendar _frCalendar = new frCalendar();        
+        //readonly string _tagCalendar = "calendar";
+
+        frSchedule _frSchedule = new frSchedule();
+        readonly string _tagSchedule = "schedule";
         frCandidates _frCandidate = new frCandidates();
         readonly string _tagCandidates = "candidate";
         frCompanies _frCompanies = new frCompanies();
@@ -37,12 +40,14 @@ namespace DXSWI
         readonly string _tagReport = "report";
         frUser _frUser = new frUser();
         readonly string _tagUser = "user";
+
         frUtilities _frUtilities = new frUtilities();
         readonly string _tagUtilities = "utility";
 
         void init()
         {
             // init all Modules
+            ribbonControlMain.MergeRibbon(_frSchedule.rcSchedule);
             string tag = _tagCompanies;
 
             foreach (RibbonPage page in ribbonControlMain.Pages)
@@ -57,6 +62,7 @@ namespace DXSWI
                 }
             }
             changeGroup(tag);
+
         }
 
 
@@ -69,7 +75,7 @@ namespace DXSWI
         {
             if(UserManager.ActivatedUser != null)
             {
-                rpUser.Text = string.Format("{0} (F1)", UserManager.ActivatedUser.UserName.ToUpper());
+                rpUser.Text = string.Format("{0}", UserManager.ActivatedUser.UserName.ToUpper());
                 if(UserManager.ActivatedUser.RoleName != "ADMIN")
                 {
                     rpgEditUser.Visible = false;
@@ -148,7 +154,7 @@ namespace DXSWI
                     changeGroupByCode(_tagCandidates);
                     break;
                 case Keys.F6:
-                    changeGroupByCode(_tagCalendar);
+                    changeGroupByCode(_tagSchedule);
                     break;
                 case Keys.F7:
                     changeGroupByCode(_tagReport);
@@ -191,17 +197,24 @@ namespace DXSWI
 
         private void changeGroupByCode(string tag)
         {
-            foreach (RibbonPage page in ribbonControlMain.Pages)
+            if (tag == _tagSchedule)
             {
-                string page_tag = page.Tag.ToString();
-                if (!string.IsNullOrEmpty(page_tag))
+                ribbonControlMain.SelectedPage = _frSchedule.hrpSchedule;
+            }
+            else
+            {
+                foreach (RibbonPage page in ribbonControlMain.Pages)
                 {
-                    if (page_tag.Equals(tag))
+                    string page_tag = page.Tag.ToString();
+                    if (!string.IsNullOrEmpty(page_tag))
                     {
-                        ribbonControlMain.SelectedPage = page;
+                        if (page_tag.Equals(tag))
+                        {
+                            ribbonControlMain.SelectedPage = page;
+                        }
                     }
                 }
-            }
+            }           
             changeGroup(tag);
         }
         private void changeGroup(string tag)
@@ -241,11 +254,11 @@ namespace DXSWI
                 pcMain.Controls.Add(_frCandidate);
                 _frCandidate.Dock = DockStyle.Fill;
             }
-            if (tag.Equals(_tagCalendar))
+            if (tag.Equals(_tagSchedule))
             {
                 pcMain.Controls.Clear();
-                pcMain.Controls.Add(_frCalendar);
-                _frCalendar.Dock = DockStyle.Fill;
+                pcMain.Controls.Add(_frSchedule);
+                _frSchedule.Dock = DockStyle.Fill;
             }
             if (tag.Equals(_tagCompanies))
             {
@@ -448,6 +461,11 @@ namespace DXSWI
         private void bbiViewCompanyWebsite_ItemClick(object sender, ItemClickEventArgs e)
         {
             _frCompanies.GotoSite();
+        }
+
+        private void ribbonControlMain_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

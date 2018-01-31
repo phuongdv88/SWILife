@@ -121,7 +121,7 @@
     <value>331, 14</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="editorButtonImageOptions3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAgdEVYdFRpdGxlAEVkaXQ7QmFycztSaWJib247U3Rh
@@ -131,7 +131,7 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="serializableAppearanceObject9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="serializableAppearanceObject1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAgdEVYdFRpdGxlAEVkaXQ7QmFycztSaWJib247U3Rh
@@ -143,7 +143,7 @@
         gaBw8ps3zRc04YO9+3Zd0gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="serializableAppearanceObject10.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="serializableAppearanceObject2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAgdEVYdFRpdGxlAEVkaXQ7QmFycztSaWJib247U3Rh
@@ -155,7 +155,7 @@
         gaBw8ps3zRc04YO9+3Zd0gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="serializableAppearanceObject11.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="serializableAppearanceObject3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAgdEVYdFRpdGxlAEVkaXQ7QmFycztSaWJib247U3Rh
@@ -167,7 +167,7 @@
         gaBw8ps3zRc04YO9+3Zd0gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="serializableAppearanceObject12.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="serializableAppearanceObject4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAgdEVYdFRpdGxlAEVkaXQ7QmFycztSaWJib247U3Rh
@@ -240,15 +240,14 @@
   </data>
   <data name="sbOpenFile.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAydEVYdFRpdGxlAEdyYW5kVG90YWxzT25Sb3dzQ29sdW1uc1Bpdm90VGFibGU7RG9jdW1lbnQ7
-        +C4skgAAAU1JREFUOE+Fk91KAlEURlXUmy6iZ+mlIogigpCokIgiCgqDoG68iAqMIioi6KaboJ8XicIs
-        Hcf53e016ETjOSgsznC+Nd/sOTg5EcnpL187fTnYP3uTUeDhc19yb7+gsHf8LHEsEkaxFXI8/GxBcbv+
-        JEEYS73xmtLzo3SdnLpJcjz8bEFp4/BRhUhcL7RCjoefLShXaw/iB5E4vTCdYHDNygTkePhDBSu79+Kp
-        0HEDK+R4xoKlnTt917+nw4/jpysTkOMZCypbt8l7tjqeFXI8Y8Hi5rV0VWi2vXSCwTUrE5DjGQsW1q/0
-        sAL5/O5ZIcczFsyvXYqjB8WTBny03H8rOZ6xYK56kZz0+5drhRzPVFCaXT1P/q7trm+FHA8/W1Ccrpwc
-        zSw3ZBR4+NmCglJWxpRxZcIA++R4Qx9Tnk2lqJQUpCzsk+P1P2fJ/QLJ+pm6k2HGaQAAAABJRU5ErkJg
-        gg==
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAADJ0RVh0VGl0
+        bGUAR3JhbmRUb3RhbHNPblJvd3NDb2x1bW5zUGl2b3RUYWJsZTtEb2N1bWVudDv4LiySAAABTUlEQVQ4
+        T4WT3UoCURRGVdSbLqJn6aUiiCKCkKiQiCIKCoOgbryICowiKiLoppugnxeJwiwdx/nd7TXoROM5KCzO
+        cL413+w5ODkRyekvXzt9Odg/e5NR4OFzX3Jvv6Cwd/wscSwSRrEVcjz8bEFxu/4kQRhLvfGa0vOjdJ2c
+        uklyPPxsQWnj8FGFSFwvtEKOh58tKFdrD+IHkTi9MJ1gcM3KBOR4+EMFK7v34qnQcQMr5HjGgqWdO33X
+        v6fDj+OnKxOQ4xkLKlu3yXu2Op4VcjxjweLmtXRVaLa9dILBNSsTkOMZCxbWr/SwAvn87lkhxzMWzK9d
+        iqMHxZMGfLTcfys5nrFgrnqRnPT7l2uFHM9UUJpdPU/+ru2ub4UcDz9bUJyunBzNLDdkFHj42YKCUlbG
+        lHFlwgD75HhDH1OeTaWolBSkLOyT4/U/Z8n9Asn6mbqTYcZpAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="lcgContactInfo.CaptionImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
