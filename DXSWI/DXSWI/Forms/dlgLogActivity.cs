@@ -315,5 +315,10 @@ namespace DXSWI.Forms
                     break;
             }
         }
+
+        private void cbeStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

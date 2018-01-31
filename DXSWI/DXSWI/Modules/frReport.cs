@@ -30,6 +30,9 @@ namespace DXSWI.Modules
             try
             {
                 gcActivites.DataSource = ActivityManager.getAllActivities();
+                ccWeeklyReport.DataSource = JobOrderManager.GetReportByWeek();
+                ccMonthlyReport.DataSource = JobOrderManager.GetReportByMonth();
+                ccYearlyReport.DataSource = JobOrderManager.GetReportByYear();
             }
             catch (Exception ex)
             {

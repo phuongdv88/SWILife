@@ -155,6 +155,7 @@
             this.cbeStatus.Size = new System.Drawing.Size(707, 20);
             this.cbeStatus.StyleController = this.layoutControl1;
             this.cbeStatus.TabIndex = 6;
+            this.cbeStatus.SelectedIndexChanged += new System.EventHandler(this.cbeStatus_SelectedIndexChanged);
             // 
             // ceLogActivity
             // 

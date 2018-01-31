@@ -302,8 +302,16 @@ namespace DXSWI.Forms
 
         private void updateData()
         {
-            // load jobOrder pipe line
-            loadPipeLineCandidates();
+            try {
+                // load jobOrder pipe line
+                loadPipeLineCandidates();
+                // load joborder report
+                ccReport.DataSource = JobOrderManager.GetReport(mJobOrder.JobOrderId);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void loadPipeLineCandidates()
@@ -331,7 +339,7 @@ namespace DXSWI.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -710,6 +718,5 @@ namespace DXSWI.Forms
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-       
     }
 }

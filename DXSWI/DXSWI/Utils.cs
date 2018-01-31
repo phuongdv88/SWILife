@@ -23,6 +23,17 @@ namespace DXSWI
             var chars = Enumerable.Range(0, len).Select(x => pool[rand.Next(0, pool.Length - 1)]);
             return new string(chars.ToArray());
         }
+
+        public static DateTime YearWeekDayToDateTime(int year, DayOfWeek day, int week)
+        {
+            DateTime startOfYear = new DateTime(year, 1, 1);
+            // the +7 and %7 stuff is to avoid negative numbers etc.
+            int daysToFirstCorrectDay = (((int)day - (int)startOfYear.DayOfWeek) + 7) % 7;
+            return startOfYear.AddDays(7 * (week - 1) + daysToFirstCorrectDay);
+
+            //// Show the third Tuesday in 2009. Should be January 20th
+            //Console.WriteLine(YearWeekDayToDateTime(2009, DayOfWeek.Tuesday, 3));
+        }
     }
 
     public class RichEditMailMessageExporter : IUriProvider
