@@ -11,6 +11,7 @@ using System.Net.Mime;
 using System.IO;
 using DevExpress.XtraRichEdit.Export;
 using DevExpress.Office.Utils;
+using System.Text.RegularExpressions;
 
 namespace DXSWI
 {
@@ -33,6 +34,14 @@ namespace DXSWI
 
             //// Show the third Tuesday in 2009. Should be January 20th
             //Console.WriteLine(YearWeekDayToDateTime(2009, DayOfWeek.Tuesday, 3));
+        }
+
+        public static string Capitalize(string text)
+        {
+            return Regex.Replace(text, @"\b[a-z]", delegate (Match m)
+            {
+                return m.Value.ToUpper();
+            });
         }
     }
 

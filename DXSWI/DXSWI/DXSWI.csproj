@@ -113,6 +113,12 @@
     <Compile Include="Controls\ucAttachmentFile.Designer.cs">
       <DependentUpon>ucAttachmentFile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ucAttachmentMail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucAttachmentMail.Designer.cs">
+      <DependentUpon>ucAttachmentMail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ucCalendar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -359,6 +365,12 @@
     <Compile Include="Modules\frSchedule.Designer.cs">
       <DependentUpon>frSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\OutlookAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\OutlookAppointmentForm.Designer.cs">
+      <DependentUpon>OutlookAppointmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenManager.cs" />
@@ -376,6 +388,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Controls\ucAttachmentFile.resx">
       <DependentUpon>ucAttachmentFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ucAttachmentMail.resx">
+      <DependentUpon>ucAttachmentMail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucCalendar.resx">
       <DependentUpon>ucCalendar.cs</DependentUpon>
@@ -497,6 +512,10 @@
     <EmbeddedResource Include="Modules\frSchedule.resx">
       <DependentUpon>frSchedule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modules\OutlookAppointmentForm.resx">
+      <DependentUpon>OutlookAppointmentForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="SWIMain.resx">
       <DependentUpon>SWIMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -516,11 +535,13 @@
     </Compile>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SWIBLL.Models.AppointmentObject.datasource" />
     <None Include="Properties\DataSources\SWIBLL.Models.Company.datasource" />
     <None Include="Properties\DataSources\SWIBLL.Models.Contact.datasource" />
     <None Include="Properties\DataSources\SWIBLL.Models.JobOrder.datasource" />
     <None Include="Properties\DataSources\SWIBLL.Models.ReportHiringOverview.datasource" />
     <None Include="Properties\DataSources\SWIBLL.Models.ReportJobOrder.datasource" />
+    <None Include="Properties\DataSources\SWIBLL.Models.ResourceObject.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

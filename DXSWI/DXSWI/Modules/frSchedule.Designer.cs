@@ -34,8 +34,10 @@
             DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.dateNavigator1 = new DevExpress.XtraScheduler.DateNavigator();
-            this.schedulerControl1 = new DevExpress.XtraScheduler.SchedulerControl();
+            this.scMain = new DevExpress.XtraScheduler.SchedulerControl();
             this.schedulerStorage1 = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
+            this.appointmentObjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.resourceObjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rcSchedule = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.newAppointmentItem1 = new DevExpress.XtraScheduler.UI.NewAppointmentItem();
             this.newRecurringAppointmentItem1 = new DevExpress.XtraScheduler.UI.NewRecurringAppointmentItem();
@@ -65,8 +67,10 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentObjectBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resourceObjectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rcSchedule)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerBarController1)).BeginInit();
             this.SuspendLayout();
@@ -78,7 +82,7 @@
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.dateNavigator1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.schedulerControl1);
+            this.splitContainerControl1.Panel2.Controls.Add(this.scMain);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1206, 694);
             this.splitContainerControl1.SplitterPosition = 253;
@@ -96,26 +100,57 @@
             this.dateNavigator1.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateNavigator1.Location = new System.Drawing.Point(0, 0);
             this.dateNavigator1.Name = "dateNavigator1";
-            this.dateNavigator1.SchedulerControl = this.schedulerControl1;
+            this.dateNavigator1.SchedulerControl = this.scMain;
             this.dateNavigator1.Size = new System.Drawing.Size(253, 694);
             this.dateNavigator1.TabIndex = 0;
             // 
-            // schedulerControl1
+            // scMain
             // 
-            this.schedulerControl1.DataStorage = this.schedulerStorage1;
-            this.schedulerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.schedulerControl1.Location = new System.Drawing.Point(0, 0);
-            this.schedulerControl1.MenuManager = this.rcSchedule;
-            this.schedulerControl1.Name = "schedulerControl1";
-            this.schedulerControl1.Size = new System.Drawing.Size(948, 694);
-            this.schedulerControl1.Start = new System.DateTime(2018, 1, 31, 0, 0, 0, 0);
-            this.schedulerControl1.TabIndex = 0;
-            this.schedulerControl1.Text = "schedulerControl1";
-            this.schedulerControl1.Views.DayView.TimeRulers.Add(timeRuler1);
-            this.schedulerControl1.Views.FullWeekView.Enabled = true;
-            this.schedulerControl1.Views.FullWeekView.TimeRulers.Add(timeRuler2);
-            this.schedulerControl1.Views.WeekView.Enabled = false;
-            this.schedulerControl1.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
+            this.scMain.DataStorage = this.schedulerStorage1;
+            this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scMain.Location = new System.Drawing.Point(0, 0);
+            this.scMain.MenuManager = this.rcSchedule;
+            this.scMain.Name = "scMain";
+            this.scMain.Size = new System.Drawing.Size(948, 694);
+            this.scMain.Start = new System.DateTime(2018, 1, 31, 0, 0, 0, 0);
+            this.scMain.TabIndex = 0;
+            this.scMain.Text = "schedulerControl1";
+            this.scMain.Views.DayView.TimeRulers.Add(timeRuler1);
+            this.scMain.Views.FullWeekView.Enabled = true;
+            this.scMain.Views.FullWeekView.TimeRulers.Add(timeRuler2);
+            this.scMain.Views.WeekView.Enabled = false;
+            this.scMain.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
+            this.scMain.EditAppointmentFormShowing += new DevExpress.XtraScheduler.AppointmentFormEventHandler(this.schedulerControl1_EditAppointmentFormShowing);
+            this.scMain.Click += new System.EventHandler(this.scMain_Click);
+            // 
+            // schedulerStorage1
+            // 
+            this.schedulerStorage1.Appointments.DataSource = this.appointmentObjectBindingSource;
+            this.schedulerStorage1.Appointments.Mappings.AllDay = "AllDay";
+            this.schedulerStorage1.Appointments.Mappings.Description = "Description";
+            this.schedulerStorage1.Appointments.Mappings.End = "EndDate";
+            this.schedulerStorage1.Appointments.Mappings.Label = "Label";
+            this.schedulerStorage1.Appointments.Mappings.Location = "Location";
+            this.schedulerStorage1.Appointments.Mappings.RecurrenceInfo = "RecurrenceInfo";
+            this.schedulerStorage1.Appointments.Mappings.ReminderInfo = "ReminderInfo";
+            this.schedulerStorage1.Appointments.Mappings.ResourceId = "ResourceID";
+            this.schedulerStorage1.Appointments.Mappings.Start = "StartDate";
+            this.schedulerStorage1.Appointments.Mappings.Status = "Status";
+            this.schedulerStorage1.Appointments.Mappings.Subject = "Subject";
+            this.schedulerStorage1.Appointments.Mappings.TimeZoneId = "TimeZoneId";
+            this.schedulerStorage1.Appointments.Mappings.Type = "Type";
+            this.schedulerStorage1.Resources.DataSource = this.resourceObjectBindingSource;
+            this.schedulerStorage1.Resources.Mappings.Caption = "ResourceName";
+            this.schedulerStorage1.Resources.Mappings.Color = "Color";
+            this.schedulerStorage1.Resources.Mappings.Id = "ResourceId";
+            // 
+            // appointmentObjectBindingSource
+            // 
+            this.appointmentObjectBindingSource.DataSource = typeof(SWIBLL.Models.AppointmentObject);
+            // 
+            // resourceObjectBindingSource
+            // 
+            this.resourceObjectBindingSource.DataSource = typeof(SWIBLL.Models.ResourceObject);
             // 
             // rcSchedule
             // 
@@ -303,7 +338,7 @@
             this.schedulerBarController1.BarItems.Add(this.groupByNoneItem1);
             this.schedulerBarController1.BarItems.Add(this.groupByDateItem1);
             this.schedulerBarController1.BarItems.Add(this.groupByResourceItem1);
-            this.schedulerBarController1.Control = this.schedulerControl1;
+            this.schedulerBarController1.Control = this.scMain;
             // 
             // frSchedule
             // 
@@ -317,8 +352,10 @@
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentObjectBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resourceObjectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rcSchedule)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerBarController1)).EndInit();
             this.ResumeLayout(false);
@@ -330,7 +367,7 @@
 
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraScheduler.DateNavigator dateNavigator1;
-        private DevExpress.XtraScheduler.SchedulerControl schedulerControl1;
+        private DevExpress.XtraScheduler.SchedulerControl scMain;
         private DevExpress.XtraScheduler.SchedulerStorage schedulerStorage1;
         private DevExpress.XtraScheduler.UI.NewAppointmentItem newAppointmentItem1;
         private DevExpress.XtraScheduler.UI.NewRecurringAppointmentItem newRecurringAppointmentItem1;
@@ -357,5 +394,7 @@
         private DevExpress.XtraScheduler.UI.SchedulerBarController schedulerBarController1;
         public DevExpress.XtraBars.Ribbon.RibbonControl rcSchedule;
         public DevExpress.XtraScheduler.UI.HomeRibbonPage hrpSchedule;
+        private System.Windows.Forms.BindingSource appointmentObjectBindingSource;
+        private System.Windows.Forms.BindingSource resourceObjectBindingSource;
     }
 }

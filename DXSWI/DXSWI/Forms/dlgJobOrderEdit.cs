@@ -552,7 +552,7 @@ namespace DXSWI.Forms
                     DataRow data_row = gvCandidatePipeline.GetDataRow(row);
                     emails.Add(data_row["Email"].ToString());
                     runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
-                    names.Add(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString()));
+                    names.Add(Utils.Capitalize( string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString())));
                     canIds.Add(Convert.ToInt64(data_row["CandidateId"].ToString()));
                     EmailToCandidates(runningTaskIds, emails, names, canIds);
                 }
@@ -578,7 +578,7 @@ namespace DXSWI.Forms
                         DataRow data_row = gvCandidatePipeline.GetDataRow(row);
                         emails.Add(data_row["Email"].ToString());
                         runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
-                        names.Add(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString()));
+                        names.Add(Utils.Capitalize(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString())));
                         canIds.Add(Convert.ToInt64(data_row["CandidateId"].ToString()));
                     }
                     EmailToCandidates(runningTaskIds, emails, names, canIds);

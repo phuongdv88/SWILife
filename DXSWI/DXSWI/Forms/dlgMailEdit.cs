@@ -14,7 +14,10 @@ using System.Net.Mime;
 using System.IO;
 using DevExpress.XtraLayout;
 using SWIBLL.Models;
+using DXSWI.Modules;
 using DevExpress.XtraRichEdit;
+using DXSWI.Controls;
+using System.Text.RegularExpressions;
 //using Microsoft.Exchange.WebServices.Data;
 
 namespace DXSWI.Forms
@@ -25,7 +28,8 @@ namespace DXSWI.Forms
         //private MailMessage _emailMessage = null;
         private Dictionary<string, string> _indexAndAttachments = new Dictionary<string, string>();
         List<SimpleButton> _listRemoveAttachmentsButton = new List<SimpleButton>();
-        LayoutControlGroup lcgAttachments = null;
+        LayoutControlItem lcAttachments = null;
+        ucAttachmentMail _attactmentMail = null;
         int _indexAttachmentName = 0;
         int _numberOfSentMail = -1;
         string _finalMessage = string.Empty;
@@ -44,9 +48,11 @@ namespace DXSWI.Forms
            
 
         }
+
+       
         public void Init(List<long> runningTaskIds, List<string> emails, List<string> names, List<long> candidateIds, string companyName, string jobTitle, long jobOrderId)
         {
-            if(lcgAttachments != null)
+            if(lcAttachments != null)
             {
                 _indexAndAttachments.Clear();
                 foreach(var btn in _listRemoveAttachmentsButton)
@@ -56,8 +62,9 @@ namespace DXSWI.Forms
                 _listRemoveAttachmentsButton.Clear();
 
                 lcgMain.BeginUpdate();
-                lcgMain.Remove(lcgAttachments);
-                lcgAttachments.Dispose();
+                lcgMain.Remove(lcAttachments);
+                lcAttachments.Dispose();
+                _attactmentMail.Dispose();
                 lcgMain.EndUpdate();
             }
             _indexAttachmentName = 0;
@@ -350,21 +357,18 @@ namespace DXSWI.Forms
                 {
                     if (_indexAndAttachments.Count == 1)
                     {
-
-                        lcgAttachments = lcgMain.AddGroup();
-                        lcgAttachments.Name = "lcgAttachments";
-                        lcgAttachments.Text = "Attachments";
-                        lcgAttachments.Move(lciMailContent, DevExpress.XtraLayout.Utils.InsertType.Top);
-                        //lcgAttachments.Move(lciSubject, DevExpress.XtraLayout.Utils.InsertType.Bottom);
-                        lcgAttachments.StartNewLine = false;
-                        lcgAttachments.LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Flow;
+                        // add group control
+                        _attactmentMail = new ucAttachmentMail();
+                        lcAttachments = lcgMain.AddItem();
+                        lcAttachments.Name = "lcgAttachments";
+                        lcAttachments.TextVisible = false;
+                        lcAttachments.Move(lciMailContent, DevExpress.XtraLayout.Utils.InsertType.Top);
+                        lcAttachments.Control = _attactmentMail;
+                        lcAttachments.SizeConstraintsType = SizeConstraintsType.Custom;
+                        lcAttachments.ControlMaxSize = new Size(1024, 100);
+                        // add layoutControl
                     }
-                    //create layout item within the group.
-                    //LayoutControlItem it1 = lcgAttachments?.AddItem();
-                    //ucAttachmentFile at = new ucAttachmentFile(fileName);
-                    //it1.Control = at;
-                    //it1.TextVisible = false;
-                    LayoutControlItem it1 = lcgAttachments?.AddItem();
+                    LayoutControlItem it1 = _attactmentMail.lcgAttachment?.AddItem();
                     SimpleButton btn = new SimpleButton();
                     btn.MaximumSize = new Size(35, 35);
                     btn.MinimumSize = new Size(35, 35);
@@ -393,15 +397,16 @@ namespace DXSWI.Forms
                 SimpleButton btn = sender as SimpleButton;
                 _indexAndAttachments.Remove(btn.Name);
                 _listRemoveAttachmentsButton.Remove(btn);
-                lcgAttachments.BeginUpdate();
-                lcMain.GetItemByControl(btn).Dispose();
+                _attactmentMail.lcgAttachment.BeginUpdate();
+                _attactmentMail.lcAttachment.GetItemByControl(btn).Dispose();
                 btn.Dispose();
-                lcgAttachments.EndUpdate();
+                _attactmentMail.lcgAttachment.EndUpdate();
 
                 if (_indexAndAttachments.Count == 0)
                 {
                     lcgMain.BeginUpdate();
-                    lcgMain.Remove(lcgAttachments);
+                    lcAttachments?.Dispose();
+                    _attactmentMail?.Dispose();
                     lcgMain.EndUpdate();
                 }
             }

@@ -92,8 +92,8 @@
             this.nbgContacts = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgJoborder = new DevExpress.XtraNavBar.NavBarGroup();
             this.ngbCandidates = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgSchedule = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgReport = new DevExpress.XtraNavBar.NavBarGroup();
+            this.nbgSchedule = new DevExpress.XtraNavBar.NavBarGroup();
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
             this.fpNotify = new DevExpress.Utils.FlyoutPanel();
             this.fpcNotify = new DevExpress.Utils.FlyoutPanelControl();
@@ -600,7 +600,7 @@
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.nbgUsers;
+            this.navBarControl1.ActiveGroup = this.nbgJoborder;
             this.navBarControl1.AllowHorizontalResizing = DevExpress.Utils.DefaultBoolean.False;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -628,7 +628,6 @@
             // nbgUsers
             // 
             this.nbgUsers.Caption = "Users";
-            this.nbgUsers.Expanded = true;
             this.nbgUsers.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
             this.nbgUsers.LargeImage = global::DXSWI.Properties.Resources.cryptography;
             this.nbgUsers.Name = "nbgUsers";
@@ -656,6 +655,7 @@
             // nbgJoborder
             // 
             this.nbgJoborder.Caption = "Job Orders";
+            this.nbgJoborder.Expanded = true;
             this.nbgJoborder.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
             this.nbgJoborder.LargeImage = global::DXSWI.Properties.Resources.task;
             this.nbgJoborder.Name = "nbgJoborder";
@@ -669,15 +669,6 @@
             this.ngbCandidates.Name = "ngbCandidates";
             this.ngbCandidates.Tag = "candidate";
             // 
-            // nbgSchedule
-            // 
-            this.nbgSchedule.Caption = "Schedule";
-            this.nbgSchedule.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgSchedule.LargeImage = global::DXSWI.Properties.Resources.Calendaricon3;
-            this.nbgSchedule.Name = "nbgSchedule";
-            this.nbgSchedule.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgSchedule.SmallImage")));
-            this.nbgSchedule.Tag = "schedule";
-            // 
             // nbgReport
             // 
             this.nbgReport.Caption = "Report";
@@ -686,6 +677,15 @@
             this.nbgReport.Name = "nbgReport";
             this.nbgReport.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgReport.SmallImage")));
             this.nbgReport.Tag = "report";
+            // 
+            // nbgSchedule
+            // 
+            this.nbgSchedule.Caption = "Schedule";
+            this.nbgSchedule.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgSchedule.LargeImage = global::DXSWI.Properties.Resources.Calendaricon3;
+            this.nbgSchedule.Name = "nbgSchedule";
+            this.nbgSchedule.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgSchedule.SmallImage")));
+            this.nbgSchedule.Tag = "schedule";
             // 
             // pcMain
             // 

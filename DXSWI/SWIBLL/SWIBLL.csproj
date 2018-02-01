@@ -51,12 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityManager.cs" />
+    <Compile Include="AppointmentManager.cs" />
     <Compile Include="CandidateManager.cs" />
     <Compile Include="CompanyManager.cs" />
     <Compile Include="ContactManager.cs" />
     <Compile Include="EmailTemplateManager.cs" />
     <Compile Include="JobOrderManager.cs" />
     <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\AppointmentObject.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\Company.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="Models\JobOrder.cs" />
     <Compile Include="Models\ReportHiringOverview.cs" />
     <Compile Include="Models\ReportJobOrder.cs" />
+    <Compile Include="Models\ResourceObject.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\RunningTask.cs" />
     <Compile Include="Models\ScheduleEvent.cs" />

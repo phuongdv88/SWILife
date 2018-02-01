@@ -979,7 +979,7 @@ namespace DXSWI.Forms
             List<long> runningTaskIds = new List<long>();
             List<long> canIds = new List<long>();
             emails.Add(_Candidate.Email);
-            names.Add(string.Join(" ", _Candidate.FirstName, _Candidate.LastName));
+            names.Add(Utils.Capitalize(string.Join(" ", _Candidate.FirstName, _Candidate.LastName)));
             canIds.Add(_Candidate.CandidateId);
 
             if (gvJobOrderPipeline.SelectedRowsCount > 0)

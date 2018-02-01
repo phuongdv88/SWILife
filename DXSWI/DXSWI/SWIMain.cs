@@ -48,7 +48,7 @@ namespace DXSWI
         {
             // init all Modules
             ribbonControlMain.MergeRibbon(_frSchedule.rcSchedule);
-            string tag = _tagCompanies;
+            string tag = _tagJobOrder;
 
             foreach (RibbonPage page in ribbonControlMain.Pages)
             {
