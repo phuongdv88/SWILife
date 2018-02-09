@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,7 +69,6 @@
     <Compile Include="Models\JobOrder.cs" />
     <Compile Include="Models\ReportHiringOverview.cs" />
     <Compile Include="Models\ReportJobOrder.cs" />
-    <Compile Include="Models\ResourceObject.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\RunningTask.cs" />
     <Compile Include="Models\ScheduleEvent.cs" />

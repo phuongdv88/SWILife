@@ -718,5 +718,10 @@ namespace DXSWI.Forms
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void bbiNewApointment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ScreenManager.Instance.NewAppointment();
+        }
     }
 }

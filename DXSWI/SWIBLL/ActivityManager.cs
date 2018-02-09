@@ -118,7 +118,7 @@ namespace SWIBLL
                     sql = string.Format("INSERT INTO `swilifecore`.`scheduleevent` " +
                         "(`Type`, `Title`, `DateTime`, `Duration`, `IsPublicEntry`, `Description`) " +
                         "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
-                        ev.Type, QueryBuilder.mySqlEscape(ev.Title), ev.DateTime.ToString("yyyy-MM-dd hh:mm"), ev.Duration, Convert.ToInt32(ev.IsPublicEntry), QueryBuilder.mySqlEscape(ev.Description));
+                        ev.Type, QueryBuilder.mySqlEscape(ev.Title), ev.DateTime.ToString("yyyy-MM-dd HH:mm"), ev.Duration, Convert.ToInt32(ev.IsPublicEntry), QueryBuilder.mySqlEscape(ev.Description));
                     act.ScheduleEventId = DataAccess.Instance.executeInsertQueryTransaction(sql);
                 }
 
@@ -311,14 +311,14 @@ namespace SWIBLL
                         sql = string.Format("INSERT INTO `swilifecore`.`scheduleevent` " +
                             "(`Type`, `Title`, `DateTime`, `Duration`, `IsPublicEntry`, `Description`) " +
                             "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
-                            ev.Type, QueryBuilder.mySqlEscape(ev.Title), ev.DateTime.ToString("yyyy-MM-dd hh:mm"), ev.Duration, Convert.ToInt32(ev.IsPublicEntry), QueryBuilder.mySqlEscape(ev.Description));
+                            ev.Type, QueryBuilder.mySqlEscape(ev.Title), ev.DateTime.ToString("yyyy-MM-dd HH:mm"), ev.Duration, Convert.ToInt32(ev.IsPublicEntry), QueryBuilder.mySqlEscape(ev.Description));
                         act.ScheduleEventId = DataAccess.Instance.executeInsertQueryTransaction(sql);
                     }
                     else
                     {
                         // else update schedule event
                         sql = string.Format("UPDATE `swilifecore`.`scheduleevent` SET `Type`='{0}', `Title`='{1}', `DateTime`='{2}', `Duration`='{3}', `IsPublicEntry`='{4}', `Description`='{5}' WHERE `ScheduleEventId`='{6}'",
-                            ev.Type, QueryBuilder.mySqlEscape(ev.Title), ev.DateTime.ToString("yyyy-MM-dd hh:mm"), ev.Duration, Convert.ToInt32(ev.IsPublicEntry), QueryBuilder.mySqlEscape(ev.Description), ev.ScheduleEventId);
+                            ev.Type, QueryBuilder.mySqlEscape(ev.Title), ev.DateTime.ToString("yyyy-MM-dd HH:mm"), ev.Duration, Convert.ToInt32(ev.IsPublicEntry), QueryBuilder.mySqlEscape(ev.Description), ev.ScheduleEventId);
                         DataAccess.Instance.executeNonQueryTransaction(sql);
                     }
                 }
@@ -327,7 +327,7 @@ namespace SWIBLL
                 sql = string.Format("UPDATE `swilifecore`.`activity` SET " +
                         "`Regarding`='{0}', `Type`='{1}', `Notes`='{2}', `Created`='{3}', `ActivityOf`='{4}', `JobOrderId`='{5}', `CandidateId`='{6}', `ContactID`='{7}', `UserId`='{8}', `ScheduleEventId`='{9}'" +
                         "WHERE `ActivityId`='{10}'",
-                    act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), act.Created.ToString("yyyy-MM-dd hh:mm:ss"), (int)act.ActivityOf,
+                    act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), act.Created.ToString("yyyy-MM-dd HH:mm:ss"), (int)act.ActivityOf,
                     act.JobOrderId, act.CandidateId, act.ContactId, act.UserId, act.ScheduleEventId, act.ActivityId);
                 DataAccess.Instance.executeNonQueryTransaction(sql);
 

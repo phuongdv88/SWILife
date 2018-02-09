@@ -14,6 +14,7 @@ using SWIBLL;
 using SWIBLL.Models;
 using System.Text.RegularExpressions;
 using OfficeOpenXml;
+using System.Security.Principal;
 
 namespace DXSWI.Modules
 {
@@ -99,7 +100,7 @@ namespace DXSWI.Modules
             }
             catch (Exception ex)
             {
-                printMessage(string.Format("error id = {0}: {1}",counter, ex.Message));
+                printMessage(string.Format("error id = {0}: {1}", counter, ex.Message));
                 //++counter;
             }
 
@@ -184,7 +185,7 @@ namespace DXSWI.Modules
             };
         }
 
-        private void parseCandidateFromLinks(string sourceFolder)
+        public void parseCandidateFromLinks(string sourceFolder)
         {
             // parse data from html and save to file
             string[] list_file = Directory.GetFiles(sourceFolder);
@@ -278,7 +279,159 @@ namespace DXSWI.Modules
             printMessage(string.Format("number of error parse file {0}", counter));
         }
 
-        private void parseCompanies(string sorce_folder)
+
+        public void ParseCandidateFromQuandidateLinks(string inputFolder)
+        {
+            string[] inputFiles = Directory.GetFiles(inputFolder);
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            List<string> listEmails = new List<string>();
+
+            foreach (var fileName in inputFiles)
+            //for (int j = 0;j < 2; ++j)
+            {
+                //var fileName = inputFiles[j];
+                //necessary information
+                Candidate can = new Candidate() { Source = "Other", Country = "Vietnam" };
+                try
+                {
+                    doc.Load(fileName);
+                    ////parse general information
+                    var nodes = doc.DocumentNode.SelectNodes("//li[@class='text-notable']");
+                    if (nodes != null && nodes.Count > 0)
+                    {
+                        var name = nodes[0].InnerText.Trim();
+                        name = Regex.Replace(name, @"\s+\n*\t*\r*", " ", RegexOptions.Multiline).Replace("&nbsp;", "\n").Trim();
+                        can.FirstName = name.Split(' ').First();
+                        can.LastName = name.Replace(can.FirstName, "").Trim();
+                    }
+                    nodes = doc.DocumentNode.SelectNodes("//li");
+                    var texts = nodes.Select(node =>
+                    {
+                        var s = Regex.Replace(node.InnerText.Replace("&nbsp;", "").Replace("\n", " ").Trim(), @"\s+\n+\t+\r+", " ", RegexOptions.Multiline);
+                        return Regex.Replace(s, @"\s+", " ", RegexOptions.Multiline);
+                    }).SkipWhile(text => string.Compare(text, "Hire") != 0).ToList();
+                    can.KeySkills = texts[3];
+                    can.KeySkills += "; Need update from CV";
+                    var appState = texts[4].Split('/').First();
+                    if (appState.Contains("Hired"))
+                    {
+                        can.CurrentEmployer = "Tek Expert";
+                        can.CurrentPosition = texts[3];
+                    }
+                    can.InterviewNotes = "State of Candidate in Tek Experts: " + appState;
+                    can.Address = texts[5].Replace("Address", "").Trim();
+                    can.City = texts[6].Replace("Postal code / City", "");
+                    can.City = Regex.Replace(can.City, @"\d+", string.Empty).Trim();
+                    for (var i = 7; i < texts.Count; ++i)
+                    {
+                        var it = texts[i];
+                        if (it.Contains("Tel ") && can.CellPhone.Length == 0)
+                        {
+                            can.CellPhone = it.Replace("Tel ", "");
+                        }
+                        else if (it.Contains("Email ") && can.Email.Length == 0)
+                        {
+                            can.Email = it.Replace("Email ", "");
+                        }
+                        else if (string.Compare(it, "Cover letter") != 0)
+                        {
+                            break;
+                        }
+                    }
+
+                    if (can.Email.Length > 0)
+                    {
+                        if (can.Email.Contains(@"techspaces.com.vn"))
+                        {
+                            continue;
+                        }
+
+                        if (listEmails.Contains(can.Email))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            listEmails.Add(can.Email);
+                        }
+                    }
+                    can.MiscNotes += string.Join("\n", texts.SkipWhile(text => string.Compare(text, "Other applications") != 0).Skip(1));
+
+                    // get note and cover letter
+                    nodes = doc.DocumentNode.SelectNodes("//div[@id='box-motivation']//div[@class='box-content']");
+                    if (nodes != null)
+                    {
+                        var coverLt = nodes.Select(node => Regex.Replace(node.InnerText.Trim(), @"\s+", " ", RegexOptions.Multiline)).ToList();
+                        if (coverLt.Count > 0 && coverLt.First().Length > 0)
+                        {
+                            can.InterviewNotes = "Cover leter: " + coverLt.First();
+                        }
+                        can.InterviewNotes = can.InterviewNotes.Replace("&amp;", "&").Replace("&gt;", ">").Replace("&lt;", "<").Replace("&quote;", "\"").Replace("&nbsp;", " ");
+                    }
+                    nodes = doc.DocumentNode.SelectNodes("//textarea[@class='qeditor']");
+                    if (nodes != null)
+                    {
+                        var tmp = nodes.Select(node => node.InnerText.Trim()).ToList();
+                        foreach (var vl in tmp)
+                        {
+                            can.MiscNotes += vl + "\n";
+                        }
+                        can.MiscNotes = can.MiscNotes.Replace("&amp;", "&").Replace("&gt;", ">").Replace("&lt;", "<").Replace("&quote;", "\"").Replace("&nbsp;", " ");
+                    }
+
+                    try
+                    {
+                        var cvlinks = Directory.GetFiles(fileName.Replace(".html", ""));
+                        if (cvlinks.Length > 0)
+                        {
+                            var cvs = cvlinks.Where(it => it.Contains(".doc") || it.Contains(".pdf")).ToList();
+                            if (cvs.Count > 0)
+                            {
+                                var cvlink = cvs.First();
+                                var cvFile = cvlink.Split('\\').Last();
+                                if (cvFile.Length > 0)
+                                {
+                                    // gen link to candidate
+
+                                    // save resum to hardisk: folder = createedtime + candidateName + randomstring
+                                    string folderName = can.FirstName + can.LastName + DateTime.Now.ToString(@"_yyyy-MM-dd") + Utils.getRandomAlphaNumeric(10);
+                                    string dir = string.Format(@"{0}candidates\resume\{1}\{2}", Properties.Settings.Default.StorageLocation, folderName, cvFile);
+                                    can.ResumeLink = dir;
+                                    // copy to server
+                                    AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);
+                                    Directory.CreateDirectory(can.ResumeLink.Replace(cvFile, ""));
+                                    File.Copy(cvlink, can.ResumeLink, true);
+
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        printMessage(string.Format("error when get cv file {0}: {1}", fileName, ex.Message));
+                    };
+
+                    // insert candidate
+                    can.UserId = UserManager.ActivatedUser.UserId;
+                    can.CreatedId = UserManager.ActivatedUser.UserId;
+                    can.CreatedDate = DateTime.Now;
+                    if (!CandidateManager.IsCandidateExist(can))
+                    {
+                        CandidateManager.InsertCandidate(can);
+                    }
+                    else
+                    {
+                        printMessage(string.Format("can is existed: {0}", fileName));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    printMessage(string.Format("error when parse file {0}: {1}", fileName, ex.Message));
+                }
+            }
+        }
+
+        public void parseCompanies(string sorce_folder)
         {
             // parse data from html and save to file
             string[] list_file = Directory.GetFiles(sorce_folder);
@@ -397,7 +550,7 @@ namespace DXSWI.Modules
 
         }
 
-        private void parseCandidateFromExel(string sourceFile)
+        public void parseCandidateFromExel(string sourceFile)
         {
             using (ExcelPackage package = new ExcelPackage(new FileInfo(sourceFile)))
             {
@@ -438,14 +591,14 @@ namespace DXSWI.Modules
                     can.KeySkills = keyskill;
                     can.ProjectDone = cells[8].Text.Trim(); // note
                     can.MiscNotes = cells[9].Text.Trim();  // comment
-                    //string gender = cells[10].Text.Trim(); // gender
-                    //if(string.Equals(gender, "f"))
-                    //{
-                    //    can.Gender = false;
-                    //}
-                    //can.CurrentPay = cells[11].Text.Trim(); // current pay
-                    //can.DesiredPay = cells[12].Text.Trim(); // desired
-                    //can.DOBMarried = cells[13].Text.Trim(); // dob
+                                                           //string gender = cells[10].Text.Trim(); // gender
+                                                           //if(string.Equals(gender, "f"))
+                                                           //{
+                                                           //    can.Gender = false;
+                                                           //}
+                                                           //can.CurrentPay = cells[11].Text.Trim(); // current pay
+                                                           //can.DesiredPay = cells[12].Text.Trim(); // desired
+                                                           //can.DOBMarried = cells[13].Text.Trim(); // dob
                     can.City = "Hanoi";
                     can.Country = "Vietnam";
                     can.Source = "LinkedIn";
@@ -465,7 +618,7 @@ namespace DXSWI.Modules
             }
         }
 
-        private DataTable ReadFromExelFile(string path, string sheetName)
+        public DataTable ReadFromExelFile(string path, string sheetName)
         {
             DataTable dt = new DataTable();
             using (ExcelPackage package = new ExcelPackage(new FileInfo(path)))

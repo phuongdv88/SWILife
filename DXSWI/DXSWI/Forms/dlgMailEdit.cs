@@ -125,7 +125,7 @@ namespace DXSWI.Forms
                 if (e.Error != null)
                 {
                     var msg = string.Format("[{0}] {1}", _candidateEmails[index], e.Error.ToString());
-                    ScreenManager.Instance.showNoticeMessage(msg, "Send Email Fail", MessageBoxIcon.Information);
+                    ScreenManager.Instance.ShowNoticeMessage(msg, "Send Email Fail", MessageBoxIcon.Information);
                     _finalMessage += msg;
                 }
                 else
@@ -140,10 +140,10 @@ namespace DXSWI.Forms
                             CandidateId = _candidateIds[index],
                             JobOrderId = _jobOrderId,
                             Status = Activity.RunningTaskStatus.CONTACTED,
-                            Notes = string.Format("[{0}] Message sent {1}.", _candidateEmails[index], DateTime.Now.ToString("hh:mm:ss dd/MM/yyy")),
+                            Notes = string.Format("[{0}] Message sent {1}.", _candidateEmails[index], DateTime.Now.ToString("HH:mm:ss dd/MM/yyy")),
                         };
                         ActivityManager.insert(act, null);
-                        ScreenManager.Instance.showNoticeMessage(act.Notes, "Email sent successfully", MessageBoxIcon.Information);
+                        ScreenManager.Instance.ShowNoticeMessage(act.Notes, "Email sent successfully", MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {

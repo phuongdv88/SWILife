@@ -87,6 +87,10 @@ namespace DXSWI
             _frUser.SetupUi();
 
         }
+        public void InitComponents()
+        {
+            _frSchedule.Init();
+        }
 
         private void initializeTheme()
         {
@@ -100,8 +104,8 @@ namespace DXSWI
             init();
             // show version
             DateTime buildDate = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
-            //Text = string.Format("SWILIFE HR Assistant - Version {0} - Build time: {1}", Assembly.GetExecutingAssembly().GetName().Version.ToString(), buildDate.ToString("dd/MM/yyy hh:mm:ss"));
-            Text = string.Format("SWILIFE HR Assistant - Version {0} - Build time: {1}", Application.ProductVersion, buildDate.ToString("dd/MM/yyy hh:mm:ss"));
+            //Text = string.Format("SWILIFE HR Assistant - Version {0} - Build time: {1}", Assembly.GetExecutingAssembly().GetName().Version.ToString(), buildDate.ToString("dd/MM/yyy HH:mm:ss"));
+            Text = string.Format("SWILIFE HR Assistant - Version {0} - Build time: {1}", Application.ProductVersion, buildDate.ToString("dd/MM/yyy HH:mm:ss"));
 
         }
 
@@ -125,7 +129,7 @@ namespace DXSWI
                 try
                 {
                     SWIBLL.UserManager.Logout();
-                    ScreenManager.Instance.quit();
+                    ScreenManager.Instance.Quit();
                 }
                 catch { }
             }
@@ -177,7 +181,7 @@ namespace DXSWI
             {
                 if (SWIBLL.UserManager.Logout())
                 {
-                    ScreenManager.Instance.showLoginScreen();
+                    ScreenManager.Instance.ShowLoginScreen();
                 }
                 else
                 {
@@ -363,10 +367,10 @@ namespace DXSWI
         private void bbiUserHelp_ItemClick(object sender, ItemClickEventArgs e)
         {
             XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            System.Diagnostics.Process.Start("https://swilife.com");
+            //System.Diagnostics.Process.Start("https://swilife.com");
         }
 
-        public void showNotice(string message, string caption, MessageBoxIcon icon)
+        public void ShowNotice(string message, string caption, MessageBoxIcon icon)
         {
 
             Image image = null;
@@ -381,6 +385,11 @@ namespace DXSWI
                 image = global::DXSWI.Properties.Resources.Notice_Support_icon;
             }
             alertControlNotify.Show(this, caption, message, image);
+        }
+
+        public void NewAppointment()
+        {
+            _frSchedule.NewAppointment();
         }
 
         public void ShowFlyoutMessage(string message)

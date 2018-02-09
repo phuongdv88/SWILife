@@ -8,6 +8,8 @@ using SWIBLL.Models;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Security.Cryptography;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace SWIBLL
 {
@@ -145,6 +147,21 @@ namespace SWIBLL
                 user = Data.CreateItemFromRow<User>(datarow);
             }
             return user;
+        }
+
+        public static void GetListResource(BindingList<CustomResource> listResource)
+        {
+            Random rand = new Random();
+            string sql = string.Format("select UserId, UserName from swilifecore.user order by UserId");
+            var tbl = DataAccess.Instance.getDataTable(sql);
+            for (int i = 0; i < tbl.Rows.Count; ++i)
+            {
+                var data_row = tbl.Rows[i];
+                Color col = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
+
+                listResource.Add(new CustomResource() {ResId = Convert.ToInt32(data_row[0].ToString()),
+                Name = data_row[1].ToString(), ResColor = col});
+            }
         }
 
 

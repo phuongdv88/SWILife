@@ -186,7 +186,7 @@
             this.deTime.Properties.EditFormat.FormatString = "d";
             this.deTime.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.deTime.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.deTime.Properties.Mask.EditMask = "hh:mm";
+            this.deTime.Properties.Mask.EditMask = "HH:mm";
             this.deTime.Properties.MaxDays = 0;
             this.deTime.Size = new System.Drawing.Size(158, 20);
             this.deTime.StyleController = this.layoutControl1;

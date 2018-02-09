@@ -40,37 +40,44 @@ namespace DXSWI
         }
 
 
-        public void initLoginScreen()
+        public void InitLoginScreen()
         {
             Application.Run(mdlgLogin);
             //Application.Run(mMain);
         }
-        public void showLoginScreen()
+        public void ShowLoginScreen()
         {
             mdlgLogin.logout();
             mdlgLogin?.Show();
             mMain?.Hide();
         }
-        public void showMainScreen()
+        public void ShowMainScreen()
         {
             //todo: update data
             // setup ui by role
             mMain?.SetupUiByRole();
+            mMain?.InitComponents();
             mMain?.Show();
             mdlgLogin?.Hide();
 
         }
 
-        public void quit()
+        public void Quit()
         {
             mdlgLogin.Close();
             //Application.Exit();
         }
 
-        public void showNoticeMessage(string message, string caption, MessageBoxIcon icon)
+        public void ShowNoticeMessage(string message, string caption, MessageBoxIcon icon)
         {
-            mMain?.showNotice(message, caption, icon);
+            mMain?.ShowNotice(message, caption, icon);
         }
+
+        public void NewAppointment()
+        {
+            mMain?.NewAppointment();
+        }
+
 
     }
 

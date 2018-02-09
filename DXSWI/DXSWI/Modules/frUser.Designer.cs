@@ -168,7 +168,7 @@
             // colLastLogin
             // 
             this.colLastLogin.Caption = "Last Time Login";
-            this.colLastLogin.DisplayFormat.FormatString = "ddd, dd/MMM/yyyy hh:mm:ss";
+            this.colLastLogin.DisplayFormat.FormatString = "ddd, dd/MMM/yyyy HH:mm:ss";
             this.colLastLogin.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colLastLogin.FieldName = "LastLogin";
             this.colLastLogin.Name = "colLastLogin";

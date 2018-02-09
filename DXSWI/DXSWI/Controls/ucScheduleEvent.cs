@@ -49,7 +49,7 @@ namespace DXSWI.Controls
             catch { }
             teTitle.Text = ev.Title;
             deDate.Text = ev.DateTime.ToString("yyyy-MM-dd");
-            deTime.Text = ev.DateTime.ToString("hh:mm");
+            deTime.Text = ev.DateTime.ToString("HH:mm");
             if(ev.Duration == -1)
             {
                 ceAllDay.Checked = true;

@@ -1006,6 +1006,8 @@ namespace DXSWI.Forms
         private void sbView_Click(object sender, EventArgs e)
         {
             // view site
+            if (WebSiteTextEdit.Text.Length == 0)
+                return;
             try
             {
                 string link = _Candidate.WebSite;
@@ -1036,6 +1038,11 @@ namespace DXSWI.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void bbiAddAppointment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ScreenManager.Instance.NewAppointment();
         }
     }
 }

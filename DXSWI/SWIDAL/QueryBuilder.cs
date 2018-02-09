@@ -13,6 +13,7 @@ namespace SWIDAL
     {
         public static string mySqlEscape(string str)
         {
+            if (str == null) return string.Empty;
             return Regex.Replace(str, @"[\x00'""\b\n\r\t\cZ\\%]",
                 delegate(Match match)
                 {

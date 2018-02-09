@@ -94,7 +94,7 @@ namespace DXSWI.Forms
 
                     Properties.Settings.Default.Save();
                     //show main window
-                    ScreenManager.Instance.showMainScreen();
+                    ScreenManager.Instance.ShowMainScreen();
                 }
                 else
                 {

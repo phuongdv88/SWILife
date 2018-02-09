@@ -35,7 +35,7 @@ namespace DXSWI
                     XtraMessageBox.Show("Application is already running!", "Multiple Instances", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                ScreenManager.Instance.initLoginScreen();
+                ScreenManager.Instance.InitLoginScreen();
             }
         }
     }
