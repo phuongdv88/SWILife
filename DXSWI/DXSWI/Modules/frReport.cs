@@ -22,14 +22,29 @@ namespace DXSWI.Modules
         }
         public void init()
         {
-            updateData();
+            updateAllActivitiesData();
+            updateChartData();
+            updateReportData();
+            updateUserReportData();
         }
-
-        private void updateData()
+        /// <summary>
+        /// get late 1000 activities
+        /// </summary>
+        private void updateAllActivitiesData()
         {
             try
             {
                 gcActivites.DataSource = ActivityManager.getAllActivities();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void updateChartData()
+        {
+            try
+            {
                 ccWeeklyReport.DataSource = JobOrderManager.GetReportByWeek();
                 ccMonthlyReport.DataSource = JobOrderManager.GetReportByMonth();
                 ccYearlyReport.DataSource = JobOrderManager.GetReportByYear();
@@ -39,5 +54,36 @@ namespace DXSWI.Modules
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// get report data about 4 last months
+        /// </summary>
+        private void updateReportData()
+        {
+            try
+            {
+                gcReports.DataSource = UserManager.getReportByMonth();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// get report data by user in last 30 days
+        /// </summary>
+        private void updateUserReportData()
+        {
+            try
+            {
+                gcUserReports.DataSource = UserManager.getReportUserIn30Days();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

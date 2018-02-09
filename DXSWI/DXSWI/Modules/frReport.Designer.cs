@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView1 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
-            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView2 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
-            DevExpress.XtraCharts.XYDiagram xyDiagram3 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series7 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.Series series8 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.Series series9 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView3 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram7 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series19 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series20 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series21 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView7 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram8 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series22 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series23 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series24 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView8 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram9 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series25 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series26 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series27 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView9 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -60,10 +60,11 @@
             this.colUserNewCandidates = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserNewCompanies = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserNewContacts = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colUserNewSubmitssions = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colUserNewSubmissions = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserNewPlacements = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcReports = new DevExpress.XtraGrid.GridControl();
             this.gvReports = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMonth = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNewJobOrders = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNewCandidates = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNewCompanies = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,26 +91,26 @@
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ccWeeklyReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportHiringOverviewBindingSource)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ccMonthlyReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView8)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ccYearlyReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcUserReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvUserReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcReports)).BeginInit();
@@ -163,28 +164,28 @@
             // 
             this.ccWeeklyReport.DataBindings = null;
             this.ccWeeklyReport.DataSource = this.reportHiringOverviewBindingSource;
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.ccWeeklyReport.Diagram = xyDiagram1;
+            xyDiagram7.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram7.AxisY.VisibleInPanesSerializable = "-1";
+            this.ccWeeklyReport.Diagram = xyDiagram7;
             this.ccWeeklyReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ccWeeklyReport.Legend.Name = "Default Legend";
             this.ccWeeklyReport.Location = new System.Drawing.Point(0, 0);
             this.ccWeeklyReport.Name = "ccWeeklyReport";
-            series1.ArgumentDataMember = "Period";
-            series1.Name = "Submissions";
-            series1.ValueDataMembersSerializable = "Submissions";
-            series2.ArgumentDataMember = "Period";
-            series2.Name = "Interviews";
-            series2.ValueDataMembersSerializable = "Interviews";
-            series3.ArgumentDataMember = "Period";
-            series3.Name = "Hires";
-            series3.ValueDataMembersSerializable = "Hires";
-            sideBySideBarSeriesView1.BarWidth = 0.5D;
-            series3.View = sideBySideBarSeriesView1;
+            series19.ArgumentDataMember = "Period";
+            series19.Name = "Submissions";
+            series19.ValueDataMembersSerializable = "Submissions";
+            series20.ArgumentDataMember = "Period";
+            series20.Name = "Interviews";
+            series20.ValueDataMembersSerializable = "Interviews";
+            series21.ArgumentDataMember = "Period";
+            series21.Name = "Hires";
+            series21.ValueDataMembersSerializable = "Hires";
+            sideBySideBarSeriesView7.BarWidth = 0.5D;
+            series21.View = sideBySideBarSeriesView7;
             this.ccWeeklyReport.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1,
-        series2,
-        series3};
+        series19,
+        series20,
+        series21};
             this.ccWeeklyReport.Size = new System.Drawing.Size(553, 244);
             this.ccWeeklyReport.TabIndex = 0;
             // 
@@ -203,28 +204,28 @@
             // 
             this.ccMonthlyReport.DataBindings = null;
             this.ccMonthlyReport.DataSource = this.reportHiringOverviewBindingSource;
-            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
-            this.ccMonthlyReport.Diagram = xyDiagram2;
+            xyDiagram8.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram8.AxisY.VisibleInPanesSerializable = "-1";
+            this.ccMonthlyReport.Diagram = xyDiagram8;
             this.ccMonthlyReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ccMonthlyReport.Legend.Name = "Default Legend";
             this.ccMonthlyReport.Location = new System.Drawing.Point(0, 0);
             this.ccMonthlyReport.Name = "ccMonthlyReport";
-            series4.ArgumentDataMember = "Period";
-            series4.Name = "Submissions";
-            series4.ValueDataMembersSerializable = "Submissions";
-            series5.ArgumentDataMember = "Period";
-            series5.Name = "Interviews";
-            series5.ValueDataMembersSerializable = "Interviews";
-            series6.ArgumentDataMember = "Period";
-            series6.Name = "Hires";
-            series6.ValueDataMembersSerializable = "Hires";
-            sideBySideBarSeriesView2.BarWidth = 0.5D;
-            series6.View = sideBySideBarSeriesView2;
+            series22.ArgumentDataMember = "Period";
+            series22.Name = "Submissions";
+            series22.ValueDataMembersSerializable = "Submissions";
+            series23.ArgumentDataMember = "Period";
+            series23.Name = "Interviews";
+            series23.ValueDataMembersSerializable = "Interviews";
+            series24.ArgumentDataMember = "Period";
+            series24.Name = "Hires";
+            series24.ValueDataMembersSerializable = "Hires";
+            sideBySideBarSeriesView8.BarWidth = 0.5D;
+            series24.View = sideBySideBarSeriesView8;
             this.ccMonthlyReport.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series4,
-        series5,
-        series6};
+        series22,
+        series23,
+        series24};
             this.ccMonthlyReport.Size = new System.Drawing.Size(553, 244);
             this.ccMonthlyReport.TabIndex = 1;
             // 
@@ -239,28 +240,28 @@
             // 
             this.ccYearlyReport.DataBindings = null;
             this.ccYearlyReport.DataSource = this.reportHiringOverviewBindingSource;
-            xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
-            this.ccYearlyReport.Diagram = xyDiagram3;
+            xyDiagram9.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram9.AxisY.VisibleInPanesSerializable = "-1";
+            this.ccYearlyReport.Diagram = xyDiagram9;
             this.ccYearlyReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ccYearlyReport.Legend.Name = "Default Legend";
             this.ccYearlyReport.Location = new System.Drawing.Point(0, 0);
             this.ccYearlyReport.Name = "ccYearlyReport";
-            series7.ArgumentDataMember = "Period";
-            series7.Name = "Submissions";
-            series7.ValueDataMembersSerializable = "Submissions";
-            series8.ArgumentDataMember = "Period";
-            series8.Name = "Interviews";
-            series8.ValueDataMembersSerializable = "Interviews";
-            series9.ArgumentDataMember = "Period";
-            series9.Name = "Hires";
-            series9.ValueDataMembersSerializable = "Hires";
-            sideBySideBarSeriesView3.BarWidth = 0.5D;
-            series9.View = sideBySideBarSeriesView3;
+            series25.ArgumentDataMember = "Period";
+            series25.Name = "Submissions";
+            series25.ValueDataMembersSerializable = "Submissions";
+            series26.ArgumentDataMember = "Period";
+            series26.Name = "Interviews";
+            series26.ValueDataMembersSerializable = "Interviews";
+            series27.ArgumentDataMember = "Period";
+            series27.Name = "Hires";
+            series27.ValueDataMembersSerializable = "Hires";
+            sideBySideBarSeriesView9.BarWidth = 0.5D;
+            series27.View = sideBySideBarSeriesView9;
             this.ccYearlyReport.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series7,
-        series8,
-        series9};
+        series25,
+        series26,
+        series27};
             this.ccYearlyReport.Size = new System.Drawing.Size(553, 244);
             this.ccYearlyReport.TabIndex = 1;
             // 
@@ -282,7 +283,7 @@
             this.colUserNewCandidates,
             this.colUserNewCompanies,
             this.colUserNewContacts,
-            this.colUserNewSubmitssions,
+            this.colUserNewSubmissions,
             this.colUserNewPlacements});
             this.gvUserReports.GridControl = this.gcUserReports;
             this.gvUserReports.Name = "gvUserReports";
@@ -292,6 +293,7 @@
             // colUserName
             // 
             this.colUserName.Caption = "User Name";
+            this.colUserName.FieldName = "UserName";
             this.colUserName.Name = "colUserName";
             this.colUserName.Visible = true;
             this.colUserName.VisibleIndex = 0;
@@ -299,6 +301,7 @@
             // colUserNewJobOrders
             // 
             this.colUserNewJobOrders.Caption = "New Job Orders";
+            this.colUserNewJobOrders.FieldName = "NumberJobOrder";
             this.colUserNewJobOrders.Name = "colUserNewJobOrders";
             this.colUserNewJobOrders.Visible = true;
             this.colUserNewJobOrders.VisibleIndex = 1;
@@ -306,6 +309,7 @@
             // colUserNewCandidates
             // 
             this.colUserNewCandidates.Caption = "New Candidates";
+            this.colUserNewCandidates.FieldName = "NumberCandidate";
             this.colUserNewCandidates.Name = "colUserNewCandidates";
             this.colUserNewCandidates.Visible = true;
             this.colUserNewCandidates.VisibleIndex = 2;
@@ -313,6 +317,7 @@
             // colUserNewCompanies
             // 
             this.colUserNewCompanies.Caption = "New Companies";
+            this.colUserNewCompanies.FieldName = "NumberCompany";
             this.colUserNewCompanies.Name = "colUserNewCompanies";
             this.colUserNewCompanies.Visible = true;
             this.colUserNewCompanies.VisibleIndex = 3;
@@ -320,20 +325,23 @@
             // colUserNewContacts
             // 
             this.colUserNewContacts.Caption = "New Contacts";
+            this.colUserNewContacts.FieldName = "NumberContact";
             this.colUserNewContacts.Name = "colUserNewContacts";
             this.colUserNewContacts.Visible = true;
             this.colUserNewContacts.VisibleIndex = 6;
             // 
-            // colUserNewSubmitssions
+            // colUserNewSubmissions
             // 
-            this.colUserNewSubmitssions.Caption = "New Submissions";
-            this.colUserNewSubmitssions.Name = "colUserNewSubmitssions";
-            this.colUserNewSubmitssions.Visible = true;
-            this.colUserNewSubmitssions.VisibleIndex = 4;
+            this.colUserNewSubmissions.Caption = "New Submissions";
+            this.colUserNewSubmissions.FieldName = "NumberSubmission";
+            this.colUserNewSubmissions.Name = "colUserNewSubmissions";
+            this.colUserNewSubmissions.Visible = true;
+            this.colUserNewSubmissions.VisibleIndex = 4;
             // 
             // colUserNewPlacements
             // 
             this.colUserNewPlacements.Caption = "New Placements";
+            this.colUserNewPlacements.FieldName = "NumberPlacement";
             this.colUserNewPlacements.Name = "colUserNewPlacements";
             this.colUserNewPlacements.Visible = true;
             this.colUserNewPlacements.VisibleIndex = 5;
@@ -351,6 +359,7 @@
             // gvReports
             // 
             this.gvReports.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMonth,
             this.colNewJobOrders,
             this.colNewCandidates,
             this.colNewCompanies,
@@ -362,47 +371,61 @@
             this.gvReports.OptionsBehavior.Editable = false;
             this.gvReports.OptionsSelection.EnableAppearanceFocusedCell = false;
             // 
+            // colMonth
+            // 
+            this.colMonth.Caption = "Month";
+            this.colMonth.FieldName = "Month";
+            this.colMonth.Name = "colMonth";
+            this.colMonth.Visible = true;
+            this.colMonth.VisibleIndex = 0;
+            // 
             // colNewJobOrders
             // 
             this.colNewJobOrders.Caption = "New Job Orders";
+            this.colNewJobOrders.FieldName = "NumberJobOrder";
             this.colNewJobOrders.Name = "colNewJobOrders";
             this.colNewJobOrders.Visible = true;
-            this.colNewJobOrders.VisibleIndex = 0;
+            this.colNewJobOrders.VisibleIndex = 1;
             // 
             // colNewCandidates
             // 
             this.colNewCandidates.Caption = "New Candidates";
+            this.colNewCandidates.FieldName = "NumberCandidate";
             this.colNewCandidates.Name = "colNewCandidates";
             this.colNewCandidates.Visible = true;
-            this.colNewCandidates.VisibleIndex = 1;
+            this.colNewCandidates.VisibleIndex = 2;
             // 
             // colNewCompanies
             // 
             this.colNewCompanies.Caption = "New Companies";
+            this.colNewCompanies.FieldName = "NumberCompany";
             this.colNewCompanies.Name = "colNewCompanies";
             this.colNewCompanies.Visible = true;
-            this.colNewCompanies.VisibleIndex = 2;
+            this.colNewCompanies.VisibleIndex = 3;
             // 
             // colNewContacts
             // 
             this.colNewContacts.Caption = "New Contacts";
+            this.colNewContacts.FieldName = "NumberContact";
             this.colNewContacts.Name = "colNewContacts";
             this.colNewContacts.Visible = true;
-            this.colNewContacts.VisibleIndex = 5;
+            this.colNewContacts.VisibleIndex = 4;
             // 
             // colNewSubmissions
             // 
             this.colNewSubmissions.Caption = "New Submissions";
+            this.colNewSubmissions.FieldName = "NumberSubmission";
             this.colNewSubmissions.Name = "colNewSubmissions";
             this.colNewSubmissions.Visible = true;
-            this.colNewSubmissions.VisibleIndex = 3;
+            this.colNewSubmissions.VisibleIndex = 5;
             // 
             // colNewPlacements
             // 
             this.colNewPlacements.Caption = "New Placements";
+            this.colNewPlacements.FieldName = "NumberPlacement";
             this.colNewPlacements.Name = "colNewPlacements";
             this.colNewPlacements.Visible = true;
-            this.colNewPlacements.VisibleIndex = 4;
+            this.colNewPlacements.VisibleIndex = 6;
             // 
             // gcActivites
             // 
@@ -497,7 +520,7 @@
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 276);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Size = new System.Drawing.Size(563, 295);
-            this.layoutControlGroup3.Text = "Reports";
+            this.layoutControlGroup3.Text = "Reports Last 4 Months";
             // 
             // layoutControlItem5
             // 
@@ -515,7 +538,7 @@
             this.layoutControlGroup4.Location = new System.Drawing.Point(563, 276);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
             this.layoutControlGroup4.Size = new System.Drawing.Size(564, 295);
-            this.layoutControlGroup4.Text = "Users Activities";
+            this.layoutControlGroup4.Text = "Users Activities Last 30 Days";
             // 
             // layoutControlItem6
             // 
@@ -547,26 +570,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ccWeeklyReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportHiringOverviewBindingSource)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ccMonthlyReport)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ccYearlyReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcUserReports)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvUserReports)).EndInit();
@@ -596,7 +619,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colUserNewCandidates;
         private DevExpress.XtraGrid.Columns.GridColumn colUserNewCompanies;
         private DevExpress.XtraGrid.Columns.GridColumn colUserNewContacts;
-        private DevExpress.XtraGrid.Columns.GridColumn colUserNewSubmitssions;
+        private DevExpress.XtraGrid.Columns.GridColumn colUserNewSubmissions;
         private DevExpress.XtraGrid.Columns.GridColumn colUserNewPlacements;
         private DevExpress.XtraGrid.GridControl gcReports;
         private DevExpress.XtraGrid.Views.Grid.GridView gvReports;
@@ -628,5 +651,6 @@
         private System.Windows.Forms.BindingSource reportHiringOverviewBindingSource;
         private DevExpress.XtraCharts.ChartControl ccMonthlyReport;
         private DevExpress.XtraCharts.ChartControl ccYearlyReport;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonth;
     }
 }

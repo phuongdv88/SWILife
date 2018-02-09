@@ -164,6 +164,55 @@ namespace SWIBLL
             }
         }
 
+        public static DataTable getReportByMonth()
+        {
+            DataTable tbl = new DataTable("Report");
+            List<DateTime> theLast4FirstDayOfMonthAndNow = new List<DateTime>();
+            var today = DateTime.Today;
+            theLast4FirstDayOfMonthAndNow.Add(today); // add today
+            // add last 4 firt days of month
+            int offset = 0;
+            if (today.Day == 1)
+            {
+                offset = 1;
+            }
+            for (var i = 0; i < 4; i++)
+            {
+                int month = today.Month - 1 * (i + offset);
+                int year = today.Year;
+                if (month <= 0)
+                {
+                    month += 12;
+                    year -= 1;
+                }
+                theLast4FirstDayOfMonthAndNow.Add(new DateTime(year, month, 1));
+            }
+            // this month:
+            string monthName = string.Empty;
+            tbl.Columns.Add(new DataColumn("Month", typeof(string)));
+            tbl.Columns.Add(new DataColumn("NumberJobOrder", typeof(Int32)));
+            tbl.Columns.Add(new DataColumn("NumberCandidate", typeof(Int32)));
+            tbl.Columns.Add(new DataColumn("NumberCompany", typeof(Int32)));
+            tbl.Columns.Add(new DataColumn("NumberSubmission", typeof(Int32)));
+            tbl.Columns.Add(new DataColumn("NumberPlacement", typeof(Int32)));
+            tbl.Columns.Add(new DataColumn("NumberContact", typeof(Int32)));
+
+            theLast4FirstDayOfMonthAndNow.Reverse();
+
+            for (var i = 0; i < theLast4FirstDayOfMonthAndNow.Count() - 1; ++i)
+            {
+                monthName = theLast4FirstDayOfMonthAndNow[i].ToString("MMMM - yyyy");
+                DataTable dt = DataAccess.Instance.getReportByTime(theLast4FirstDayOfMonthAndNow[i], theLast4FirstDayOfMonthAndNow[i + 1]);
+                DataRow row = dt.Rows[0];
+                tbl.Rows.Add(monthName, row["NumberJobOrder"], row["NumberCandidate"], row["NumberCompany"], row["NumberSubmission"], row["NumberPlacement"], row["NumberContact"]);
+            }
+            return tbl;
+        }
+        public static DataTable getReportUserIn30Days()
+        {
+            return DataAccess.Instance.getReportUserIn30Days();
+        }
+
 
     }
 }
