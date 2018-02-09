@@ -90,7 +90,7 @@ namespace SWIBLL
                 CompanyId = company_Id,
             };
 
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
 
         }
 
@@ -113,7 +113,7 @@ namespace SWIBLL
                 CompanyId = com.CompanyId,
             };
 
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
         }
         public static void deleteCompany(long comId)
         {
@@ -158,7 +158,7 @@ namespace SWIBLL
                     CompanyId = comId,
                 };
 
-                ActivityManager.insert(act, null);
+                ActivityManager.insert(act);
             }
             catch
             {

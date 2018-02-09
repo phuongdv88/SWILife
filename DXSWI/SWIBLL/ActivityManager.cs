@@ -50,41 +50,16 @@ namespace SWIBLL
             }
         }
 
-        public static void deleteActivity(long Activityid, long ScheduleEventId)
+        public static void deleteActivity(long Activityid)
         {
             string sql = string.Empty;
             try
             {
                 DataAccess.Instance.StartTransaction();
-                if (ScheduleEventId != -1)
-                {
-                    // delete scheduleEvent
-                    sql = string.Format("DELETE FROM `swilifecore`.`scheduleevent` WHERE `ScheduleEventId`='{0}'", ScheduleEventId);
-                    DataAccess.Instance.executeNonQueryTransaction(sql);
-                }
                 //delete activity
                 sql = string.Format("DELETE FROM `swilifecore`.`activity` WHERE `ActivityId`='{0}'", Activityid);
                 DataAccess.Instance.executeNonQueryTransaction(sql);
 
-                DataAccess.Instance.commitTransaction();
-            }
-            catch
-            {
-                DataAccess.Instance.rollbackTransaction();
-                throw;
-            }
-        }
-
-        public static void deleteScheduleEvent(long id)
-        {
-            try
-            {
-                DataAccess.Instance.StartTransaction();
-                string sql = string.Format("UPDATE `swilifecore`.`activity` SET `ScheduleEventId`='-1' WHERE `ScheduleEventId`='id'");
-                DataAccess.Instance.executeNonQueryTransaction(sql);
-                // delete 
-                sql = string.Format("DELETE FROM `swilifecore`.`scheduleevent` WHERE `ScheduleEventId`='{0}'", id);
-                DataAccess.Instance.executeNonQueryTransaction(sql);
                 DataAccess.Instance.commitTransaction();
             }
             catch
@@ -105,32 +80,21 @@ namespace SWIBLL
         }
 
 
-        public static void insert(Activity act, ScheduleEvent ev)
+        public static void insert(Activity act)
         {
             string sql = string.Empty;
             // insert to database by transaction
             try
             {
                 DataAccess.Instance.StartTransaction();
-                if (ev != null)
-                {
-                    // add schedule event
-                    sql = string.Format("INSERT INTO `swilifecore`.`scheduleevent` " +
-                        "(`Type`, `Title`, `DateTime`, `Duration`, `IsPublicEntry`, `Description`) " +
-                        "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
-                        ev.Type, QueryBuilder.mySqlEscape(ev.Title), ev.DateTime.ToString("yyyy-MM-dd HH:mm"), ev.Duration, Convert.ToInt32(ev.IsPublicEntry), QueryBuilder.mySqlEscape(ev.Description));
-                    act.ScheduleEventId = DataAccess.Instance.executeInsertQueryTransaction(sql);
-                }
-
                 act.UserId = UserManager.ActivatedUser.UserId;
-
                 // add log activity
                 sql = string.Format("INSERT INTO `swilifecore`.`activity` " +
                     "(`Regarding`, `Type`, `Notes`, `Created`, `ActivityOf`, " +
-                    "`JobOrderId`, `CandidateId`, `ContactID`, `UserId`, `ScheduleEventId`, `RunningTaskId`) " +
-                    "VALUES ('{0}', '{1}', '{2}', now(), '{3}', '{4}', '{5}', '{6}', '{7}', '{8}','{9}')",
+                    "`JobOrderId`, `CandidateId`, `ContactID`, `UserId`, `RunningTaskId`) " +
+                    "VALUES ('{0}', '{1}', '{2}', now(), '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')",
                     act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), (int)act.ActivityOf,
-                    act.JobOrderId, act.CandidateId, act.ContactId, act.UserId, act.ScheduleEventId, act.RunningTaskId);
+                    act.JobOrderId, act.CandidateId, act.ContactId, act.UserId, act.RunningTaskId);
                 DataAccess.Instance.executeInsertQueryTransaction(sql);
 
                 // change status of running task or whatever folow by type of activity
@@ -211,10 +175,10 @@ namespace SWIBLL
                         long runningTaskId = listCandidateIdRunningTaskId[canId];
                         sql = string.Format("INSERT INTO `swilifecore`.`activity` " +
                             "(`Regarding`, `Type`, `Notes`, `Created`, `ActivityOf`, " +
-                            "`JobOrderId`, `CandidateId`, `ContactID`, `UserId`, `ScheduleEventId`, `RunningTaskId`) " +
-                            "VALUES ('{0}', '{1}', '{2}', now(), '{3}', '{4}', '{5}', '{6}', '{7}', '{8}','{9}')",
+                            "`JobOrderId`, `CandidateId`, `ContactID`, `UserId`, `RunningTaskId`) " +
+                            "VALUES ('{0}', '{1}', '{2}', now(), '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')",
                             act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), (int)Activity.TypeOfLogActivity.Pipeline,
-                            jobOrderId, canId, act.ContactId, act.UserId, act.ScheduleEventId, runningTaskId);
+                            jobOrderId, canId, act.ContactId, act.UserId, runningTaskId);
                         DataAccess.Instance.executeInsertQueryTransaction(sql);
 
                         // check type of status to set data in running task
@@ -282,53 +246,19 @@ namespace SWIBLL
             return null;
         }
 
-        public static ScheduleEvent getScheduleEventById(int id)
-        {
-            string sql = string.Format("select * from `swilifecore`.`scheduleevent` where `ScheduleEventId`='{0}' ", id);
-            DataTable tbl = DataAccess.Instance.getDataTable(sql);
-            if (tbl.Rows.Count > 0)
-            {
-                DataRow data_row = tbl.Rows[0];
-                return Data.CreateItemFromRow<ScheduleEvent>(data_row);
-            }
-            return null;
-        }
-
-
-        public static void update(Activity act, ScheduleEvent ev)
+        public static void update(Activity act)
         {
             string sql = string.Empty;
             // insert to database by transaction
             try
             {
                 DataAccess.Instance.StartTransaction();
-                if (ev != null)
-                {
-                    // check event is exist
-                    if (ev.ScheduleEventId == -1)
-                    {
-                        // if not add schedule event
-                        sql = string.Format("INSERT INTO `swilifecore`.`scheduleevent` " +
-                            "(`Type`, `Title`, `DateTime`, `Duration`, `IsPublicEntry`, `Description`) " +
-                            "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
-                            ev.Type, QueryBuilder.mySqlEscape(ev.Title), ev.DateTime.ToString("yyyy-MM-dd HH:mm"), ev.Duration, Convert.ToInt32(ev.IsPublicEntry), QueryBuilder.mySqlEscape(ev.Description));
-                        act.ScheduleEventId = DataAccess.Instance.executeInsertQueryTransaction(sql);
-                    }
-                    else
-                    {
-                        // else update schedule event
-                        sql = string.Format("UPDATE `swilifecore`.`scheduleevent` SET `Type`='{0}', `Title`='{1}', `DateTime`='{2}', `Duration`='{3}', `IsPublicEntry`='{4}', `Description`='{5}' WHERE `ScheduleEventId`='{6}'",
-                            ev.Type, QueryBuilder.mySqlEscape(ev.Title), ev.DateTime.ToString("yyyy-MM-dd HH:mm"), ev.Duration, Convert.ToInt32(ev.IsPublicEntry), QueryBuilder.mySqlEscape(ev.Description), ev.ScheduleEventId);
-                        DataAccess.Instance.executeNonQueryTransaction(sql);
-                    }
-                }
-
                 // add log activity
                 sql = string.Format("UPDATE `swilifecore`.`activity` SET " +
-                        "`Regarding`='{0}', `Type`='{1}', `Notes`='{2}', `Created`='{3}', `ActivityOf`='{4}', `JobOrderId`='{5}', `CandidateId`='{6}', `ContactID`='{7}', `UserId`='{8}', `ScheduleEventId`='{9}'" +
-                        "WHERE `ActivityId`='{10}'",
+                        "`Regarding`='{0}', `Type`='{1}', `Notes`='{2}', `Created`='{3}', `ActivityOf`='{4}', `JobOrderId`='{5}', `CandidateId`='{6}', `ContactID`='{7}', `UserId`='{8}'" +
+                        "WHERE `ActivityId`='{9}'",
                     act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), act.Created.ToString("yyyy-MM-dd HH:mm:ss"), (int)act.ActivityOf,
-                    act.JobOrderId, act.CandidateId, act.ContactId, act.UserId, act.ScheduleEventId, act.ActivityId);
+                    act.JobOrderId, act.CandidateId, act.ContactId, act.UserId, act.ActivityId);
                 DataAccess.Instance.executeNonQueryTransaction(sql);
 
                 // change status of running task or whatever folow by type of activity

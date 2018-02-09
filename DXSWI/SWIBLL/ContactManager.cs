@@ -93,7 +93,7 @@ namespace SWIBLL
                 ContactId = contact_id,
             };
 
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
         }
 
         public static void UpdateContact(Contact con)
@@ -116,7 +116,7 @@ namespace SWIBLL
                 ContactId = con.ContactId,
             };
 
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
         }
 
         public static void DeleteContact(long conId)
@@ -131,7 +131,7 @@ namespace SWIBLL
                 ContactId = conId,
             };
 
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
         }
     }
 }

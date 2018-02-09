@@ -63,7 +63,7 @@ namespace SWIBLL
                 JobOrderId = rs,
             };
             // add activity to db
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
             return rs > 0 ? true : false; ;
         }
 
@@ -86,7 +86,7 @@ namespace SWIBLL
                 JobOrderId = jobOrder.JobOrderId,
             };
             // add activity to db
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
             return rs > 0 ? true : false;
         }
 
@@ -111,7 +111,7 @@ namespace SWIBLL
                     JobOrderId = jobOrderId,
                 };
                 // add activity to db
-                ActivityManager.insert(act, null);
+                ActivityManager.insert(act);
 
             }
             catch

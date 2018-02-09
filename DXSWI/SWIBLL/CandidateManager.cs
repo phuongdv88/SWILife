@@ -94,7 +94,7 @@ namespace SWIBLL
                     CandidateId = CandidateId,
                 };
 
-                ActivityManager.insert(act, null);
+                ActivityManager.insert(act);
             }
             catch
             {
@@ -162,7 +162,7 @@ namespace SWIBLL
                 CandidateId = can_id,
             };
 
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
         }
         public static void updateCandidate(Candidate can)
         {
@@ -198,7 +198,7 @@ namespace SWIBLL
                 CandidateId = can.CandidateId,
             };
 
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
         }
 
         public static bool updateResumeLink(Candidate can)

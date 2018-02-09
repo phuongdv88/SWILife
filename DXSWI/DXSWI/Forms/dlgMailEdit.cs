@@ -142,7 +142,7 @@ namespace DXSWI.Forms
                             Status = Activity.RunningTaskStatus.CONTACTED,
                             Notes = string.Format("[{0}] Message sent {1}.", _candidateEmails[index], DateTime.Now.ToString("HH:mm:ss dd/MM/yyy")),
                         };
-                        ActivityManager.insert(act, null);
+                        ActivityManager.insert(act);
                         ScreenManager.Instance.ShowNoticeMessage(act.Notes, "Email sent successfully", MessageBoxIcon.Information);
                     }
                     catch (Exception ex)

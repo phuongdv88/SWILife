@@ -4,11 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.ComponentModel;
+
 namespace SWIBLL.Models
 {
-    public class CustomAppointment
+    public class CustomAppointment : INotifyPropertyChanged
     {
-        public long AppointmentId { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string newName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(newName));
+        }
+        private long _AppointmentId;
+
+        public long AppointmentId
+        {
+            get { return _AppointmentId; }
+            set
+            {
+                if (_AppointmentId == value) return;
+                _AppointmentId = value;
+                //OnPropertyChanged("AppointmentId");
+                OnPropertyChanged();
+            }
+        }
+
         public DateTime StartTime { get; set; }//
         public DateTime EndTime { get; set; }//
         public string Subject { get; set; }//

@@ -45,8 +45,6 @@ namespace SWIBLL.Models
 
         public long RunningTaskId { get; set; }
 
-        public long ScheduleEventId { get; set; }
-
         public long CompanyId { get; set; }
         public Activity()
         {
@@ -54,7 +52,6 @@ namespace SWIBLL.Models
             CandidateId = -1;
             ContactId = -1;
             UserId = -1;
-            ScheduleEventId = -1;
             RunningTaskId = -1;
             CompanyId = -1;
             Regarding = "General";

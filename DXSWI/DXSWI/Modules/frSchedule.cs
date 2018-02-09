@@ -36,15 +36,32 @@ namespace DXSWI.Modules
             {
                 InitResource();
                 InitAppointments();
+
+                // init timmer check schedule event
+                Timer aTimer = new Timer();
+                aTimer.Tick += OnTimedAppointments;
+                aTimer.Interval = 1000 * 60 * 15; // check every 15 minutes 
+                aTimer.Enabled = true;
+                OnTimedAppointments(null, null);
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //todo: clear old data:
-            // delete all event older from 2 month
+        }
 
-            //todo: get only own event or any event
+        void OnTimedAppointments(object source, EventArgs e)
+        {
+            foreach(var ap in CustomEventList)
+            {
+                if(ap.StartTime > DateTime.Now)
+                {
+                    if(ap.StartTime.AddMinutes(-30) < DateTime.Now)
+                    {
+                        ScreenManager.Instance.ShowNoticeMessage(ap.Subject, "Appointment comming soon", MessageBoxIcon.Information);
+                    }
+                }
+            }
         }
 
         public void NewAppointment()
@@ -137,9 +154,12 @@ namespace DXSWI.Modules
                     var apt = listApt[i] as Appointment;
                     if (apt != null)
                     {
-                        long id = Convert.ToInt64(apt.Id.ToString());
-                        // update to db
-                        AppointmentManager.DeleteAppointment(id);
+                        if (apt.Id != null)
+                        {
+                            long id = Convert.ToInt64(apt.Id.ToString());
+                            // update to db
+                            AppointmentManager.DeleteAppointment(id);
+                        }
                     }
                 }
             }
@@ -174,7 +194,8 @@ namespace DXSWI.Modules
                             ResourceId = apt.ResourceId,
                         };
                         // update to db
-                        AppointmentManager.InsertAppointment(ap);
+                        long id = AppointmentManager.InsertAppointment(ap);
+                        schedulerStorage1.SetAppointmentId(apt, id);
                     }
                 }
             }

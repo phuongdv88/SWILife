@@ -24,7 +24,6 @@ namespace DXSWI.Forms
         long CurrentContactId = -1;
         bool isAddNew = true;
         Activity currentActivity = new Activity();
-        ScheduleEvent currentScheduleEvent = new ScheduleEvent();
         public delegate void updateData();
         public event updateData updateDataEvent;
 
@@ -92,8 +91,6 @@ namespace DXSWI.Forms
                 cbeRegarding.Properties.Items.EndUpdate();
                 cbeRegarding.ReadOnly = true;
 
-                // disable event schedule
-                //ceScheduleEvent.ReadOnly = true;
                 // enable change status checkbox
                 ceChangeStatus.Enabled = true;
             }
@@ -116,23 +113,20 @@ namespace DXSWI.Forms
             }
         }
 
-        public void setData(int activityId, int ScheduleEventId)
+        public void setData(int activityId)
         {
             isAddNew = false;
             sbAdd.Text = "Edit";
-            //currentActivityId = activityId;
-            //currentScheduleId = ScheduleEventId;
+
             try
             {
 
                 //get data by id
 
                 currentActivity = ActivityManager.getActivityById(activityId);
-                currentScheduleEvent = ActivityManager.getScheduleEventById(ScheduleEventId);
 
                 // fill data to UI
                 setActivityToUI(currentActivity);
-                ucScheduleEvent2.setScheduleEventToUI(currentScheduleEvent);
             }
             catch (Exception ex)
             {
@@ -174,30 +168,14 @@ namespace DXSWI.Forms
             }
         }
 
-        private void ceScheduleEvent_CheckedChanged(object sender, EventArgs e)
-        {
-            ucScheduleEvent2.Enabled = ceScheduleEvent.Checked;
-            ucScheduleEvent2.Visible = ceScheduleEvent.Checked;
-        }
-
-        private void ucScheduleEvent1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void sbAdd_Click(object sender, EventArgs e)
         {
-            ScheduleEvent ev = null;
             Activity act = null;
             try
             {
 
                 // get object from UI
-                if (ceScheduleEvent.Checked)
-                {
-                    ev = ucScheduleEvent2.GetScheduleEventFromUI();
-                    ev.ScheduleEventId = currentScheduleEvent.ScheduleEventId;
-                }
                 act = getActivityFromUI();
                 act.ActivityId = currentActivity.ActivityId;
                 if (isAddNew)
@@ -210,12 +188,12 @@ namespace DXSWI.Forms
                     }
                     else
                     {
-                        ActivityManager.insert(act, ev);
+                        ActivityManager.insert(act);
                     }
                 }
                 else
                 {
-                    ActivityManager.update(currentActivity, currentScheduleEvent);
+                    ActivityManager.update(currentActivity);
                 }
                 updateDataEvent?.Invoke();
 
@@ -238,20 +216,20 @@ namespace DXSWI.Forms
             Activity act = new Activity();
             act.Regarding = cbeRegarding.Text;
             act.Status = (Activity.RunningTaskStatus)cbeStatus.SelectedIndex;
-            if (cbeActivityType.SelectedText.Length == 0)
+            if (cbeActivityType.Text.Length == 0)
             {
-                act.Type = "Nothing";
+                act.Type = "Orther";
             }
             else
             {
-                act.Type = cbeActivityType.SelectedText;
+                act.Type = cbeActivityType.Text;
             }
             act.Notes = meActivityNote.Text;
             act.Created = DateTime.Now;
             act.ActivityOf = typeOfActivity;
             if (!isMultiSelected)
             {
-                act.RunningTaskId = listRegardingRunningTaskId[cbeRegarding.SelectedText];  // get running task id of this activity
+                act.RunningTaskId = listRegardingRunningTaskId[cbeRegarding.Text];  // get running task id of this activity
                 act.CandidateId = CurrentCandidateId;
                 act.JobOrderId = CurrentJobOrderId;
                 act.ContactId = CurrentContactId;
@@ -298,7 +276,7 @@ namespace DXSWI.Forms
                 {
                     ceChangeStatus.Enabled = true;
                     cbeStatus.Enabled = ceChangeStatus.Checked;
-                    cbeStatus.Text = listRegardingStatus[cbeRegarding.SelectedText];
+                    cbeStatus.Text = listRegardingStatus[cbeRegarding.Text];
                 }
             }
 
@@ -316,9 +294,5 @@ namespace DXSWI.Forms
             }
         }
 
-        private void cbeStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

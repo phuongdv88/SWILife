@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.ucScheduleEvent2 = new DXSWI.Controls.ucScheduleEvent();
             this.cbeRegarding = new DevExpress.XtraEditors.ComboBoxEdit();
             this.ceChangeStatus = new DevExpress.XtraEditors.CheckEdit();
             this.cbeStatus = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -37,7 +36,6 @@
             this.cbeActivityType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.meActivityNote = new DevExpress.XtraEditors.MemoEdit();
             this.sbAdd = new DevExpress.XtraEditors.SimpleButton();
-            this.ceScheduleEvent = new DevExpress.XtraEditors.CheckEdit();
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciRegarding = new DevExpress.XtraLayout.LayoutControlItem();
@@ -49,9 +47,6 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -62,7 +57,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ceLogActivity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeActivityType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.meActivityNote.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ceScheduleEvent.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciRegarding)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Status)).BeginInit();
@@ -73,16 +67,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.ucScheduleEvent2);
             this.layoutControl1.Controls.Add(this.cbeRegarding);
             this.layoutControl1.Controls.Add(this.ceChangeStatus);
             this.layoutControl1.Controls.Add(this.cbeStatus);
@@ -90,7 +80,6 @@
             this.layoutControl1.Controls.Add(this.cbeActivityType);
             this.layoutControl1.Controls.Add(this.meActivityNote);
             this.layoutControl1.Controls.Add(this.sbAdd);
-            this.layoutControl1.Controls.Add(this.ceScheduleEvent);
             this.layoutControl1.Controls.Add(this.sbCancel);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
@@ -99,14 +88,6 @@
             this.layoutControl1.Size = new System.Drawing.Size(904, 649);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // ucScheduleEvent2
-            // 
-            this.ucScheduleEvent2.Enabled = false;
-            this.ucScheduleEvent2.Location = new System.Drawing.Point(24, 370);
-            this.ucScheduleEvent2.Name = "ucScheduleEvent2";
-            this.ucScheduleEvent2.Size = new System.Drawing.Size(856, 229);
-            this.ucScheduleEvent2.TabIndex = 14;
             // 
             // cbeRegarding
             // 
@@ -152,10 +133,10 @@
             "Client Declined",
             "Placed",
             "Other"});
+            this.cbeStatus.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbeStatus.Size = new System.Drawing.Size(707, 20);
             this.cbeStatus.StyleController = this.layoutControl1;
             this.cbeStatus.TabIndex = 6;
-            this.cbeStatus.SelectedIndexChanged += new System.EventHandler(this.cbeStatus_SelectedIndexChanged);
             // 
             // ceLogActivity
             // 
@@ -182,6 +163,7 @@
             "Email",
             "Meeting",
             "Other"});
+            this.cbeActivityType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbeActivityType.Size = new System.Drawing.Size(790, 20);
             this.cbeActivityType.StyleController = this.layoutControl1;
             this.cbeActivityType.TabIndex = 9;
@@ -190,7 +172,7 @@
             // 
             this.meActivityNote.Location = new System.Drawing.Point(24, 195);
             this.meActivityNote.Name = "meActivityNote";
-            this.meActivityNote.Size = new System.Drawing.Size(856, 106);
+            this.meActivityNote.Size = new System.Drawing.Size(856, 404);
             this.meActivityNote.StyleController = this.layoutControl1;
             this.meActivityNote.TabIndex = 10;
             // 
@@ -203,16 +185,6 @@
             this.sbAdd.TabIndex = 12;
             this.sbAdd.Text = "Add";
             this.sbAdd.Click += new System.EventHandler(this.sbAdd_Click);
-            // 
-            // ceScheduleEvent
-            // 
-            this.ceScheduleEvent.Location = new System.Drawing.Point(24, 347);
-            this.ceScheduleEvent.Name = "ceScheduleEvent";
-            this.ceScheduleEvent.Properties.Caption = "Schedule Event";
-            this.ceScheduleEvent.Size = new System.Drawing.Size(856, 19);
-            this.ceScheduleEvent.StyleController = this.layoutControl1;
-            this.ceScheduleEvent.TabIndex = 8;
-            this.ceScheduleEvent.CheckedChanged += new System.EventHandler(this.ceScheduleEvent_CheckedChanged);
             // 
             // sbCancel
             // 
@@ -233,7 +205,6 @@
             this.Status,
             this.layoutControlGroup2,
             this.layoutControlItem8,
-            this.layoutControlGroup3,
             this.layoutControlItem9,
             this.emptySpaceItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
@@ -285,7 +256,7 @@
             this.layoutControlItem6});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 90);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(884, 215);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(884, 513);
             this.layoutControlGroup2.Text = "Activity";
             // 
             // layoutControlItem3
@@ -311,7 +282,7 @@
             this.layoutControlItem6.Control = this.meActivityNote;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 47);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(860, 126);
+            this.layoutControlItem6.Size = new System.Drawing.Size(860, 424);
             this.layoutControlItem6.Text = "Activity Note";
             this.layoutControlItem6.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem6.TextSize = new System.Drawing.Size(63, 13);
@@ -324,34 +295,6 @@
             this.layoutControlItem8.Size = new System.Drawing.Size(161, 26);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
-            // 
-            // layoutControlGroup3
-            // 
-            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem4,
-            this.layoutControlItem10});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 305);
-            this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(884, 298);
-            this.layoutControlGroup3.Text = "Schedule Event";
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.ceScheduleEvent;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(860, 23);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
-            // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.Control = this.ucScheduleEvent2;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 23);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(860, 233);
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem10.TextVisible = false;
             // 
             // layoutControlItem9
             // 
@@ -389,7 +332,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ceLogActivity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeActivityType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.meActivityNote.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ceScheduleEvent.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciRegarding)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Status)).EndInit();
@@ -400,9 +342,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
@@ -416,7 +355,6 @@
         private DevExpress.XtraEditors.CheckEdit ceChangeStatus;
         private DevExpress.XtraEditors.ComboBoxEdit cbeStatus;
         private DevExpress.XtraEditors.CheckEdit ceLogActivity;
-        private DevExpress.XtraEditors.CheckEdit ceScheduleEvent;
         private DevExpress.XtraEditors.ComboBoxEdit cbeActivityType;
         private DevExpress.XtraEditors.MemoEdit meActivityNote;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
@@ -428,14 +366,10 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.SimpleButton sbAdd;
         private DevExpress.XtraEditors.SimpleButton sbCancel;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
-        private Controls.ucScheduleEvent ucScheduleEvent2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
     }
 }

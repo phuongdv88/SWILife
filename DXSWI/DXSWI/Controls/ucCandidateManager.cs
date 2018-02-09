@@ -185,12 +185,10 @@ namespace DXSWI.Controls
                     int row = gvActivities.GetSelectedRows().First();
                     DataRow data_row = gvActivities.GetDataRow(row);
                     int activity_index = int.Parse(data_row["ActivityId"].ToString());
-                    int scheduleEvent_index = int.Parse(data_row["ScheduleEventId"].ToString());
-
                     dlgLogActivity dlg = new dlgLogActivity();
                     dlg.updateDataEvent += updateData;
-                    dlg.init(mCandidate.FirstName + " " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate, mCandidate.CandidateId, -1, -1);
-                    dlg.setData(activity_index, scheduleEvent_index);
+                    dlg.init(mCandidate.FirstName +"  " + mCandidate.MiddleName + " " + mCandidate.LastName, Activity.TypeOfLogActivity.Candidate, mCandidate.CandidateId, -1, -1);
+                    dlg.setData(activity_index);
                     dlg.ShowDialog();
 
                 }
@@ -213,8 +211,7 @@ namespace DXSWI.Controls
                         int row = gvActivities.GetSelectedRows().First();
                         DataRow data_row = gvActivities.GetDataRow(row);
                         int activity_index = int.Parse(data_row["ActivityId"].ToString());
-                        int scheduleEvent_index = int.Parse(data_row["ScheduleEventId"].ToString());
-                        ActivityManager.deleteActivity(activity_index, scheduleEvent_index);
+                        ActivityManager.deleteActivity(activity_index);
                         updateData();
                     }
                 }

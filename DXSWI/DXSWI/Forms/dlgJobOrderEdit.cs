@@ -302,7 +302,8 @@ namespace DXSWI.Forms
 
         private void updateData()
         {
-            try {
+            try
+            {
                 // load jobOrder pipe line
                 loadPipeLineCandidates();
                 // load joborder report
@@ -507,10 +508,16 @@ namespace DXSWI.Forms
                     }
                     else
                     {
-                        canName = "Update Multi Candidates";
+                        canName = "Update Candidates";
                     }
                 }
-                dlg.initForListCandidateInPipeline(canName, mJobOrder.Title, mJobOrder.JobOrderId, candidatesId);
+                if (candidatesId.Count > 1)
+                {
+                    dlg.initForListCandidateInPipeline(canName, mJobOrder.Title, mJobOrder.JobOrderId, candidatesId);
+                } else
+                {
+                    dlg.init(canName, Activity.TypeOfLogActivity.Pipeline, candidatesId.First(), mJobOrder.JobOrderId, -1);
+                }
                 if (mJobOrder.Title.Length > 0)
                 {
                     dlg.setRegarding(mJobOrder.Title);
@@ -552,7 +559,7 @@ namespace DXSWI.Forms
                     DataRow data_row = gvCandidatePipeline.GetDataRow(row);
                     emails.Add(data_row["Email"].ToString());
                     runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
-                    names.Add(Utils.Capitalize( string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString())));
+                    names.Add(Utils.Capitalize(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString())));
                     canIds.Add(Convert.ToInt64(data_row["CandidateId"].ToString()));
                     EmailToCandidates(runningTaskIds, emails, names, canIds);
                 }

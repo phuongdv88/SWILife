@@ -167,12 +167,6 @@
     <Compile Include="Controls\ucReport.Designer.cs">
       <DependentUpon>ucReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ucScheduleEvent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucScheduleEvent.Designer.cs">
-      <DependentUpon>ucScheduleEvent.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ucTemplateEditText.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -202,12 +196,6 @@
     </Compile>
     <Compile Include="Forms\dlgAddJobOrderToPipeline.Designer.cs">
       <DependentUpon>dlgAddJobOrderToPipeline.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\dlgAddScheduleEvent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\dlgAddScheduleEvent.Designer.cs">
-      <DependentUpon>dlgAddScheduleEvent.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\dlgCandidateEdit.cs">
       <SubType>Form</SubType>
@@ -410,9 +398,6 @@
     <EmbeddedResource Include="Controls\ucReport.resx">
       <DependentUpon>ucReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucScheduleEvent.resx">
-      <DependentUpon>ucScheduleEvent.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucTemplateEditText.resx">
       <DependentUpon>ucTemplateEditText.cs</DependentUpon>
     </EmbeddedResource>
@@ -427,9 +412,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgAddJobOrderToPipeline.resx">
       <DependentUpon>dlgAddJobOrderToPipeline.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\dlgAddScheduleEvent.resx">
-      <DependentUpon>dlgAddScheduleEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgCandidateEdit.resx">
       <DependentUpon>dlgCandidateEdit.cs</DependentUpon>

@@ -31,7 +31,7 @@ namespace SWIBLL
                 RunningTaskId = rs
             };
             // add activity to db
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
 
             return rs > 0 ? true : false;
         }
@@ -52,7 +52,7 @@ namespace SWIBLL
                 RunningTaskId = rtask.RunningtaskId
             };
             // add activity to db
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
 
             return result > 0 ? true : false;
         }
@@ -97,7 +97,7 @@ namespace SWIBLL
                 RunningTaskId = id
             };
             // add activity to db
-            ActivityManager.insert(act, null);
+            ActivityManager.insert(act);
             return result > 0 ? true : false;
 
         }
