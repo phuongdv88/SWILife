@@ -32,7 +32,7 @@ namespace SWIBLL
             // get user info
             ActivatedUser = getUserByName(userName);
             // check user info
-            if (ActivatedUser == null || comparer.Compare(password, ActivatedUser.Password) != 0)
+            if (ActivatedUser == null || comparer.Compare(password, ActivatedUser.Password) != 0 || ActivatedUser.Role >= 6) // >=6 : deactivate
             {
                 Exception ex = new Exception("User name or password is incorrect!");
                 throw ex;
