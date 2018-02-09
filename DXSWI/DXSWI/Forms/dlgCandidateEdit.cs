@@ -933,10 +933,13 @@ namespace DXSWI.Forms
                 XtraMessageBox.Show("Have not yet selected anything", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int row = gvJobOrderPipeline.GetSelectedRows().First();
-            DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
-            regarding = data_row["Title"].ToString();
-            jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
+            if (gvJobOrderPipeline.SelectedRowsCount > 0)
+            {
+                int row = gvJobOrderPipeline.GetSelectedRows().First();
+                DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
+                regarding = data_row["Title"].ToString();
+                jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
+            }
 
             dlg.init(_Candidate.FirstName + " " + _Candidate.MiddleName + " " + _Candidate.LastName, Activity.TypeOfLogActivity.Pipeline, _Candidate.CandidateId, jobOrderId, -1);
             if (regarding.Length > 0)
@@ -1042,7 +1045,24 @@ namespace DXSWI.Forms
 
         private void bbiAddAppointment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ScreenManager.Instance.NewAppointment();
+            try
+            {
+                string subject = string.Empty;
+                string desc = string.Empty;
+
+                if (gvJobOrderPipeline.SelectedRowsCount > 0)
+                {
+                    int row = gvJobOrderPipeline.GetSelectedRows().First();
+                    DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
+                    subject = data_row["Title"].ToString() + " - " + data_row["CompanyName"].ToString();
+                    desc = string.Format("Appointment with: {0} {1} \r\nEmail: {2} \r\nCellphone: {3}\r\nContent: ",_Candidate.FirstName, _Candidate.LastName, _Candidate.Email, _Candidate.CellPhone);
+                }
+            ScreenManager.Instance.NewAppointment(subject, desc);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

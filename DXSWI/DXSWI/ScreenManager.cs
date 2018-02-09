@@ -73,9 +73,9 @@ namespace DXSWI
             mMain?.ShowNotice(message, caption, icon);
         }
 
-        public void NewAppointment()
+        public void NewAppointment(string subject = "", string desc = "")
         {
-            mMain?.NewAppointment();
+            mMain?.NewAppointment(subject, desc);
         }
 
 

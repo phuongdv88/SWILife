@@ -514,7 +514,8 @@ namespace DXSWI.Forms
                 if (candidatesId.Count > 1)
                 {
                     dlg.initForListCandidateInPipeline(canName, mJobOrder.Title, mJobOrder.JobOrderId, candidatesId);
-                } else
+                }
+                else
                 {
                     dlg.init(canName, Activity.TypeOfLogActivity.Pipeline, candidatesId.First(), mJobOrder.JobOrderId, -1);
                 }
@@ -728,7 +729,25 @@ namespace DXSWI.Forms
 
         private void bbiNewApointment_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ScreenManager.Instance.NewAppointment();
+            try
+            {
+                string subject = string.Empty;
+                string desc = string.Empty;
+
+                if (gvCandidatePipeline.SelectedRowsCount > 0)
+                {
+                    int row = gvCandidatePipeline.GetSelectedRows().First();
+                    DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                    desc = string.Format("Appointment with: {0} {1} \r\nEmail: {2} \r\nCellphone: {3}\r\nContent: "
+                        , data_row["FirstName"].ToString(), data_row["LastName"].ToString(), data_row["Email"].ToString(), data_row["CellPhone"].ToString());
+                    subject = mJobOrder.Title + " - " + mJobOrder.CompanyName;
+                }
+                ScreenManager.Instance.NewAppointment(subject, desc);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

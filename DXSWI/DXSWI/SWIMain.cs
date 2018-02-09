@@ -387,9 +387,9 @@ namespace DXSWI
             alertControlNotify.Show(this, caption, message, image);
         }
 
-        public void NewAppointment()
+        public void NewAppointment(string subject = "", string desc = "")
         {
-            _frSchedule.NewAppointment();
+            _frSchedule.NewAppointment(subject, desc);
         }
 
         public void ShowFlyoutMessage(string message)

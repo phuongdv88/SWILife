@@ -24,6 +24,10 @@ namespace SWIBLL
                 {
                     ap.ResourceId = null;
                 }
+                else
+                {
+                    ap.ResourceId = Convert.ToInt64(data_row["ResourceId"].ToString());
+                }
                 listEvent.Add(ap);
             }
         }

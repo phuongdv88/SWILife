@@ -26,7 +26,7 @@ namespace SWIBLL.Models
                 if (_AppointmentId == value) return;
                 _AppointmentId = value;
                 //OnPropertyChanged("AppointmentId");
-                OnPropertyChanged();
+                //OnPropertyChanged();
             }
         }
 

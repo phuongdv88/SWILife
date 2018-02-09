@@ -116,6 +116,7 @@
             this.scMain.Views.FullWeekView.TimeRulers.Add(timeRuler2);
             this.scMain.Views.WeekView.Enabled = false;
             this.scMain.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
+            this.scMain.EditAppointmentFormShowing += new DevExpress.XtraScheduler.AppointmentFormEventHandler(this.scMain_EditAppointmentFormShowing);
             // 
             // schedulerStorage1
             // 

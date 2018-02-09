@@ -353,6 +353,12 @@
     <Compile Include="Modules\frSchedule.Designer.cs">
       <DependentUpon>frSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\OutlookAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\OutlookAppointmentForm.Designer.cs">
+      <DependentUpon>OutlookAppointmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenManager.cs" />
@@ -487,6 +493,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\frSchedule.resx">
       <DependentUpon>frSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\OutlookAppointmentForm.resx">
+      <DependentUpon>OutlookAppointmentForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SWIMain.resx">
       <DependentUpon>SWIMain.cs</DependentUpon>

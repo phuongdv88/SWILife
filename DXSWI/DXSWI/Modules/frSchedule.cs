@@ -19,6 +19,8 @@ namespace DXSWI.Modules
         public static Random RandomInstance = new Random();
         private BindingList<CustomResource> CustomResourceCollection = new BindingList<CustomResource>();
         private BindingList<CustomAppointment> CustomEventList = new BindingList<CustomAppointment>();
+        string _subject = string.Empty;
+        string _desc = string.Empty;
 
         public frSchedule()
         {
@@ -52,11 +54,11 @@ namespace DXSWI.Modules
 
         void OnTimedAppointments(object source, EventArgs e)
         {
-            foreach(var ap in CustomEventList)
+            foreach (var ap in CustomEventList)
             {
-                if(ap.StartTime > DateTime.Now)
+                if (ap.StartTime > DateTime.Now)
                 {
-                    if(ap.StartTime.AddMinutes(-30) < DateTime.Now)
+                    if (ap.StartTime.AddMinutes(-30) < DateTime.Now)
                     {
                         ScreenManager.Instance.ShowNoticeMessage(ap.Subject, "Appointment comming soon", MessageBoxIcon.Information);
                     }
@@ -64,8 +66,10 @@ namespace DXSWI.Modules
             }
         }
 
-        public void NewAppointment()
+        public void NewAppointment(string subject = "", string desc = "")
         {
+            _subject = subject;
+            _desc = desc;
             newAppointmentItem1.PerformClick();
         }
 
@@ -97,7 +101,8 @@ namespace DXSWI.Modules
             if (UserManager.ActivatedUser.RoleName == "ADMIN")
             {
                 AppointmentManager.GetListAppointment(CustomEventList);
-            } else
+            }
+            else
             {
                 AppointmentManager.GetListAppointment(UserManager.ActivatedUser.UserId, CustomEventList);
             }
@@ -205,5 +210,32 @@ namespace DXSWI.Modules
             }
         }
 
+        private void scMain_EditAppointmentFormShowing(object sender, AppointmentFormEventArgs e)
+        {
+            DevExpress.XtraScheduler.SchedulerControl scheduler = ((DevExpress.XtraScheduler.SchedulerControl)(sender));
+            var ap = e.Appointment;
+            if (ap.Id == null)
+            {
+                ap.Subject = _subject;
+                ap.Description = _desc;
+
+                _subject = string.Empty;
+                _desc = string.Empty;
+
+                ap.ResourceId = UserManager.ActivatedUser.UserId;
+                ap.Start = DateTime.Now;
+            }
+            DXSWI.Modules.OutlookAppointmentForm form = new DXSWI.Modules.OutlookAppointmentForm(scheduler, e.Appointment, e.OpenRecurrenceForm);
+            try
+            {
+                e.DialogResult = form.ShowDialog();
+                e.Handled = true;
+            }
+            finally
+            {
+                form.Dispose();
+            }
+
+        }
     }
 }
