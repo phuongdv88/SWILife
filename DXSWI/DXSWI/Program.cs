@@ -8,6 +8,7 @@ using DevExpress.LookAndFeel;
 using DXSWI.Forms;
 using System.Threading;
 using DevExpress.XtraEditors;
+using System.Diagnostics;
 
 namespace DXSWI
 {
@@ -35,7 +36,10 @@ namespace DXSWI
                     XtraMessageBox.Show("Application is already running!", "Multiple Instances", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                var sw = Stopwatch.StartNew();
                 ScreenManager.Instance.InitLoginScreen();
+                sw.Stop();
+                MessageBox.Show(string.Format("{0}", sw.ElapsedMilliseconds)) ;
             }
         }
     }

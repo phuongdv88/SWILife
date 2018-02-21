@@ -22,10 +22,6 @@ namespace SWIBLL.Models
         {
             Status = string.Empty;
         }
-        ~RunningTask()
-        {
-
-        }
     }
 
 }

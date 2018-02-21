@@ -39,9 +39,5 @@ namespace SWIBLL.Models
             RoleValue = -1;
             EmailAccount = string.Empty;
         }
-        ~User()
-        {
-
-        }
     }
 }

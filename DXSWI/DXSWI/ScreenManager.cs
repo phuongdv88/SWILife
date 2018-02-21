@@ -11,7 +11,7 @@ using DevExpress.XtraSplashScreen;
 
 namespace DXSWI
 {
-    class ScreenManager
+    class ScreenManager : IDisposable
     {
         // this class initializes and manages all of screens, screen modules, user control, form
         static ScreenManager instance = null;
@@ -21,9 +21,12 @@ namespace DXSWI
         
         ScreenManager()
         {
-            //SplashScreenManager.ShowForm(null, typeof(ssMain), true, true, false, 1000);
+            SplashScreenManager.ShowForm(null, typeof(ssMain), false, false, false, 1000);
             mdlgLogin = new dlgLogin();
             mMain = new SWIMain();
+            SplashScreenManager.CloseForm();
+
+
         }
 
         public static ScreenManager Instance
@@ -42,7 +45,9 @@ namespace DXSWI
 
         public void InitLoginScreen()
         {
+
             Application.Run(mdlgLogin);
+
             //Application.Run(mMain);
         }
         public void ShowLoginScreen()
@@ -53,7 +58,6 @@ namespace DXSWI
         }
         public void ShowMainScreen()
         {
-            //todo: update data
             // setup ui by role
             mMain?.SetupUiByRole();
             mMain?.InitComponents();
@@ -78,7 +82,10 @@ namespace DXSWI
             mMain?.NewAppointment(subject, desc);
         }
 
-
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

@@ -58,9 +58,5 @@ namespace SWIBLL.Models
             UserName = string.Empty;
         }
 
-        ~Company()
-        {
-
-        }
     }
 }

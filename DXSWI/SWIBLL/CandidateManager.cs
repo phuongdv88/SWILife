@@ -36,10 +36,6 @@ namespace SWIBLL
         {
             NumberOfCandidates = DataAccess.Instance.getNumberOfCandidates();
         }
-        ~CandidateManager()
-        {
-                
-        }
 
         //public DataTable getCurrentPages()
         //{

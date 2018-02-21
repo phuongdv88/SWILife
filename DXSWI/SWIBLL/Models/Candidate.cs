@@ -96,9 +96,5 @@ namespace SWIBLL.Models
             IsQualified = false;
     }
 
-        ~Candidate()
-        {
-
-        }
     }
 }

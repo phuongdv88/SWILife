@@ -263,8 +263,7 @@ namespace DXSWI.Forms
                             mJobOrder = JobOrderManager.getJobOrderByTitle(TitleTextEdit.Text.Trim(), companiesNameAndId[companyComboxEdit.Text]);
                             if (mJobOrder == null)
                             {
-                                XtraMessageBox.Show("Load data fail", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Close();
+                                throw new Exception("Load data fail");
                             }
                             fillCurrentJoborderToUI();
                             loadAttachment();

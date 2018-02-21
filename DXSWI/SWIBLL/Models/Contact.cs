@@ -61,9 +61,5 @@ namespace SWIBLL.Models
             Owner = string.Empty;
             ImageLink = string.Empty;
         }
-        ~Contact()
-        {
-
-        }
     }
 }

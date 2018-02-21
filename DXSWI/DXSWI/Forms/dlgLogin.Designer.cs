@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::DXSWI.Forms.ssMain), true, true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgLogin));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.checkEditRememberMe = new DevExpress.XtraEditors.CheckEdit();
@@ -48,10 +47,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splashScreenManager1
-            // 
-            splashScreenManager1.ClosingDelay = 100;
             // 
             // imageList1
             // 

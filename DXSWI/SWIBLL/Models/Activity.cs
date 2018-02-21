@@ -59,9 +59,5 @@ namespace SWIBLL.Models
             Notes = string.Empty;
             CompanyId = -1;
         }
-        ~Activity()
-        {
-
-        }
     }
 }

@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SWIMain));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -185,9 +185,9 @@
             this.bbiUserAdd.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.AddMaleUser;
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem1.Text = "Add new user";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.bbiUserAdd.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Add new user";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.bbiUserAdd.SuperTip = superToolTip3;
             this.bbiUserAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserAdd_ItemClick);
             // 
             // bbiUserEdit
@@ -198,9 +198,9 @@
             this.bbiUserEdit.ImageOptions.Image = global::DXSWI.Properties.Resources.EditMaleUsericon;
             this.bbiUserEdit.Name = "bbiUserEdit";
             this.bbiUserEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem2.Text = "Edit current selected user";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.bbiUserEdit.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "Edit current selected user";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.bbiUserEdit.SuperTip = superToolTip4;
             this.bbiUserEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserEdit_ItemClick);
             // 
             // bbiUserDelete
@@ -705,9 +705,9 @@
             this.fpNotify.Options.CloseOnOuterClick = true;
             this.fpNotify.OptionsButtonPanel.ButtonPanelContentAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.fpNotify.OptionsButtonPanel.ButtonPanelLocation = DevExpress.Utils.FlyoutPanelButtonPanelLocation.Bottom;
-            buttonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions1.Image")));
+            buttonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions2.Image")));
             this.fpNotify.OptionsButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.Utils.PeekFormButton("OK", true, buttonImageOptions1, true, null)});
+            new DevExpress.Utils.PeekFormButton("OK", true, buttonImageOptions2, true, null)});
             this.fpNotify.OwnerControl = this.pcMain;
             this.fpNotify.Size = new System.Drawing.Size(352, 67);
             this.fpNotify.TabIndex = 0;

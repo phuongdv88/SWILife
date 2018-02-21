@@ -54,9 +54,5 @@ namespace SWIBLL.Models
             WebLink = string.Empty;
 
         }
-        ~JobOrder()
-        {
-
-        }
     }
 }
