@@ -365,7 +365,7 @@
             this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemFontEdit1,
             this.repositoryItemRichEditFontSizeEdit1});
-            this.ribbon.Size = new System.Drawing.Size(947, 143);
+            this.ribbon.Size = new System.Drawing.Size(990, 143);
             // 
             // undoItem1
             // 
@@ -481,7 +481,7 @@
             this.recMailContent.Name = "recMailContent";
             this.recMailContent.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
             this.recMailContent.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
-            this.recMailContent.Size = new System.Drawing.Size(923, 444);
+            this.recMailContent.Size = new System.Drawing.Size(966, 456);
             this.recMailContent.TabIndex = 8;
             // 
             // fontSizeIncreaseItem1
@@ -1255,7 +1255,7 @@
             this.lcMain.Location = new System.Drawing.Point(0, 143);
             this.lcMain.Name = "lcMain";
             this.lcMain.Root = this.lcgMain;
-            this.lcMain.Size = new System.Drawing.Size(947, 540);
+            this.lcMain.Size = new System.Drawing.Size(990, 552);
             this.lcMain.TabIndex = 2;
             this.lcMain.Text = "layoutControl1";
             // 
@@ -1265,7 +1265,7 @@
             this.textEditFrom.MenuManager = this.ribbon;
             this.textEditFrom.Name = "textEditFrom";
             this.textEditFrom.Properties.ReadOnly = true;
-            this.textEditFrom.Size = new System.Drawing.Size(795, 20);
+            this.textEditFrom.Size = new System.Drawing.Size(835, 20);
             this.textEditFrom.StyleController = this.lcMain;
             this.textEditFrom.TabIndex = 4;
             // 
@@ -1274,7 +1274,7 @@
             this.textEditTo.Location = new System.Drawing.Point(58, 36);
             this.textEditTo.MenuManager = this.ribbon;
             this.textEditTo.Name = "textEditTo";
-            this.textEditTo.Size = new System.Drawing.Size(795, 20);
+            this.textEditTo.Size = new System.Drawing.Size(835, 20);
             this.textEditTo.StyleController = this.lcMain;
             this.textEditTo.TabIndex = 5;
             // 
@@ -1283,7 +1283,7 @@
             this.textEditSubject.Location = new System.Drawing.Point(58, 60);
             this.textEditSubject.MenuManager = this.ribbon;
             this.textEditSubject.Name = "textEditSubject";
-            this.textEditSubject.Size = new System.Drawing.Size(795, 20);
+            this.textEditSubject.Size = new System.Drawing.Size(835, 20);
             this.textEditSubject.StyleController = this.lcMain;
             this.textEditSubject.TabIndex = 6;
             // 
@@ -1295,9 +1295,9 @@
             this.sbSend.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.sbSend.ImageOptions.Image = global::DXSWI.Properties.Resources.emailsendicon;
             this.sbSend.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.sbSend.Location = new System.Drawing.Point(867, 12);
+            this.sbSend.Location = new System.Drawing.Point(907, 12);
             this.sbSend.Name = "sbSend";
-            this.sbSend.Size = new System.Drawing.Size(68, 68);
+            this.sbSend.Size = new System.Drawing.Size(71, 68);
             this.sbSend.StyleController = this.lcMain;
             this.sbSend.TabIndex = 7;
             this.sbSend.Text = "Send";
@@ -1316,7 +1316,7 @@
             this.lciMailContent});
             this.lcgMain.Location = new System.Drawing.Point(0, 0);
             this.lcgMain.Name = "lcgMain";
-            this.lcgMain.Size = new System.Drawing.Size(947, 540);
+            this.lcgMain.Size = new System.Drawing.Size(990, 552);
             this.lcgMain.TextVisible = false;
             // 
             // layoutControlItem1
@@ -1324,7 +1324,7 @@
             this.layoutControlItem1.Control = this.textEditFrom;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(845, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(885, 24);
             this.layoutControlItem1.Text = "From:";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(43, 13);
             // 
@@ -1333,7 +1333,7 @@
             this.layoutControlItem2.Control = this.textEditTo;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(845, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(885, 24);
             this.layoutControlItem2.Text = "To:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(43, 13);
             // 
@@ -1342,7 +1342,7 @@
             this.lciSubject.Control = this.textEditSubject;
             this.lciSubject.Location = new System.Drawing.Point(0, 48);
             this.lciSubject.Name = "lciSubject";
-            this.lciSubject.Size = new System.Drawing.Size(845, 24);
+            this.lciSubject.Size = new System.Drawing.Size(885, 24);
             this.lciSubject.Text = "Subject: ";
             this.lciSubject.TextSize = new System.Drawing.Size(43, 13);
             // 
@@ -1351,10 +1351,10 @@
             this.layoutControlItem4.Control = this.sbSend;
             this.layoutControlItem4.ControlAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.layoutControlItem4.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.layoutControlItem4.Location = new System.Drawing.Point(855, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(895, 0);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(72, 59);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(72, 72);
+            this.layoutControlItem4.Size = new System.Drawing.Size(75, 72);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
@@ -1362,7 +1362,7 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(845, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(885, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(10, 72);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -1372,7 +1372,7 @@
             this.lciMailContent.Control = this.recMailContent;
             this.lciMailContent.Location = new System.Drawing.Point(0, 72);
             this.lciMailContent.Name = "lciMailContent";
-            this.lciMailContent.Size = new System.Drawing.Size(927, 448);
+            this.lciMailContent.Size = new System.Drawing.Size(970, 460);
             this.lciMailContent.TextSize = new System.Drawing.Size(0, 0);
             this.lciMailContent.TextVisible = false;
             // 
@@ -1499,7 +1499,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 683);
+            this.ClientSize = new System.Drawing.Size(990, 695);
             this.Controls.Add(this.lcMain);
             this.Controls.Add(this.ribbon);
             this.KeyPreview = true;

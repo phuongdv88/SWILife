@@ -73,7 +73,7 @@
             this.colName.Name = "colName";
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
-            this.colName.Width = 139;
+            this.colName.Width = 121;
             // 
             // flowLayoutPanel1
             // 
@@ -81,14 +81,14 @@
             this.flowLayoutPanel1.Controls.Add(this.sbOK);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 668);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 631);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1135, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(993, 30);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // sbCancel
             // 
-            this.sbCancel.Location = new System.Drawing.Point(1042, 3);
+            this.sbCancel.Location = new System.Drawing.Point(900, 3);
             this.sbCancel.Name = "sbCancel";
             this.sbCancel.Size = new System.Drawing.Size(90, 23);
             this.sbCancel.TabIndex = 0;
@@ -97,7 +97,7 @@
             // 
             // sbOK
             // 
-            this.sbOK.Location = new System.Drawing.Point(939, 3);
+            this.sbOK.Location = new System.Drawing.Point(797, 3);
             this.sbOK.Name = "sbOK";
             this.sbOK.Size = new System.Drawing.Size(97, 23);
             this.sbOK.TabIndex = 1;
@@ -111,7 +111,7 @@
             this.gcCandidates.Location = new System.Drawing.Point(0, 0);
             this.gcCandidates.MainView = this.gvCandidates;
             this.gcCandidates.Name = "gcCandidates";
-            this.gcCandidates.Size = new System.Drawing.Size(1135, 668);
+            this.gcCandidates.Size = new System.Drawing.Size(993, 631);
             this.gcCandidates.TabIndex = 2;
             this.gcCandidates.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCandidates});
@@ -123,13 +123,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyEmailToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 26);
             // 
             // copyEmailToolStripMenuItem
             // 
             this.copyEmailToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Copyicon;
             this.copyEmailToolStripMenuItem.Name = "copyEmailToolStripMenuItem";
-            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.copyEmailToolStripMenuItem.Text = "Copy Email";
             this.copyEmailToolStripMenuItem.Click += new System.EventHandler(this.copyEmailToolStripMenuItem_Click);
             // 
@@ -188,7 +188,7 @@
             this.colKeySkill.Name = "colKeySkill";
             this.colKeySkill.Visible = true;
             this.colKeySkill.VisibleIndex = 3;
-            this.colKeySkill.Width = 128;
+            this.colKeySkill.Width = 112;
             // 
             // colCurrentPosition
             // 
@@ -206,7 +206,7 @@
             this.colCurrentEmployer.Name = "colCurrentEmployer";
             this.colCurrentEmployer.Visible = true;
             this.colCurrentEmployer.VisibleIndex = 1;
-            this.colCurrentEmployer.Width = 100;
+            this.colCurrentEmployer.Width = 98;
             // 
             // colDesiredPay
             // 
@@ -215,7 +215,7 @@
             this.colDesiredPay.Name = "colDesiredPay";
             this.colDesiredPay.Visible = true;
             this.colDesiredPay.VisibleIndex = 4;
-            this.colDesiredPay.Width = 73;
+            this.colDesiredPay.Width = 66;
             // 
             // colCellPhone
             // 
@@ -224,7 +224,7 @@
             this.colCellPhone.Name = "colCellPhone";
             this.colCellPhone.Visible = true;
             this.colCellPhone.VisibleIndex = 5;
-            this.colCellPhone.Width = 126;
+            this.colCellPhone.Width = 67;
             // 
             // colEmail
             // 
@@ -233,7 +233,7 @@
             this.colEmail.Name = "colEmail";
             this.colEmail.Visible = true;
             this.colEmail.VisibleIndex = 6;
-            this.colEmail.Width = 82;
+            this.colEmail.Width = 69;
             // 
             // colYear
             // 
@@ -251,7 +251,7 @@
             this.colInterviewNotes.Name = "colInterviewNotes";
             this.colInterviewNotes.Visible = true;
             this.colInterviewNotes.VisibleIndex = 8;
-            this.colInterviewNotes.Width = 186;
+            this.colInterviewNotes.Width = 144;
             // 
             // colCity
             // 
@@ -269,13 +269,13 @@
             this.colModified.Name = "colModified";
             this.colModified.Visible = true;
             this.colModified.VisibleIndex = 10;
-            this.colModified.Width = 87;
+            this.colModified.Width = 102;
             // 
             // dlgAddCandidateToPipeline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 698);
+            this.ClientSize = new System.Drawing.Size(993, 661);
             this.Controls.Add(this.gcCandidates);
             this.Controls.Add(this.flowLayoutPanel1);
             this.KeyPreview = true;

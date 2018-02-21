@@ -77,7 +77,7 @@
             this.gcUser.Name = "gcUser";
             this.gcUser.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gcUser.Size = new System.Drawing.Size(800, 600);
+            this.gcUser.Size = new System.Drawing.Size(793, 600);
             this.gcUser.TabIndex = 0;
             this.gcUser.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvUser});
@@ -191,7 +191,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gcUser);
             this.Name = "frUser";
-            this.Size = new System.Drawing.Size(800, 600);
+            this.Size = new System.Drawing.Size(793, 600);
             this.Load += new System.EventHandler(this.frUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcUser)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);

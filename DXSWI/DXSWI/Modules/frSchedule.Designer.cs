@@ -80,7 +80,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.scMain);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1206, 694);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1029, 400);
             this.splitContainerControl1.SplitterPosition = 253;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -97,7 +97,7 @@
             this.dateNavigator1.Location = new System.Drawing.Point(0, 0);
             this.dateNavigator1.Name = "dateNavigator1";
             this.dateNavigator1.SchedulerControl = this.scMain;
-            this.dateNavigator1.Size = new System.Drawing.Size(253, 694);
+            this.dateNavigator1.Size = new System.Drawing.Size(253, 400);
             this.dateNavigator1.TabIndex = 0;
             // 
             // scMain
@@ -107,7 +107,7 @@
             this.scMain.Location = new System.Drawing.Point(0, 0);
             this.scMain.MenuManager = this.rcSchedule;
             this.scMain.Name = "scMain";
-            this.scMain.Size = new System.Drawing.Size(948, 694);
+            this.scMain.Size = new System.Drawing.Size(771, 400);
             this.scMain.Start = new System.DateTime(2018, 1, 31, 0, 0, 0, 0);
             this.scMain.TabIndex = 0;
             this.scMain.Text = "schedulerControl1";
@@ -166,7 +166,7 @@
             this.rcSchedule.Name = "rcSchedule";
             this.rcSchedule.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.hrpSchedule});
-            this.rcSchedule.Size = new System.Drawing.Size(1206, 144);
+            this.rcSchedule.Size = new System.Drawing.Size(1029, 144);
             // 
             // newAppointmentItem1
             // 
@@ -333,7 +333,7 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.rcSchedule);
             this.Name = "frSchedule";
-            this.Size = new System.Drawing.Size(1206, 838);
+            this.Size = new System.Drawing.Size(1029, 544);
             this.Load += new System.EventHandler(this.frSchedule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);

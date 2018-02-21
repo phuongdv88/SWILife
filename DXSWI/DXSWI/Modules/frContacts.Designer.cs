@@ -59,7 +59,7 @@
             this.gcContacts.Location = new System.Drawing.Point(0, 0);
             this.gcContacts.MainView = this.gvContacts;
             this.gcContacts.Name = "gcContacts";
-            this.gcContacts.Size = new System.Drawing.Size(1193, 629);
+            this.gcContacts.Size = new System.Drawing.Size(930, 309);
             this.gcContacts.TabIndex = 0;
             this.gcContacts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvContacts});
@@ -143,7 +143,7 @@
             this.colFirstName.Name = "colFirstName";
             this.colFirstName.Visible = true;
             this.colFirstName.VisibleIndex = 0;
-            this.colFirstName.Width = 96;
+            this.colFirstName.Width = 74;
             // 
             // colLastName
             // 
@@ -152,7 +152,7 @@
             this.colLastName.Name = "colLastName";
             this.colLastName.Visible = true;
             this.colLastName.VisibleIndex = 1;
-            this.colLastName.Width = 76;
+            this.colLastName.Width = 58;
             // 
             // colCompany
             // 
@@ -161,7 +161,7 @@
             this.colCompany.Name = "colCompany";
             this.colCompany.Visible = true;
             this.colCompany.VisibleIndex = 2;
-            this.colCompany.Width = 153;
+            this.colCompany.Width = 118;
             // 
             // colPhoneNumber
             // 
@@ -170,7 +170,7 @@
             this.colPhoneNumber.Name = "colPhoneNumber";
             this.colPhoneNumber.Visible = true;
             this.colPhoneNumber.VisibleIndex = 3;
-            this.colPhoneNumber.Width = 112;
+            this.colPhoneNumber.Width = 86;
             // 
             // colTitle
             // 
@@ -179,7 +179,7 @@
             this.colTitle.Name = "colTitle";
             this.colTitle.Visible = true;
             this.colTitle.VisibleIndex = 4;
-            this.colTitle.Width = 161;
+            this.colTitle.Width = 124;
             // 
             // colEmail
             // 
@@ -188,7 +188,7 @@
             this.colEmail.Name = "colEmail";
             this.colEmail.Visible = true;
             this.colEmail.VisibleIndex = 5;
-            this.colEmail.Width = 117;
+            this.colEmail.Width = 124;
             // 
             // colOwner
             // 
@@ -197,7 +197,7 @@
             this.colOwner.Name = "colOwner";
             this.colOwner.Visible = true;
             this.colOwner.VisibleIndex = 7;
-            this.colOwner.Width = 78;
+            this.colOwner.Width = 54;
             // 
             // colModified
             // 
@@ -206,7 +206,7 @@
             this.colModified.Name = "colModified";
             this.colModified.Visible = true;
             this.colModified.VisibleIndex = 8;
-            this.colModified.Width = 95;
+            this.colModified.Width = 73;
             // 
             // colMisc
             // 
@@ -215,7 +215,7 @@
             this.colMisc.Name = "colMisc";
             this.colMisc.Visible = true;
             this.colMisc.VisibleIndex = 6;
-            this.colMisc.Width = 287;
+            this.colMisc.Width = 201;
             // 
             // frContacts
             // 
@@ -223,7 +223,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gcContacts);
             this.Name = "frContacts";
-            this.Size = new System.Drawing.Size(1193, 629);
+            this.Size = new System.Drawing.Size(930, 309);
             this.Load += new System.EventHandler(this.frContacts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gcContacts)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);

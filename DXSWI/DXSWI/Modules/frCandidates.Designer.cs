@@ -148,7 +148,7 @@
             this.gcCandidates.Location = new System.Drawing.Point(0, 0);
             this.gcCandidates.MainView = this.gvCandidates;
             this.gcCandidates.Name = "gcCandidates";
-            this.gcCandidates.Size = new System.Drawing.Size(1243, 839);
+            this.gcCandidates.Size = new System.Drawing.Size(897, 266);
             this.gcCandidates.TabIndex = 1;
             this.gcCandidates.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCandidates});
@@ -297,7 +297,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gcCandidates);
             this.Name = "frCandidates";
-            this.Size = new System.Drawing.Size(1243, 839);
+            this.Size = new System.Drawing.Size(897, 266);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcCandidates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvCandidates)).EndInit();

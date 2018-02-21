@@ -87,10 +87,10 @@
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
+            this.nbgJoborder = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgUsers = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgCompanies = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgContacts = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgJoborder = new DevExpress.XtraNavBar.NavBarGroup();
             this.ngbCandidates = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgReport = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbgSchedule = new DevExpress.XtraNavBar.NavBarGroup();
@@ -165,7 +165,7 @@
             this.rpReport});
             this.ribbonControlMain.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControlMain.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControlMain.Size = new System.Drawing.Size(1350, 146);
+            this.ribbonControlMain.Size = new System.Drawing.Size(1010, 146);
             this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
             this.ribbonControlMain.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             this.ribbonControlMain.SelectedPageChanged += new System.EventHandler(this.ribbonControlMain_SelectedPageChanged);
@@ -577,10 +577,10 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 736);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 668);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1350, 31);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1010, 31);
             // 
             // ribbonPageGroup3
             // 
@@ -618,12 +618,22 @@
             this.navBarControl1.OptionsNavPane.NavPaneState = DevExpress.XtraNavBar.NavPaneState.Collapsed;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
             this.navBarControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.navBarControl1.Size = new System.Drawing.Size(54, 590);
+            this.navBarControl1.Size = new System.Drawing.Size(54, 522);
             this.navBarControl1.StoreDefaultPaintStyleName = true;
             this.navBarControl1.TabIndex = 5;
             this.navBarControl1.Text = "Functions";
             this.navBarControl1.CustomDrawLink += new DevExpress.XtraNavBar.ViewInfo.CustomDrawNavBarElementEventHandler(this.navBarControl1_CustomDrawLink);
             this.navBarControl1.ActiveGroupChanged += new DevExpress.XtraNavBar.NavBarGroupEventHandler(this.navBarControl1_ActiveGroupChanged);
+            // 
+            // nbgJoborder
+            // 
+            this.nbgJoborder.Caption = "Job Orders";
+            this.nbgJoborder.Expanded = true;
+            this.nbgJoborder.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
+            this.nbgJoborder.LargeImage = global::DXSWI.Properties.Resources.task;
+            this.nbgJoborder.Name = "nbgJoborder";
+            this.nbgJoborder.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.SmallImage")));
+            this.nbgJoborder.Tag = "joborder";
             // 
             // nbgUsers
             // 
@@ -651,16 +661,6 @@
             this.nbgContacts.Name = "nbgContacts";
             this.nbgContacts.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgContacts.SmallImage")));
             this.nbgContacts.Tag = "contact";
-            // 
-            // nbgJoborder
-            // 
-            this.nbgJoborder.Caption = "Job Orders";
-            this.nbgJoborder.Expanded = true;
-            this.nbgJoborder.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgJoborder.LargeImage = global::DXSWI.Properties.Resources.task;
-            this.nbgJoborder.Name = "nbgJoborder";
-            this.nbgJoborder.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.SmallImage")));
-            this.nbgJoborder.Tag = "joborder";
             // 
             // ngbCandidates
             // 
@@ -693,7 +693,7 @@
             this.pcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pcMain.Location = new System.Drawing.Point(54, 146);
             this.pcMain.Name = "pcMain";
-            this.pcMain.Size = new System.Drawing.Size(1296, 590);
+            this.pcMain.Size = new System.Drawing.Size(956, 522);
             this.pcMain.TabIndex = 6;
             // 
             // fpNotify
@@ -797,7 +797,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 767);
+            this.ClientSize = new System.Drawing.Size(1010, 699);
             this.Controls.Add(this.pcMain);
             this.Controls.Add(this.navBarControl1);
             this.Controls.Add(this.ribbonStatusBar);

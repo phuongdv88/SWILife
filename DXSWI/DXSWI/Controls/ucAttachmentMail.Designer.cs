@@ -42,7 +42,7 @@
             this.lcAttachment.Location = new System.Drawing.Point(0, 0);
             this.lcAttachment.Name = "lcAttachment";
             this.lcAttachment.Root = this.layoutControlGroup1;
-            this.lcAttachment.Size = new System.Drawing.Size(933, 100);
+            this.lcAttachment.Size = new System.Drawing.Size(272, 82);
             this.lcAttachment.TabIndex = 0;
             this.lcAttachment.Text = "layoutControl1";
             // 
@@ -54,7 +54,7 @@
             this.lcgAttachment});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(933, 100);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(272, 82);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // lcgAttachment
@@ -63,7 +63,7 @@
             this.lcgAttachment.LayoutMode = DevExpress.XtraLayout.Utils.LayoutMode.Flow;
             this.lcgAttachment.Location = new System.Drawing.Point(0, 0);
             this.lcgAttachment.Name = "lcgAttachment";
-            this.lcgAttachment.Size = new System.Drawing.Size(913, 80);
+            this.lcgAttachment.Size = new System.Drawing.Size(252, 62);
             this.lcgAttachment.Text = "Attachments";
             // 
             // ucAttachmentMail
@@ -72,7 +72,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lcAttachment);
             this.Name = "ucAttachmentMail";
-            this.Size = new System.Drawing.Size(933, 100);
+            this.Size = new System.Drawing.Size(272, 82);
             ((System.ComponentModel.ISupportInitialize)(this.lcAttachment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcgAttachment)).EndInit();

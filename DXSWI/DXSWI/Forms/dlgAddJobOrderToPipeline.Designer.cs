@@ -45,7 +45,7 @@
             // 
             // sbAdd
             // 
-            this.sbAdd.Location = new System.Drawing.Point(805, 3);
+            this.sbAdd.Location = new System.Drawing.Point(725, 3);
             this.sbAdd.Name = "sbAdd";
             this.sbAdd.Size = new System.Drawing.Size(75, 23);
             this.sbAdd.TabIndex = 1;
@@ -54,7 +54,7 @@
             // 
             // sbCancel
             // 
-            this.sbCancel.Location = new System.Drawing.Point(886, 3);
+            this.sbCancel.Location = new System.Drawing.Point(806, 3);
             this.sbCancel.Name = "sbCancel";
             this.sbCancel.Size = new System.Drawing.Size(75, 23);
             this.sbCancel.TabIndex = 1;
@@ -67,9 +67,9 @@
             this.flowLayoutPanel1.Controls.Add(this.sbAdd);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 592);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 634);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(964, 27);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(884, 27);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // gcJobOrder
@@ -78,7 +78,7 @@
             this.gcJobOrder.Location = new System.Drawing.Point(0, 0);
             this.gcJobOrder.MainView = this.gvJobOrder;
             this.gcJobOrder.Name = "gcJobOrder";
-            this.gcJobOrder.Size = new System.Drawing.Size(964, 592);
+            this.gcJobOrder.Size = new System.Drawing.Size(884, 634);
             this.gcJobOrder.TabIndex = 3;
             this.gcJobOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvJobOrder});
@@ -140,7 +140,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 619);
+            this.ClientSize = new System.Drawing.Size(884, 661);
             this.Controls.Add(this.gcJobOrder);
             this.Controls.Add(this.flowLayoutPanel1);
             this.KeyPreview = true;

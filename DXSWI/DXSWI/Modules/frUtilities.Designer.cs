@@ -66,7 +66,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1155, 629);
+            this.layoutControl1.Size = new System.Drawing.Size(877, 513);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -74,15 +74,15 @@
             // 
             this.FileNameTextEdit.Location = new System.Drawing.Point(79, 42);
             this.FileNameTextEdit.Name = "FileNameTextEdit";
-            this.FileNameTextEdit.Size = new System.Drawing.Size(673, 20);
+            this.FileNameTextEdit.Size = new System.Drawing.Size(490, 20);
             this.FileNameTextEdit.StyleController = this.layoutControl1;
             this.FileNameTextEdit.TabIndex = 4;
             // 
             // sbImport
             // 
-            this.sbImport.Location = new System.Drawing.Point(977, 42);
+            this.sbImport.Location = new System.Drawing.Point(739, 42);
             this.sbImport.Name = "sbImport";
-            this.sbImport.Size = new System.Drawing.Size(154, 22);
+            this.sbImport.Size = new System.Drawing.Size(114, 22);
             this.sbImport.StyleController = this.layoutControl1;
             this.sbImport.TabIndex = 5;
             this.sbImport.Text = "Start Import";
@@ -91,7 +91,7 @@
             // FileTypeComboBoxEdit
             // 
             this.FileTypeComboBoxEdit.EditValue = "Candidate";
-            this.FileTypeComboBoxEdit.Location = new System.Drawing.Point(878, 42);
+            this.FileTypeComboBoxEdit.Location = new System.Drawing.Point(678, 42);
             this.FileTypeComboBoxEdit.Name = "FileTypeComboBoxEdit";
             this.FileTypeComboBoxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -100,7 +100,7 @@
             "Company",
             "Contact"});
             this.FileTypeComboBoxEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.FileTypeComboBoxEdit.Size = new System.Drawing.Size(95, 20);
+            this.FileTypeComboBoxEdit.Size = new System.Drawing.Size(57, 20);
             this.FileTypeComboBoxEdit.StyleController = this.layoutControl1;
             this.FileTypeComboBoxEdit.TabIndex = 6;
             // 
@@ -109,15 +109,15 @@
             this.InfoMemoEdit.Location = new System.Drawing.Point(24, 84);
             this.InfoMemoEdit.Name = "InfoMemoEdit";
             this.InfoMemoEdit.Properties.ReadOnly = true;
-            this.InfoMemoEdit.Size = new System.Drawing.Size(1107, 521);
+            this.InfoMemoEdit.Size = new System.Drawing.Size(829, 405);
             this.InfoMemoEdit.StyleController = this.layoutControl1;
             this.InfoMemoEdit.TabIndex = 7;
             // 
             // sbBrowse
             // 
-            this.sbBrowse.Location = new System.Drawing.Point(756, 42);
+            this.sbBrowse.Location = new System.Drawing.Point(573, 42);
             this.sbBrowse.Name = "sbBrowse";
-            this.sbBrowse.Size = new System.Drawing.Size(63, 22);
+            this.sbBrowse.Size = new System.Drawing.Size(46, 22);
             this.sbBrowse.StyleController = this.layoutControl1;
             this.sbBrowse.TabIndex = 8;
             this.sbBrowse.Text = "...";
@@ -131,7 +131,7 @@
             this.ImportFromFile});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1155, 629);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(877, 513);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // ImportFromFile
@@ -144,7 +144,7 @@
             this.layoutControlItem3});
             this.ImportFromFile.Location = new System.Drawing.Point(0, 0);
             this.ImportFromFile.Name = "ImportFromFile";
-            this.ImportFromFile.Size = new System.Drawing.Size(1135, 609);
+            this.ImportFromFile.Size = new System.Drawing.Size(857, 493);
             this.ImportFromFile.Text = "Import From File";
             // 
             // lciFileName
@@ -152,25 +152,25 @@
             this.lciFileName.Control = this.FileNameTextEdit;
             this.lciFileName.Location = new System.Drawing.Point(0, 0);
             this.lciFileName.Name = "lciFileName";
-            this.lciFileName.Size = new System.Drawing.Size(732, 26);
+            this.lciFileName.Size = new System.Drawing.Size(549, 26);
             this.lciFileName.Text = "File Name";
             this.lciFileName.TextSize = new System.Drawing.Size(52, 13);
             // 
             // FileType
             // 
             this.FileType.Control = this.FileTypeComboBoxEdit;
-            this.FileType.Location = new System.Drawing.Point(799, 0);
+            this.FileType.Location = new System.Drawing.Point(599, 0);
             this.FileType.Name = "FileType";
-            this.FileType.Size = new System.Drawing.Size(154, 26);
+            this.FileType.Size = new System.Drawing.Size(116, 26);
             this.FileType.Text = "File Type";
             this.FileType.TextSize = new System.Drawing.Size(52, 13);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.sbImport;
-            this.layoutControlItem2.Location = new System.Drawing.Point(953, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(715, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(158, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(118, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -179,7 +179,7 @@
             this.layoutControlItem1.Control = this.InfoMemoEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1111, 541);
+            this.layoutControlItem1.Size = new System.Drawing.Size(833, 425);
             this.layoutControlItem1.Text = "Infomation";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(52, 13);
@@ -187,9 +187,9 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.sbBrowse;
-            this.layoutControlItem3.Location = new System.Drawing.Point(732, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(549, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(67, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(50, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -199,7 +199,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.layoutControl1);
             this.Name = "frUtilities";
-            this.Size = new System.Drawing.Size(1155, 629);
+            this.Size = new System.Drawing.Size(877, 513);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FileNameTextEdit.Properties)).EndInit();

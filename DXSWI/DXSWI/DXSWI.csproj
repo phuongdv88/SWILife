@@ -119,71 +119,11 @@
     <Compile Include="Controls\ucAttachmentMail.Designer.cs">
       <DependentUpon>ucAttachmentMail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ucCalendar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucCalendar.Designer.cs">
-      <DependentUpon>ucCalendar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucCandidate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucCandidate.Designer.cs">
-      <DependentUpon>ucCandidate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucCandidateManager.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucCandidateManager.Designer.cs">
-      <DependentUpon>ucCandidateManager.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucChangePageBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucChangePageBar.Designer.cs">
-      <DependentUpon>ucChangePageBar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucCompany.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucCompany.Designer.cs">
-      <DependentUpon>ucCompany.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucContact.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucContact.Designer.cs">
-      <DependentUpon>ucContact.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucJobOrder.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucJobOrder.Designer.cs">
-      <DependentUpon>ucJobOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucReport.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucReport.Designer.cs">
-      <DependentUpon>ucReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ucTemplateEditText.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\ucTemplateEditText.Designer.cs">
       <DependentUpon>ucTemplateEditText.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucUser.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucUser.Designer.cs">
-      <DependentUpon>ucUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucUtilities.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucUtilities.Designer.cs">
-      <DependentUpon>ucUtilities.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\dlgAddCandidateToPipeline.cs">
       <SubType>Form</SubType>
@@ -238,12 +178,6 @@
     </Compile>
     <Compile Include="Forms\dlgJobOrderEdit.Designer.cs">
       <DependentUpon>dlgJobOrderEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\dlgJobOrderReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\dlgJobOrderReport.Designer.cs">
-      <DependentUpon>dlgJobOrderReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\dlgLogActivity.cs">
       <SubType>Form</SubType>
@@ -380,38 +314,8 @@
     <EmbeddedResource Include="Controls\ucAttachmentMail.resx">
       <DependentUpon>ucAttachmentMail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucCalendar.resx">
-      <DependentUpon>ucCalendar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucCandidate.resx">
-      <DependentUpon>ucCandidate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucCandidateManager.resx">
-      <DependentUpon>ucCandidateManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucChangePageBar.resx">
-      <DependentUpon>ucChangePageBar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucCompany.resx">
-      <DependentUpon>ucCompany.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucContact.resx">
-      <DependentUpon>ucContact.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucJobOrder.resx">
-      <DependentUpon>ucJobOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucReport.resx">
-      <DependentUpon>ucReport.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ucTemplateEditText.resx">
       <DependentUpon>ucTemplateEditText.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucUser.resx">
-      <DependentUpon>ucUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucUtilities.resx">
-      <DependentUpon>ucUtilities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgAddCandidateToPipeline.resx">
       <DependentUpon>dlgAddCandidateToPipeline.cs</DependentUpon>
@@ -439,9 +343,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgJobOrderEdit.resx">
       <DependentUpon>dlgJobOrderEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\dlgJobOrderReport.resx">
-      <DependentUpon>dlgJobOrderReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgLogActivity.resx">
       <DependentUpon>dlgLogActivity.cs</DependentUpon>

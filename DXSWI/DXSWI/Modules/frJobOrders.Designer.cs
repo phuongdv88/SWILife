@@ -78,7 +78,7 @@
             this.gcJobOrder.Location = new System.Drawing.Point(0, 0);
             this.gcJobOrder.MainView = this.gvJobOrder;
             this.gcJobOrder.Name = "gcJobOrder";
-            this.gcJobOrder.Size = new System.Drawing.Size(933, 618);
+            this.gcJobOrder.Size = new System.Drawing.Size(904, 317);
             this.gcJobOrder.TabIndex = 5;
             this.gcJobOrder.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvJobOrder});
@@ -93,7 +93,7 @@
             this.toolStripSeparator2,
             this.refreshToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 126);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 104);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // newJobOrderToolStripMenuItem
@@ -179,7 +179,7 @@
             this.colCompany.Name = "colCompany";
             this.colCompany.Visible = true;
             this.colCompany.VisibleIndex = 1;
-            this.colCompany.Width = 185;
+            this.colCompany.Width = 161;
             // 
             // colType
             // 
@@ -188,7 +188,7 @@
             this.colType.Name = "colType";
             this.colType.Visible = true;
             this.colType.VisibleIndex = 2;
-            this.colType.Width = 25;
+            this.colType.Width = 48;
             // 
             // colStatus
             // 
@@ -197,7 +197,7 @@
             this.colStatus.Name = "colStatus";
             this.colStatus.Visible = true;
             this.colStatus.VisibleIndex = 3;
-            this.colStatus.Width = 30;
+            this.colStatus.Width = 50;
             // 
             // colAge
             // 
@@ -206,7 +206,7 @@
             this.colAge.Name = "colAge";
             this.colAge.Visible = true;
             this.colAge.VisibleIndex = 4;
-            this.colAge.Width = 60;
+            this.colAge.Width = 56;
             // 
             // colSubmitted
             // 
@@ -215,7 +215,7 @@
             this.colSubmitted.Name = "colSubmitted";
             this.colSubmitted.Visible = true;
             this.colSubmitted.VisibleIndex = 5;
-            this.colSubmitted.Width = 59;
+            this.colSubmitted.Width = 80;
             // 
             // colCanInPipeLine
             // 
@@ -224,7 +224,7 @@
             this.colCanInPipeLine.Name = "colCanInPipeLine";
             this.colCanInPipeLine.Visible = true;
             this.colCanInPipeLine.VisibleIndex = 6;
-            this.colCanInPipeLine.Width = 49;
+            this.colCanInPipeLine.Width = 65;
             // 
             // colOwner
             // 
@@ -233,7 +233,7 @@
             this.colOwner.Name = "colOwner";
             this.colOwner.Visible = true;
             this.colOwner.VisibleIndex = 7;
-            this.colOwner.Width = 36;
+            this.colOwner.Width = 54;
             // 
             // colCity
             // 
@@ -242,7 +242,7 @@
             this.colCity.Name = "colCity";
             this.colCity.Visible = true;
             this.colCity.VisibleIndex = 8;
-            this.colCity.Width = 38;
+            this.colCity.Width = 49;
             // 
             // colLink
             // 
@@ -251,7 +251,7 @@
             this.colLink.Name = "colLink";
             this.colLink.Visible = true;
             this.colLink.VisibleIndex = 9;
-            this.colLink.Width = 214;
+            this.colLink.Width = 137;
             // 
             // frJobOrders
             // 
@@ -259,7 +259,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gcJobOrder);
             this.Name = "frJobOrders";
-            this.Size = new System.Drawing.Size(933, 618);
+            this.Size = new System.Drawing.Size(904, 317);
             ((System.ComponentModel.ISupportInitialize)(this.gcJobOrder)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvJobOrder)).EndInit();

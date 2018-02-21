@@ -44,6 +44,7 @@
             this.addJobOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvCompanies = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPrimaryPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colJobs = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,7 +54,6 @@
             this.colPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.viewWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gcCompanies)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvCompanies)).BeginInit();
@@ -81,7 +81,7 @@
             this.gcCompanies.Location = new System.Drawing.Point(0, 0);
             this.gcCompanies.MainView = this.gvCompanies;
             this.gcCompanies.Name = "gcCompanies";
-            this.gcCompanies.Size = new System.Drawing.Size(1117, 623);
+            this.gcCompanies.Size = new System.Drawing.Size(847, 329);
             this.gcCompanies.TabIndex = 0;
             this.gcCompanies.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCompanies});
@@ -101,7 +101,7 @@
             this.refreshDataToolStripMenuItem,
             this.viewWebsiteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 198);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(163, 176);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // newCompanyToolStripMenuItem
@@ -166,6 +166,14 @@
             this.refreshDataToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.refreshDataToolStripMenuItem.Text = "Refresh Data";
             this.refreshDataToolStripMenuItem.Click += new System.EventHandler(this.refreshDataToolStripMenuItem_Click);
+            // 
+            // viewWebsiteToolStripMenuItem
+            // 
+            this.viewWebsiteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Insert_hyperlink_icon1;
+            this.viewWebsiteToolStripMenuItem.Name = "viewWebsiteToolStripMenuItem";
+            this.viewWebsiteToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.viewWebsiteToolStripMenuItem.Text = "View Website";
+            this.viewWebsiteToolStripMenuItem.Click += new System.EventHandler(this.viewWebsiteToolStripMenuItem_Click);
             // 
             // gvCompanies
             // 
@@ -279,21 +287,13 @@
             this.colModified.VisibleIndex = 8;
             this.colModified.Width = 120;
             // 
-            // viewWebsiteToolStripMenuItem
-            // 
-            this.viewWebsiteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Insert_hyperlink_icon1;
-            this.viewWebsiteToolStripMenuItem.Name = "viewWebsiteToolStripMenuItem";
-            this.viewWebsiteToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.viewWebsiteToolStripMenuItem.Text = "View Website";
-            this.viewWebsiteToolStripMenuItem.Click += new System.EventHandler(this.viewWebsiteToolStripMenuItem_Click);
-            // 
             // frCompanies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gcCompanies);
             this.Name = "frCompanies";
-            this.Size = new System.Drawing.Size(1117, 623);
+            this.Size = new System.Drawing.Size(847, 329);
             ((System.ComponentModel.ISupportInitialize)(this.gcCompanies)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvCompanies)).EndInit();

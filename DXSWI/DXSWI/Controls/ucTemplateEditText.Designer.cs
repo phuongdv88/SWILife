@@ -93,8 +93,8 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.richEditBarController1 = new DevExpress.XtraRichEdit.UI.RichEditBarController();
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.richEditBarController1 = new DevExpress.XtraRichEdit.UI.RichEditBarController();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichEditFontSizeEdit1)).BeginInit();
@@ -111,7 +111,7 @@
             this.recMain.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
             this.recMain.Options.Printing.PrintPreviewFormKind = DevExpress.XtraRichEdit.PrintPreviewFormKind.Bars;
             this.recMain.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
-            this.recMain.Size = new System.Drawing.Size(872, 499);
+            this.recMain.Size = new System.Drawing.Size(872, 419);
             this.recMain.TabIndex = 0;
             this.recMain.ToolTipController = this.toolTipController1;
             // 
@@ -565,7 +565,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 530);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 450);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(872, 0);
             // 
@@ -575,7 +575,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 499);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 419);
             // 
             // barDockControlRight
             // 
@@ -583,7 +583,11 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(872, 31);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 499);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 419);
+            // 
+            // toolTipController1
+            // 
+            this.toolTipController1.GetActiveObjectInfo += new DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventHandler(this.toolTipController1_GetActiveObjectInfo);
             // 
             // richEditBarController1
             // 
@@ -639,10 +643,6 @@
             this.richEditBarController1.BarItems.Add(this.replaceItem1);
             this.richEditBarController1.Control = this.recMain;
             // 
-            // toolTipController1
-            // 
-            this.toolTipController1.GetActiveObjectInfo += new DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventHandler(this.toolTipController1_GetActiveObjectInfo);
-            // 
             // ucTemplateEditText
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -653,7 +653,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "ucTemplateEditText";
-            this.Size = new System.Drawing.Size(872, 530);
+            this.Size = new System.Drawing.Size(872, 450);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichEditFontSizeEdit1)).EndInit();
