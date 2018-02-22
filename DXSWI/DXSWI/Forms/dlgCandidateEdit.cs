@@ -1000,7 +1000,7 @@ namespace DXSWI.Forms
                     string companyName = data_row["CompanyName"].ToString();
                     string jobTitle = data_row["Title"].ToString();
                     long jobOrderId = Convert.ToInt64(data_row["JobOrderId"].ToString());
-                    dlgMailEdit dlg = ScreenManager.EmailEdit;
+                    dlgMailEdit dlg = ScreenManager.Instance.EmailEdit;
                     dlg.Init(runningTaskIds, emails, names, canIds, companyName, jobTitle, jobOrderId);
                     dlg.ShowDialog();
                 }

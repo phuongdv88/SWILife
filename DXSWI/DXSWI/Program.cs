@@ -21,32 +21,32 @@ namespace DXSWI
         [STAThread]
         static void Main()
         {
-            if (ApplicationDeployment.IsNetworkDeployed && ApplicationDeployment.CurrentDeployment.IsFirstRun)
-            {
+            //if (ApplicationDeployment.IsNetworkDeployed && ApplicationDeployment.CurrentDeployment.IsFirstRun)
+            //{
 
-                string appPath = Application.StartupPath;
-                string winPath = Environment.GetEnvironmentVariable("WINDIR");
+            //    string appPath = Application.StartupPath;
+            //    string winPath = Environment.GetEnvironmentVariable("WINDIR");
 
-                Process proc = new Process();
-                System.IO.Directory.SetCurrentDirectory(appPath);
+            //    Process proc = new Process();
+            //    System.IO.Directory.SetCurrentDirectory(appPath);
 
-                proc.EnableRaisingEvents = false;
-                proc.StartInfo.CreateNoWindow = false;
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            //    proc.EnableRaisingEvents = false;
+            //    proc.StartInfo.CreateNoWindow = false;
+            //    proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
-                proc.StartInfo.FileName = winPath + @"\Microsoft.NET\Framework\v2.0.50727\ngen.exe";
-                proc.StartInfo.Arguments = "uninstall " + Application.ProductName + " /nologo /silent";
+            //    proc.StartInfo.FileName = winPath + @"\Microsoft.NET\Framework\v2.0.50727\ngen.exe";
+            //    proc.StartInfo.Arguments = "uninstall " + Application.ProductName + " /nologo /silent";
 
-                proc.Start();
-                proc.WaitForExit();
+            //    proc.Start();
+            //    proc.WaitForExit();
 
-                proc.StartInfo.FileName = winPath + @"\Microsoft.NET\Framework\v2.0.50727\ngen.exe";
-                proc.StartInfo.Arguments = "install " + Application.ProductName + " /nologo /silent";
+            //    proc.StartInfo.FileName = winPath + @"\Microsoft.NET\Framework\v2.0.50727\ngen.exe";
+            //    proc.StartInfo.Arguments = "install " + Application.ProductName + " /nologo /silent";
 
-                proc.Start();
-                proc.WaitForExit();
+            //    proc.Start();
+            //    proc.WaitForExit();
 
-            }
+            //}
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             BonusSkins.Register();

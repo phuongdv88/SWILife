@@ -294,7 +294,7 @@ namespace DXSWI.Forms
         public void EmailToCandidates(List<long> runningTaskIds, List<string> emails, List<string> names, List<long> canIds)
         {
             //dlgMailEdit dlg = new dlgMailEdit();
-            dlgMailEdit dlg = ScreenManager.EmailEdit;
+            dlgMailEdit dlg = ScreenManager.Instance.EmailEdit;
             dlg.Init(runningTaskIds, emails, names, canIds, mJobOrder.CompanyName, mJobOrder.Title, mJobOrder.JobOrderId);
             dlg.ShowDialog();
         }

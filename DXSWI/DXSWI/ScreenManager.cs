@@ -15,15 +15,16 @@ namespace DXSWI
     {
         // this class initializes and manages all of screens, screen modules, user control, form
         static ScreenManager instance = null;
-        dlgLogin mdlgLogin;
-        SWIMain mMain;
-        public static dlgMailEdit EmailEdit = new dlgMailEdit();
+        private dlgLogin mdlgLogin;
+        private SWIMain mMain;
+        public dlgMailEdit EmailEdit { get; set; }
         
         ScreenManager()
         {
             SplashScreenManager.ShowForm(null, typeof(ssMain), false, false, false, 1000);
             mdlgLogin = new dlgLogin();
             mMain = new SWIMain();
+            EmailEdit = new dlgMailEdit();
             SplashScreenManager.CloseForm();
 
 
