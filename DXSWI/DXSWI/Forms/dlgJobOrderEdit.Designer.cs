@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView1 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView2 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgJobOrderEdit));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet1 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
-            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet1 = new DevExpress.XtraEditors.FormatConditionIconSet();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon3 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet2 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet2 = new DevExpress.XtraEditors.FormatConditionIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon4 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon5 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon6 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
@@ -134,15 +134,16 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ccReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportJobOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -206,7 +207,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             this.SuspendLayout();
@@ -257,7 +257,7 @@
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1126, 542);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1126, 639);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -265,25 +265,25 @@
             // 
             this.ccReport.DataBindings = null;
             this.ccReport.DataSource = this.reportJobOrderBindingSource;
-            xyDiagram1.AxisX.Alignment = DevExpress.XtraCharts.AxisAlignment.Zero;
-            xyDiagram1.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.ccReport.Diagram = xyDiagram1;
+            xyDiagram2.AxisX.Alignment = DevExpress.XtraCharts.AxisAlignment.Zero;
+            xyDiagram2.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.ccReport.Diagram = xyDiagram2;
             this.ccReport.Legend.Name = "Default Legend";
             this.ccReport.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
             this.ccReport.Location = new System.Drawing.Point(497, 42);
             this.ccReport.Name = "ccReport";
-            series1.ArgumentDataMember = "StepName";
-            series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
-            series1.Name = "Candidate";
-            series1.ValueDataMembersSerializable = "Value";
-            sideBySideBarSeriesView1.BarWidth = 0.4D;
-            sideBySideBarSeriesView1.ColorEach = true;
-            series1.View = sideBySideBarSeriesView1;
+            series2.ArgumentDataMember = "StepName";
+            series2.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series2.Name = "Candidate";
+            series2.ValueDataMembersSerializable = "Value";
+            sideBySideBarSeriesView2.BarWidth = 0.4D;
+            sideBySideBarSeriesView2.ColorEach = true;
+            series2.View = sideBySideBarSeriesView2;
             this.ccReport.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1};
-            this.ccReport.Size = new System.Drawing.Size(605, 69);
+        series2};
+            this.ccReport.Size = new System.Drawing.Size(605, 85);
             this.ccReport.TabIndex = 38;
             // 
             // reportJobOrderBindingSource
@@ -293,9 +293,10 @@
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.layoutControl1);
-            this.groupControl1.Location = new System.Drawing.Point(12, 436);
+            this.groupControl1.Location = new System.Drawing.Point(12, 531);
+            this.groupControl1.MaximumSize = new System.Drawing.Size(0, 70);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(469, 68);
+            this.groupControl1.Size = new System.Drawing.Size(469, 70);
             this.groupControl1.TabIndex = 36;
             this.groupControl1.Text = "Attachment";
             // 
@@ -309,7 +310,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(2, 20);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup6;
-            this.layoutControl1.Size = new System.Drawing.Size(465, 46);
+            this.layoutControl1.Size = new System.Drawing.Size(465, 48);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -327,9 +328,9 @@
             // sbAttachmentView
             // 
             this.sbAttachmentView.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAttachmentView.ImageOptions.Image")));
-            this.sbAttachmentView.Location = new System.Drawing.Point(324, 12);
+            this.sbAttachmentView.Location = new System.Drawing.Point(319, 12);
             this.sbAttachmentView.Name = "sbAttachmentView";
-            this.sbAttachmentView.Size = new System.Drawing.Size(50, 22);
+            this.sbAttachmentView.Size = new System.Drawing.Size(55, 22);
             this.sbAttachmentView.StyleController = this.layoutControl1;
             this.sbAttachmentView.TabIndex = 36;
             this.sbAttachmentView.Text = "View";
@@ -338,7 +339,7 @@
             // sbDelete
             // 
             this.sbDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbDelete.ImageOptions.Image")));
-            this.sbDelete.Location = new System.Drawing.Point(261, 12);
+            this.sbDelete.Location = new System.Drawing.Point(256, 12);
             this.sbDelete.Name = "sbDelete";
             this.sbDelete.Size = new System.Drawing.Size(59, 22);
             this.sbDelete.StyleController = this.layoutControl1;
@@ -351,7 +352,7 @@
             this.sbAddAttachment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbAddAttachment.ImageOptions.Image")));
             this.sbAddAttachment.Location = new System.Drawing.Point(12, 12);
             this.sbAddAttachment.Name = "sbAddAttachment";
-            this.sbAddAttachment.Size = new System.Drawing.Size(54, 22);
+            this.sbAddAttachment.Size = new System.Drawing.Size(51, 22);
             this.sbAddAttachment.StyleController = this.layoutControl1;
             this.sbAddAttachment.TabIndex = 34;
             this.sbAddAttachment.Text = "Add";
@@ -369,7 +370,7 @@
             this.layoutControlItem4});
             this.layoutControlGroup6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup6.Name = "Root";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(465, 46);
+            this.layoutControlGroup6.Size = new System.Drawing.Size(465, 48);
             this.layoutControlGroup6.TextVisible = false;
             // 
             // layoutControlItem6
@@ -377,7 +378,7 @@
             this.layoutControlItem6.Control = this.sbAddAttachment;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(58, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(55, 28);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -385,10 +386,10 @@
             // 
             this.sliAttachment.AllowHotTrack = false;
             this.sliAttachment.CustomizationFormText = "No file is chosen";
-            this.sliAttachment.Location = new System.Drawing.Point(58, 0);
+            this.sliAttachment.Location = new System.Drawing.Point(55, 0);
             this.sliAttachment.MinSize = new System.Drawing.Size(82, 17);
             this.sliAttachment.Name = "sliAttachment";
-            this.sliAttachment.Size = new System.Drawing.Size(191, 26);
+            this.sliAttachment.Size = new System.Drawing.Size(189, 28);
             this.sliAttachment.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.sliAttachment.Text = "No file is chosen";
             this.sliAttachment.TextSize = new System.Drawing.Size(77, 13);
@@ -396,18 +397,18 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.sbDelete;
-            this.layoutControlItem5.Location = new System.Drawing.Point(249, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(244, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(63, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(63, 28);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.sbAttachmentView;
-            this.layoutControlItem9.Location = new System.Drawing.Point(312, 0);
+            this.layoutControlItem9.Location = new System.Drawing.Point(307, 0);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(54, 26);
+            this.layoutControlItem9.Size = new System.Drawing.Size(59, 28);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
@@ -416,14 +417,14 @@
             this.layoutControlItem4.Control = this.sbDownload;
             this.layoutControlItem4.Location = new System.Drawing.Point(366, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(79, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(79, 28);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.CausesValidation = false;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(497, 115);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(497, 131);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(605, 40);
@@ -548,7 +549,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 542);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 639);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1126, 0);
             // 
@@ -558,7 +559,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 542);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 639);
             // 
             // barDockControlRight
             // 
@@ -566,51 +567,54 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1126, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 542);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 639);
             // 
             // gcCandidatePipeline
             // 
             this.gcCandidatePipeline.ContextMenuStrip = this.contextMenuStrip1;
-            this.gcCandidatePipeline.Location = new System.Drawing.Point(497, 159);
+            this.gcCandidatePipeline.Location = new System.Drawing.Point(497, 175);
             this.gcCandidatePipeline.MainView = this.gvCandidatePipeline;
             this.gcCandidatePipeline.Name = "gcCandidatePipeline";
             this.gcCandidatePipeline.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemRatingControl1});
             this.gcCandidatePipeline.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gcCandidatePipeline.Size = new System.Drawing.Size(605, 333);
+            this.gcCandidatePipeline.Size = new System.Drawing.Size(605, 414);
             this.gcCandidatePipeline.TabIndex = 27;
             this.gcCandidatePipeline.ToolTipController = this.toolTipController1;
             this.gcCandidatePipeline.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvCandidatePipeline});
             this.gcCandidatePipeline.DoubleClick += new System.EventHandler(this.gcCandidatePipeline_DoubleClick);
+            this.gcCandidatePipeline.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gcCandidatePipeline_KeyDown);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyEmailToolStripMenuItem,
             this.toolStripSeparator2,
-            this.refreshToolStripMenuItem});
+            this.refreshToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.removeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 54);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 82);
             // 
             // copyEmailToolStripMenuItem
             // 
             this.copyEmailToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actionseditcopyicon1;
             this.copyEmailToolStripMenuItem.Name = "copyEmailToolStripMenuItem";
-            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyEmailToolStripMenuItem.Text = "Copy Email";
             this.copyEmailToolStripMenuItem.Click += new System.EventHandler(this.copyEmailToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(131, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonRefresh1;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
@@ -626,34 +630,34 @@
             this.colStatus,
             this.colLastActivity,
             this.colState});
-            gridFormatRule1.Column = this.colState;
-            gridFormatRule1.ColumnApplyTo = this.colFirstName;
-            gridFormatRule1.Name = "Format0";
-            formatConditionIconSet1.CategoryName = "Shapes";
-            formatConditionIconSetIcon1.PredefinedName = "TrafficLights4_3.png";
-            formatConditionIconSetIcon1.Value = new decimal(new int[] {
+            gridFormatRule2.Column = this.colState;
+            gridFormatRule2.ColumnApplyTo = this.colFirstName;
+            gridFormatRule2.Name = "Format0";
+            formatConditionIconSet2.CategoryName = "Shapes";
+            formatConditionIconSetIcon4.PredefinedName = "TrafficLights4_3.png";
+            formatConditionIconSetIcon4.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            formatConditionIconSetIcon1.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSetIcon2.PredefinedName = "TrafficLights23_1.png";
-            formatConditionIconSetIcon2.Value = new decimal(new int[] {
+            formatConditionIconSetIcon4.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon5.PredefinedName = "TrafficLights23_1.png";
+            formatConditionIconSetIcon5.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            formatConditionIconSetIcon2.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSetIcon3.PredefinedName = "RedToBlack4_3.png";
-            formatConditionIconSetIcon3.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon1);
-            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon2);
-            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon3);
-            formatConditionIconSet1.Name = "TrafficLights3Unrimmed";
-            formatConditionIconSet1.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
-            formatConditionRuleIconSet1.IconSet = formatConditionIconSet1;
-            gridFormatRule1.Rule = formatConditionRuleIconSet1;
-            this.gvCandidatePipeline.FormatRules.Add(gridFormatRule1);
+            formatConditionIconSetIcon5.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon6.PredefinedName = "RedToBlack4_3.png";
+            formatConditionIconSetIcon6.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon4);
+            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon5);
+            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon6);
+            formatConditionIconSet2.Name = "TrafficLights3Unrimmed";
+            formatConditionIconSet2.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRuleIconSet2.IconSet = formatConditionIconSet2;
+            gridFormatRule2.Rule = formatConditionRuleIconSet2;
+            this.gvCandidatePipeline.FormatRules.Add(gridFormatRule2);
             this.gvCandidatePipeline.GridControl = this.gcCandidatePipeline;
             this.gvCandidatePipeline.Name = "gvCandidatePipeline";
             this.gvCandidatePipeline.OptionsBehavior.Editable = false;
@@ -908,15 +912,15 @@
             this.DescriptionMemoExEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.jobOrderBindingSource, "Description", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.DescriptionMemoExEdit.Location = new System.Drawing.Point(12, 238);
             this.DescriptionMemoExEdit.Name = "DescriptionMemoExEdit";
-            this.DescriptionMemoExEdit.Size = new System.Drawing.Size(469, 99);
+            this.DescriptionMemoExEdit.Size = new System.Drawing.Size(469, 139);
             this.DescriptionMemoExEdit.StyleController = this.dataLayoutControl1;
             this.DescriptionMemoExEdit.TabIndex = 19;
             // 
             // sbOK
             // 
-            this.sbOK.Location = new System.Drawing.Point(826, 508);
+            this.sbOK.Location = new System.Drawing.Point(853, 605);
             this.sbOK.Name = "sbOK";
-            this.sbOK.Size = new System.Drawing.Size(119, 22);
+            this.sbOK.Size = new System.Drawing.Size(123, 22);
             this.sbOK.StyleController = this.dataLayoutControl1;
             this.sbOK.TabIndex = 25;
             this.sbOK.Text = "OK";
@@ -924,9 +928,9 @@
             // 
             // sbCancel
             // 
-            this.sbCancel.Location = new System.Drawing.Point(965, 508);
+            this.sbCancel.Location = new System.Drawing.Point(980, 605);
             this.sbCancel.Name = "sbCancel";
-            this.sbCancel.Size = new System.Drawing.Size(149, 22);
+            this.sbCancel.Size = new System.Drawing.Size(134, 22);
             this.sbCancel.StyleController = this.dataLayoutControl1;
             this.sbCancel.TabIndex = 26;
             this.sbCancel.Text = "Exit";
@@ -934,9 +938,9 @@
             // 
             // meInternalNotes
             // 
-            this.meInternalNotes.Location = new System.Drawing.Point(12, 357);
+            this.meInternalNotes.Location = new System.Drawing.Point(12, 397);
             this.meInternalNotes.Name = "meInternalNotes";
-            this.meInternalNotes.Size = new System.Drawing.Size(469, 75);
+            this.meInternalNotes.Size = new System.Drawing.Size(469, 130);
             this.meInternalNotes.StyleController = this.dataLayoutControl1;
             this.meInternalNotes.TabIndex = 34;
             // 
@@ -971,7 +975,7 @@
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1126, 542);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1126, 639);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -985,19 +989,18 @@
             this.layoutControlItem1,
             this.layoutControlItem2,
             this.emptySpaceItem1,
-            this.emptySpaceItem2,
             this.layoutControlItem7,
             this.layoutControlItem10});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1106, 522);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1106, 619);
             // 
             // ItemForDescription
             // 
             this.ItemForDescription.Control = this.DescriptionMemoExEdit;
             this.ItemForDescription.Location = new System.Drawing.Point(0, 210);
             this.ItemForDescription.Name = "ItemForDescription";
-            this.ItemForDescription.Size = new System.Drawing.Size(473, 119);
+            this.ItemForDescription.Size = new System.Drawing.Size(473, 159);
             this.ItemForDescription.Text = "Description";
             this.ItemForDescription.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForDescription.TextSize = new System.Drawing.Size(78, 13);
@@ -1180,22 +1183,22 @@
             this.layoutControlItem11});
             this.layoutControlGroup5.Location = new System.Drawing.Point(473, 0);
             this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(633, 496);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(633, 593);
             this.layoutControlGroup5.Text = "Candidates in pipeline";
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.gcCandidatePipeline;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 117);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 133);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(609, 337);
+            this.layoutControlItem3.Size = new System.Drawing.Size(609, 418);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.standaloneBarDockControl1;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 73);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 89);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(609, 44);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
@@ -1206,50 +1209,42 @@
             this.layoutControlItem11.Control = this.ccReport;
             this.layoutControlItem11.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(609, 73);
+            this.layoutControlItem11.Size = new System.Drawing.Size(609, 89);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.sbOK;
-            this.layoutControlItem1.Location = new System.Drawing.Point(814, 496);
+            this.layoutControlItem1.Location = new System.Drawing.Point(841, 593);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(123, 26);
+            this.layoutControlItem1.Size = new System.Drawing.Size(127, 26);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.sbCancel;
-            this.layoutControlItem2.Location = new System.Drawing.Point(953, 496);
+            this.layoutControlItem2.Location = new System.Drawing.Point(968, 593);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(153, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(138, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 496);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 593);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(814, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(841, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(937, 496);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(16, 26);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.meInternalNotes;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 329);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 369);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(473, 95);
+            this.layoutControlItem7.Size = new System.Drawing.Size(473, 150);
             this.layoutControlItem7.Text = "Internal Notes";
             this.layoutControlItem7.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem7.TextSize = new System.Drawing.Size(78, 13);
@@ -1257,17 +1252,30 @@
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.groupControl1;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 424);
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 519);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(473, 72);
+            this.layoutControlItem10.Size = new System.Drawing.Size(473, 74);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_dialog_close;
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.removeToolStripMenuItem.Text = "Remove";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
             // dlgJobOrderEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1126, 542);
+            this.ClientSize = new System.Drawing.Size(1126, 639);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -1281,9 +1289,9 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgJobOrderEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ccReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportJobOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -1348,7 +1356,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             this.ResumeLayout(false);
@@ -1420,7 +1427,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit contactComboboxEdit;
         private DevExpress.XtraGrid.Columns.GridColumn colEmail;
         private DevExpress.Utils.ToolTipController toolTipController1;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn colState;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
@@ -1456,5 +1462,7 @@
         private System.Windows.Forms.BindingSource reportJobOrderBindingSource;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraBars.BarButtonItem bbiNewApointment;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
     }
 }

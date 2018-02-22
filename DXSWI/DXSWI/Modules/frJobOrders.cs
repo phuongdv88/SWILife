@@ -87,15 +87,21 @@ namespace DXSWI.Modules
                     try
                     {
 
-                        int row = gvJobOrder.GetSelectedRows().First();
-                        DataRow data_row = gvJobOrder.GetDataRow(row);
-                        int jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
-                        JobOrderManager.deleteJobOrder(jobOrderId);
-                        updateData();
+                        var rows = gvJobOrder.GetSelectedRows();
+                        foreach (var row in rows)
+                        {
+                            DataRow data_row = gvJobOrder.GetDataRow(row);
+                            int jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
+                            JobOrderManager.deleteJobOrder(jobOrderId);
+                        }
                     }
                     catch (Exception ex)
                     {
                         XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        updateData();
                     }
                 }
             }

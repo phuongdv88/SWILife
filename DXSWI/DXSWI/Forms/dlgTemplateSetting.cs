@@ -155,15 +155,21 @@ namespace DXSWI.Forms
                     try
                     {
                         // delete this running task data
-                        int row = gvTemplate.GetSelectedRows().First();
-                        DataRow data_row = gvTemplate.GetDataRow(row);
-                        int emailTemplateID = int.Parse(data_row["EmailTemplateId"].ToString());
-                        EmailTemplateManager.DeleteEmailTemplate(emailTemplateID);
-                        updateListTemplate();
+                        var rows = gvTemplate.GetSelectedRows();
+                        foreach (var row in rows)
+                        {
+                            DataRow data_row = gvTemplate.GetDataRow(row);
+                            int emailTemplateID = int.Parse(data_row["EmailTemplateId"].ToString());
+                            EmailTemplateManager.DeleteEmailTemplate(emailTemplateID);
+                        }
                     }
                     catch (Exception ex)
                     {
                         XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        updateListTemplate();
                     }
                 }
             }

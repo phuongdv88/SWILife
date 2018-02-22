@@ -65,7 +65,7 @@ namespace DXSWI.Modules
         }
 
 
-        private void correctDB()
+        public void correctDB()
         {
             // get all candidateId, City, Cellphone
             DataTable dt = CandidateManager.getCandidatesOverview();
@@ -79,14 +79,30 @@ namespace DXSWI.Modules
                     DataRow data_row = dt.Rows[i];
                     long candiateId = Convert.ToInt64(data_row["CandidateId"].ToString());
                     string city = data_row["City"].ToString();
+                    if (city == "Hanoi" || city == "HCM")
+                    {
+                        continue;
+                    }
                     string cellphone = data_row["CellPhone"].ToString();
                     string keySkills = data_row["KeySkills"].ToString();
 
+                    city = city.Replace("+", "").Replace("-", "");
                     city = city.Replace("Da nang", "Danang").Replace("Da Nang", "Danang").Replace("DA NANG", "Danang").Replace("DANANG", "Danang");
-                    city = city.Replace("Ha Noi", "Hanoi").Replace("hanoi", "Hanoi").Replace("hANOI", "Hanoi").Replace("HaNoi", "Hanoi").Replace("HANOI", "Hanoi").Replace("HN", "Hanoi");
+                    city = city.Replace("Ha Noi", "Hanoi").Replace("hanoi", "Hanoi").Replace("hANOI", "Hanoi").Replace("HaNoi", "Hanoi").Replace("HANOI", "Hanoi").Replace("HN", "Hanoi").Replace("HÃ Ná»™i", "Hanoi");
+                    city = city.Replace("Ha noi", "Hanoi").Replace("HA Noi", "Hanoi").Replace("HA NOI", "Hanoi");
                     city = city.Replace("hcm", "HCM").Replace("Hcm", "HCM").Replace("HcM", "HCM").Replace("HCm", "HCM").Replace("HCMC", "HCM").Replace("HCN", "HCM").Replace("Ho Chi Minh", "HCM");
+                    city = city.Replace("Ho Chin Minh", "HCM").Replace("ho chi minh", "HCM").Replace("Ho chi minh", "HCM").Replace("HO CHI MINH", "HCM").Replace("Hochiminh", "HCM");
                     city = city.Trim();
-
+                    
+                    if(city.Contains("Hanoi"))
+                    {
+                        city = "Hanoi";
+                    }
+                                       
+                    if(city.Contains("HCM"))
+                    {
+                        city = "HCM";
+                    }
                     cellphone = cellphone.Replace("(Mobile)", "").Replace("(Home)", "").Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "").Replace(".", "");
                     cellphone = cellphone.Trim();
                     keySkills = keySkills.Replace("Hanoi, ", "").Replace("HCM, ", "").Trim();

@@ -368,6 +368,8 @@ namespace DXSWI
         {
             XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //System.Diagnostics.Process.Start("https://swilife.com");
+            //_frUtilities.correctDB();
+            //changeGroup(_tagUtilities);
         }
 
         public void ShowNotice(string message, string caption, MessageBoxIcon icon)

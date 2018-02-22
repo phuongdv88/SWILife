@@ -110,7 +110,10 @@ namespace DXSWI.Forms
             switch (e.KeyCode)
             {
                 case Keys.Escape:
-                    this.Close();
+                    sbCancel.PerformClick();
+                    break;
+                case Keys.Enter:
+                    sbOK.PerformClick();
                     break;
                 default:
                     break;
@@ -146,6 +149,15 @@ namespace DXSWI.Forms
             {
                 Close();
             }
+        }
+
+        private void gvCandidates_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(gvCandidates.FindFilterText) && !gvCandidates.FindFilterText.Contains('"'))
+            {
+                gvCandidates.FindFilterText = "\"" + gvCandidates.FindFilterText + "\"";
+            }
+            gvCandidates.FindFilterText = gvCandidates.FindFilterText.Replace("+ ", "+").Replace("- ", "-");
         }
     }
 }

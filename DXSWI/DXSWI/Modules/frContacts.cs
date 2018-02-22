@@ -90,16 +90,22 @@ namespace DXSWI.Modules
                     // delete this running task data
                     if (gvContacts.SelectedRowsCount > 0)
                     {
-                        int row = gvContacts.GetSelectedRows().First();
-                        DataRow data_row = gvContacts.GetDataRow(row);
-                        int conId = int.Parse(data_row["ContactId"].ToString());
-                        ContactManager.DeleteContact(conId);
-                        updateData();
+                        var rows = gvContacts.GetSelectedRows();
+                        foreach (var row in rows)
+                        {
+                            DataRow data_row = gvContacts.GetDataRow(row);
+                            int conId = int.Parse(data_row["ContactId"].ToString());
+                            ContactManager.DeleteContact(conId);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
                     XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    updateData();
                 }
             }
         }

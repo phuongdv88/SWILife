@@ -48,29 +48,39 @@ namespace DXSWI.Forms
                 //get current selection object
                 if (gvJobOrder.SelectedRowsCount > 0)
                 {
-                    int row = gvJobOrder.GetSelectedRows().First();
-                    DataRow data_row = gvJobOrder.GetDataRow(row); // for test
-                    int jobId = int.Parse(data_row["JobOrderId"].ToString());
+                    var rows = gvJobOrder.GetSelectedRows();
 
-                    if (RunningTaskManager.isExist(canId, jobId))
+                    foreach (var row in rows)
                     {
-                        throw new Exception("It has already in Pipeline!");
-                    }
+                        DataRow data_row = gvJobOrder.GetDataRow(row); // for test
+                        int jobId = int.Parse(data_row["JobOrderId"].ToString());
 
-                    // add to running task table
-                    RunningTask rtask = new RunningTask { CandidateId = canId, 
-                                                        JobOrderId = jobId,
-                    Added = DateTime.Now,
-                    EnteredBy = UserManager.ActivatedUser?.UserName};
-                    
-                    RunningTaskManager.createRunningTask(rtask);
-                    // emit to update data
-                    updateDataEvent?.Invoke();
+                        if (RunningTaskManager.isExist(canId, jobId))
+                        {
+                            throw new Exception("It has already in Pipeline!");
+                        }
+
+                        // add to running task table
+                        RunningTask rtask = new RunningTask
+                        {
+                            CandidateId = canId,
+                            JobOrderId = jobId,
+                            Added = DateTime.Now,
+                            EnteredBy = UserManager.ActivatedUser?.UserName
+                        };
+
+                        RunningTaskManager.createRunningTask(rtask);
+                    }
                 }                
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // emit to update data
+                updateDataEvent?.Invoke();
             }
         }
 
@@ -92,6 +102,15 @@ namespace DXSWI.Forms
                 default:
                     break;
             }
+        }
+
+        private void gvJobOrder_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(gvJobOrder.FindFilterText) && !gvJobOrder.FindFilterText.Contains('"'))
+            {
+                gvJobOrder.FindFilterText = "\"" + gvJobOrder.FindFilterText + "\"";
+            }
+            gvJobOrder.FindFilterText = gvJobOrder.FindFilterText.Replace("+ ", "+").Replace("- ", "-");
         }
     }
 }

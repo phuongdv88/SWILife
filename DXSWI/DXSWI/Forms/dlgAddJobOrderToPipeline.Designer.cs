@@ -94,7 +94,9 @@
             this.gvJobOrder.GridControl = this.gcJobOrder;
             this.gvJobOrder.Name = "gvJobOrder";
             this.gvJobOrder.OptionsBehavior.Editable = false;
+            this.gvJobOrder.OptionsFind.AlwaysVisible = true;
             this.gvJobOrder.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvJobOrder.ColumnFilterChanged += new System.EventHandler(this.gvJobOrder_ColumnFilterChanged);
             // 
             // colTitle
             // 

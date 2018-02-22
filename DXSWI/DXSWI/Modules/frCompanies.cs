@@ -130,15 +130,21 @@ namespace DXSWI.Modules
                     try
                     {
                         // delete this running task data
-                        int row = gvCompanies.GetSelectedRows().First();
-                        DataRow data_row = gvCompanies.GetDataRow(row);
-                        long comId = int.Parse(data_row["CompanyId"].ToString());
-                        CompanyManager.deleteCompany(comId);
-                        updateData();
+                        var rows = gvCompanies.GetSelectedRows();
+                        foreach (var row in rows)
+                        {
+                            DataRow data_row = gvCompanies.GetDataRow(row);
+                            long comId = int.Parse(data_row["CompanyId"].ToString());
+                            CompanyManager.deleteCompany(comId);
+                        }
                     }
                     catch (Exception ex)
                     {
                         XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        updateData();
                     }
                 }
             }

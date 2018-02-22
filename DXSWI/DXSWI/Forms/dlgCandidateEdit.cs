@@ -959,17 +959,22 @@ namespace DXSWI.Forms
                     try
                     {
                         // delete this running task data
-
-                        int row = gvJobOrderPipeline.GetSelectedRows().First();
-                        DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
-                        int id = int.Parse(data_row["RunningTaskId"].ToString());
-                        RunningTaskManager.deleteRunningTask(id);
-                        updateData();
+                        var rows = gvJobOrderPipeline.GetSelectedRows();
+                        foreach (var row in rows)
+                        {
+                            DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
+                            int id = int.Parse(data_row["RunningTaskId"].ToString());
+                            RunningTaskManager.deleteRunningTask(id);
+                        }
 
                     }
                     catch (Exception ex)
                     {
                         XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        updateData();
                     }
                 }
             }

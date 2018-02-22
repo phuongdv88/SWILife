@@ -603,20 +603,28 @@ namespace DXSWI.Forms
             {
                 if (XtraMessageBox.Show("Are you sure to remove this candidate from this pipeline?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    var rows = gvCandidatePipeline.GetSelectedRows();
                     try
                     {
-                        // delete this running task data
+                        foreach (var row in rows)
+                        {
 
-                        int row = gvCandidatePipeline.GetSelectedRows().First();
-                        DataRow data_row = gvCandidatePipeline.GetDataRow(row);
-                        int id = int.Parse(data_row["RunningTaskId"].ToString());
-                        RunningTaskManager.deleteRunningTask(id);
-                        updateData();
+                            // delete this running task data
+                            DataRow data_row = gvCandidatePipeline.GetDataRow(row);
+                            int id = int.Parse(data_row["RunningTaskId"].ToString());
+                            RunningTaskManager.deleteRunningTask(id);
+
+                        }
                     }
                     catch (Exception ex)
                     {
                         XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    finally
+                    {
+                        updateData();
+                    }
+
                 }
             }
         }
@@ -746,6 +754,23 @@ namespace DXSWI.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bbiDeleteCandidateFromPipeLine.PerformClick();
+        }
+
+        private void gcCandidatePipeline_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Delete:
+                    bbiDeleteCandidateFromPipeLine.PerformClick();
+                    break;
+                default:
+                    break;
             }
         }
     }
