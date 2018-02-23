@@ -18,6 +18,8 @@ using DXSWI.Modules;
 using DevExpress.XtraRichEdit;
 using DXSWI.Controls;
 using System.Text.RegularExpressions;
+using System.Threading;
+using DevExpress.XtraSplashScreen;
 //using Microsoft.Exchange.WebServices.Data;
 
 namespace DXSWI.Forms
@@ -311,6 +313,9 @@ namespace DXSWI.Forms
             try
             {
                 Hide();
+                
+                //SplashScreenManager.ShowForm(this, typeof(wfMain), true, true, false);
+                //SplashScreenManager.ShowDefaultWaitForm("Sending emails to candidates", "Sending..");
                 for (var i = 0; i < _candidateEmails.Count; ++i)
                 {
                     string canEmail = _candidateEmails[i];
@@ -318,8 +323,10 @@ namespace DXSWI.Forms
                     long runId = _runningTaskIds[i];
                     // send mail
                     sendMailViaSmptClient(i, true);
+                    Thread.Sleep(500);
 
                 }
+                //SplashScreenManager.CloseForm();
             }
             catch (Exception ex)
             {
