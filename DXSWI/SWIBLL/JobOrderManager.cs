@@ -13,6 +13,10 @@ namespace SWIBLL
         {
             return DataAccess.Instance.getJobOrders();
         }
+        public static DataTable getJobOrdersByCompanyId(long comId)
+        {
+            return DataAccess.Instance.getJobOrdersByCompanyId(comId);
+        }
 
         public static bool IsJobOrderExist(JobOrder jobOrder)
         {

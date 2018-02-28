@@ -56,7 +56,8 @@ namespace DXSWI.Forms
                         loadAttachment(mCompany.ScanLink);
                     }
                     // load contact of this company
-                    gcContact.DataSource = ContactManager.getContactsById(_comId);
+                    gcContact.DataSource = ContactManager.getContactsByCompanyId(_comId);
+                    gcJobOrder.DataSource = JobOrderManager.getJobOrdersByCompanyId(_comId);
                 }
                 catch (Exception ex)
                 {
@@ -335,6 +336,22 @@ namespace DXSWI.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void gvJobOrder_DoubleClick(object sender, EventArgs e)
+        {
+            EditJobOrder();
+        }
+        public void EditJobOrder()
+        {
+            long jobOrderId = -1;
+            if (gvJobOrder.SelectedRowsCount > 0)
+            {
+                jobOrderId = Convert.ToInt64(gvJobOrder.GetDataRow(gvJobOrder.GetSelectedRows().First())["JobOrderId"].ToString());
+            }
+            dlgJobOrderEdit dlg = new dlgJobOrderEdit(jobOrderId);
+            dlg.UpdateDataEvent += updateData;
+            dlg.ShowDialog();
         }
     }
 }

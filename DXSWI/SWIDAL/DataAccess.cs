@@ -379,6 +379,33 @@ namespace SWIDAL
             return dt;
         }
 
+        public DataTable getJobOrdersByCompanyId(long comId)
+        {
+            if (mCon == null) retryConnectToDb();
+            MySqlCommand cmd = null;
+            DataTable dt = null;
+            try
+            {
+                cmd = new MySqlCommand("spGetJobOrdersByCompanyId", mCon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("ComId", comId);
+                MySqlDataAdapter ad = new MySqlDataAdapter();
+                ad.SelectCommand = cmd;
+                dt = new DataTable();
+                ad.Fill(dt);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+
+            }
+            return dt;
+        }
+
         public DataTable getJobOrderById(long id)
         {
             if (mCon == null) retryConnectToDb();
