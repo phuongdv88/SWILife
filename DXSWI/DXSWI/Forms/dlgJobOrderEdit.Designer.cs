@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView2 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView1 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgJobOrderEdit));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet2 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
-            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet2 = new DevExpress.XtraEditors.FormatConditionIconSet();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon4 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon5 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
-            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon6 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet1 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet1 = new DevExpress.XtraEditors.FormatConditionIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon3 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             this.colState = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
@@ -62,10 +62,10 @@
             this.bbiAddCandidateToPipeline = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAddActivity = new DevExpress.XtraBars.BarButtonItem();
             this.bbiViewCandidate = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiEmailToCandidate = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAutoEmailToCandidate = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiDeleteCandidateFromPipeLine = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiSendSms = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNewApointment = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDeleteCandidateFromPipeLine = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -76,6 +76,8 @@
             this.copyEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvCandidatePipeline = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMatch = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemRatingControl1 = new DevExpress.XtraEditors.Repository.RepositoryItemRatingControl();
@@ -136,14 +138,12 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ccReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportJobOrderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -265,24 +265,24 @@
             // 
             this.ccReport.DataBindings = null;
             this.ccReport.DataSource = this.reportJobOrderBindingSource;
-            xyDiagram2.AxisX.Alignment = DevExpress.XtraCharts.AxisAlignment.Zero;
-            xyDiagram2.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
-            this.ccReport.Diagram = xyDiagram2;
+            xyDiagram1.AxisX.Alignment = DevExpress.XtraCharts.AxisAlignment.Zero;
+            xyDiagram1.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.ccReport.Diagram = xyDiagram1;
             this.ccReport.Legend.Name = "Default Legend";
             this.ccReport.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
             this.ccReport.Location = new System.Drawing.Point(497, 42);
             this.ccReport.Name = "ccReport";
-            series2.ArgumentDataMember = "StepName";
-            series2.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
-            series2.Name = "Candidate";
-            series2.ValueDataMembersSerializable = "Value";
-            sideBySideBarSeriesView2.BarWidth = 0.4D;
-            sideBySideBarSeriesView2.ColorEach = true;
-            series2.View = sideBySideBarSeriesView2;
+            series1.ArgumentDataMember = "StepName";
+            series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series1.Name = "Candidate";
+            series1.ValueDataMembersSerializable = "Value";
+            sideBySideBarSeriesView1.BarWidth = 0.4D;
+            sideBySideBarSeriesView1.ColorEach = true;
+            series1.View = sideBySideBarSeriesView1;
             this.ccReport.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series2};
+        series1};
             this.ccReport.Size = new System.Drawing.Size(605, 85);
             this.ccReport.TabIndex = 38;
             // 
@@ -444,13 +444,13 @@
             this.bbiAddCandidateToPipeline,
             this.bbiAddActivity,
             this.bbiViewCandidate,
-            this.bbiEmailToCandidate,
             this.bbiAutoEmailToCandidate,
             this.bbiDeleteCandidateFromPipeLine,
             this.bbiRefresh,
-            this.bbiNewApointment});
+            this.bbiNewApointment,
+            this.bbiSendSms});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 11;
+            this.barManager1.MaxItemId = 12;
             // 
             // bar2
             // 
@@ -463,10 +463,10 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddCandidateToPipeline),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddActivity),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiViewCandidate),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiEmailToCandidate),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiAutoEmailToCandidate),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDeleteCandidateFromPipeLine),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiSendSms),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiNewApointment),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDeleteCandidateFromPipeLine),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiRefresh)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -497,14 +497,6 @@
             this.bbiViewCandidate.Name = "bbiViewCandidate";
             this.bbiViewCandidate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCandidate_ItemClick);
             // 
-            // bbiEmailToCandidate
-            // 
-            this.bbiEmailToCandidate.Caption = "Email To Candidate";
-            this.bbiEmailToCandidate.Id = 4;
-            this.bbiEmailToCandidate.ImageOptions.Image = global::DXSWI.Properties.Resources.Mailicon;
-            this.bbiEmailToCandidate.Name = "bbiEmailToCandidate";
-            this.bbiEmailToCandidate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEmailToCandidate_ItemClick);
-            // 
             // bbiAutoEmailToCandidate
             // 
             this.bbiAutoEmailToCandidate.Caption = "Auto Send Emails";
@@ -513,13 +505,13 @@
             this.bbiAutoEmailToCandidate.Name = "bbiAutoEmailToCandidate";
             this.bbiAutoEmailToCandidate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAutoEmailToCandidate_ItemClick);
             // 
-            // bbiDeleteCandidateFromPipeLine
+            // bbiSendSms
             // 
-            this.bbiDeleteCandidateFromPipeLine.Caption = "Remove Candidate From Pipeline";
-            this.bbiDeleteCandidateFromPipeLine.Id = 6;
-            this.bbiDeleteCandidateFromPipeLine.ImageOptions.Image = global::DXSWI.Properties.Resources.Actions_dialog_close;
-            this.bbiDeleteCandidateFromPipeLine.Name = "bbiDeleteCandidateFromPipeLine";
-            this.bbiDeleteCandidateFromPipeLine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDeleteCandidate_ItemClick);
+            this.bbiSendSms.Caption = "Send SMS";
+            this.bbiSendSms.Id = 11;
+            this.bbiSendSms.ImageOptions.Image = global::DXSWI.Properties.Resources.SMS_Message_icon;
+            this.bbiSendSms.Name = "bbiSendSms";
+            this.bbiSendSms.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSendSms_ItemClick);
             // 
             // bbiNewApointment
             // 
@@ -528,6 +520,14 @@
             this.bbiNewApointment.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNewApointment.ImageOptions.Image")));
             this.bbiNewApointment.Name = "bbiNewApointment";
             this.bbiNewApointment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNewApointment_ItemClick);
+            // 
+            // bbiDeleteCandidateFromPipeLine
+            // 
+            this.bbiDeleteCandidateFromPipeLine.Caption = "Remove Candidate From Pipeline";
+            this.bbiDeleteCandidateFromPipeLine.Id = 6;
+            this.bbiDeleteCandidateFromPipeLine.ImageOptions.Image = global::DXSWI.Properties.Resources.Actions_dialog_close;
+            this.bbiDeleteCandidateFromPipeLine.Name = "bbiDeleteCandidateFromPipeLine";
+            this.bbiDeleteCandidateFromPipeLine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDeleteCandidate_ItemClick);
             // 
             // bbiRefresh
             // 
@@ -601,22 +601,35 @@
             // 
             this.copyEmailToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actionseditcopyicon1;
             this.copyEmailToolStripMenuItem.Name = "copyEmailToolStripMenuItem";
-            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.copyEmailToolStripMenuItem.Text = "Copy Email";
             this.copyEmailToolStripMenuItem.Click += new System.EventHandler(this.copyEmailToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(131, 6);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Image = global::DXSWI.Properties.Resources.ButtonRefresh1;
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(131, 6);
+            // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_dialog_close;
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.removeToolStripMenuItem.Text = "Remove";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
             // gvCandidatePipeline
             // 
@@ -630,34 +643,34 @@
             this.colStatus,
             this.colLastActivity,
             this.colState});
-            gridFormatRule2.Column = this.colState;
-            gridFormatRule2.ColumnApplyTo = this.colFirstName;
-            gridFormatRule2.Name = "Format0";
-            formatConditionIconSet2.CategoryName = "Shapes";
-            formatConditionIconSetIcon4.PredefinedName = "TrafficLights4_3.png";
-            formatConditionIconSetIcon4.Value = new decimal(new int[] {
+            gridFormatRule1.Column = this.colState;
+            gridFormatRule1.ColumnApplyTo = this.colFirstName;
+            gridFormatRule1.Name = "Format0";
+            formatConditionIconSet1.CategoryName = "Shapes";
+            formatConditionIconSetIcon1.PredefinedName = "TrafficLights4_3.png";
+            formatConditionIconSetIcon1.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            formatConditionIconSetIcon4.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSetIcon5.PredefinedName = "TrafficLights23_1.png";
-            formatConditionIconSetIcon5.Value = new decimal(new int[] {
+            formatConditionIconSetIcon1.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon2.PredefinedName = "TrafficLights23_1.png";
+            formatConditionIconSetIcon2.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            formatConditionIconSetIcon5.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSetIcon6.PredefinedName = "RedToBlack4_3.png";
-            formatConditionIconSetIcon6.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
-            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon4);
-            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon5);
-            formatConditionIconSet2.Icons.Add(formatConditionIconSetIcon6);
-            formatConditionIconSet2.Name = "TrafficLights3Unrimmed";
-            formatConditionIconSet2.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
-            formatConditionRuleIconSet2.IconSet = formatConditionIconSet2;
-            gridFormatRule2.Rule = formatConditionRuleIconSet2;
-            this.gvCandidatePipeline.FormatRules.Add(gridFormatRule2);
+            formatConditionIconSetIcon2.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon3.PredefinedName = "RedToBlack4_3.png";
+            formatConditionIconSetIcon3.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon1);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon2);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon3);
+            formatConditionIconSet1.Name = "TrafficLights3Unrimmed";
+            formatConditionIconSet1.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRuleIconSet1.IconSet = formatConditionIconSet1;
+            gridFormatRule1.Rule = formatConditionRuleIconSet1;
+            this.gvCandidatePipeline.FormatRules.Add(gridFormatRule1);
             this.gvCandidatePipeline.GridControl = this.gcCandidatePipeline;
             this.gvCandidatePipeline.Name = "gvCandidatePipeline";
             this.gvCandidatePipeline.OptionsBehavior.Editable = false;
@@ -1258,19 +1271,6 @@
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // removeToolStripMenuItem
-            // 
-            this.removeToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Actions_dialog_close;
-            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.removeToolStripMenuItem.Text = "Remove";
-            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
-            // 
             // dlgJobOrderEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1289,9 +1289,9 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgJobOrderEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ccReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reportJobOrderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -1440,7 +1440,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraBars.BarButtonItem bbiViewCandidate;
-        private DevExpress.XtraBars.BarButtonItem bbiEmailToCandidate;
         private DevExpress.XtraBars.BarButtonItem bbiAutoEmailToCandidate;
         private DevExpress.XtraBars.BarButtonItem bbiDeleteCandidateFromPipeLine;
         private DevExpress.XtraBars.BarButtonItem bbiRefresh;
@@ -1464,5 +1463,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiNewApointment;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private DevExpress.XtraBars.BarButtonItem bbiSendSms;
     }
 }

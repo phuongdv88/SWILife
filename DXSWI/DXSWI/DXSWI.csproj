@@ -213,6 +213,18 @@
     <Compile Include="Forms\dlgPreviewEmail.Designer.cs">
       <DependentUpon>dlgPreviewEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\dlgSaveSmsTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgSaveSmsTemplate.Designer.cs">
+      <DependentUpon>dlgSaveSmsTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\dlgSendSMSEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\dlgSendSMSEdit.Designer.cs">
+      <DependentUpon>dlgSendSMSEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\dlgSignatureEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -363,6 +375,12 @@
     <EmbeddedResource Include="Forms\dlgPreviewEmail.resx">
       <DependentUpon>dlgPreviewEmail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgSaveSmsTemplate.resx">
+      <DependentUpon>dlgSaveSmsTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\dlgSendSMSEdit.resx">
+      <DependentUpon>dlgSendSMSEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\dlgSignatureEdit.resx">
       <DependentUpon>dlgSignatureEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -453,6 +471,12 @@
   <ItemGroup>
     <Content Include="logo_tron_0Pv_icon.ico" />
     <Content Include="lollipop_candy.ico" />
+    <None Include="Resources\SMS-Message-icon1.png" />
+    <None Include="Resources\SMS-Message-icon.png" />
+    <None Include="Resources\Sms-icon1.png" />
+    <None Include="Resources\Sms-icon.png" />
+    <None Include="Resources\SMS-bubble-icon1.png" />
+    <None Include="Resources\SMS-bubble-icon.png" />
     <None Include="Resources\Linkedin-icon1.png" />
     <None Include="Resources\Linkedin-icon.png" />
     <None Include="Resources\Insert-hyperlink-icon1.png" />

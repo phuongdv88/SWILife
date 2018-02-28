@@ -511,7 +511,7 @@ namespace DXSWI.Forms
             {
                 state = ParseCandidateInfoStep.CONTACT;
             }
-            else if (string.Equals(line, "Featured Skills & Endorsements"))
+            else if (string.Equals(line, "Featured Skills & Endorsements") || string.Equals(line, "Skills & Endorsements"))
             {
                 state = ParseCandidateInfoStep.SKILL;
             }
@@ -575,8 +575,8 @@ namespace DXSWI.Forms
                         }
                         string name = line;
                         string[] names = line.Split(' ');
-                        can.FirstName = names.Last();
-                        can.LastName = names.First();
+                        can.FirstName = names.First();
+                        can.LastName = names.Last();
                         can.MiddleName = line.Replace(can.FirstName, "").Replace(can.LastName, "").Trim();
                         // get position
                         ++i;
@@ -1033,8 +1033,9 @@ namespace DXSWI.Forms
 
         private void sbOpenFile_Click(object sender, EventArgs e)
         {
-            try {
-                if(_Candidate.ResumeLink == "")
+            try
+            {
+                if (_Candidate.ResumeLink == "")
                 {
                     return;
                 }
@@ -1060,14 +1061,39 @@ namespace DXSWI.Forms
                     int row = gvJobOrderPipeline.GetSelectedRows().First();
                     DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
                     subject = data_row["Title"].ToString() + " - " + data_row["CompanyName"].ToString();
-                    desc = string.Format("Appointment with: {0} {1} \r\nEmail: {2} \r\nCellphone: {3}\r\nContent: ",_Candidate.FirstName, _Candidate.LastName, _Candidate.Email, _Candidate.CellPhone);
+                    desc = string.Format("Appointment with: {0} {1} \r\nEmail: {2} \r\nCellphone: {3}\r\nContent: ", _Candidate.FirstName, _Candidate.LastName, _Candidate.Email, _Candidate.CellPhone);
                 }
-            ScreenManager.Instance.NewAppointment(subject, desc);
+                ScreenManager.Instance.NewAppointment(subject, desc);
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void bbiSendSMS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                List<string> emails = new List<string>();
+                List<string> names = new List<string>();
+                List<string> phoneNumbers = new List<string>();
+                names.Add(FirstNameTextEdit.Text.Trim());
+                emails.Add(EmailTextEdit.Text.Trim());
+                phoneNumbers.Add(CellPhoneTextEdit.Text.Trim());
+                SendSMSToCandidates(phoneNumbers, names, emails);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        public void SendSMSToCandidates(List<string> phoneNumbers, List<string> names, List<string> emails)
+        {
+            // open send sms includeing phones, names, email
+            dlgSendSMSEdit dlg = new dlgSendSMSEdit(phoneNumbers, names, emails);
+            dlg.ShowDialog();
         }
     }
 }

@@ -50,8 +50,6 @@
             this.colJobs = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIndustry = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colContactName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcCompanies)).BeginInit();
@@ -183,8 +181,6 @@
             this.colJobs,
             this.colCity,
             this.colIndustry,
-            this.colContactName,
-            this.colPhone,
             this.colOwner,
             this.colModified,
             this.colCompanyState});
@@ -251,31 +247,13 @@
             this.colIndustry.VisibleIndex = 3;
             this.colIndustry.Width = 206;
             // 
-            // colContactName
-            // 
-            this.colContactName.Caption = "Contact Name";
-            this.colContactName.FieldName = "ContactName";
-            this.colContactName.Name = "colContactName";
-            this.colContactName.Visible = true;
-            this.colContactName.VisibleIndex = 5;
-            this.colContactName.Width = 153;
-            // 
-            // colPhone
-            // 
-            this.colPhone.Caption = "Cell Phone";
-            this.colPhone.FieldName = "CellPhone";
-            this.colPhone.Name = "colPhone";
-            this.colPhone.Visible = true;
-            this.colPhone.VisibleIndex = 6;
-            this.colPhone.Width = 138;
-            // 
             // colOwner
             // 
             this.colOwner.Caption = "Owner";
             this.colOwner.FieldName = "UserName";
             this.colOwner.Name = "colOwner";
             this.colOwner.Visible = true;
-            this.colOwner.VisibleIndex = 7;
+            this.colOwner.VisibleIndex = 5;
             this.colOwner.Width = 69;
             // 
             // colModified
@@ -284,7 +262,7 @@
             this.colModified.FieldName = "Modified";
             this.colModified.Name = "colModified";
             this.colModified.Visible = true;
-            this.colModified.VisibleIndex = 8;
+            this.colModified.VisibleIndex = 6;
             this.colModified.Width = 120;
             // 
             // frCompanies
@@ -309,8 +287,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colJobs;
         private DevExpress.XtraGrid.Columns.GridColumn colCity;
         private DevExpress.XtraGrid.Columns.GridColumn colIndustry;
-        private DevExpress.XtraGrid.Columns.GridColumn colContactName;
-        private DevExpress.XtraGrid.Columns.GridColumn colPhone;
         private DevExpress.XtraGrid.Columns.GridColumn colOwner;
         private DevExpress.XtraGrid.Columns.GridColumn colModified;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

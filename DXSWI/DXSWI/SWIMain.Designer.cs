@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SWIMain));
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -86,14 +86,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.nbgJoborder = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgUsers = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgCompanies = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgContacts = new DevExpress.XtraNavBar.NavBarGroup();
-            this.ngbCandidates = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgReport = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbgSchedule = new DevExpress.XtraNavBar.NavBarGroup();
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
             this.fpNotify = new DevExpress.Utils.FlyoutPanel();
             this.fpcNotify = new DevExpress.Utils.FlyoutPanelControl();
@@ -106,7 +98,6 @@
             this.alertControlNotify = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::DXSWI.Forms.wfMain), false, false);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).BeginInit();
             this.pcMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fpNotify)).BeginInit();
@@ -186,9 +177,9 @@
             this.bbiUserAdd.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.AddMaleUser;
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem3.Text = "Add new user";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            this.bbiUserAdd.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Add new user";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.bbiUserAdd.SuperTip = superToolTip1;
             this.bbiUserAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserAdd_ItemClick);
             // 
             // bbiUserEdit
@@ -199,9 +190,9 @@
             this.bbiUserEdit.ImageOptions.Image = global::DXSWI.Properties.Resources.EditMaleUsericon;
             this.bbiUserEdit.Name = "bbiUserEdit";
             this.bbiUserEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem4.Text = "Edit current selected user";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            this.bbiUserEdit.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = "Edit current selected user";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.bbiUserEdit.SuperTip = superToolTip2;
             this.bbiUserEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserEdit_ItemClick);
             // 
             // bbiUserDelete
@@ -599,102 +590,13 @@
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Edit Users";
             // 
-            // navBarControl1
-            // 
-            this.navBarControl1.ActiveGroup = this.nbgJoborder;
-            this.navBarControl1.AllowHorizontalResizing = DevExpress.Utils.DefaultBoolean.False;
-            this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.nbgUsers,
-            this.nbgCompanies,
-            this.nbgContacts,
-            this.nbgJoborder,
-            this.ngbCandidates,
-            this.nbgReport,
-            this.nbgSchedule});
-            this.navBarControl1.HideGroupCaptions = true;
-            this.navBarControl1.Location = new System.Drawing.Point(0, 146);
-            this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 195;
-            this.navBarControl1.OptionsNavPane.NavPaneState = DevExpress.XtraNavBar.NavPaneState.Collapsed;
-            this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.navBarControl1.Size = new System.Drawing.Size(54, 522);
-            this.navBarControl1.StoreDefaultPaintStyleName = true;
-            this.navBarControl1.TabIndex = 5;
-            this.navBarControl1.Text = "Functions";
-            this.navBarControl1.CustomDrawLink += new DevExpress.XtraNavBar.ViewInfo.CustomDrawNavBarElementEventHandler(this.navBarControl1_CustomDrawLink);
-            this.navBarControl1.ActiveGroupChanged += new DevExpress.XtraNavBar.NavBarGroupEventHandler(this.navBarControl1_ActiveGroupChanged);
-            // 
-            // nbgJoborder
-            // 
-            this.nbgJoborder.Caption = "Job Orders";
-            this.nbgJoborder.Expanded = true;
-            this.nbgJoborder.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgJoborder.LargeImage = global::DXSWI.Properties.Resources.task;
-            this.nbgJoborder.Name = "nbgJoborder";
-            this.nbgJoborder.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgJoborder.SmallImage")));
-            this.nbgJoborder.Tag = "joborder";
-            // 
-            // nbgUsers
-            // 
-            this.nbgUsers.Caption = "Users";
-            this.nbgUsers.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgUsers.LargeImage = global::DXSWI.Properties.Resources.cryptography;
-            this.nbgUsers.Name = "nbgUsers";
-            this.nbgUsers.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgUsers.SmallImage")));
-            this.nbgUsers.Tag = "user";
-            // 
-            // nbgCompanies
-            // 
-            this.nbgCompanies.Caption = "Companies";
-            this.nbgCompanies.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgCompanies.LargeImage = global::DXSWI.Properties.Resources.building;
-            this.nbgCompanies.LargeImageSize = new System.Drawing.Size(40, 40);
-            this.nbgCompanies.Name = "nbgCompanies";
-            this.nbgCompanies.Tag = "company";
-            // 
-            // nbgContacts
-            // 
-            this.nbgContacts.Caption = "Contacts";
-            this.nbgContacts.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgContacts.LargeImage = global::DXSWI.Properties.Resources.contac2;
-            this.nbgContacts.Name = "nbgContacts";
-            this.nbgContacts.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgContacts.SmallImage")));
-            this.nbgContacts.Tag = "contact";
-            // 
-            // ngbCandidates
-            // 
-            this.ngbCandidates.Caption = "Candidates";
-            this.ngbCandidates.LargeImage = global::DXSWI.Properties.Resources.Appuser;
-            this.ngbCandidates.Name = "ngbCandidates";
-            this.ngbCandidates.Tag = "candidate";
-            // 
-            // nbgReport
-            // 
-            this.nbgReport.Caption = "Report";
-            this.nbgReport.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgReport.LargeImage = global::DXSWI.Properties.Resources.report;
-            this.nbgReport.Name = "nbgReport";
-            this.nbgReport.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgReport.SmallImage")));
-            this.nbgReport.Tag = "report";
-            // 
-            // nbgSchedule
-            // 
-            this.nbgSchedule.Caption = "Schedule";
-            this.nbgSchedule.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Large;
-            this.nbgSchedule.LargeImage = global::DXSWI.Properties.Resources.Calendaricon3;
-            this.nbgSchedule.Name = "nbgSchedule";
-            this.nbgSchedule.SmallImage = ((System.Drawing.Image)(resources.GetObject("nbgSchedule.SmallImage")));
-            this.nbgSchedule.Tag = "schedule";
-            // 
             // pcMain
             // 
             this.pcMain.Controls.Add(this.fpNotify);
             this.pcMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pcMain.Location = new System.Drawing.Point(54, 146);
+            this.pcMain.Location = new System.Drawing.Point(0, 146);
             this.pcMain.Name = "pcMain";
-            this.pcMain.Size = new System.Drawing.Size(956, 522);
+            this.pcMain.Size = new System.Drawing.Size(1010, 522);
             this.pcMain.TabIndex = 6;
             // 
             // fpNotify
@@ -706,9 +608,9 @@
             this.fpNotify.Options.CloseOnOuterClick = true;
             this.fpNotify.OptionsButtonPanel.ButtonPanelContentAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.fpNotify.OptionsButtonPanel.ButtonPanelLocation = DevExpress.Utils.FlyoutPanelButtonPanelLocation.Bottom;
-            buttonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions2.Image")));
+            buttonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions1.Image")));
             this.fpNotify.OptionsButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.Utils.PeekFormButton("OK", true, buttonImageOptions2, true, null)});
+            new DevExpress.Utils.PeekFormButton("OK", true, buttonImageOptions1, true, null)});
             this.fpNotify.OwnerControl = this.pcMain;
             this.fpNotify.Size = new System.Drawing.Size(352, 67);
             this.fpNotify.TabIndex = 0;
@@ -804,7 +706,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 699);
             this.Controls.Add(this.pcMain);
-            this.Controls.Add(this.navBarControl1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -819,7 +720,6 @@
             this.Load += new System.EventHandler(this.SWIMain_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SWIMain_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).EndInit();
             this.pcMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fpNotify)).EndInit();
@@ -858,13 +758,6 @@
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem bbiUserLogout;
-        private DevExpress.XtraNavBar.NavBarControl navBarControl1;
-        private DevExpress.XtraNavBar.NavBarGroup nbgUsers;
-        private DevExpress.XtraNavBar.NavBarGroup nbgCompanies;
-        private DevExpress.XtraNavBar.NavBarGroup nbgJoborder;
-        private DevExpress.XtraNavBar.NavBarGroup nbgContacts;
-        private DevExpress.XtraNavBar.NavBarGroup nbgSchedule;
-        private DevExpress.XtraNavBar.NavBarGroup nbgReport;
         private DevExpress.XtraEditors.PanelControl pcMain;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
@@ -892,7 +785,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem bbiImportFromExel;
         private DevExpress.XtraNavBar.NavBarGroup nbgCandidates;
-        private DevExpress.XtraNavBar.NavBarGroup ngbCandidates;
         private DevExpress.XtraBars.BarButtonItem bbiEmailSetting;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgSetting;
         private DevExpress.Utils.FlyoutPanel fpNotify;

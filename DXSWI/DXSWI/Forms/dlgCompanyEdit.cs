@@ -353,5 +353,10 @@ namespace DXSWI.Forms
             dlg.UpdateDataEvent += updateData;
             dlg.ShowDialog();
         }
+
+        private void IsHotCheckEdit_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

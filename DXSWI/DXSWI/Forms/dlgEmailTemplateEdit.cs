@@ -98,7 +98,7 @@ namespace DXSWI.Forms
 
         private void sbHelp_Click(object sender, EventArgs e)
         {
-            XtraMessageBox.Show("Use variable for different candidates:\r\n [name] : candidate name \r\n[company] : company name\r\n[job] : job order title.");
+            XtraMessageBox.Show("Use variable for different candidates:\r\n [name] : candidate's name \r\n[company] : name of company\r\n[job] : job order title.");
         }
 
         private void dlgEmailTemplateEdit_KeyDown(object sender, KeyEventArgs e)

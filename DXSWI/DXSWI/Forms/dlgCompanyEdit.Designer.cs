@@ -533,7 +533,7 @@
             this.layoutControlItem4});
             this.layoutControlGroup5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup5.Name = "Root";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(957, 48);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(957, 46);
             this.layoutControlGroup5.TextVisible = false;
             // 
             // layoutControlItem2
@@ -551,7 +551,7 @@
             this.sliAttachment.CustomizationFormText = "No file is chosen";
             this.sliAttachment.Location = new System.Drawing.Point(91, 0);
             this.sliAttachment.Name = "sliAttachment";
-            this.sliAttachment.Size = new System.Drawing.Size(567, 28);
+            this.sliAttachment.Size = new System.Drawing.Size(567, 26);
             this.sliAttachment.Text = "No file is chosen";
             this.sliAttachment.TextSize = new System.Drawing.Size(77, 13);
             // 

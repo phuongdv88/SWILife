@@ -191,14 +191,6 @@ namespace DXSWI
             catch { }
         }
 
-        private void navBarControl1_ActiveGroupChanged(object sender, DevExpress.XtraNavBar.NavBarGroupEventArgs e)
-        {
-            if (e.Group.Tag == null)
-                return;
-            string tag = e.Group.Tag.ToString();
-            changeGroupByCode(tag);
-        }
-
         private void changeGroupByCode(string tag)
         {
             if (tag == _tagSchedule)
@@ -302,12 +294,6 @@ namespace DXSWI
             }
         }
 
-        private void navBarControl1_CustomDrawLink(object sender, DevExpress.XtraNavBar.ViewInfo.CustomDrawNavBarElementEventArgs e)
-        {
-            if (e.Caption == nbgCandidates.Caption)
-                e.Graphics.FillRectangle(Brushes.Red, e.RealBounds);
-        }
-
         private void bbiCandidatesEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
             _frCandidate.editToolStripMenuItem_Click(sender, e);
@@ -334,17 +320,6 @@ namespace DXSWI
             // add joborder
             _frCompanies.newJobOrder();
         }
-
-        private void barButtonItem1_ItemClick_1(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
-        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
         private void bbiUserAdd_ItemClick(object sender, ItemClickEventArgs e)
         {
             // add new user

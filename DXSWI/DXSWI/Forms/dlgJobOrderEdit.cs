@@ -299,6 +299,9 @@ namespace DXSWI.Forms
             dlg.ShowDialog();
         }
 
+
+        
+
         private void updateData()
         {
             try
@@ -545,32 +548,7 @@ namespace DXSWI.Forms
             dlg.ShowDialog();
         }
 
-        private void bbiEmailToCandidate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            List<string> emails = new List<string>();
-            List<string> names = new List<string>();
-            List<long> runningTaskIds = new List<long>();
-            List<long> canIds = new List<long>();
-            if (gvCandidatePipeline.SelectedRowsCount > 0)
-            {
-                try
-                {
-                    int row = gvCandidatePipeline.GetSelectedRows().First();
-                    DataRow data_row = gvCandidatePipeline.GetDataRow(row);
-                    emails.Add(data_row["Email"].ToString());
-                    runningTaskIds.Add(Convert.ToInt64(data_row["RunningTaskId"].ToString()));
-                    names.Add(Utils.Capitalize(string.Join(" ", data_row["FirstName"].ToString(), data_row["LastName"].ToString())));
-                    canIds.Add(Convert.ToInt64(data_row["CandidateId"].ToString()));
-                    EmailToCandidates(runningTaskIds, emails, names, canIds);
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void bbiAutoEmailToCandidate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+       private void bbiAutoEmailToCandidate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             List<string> emails = new List<string>();
             List<string> names = new List<string>();
@@ -772,6 +750,31 @@ namespace DXSWI.Forms
                 default:
                     break;
             }
+        }
+
+        private void bbiSendSms_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (gvCandidatePipeline.SelectedRowsCount > 0)
+            {
+                try
+                {
+                    var emails = gvCandidatePipeline.GetSelectedRows().Select(row => gvCandidatePipeline.GetDataRow(row)["Email"].ToString()).ToList();
+                    var names = gvCandidatePipeline.GetSelectedRows().Select(row => gvCandidatePipeline.GetDataRow(row)["FirstName"].ToString()).ToList();
+                    var phoneNumbers = gvCandidatePipeline.GetSelectedRows().Select(row => gvCandidatePipeline.GetDataRow(row)["CellPhone"].ToString()).ToList();
+                    SendSMSToCandidates(phoneNumbers, names, emails);
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
+        }
+        public void SendSMSToCandidates(List<string> phoneNumbers, List<string> names, List<string> emails)
+        {
+            // open send sms includeing phones, names, email
+            dlgSendSMSEdit dlg = new dlgSendSMSEdit(phoneNumbers, names, emails);
+            dlg.ShowDialog();
         }
     }
 }
