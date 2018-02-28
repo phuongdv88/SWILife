@@ -60,8 +60,21 @@ namespace DXSWI
             {
                 if (!createdNew)
                 {
-                    XtraMessageBox.Show("Application is already running!", "Multiple Instances", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    //XtraMessageBox.Show("Application is already running!", "Multiple Instances", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //return;
+
+                    // kill old process
+
+                    foreach (Process proc in Process.GetProcesses())
+                    {
+                        if (proc.ProcessName.Equals(Process.GetCurrentProcess().ProcessName) && proc.Id != Process.GetCurrentProcess().Id)
+                        {
+                            proc.Kill();
+                            break;
+                        }
+                    }
+                    // Wait for process to close
+                    //Thread.Sleep(2000);
                 }
                 //var sw = Stopwatch.StartNew();
                 ScreenManager.Instance.InitLoginScreen();

@@ -905,7 +905,7 @@ namespace DXSWI.Forms
                 {
                     int row = e.RowHandle;
                     DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
-                    int id = int.Parse(data_row["RunningTaskId"].ToString());
+                    long id = Convert.ToInt64(data_row["RunningTaskId"].ToString());
                     RunningTaskManager.updateMatchValue(Convert.ToInt32(e.Value.ToString()), id);
                     //updateData();
                 }
@@ -926,7 +926,7 @@ namespace DXSWI.Forms
             dlgLogActivity dlg = new dlgLogActivity();
             dlg.updateDataEvent += updateData;
             string regarding = string.Empty;
-            int jobOrderId = -1;
+            long jobOrderId = -1;
 
             if (gvJobOrderPipeline.SelectedRowsCount == 0)
             {
@@ -938,7 +938,7 @@ namespace DXSWI.Forms
                 int row = gvJobOrderPipeline.GetSelectedRows().First();
                 DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
                 regarding = data_row["Title"].ToString();
-                jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
+                jobOrderId = Convert.ToInt64(data_row["JobOrderId"].ToString());
             }
 
             dlg.init(_Candidate.FirstName + " " + _Candidate.MiddleName + " " + _Candidate.LastName, Activity.TypeOfLogActivity.Pipeline, _Candidate.CandidateId, jobOrderId, -1);
@@ -963,7 +963,7 @@ namespace DXSWI.Forms
                         foreach (var row in rows)
                         {
                             DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
-                            int id = int.Parse(data_row["RunningTaskId"].ToString());
+                            long id = Convert.ToInt64(data_row["RunningTaskId"].ToString());
                             RunningTaskManager.deleteRunningTask(id);
                         }
 

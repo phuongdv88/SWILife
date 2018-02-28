@@ -103,7 +103,7 @@ namespace DXSWI.Modules
                 {
                     int row = gvCompanies.GetSelectedRows().First();
                     DataRow data_row = gvCompanies.GetDataRow(row);
-                    int comId = int.Parse(data_row["CompanyId"].ToString());
+                    long comId = Convert.ToInt64(data_row["CompanyId"].ToString());
                     dlgCompanyEdit dlg = new dlgCompanyEdit(comId);
                     dlg.UpdateDataEvent += updateData;
                     dlg.ShowDialog();
@@ -134,7 +134,7 @@ namespace DXSWI.Modules
                         foreach (var row in rows)
                         {
                             DataRow data_row = gvCompanies.GetDataRow(row);
-                            long comId = int.Parse(data_row["CompanyId"].ToString());
+                            long comId = Convert.ToInt64(data_row["CompanyId"].ToString());
                             CompanyManager.deleteCompany(comId);
                         }
                     }
@@ -162,23 +162,8 @@ namespace DXSWI.Modules
 
         private void gcCompanies_DoubleClick(object sender, EventArgs e)
         {
-            try
-            {
-                if (gvCompanies.SelectedRowsCount > 0)
-                {
-                    int row = gvCompanies.GetSelectedRows().First();
-                    DataRow data_row = gvCompanies.GetDataRow(row);
-                    int comId = int.Parse(data_row["CompanyId"].ToString());
-                    dlgCompanyEdit dlg = new dlgCompanyEdit(comId);
-                    dlg.UpdateDataEvent += updateData;
-                    dlg.setReadOnlyMode(true);
-                    dlg.ShowDialog();
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            editCompanyToolStripMenuItem.PerformClick();
+           
         }
 
         private void refreshDataToolStripMenuItem_Click(object sender, EventArgs e)

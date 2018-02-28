@@ -239,7 +239,7 @@
             this.colCity.FieldName = "City";
             this.colCity.Name = "colCity";
             this.colCity.Visible = true;
-            this.colCity.VisibleIndex = 3;
+            this.colCity.VisibleIndex = 4;
             this.colCity.Width = 93;
             // 
             // colIndustry
@@ -248,7 +248,7 @@
             this.colIndustry.FieldName = "Industry";
             this.colIndustry.Name = "colIndustry";
             this.colIndustry.Visible = true;
-            this.colIndustry.VisibleIndex = 4;
+            this.colIndustry.VisibleIndex = 3;
             this.colIndustry.Width = 206;
             // 
             // colContactName
@@ -262,8 +262,8 @@
             // 
             // colPhone
             // 
-            this.colPhone.Caption = "Work Phone";
-            this.colPhone.FieldName = "WorkPhone";
+            this.colPhone.Caption = "Cell Phone";
+            this.colPhone.FieldName = "CellPhone";
             this.colPhone.Name = "colPhone";
             this.colPhone.Visible = true;
             this.colPhone.VisibleIndex = 6;

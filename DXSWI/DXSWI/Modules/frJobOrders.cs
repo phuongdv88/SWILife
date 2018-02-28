@@ -91,7 +91,7 @@ namespace DXSWI.Modules
                         foreach (var row in rows)
                         {
                             DataRow data_row = gvJobOrder.GetDataRow(row);
-                            int jobOrderId = int.Parse(data_row["JobOrderId"].ToString());
+                            long jobOrderId = Convert.ToInt64(data_row["JobOrderId"].ToString());
                             JobOrderManager.deleteJobOrder(jobOrderId);
                         }
                     }

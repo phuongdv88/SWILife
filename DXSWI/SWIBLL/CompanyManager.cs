@@ -19,7 +19,7 @@ namespace SWIBLL
 
         public static DataTable getNameCompanies()
         {
-            string sql = "SELECT CompanyId, Name From swilifecore.company  order by CompanyId desc";
+            string sql = "SELECT CompanyId, Name From swilifecore.company  order by Modified desc";
             return DataAccess.Instance.getDataTable(sql);
         }
 

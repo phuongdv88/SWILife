@@ -18,6 +18,7 @@ namespace DXSWI.Forms
 {
     public partial class dlgCompanyEdit : DevExpress.XtraEditors.XtraForm
     {
+        long _comId = -1;
         Company mCompany = null;
         bool isNew = true;
         public delegate void onUpdateData();
@@ -33,19 +34,35 @@ namespace DXSWI.Forms
 
         public void init(long comId)
         {
-            if (comId == -1)
+            _comId = comId;
+            updateData();
+        }
+
+        void updateData()
+        {
+            if (_comId == -1)
             {
                 isNew = true;
             }
             else
             {
-                isNew = false;
-                mCompany = CompanyManager.getCompany(comId);
-                FillObjectToUi();
-                if (mCompany != null)
+                try
                 {
-                    loadAttachment(mCompany.ScanLink);
+                    isNew = false;
+                    mCompany = CompanyManager.getCompany(_comId);
+                    FillObjectToUi();
+                    if (mCompany != null)
+                    {
+                        loadAttachment(mCompany.ScanLink);
+                    }
+                    // load contact of this company
+                    gcContact.DataSource = ContactManager.getContactsById(_comId);
                 }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 
@@ -100,7 +117,15 @@ namespace DXSWI.Forms
         private void FillObjectToUi()
         {
             if (mCompany == null) return;
+            
             NameTextEdit.Text = mCompany.Name;
+            if(mCompany.Name.Length > 0)
+            {
+                Text = mCompany.Name;
+            } else
+            {
+                Text = "New Company";
+            }
             PrimaryPhoneTextEdit.Text = mCompany.PrimaryPhone;
             SecondaryPhoneTextEdit.Text = mCompany.SecondaryPhone;
             FaxNumberTextEdit.Text = mCompany.FaxNumber;
@@ -280,6 +305,31 @@ namespace DXSWI.Forms
                 Process p = new Process();
                 p.StartInfo.FileName = mCompany.ScanLink;
                 p.Start();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gvContact_DoubleClick(object sender, EventArgs e)
+        {
+            EditContact();
+        }
+        public void EditContact()
+        {
+            try
+            {
+                // delete this running task data
+                if (gvContact.SelectedRowsCount > 0)
+                {
+                    int row = gvContact.GetSelectedRows().First();
+                    DataRow data_row = gvContact.GetDataRow(row);
+                    long conId = Convert.ToInt64(data_row["ContactId"].ToString());
+                    dlgContactEdit dlg = new dlgContactEdit(conId, null);
+                    dlg.emitUpdateData += updateData;
+                    dlg.ShowDialog();
+                }
             }
             catch (Exception ex)
             {

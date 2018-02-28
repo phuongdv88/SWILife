@@ -44,6 +44,7 @@
             this.colPhoneNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOwner = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModified = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMisc = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -128,6 +129,7 @@
             this.colPhoneNumber,
             this.colTitle,
             this.colEmail,
+            this.colCity,
             this.colOwner,
             this.colModified,
             this.colMisc});
@@ -190,13 +192,21 @@
             this.colEmail.VisibleIndex = 5;
             this.colEmail.Width = 124;
             // 
+            // colCity
+            // 
+            this.colCity.Caption = "City";
+            this.colCity.FieldName = "City";
+            this.colCity.Name = "colCity";
+            this.colCity.Visible = true;
+            this.colCity.VisibleIndex = 6;
+            // 
             // colOwner
             // 
             this.colOwner.Caption = "Owner";
             this.colOwner.FieldName = "Owner";
             this.colOwner.Name = "colOwner";
             this.colOwner.Visible = true;
-            this.colOwner.VisibleIndex = 7;
+            this.colOwner.VisibleIndex = 8;
             this.colOwner.Width = 54;
             // 
             // colModified
@@ -205,7 +215,7 @@
             this.colModified.FieldName = "Modified";
             this.colModified.Name = "colModified";
             this.colModified.Visible = true;
-            this.colModified.VisibleIndex = 8;
+            this.colModified.VisibleIndex = 9;
             this.colModified.Width = 73;
             // 
             // colMisc
@@ -214,7 +224,7 @@
             this.colMisc.FieldName = "MiscNotes";
             this.colMisc.Name = "colMisc";
             this.colMisc.Visible = true;
-            this.colMisc.VisibleIndex = 6;
+            this.colMisc.VisibleIndex = 7;
             this.colMisc.Width = 201;
             // 
             // frContacts
@@ -252,5 +262,6 @@
         private System.Windows.Forms.ToolStripMenuItem refreshContactsToolStripMenuItem;
         private DevExpress.XtraGrid.Columns.GridColumn colMisc;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private DevExpress.XtraGrid.Columns.GridColumn colCity;
     }
 }

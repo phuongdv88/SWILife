@@ -611,7 +611,7 @@ namespace DXSWI.Forms
 
                             // delete this running task data
                             DataRow data_row = gvCandidatePipeline.GetDataRow(row);
-                            int id = int.Parse(data_row["RunningTaskId"].ToString());
+                            long id = Convert.ToInt64(data_row["RunningTaskId"].ToString());
                             RunningTaskManager.deleteRunningTask(id);
 
                         }

@@ -57,7 +57,7 @@ namespace DXSWI.Forms
                     try
                     {
                         DataRow data_row = gvCandidates.GetDataRow(row); // for test
-                        int CandidateId = int.Parse(data_row["CandidateId"].ToString());
+                        long CandidateId = Convert.ToInt64(data_row["CandidateId"].ToString());
 
                         if (RunningTaskManager.isExist(CandidateId, jobId))
                         {

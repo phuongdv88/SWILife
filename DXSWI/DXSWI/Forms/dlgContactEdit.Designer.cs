@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.FirstNameTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MiddleNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.LastNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.TitleTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -79,10 +80,21 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gcActivities = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gvActivities = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiddleNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TitleTextEdit.Properties)).BeginInit();
@@ -129,7 +141,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcActivities)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvActivities)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -156,12 +172,13 @@
             this.dataLayoutControl1.Controls.Add(this.sbOk);
             this.dataLayoutControl1.Controls.Add(this.sbCancel);
             this.dataLayoutControl1.Controls.Add(this.CompanyNameComboboxEdit);
+            this.dataLayoutControl1.Controls.Add(this.gcActivities);
             this.dataLayoutControl1.DataSource = this.contactBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1125, 660);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1125, 661);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -173,6 +190,10 @@
             this.FirstNameTextEdit.Size = new System.Drawing.Size(850, 20);
             this.FirstNameTextEdit.StyleController = this.dataLayoutControl1;
             this.FirstNameTextEdit.TabIndex = 4;
+            // 
+            // contactBindingSource
+            // 
+            this.contactBindingSource.DataSource = typeof(SWIBLL.Models.Contact);
             // 
             // MiddleNameTextEdit
             // 
@@ -325,7 +346,7 @@
             this.MiscNotesMemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.contactBindingSource, "MiscNotes", true));
             this.MiscNotesMemoEdit.Location = new System.Drawing.Point(105, 324);
             this.MiscNotesMemoEdit.Name = "MiscNotesMemoEdit";
-            this.MiscNotesMemoEdit.Size = new System.Drawing.Size(996, 286);
+            this.MiscNotesMemoEdit.Size = new System.Drawing.Size(996, 115);
             this.MiscNotesMemoEdit.StyleController = this.dataLayoutControl1;
             this.MiscNotesMemoEdit.TabIndex = 21;
             // 
@@ -345,7 +366,7 @@
             // 
             // sbOk
             // 
-            this.sbOk.Location = new System.Drawing.Point(781, 626);
+            this.sbOk.Location = new System.Drawing.Point(781, 627);
             this.sbOk.Name = "sbOk";
             this.sbOk.Size = new System.Drawing.Size(167, 22);
             this.sbOk.StyleController = this.dataLayoutControl1;
@@ -355,7 +376,7 @@
             // 
             // sbCancel
             // 
-            this.sbCancel.Location = new System.Drawing.Point(952, 626);
+            this.sbCancel.Location = new System.Drawing.Point(952, 627);
             this.sbCancel.Name = "sbCancel";
             this.sbCancel.Size = new System.Drawing.Size(161, 22);
             this.sbCancel.StyleController = this.dataLayoutControl1;
@@ -383,7 +404,7 @@
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1125, 660);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1125, 661);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -396,10 +417,11 @@
             this.ItemForImageLink,
             this.layoutControlItem1,
             this.layoutControlItem2,
-            this.emptySpaceItem1});
+            this.emptySpaceItem1,
+            this.layoutControlGroup6});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1105, 640);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1105, 641);
             // 
             // layoutControlGroup3
             // 
@@ -515,7 +537,7 @@
             this.ItemForState});
             this.layoutControlGroup4.Location = new System.Drawing.Point(0, 186);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(1105, 428);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(1105, 257);
             this.layoutControlGroup4.Text = "Contact";
             // 
             // ItemForEmail
@@ -559,7 +581,7 @@
             this.ItemForMiscNotes.Control = this.MiscNotesMemoEdit;
             this.ItemForMiscNotes.Location = new System.Drawing.Point(0, 96);
             this.ItemForMiscNotes.Name = "ItemForMiscNotes";
-            this.ItemForMiscNotes.Size = new System.Drawing.Size(1081, 290);
+            this.ItemForMiscNotes.Size = new System.Drawing.Size(1081, 119);
             this.ItemForMiscNotes.StartNewLine = true;
             this.ItemForMiscNotes.Text = "Misc Notes";
             this.ItemForMiscNotes.TextSize = new System.Drawing.Size(78, 13);
@@ -623,7 +645,7 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.sbOk;
-            this.layoutControlItem1.Location = new System.Drawing.Point(769, 614);
+            this.layoutControlItem1.Location = new System.Drawing.Point(769, 615);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(171, 26);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -632,7 +654,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.sbCancel;
-            this.layoutControlItem2.Location = new System.Drawing.Point(940, 614);
+            this.layoutControlItem2.Location = new System.Drawing.Point(940, 615);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(165, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -641,28 +663,125 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 614);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 664);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(769, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // contactBindingSource
+            // gcActivities
             // 
-            this.contactBindingSource.DataSource = typeof(SWIBLL.Models.Contact);
+            this.gcActivities.ContextMenuStrip = this.contextMenuStrip2;
+            this.gcActivities.Location = new System.Drawing.Point(24, 485);
+            this.gcActivities.MainView = this.gvActivities;
+            this.gcActivities.Name = "gcActivities";
+            this.gcActivities.Size = new System.Drawing.Size(1077, 126);
+            this.gcActivities.TabIndex = 0;
+            this.gcActivities.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvActivities});
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(142, 26);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "logActivityToolStripMenuItem";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.toolStripMenuItem1.Text = "New Activity";
+            // 
+            // gvActivities
+            // 
+            this.gvActivities.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5});
+            this.gvActivities.GridControl = this.gcActivities;
+            this.gvActivities.Name = "gvActivities";
+            this.gvActivities.OptionsBehavior.Editable = false;
+            this.gvActivities.OptionsSelection.EnableAppearanceFocusedCell = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Date";
+            this.gridColumn1.FieldName = "Created";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Type";
+            this.gridColumn2.FieldName = "Type";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Regarding";
+            this.gridColumn3.FieldName = "Regarding";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Notes";
+            this.gridColumn4.FieldName = "Notes";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "By";
+            this.gridColumn5.FieldName = "UserName";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            // 
+            // layoutControlGroup6
+            // 
+            this.layoutControlGroup6.CustomizationFormText = "Activities";
+            this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem11});
+            this.layoutControlGroup6.Location = new System.Drawing.Point(0, 443);
+            this.layoutControlGroup6.Name = "layoutControlGroup6";
+            this.layoutControlGroup6.Size = new System.Drawing.Size(1105, 172);
+            this.layoutControlGroup6.Text = "Activities";
+            // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.Control = this.gcActivities;
+            this.layoutControlItem11.CustomizationFormText = "layoutControlItem11";
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(1081, 130);
+            this.layoutControlItem11.Text = "layoutControlItem11";
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem11.TextVisible = false;
             // 
             // dlgContactEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1125, 660);
+            this.ClientSize = new System.Drawing.Size(1125, 661);
             this.Controls.Add(this.dataLayoutControl1);
             this.KeyPreview = true;
             this.Name = "dlgContactEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contact Information";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgContactEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiddleNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TitleTextEdit.Properties)).EndInit();
@@ -709,7 +828,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcActivities)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gvActivities)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -767,5 +890,16 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraEditors.ComboBoxEdit CompanyNameComboboxEdit;
+        private DevExpress.XtraGrid.GridControl gcActivities;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvActivities;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
     }
 }

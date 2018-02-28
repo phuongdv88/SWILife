@@ -90,7 +90,7 @@ namespace SWIBLL
             return rs > 0 ? true : false;
         }
 
-        public static void deleteJobOrder(int jobOrderId)
+        public static void deleteJobOrder(long jobOrderId)
         {
             string sql = string.Format("delete from `swilifecore`.`joborder` where `JobOrderId`='{0}'", jobOrderId);
             try

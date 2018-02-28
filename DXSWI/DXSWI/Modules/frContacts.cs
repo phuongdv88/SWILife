@@ -64,7 +64,7 @@ namespace DXSWI.Modules
                 {
                     int row = gvContacts.GetSelectedRows().First();
                     DataRow data_row = gvContacts.GetDataRow(row);
-                    int conId = int.Parse(data_row["ContactId"].ToString());
+                    long conId = Convert.ToInt64(data_row["ContactId"].ToString());
                     dlgContactEdit dlg = new dlgContactEdit(conId, null);
                     dlg.emitUpdateData += updateData;
                     dlg.ShowDialog();
@@ -94,7 +94,7 @@ namespace DXSWI.Modules
                         foreach (var row in rows)
                         {
                             DataRow data_row = gvContacts.GetDataRow(row);
-                            int conId = int.Parse(data_row["ContactId"].ToString());
+                            long conId = Convert.ToInt64(data_row["ContactId"].ToString());
                             ContactManager.DeleteContact(conId);
                         }
                     }
@@ -113,24 +113,7 @@ namespace DXSWI.Modules
 
         private void gcContacts_DoubleClick(object sender, EventArgs e)
         {
-            try
-            {
-                // delete this running task data
-                if (gvContacts.SelectedRowsCount > 0)
-                {
-                    int row = gvContacts.GetSelectedRows().First();
-                    DataRow data_row = gvContacts.GetDataRow(row);
-                    int conId = int.Parse(data_row["ContactId"].ToString());
-                    dlgContactEdit dlg = new dlgContactEdit(conId, null);
-                    dlg.emitUpdateData += updateData;
-                    dlg.setReadOnlyMode(true);
-                    dlg.ShowDialog();
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            EditContact();
         }
 
         private void frContacts_Load(object sender, EventArgs e)

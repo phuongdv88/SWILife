@@ -53,7 +53,7 @@ namespace DXSWI.Forms
                     foreach (var row in rows)
                     {
                         DataRow data_row = gvJobOrder.GetDataRow(row); // for test
-                        int jobId = int.Parse(data_row["JobOrderId"].ToString());
+                        long jobId = Convert.ToInt64(data_row["JobOrderId"].ToString());
 
                         if (RunningTaskManager.isExist(canId, jobId))
                         {

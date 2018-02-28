@@ -106,7 +106,7 @@ namespace DXSWI.Modules
                     // delete this running task data
                     int row = gvUser.GetSelectedRows().First();
                     DataRow data_row = gvUser.GetDataRow(row);
-                    int UserId = int.Parse(data_row["UserId"].ToString());
+                    long UserId = Convert.ToInt64(data_row["UserId"].ToString());
 
                     dlgUserEdit dlg = new dlgUserEdit(UserId);
                     dlg.UpdateDataEvent += updateData;
