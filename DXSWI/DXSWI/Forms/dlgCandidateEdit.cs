@@ -588,7 +588,8 @@ namespace DXSWI.Forms
                             }
                             ++i;
                             line = lines[i].Trim();
-                            if (line.Length > 0 && !line.Contains("1st") && !line.Contains(name) && !line.Contains("degree connection"))
+                            if (line.Length > 0 && !line.Contains("1st") && !line.Contains(name) && !line.Contains("degree connection")
+                                && !line.Contains("2nd") && !line.Contains("3rd"))
                                 break;
                         } while (true);
                         can.CurrentPosition = line;
@@ -632,7 +633,7 @@ namespace DXSWI.Forms
                     }
                     continue;
                 }
-                else if (state == ParseCandidateInfoStep.SKILL)
+                else if (state == ParseCandidateInfoStep.SKILL || (state == ParseCandidateInfoStep.SKILL_EXTEND))
                 {
                     line = line.Trim();
                     if (!getParseState(line, ref state))
@@ -644,7 +645,7 @@ namespace DXSWI.Forms
                             if (line.Contains("See"))
                             {
                                 line = line.Split(new[] { "See" }, StringSplitOptions.None).First();
-                                if (can.KeySkills.Length > 0)
+                                if (can.KeySkills.Length > 0 && line.Length > 0)
                                 {
                                     can.KeySkills += "; ";
                                 }
@@ -663,7 +664,7 @@ namespace DXSWI.Forms
                                     if (lines[j].Contains("endorsement") && (stemp.ToUpper() == "NO" || stemp.ToUpper() == "SEE"))
                                     {
                                         i = j;
-                                        if (can.KeySkills.Length > 0)
+                                        if (can.KeySkills.Length > 0 && line.Length > 0)
                                         {
                                             can.KeySkills += "; ";
                                         }
@@ -675,17 +676,17 @@ namespace DXSWI.Forms
                     }
                     continue;
                 }
-                else if (state == ParseCandidateInfoStep.SKILL_EXTEND)
-                {
-                    if (!getParseState(line, ref state))
-                    {
-                        if (can.KeySkills.Length > 0)
-                        {
-                            can.KeySkills += "; ";
-                        }
-                        can.KeySkills += line.Trim();
-                    }
-                }
+                //else if (state == ParseCandidateInfoStep.SKILL_EXTEND)
+                //{
+                //    if (!getParseState(line, ref state))
+                //    {
+                //        if (can.KeySkills.Length > 0 && line.Trim().Length > 0)
+                //        {
+                //            can.KeySkills += "; ";
+                //        }
+                //        can.KeySkills += line.Trim();
+                //    }
+                //}
                 else if (state == ParseCandidateInfoStep.INTEREST)
                 {
                     if (!getParseState(line, ref state))
@@ -1095,5 +1096,6 @@ namespace DXSWI.Forms
             dlgSendSMSEdit dlg = new dlgSendSMSEdit(phoneNumbers, names, emails);
             dlg.ShowDialog();
         }
+
     }
 }

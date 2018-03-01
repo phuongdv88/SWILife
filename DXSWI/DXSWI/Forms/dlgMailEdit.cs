@@ -47,17 +47,17 @@ namespace DXSWI.Forms
         {
             InitializeComponent();
             //initMailServer();
-           
+
 
         }
 
-       
+
         public void Init(List<long> runningTaskIds, List<string> emails, List<string> names, List<long> candidateIds, string companyName, string jobTitle, long jobOrderId)
         {
-            if(lcAttachments != null)
+            if (lcAttachments != null)
             {
                 _indexAndAttachments.Clear();
-                foreach(var btn in _listRemoveAttachmentsButton)
+                foreach (var btn in _listRemoveAttachmentsButton)
                 {
                     btn.Dispose();
                 }
@@ -310,13 +310,14 @@ namespace DXSWI.Forms
 
         private void startSendEmails()
         {
-            try
+
+            Hide();
+
+            //SplashScreenManager.ShowForm(this, typeof(wfMain), true, true, false);
+            //SplashScreenManager.ShowDefaultWaitForm("Sending emails to candidates", "Sending..");
+            for (var i = 0; i < _candidateEmails.Count; ++i)
             {
-                Hide();
-                
-                //SplashScreenManager.ShowForm(this, typeof(wfMain), true, true, false);
-                //SplashScreenManager.ShowDefaultWaitForm("Sending emails to candidates", "Sending..");
-                for (var i = 0; i < _candidateEmails.Count; ++i)
+                try
                 {
                     string canEmail = _candidateEmails[i];
                     string canName = _candidateNames[i];
@@ -324,14 +325,15 @@ namespace DXSWI.Forms
                     // send mail
                     sendMailViaSmptClient(i, true);
                     Thread.Sleep(500);
-
                 }
-                //SplashScreenManager.CloseForm();
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //SplashScreenManager.CloseForm();
+
         }
 
         private void bbiFiles_ItemClick(object sender, ItemClickEventArgs e)

@@ -41,7 +41,7 @@ namespace DXSWI.Forms
 
         private void sbHelp_Click(object sender, EventArgs e)
         {
-            XtraMessageBox.Show("Use variable for different candidates:\r\n [name] : candidate's name \r\n[email] : candidate's email.");
+            XtraMessageBox.Show("Use variable for different candidates:\r\n[name] : candidate's name \r\n[email] : candidate's email.");
         }
 
         private void meMessage_EditValueChanged(object sender, EventArgs e)
