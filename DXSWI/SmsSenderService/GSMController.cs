@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using SWIBLL.Models;
 
 namespace SmsSenderService
 {
@@ -206,9 +207,9 @@ namespace SmsSenderService
             return isDeleted;
         }
 
-        public ShortMessageCollection ReadSMS()
+        public SmsReceivingCollection ReadSMS()
         {
-            ShortMessageCollection msgs = null;
+            SmsReceivingCollection msgs = null;
             try
             {
                 string command = "AT";
@@ -228,16 +229,16 @@ namespace SmsSenderService
             return msgs;
         }
 
-        private ShortMessageCollection parseMessages(string input)
+        private SmsReceivingCollection parseMessages(string input)
         {
-            ShortMessageCollection msgs = new ShortMessageCollection();
+            SmsReceivingCollection msgs = new SmsReceivingCollection();
             try
             {
                 Regex r = new Regex(@"\+CMGL: (\d+),""(.+)"",""(.+)"",(.*),""(.+)""\r\n(.+)\r\n");
                 Match m = r.Match(input);
                 while (m.Success)
                 {
-                    ShortMessage msg = new ShortMessage();
+                    SmsReceiving msg = new SmsReceiving();
                     //msg.Index = int.Parse(m.Groups[1].Value);
                     msg.Index = Convert.ToInt16(m.Groups[1].Value);
                     msg.Status = m.Groups[2].Value;

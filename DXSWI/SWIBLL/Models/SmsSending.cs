@@ -25,6 +25,10 @@ namespace SWIBLL.Models
         public string SentTime { get; set; }
         public string Message { get; set; }
     }
+    public class SmsReceivingCollection : List<SmsReceiving>
+    {
+
+    }
 
     public class SmsTemplate
     {

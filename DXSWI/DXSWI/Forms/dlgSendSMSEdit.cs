@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SWIBLL.Models;
 using SWIBLL;
+using System.Text.RegularExpressions;
 
 namespace DXSWI.Forms
 {
@@ -27,7 +28,12 @@ namespace DXSWI.Forms
             _listNames = listNames;
             _listEmails = listEmails;
             tePhoneNumbers.ReadOnly = true;
-            tePhoneNumbers.Text = string.Join(";", _listNumbers);
+            //tePhoneNumbers.Text = string.Join(";", _listNumbers);
+            tePhoneNumbers.Text = Regex.Replace(string.Join(";", _listNumbers), @";+", ";", RegexOptions.Multiline);
+            if (tePhoneNumbers.Text.StartsWith(";"))
+            {
+                tePhoneNumbers.Text = tePhoneNumbers.Text.Remove(0, 1);
+            }
         }
 
         void updateData()
@@ -134,7 +140,12 @@ namespace DXSWI.Forms
                     string number = _listNumbers[i];
                     string name = _listNames[i];
                     string email = _listEmails[i];
-                    SaveSmsToDb(number, sms.Replace("[name]", name).Replace("[email]", email));
+                    string message = sms.Replace("[name]", name).Replace("[email]", email);
+                    if(message.Length > 160)
+                    {
+                        throw new Exception(string.Format("Cant send to {0} number {1} email {2} because message lengh > 160", name, number, email));
+                    }
+                    SaveSmsToDb(number, message);
                 }
                 catch (Exception ex)
                 {

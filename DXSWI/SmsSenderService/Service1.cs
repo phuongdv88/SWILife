@@ -12,7 +12,7 @@ using System.Timers;
 
 namespace SmsSenderService
 {
-    public partial class ATSSmsSenderService : ServiceBase
+    public partial class  ATSSmsSenderService : ServiceBase
     {
         bool _ConnectionWithDB = false;
         GSMController _gsm = null;
@@ -43,7 +43,7 @@ namespace SmsSenderService
             }
 
             _timer = new Timer();
-            _timer.Interval = 60000;
+            _timer.Interval = 30000;
             _timer.Elapsed += timer_Tick;
             _timer.Start();
             connectToDb();
@@ -105,6 +105,26 @@ namespace SmsSenderService
                         Utilities.WriteLog(ex);
                         sms.Status = "Error";
                         SmsManager.UpdateSmsSending(sms);
+                    }
+                }
+
+                // get all received sms
+                if (_gsm.CountSMSmessages() > 0)
+                {
+                    var messages = _gsm.ReadSMS();
+                    foreach (var msg in messages)
+                    {
+                        try
+                        {
+                            // save to db
+                            SmsManager.InsertSmsReceiving(msg);
+                            // delete from SIM
+                            _gsm.DeleteSMS(msg.Index);
+                        }
+                        catch (Exception ex)
+                        {
+                            Utilities.WriteLog(ex);
+                        }
                     }
                 }
             }

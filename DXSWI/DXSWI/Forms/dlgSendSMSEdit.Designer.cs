@@ -30,29 +30,29 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgSendSMSEdit));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tePhoneNumbers = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.cbeTemplates = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.meMessage = new DevExpress.XtraEditors.MemoEdit();
-            this.lciContent = new DevExpress.XtraLayout.LayoutControlItem();
             this.sbSend = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.sbSaveTemplate = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.sbHelp = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lciContent = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePhoneNumbers.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeTemplates.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.meMessage.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciContent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
@@ -73,6 +73,70 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // tePhoneNumbers
+            // 
+            this.tePhoneNumbers.Location = new System.Drawing.Point(89, 38);
+            this.tePhoneNumbers.Name = "tePhoneNumbers";
+            this.tePhoneNumbers.Size = new System.Drawing.Size(479, 20);
+            this.tePhoneNumbers.StyleController = this.layoutControl1;
+            this.tePhoneNumbers.TabIndex = 4;
+            // 
+            // cbeTemplates
+            // 
+            this.cbeTemplates.EditValue = "None";
+            this.cbeTemplates.Location = new System.Drawing.Point(89, 12);
+            this.cbeTemplates.Name = "cbeTemplates";
+            this.cbeTemplates.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbeTemplates.Properties.Items.AddRange(new object[] {
+            "None"});
+            this.cbeTemplates.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbeTemplates.Size = new System.Drawing.Size(440, 20);
+            this.cbeTemplates.StyleController = this.layoutControl1;
+            this.cbeTemplates.TabIndex = 6;
+            this.cbeTemplates.EditValueChanged += new System.EventHandler(this.cbeTemplates_EditValueChanged);
+            // 
+            // meMessage
+            // 
+            this.meMessage.Location = new System.Drawing.Point(12, 78);
+            this.meMessage.Name = "meMessage";
+            this.meMessage.Properties.MaxLength = 160;
+            this.meMessage.Size = new System.Drawing.Size(556, 291);
+            this.meMessage.StyleController = this.layoutControl1;
+            this.meMessage.TabIndex = 8;
+            this.meMessage.EditValueChanged += new System.EventHandler(this.meMessage_EditValueChanged);
+            // 
+            // sbSend
+            // 
+            this.sbSend.Location = new System.Drawing.Point(292, 373);
+            this.sbSend.Name = "sbSend";
+            this.sbSend.Size = new System.Drawing.Size(276, 22);
+            this.sbSend.StyleController = this.layoutControl1;
+            this.sbSend.TabIndex = 9;
+            this.sbSend.Text = "Send";
+            this.sbSend.Click += new System.EventHandler(this.sbSend_Click);
+            // 
+            // sbSaveTemplate
+            // 
+            this.sbSaveTemplate.Location = new System.Drawing.Point(12, 373);
+            this.sbSaveTemplate.Name = "sbSaveTemplate";
+            this.sbSaveTemplate.Size = new System.Drawing.Size(276, 22);
+            this.sbSaveTemplate.StyleController = this.layoutControl1;
+            this.sbSaveTemplate.TabIndex = 10;
+            this.sbSaveTemplate.Text = "Save Template";
+            this.sbSaveTemplate.Click += new System.EventHandler(this.sbSaveTemplate_Click);
+            // 
+            // sbHelp
+            // 
+            this.sbHelp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbHelp.ImageOptions.Image")));
+            this.sbHelp.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.sbHelp.Location = new System.Drawing.Point(533, 12);
+            this.sbHelp.Name = "sbHelp";
+            this.sbHelp.Size = new System.Drawing.Size(35, 22);
+            this.sbHelp.StyleController = this.layoutControl1;
+            this.sbHelp.TabIndex = 11;
+            this.sbHelp.Click += new System.EventHandler(this.sbHelp_Click);
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -89,38 +153,6 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(580, 407);
             this.layoutControlGroup1.TextVisible = false;
             // 
-            // tePhoneNumbers
-            // 
-            this.tePhoneNumbers.Location = new System.Drawing.Point(90, 38);
-            this.tePhoneNumbers.Name = "tePhoneNumbers";
-            this.tePhoneNumbers.Size = new System.Drawing.Size(478, 20);
-            this.tePhoneNumbers.StyleController = this.layoutControl1;
-            this.tePhoneNumbers.TabIndex = 4;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.tePhoneNumbers;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 26);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(560, 24);
-            this.layoutControlItem1.Text = "Phone Number:";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(74, 13);
-            // 
-            // cbeTemplates
-            // 
-            this.cbeTemplates.EditValue = "None";
-            this.cbeTemplates.Location = new System.Drawing.Point(90, 12);
-            this.cbeTemplates.Name = "cbeTemplates";
-            this.cbeTemplates.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbeTemplates.Properties.Items.AddRange(new object[] {
-            "None"});
-            this.cbeTemplates.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbeTemplates.Size = new System.Drawing.Size(439, 20);
-            this.cbeTemplates.StyleController = this.layoutControl1;
-            this.cbeTemplates.TabIndex = 6;
-            this.cbeTemplates.EditValueChanged += new System.EventHandler(this.cbeTemplates_EditValueChanged);
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.cbeTemplates;
@@ -129,15 +161,6 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(521, 26);
             this.layoutControlItem3.Text = "Template:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(74, 13);
-            // 
-            // meMessage
-            // 
-            this.meMessage.Location = new System.Drawing.Point(12, 78);
-            this.meMessage.Name = "meMessage";
-            this.meMessage.Size = new System.Drawing.Size(556, 291);
-            this.meMessage.StyleController = this.layoutControl1;
-            this.meMessage.TabIndex = 8;
-            this.meMessage.EditValueChanged += new System.EventHandler(this.meMessage_EditValueChanged);
             // 
             // lciContent
             // 
@@ -149,16 +172,6 @@
             this.lciContent.TextLocation = DevExpress.Utils.Locations.Top;
             this.lciContent.TextSize = new System.Drawing.Size(74, 13);
             // 
-            // sbSend
-            // 
-            this.sbSend.Location = new System.Drawing.Point(292, 373);
-            this.sbSend.Name = "sbSend";
-            this.sbSend.Size = new System.Drawing.Size(276, 22);
-            this.sbSend.StyleController = this.layoutControl1;
-            this.sbSend.TabIndex = 9;
-            this.sbSend.Text = "Send";
-            this.sbSend.Click += new System.EventHandler(this.sbSend_Click);
-            // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.sbSend;
@@ -168,15 +181,14 @@
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
-            // sbSaveTemplate
+            // layoutControlItem1
             // 
-            this.sbSaveTemplate.Location = new System.Drawing.Point(12, 373);
-            this.sbSaveTemplate.Name = "sbSaveTemplate";
-            this.sbSaveTemplate.Size = new System.Drawing.Size(276, 22);
-            this.sbSaveTemplate.StyleController = this.layoutControl1;
-            this.sbSaveTemplate.TabIndex = 10;
-            this.sbSaveTemplate.Text = "Save Template";
-            this.sbSaveTemplate.Click += new System.EventHandler(this.sbSaveTemplate_Click);
+            this.layoutControlItem1.Control = this.tePhoneNumbers;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(560, 24);
+            this.layoutControlItem1.Text = "Phone Number:";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(74, 13);
             // 
             // layoutControlItem2
             // 
@@ -186,17 +198,6 @@
             this.layoutControlItem2.Size = new System.Drawing.Size(280, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
-            // 
-            // sbHelp
-            // 
-            this.sbHelp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("sbHelp.ImageOptions.Image")));
-            this.sbHelp.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.sbHelp.Location = new System.Drawing.Point(533, 12);
-            this.sbHelp.Name = "sbHelp";
-            this.sbHelp.Size = new System.Drawing.Size(35, 22);
-            this.sbHelp.StyleController = this.layoutControl1;
-            this.sbHelp.TabIndex = 11;
-            this.sbHelp.Click += new System.EventHandler(this.sbHelp_Click);
             // 
             // layoutControlItem4
             // 
@@ -221,14 +222,14 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgSendSMSEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePhoneNumbers.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeTemplates.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.meMessage.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciContent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
