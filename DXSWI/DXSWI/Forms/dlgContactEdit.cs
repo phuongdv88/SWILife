@@ -25,13 +25,19 @@ namespace DXSWI.Forms
         Dictionary<string, long> listCompanyNameAndId = new Dictionary<string, long>();
 
         bool isReadOnlyMod = false;
+        long _contactId = -1;
 
-        public dlgContactEdit(long contactId, string toolTip)
+        public dlgContactEdit(long contactId)
         {
             InitializeComponent();
+            _contactId = contactId;
             try
             {
-                init(contactId, toolTip);
+                getlistCompany(ref listCompanyNameAndId);
+                CompanyNameComboboxEdit.Properties.Items.Clear();
+                CompanyNameComboboxEdit.Properties.Items.AddRange(listCompanyNameAndId.Keys);
+
+                updateData();
             }
             catch (Exception ex)
             {
@@ -39,23 +45,11 @@ namespace DXSWI.Forms
             }
         }
 
-        public void init(long contactId, string toolTip)
+        public void updateData()
         {
-            if (!string.IsNullOrEmpty(toolTip))
-            {
-                ImagePictureEdit.ToolTip = toolTip;
-                ImagePictureEdit.Cursor = Cursors.Hand;
-            }
-            else
-            {
-                ImagePictureEdit.Cursor = Cursors.Default;
-            }
-            getlistCompany(ref listCompanyNameAndId);
-            CompanyNameComboboxEdit.Properties.Items.Clear();
-            CompanyNameComboboxEdit.Properties.Items.AddRange(listCompanyNameAndId.Keys);
-
-            mContact = ContactManager.getContactById(contactId);
+            mContact = ContactManager.getContactById(_contactId);
             FillObjectToUi();
+            gcActivities.DataSource = ActivityManager.getActivitiesOfContact(_contactId);
         }
 
         public void SetCompanyName(string companyName)
@@ -281,6 +275,39 @@ namespace DXSWI.Forms
                 {
                     DataRow data_row = dt.Rows[i];
                     listCompany.Add(data_row["Name"].ToString(), Convert.ToInt64(data_row["CompanyId"].ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void bbiAddActivity_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            logActivity();
+        }
+        public void logActivity()
+        {
+            dlgLogActivity dlg = new dlgLogActivity();
+            dlg.updateDataEvent += updateData;
+            dlg.init(mContact.FirstName + " " + mContact.MiddleName + " " + mContact.LastName, Activity.TypeOfLogActivity.Contact, -1, -1, _contactId);
+            dlg.ShowDialog();
+        }
+
+        private void gvActivities_DoubleClick(object sender, EventArgs e)
+        {
+            // view activity
+            try
+            {
+                if (gvActivities.SelectedRowsCount > 0)
+                {
+                    DataRow data_row = gvActivities.GetDataRow(gvActivities.GetSelectedRows().First());
+                    long activity_id = Convert.ToInt64(data_row["ActivityId"].ToString());
+                    dlgLogActivity dlg = new dlgLogActivity();
+                    dlg.setData(activity_id);
+                    dlg.SetReadingMode();
+                    dlg.ShowDialog();
                 }
             }
             catch (Exception ex)

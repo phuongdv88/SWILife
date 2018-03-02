@@ -35,6 +35,20 @@ namespace SWIBLL
                 }
             }
         }
+        public static void getListRegardingForContact(long contactId, ref Dictionary<string, long> listRegarding)
+        {
+            string sql = string.Format("SELECT T2.Title, T2.JobOrderId FROM swilifecore.contact T1 " +
+                                        "left join swilifecore.joborder T2 on T1.CompanyId = T2.CompanyId "+
+                                        "where T1.ContactId = {0}", contactId);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
+            for (int i = 0; i < tbl.Rows.Count; ++i)
+            {
+                if (!listRegarding.ContainsKey(tbl.Rows[i][0].ToString()))
+                {
+                    listRegarding.Add(tbl.Rows[i][0].ToString(), Convert.ToInt64(tbl.Rows[i][1].ToString()));
+                }
+            }
+        }
 
         public static void getListRunningTaskForJobOrder(long jobOrderId, ref Dictionary<long, long> listCandidateRunningTaskId)
         {
@@ -76,6 +90,11 @@ namespace SWIBLL
         public static DataTable getActivitiesOfCandidate(long id)
         {
             string sql = string.Format("select T1.ActivityId, T1.Regarding, T1.Type, T1.Notes, date_format(T1.Created,'%d/%m/%Y %T') as Created, T2.UserName from swilifecore.activity T1 left join swilifecore.user T2 on T1.UserId = T2.UserId where CandidateId = '{0}' order by T1.ActivityId desc;", id);
+            return DataAccess.Instance.getDataTable(sql);
+        }
+        public static DataTable getActivitiesOfContact(long id)
+        {
+            string sql = string.Format("select T1.ActivityId, T1.Regarding, T1.Type, T1.Notes, date_format(T1.Created,'%d/%m/%Y %T') as Created, T2.UserName from swilifecore.activity T1 left join swilifecore.user T2 on T1.UserId = T2.UserId where ContactId = '{0}' order by T1.ActivityId desc;", id);
             return DataAccess.Instance.getDataTable(sql);
         }
 

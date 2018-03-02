@@ -30,6 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.bbiAddActivity = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.FirstNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MiddleNameTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -53,6 +61,13 @@
             this.sbOk = new DevExpress.XtraEditors.SimpleButton();
             this.sbCancel = new DevExpress.XtraEditors.SimpleButton();
             this.CompanyNameComboboxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.gcActivities = new DevExpress.XtraGrid.GridControl();
+            this.gvActivities = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -80,19 +95,12 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.gcActivities = new DevExpress.XtraGrid.GridControl();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.gvActivities = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiddleNameTextEdit.Properties)).BeginInit();
@@ -114,6 +122,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.MiscNotesMemoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePictureEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyNameComboboxEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcActivities)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvActivities)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
@@ -141,15 +151,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcActivities)).BeginInit();
-            this.contextMenuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvActivities)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
             // 
+            this.dataLayoutControl1.Controls.Add(this.standaloneBarDockControl1);
             this.dataLayoutControl1.Controls.Add(this.FirstNameTextEdit);
             this.dataLayoutControl1.Controls.Add(this.MiddleNameTextEdit);
             this.dataLayoutControl1.Controls.Add(this.LastNameTextEdit);
@@ -181,6 +190,84 @@
             this.dataLayoutControl1.Size = new System.Drawing.Size(1125, 661);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // standaloneBarDockControl1
+            // 
+            this.standaloneBarDockControl1.CausesValidation = false;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(24, 460);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
+            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1077, 40);
+            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // barManager1
+            // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar2});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.bbiAddActivity});
+            this.barManager1.MainMenu = this.bar2;
+            this.barManager1.MaxItemId = 1;
+            // 
+            // bar2
+            // 
+            this.bar2.BarName = "Main menu";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar2.FloatLocation = new System.Drawing.Point(124, 557);
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddActivity)});
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.StandaloneBarDockControl = this.standaloneBarDockControl1;
+            this.bar2.Text = "Main menu";
+            // 
+            // bbiAddActivity
+            // 
+            this.bbiAddActivity.Caption = "Add Activity";
+            this.bbiAddActivity.Id = 0;
+            this.bbiAddActivity.ImageOptions.Image = global::DXSWI.Properties.Resources.Actionsdocumentedit;
+            this.bbiAddActivity.Name = "bbiAddActivity";
+            this.bbiAddActivity.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddActivity_ItemClick);
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1125, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 661);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1125, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 661);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1125, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 661);
             // 
             // FirstNameTextEdit
             // 
@@ -346,7 +433,7 @@
             this.MiscNotesMemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.contactBindingSource, "MiscNotes", true));
             this.MiscNotesMemoEdit.Location = new System.Drawing.Point(105, 324);
             this.MiscNotesMemoEdit.Name = "MiscNotesMemoEdit";
-            this.MiscNotesMemoEdit.Size = new System.Drawing.Size(996, 115);
+            this.MiscNotesMemoEdit.Size = new System.Drawing.Size(996, 90);
             this.MiscNotesMemoEdit.StyleController = this.dataLayoutControl1;
             this.MiscNotesMemoEdit.TabIndex = 21;
             // 
@@ -395,6 +482,71 @@
             this.CompanyNameComboboxEdit.Size = new System.Drawing.Size(724, 20);
             this.CompanyNameComboboxEdit.StyleController = this.dataLayoutControl1;
             this.CompanyNameComboboxEdit.TabIndex = 22;
+            // 
+            // gcActivities
+            // 
+            this.gcActivities.Location = new System.Drawing.Point(24, 504);
+            this.gcActivities.MainView = this.gvActivities;
+            this.gcActivities.MenuManager = this.barManager1;
+            this.gcActivities.Name = "gcActivities";
+            this.gcActivities.Size = new System.Drawing.Size(1077, 107);
+            this.gcActivities.TabIndex = 0;
+            this.gcActivities.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvActivities});
+            // 
+            // gvActivities
+            // 
+            this.gvActivities.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5});
+            this.gvActivities.GridControl = this.gcActivities;
+            this.gvActivities.Name = "gvActivities";
+            this.gvActivities.OptionsBehavior.Editable = false;
+            this.gvActivities.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvActivities.DoubleClick += new System.EventHandler(this.gvActivities_DoubleClick);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Date";
+            this.gridColumn1.FieldName = "Created";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Type";
+            this.gridColumn2.FieldName = "Type";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Regarding";
+            this.gridColumn3.FieldName = "Regarding";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Notes";
+            this.gridColumn4.FieldName = "Notes";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "By";
+            this.gridColumn5.FieldName = "UserName";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
             // 
             // layoutControlGroup1
             // 
@@ -537,7 +689,7 @@
             this.ItemForState});
             this.layoutControlGroup4.Location = new System.Drawing.Point(0, 186);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(1105, 257);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(1105, 232);
             this.layoutControlGroup4.Text = "Contact";
             // 
             // ItemForEmail
@@ -581,7 +733,7 @@
             this.ItemForMiscNotes.Control = this.MiscNotesMemoEdit;
             this.ItemForMiscNotes.Location = new System.Drawing.Point(0, 96);
             this.ItemForMiscNotes.Name = "ItemForMiscNotes";
-            this.ItemForMiscNotes.Size = new System.Drawing.Size(1081, 119);
+            this.ItemForMiscNotes.Size = new System.Drawing.Size(1081, 94);
             this.ItemForMiscNotes.StartNewLine = true;
             this.ItemForMiscNotes.Text = "Misc Notes";
             this.ItemForMiscNotes.TextSize = new System.Drawing.Size(78, 13);
@@ -663,108 +815,40 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 664);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 615);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(769, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // gcActivities
-            // 
-            this.gcActivities.ContextMenuStrip = this.contextMenuStrip2;
-            this.gcActivities.Location = new System.Drawing.Point(24, 485);
-            this.gcActivities.MainView = this.gvActivities;
-            this.gcActivities.Name = "gcActivities";
-            this.gcActivities.Size = new System.Drawing.Size(1077, 126);
-            this.gcActivities.TabIndex = 0;
-            this.gcActivities.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvActivities});
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(142, 26);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "logActivityToolStripMenuItem";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
-            this.toolStripMenuItem1.Text = "New Activity";
-            // 
-            // gvActivities
-            // 
-            this.gvActivities.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn5});
-            this.gvActivities.GridControl = this.gcActivities;
-            this.gvActivities.Name = "gvActivities";
-            this.gvActivities.OptionsBehavior.Editable = false;
-            this.gvActivities.OptionsSelection.EnableAppearanceFocusedCell = false;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Date";
-            this.gridColumn1.FieldName = "Created";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Type";
-            this.gridColumn2.FieldName = "Type";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Regarding";
-            this.gridColumn3.FieldName = "Regarding";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Notes";
-            this.gridColumn4.FieldName = "Notes";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "By";
-            this.gridColumn5.FieldName = "UserName";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
             // 
             // layoutControlGroup6
             // 
             this.layoutControlGroup6.CustomizationFormText = "Activities";
             this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem11});
-            this.layoutControlGroup6.Location = new System.Drawing.Point(0, 443);
+            this.layoutControlItem11,
+            this.layoutControlItem3});
+            this.layoutControlGroup6.Location = new System.Drawing.Point(0, 418);
             this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(1105, 172);
+            this.layoutControlGroup6.Size = new System.Drawing.Size(1105, 197);
             this.layoutControlGroup6.Text = "Activities";
             // 
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.gcActivities;
             this.layoutControlItem11.CustomizationFormText = "layoutControlItem11";
-            this.layoutControlItem11.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 44);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(1081, 130);
-            this.layoutControlItem11.Text = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(1081, 111);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.standaloneBarDockControl1;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(1081, 44);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
             // 
             // dlgContactEdit
             // 
@@ -772,6 +856,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1125, 661);
             this.Controls.Add(this.dataLayoutControl1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.KeyPreview = true;
             this.Name = "dlgContactEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -780,6 +868,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dlgContactEdit_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiddleNameTextEdit.Properties)).EndInit();
@@ -801,6 +890,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.MiscNotesMemoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePictureEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyNameComboboxEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcActivities)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvActivities)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
@@ -828,12 +919,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcActivities)).EndInit();
-            this.contextMenuStrip2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gvActivities)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -891,8 +981,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraEditors.ComboBoxEdit CompanyNameComboboxEdit;
         private DevExpress.XtraGrid.GridControl gcActivities;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private DevExpress.XtraGrid.Views.Grid.GridView gvActivities;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
@@ -901,5 +989,14 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
+        private DevExpress.XtraBars.BarButtonItem bbiAddActivity;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }

@@ -55,7 +55,7 @@ namespace DXSWI.Modules
             {
                 if (gvCompanies.SelectedRowsCount > 0)
                 {
-                    dlgContactEdit dlg = new dlgContactEdit(-1, null);
+                    dlgContactEdit dlg = new dlgContactEdit(-1);
 
                     int row = gvCompanies.GetSelectedRows().First();
                     DataRow data_row = gvCompanies.GetDataRow(row);

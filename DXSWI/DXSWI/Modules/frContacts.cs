@@ -45,7 +45,7 @@ namespace DXSWI.Modules
 
         public void NewContact()
         {
-            dlgContactEdit dlg = new dlgContactEdit(-1, null);
+            dlgContactEdit dlg = new dlgContactEdit(-1);
             dlg.emitUpdateData += updateData;
             dlg.ShowDialog();
         }
@@ -65,7 +65,7 @@ namespace DXSWI.Modules
                     int row = gvContacts.GetSelectedRows().First();
                     DataRow data_row = gvContacts.GetDataRow(row);
                     long conId = Convert.ToInt64(data_row["ContactId"].ToString());
-                    dlgContactEdit dlg = new dlgContactEdit(conId, null);
+                    dlgContactEdit dlg = new dlgContactEdit(conId);
                     dlg.emitUpdateData += updateData;
                     dlg.ShowDialog();
                 }

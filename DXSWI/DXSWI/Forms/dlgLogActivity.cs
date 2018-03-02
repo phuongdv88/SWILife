@@ -17,6 +17,7 @@ namespace DXSWI.Forms
     {
 
         Dictionary<string, long> listRegardingRunningTaskId = new Dictionary<string, long>();   // title of regarding , IdOfRunningTask in database
+        Dictionary<string, long> listRegardingJobOrderId = new Dictionary<string, long>();   // title of regarding , JobOrderId in database
         Dictionary<string, string> listRegardingStatus = new Dictionary<string, string>(); // status of regarding
         Activity.TypeOfLogActivity typeOfActivity;
         long CurrentCandidateId = -1;
@@ -28,7 +29,7 @@ namespace DXSWI.Forms
         public event updateData updateDataEvent;
 
         List<long> listCandidateId;
-        bool isMultiSelected = false;
+        bool isMultiCandidateSelected = false;
 
         public void init(string name, Activity.TypeOfLogActivity type, long CandidateId, long JobOrderId, long ContactId)
         {
@@ -36,34 +37,41 @@ namespace DXSWI.Forms
             {
                 listRegardingRunningTaskId.Clear();
                 listRegardingStatus.Clear();
+                listRegardingJobOrderId.Clear();
                 listRegardingRunningTaskId.Add("General", -1);
                 listRegardingStatus.Add("General", "None");
+                listRegardingJobOrderId.Add("General", -1);
                 typeOfActivity = type;
                 CurrentCandidateId = CandidateId;
                 CurrentJobOrderId = JobOrderId;
                 CurrentContactId = ContactId;
                 this.Text = name;
+                cbeRegarding.Properties.Items.BeginUpdate();
+                cbeRegarding.Properties.Items.Clear();
                 switch (type)
                 {
                     case Activity.TypeOfLogActivity.Candidate:
                         // get list job order in pipeline
                         ActivityManager.getListRegardingForCandidate(CandidateId, ref listRegardingRunningTaskId, ref listRegardingStatus);
+                        cbeRegarding.Properties.Items.AddRange(listRegardingRunningTaskId.Keys);
+
                         break;
                     case Activity.TypeOfLogActivity.Pipeline:
                         // get list job order in pipeline
                         ActivityManager.getListRegardingForCandidate(CandidateId, ref listRegardingRunningTaskId, ref listRegardingStatus);
+                        cbeRegarding.Properties.Items.AddRange(listRegardingRunningTaskId.Keys);
+
+                        break;
+                    case Activity.TypeOfLogActivity.Contact:
+                        // get list job order of company of this contact
+                        ActivityManager.getListRegardingForContact(CurrentContactId, ref listRegardingJobOrderId);
+                        cbeRegarding.Properties.Items.AddRange(listRegardingJobOrderId.Keys);
+                        cbeStatus.Enabled = false;
                         break;
                     default:
                         break;
                 }
 
-                cbeRegarding.Properties.Items.BeginUpdate();
-                cbeRegarding.Properties.Items.Clear();
-                // add to combobox
-                foreach (var item in listRegardingRunningTaskId.Keys)
-                {
-                    cbeRegarding.Properties.Items.Add(item);
-                }
                 cbeRegarding.Properties.Items.EndUpdate();
             }
             catch (Exception ex)
@@ -77,7 +85,7 @@ namespace DXSWI.Forms
         {
             try
             {
-                isMultiSelected = true;
+                isMultiCandidateSelected = true;
                 listRegardingRunningTaskId.Clear();
                 listRegardingStatus.Clear();
                 this.Text = name;
@@ -188,7 +196,7 @@ namespace DXSWI.Forms
                 if (isAddNew)
                 {
                     // insert to db by transaction
-                    if (isMultiSelected)
+                    if (isMultiCandidateSelected)
                     {
                         // add multi action
                         ActivityManager.insertMultiActionForCandidates(act, CurrentJobOrderId, listCandidateId);
@@ -234,12 +242,22 @@ namespace DXSWI.Forms
             act.Notes = meActivityNote.Text;
             act.Created = DateTime.Now;
             act.ActivityOf = typeOfActivity;
-            if (!isMultiSelected)
+            if (typeOfActivity == Activity.TypeOfLogActivity.Contact)
             {
-                act.RunningTaskId = listRegardingRunningTaskId[cbeRegarding.Text];  // get running task id of this activity
-                act.CandidateId = CurrentCandidateId;
-                act.JobOrderId = CurrentJobOrderId;
-                act.ContactId = CurrentContactId;
+                    act.RunningTaskId = -1;
+                    act.CandidateId = CurrentCandidateId;
+                    act.JobOrderId = listRegardingJobOrderId[cbeRegarding.Text];
+                    act.ContactId = CurrentContactId;
+            }
+            else
+            {
+                if (!isMultiCandidateSelected)
+                {
+                    act.RunningTaskId = listRegardingRunningTaskId[cbeRegarding.Text];  // get running task id of this activity
+                    act.CandidateId = CurrentCandidateId;
+                    act.JobOrderId = CurrentJobOrderId;
+                    act.ContactId = CurrentContactId;
+                }
             }
             return act;
         }
@@ -271,22 +289,28 @@ namespace DXSWI.Forms
         }
         private void cbeRegarding_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!isMultiSelected)
+            if (typeOfActivity == Activity.TypeOfLogActivity.Contact)
             {
-                if (cbeRegarding.SelectedIndex == 0)
+
+            }
+            else
+            {
+                if (!isMultiCandidateSelected)
                 {
-                    ceChangeStatus.Enabled = false;
-                    cbeStatus.Enabled = false;
-                    cbeStatus.SelectedIndex = -1;
-                }
-                else
-                {
-                    ceChangeStatus.Enabled = true;
-                    cbeStatus.Enabled = ceChangeStatus.Checked;
-                    cbeStatus.Text = listRegardingStatus[cbeRegarding.Text];
+                    if (cbeRegarding.SelectedIndex == 0)
+                    {
+                        ceChangeStatus.Enabled = false;
+                        cbeStatus.Enabled = false;
+                        cbeStatus.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        ceChangeStatus.Enabled = true;
+                        cbeStatus.Enabled = ceChangeStatus.Checked;
+                        cbeStatus.Text = listRegardingStatus[cbeRegarding.Text];
+                    }
                 }
             }
-
         }
 
         private void dlgLogActivity_KeyDown(object sender, KeyEventArgs e)

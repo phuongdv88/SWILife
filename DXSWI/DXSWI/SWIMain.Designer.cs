@@ -83,7 +83,6 @@
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
@@ -158,7 +157,6 @@
             this.ribbonControlMain.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControlMain.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControlMain.Size = new System.Drawing.Size(1010, 146);
-            this.ribbonControlMain.StatusBar = this.ribbonStatusBar;
             this.ribbonControlMain.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             this.ribbonControlMain.SelectedPageChanged += new System.EventHandler(this.ribbonControlMain_SelectedPageChanged);
             this.ribbonControlMain.Click += new System.EventHandler(this.ribbonControlMain_Click);
@@ -567,13 +565,6 @@
             this.rpReport.Tag = "report";
             this.rpReport.Text = "REPORT";
             // 
-            // ribbonStatusBar
-            // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 668);
-            this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbonControlMain;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1010, 31);
-            // 
             // ribbonPageGroup3
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.bbiUserAdd);
@@ -596,7 +587,7 @@
             this.pcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pcMain.Location = new System.Drawing.Point(0, 146);
             this.pcMain.Name = "pcMain";
-            this.pcMain.Size = new System.Drawing.Size(1010, 522);
+            this.pcMain.Size = new System.Drawing.Size(1010, 549);
             this.pcMain.TabIndex = 6;
             // 
             // fpNotify
@@ -704,16 +695,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1010, 699);
+            this.ClientSize = new System.Drawing.Size(1010, 695);
             this.Controls.Add(this.pcMain);
-            this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControlMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "SWIMain";
             this.Ribbon = this.ribbonControlMain;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.StatusBar = this.ribbonStatusBar;
             this.Text = "SWILife HR Assistant V1.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SWIMain_FormClosing);
@@ -737,7 +726,6 @@
 
         #endregion
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControlMain;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpUser;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpCandidates;

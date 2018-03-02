@@ -118,12 +118,13 @@ namespace DXSWI.Forms
         private void FillObjectToUi()
         {
             if (mCompany == null) return;
-            
+
             NameTextEdit.Text = mCompany.Name;
-            if(mCompany.Name.Length > 0)
+            if (mCompany.Name.Length > 0)
             {
                 Text = mCompany.Name;
-            } else
+            }
+            else
             {
                 Text = "New Company";
             }
@@ -237,7 +238,8 @@ namespace DXSWI.Forms
                     // if deletelink is not empty -> delete scanfunction
                     if (deleteFileLink?.Length > 0)
                     {
-                        try {
+                        try
+                        {
                             File.Delete(deleteFileLink);
                         }
                         catch { }
@@ -298,8 +300,9 @@ namespace DXSWI.Forms
 
         private void sbViewFile_Click(object sender, EventArgs e)
         {
-             try {
-                if(mCompany.ScanLink == "")
+            try
+            {
+                if (mCompany.ScanLink == "")
                 {
                     return;
                 }
@@ -327,7 +330,7 @@ namespace DXSWI.Forms
                     int row = gvContact.GetSelectedRows().First();
                     DataRow data_row = gvContact.GetDataRow(row);
                     long conId = Convert.ToInt64(data_row["ContactId"].ToString());
-                    dlgContactEdit dlg = new dlgContactEdit(conId, null);
+                    dlgContactEdit dlg = new dlgContactEdit(conId);
                     dlg.emitUpdateData += updateData;
                     dlg.ShowDialog();
                 }
@@ -344,11 +347,13 @@ namespace DXSWI.Forms
         }
         public void EditJobOrder()
         {
-            long jobOrderId = -1;
-            if (gvJobOrder.SelectedRowsCount > 0)
+            if (gvJobOrder.SelectedRowsCount == 0)
             {
-                jobOrderId = Convert.ToInt64(gvJobOrder.GetDataRow(gvJobOrder.GetSelectedRows().First())["JobOrderId"].ToString());
+                return;
             }
+            long jobOrderId = -1;
+
+            jobOrderId = Convert.ToInt64(gvJobOrder.GetDataRow(gvJobOrder.GetSelectedRows().First())["JobOrderId"].ToString());
             dlgJobOrderEdit dlg = new dlgJobOrderEdit(jobOrderId);
             dlg.UpdateDataEvent += updateData;
             dlg.ShowDialog();

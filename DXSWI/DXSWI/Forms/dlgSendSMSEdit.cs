@@ -188,8 +188,6 @@ namespace DXSWI.Forms
                 SmsSending tmp = new SmsSending() { PhoneNumber = number, Message = sms, Status = "Sending", TimeToSend = DateTime.Now };
                 SmsManager.InsertSmsSending(tmp);
             }
-
-
         }
 
         private void cbeTemplates_EditValueChanged(object sender, EventArgs e)
