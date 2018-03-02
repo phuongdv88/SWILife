@@ -31,17 +31,25 @@ namespace DXSWI.Forms
         {
             InitializeComponent();
             _contactId = contactId;
-            try
+            if (contactId < 0)
             {
-                getlistCompany(ref listCompanyNameAndId);
-                CompanyNameComboboxEdit.Properties.Items.Clear();
-                CompanyNameComboboxEdit.Properties.Items.AddRange(listCompanyNameAndId.Keys);
-
-                updateData();
+                bar2.Dispose();
+                standaloneBarDockControl1.Dispose();
             }
-            catch (Exception ex)
+            else
             {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    getlistCompany(ref listCompanyNameAndId);
+                    CompanyNameComboboxEdit.Properties.Items.Clear();
+                    CompanyNameComboboxEdit.Properties.Items.AddRange(listCompanyNameAndId.Keys);
+
+                    updateData();
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
