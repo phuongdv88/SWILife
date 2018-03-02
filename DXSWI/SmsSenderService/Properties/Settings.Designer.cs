@@ -25,7 +25,7 @@ namespace SmsSenderService.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("COM3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM4")]
         public string GSMPort {
             get {
                 return ((string)(this["GSMPort"]));

@@ -43,7 +43,7 @@ namespace SmsSenderService
             }
 
             _timer = new Timer();
-            _timer.Interval = 30000;
+            _timer.Interval = 20000;
             _timer.Elapsed += timer_Tick;
             _timer.Start();
             connectToDb();
@@ -105,6 +105,7 @@ namespace SmsSenderService
                         Utilities.WriteLog(ex);
                         sms.Status = "Error";
                         SmsManager.UpdateSmsSending(sms);
+                        return; // return and wait 20s for nex round
                     }
                 }
 
@@ -132,7 +133,11 @@ namespace SmsSenderService
             {
                 Utilities.WriteLog(ex);
             }
-            _timer.Start();
+            finally
+            {
+
+                _timer.Start();
+            }
         }
     }
 }

@@ -28,12 +28,29 @@ namespace DXSWI.Forms
             _listNames = listNames;
             _listEmails = listEmails;
             tePhoneNumbers.ReadOnly = true;
-            //tePhoneNumbers.Text = string.Join(";", _listNumbers);
-            tePhoneNumbers.Text = Regex.Replace(string.Join(";", _listNumbers), @";+", ";", RegexOptions.Multiline);
-            if (tePhoneNumbers.Text.StartsWith(";"))
+            string listPhone = string.Empty;
+            for(var i = 0; i < listNumbers.Count; ++i)
             {
-                tePhoneNumbers.Text = tePhoneNumbers.Text.Remove(0, 1);
+                var number = listNumbers[i];
+                number = Regex.Replace(number, "\\D+", "", RegexOptions.Multiline);
+                if (number.StartsWith("84"))
+                {
+                    number = "0" + number.Remove(0, 2);
+                }
+                if (number == null || number.Length == 0)
+                    continue;
+                var name = listNames[i];
+                if(tePhoneNumbers.Text.Length > 0)
+                {
+                    tePhoneNumbers.Text += ";";
+                }
+                tePhoneNumbers.Text += string.Format("{0}({1})", name, number);
             }
+            //tePhoneNumbers.Text = Regex.Replace(string.Join(";", _listNumbers), @";+", ";", RegexOptions.Multiline);
+            //if (tePhoneNumbers.Text.StartsWith(";"))
+            //{
+            //    tePhoneNumbers.Text = tePhoneNumbers.Text.Remove(0, 1);
+            //}
         }
 
         void updateData()
@@ -159,19 +176,14 @@ namespace DXSWI.Forms
         private void SaveSmsToDb(string number, string sms)
         {
             // correct number:
-            // +84 -> 0; 84 -> 0; remove ".", " ", " "
-            if (number.StartsWith("+84"))
-            {
-                number = "0" + number.Remove(0, 3);
-            }
+            // +84 -> 0; 84 -> 0; remove all of characters which is not a digit
+            number = Regex.Replace(number, "\\D+", "", RegexOptions.Multiline);
             if (number.StartsWith("84"))
             {
                 number = "0" + number.Remove(0, 2);
             }
-            number = number.Replace(".", "").Replace("-", "").Replace(" ", "").Trim();
             // if not start by 0 -> do not sent
-
-            if (number.StartsWith("0"))
+            if (number.StartsWith("0") && number.Length > 9 && number.Length < 12)
             {
                 SmsSending tmp = new SmsSending() { PhoneNumber = number, Message = sms, Status = "Sending", TimeToSend = DateTime.Now };
                 SmsManager.InsertSmsSending(tmp);

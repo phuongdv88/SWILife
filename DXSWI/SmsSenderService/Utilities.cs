@@ -15,7 +15,7 @@ namespace SmsSenderService
             try
             {
                 sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\LogSmsSendderService.txt", true);
-                sw.WriteLine(DateTime.Now.ToString("g") + ": " + ex.Source + "; " + ex.Message);
+                sw.WriteLine(DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ": " + ex.Source + "; " + ex.Message);
                 sw.Flush();
                 sw.Close();
             }
@@ -30,7 +30,7 @@ namespace SmsSenderService
             try
             {
                 sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\LogSmsSendderService.txt", true);
-                sw.WriteLine(DateTime.Now.ToString("g") + ": " + message);
+                sw.WriteLine(DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + ": " + message);
                 sw.Flush();
                 sw.Close();
             }

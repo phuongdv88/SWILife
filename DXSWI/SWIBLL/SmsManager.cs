@@ -66,6 +66,17 @@ namespace SWIBLL
             }
             return lt;
         }
+        public static List<SmsSending> GetlistSmsError()
+        {
+            List<SmsSending> lt = new List<SmsSending>();
+            string sql = "SELECT * FROM swilifecore.smssending where Status = 'Error' order by SmsSendingId";
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
+            foreach (DataRow row in tbl.Rows)
+            {
+                lt.Add(Data.CreateItemFromRow<SmsSending>(row));
+            }
+            return lt;
+        }
 
         public static void InsertSmsSending(SmsSending sms)
         {

@@ -98,7 +98,7 @@ namespace SmsSenderService
                     else
                     {
                         if (buffer.Length > 0)
-                            throw new ApplicationException("Response received is incomplete.");
+                            throw new ApplicationException("Response received is incomplete." + buffer);
                         else
                             throw new ApplicationException("No data received from phone.");
                     }
@@ -132,12 +132,12 @@ namespace SmsSenderService
                 _port?.Write(command + "\r");
                 string result = ReadResponse(responseTimeout);
                 if ((result.Length == 0) || ((!result.EndsWith("\"\r\r\n> ")) && (!result.EndsWith("\r\nOK\r\n"))))
-                    throw new ApplicationException(failMessage);
+                    throw new ApplicationException(command + ": " + failMessage);
                 return result;
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(command + ":" + ex.Message);
             }
         }
 
@@ -148,13 +148,13 @@ namespace SmsSenderService
             {
                 string command = string.Empty;
                 command = "AT";
-                string test = ExecCommand(command, 500, "No phone connected");
+                string test = ExecCommand(command, 1000, "No phone connected");
                 command = "AT+CMGF=1"; // set gsm module to text mode
-                test = ExecCommand(command, 500, "Failed to set GSM module to text mode.");
+                test = ExecCommand(command, 1000, "Failed to set GSM module to text mode.");
                 command = string.Format("AT+CMGS=\"{0}\"", number);
-                test = ExecCommand(command, 500, "Failed to accept phoneNo");
+                test = ExecCommand(command, 1000, "Failed to accept phoneNo");
                 command = message + char.ConvertFromUtf32(26) + "\r";
-                string result = ExecCommand(command, 5000, "Failed to send message");
+                string result = ExecCommand(command, 10000, "Failed to send message");
                 if (result.EndsWith("\r\nOK\r\n"))
                 {
                     isSent = true;
@@ -192,7 +192,7 @@ namespace SmsSenderService
                 {
                     command = string.Format("AT+CMGD={0}", index);
                 }
-                string result = ExecCommand(command, 5000, "Failed to delete messages");
+                string result = ExecCommand(command, 10000, "Failed to delete messages");
                 if (result.EndsWith("\r\nOK\r\n"))
                 {
                     isDeleted = true;

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgCandidateEdit));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.gcActivities = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -149,15 +149,15 @@
             this.ItemForEducation = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForInterviewNotes = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCurrentEmployer = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForKeySkills = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForLanguage = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForCurrentPosition = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCurrentPay = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForIndustry = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForPositionsUpTillNow = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForDesiredPay = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForProjectDone = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForMiscNotes = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForCurrentPosition = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForLanguage = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForKeySkills = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForIndustry = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -251,15 +251,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEducation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForInterviewNotes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentEmployer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForKeySkills)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForLanguage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentPay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForIndustry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPositionsUpTillNow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDesiredPay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForProjectDone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMiscNotes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentPosition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLanguage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForKeySkills)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIndustry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
@@ -329,6 +329,7 @@
             this.gcActivities.TabIndex = 0;
             this.gcActivities.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvActivities});
+            this.gcActivities.DoubleClick += new System.EventHandler(this.gcActivities_DoubleClick);
             // 
             // contextMenuStrip2
             // 
@@ -492,17 +493,17 @@
             // ribeAction
             // 
             this.ribeAction.AutoHeight = false;
-            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
-            serializableAppearanceObject13.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject13.Image")));
-            serializableAppearanceObject13.Options.UseImage = true;
-            serializableAppearanceObject14.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject14.Image")));
-            serializableAppearanceObject14.Options.UseImage = true;
-            serializableAppearanceObject15.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject15.Image")));
-            serializableAppearanceObject15.Options.UseImage = true;
-            serializableAppearanceObject16.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject16.Image")));
-            serializableAppearanceObject16.Options.UseImage = true;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            serializableAppearanceObject1.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject1.Image")));
+            serializableAppearanceObject1.Options.UseImage = true;
+            serializableAppearanceObject2.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject2.Image")));
+            serializableAppearanceObject2.Options.UseImage = true;
+            serializableAppearanceObject3.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject3.Image")));
+            serializableAppearanceObject3.Options.UseImage = true;
+            serializableAppearanceObject4.Image = ((System.Drawing.Image)(resources.GetObject("serializableAppearanceObject4.Image")));
+            serializableAppearanceObject4.Options.UseImage = true;
             this.ribeAction.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null)});
             this.ribeAction.Name = "ribeAction";
             this.ribeAction.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -1445,34 +1446,6 @@
             this.ItemForCurrentEmployer.Text = "Current Employer";
             this.ItemForCurrentEmployer.TextSize = new System.Drawing.Size(97, 13);
             // 
-            // ItemForKeySkills
-            // 
-            this.ItemForKeySkills.Control = this.KeySkillsTextEdit;
-            this.ItemForKeySkills.Location = new System.Drawing.Point(0, 0);
-            this.ItemForKeySkills.Name = "ItemForKeySkills";
-            this.ItemForKeySkills.Size = new System.Drawing.Size(281, 72);
-            this.ItemForKeySkills.Text = "Key Skills";
-            this.ItemForKeySkills.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForKeySkills.TextSize = new System.Drawing.Size(97, 13);
-            // 
-            // ItemForLanguage
-            // 
-            this.ItemForLanguage.Control = this.LanguageTextEdit;
-            this.ItemForLanguage.Location = new System.Drawing.Point(281, 0);
-            this.ItemForLanguage.Name = "ItemForLanguage";
-            this.ItemForLanguage.Size = new System.Drawing.Size(280, 24);
-            this.ItemForLanguage.Text = "Language";
-            this.ItemForLanguage.TextSize = new System.Drawing.Size(97, 13);
-            // 
-            // ItemForCurrentPosition
-            // 
-            this.ItemForCurrentPosition.Control = this.CurrentPositionTextEdit;
-            this.ItemForCurrentPosition.Location = new System.Drawing.Point(281, 24);
-            this.ItemForCurrentPosition.Name = "ItemForCurrentPosition";
-            this.ItemForCurrentPosition.Size = new System.Drawing.Size(280, 24);
-            this.ItemForCurrentPosition.Text = "Current Position";
-            this.ItemForCurrentPosition.TextSize = new System.Drawing.Size(97, 13);
-            // 
             // ItemForCurrentPay
             // 
             this.ItemForCurrentPay.Control = this.CurrentPayTextEdit;
@@ -1481,15 +1454,6 @@
             this.ItemForCurrentPay.Size = new System.Drawing.Size(281, 24);
             this.ItemForCurrentPay.Text = "Current Pay";
             this.ItemForCurrentPay.TextSize = new System.Drawing.Size(97, 13);
-            // 
-            // ItemForIndustry
-            // 
-            this.ItemForIndustry.Control = this.IndustryTextEdit;
-            this.ItemForIndustry.Location = new System.Drawing.Point(281, 72);
-            this.ItemForIndustry.Name = "ItemForIndustry";
-            this.ItemForIndustry.Size = new System.Drawing.Size(280, 24);
-            this.ItemForIndustry.Text = "Industry";
-            this.ItemForIndustry.TextSize = new System.Drawing.Size(97, 13);
             // 
             // ItemForPositionsUpTillNow
             // 
@@ -1530,6 +1494,43 @@
             this.ItemForMiscNotes.Text = "Misc Notes";
             this.ItemForMiscNotes.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForMiscNotes.TextSize = new System.Drawing.Size(97, 13);
+            // 
+            // ItemForCurrentPosition
+            // 
+            this.ItemForCurrentPosition.Control = this.CurrentPositionTextEdit;
+            this.ItemForCurrentPosition.Location = new System.Drawing.Point(281, 24);
+            this.ItemForCurrentPosition.Name = "ItemForCurrentPosition";
+            this.ItemForCurrentPosition.Size = new System.Drawing.Size(280, 24);
+            this.ItemForCurrentPosition.Text = "Current Position";
+            this.ItemForCurrentPosition.TextSize = new System.Drawing.Size(97, 13);
+            // 
+            // ItemForLanguage
+            // 
+            this.ItemForLanguage.Control = this.LanguageTextEdit;
+            this.ItemForLanguage.Location = new System.Drawing.Point(281, 0);
+            this.ItemForLanguage.Name = "ItemForLanguage";
+            this.ItemForLanguage.Size = new System.Drawing.Size(280, 24);
+            this.ItemForLanguage.Text = "Language";
+            this.ItemForLanguage.TextSize = new System.Drawing.Size(97, 13);
+            // 
+            // ItemForKeySkills
+            // 
+            this.ItemForKeySkills.Control = this.KeySkillsTextEdit;
+            this.ItemForKeySkills.Location = new System.Drawing.Point(0, 0);
+            this.ItemForKeySkills.Name = "ItemForKeySkills";
+            this.ItemForKeySkills.Size = new System.Drawing.Size(281, 72);
+            this.ItemForKeySkills.Text = "Key Skills";
+            this.ItemForKeySkills.TextLocation = DevExpress.Utils.Locations.Top;
+            this.ItemForKeySkills.TextSize = new System.Drawing.Size(97, 13);
+            // 
+            // ItemForIndustry
+            // 
+            this.ItemForIndustry.Control = this.IndustryTextEdit;
+            this.ItemForIndustry.Location = new System.Drawing.Point(281, 72);
+            this.ItemForIndustry.Name = "ItemForIndustry";
+            this.ItemForIndustry.Size = new System.Drawing.Size(280, 24);
+            this.ItemForIndustry.Text = "Industry";
+            this.ItemForIndustry.TextSize = new System.Drawing.Size(97, 13);
             // 
             // layoutControlItem5
             // 
@@ -1698,15 +1699,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEducation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForInterviewNotes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentEmployer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForKeySkills)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForLanguage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentPosition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentPay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForIndustry)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPositionsUpTillNow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDesiredPay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForProjectDone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMiscNotes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCurrentPosition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLanguage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForKeySkills)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIndustry)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();

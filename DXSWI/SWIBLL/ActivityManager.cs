@@ -234,7 +234,7 @@ namespace SWIBLL
 
         }
 
-        public static Activity getActivityById(int id)
+        public static Activity getActivityById(long id)
         {
             string sql = string.Format("select * from `swilifecore`.`activity` where `ActivityId`='{0}' ", id);
             DataTable tbl = DataAccess.Instance.getDataTable(sql);

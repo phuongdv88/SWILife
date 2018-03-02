@@ -1097,5 +1097,25 @@ namespace DXSWI.Forms
             dlg.ShowDialog();
         }
 
+        private void gcActivities_DoubleClick(object sender, EventArgs e)
+        {
+            // view activity
+            try
+            {
+                if (gvActivities.SelectedRowsCount > 0)
+                {
+                    DataRow data_row = gvActivities.GetDataRow(gvActivities.GetSelectedRows().First());
+                    long activity_id = Convert.ToInt64(data_row["ActivityId"].ToString());
+                    dlgLogActivity dlg = new dlgLogActivity();
+                    dlg.setData(activity_id);
+                    dlg.SetReadingMode();
+                    dlg.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

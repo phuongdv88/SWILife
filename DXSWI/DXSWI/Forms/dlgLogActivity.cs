@@ -113,7 +113,7 @@ namespace DXSWI.Forms
             }
         }
 
-        public void setData(int activityId)
+        public void setData(long activityId)
         {
             isAddNew = false;
             sbAdd.Text = "Edit";
@@ -135,6 +135,13 @@ namespace DXSWI.Forms
 
         }
 
+        public void SetReadingMode()
+        {
+            ceLogActivity.Enabled = false;
+            meActivityNote.ReadOnly = true;
+            ceChangeStatus.Enabled = false;
+            sbAdd.Dispose();
+        }
         public dlgLogActivity()
         {
             InitializeComponent();
