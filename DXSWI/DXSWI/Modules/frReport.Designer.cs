@@ -56,11 +56,14 @@
             this.gcUserReports = new DevExpress.XtraGrid.GridControl();
             this.gvUserReports = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colUserName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colUserNewCompanies = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserNewJobOrders = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserNewCandidates = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colUserNewCompanies = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserNewContacts = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colColdCalls = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colClientMeetings = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserNewSubmissions = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colInterviewed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserNewPlacements = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcReports = new DevExpress.XtraGrid.GridControl();
             this.gvReports = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -85,6 +88,9 @@
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colColdCall = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colInterview = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colClientMeeting = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -197,7 +203,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.ccMonthlyReport);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(553, 244);
+            this.xtraTabPage2.Size = new System.Drawing.Size(513, 203);
             this.xtraTabPage2.Text = "Monthly";
             // 
             // ccMonthlyReport
@@ -226,14 +232,14 @@
         series4,
         series5,
         series6};
-            this.ccMonthlyReport.Size = new System.Drawing.Size(553, 244);
+            this.ccMonthlyReport.Size = new System.Drawing.Size(513, 203);
             this.ccMonthlyReport.TabIndex = 1;
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.ccYearlyReport);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(553, 244);
+            this.xtraTabPage3.Size = new System.Drawing.Size(513, 203);
             this.xtraTabPage3.Text = "Yearly";
             // 
             // ccYearlyReport
@@ -262,7 +268,7 @@
         series7,
         series8,
         series9};
-            this.ccYearlyReport.Size = new System.Drawing.Size(553, 244);
+            this.ccYearlyReport.Size = new System.Drawing.Size(513, 203);
             this.ccYearlyReport.TabIndex = 1;
             // 
             // gcUserReports
@@ -279,11 +285,14 @@
             // 
             this.gvUserReports.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colUserName,
+            this.colUserNewCompanies,
             this.colUserNewJobOrders,
             this.colUserNewCandidates,
-            this.colUserNewCompanies,
             this.colUserNewContacts,
+            this.colColdCalls,
+            this.colClientMeetings,
             this.colUserNewSubmissions,
+            this.colInterviewed,
             this.colUserNewPlacements});
             this.gvUserReports.GridControl = this.gcUserReports;
             this.gvUserReports.Name = "gvUserReports";
@@ -297,6 +306,14 @@
             this.colUserName.Name = "colUserName";
             this.colUserName.Visible = true;
             this.colUserName.VisibleIndex = 0;
+            // 
+            // colUserNewCompanies
+            // 
+            this.colUserNewCompanies.Caption = "New Companies";
+            this.colUserNewCompanies.FieldName = "NumberCompany";
+            this.colUserNewCompanies.Name = "colUserNewCompanies";
+            this.colUserNewCompanies.Visible = true;
+            this.colUserNewCompanies.VisibleIndex = 3;
             // 
             // colUserNewJobOrders
             // 
@@ -314,21 +331,29 @@
             this.colUserNewCandidates.Visible = true;
             this.colUserNewCandidates.VisibleIndex = 2;
             // 
-            // colUserNewCompanies
-            // 
-            this.colUserNewCompanies.Caption = "New Companies";
-            this.colUserNewCompanies.FieldName = "NumberCompany";
-            this.colUserNewCompanies.Name = "colUserNewCompanies";
-            this.colUserNewCompanies.Visible = true;
-            this.colUserNewCompanies.VisibleIndex = 3;
-            // 
             // colUserNewContacts
             // 
             this.colUserNewContacts.Caption = "New Contacts";
             this.colUserNewContacts.FieldName = "NumberContact";
             this.colUserNewContacts.Name = "colUserNewContacts";
             this.colUserNewContacts.Visible = true;
-            this.colUserNewContacts.VisibleIndex = 6;
+            this.colUserNewContacts.VisibleIndex = 4;
+            // 
+            // colColdCalls
+            // 
+            this.colColdCalls.Caption = "Cold Calls";
+            this.colColdCalls.FieldName = "NumberColdCall";
+            this.colColdCalls.Name = "colColdCalls";
+            this.colColdCalls.Visible = true;
+            this.colColdCalls.VisibleIndex = 5;
+            // 
+            // colClientMeetings
+            // 
+            this.colClientMeetings.Caption = "Client Meetings";
+            this.colClientMeetings.FieldName = "NumberClientMeeting";
+            this.colClientMeetings.Name = "colClientMeetings";
+            this.colClientMeetings.Visible = true;
+            this.colClientMeetings.VisibleIndex = 6;
             // 
             // colUserNewSubmissions
             // 
@@ -336,7 +361,15 @@
             this.colUserNewSubmissions.FieldName = "NumberSubmission";
             this.colUserNewSubmissions.Name = "colUserNewSubmissions";
             this.colUserNewSubmissions.Visible = true;
-            this.colUserNewSubmissions.VisibleIndex = 4;
+            this.colUserNewSubmissions.VisibleIndex = 7;
+            // 
+            // colInterviewed
+            // 
+            this.colInterviewed.Caption = "New Interviewed";
+            this.colInterviewed.FieldName = "NumberInterview";
+            this.colInterviewed.Name = "colInterviewed";
+            this.colInterviewed.Visible = true;
+            this.colInterviewed.VisibleIndex = 8;
             // 
             // colUserNewPlacements
             // 
@@ -344,7 +377,7 @@
             this.colUserNewPlacements.FieldName = "NumberPlacement";
             this.colUserNewPlacements.Name = "colUserNewPlacements";
             this.colUserNewPlacements.Visible = true;
-            this.colUserNewPlacements.VisibleIndex = 5;
+            this.colUserNewPlacements.VisibleIndex = 9;
             // 
             // gcReports
             // 
@@ -365,7 +398,10 @@
             this.colNewCompanies,
             this.colNewContacts,
             this.colNewSubmissions,
-            this.colNewPlacements});
+            this.colNewPlacements,
+            this.colColdCall,
+            this.colInterview,
+            this.colClientMeeting});
             this.gvReports.GridControl = this.gcReports;
             this.gvReports.Name = "gvReports";
             this.gvReports.OptionsBehavior.Editable = false;
@@ -401,7 +437,7 @@
             this.colNewCompanies.FieldName = "NumberCompany";
             this.colNewCompanies.Name = "colNewCompanies";
             this.colNewCompanies.Visible = true;
-            this.colNewCompanies.VisibleIndex = 3;
+            this.colNewCompanies.VisibleIndex = 4;
             // 
             // colNewContacts
             // 
@@ -409,7 +445,7 @@
             this.colNewContacts.FieldName = "NumberContact";
             this.colNewContacts.Name = "colNewContacts";
             this.colNewContacts.Visible = true;
-            this.colNewContacts.VisibleIndex = 4;
+            this.colNewContacts.VisibleIndex = 3;
             // 
             // colNewSubmissions
             // 
@@ -417,7 +453,7 @@
             this.colNewSubmissions.FieldName = "NumberSubmission";
             this.colNewSubmissions.Name = "colNewSubmissions";
             this.colNewSubmissions.Visible = true;
-            this.colNewSubmissions.VisibleIndex = 5;
+            this.colNewSubmissions.VisibleIndex = 7;
             // 
             // colNewPlacements
             // 
@@ -425,7 +461,7 @@
             this.colNewPlacements.FieldName = "NumberPlacement";
             this.colNewPlacements.Name = "colNewPlacements";
             this.colNewPlacements.Visible = true;
-            this.colNewPlacements.VisibleIndex = 6;
+            this.colNewPlacements.VisibleIndex = 9;
             // 
             // gcActivites
             // 
@@ -558,6 +594,30 @@
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
+            // colColdCall
+            // 
+            this.colColdCall.Caption = "Cold Calls";
+            this.colColdCall.FieldName = "NumberColdCall";
+            this.colColdCall.Name = "colColdCall";
+            this.colColdCall.Visible = true;
+            this.colColdCall.VisibleIndex = 5;
+            // 
+            // colInterview
+            // 
+            this.colInterview.Caption = "Interviewed";
+            this.colInterview.FieldName = "NumberInterview";
+            this.colInterview.Name = "colInterview";
+            this.colInterview.Visible = true;
+            this.colInterview.VisibleIndex = 8;
+            // 
+            // colClientMeeting
+            // 
+            this.colClientMeeting.Caption = "Client Meetings";
+            this.colClientMeeting.FieldName = "NumberClientMeeting";
+            this.colClientMeeting.Name = "colClientMeeting";
+            this.colClientMeeting.Visible = true;
+            this.colClientMeeting.VisibleIndex = 6;
+            // 
             // frReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,5 +712,11 @@
         private DevExpress.XtraCharts.ChartControl ccMonthlyReport;
         private DevExpress.XtraCharts.ChartControl ccYearlyReport;
         private DevExpress.XtraGrid.Columns.GridColumn colMonth;
+        private DevExpress.XtraGrid.Columns.GridColumn colColdCalls;
+        private DevExpress.XtraGrid.Columns.GridColumn colClientMeetings;
+        private DevExpress.XtraGrid.Columns.GridColumn colInterviewed;
+        private DevExpress.XtraGrid.Columns.GridColumn colColdCall;
+        private DevExpress.XtraGrid.Columns.GridColumn colInterview;
+        private DevExpress.XtraGrid.Columns.GridColumn colClientMeeting;
     }
 }

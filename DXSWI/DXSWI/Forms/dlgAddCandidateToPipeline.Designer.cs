@@ -123,13 +123,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyEmailToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 26);
             // 
             // copyEmailToolStripMenuItem
             // 
             this.copyEmailToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Copyicon;
             this.copyEmailToolStripMenuItem.Name = "copyEmailToolStripMenuItem";
-            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyEmailToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.copyEmailToolStripMenuItem.Text = "Copy Email";
             this.copyEmailToolStripMenuItem.Click += new System.EventHandler(this.copyEmailToolStripMenuItem_Click);
             // 
@@ -181,7 +181,6 @@
             this.gvCandidates.OptionsBehavior.Editable = false;
             this.gvCandidates.OptionsFind.AlwaysVisible = true;
             this.gvCandidates.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.FindClick;
-            this.gvCandidates.OptionsSelection.MultiSelect = true;
             this.gvCandidates.ColumnFilterChanged += new System.EventHandler(this.gvCandidates_ColumnFilterChanged);
             // 
             // colKeySkill

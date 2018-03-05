@@ -125,10 +125,19 @@ namespace DXSWI.Forms
             FirstNameTextEdit.Text = can.FirstName;
             MiddleNameTextEdit.Text = can.MiddleName;
             LastNameTextEdit.Text = can.LastName;
-            EmailTextEdit.Text = can.Email;
+            if (can.Email.Length > 0)
+            {
+                EmailTextEdit.Text = can.Email;
+            }
             SecondaryEmailTextEdit.Text = can.SecondaryEmail;
-            SkypeIMTextEdit.Text = can.SkypeIM;
-            CellPhoneTextEdit.Text = can.CellPhone;
+            if (can.SkypeIM.Length > 0)
+            {
+                SkypeIMTextEdit.Text = can.SkypeIM;
+            }
+            if (can.CellPhone.Length > 0)
+            {
+                CellPhoneTextEdit.Text = can.CellPhone;
+            }
             WorkPhoneTextEdit.Text = can.WorkPhone;
             BestTimeToCallTextEdit.Text = can.BestTimeToCall;
             AddressTextEdit.Text = can.Address;
@@ -731,25 +740,38 @@ namespace DXSWI.Forms
                     {
                         ++i;
                         line = lines[i].Trim();
-                        can.WebSite = line;
+                        if (line.Length > 0)
+                        {
+                            can.WebSite = line;
+                        }
                     }
                     else if (string.Equals(line, "Phone"))
                     {
                         ++i;
                         line = lines[i].Trim();
-                        can.CellPhone = line.Split(new[] { " (" }, StringSplitOptions.RemoveEmptyEntries).First();
+                        var phone = line.Split(new[] { " (" }, StringSplitOptions.RemoveEmptyEntries).First();
+                        if(phone.Length > 0)
+                        {
+                            can.CellPhone = phone;
+                        }
                     }
                     else if (string.Equals(line, "Email"))
                     {
                         ++i;
                         line = lines[i].Trim();
-                        can.Email = line;
+                        if (line.Length > 0)
+                        {
+                            can.Email = line;
+                        }
                     }
                     else if (string.Equals(line, "IM"))
                     {
                         ++i;
                         line = lines[i].Trim();
-                        can.SkypeIM = line;
+                        if (line.Length > 0)
+                        {
+                            can.SkypeIM = line;
+                        }
                     }
                     continue;
                 }

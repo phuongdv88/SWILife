@@ -138,6 +138,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colKeySkills = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ccReport)).BeginInit();
@@ -639,6 +640,7 @@
             this.colLastName,
             this.colEmail,
             this.colCity,
+            this.colKeySkills,
             this.colAdded,
             this.colStatus,
             this.colLastActivity,
@@ -725,7 +727,7 @@
             this.colAdded.FieldName = "Added";
             this.colAdded.Name = "colAdded";
             this.colAdded.Visible = true;
-            this.colAdded.VisibleIndex = 5;
+            this.colAdded.VisibleIndex = 6;
             this.colAdded.Width = 77;
             // 
             // colStatus
@@ -734,7 +736,7 @@
             this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
             this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 6;
+            this.colStatus.VisibleIndex = 7;
             this.colStatus.Width = 83;
             // 
             // colLastActivity
@@ -743,7 +745,7 @@
             this.colLastActivity.FieldName = "LastActivity";
             this.colLastActivity.Name = "colLastActivity";
             this.colLastActivity.Visible = true;
-            this.colLastActivity.VisibleIndex = 7;
+            this.colLastActivity.VisibleIndex = 8;
             this.colLastActivity.Width = 120;
             // 
             // toolTipController1
@@ -1271,6 +1273,14 @@
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
+            // colKeySkills
+            // 
+            this.colKeySkills.Caption = "Key Skills";
+            this.colKeySkills.FieldName = "KeySkills";
+            this.colKeySkills.Name = "colKeySkills";
+            this.colKeySkills.Visible = true;
+            this.colKeySkills.VisibleIndex = 5;
+            // 
             // dlgJobOrderEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1464,5 +1474,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
         private DevExpress.XtraBars.BarButtonItem bbiSendSms;
+        private DevExpress.XtraGrid.Columns.GridColumn colKeySkills;
     }
 }

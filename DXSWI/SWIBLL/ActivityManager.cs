@@ -43,9 +43,12 @@ namespace SWIBLL
             DataTable tbl = DataAccess.Instance.getDataTable(sql);
             for (int i = 0; i < tbl.Rows.Count; ++i)
             {
-                if (!listRegarding.ContainsKey(tbl.Rows[i][0].ToString()))
+                if (tbl.Rows[i][0] != null && tbl.Rows[i][1] != null && tbl.Rows[i][1].ToString().Length > 0)
                 {
-                    listRegarding.Add(tbl.Rows[i][0].ToString(), Convert.ToInt64(tbl.Rows[i][1].ToString()));
+                    if (!listRegarding.ContainsKey(tbl.Rows[i][0].ToString()))
+                    {
+                        listRegarding.Add(tbl.Rows[i][0].ToString(), Convert.ToInt64(tbl.Rows[i][1].ToString()));
+                    }
                 }
             }
         }
