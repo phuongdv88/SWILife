@@ -213,7 +213,11 @@ namespace SWIBLL
         }
         public static DataTable getReportUserIn30Days()
         {
-            return DataAccess.Instance.getReportUserIn30Days();
+            return DataAccess.Instance.getReportUserByDate(DateTime.Now.AddDays(-30), DateTime.Now);
+        }
+        public static DataTable getReportUserByDate(DateTime startTime, DateTime endTime)
+        {
+            return DataAccess.Instance.getReportUserByDate(startTime, endTime);
         }
 
 

@@ -79,12 +79,43 @@ namespace SmsSenderService
             }
             try
             {
-                // get all sending sms of db ( sms with state = sending)
+                // get all sending sms of db ( sms with state = Waiting)
                 var listSendingMessage = SmsManager.GetlistSmsWaitToSend();
                 // send all of this sms
                 foreach (var sms in listSendingMessage)
                 {
                     Utilities.WriteLog(string.Format("Send sms to {0}: {1}", sms.PhoneNumber, sms.Message));
+                    try
+                    {
+                        if (_gsm.SendSMS(sms.PhoneNumber, sms.Message))
+                        {
+                            // update state is success to db
+                            sms.Status = "Sent";
+                            SmsManager.UpdateSmsSending(sms);
+                        }
+                        else
+                        {
+                            // update state is fail to db
+                            sms.Status = "Resending";
+                            SmsManager.UpdateSmsSending(sms);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Utilities.WriteLog(ex);
+                        sms.Status = "Resending";
+                        SmsManager.UpdateSmsSending(sms);
+                        return; // return and wait 20s for nex round
+                    }
+                    System.Threading.Thread.Sleep(1000); // sleep 1 second
+                }
+
+                // retry send Resending message
+                var listResendingSms = SmsManager.GetlistSmsToResending();
+                // send all of this sms
+                foreach (var sms in listResendingSms)
+                {
+                    Utilities.WriteLog(string.Format("Retry to send sms to {0}: {1}", sms.PhoneNumber, sms.Message));
                     try
                     {
                         if (_gsm.SendSMS(sms.PhoneNumber, sms.Message))
@@ -102,11 +133,13 @@ namespace SmsSenderService
                     }
                     catch (Exception ex)
                     {
+                        // if have error again, set status to Error
                         Utilities.WriteLog(ex);
                         sms.Status = "Error";
                         SmsManager.UpdateSmsSending(sms);
                         return; // return and wait 20s for nex round
                     }
+                    System.Threading.Thread.Sleep(1000); // sleep 1 second
                 }
 
                 // get all received sms

@@ -66,10 +66,10 @@ namespace SWIBLL
             }
             return lt;
         }
-        public static List<SmsSending> GetlistSmsError()
+        public static List<SmsSending> GetlistSmsToResending()
         {
             List<SmsSending> lt = new List<SmsSending>();
-            string sql = "SELECT * FROM swilifecore.smssending where Status = 'Error' order by SmsSendingId";
+            string sql = "SELECT * FROM swilifecore.smssending where Status = 'Resending' order by SmsSendingId";
             DataTable tbl = DataAccess.Instance.getDataTable(sql);
             foreach (DataRow row in tbl.Rows)
             {

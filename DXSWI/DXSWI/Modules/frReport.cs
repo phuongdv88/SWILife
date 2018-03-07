@@ -22,10 +22,14 @@ namespace DXSWI.Modules
         }
         public void init()
         {
+            bbiStartDate.EditValue = DateTime.Now.AddDays(-30);
+            bbiStopDate.EditValue = DateTime.Now;
+
             updateAllActivitiesData();
             updateChartData();
             updateReportData();
             updateUserReportData();
+            
         }
         /// <summary>
         /// get late 1000 activities
@@ -77,7 +81,7 @@ namespace DXSWI.Modules
         {
             try
             {
-                gcUserReports.DataSource = UserManager.getReportUserIn30Days();
+                gcUserReports.DataSource = UserManager.getReportUserByDate(DateTime.Parse(bbiStartDate.EditValue.ToString()), DateTime.Parse(bbiStopDate.EditValue.ToString()));
             }
             catch (Exception ex)
             {
@@ -85,5 +89,9 @@ namespace DXSWI.Modules
             }
         }
 
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            updateUserReportData();
+        }
     }
 }

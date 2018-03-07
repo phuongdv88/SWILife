@@ -518,15 +518,18 @@ namespace SWIDAL
             }
             return dt;
         }
-        public DataTable getReportUserIn30Days()
+        public DataTable getReportUserByDate(DateTime startTime, DateTime endTime)
         {
             if (mCon == null) retryConnectToDb();
-            MySqlCommand cmd = null;
+            MySqlCommand cmd = null
+                ;
             DataTable dt = null;
             try
             {
-                cmd = new MySqlCommand("spGetReportUserIn30Days", mCon);
+                cmd = new MySqlCommand("spGetReportUserByTime", mCon);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("StartTime", startTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                cmd.Parameters.AddWithValue("EndTime", endTime.ToString("yyyy-MM-dd HH:mm:ss"));
                 MySqlDataAdapter ad = new MySqlDataAdapter();
                 ad.SelectCommand = cmd;
                 dt = new DataTable();
