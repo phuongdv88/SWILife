@@ -82,8 +82,10 @@
             this.colMatch = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemRatingControl1 = new DevExpress.XtraEditors.Repository.RepositoryItemRatingControl();
             this.colLastName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGender = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKeySkills = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAdded = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastActivity = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -138,7 +140,6 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colKeySkills = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ccReport)).BeginInit();
@@ -638,6 +639,7 @@
             this.colMatch,
             this.colFirstName,
             this.colLastName,
+            this.colGender,
             this.colEmail,
             this.colCity,
             this.colKeySkills,
@@ -703,13 +705,21 @@
             this.colLastName.VisibleIndex = 2;
             this.colLastName.Width = 69;
             // 
+            // colGender
+            // 
+            this.colGender.Caption = "Gender";
+            this.colGender.FieldName = "GenderCandidate";
+            this.colGender.Name = "colGender";
+            this.colGender.Visible = true;
+            this.colGender.VisibleIndex = 3;
+            // 
             // colEmail
             // 
             this.colEmail.Caption = "Email";
             this.colEmail.FieldName = "Email";
             this.colEmail.Name = "colEmail";
             this.colEmail.Visible = true;
-            this.colEmail.VisibleIndex = 3;
+            this.colEmail.VisibleIndex = 4;
             this.colEmail.Width = 88;
             // 
             // colCity
@@ -718,8 +728,16 @@
             this.colCity.FieldName = "City";
             this.colCity.Name = "colCity";
             this.colCity.Visible = true;
-            this.colCity.VisibleIndex = 4;
+            this.colCity.VisibleIndex = 5;
             this.colCity.Width = 77;
+            // 
+            // colKeySkills
+            // 
+            this.colKeySkills.Caption = "Key Skills";
+            this.colKeySkills.FieldName = "KeySkills";
+            this.colKeySkills.Name = "colKeySkills";
+            this.colKeySkills.Visible = true;
+            this.colKeySkills.VisibleIndex = 6;
             // 
             // colAdded
             // 
@@ -727,7 +745,7 @@
             this.colAdded.FieldName = "Added";
             this.colAdded.Name = "colAdded";
             this.colAdded.Visible = true;
-            this.colAdded.VisibleIndex = 6;
+            this.colAdded.VisibleIndex = 7;
             this.colAdded.Width = 77;
             // 
             // colStatus
@@ -736,7 +754,7 @@
             this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
             this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 7;
+            this.colStatus.VisibleIndex = 8;
             this.colStatus.Width = 83;
             // 
             // colLastActivity
@@ -745,7 +763,7 @@
             this.colLastActivity.FieldName = "LastActivity";
             this.colLastActivity.Name = "colLastActivity";
             this.colLastActivity.Visible = true;
-            this.colLastActivity.VisibleIndex = 8;
+            this.colLastActivity.VisibleIndex = 9;
             this.colLastActivity.Width = 120;
             // 
             // toolTipController1
@@ -1273,14 +1291,6 @@
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
-            // colKeySkills
-            // 
-            this.colKeySkills.Caption = "Key Skills";
-            this.colKeySkills.FieldName = "KeySkills";
-            this.colKeySkills.Name = "colKeySkills";
-            this.colKeySkills.Visible = true;
-            this.colKeySkills.VisibleIndex = 5;
-            // 
             // dlgJobOrderEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1475,5 +1485,6 @@
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
         private DevExpress.XtraBars.BarButtonItem bbiSendSms;
         private DevExpress.XtraGrid.Columns.GridColumn colKeySkills;
+        private DevExpress.XtraGrid.Columns.GridColumn colGender;
     }
 }
