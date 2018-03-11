@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.gcSendingMessages = new DevExpress.XtraGrid.GridControl();
             this.gvSendingMessages = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -41,6 +41,7 @@
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcReceivingMessages = new DevExpress.XtraGrid.GridControl();
             this.gvReceivingMessages = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colCanName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSender = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSentTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMessage = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -59,7 +60,6 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colCanName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcSendingMessages)).BeginInit();
@@ -125,6 +125,7 @@
             this.gvSendingMessages.Name = "gvSendingMessages";
             this.gvSendingMessages.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvSendingMessages_CustomDrawCell);
             this.gvSendingMessages.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvSendingMessages_FocusedRowChanged);
+            this.gvSendingMessages.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvSendingMessages_KeyDown);
             // 
             // colPhoneNumber
             // 
@@ -176,9 +177,9 @@
             // ribeRetry
             // 
             this.ribeRetry.AutoHeight = false;
-            editorButtonImageOptions2.Image = global::DXSWI.Properties.Resources.send;
+            editorButtonImageOptions1.Image = global::DXSWI.Properties.Resources.send;
             this.ribeRetry.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(editorButtonImageOptions2, DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, null)});
+            new DevExpress.XtraEditors.Controls.EditorButton(editorButtonImageOptions1, DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, null)});
             this.ribeRetry.Name = "ribeRetry";
             this.ribeRetry.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.ribeRetry.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ribeRetry_ButtonClick);
@@ -213,6 +214,14 @@
             this.gvReceivingMessages.OptionsBehavior.Editable = false;
             this.gvReceivingMessages.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvReceivingMessages_FocusedRowChanged);
             this.gvReceivingMessages.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvReceivingMessages_KeyDown);
+            // 
+            // colCanName
+            // 
+            this.colCanName.Caption = "Name";
+            this.colCanName.FieldName = "CandidateName";
+            this.colCanName.Name = "colCanName";
+            this.colCanName.Visible = true;
+            this.colCanName.VisibleIndex = 0;
             // 
             // colSender
             // 
@@ -384,14 +393,6 @@
             this.layoutControlItem7.Size = new System.Drawing.Size(507, 24);
             this.layoutControlItem7.Text = "To:";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(74, 13);
-            // 
-            // colCanName
-            // 
-            this.colCanName.Caption = "Name";
-            this.colCanName.FieldName = "CandidateName";
-            this.colCanName.Name = "colCanName";
-            this.colCanName.Visible = true;
-            this.colCanName.VisibleIndex = 0;
             // 
             // dlgSmsController
             // 

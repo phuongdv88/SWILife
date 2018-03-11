@@ -105,9 +105,9 @@ namespace SWIBLL
             string sql = string.Format("UPDATE `swilifecore`.`smssending` SET `Status`='Waiting', `TimeToSend`=now() WHERE `SmsSendingId`='{0}'", smsId);
             DataAccess.Instance.executeNonQuery(sql);
         }
-        public static void DeleteSmsSending(SmsSending sms)
+        public static void DeleteSmsSending(int smsId)
         {
-            string sql = string.Format("DELETE FROM `swilifecore`.`smssending` WHERE `SmsSendingId`='{0}'", sms.SmsSendingId);
+            string sql = string.Format("DELETE FROM `swilifecore`.`smssending` WHERE `SmsSendingId`='{0}'", smsId);
             DataAccess.Instance.executeNonQuery(sql);
         }
 

@@ -59,15 +59,10 @@ namespace DXSWI.Forms
         {
             updateData();
         }
-        private void updateData()
+        private void updateSending()
         {
             try
             {
-                int index = gvReceivingMessages.GetDataSourceRowIndex(gvReceivingMessages.FocusedRowHandle);
-                gcReceivingMessages.DataSource = SmsManager.GetDataTableSmsReceiving();
-                int rowHandle = gvReceivingMessages.GetRowHandle(index);
-                gvReceivingMessages.FocusedRowHandle = rowHandle;
-
                 int row = -1;
                 if (gvSendingMessages.SelectedRowsCount > 0)
                 {
@@ -86,6 +81,27 @@ namespace DXSWI.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void updateReceiving()
+        {
+            try
+            {
+                int index = gvReceivingMessages.GetDataSourceRowIndex(gvReceivingMessages.FocusedRowHandle);
+                gcReceivingMessages.DataSource = SmsManager.GetDataTableSmsReceiving();
+                int rowHandle = gvReceivingMessages.GetRowHandle(index);
+                gvReceivingMessages.FocusedRowHandle = rowHandle;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void updateData()
+        {
+            updateReceiving();
+            updateSending();
         }
 
         private void gvReceivingMessages_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -139,7 +155,7 @@ namespace DXSWI.Forms
                 {
                     SmsSending tmp = new SmsSending() { PhoneNumber = number, Message = sms, TimeToSend = DateTime.Now };
                     SmsManager.InsertSmsSending(tmp);
-                    updateData();
+                    updateSending();
                 }
             }
             catch (Exception ex)
@@ -221,7 +237,7 @@ namespace DXSWI.Forms
             {
                 var smsId = Convert.ToInt64(gvSendingMessages.GetFocusedRowCellValue("SmsSendingId").ToString());
                 SmsManager.ResendSmsSending(smsId);
-                updateData();
+                updateSending();
             }
             catch (Exception ex)
             {
@@ -250,7 +266,7 @@ namespace DXSWI.Forms
             switch (e.KeyCode)
             {
                 case Keys.Delete:
-                    if (XtraMessageBox.Show("Are you sure to delete this sms message?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (XtraMessageBox.Show("Are you sure to delete this receiving sms message?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         deleteCurrentReceivingMessage();
                     }
@@ -269,7 +285,43 @@ namespace DXSWI.Forms
                     DataRow data_row = gvReceivingMessages.GetDataRow(gvReceivingMessages.GetSelectedRows().First());
                     int id = Convert.ToInt32(data_row["SmsReceivingId"].ToString());
                     SmsManager.DeleteSmsReceiving(id);
-                    updateData();
+                    updateReceiving();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gvSendingMessages_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (sender is gvSendingMessages)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Delete:
+                        if (XtraMessageBox.Show("Are you sure to delete this sending sms message?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            deleteCurrentSendingMessage();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void deleteCurrentSendingMessage()
+        {
+            try
+            {
+                if (gvSendingMessages.SelectedRowsCount > 0)
+                {
+                    DataRow data_row = gvSendingMessages.GetDataRow(gvSendingMessages.GetSelectedRows().First());
+                    int id = Convert.ToInt32(data_row["SmsSendingId"].ToString());
+                    SmsManager.DeleteSmsSending(id);
+                    updateSending();
                 }
             }
             catch (Exception ex)
