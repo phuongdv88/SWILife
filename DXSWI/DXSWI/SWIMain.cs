@@ -343,7 +343,8 @@ namespace DXSWI
         {
             XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //System.Diagnostics.Process.Start("https://swilife.com");
-            //_frUtilities.correctDB();
+            //_frUtilities.correctNumberDB();
+            //_frUtilities.parseCandidateFromExelV2(@"D:\DropboxData\Dropbox\Swilife\3. Candidates\Danh sach lap trinh vien_T3 2018.xlsx");
             //changeGroup(_tagUtilities);
         }
 
@@ -452,6 +453,18 @@ namespace DXSWI
         private void ribbonControlMain_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bbiViewSmsMessages_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            dlgSmsController dlg = new dlgSmsController();
+            dlg.ShowDialog();
+        }
+
+        private void bbiViewSms_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            dlgSmsController dlg = new dlgSmsController();
+            dlg.ShowDialog();
         }
     }
 }

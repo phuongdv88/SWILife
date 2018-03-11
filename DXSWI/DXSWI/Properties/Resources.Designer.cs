@@ -253,6 +253,26 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AppsSmsBicon {
+            get {
+                object obj = ResourceManager.GetObject("AppsSmsBicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AppsSmsBicon1 {
+            get {
+                object obj = ResourceManager.GetObject("AppsSmsBicon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Appuser {
             get {
                 object obj = ResourceManager.GetObject("Appuser", resourceCulture);
@@ -346,6 +366,16 @@ namespace DXSWI.Properties {
         internal static System.Drawing.Bitmap ButtonRefresh1 {
             get {
                 object obj = ResourceManager.GetObject("ButtonRefresh1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonRefreshicon1 {
+            get {
+                object obj = ResourceManager.GetObject("ButtonRefreshicon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -763,6 +793,26 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap error {
+            get {
+                object obj = ResourceManager.GetObject("error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fail {
+            get {
+                object obj = ResourceManager.GetObject("fail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Filedeleteicon {
             get {
                 object obj = ResourceManager.GetObject("Filedeleteicon", resourceCulture);
@@ -813,9 +863,9 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Insert_hyperlink_icon {
+        internal static System.Drawing.Bitmap Inserthyperlinkicon {
             get {
-                object obj = ResourceManager.GetObject("Insert-hyperlink-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Inserthyperlinkicon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -823,9 +873,9 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Insert_hyperlink_icon1 {
+        internal static System.Drawing.Bitmap Inserthyperlinkicon1 {
             get {
-                object obj = ResourceManager.GetObject("Insert-hyperlink-icon1", resourceCulture);
+                object obj = ResourceManager.GetObject("Inserthyperlinkicon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -833,9 +883,9 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Linkedin_icon {
+        internal static System.Drawing.Bitmap Linkedinicon {
             get {
-                object obj = ResourceManager.GetObject("Linkedin-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Linkedinicon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -843,9 +893,9 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Linkedin_icon1 {
+        internal static System.Drawing.Bitmap Linkedinicon1 {
             get {
-                object obj = ResourceManager.GetObject("Linkedin-icon1", resourceCulture);
+                object obj = ResourceManager.GetObject("Linkedinicon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -963,6 +1013,26 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MobileSmsicon {
+            get {
+                object obj = ResourceManager.GetObject("MobileSmsicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MobileSmsicon1 {
+            get {
+                object obj = ResourceManager.GetObject("MobileSmsicon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap new_job {
             get {
                 object obj = ResourceManager.GetObject("new_job", resourceCulture);
@@ -1063,6 +1133,16 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ok {
+            get {
+                object obj = ResourceManager.GetObject("ok", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap password_icon {
             get {
                 object obj = ResourceManager.GetObject("password_icon", resourceCulture);
@@ -1143,6 +1223,16 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap send {
+            get {
+                object obj = ResourceManager.GetObject("send", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap signatureicon {
             get {
                 object obj = ResourceManager.GetObject("signatureicon", resourceCulture);
@@ -1163,9 +1253,9 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SMS_bubble_icon {
+        internal static System.Drawing.Bitmap Smsicon {
             get {
-                object obj = ResourceManager.GetObject("SMS-bubble-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Smsicon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1173,9 +1263,9 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SMS_bubble_icon1 {
+        internal static System.Drawing.Bitmap Smsicon1 {
             get {
-                object obj = ResourceManager.GetObject("SMS-bubble-icon1", resourceCulture);
+                object obj = ResourceManager.GetObject("Smsicon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1183,9 +1273,9 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Sms_icon {
+        internal static System.Drawing.Bitmap SMSMessageicon {
             get {
-                object obj = ResourceManager.GetObject("Sms-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("SMSMessageicon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1193,29 +1283,9 @@ namespace DXSWI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Sms_icon1 {
+        internal static System.Drawing.Bitmap SMSMessageicon1 {
             get {
-                object obj = ResourceManager.GetObject("Sms-icon1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SMS_Message_icon {
-            get {
-                object obj = ResourceManager.GetObject("SMS-Message-icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SMS_Message_icon1 {
-            get {
-                object obj = ResourceManager.GetObject("SMS-Message-icon1", resourceCulture);
+                object obj = ResourceManager.GetObject("SMSMessageicon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1316,6 +1386,16 @@ namespace DXSWI.Properties {
         internal static System.Drawing.Bitmap users_business_32 {
             get {
                 object obj = ResourceManager.GetObject("users_business_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap waiting {
+            get {
+                object obj = ResourceManager.GetObject("waiting", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

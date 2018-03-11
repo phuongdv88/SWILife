@@ -761,7 +761,8 @@ namespace DXSWI.Forms
                     var emails = gvCandidatePipeline.GetSelectedRows().Select(row => gvCandidatePipeline.GetDataRow(row)["Email"].ToString()).ToList();
                     var names = gvCandidatePipeline.GetSelectedRows().Select(row => gvCandidatePipeline.GetDataRow(row)["FirstName"].ToString()).ToList();
                     var phoneNumbers = gvCandidatePipeline.GetSelectedRows().Select(row => gvCandidatePipeline.GetDataRow(row)["CellPhone"].ToString()).ToList();
-                    SendSMSToCandidates(phoneNumbers, names, emails);
+                    var candiateIds = gvCandidatePipeline.GetSelectedRows().Select(row => Convert.ToInt64(gvCandidatePipeline.GetDataRow(row)["CandidateId"].ToString())).ToList();
+                    SendSMSToCandidates(phoneNumbers, names, emails, candiateIds);
                 }
                 catch (Exception ex)
                 {
@@ -770,10 +771,10 @@ namespace DXSWI.Forms
             }
             
         }
-        public void SendSMSToCandidates(List<string> phoneNumbers, List<string> names, List<string> emails)
+        public void SendSMSToCandidates(List<string> phoneNumbers, List<string> names, List<string> emails, List<long> candidateIds)
         {
             // open send sms includeing phones, names, email
-            dlgSendSMSEdit dlg = new dlgSendSMSEdit(phoneNumbers, names, emails);
+            dlgSendSMSEdit dlg = new dlgSendSMSEdit(phoneNumbers, names, emails, candidateIds);
             dlg.ShowDialog();
         }
     }

@@ -88,6 +88,7 @@ namespace SWIBLL
                 Type = "Insert new Company",
                 ActivityOf = Activity.TypeOfLogActivity.Company,
                 CompanyId = company_Id,
+                Notes = string.Format("CompanyId = {0}", company_Id)
             };
 
             ActivityManager.insert(act);
@@ -111,6 +112,7 @@ namespace SWIBLL
                 Type = "Update Company",
                 ActivityOf = Activity.TypeOfLogActivity.Company,
                 CompanyId = com.CompanyId,
+                Notes = string.Format("CompanyId = {0} company name = {1}", com.CompanyId, com.Name)
             };
 
             ActivityManager.insert(act);
@@ -156,6 +158,7 @@ namespace SWIBLL
                     Type = "Delete Company",
                     ActivityOf = Activity.TypeOfLogActivity.Company,
                     CompanyId = comId,
+                    Notes = string.Format("CompanyId = {0}", comId)
                 };
 
                 ActivityManager.insert(act);

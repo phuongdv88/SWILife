@@ -129,5 +129,17 @@ namespace DXSWI.Properties {
                 this["EmailPassword"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\192.168.0.101\\swilifedata\\ATS Setup\\ATS Installer.exe")]
+        public string IntallerLink {
+            get {
+                return ((string)(this["IntallerLink"]));
+            }
+            set {
+                this["IntallerLink"] = value;
+            }
+        }
     }
 }

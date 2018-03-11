@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using SWIBLL;
 using System.Timers;
+using System.Text.RegularExpressions;
 
 namespace SmsSenderService
 {
-    public partial class  ATSSmsSenderService : ServiceBase
+    public partial class ATSSmsSenderService : ServiceBase
     {
         bool _ConnectionWithDB = false;
         GSMController _gsm = null;
@@ -150,6 +151,16 @@ namespace SmsSenderService
                     {
                         try
                         {
+                            try
+                            {
+
+                                if (Regex.IsMatch(msg.Message, "^\\d+"))
+                                {
+                                    msg.Message = SmsManager.FromHexString(msg.Message);
+
+                                }
+                            }
+                            catch { }
                             // save to db
                             SmsManager.InsertSmsReceiving(msg);
                             // delete from SIM

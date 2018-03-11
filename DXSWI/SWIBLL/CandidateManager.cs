@@ -88,6 +88,7 @@ namespace SWIBLL
                     Type = "Delete Candidate",
                     ActivityOf = Activity.TypeOfLogActivity.Candidate,
                     CandidateId = CandidateId,
+                    Notes = string.Format("Delete candidateid = {0}", CandidateId)
                 };
 
                 ActivityManager.insert(act);
@@ -156,6 +157,7 @@ namespace SWIBLL
                 Type = "Insert new Candidate",
                 ActivityOf = Activity.TypeOfLogActivity.Candidate,
                 CandidateId = can_id,
+                Notes = string.Format("Candidateid={0} name = {1}", can_id, can.FirstName + " " + can.LastName)
             };
 
             ActivityManager.insert(act);
@@ -192,6 +194,7 @@ namespace SWIBLL
                 Type = "Update Candidate",
                 ActivityOf = Activity.TypeOfLogActivity.Candidate,
                 CandidateId = can.CandidateId,
+                Notes = string.Format("Candidateid={0}", can.CandidateId)
             };
 
             ActivityManager.insert(act);
@@ -255,6 +258,11 @@ namespace SWIBLL
                 , QueryBuilder.mySqlEscape(cellphone), QueryBuilder.mySqlEscape(keyskills), QueryBuilder.mySqlEscape(city), canId);
             DataAccess.Instance.executeNonQuery(sql);
         }
-
+        public static void correctDatabasePhone(long canId,string cellphone, string workPhone)
+        {
+            string sql = string.Format("UPDATE `swilifecore`.`candidate` SET `CellPhone`='{0}', `WorkPhone`='{1}' WHERE `CandidateId`='{2}';",
+                QueryBuilder.mySqlEscape(cellphone), QueryBuilder.mySqlEscape(workPhone), canId);
+            DataAccess.Instance.executeNonQuery(sql);
+        }
     }
 }

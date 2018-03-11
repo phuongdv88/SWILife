@@ -126,7 +126,7 @@
             // 
             // viewWebsiteToolStripMenuItem
             // 
-            this.viewWebsiteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Linkedin_icon1;
+            this.viewWebsiteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Linkedinicon1;
             this.viewWebsiteToolStripMenuItem.Name = "viewWebsiteToolStripMenuItem";
             this.viewWebsiteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.viewWebsiteToolStripMenuItem.Text = "View Website";

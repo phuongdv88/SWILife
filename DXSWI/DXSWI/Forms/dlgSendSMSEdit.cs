@@ -19,14 +19,15 @@ namespace DXSWI.Forms
         List<string> _listNumbers = null;
         List<string> _listNames = null;
         List<string> _listEmails = null;
-
+        List<long> _listCandidateId = null;
         List<SmsTemplate> _smsTemplates = null;
-        public dlgSendSMSEdit(List<string> listNumbers, List<string> listNames, List<string> listEmails)
+        public dlgSendSMSEdit(List<string> listNumbers, List<string> listNames, List<string> listEmails, List<long> candidateIds)
         {
             InitializeComponent();
             _listNumbers = listNumbers;
             _listNames = listNames;
             _listEmails = listEmails;
+            _listCandidateId = candidateIds;
             tePhoneNumbers.ReadOnly = true;
             string listPhone = string.Empty;
             for(var i = 0; i < listNumbers.Count; ++i)
@@ -157,12 +158,13 @@ namespace DXSWI.Forms
                     string number = _listNumbers[i];
                     string name = _listNames[i];
                     string email = _listEmails[i];
+                    long canId = _listCandidateId[i];
                     string message = sms.Replace("[name]", name).Replace("[email]", email);
                     if(message.Length > 160)
                     {
                         throw new Exception(string.Format("Cant send to {0} number {1} email {2} because message lengh > 160", name, number, email));
                     }
-                    SaveSmsToDb(number, message);
+                    SaveSmsToDb(number, message, canId);
                 }
                 catch (Exception ex)
                 {
@@ -173,7 +175,7 @@ namespace DXSWI.Forms
             Close();
         }
 
-        private void SaveSmsToDb(string number, string sms)
+        private void SaveSmsToDb(string number, string sms, long candidateId)
         {
             // correct number:
             // +84 -> 0; 84 -> 0; remove all of characters which is not a digit
@@ -185,8 +187,17 @@ namespace DXSWI.Forms
             // if not start by 0 -> do not sent
             if (number.StartsWith("0") && number.Length > 9 && number.Length < 12)
             {
-                SmsSending tmp = new SmsSending() { PhoneNumber = number, Message = sms, Status = "Sending", TimeToSend = DateTime.Now };
+                SmsSending tmp = new SmsSending() { PhoneNumber = number, Message = sms, TimeToSend = DateTime.Now };
                 SmsManager.InsertSmsSending(tmp);
+                Activity act = new Activity()
+                {
+                    Type = "Attempt send sms to Candidate",
+                    ActivityOf = Activity.TypeOfLogActivity.Candidate,
+                    CandidateId = candidateId,
+                    Notes = string.Format("to {0} message: {1}", tmp.PhoneNumber, tmp.Message)
+                };
+
+                ActivityManager.insert(act);
             }
         }
 

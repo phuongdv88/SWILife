@@ -591,7 +591,7 @@
             // 
             this.bbiSendSMS.Caption = "Send SMS";
             this.bbiSendSMS.Id = 5;
-            this.bbiSendSMS.ImageOptions.Image = global::DXSWI.Properties.Resources.SMS_Message_icon;
+            this.bbiSendSMS.ImageOptions.Image = global::DXSWI.Properties.Resources.SMSMessageicon;
             this.bbiSendSMS.Name = "bbiSendSMS";
             this.bbiSendSMS.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSendSMS_ItemClick);
             // 
@@ -1085,7 +1085,7 @@
             // 
             // sbView
             // 
-            this.sbView.ImageOptions.Image = global::DXSWI.Properties.Resources.Linkedin_icon1;
+            this.sbView.ImageOptions.Image = global::DXSWI.Properties.Resources.Linkedinicon1;
             this.sbView.Location = new System.Drawing.Point(526, 208);
             this.sbView.Name = "sbView";
             this.sbView.Size = new System.Drawing.Size(55, 22);

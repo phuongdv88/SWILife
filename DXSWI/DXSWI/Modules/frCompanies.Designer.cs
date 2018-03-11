@@ -167,7 +167,7 @@
             // 
             // viewWebsiteToolStripMenuItem
             // 
-            this.viewWebsiteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Insert_hyperlink_icon1;
+            this.viewWebsiteToolStripMenuItem.Image = global::DXSWI.Properties.Resources.Inserthyperlinkicon1;
             this.viewWebsiteToolStripMenuItem.Name = "viewWebsiteToolStripMenuItem";
             this.viewWebsiteToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.viewWebsiteToolStripMenuItem.Text = "View Website";

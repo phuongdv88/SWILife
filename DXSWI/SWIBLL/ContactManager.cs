@@ -98,6 +98,7 @@ namespace SWIBLL
                 Type = "Insert new Contact",
                 ActivityOf = Activity.TypeOfLogActivity.Contact,
                 ContactId = contact_id,
+                Notes = string.Format("ContactId = {0} Contact name = {1}", contact_id, con.FirstName + " " + con.LastName)
             };
 
             ActivityManager.insert(act);
@@ -121,6 +122,7 @@ namespace SWIBLL
                 Type = "Update Contact",
                 ActivityOf = Activity.TypeOfLogActivity.Contact,
                 ContactId = con.ContactId,
+                Notes = string.Format("ContactId = {0} Contact name = {1}", con.ContactId, con.FirstName + " " + con.LastName)
             };
 
             ActivityManager.insert(act);

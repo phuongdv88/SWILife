@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SWIBLL.Models;
 using SWIBLL;
-
+using DXSWI.Forms;
 namespace DXSWI.Modules
 {
     public partial class frReport : DevExpress.XtraEditors.XtraUserControl
@@ -92,6 +92,27 @@ namespace DXSWI.Modules
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             updateUserReportData();
+        }
+
+        private void gvActivities_DoubleClick(object sender, EventArgs e)
+        {
+            // view activity
+            try
+            {
+                if (gvActivities.SelectedRowsCount > 0)
+                {
+                    DataRow data_row = gvActivities.GetDataRow(gvActivities.GetSelectedRows().First());
+                    long activity_id = Convert.ToInt64(data_row["ActivityId"].ToString());
+                    dlgLogActivity dlg = new dlgLogActivity();
+                    dlg.setData(activity_id);
+                    dlg.SetReadingMode();
+                    dlg.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ using SWIBLL;
 using System.Security.Principal;
 using System.IO;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace DXSWI.Forms
 {
@@ -384,7 +385,17 @@ namespace DXSWI.Forms
             can.SecondaryEmail = SecondaryEmailTextEdit.Text;
             can.SkypeIM = SkypeIMTextEdit.Text;
             can.CellPhone = CellPhoneTextEdit.Text;
+            can.CellPhone = Regex.Replace(can.CellPhone, "\\D+", "", RegexOptions.Multiline);
+            if (can.CellPhone.StartsWith("84"))
+            {
+                can.CellPhone = "0" + can.CellPhone.Remove(0, 2);
+            }
             can.WorkPhone = WorkPhoneTextEdit.Text;
+            can.WorkPhone = Regex.Replace(can.WorkPhone, "\\D+", "", RegexOptions.Multiline);
+            if (can.WorkPhone.StartsWith("84"))
+            {
+                can.WorkPhone = "0" + can.WorkPhone.Remove(0, 2);
+            }
             can.BestTimeToCall = BestTimeToCallTextEdit.Text;
             can.Address = AddressTextEdit.Text;
             can.WebSite = WebSiteTextEdit.Text;
@@ -750,7 +761,7 @@ namespace DXSWI.Forms
                         ++i;
                         line = lines[i].Trim();
                         var phone = line.Split(new[] { " (" }, StringSplitOptions.RemoveEmptyEntries).First();
-                        if(phone.Length > 0)
+                        if (phone.Length > 0)
                         {
                             can.CellPhone = phone;
                         }
@@ -828,8 +839,15 @@ namespace DXSWI.Forms
             dlg.FileName = _Candidate.ResumeLink.Split('\\').Last();
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
-            string save_link = dlg.FileName;
-            File.Copy(_Candidate.ResumeLink, save_link);
+            try
+            {
+                string save_link = dlg.FileName;
+                File.Copy(_Candidate.ResumeLink, save_link);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void loadAttachment(string path)
@@ -1101,10 +1119,12 @@ namespace DXSWI.Forms
                 List<string> emails = new List<string>();
                 List<string> names = new List<string>();
                 List<string> phoneNumbers = new List<string>();
+                List<long> canIds = new List<long>();
                 names.Add(FirstNameTextEdit.Text.Trim());
                 emails.Add(EmailTextEdit.Text.Trim());
                 phoneNumbers.Add(CellPhoneTextEdit.Text.Trim());
-                SendSMSToCandidates(phoneNumbers, names, emails);
+                canIds.Add(_Candidate.CandidateId);
+                SendSMSToCandidates(phoneNumbers, names, emails, canIds);
             }
             catch (Exception ex)
             {
@@ -1112,10 +1132,10 @@ namespace DXSWI.Forms
             }
 
         }
-        public void SendSMSToCandidates(List<string> phoneNumbers, List<string> names, List<string> emails)
+        public void SendSMSToCandidates(List<string> phoneNumbers, List<string> names, List<string> emails, List<long> candidateIds)
         {
             // open send sms includeing phones, names, email
-            dlgSendSMSEdit dlg = new dlgSendSMSEdit(phoneNumbers, names, emails);
+            dlgSendSMSEdit dlg = new dlgSendSMSEdit(phoneNumbers, names, emails, candidateIds);
             dlg.ShowDialog();
         }
 

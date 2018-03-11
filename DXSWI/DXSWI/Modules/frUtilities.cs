@@ -93,24 +93,87 @@ namespace DXSWI.Modules
                     city = city.Replace("hcm", "HCM").Replace("Hcm", "HCM").Replace("HcM", "HCM").Replace("HCm", "HCM").Replace("HCMC", "HCM").Replace("HCN", "HCM").Replace("Ho Chi Minh", "HCM");
                     city = city.Replace("Ho Chin Minh", "HCM").Replace("ho chi minh", "HCM").Replace("Ho chi minh", "HCM").Replace("HO CHI MINH", "HCM").Replace("Hochiminh", "HCM");
                     city = city.Trim();
-                    
-                    if(city.Contains("Hanoi"))
+
+                    if (city.Contains("Hanoi"))
                     {
                         city = "Hanoi";
                     }
-                                       
-                    if(city.Contains("HCM"))
+
+                    if (city.Contains("HCM"))
                     {
                         city = "HCM";
                     }
-                    cellphone = cellphone.Replace("(Mobile)", "").Replace("(Home)", "").Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "").Replace(".", "");
-                    cellphone = cellphone.Trim();
+                    //cellphone = cellphone.Replace("(Mobile)", "").Replace("(Home)", "").Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "").Replace(".", "");
+                    //cellphone = cellphone.Trim();
+                    cellphone = Regex.Replace(cellphone, "\\D+", "", RegexOptions.Multiline).Trim();
                     keySkills = keySkills.Replace("Hanoi, ", "").Replace("HCM, ", "").Trim();
 
                     msg += string.Format("{0}\t\t{1}\t\t{2}\t\t{3} \r\n", candiateId, city, cellphone, keySkills);
                     counter = i;
                     // update to db
                     CandidateManager.correctDatabase(candiateId, city, cellphone, keySkills);
+                }
+                printMessage("Finish");
+            }
+            catch (Exception ex)
+            {
+                printMessage(string.Format("error id = {0}: {1}", counter, ex.Message));
+                //++counter;
+            }
+
+        }
+
+        public void correctNumberDB()
+        {
+            // get all candidateId, City, Cellphone
+            DataTable dt = CandidateManager.getCandidatesOverview();
+            string msg = string.Empty;
+            int counter = 0;
+            try
+            {
+                //for (int i = 0; i < 100; ++i)
+                for (int i = 0; i < dt.Rows.Count; ++i)
+                {
+                    // corect db
+                    DataRow data_row = dt.Rows[i];
+                    long candiateId = Convert.ToInt64(data_row["CandidateId"].ToString());
+                    string cellphone = data_row["CellPhone"].ToString();
+                    string workphone = data_row["WorkPhone"].ToString();
+                    if (cellphone.Contains("/"))
+                    {
+                        var tmp = cellphone.Split('/');
+                        cellphone = tmp.First();
+                        if (workphone.Length == 0)
+                        {
+                            workphone = tmp.Last();
+                        }
+                    }
+                    cellphone = Regex.Replace(cellphone, "\\D+", "", RegexOptions.Multiline);
+                    if (cellphone.StartsWith("84"))
+                    {
+                        cellphone = "0" + cellphone.Remove(0, 2);
+                    }
+                    if (cellphone == "0")
+                        cellphone = string.Empty;
+
+                    if(cellphone.StartsWith("9") || cellphone.StartsWith("1"))
+                    {
+                        cellphone = "0" + cellphone;
+                    }
+
+                    workphone = Regex.Replace(workphone, "\\D+", "", RegexOptions.Multiline);
+                    if (workphone.StartsWith("84"))
+                    {
+                        workphone = "0" + workphone.Remove(0, 2);
+                    }
+                    if (workphone == "0")
+                        workphone = string.Empty;
+
+                    //msg += string.Format("{0}\t\t{1}\t\t{2}\r\n", candiateId, cellphone, workphone);
+                    //printMessage(msg);
+                    counter = i;
+                    // update to db
+                    CandidateManager.correctDatabasePhone(candiateId, cellphone, workphone);
                 }
                 printMessage("Finish");
             }
@@ -631,6 +694,83 @@ namespace DXSWI.Modules
                         printMessage(string.Format("Error: {0} of row = {1}", ex.Message, rowNumber));
                     }
                 }
+            }
+        }
+        public void parseCandidateFromExelV2(string sourceFile)
+        {
+            try
+            {
+                using (ExcelPackage package = new ExcelPackage(new FileInfo(sourceFile)))
+                {
+                    if (package.Workbook.Worksheets.Count < 1)
+                        return;
+
+                    //ExcelWorksheet workSheet = package.Workbook.Worksheets["Head of VN wallet"];
+                    ExcelWorksheet workSheet = package.Workbook.Worksheets.FirstOrDefault();
+                    // read all data begin from row 2
+                    for (var rowNumber = 2; rowNumber <= workSheet.Dimension.End.Row; rowNumber++)
+                    {
+                        var row = workSheet.Cells[rowNumber, 1, rowNumber, workSheet.Dimension.End.Column];
+                        var cells = row.ToList();
+                        if (cells.Count == 0)
+                            continue;
+                        Candidate can = new Candidate();
+                        var name = cells[1].Text.Trim(); //first name
+                        can.FirstName = name.Split(' ').Last();
+                        var size = can.FirstName.Length;
+                        can.LastName = name.Remove(name.Length - size, size).Trim();
+
+                        var gender = cells[2].Text.Trim(); // gender
+                        if (gender == "Nam")
+                        {
+                            can.Gender = true;
+                        }
+                        else can.Gender = false;
+
+                        can.DOBMarried = cells[3].Text.Trim(); // DOB
+                        can.CurrentEmployer = cells[4].Text.Trim(); // company
+                                                                    //can.CurrentPosition = cells[4].Text.Trim(); // Title
+                        can.CurrentPosition = "Software developer";
+                        var years = cells[6].Text.Trim(); // Year
+                        int year = 0;
+                        if (!int.TryParse(years, out year))
+                        {
+                            year = 0;
+                        }
+                        can.Years = year;
+                        can.Email = cells[7].Text.Trim(); //Email
+                        can.CellPhone = cells[8].Text.Trim(); //Phone
+                        can.CellPhone = Regex.Replace(can.CellPhone, "\\D+", "", RegexOptions.Multiline);
+                        if (can.CellPhone.StartsWith("84"))
+                        {
+                            can.CellPhone = "0" + can.CellPhone.Remove(0, 2);
+                        }
+                        if (!can.CellPhone.StartsWith("0") && can.CellPhone.Length > 0)
+                        {
+                            can.CellPhone = "0" + can.CellPhone;
+                        }
+                        can.KeySkills = "Software Developer";
+
+                        can.City = "Hanoi";
+                        can.Country = "Vietnam";
+                        can.Source = "Other";
+                        can.UserId = UserManager.ActivatedUser.UserId;
+                        // insert to database
+                        try
+                        {
+                            CandidateManager.InsertCandidate(can);
+                            printMessage(string.Format("Insert row = {0}", rowNumber));
+                        }
+                        catch (Exception ex)
+                        {
+                            printMessage(string.Format("Error: {0} of row = {1}", ex.Message, rowNumber));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                printMessage(string.Format("Error: {0}", ex.Message));
             }
         }
 

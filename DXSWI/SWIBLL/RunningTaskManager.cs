@@ -28,7 +28,8 @@ namespace SWIBLL
                 ActivityOf = Activity.TypeOfLogActivity.Pipeline,
                 JobOrderId = rtask.JobOrderId,
                 CandidateId = rtask.CandidateId,
-                RunningTaskId = rs
+                RunningTaskId = rs,
+                Notes = string.Format("Candidate Id = {0} JobOrder Id = {1}", rtask.CandidateId, rtask.JobOrderId)
             };
             // add activity to db
             ActivityManager.insert(act);
@@ -49,7 +50,8 @@ namespace SWIBLL
                 ActivityOf = Activity.TypeOfLogActivity.Pipeline,
                 JobOrderId = rtask.JobOrderId,
                 CandidateId = rtask.CandidateId,
-                RunningTaskId = rtask.RunningtaskId
+                RunningTaskId = rtask.RunningtaskId,
+                Notes = string.Format("Candidate Id = {0} JobOrder Id = {1}", rtask.CandidateId, rtask.JobOrderId)
             };
             // add activity to db
             ActivityManager.insert(act);
@@ -94,7 +96,8 @@ namespace SWIBLL
             {
                 Type = "Delete Running Task",
                 ActivityOf = Activity.TypeOfLogActivity.Pipeline,
-                RunningTaskId = id
+                RunningTaskId = id,
+                Notes = string.Format("running task Id = {0}",id)
             };
             // add activity to db
             ActivityManager.insert(act);

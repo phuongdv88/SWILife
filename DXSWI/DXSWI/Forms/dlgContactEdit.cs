@@ -12,6 +12,7 @@ using SWIBLL;
 using SWIBLL.Models;
 using System.IO;
 using System.Security.Principal;
+using System.Text.RegularExpressions;
 
 namespace DXSWI.Forms
 {
@@ -173,7 +174,17 @@ namespace DXSWI.Forms
             mContact.Email = EmailTextEdit.Text;
             mContact.SecondaryEmail = SecondaryEmailTextEdit.Text;
             mContact.CellPhone = CellPhoneTextEdit.Text;
+            mContact.CellPhone = Regex.Replace(mContact.CellPhone, "\\D+", "", RegexOptions.Multiline);
+            if (mContact.CellPhone.StartsWith("84"))
+            {
+                mContact.CellPhone = "0" + mContact.CellPhone.Remove(0, 2);
+            }
             mContact.WorkPhone = WorkPhoneTextEdit.Text;
+            mContact.WorkPhone = Regex.Replace(mContact.WorkPhone, "\\D+", "", RegexOptions.Multiline);
+            if (mContact.WorkPhone.StartsWith("84"))
+            {
+                mContact.WorkPhone = "0" + mContact.WorkPhone.Remove(0, 2);
+            }
             mContact.OtherPhone = OtherPhoneTextEdit.Text;
             mContact.Address = AddressTextEdit.Text;
             mContact.City = CityTextEdit.Text;

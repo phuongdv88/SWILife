@@ -511,7 +511,7 @@
             // 
             this.bbiSendSms.Caption = "Send SMS";
             this.bbiSendSms.Id = 11;
-            this.bbiSendSms.ImageOptions.Image = global::DXSWI.Properties.Resources.SMS_Message_icon;
+            this.bbiSendSms.ImageOptions.Image = global::DXSWI.Properties.Resources.SMSMessageicon;
             this.bbiSendSms.Name = "bbiSendSms";
             this.bbiSendSms.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSendSms_ItemClick);
             // 

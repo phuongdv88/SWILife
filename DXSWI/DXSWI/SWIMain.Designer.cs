@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SWIMain));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.ribbonControlMain = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.bbiUserAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -65,6 +65,7 @@
             this.bbiEmailSetting = new DevExpress.XtraBars.BarButtonItem();
             this.bbiViewCandidateWebsite = new DevExpress.XtraBars.BarButtonItem();
             this.bbiViewCompanyWebsite = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiViewSmsMessages = new DevExpress.XtraBars.BarButtonItem();
             this.rpUser = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgEditUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -83,6 +84,7 @@
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
@@ -96,6 +98,8 @@
             this.nbgCandidates = new DevExpress.XtraNavBar.NavBarGroup();
             this.alertControlNotify = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::DXSWI.Forms.wfMain), false, false);
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiViewSms = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).BeginInit();
             this.pcMain.SuspendLayout();
@@ -142,9 +146,11 @@
             this.bbiImportFromExel,
             this.bbiEmailSetting,
             this.bbiViewCandidateWebsite,
-            this.bbiViewCompanyWebsite});
+            this.bbiViewCompanyWebsite,
+            this.bbiViewSmsMessages,
+            this.bbiViewSms});
             this.ribbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlMain.MaxItemId = 89;
+            this.ribbonControlMain.MaxItemId = 91;
             this.ribbonControlMain.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbonControlMain.Name = "ribbonControlMain";
             this.ribbonControlMain.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -175,9 +181,9 @@
             this.bbiUserAdd.ImageOptions.LargeImage = global::DXSWI.Properties.Resources.AddMaleUser;
             this.bbiUserAdd.Name = "bbiUserAdd";
             this.bbiUserAdd.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem1.Text = "Add new user";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            this.bbiUserAdd.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Add new user";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.bbiUserAdd.SuperTip = superToolTip3;
             this.bbiUserAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserAdd_ItemClick);
             // 
             // bbiUserEdit
@@ -188,9 +194,9 @@
             this.bbiUserEdit.ImageOptions.Image = global::DXSWI.Properties.Resources.EditMaleUsericon;
             this.bbiUserEdit.Name = "bbiUserEdit";
             this.bbiUserEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            toolTipTitleItem2.Text = "Edit current selected user";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            this.bbiUserEdit.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "Edit current selected user";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.bbiUserEdit.SuperTip = superToolTip4;
             this.bbiUserEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUserEdit_ItemClick);
             // 
             // bbiUserDelete
@@ -408,7 +414,7 @@
             // 
             this.bbiViewCandidateWebsite.Caption = "View Website";
             this.bbiViewCandidateWebsite.Id = 87;
-            this.bbiViewCandidateWebsite.ImageOptions.Image = global::DXSWI.Properties.Resources.Linkedin_icon;
+            this.bbiViewCandidateWebsite.ImageOptions.Image = global::DXSWI.Properties.Resources.Linkedinicon;
             this.bbiViewCandidateWebsite.Name = "bbiViewCandidateWebsite";
             this.bbiViewCandidateWebsite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiViewCandidateWebsite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCandidateWebsite_ItemClick);
@@ -417,10 +423,19 @@
             // 
             this.bbiViewCompanyWebsite.Caption = "View Website";
             this.bbiViewCompanyWebsite.Id = 88;
-            this.bbiViewCompanyWebsite.ImageOptions.Image = global::DXSWI.Properties.Resources.Insert_hyperlink_icon;
+            this.bbiViewCompanyWebsite.ImageOptions.Image = global::DXSWI.Properties.Resources.Inserthyperlinkicon;
             this.bbiViewCompanyWebsite.Name = "bbiViewCompanyWebsite";
             this.bbiViewCompanyWebsite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.bbiViewCompanyWebsite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewCompanyWebsite_ItemClick);
+            // 
+            // bbiViewSmsMessages
+            // 
+            this.bbiViewSmsMessages.Caption = "View Sms Messages";
+            this.bbiViewSmsMessages.Id = 89;
+            this.bbiViewSmsMessages.ImageOptions.Image = global::DXSWI.Properties.Resources.AppsSmsBicon;
+            this.bbiViewSmsMessages.Name = "bbiViewSmsMessages";
+            this.bbiViewSmsMessages.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiViewSmsMessages.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewSmsMessages_ItemClick);
             // 
             // rpUser
             // 
@@ -538,7 +553,8 @@
             // 
             this.rpCandidates.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup6,
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup12});
             this.rpCandidates.Image = global::DXSWI.Properties.Resources.Appuser1;
             this.rpCandidates.Name = "rpCandidates";
             this.rpCandidates.Tag = "candidate";
@@ -560,10 +576,18 @@
             // 
             // rpReport
             // 
+            this.rpReport.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup11});
             this.rpReport.Image = global::DXSWI.Properties.Resources.report1;
             this.rpReport.Name = "rpReport";
             this.rpReport.Tag = "report";
             this.rpReport.Text = "REPORT";
+            // 
+            // ribbonPageGroup11
+            // 
+            this.ribbonPageGroup11.ItemLinks.Add(this.bbiViewSmsMessages);
+            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
+            this.ribbonPageGroup11.Text = "Sms Controller";
             // 
             // ribbonPageGroup3
             // 
@@ -599,9 +623,9 @@
             this.fpNotify.Options.CloseOnOuterClick = true;
             this.fpNotify.OptionsButtonPanel.ButtonPanelContentAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.fpNotify.OptionsButtonPanel.ButtonPanelLocation = DevExpress.Utils.FlyoutPanelButtonPanelLocation.Bottom;
-            buttonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions1.Image")));
+            buttonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions2.Image")));
             this.fpNotify.OptionsButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.Utils.PeekFormButton("OK", true, buttonImageOptions1, true, null)});
+            new DevExpress.Utils.PeekFormButton("OK", true, buttonImageOptions2, true, null)});
             this.fpNotify.OwnerControl = this.pcMain;
             this.fpNotify.Size = new System.Drawing.Size(352, 67);
             this.fpNotify.TabIndex = 0;
@@ -690,6 +714,21 @@
             // splashScreenManager1
             // 
             this.splashScreenManager1.ClosingDelay = 500;
+            // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.bbiViewSms);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
+            this.ribbonPageGroup12.Text = "Sms Messages";
+            // 
+            // bbiViewSms
+            // 
+            this.bbiViewSms.Caption = "View SMS Messages";
+            this.bbiViewSms.Id = 90;
+            this.bbiViewSms.ImageOptions.Image = global::DXSWI.Properties.Resources.AppsSmsBicon;
+            this.bbiViewSms.Name = "bbiViewSms";
+            this.bbiViewSms.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbiViewSms.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewSms_ItemClick);
             // 
             // SWIMain
             // 
@@ -787,5 +826,9 @@
         private DevExpress.XtraBars.BarButtonItem bbiViewCompanyWebsite;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraBars.BarButtonItem bbiViewSmsMessages;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraBars.BarButtonItem bbiViewSms;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
     }
 }

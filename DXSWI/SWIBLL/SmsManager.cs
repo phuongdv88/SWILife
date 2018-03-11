@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SWIDAL;
 using SWIBLL.Models;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace SWIBLL
 {
@@ -55,6 +56,12 @@ namespace SWIBLL
             }
             return lt;
         }
+        public static DataTable GetDataTableSmsSending()
+        {
+            //string sql = "SELECT * FROM swilifecore.smssending order by SmsSendingId desc";
+            string sql = "SELECT T1.*, (select concat_ws(' ', ifnull(T2.FirstName,''), ifnull(T2.LastName,'')) from swilifecore.candidate T2 where T1.PhoneNumber like T2.CellPhone limit 0,1) as CandidateName FROM swilifecore.smssending T1 order by SmsSendingId desc";
+            return DataAccess.Instance.getDataTable(sql);
+        }
         public static List<SmsSending> GetlistSmsWaitToSend()
         {
             List<SmsSending> lt = new List<SmsSending>();
@@ -83,11 +90,19 @@ namespace SWIBLL
             string sql = string.Format("INSERT INTO `swilifecore`.`smssending` (`PhoneNumber`, `Message`, `Status`, `TimeToSend`) VALUES ('{0}', '{1}', 'Waiting', '{2}')",
                                         QueryBuilder.mySqlEscape(sms.PhoneNumber), QueryBuilder.mySqlEscape(sms.Message), sms.TimeToSend.ToString("yyyy-MM-dd HH:mm:ss"));
             DataAccess.Instance.executeNonQuery(sql);
+
+            
+
         }
         public static void UpdateSmsSending(SmsSending sms)
         {
             string sql = string.Format("UPDATE `swilifecore`.`smssending` SET `PhoneNumber`='{0}', `Message`='{1}', `Status`='{2}', `TimeToSend`='{3}' WHERE `SmsSendingId`='{4}'",
                                         QueryBuilder.mySqlEscape(sms.PhoneNumber), QueryBuilder.mySqlEscape(sms.Message), QueryBuilder.mySqlEscape(sms.Status), sms.TimeToSend.ToString("yyyy-MM-dd HH:mm:ss"), sms.SmsSendingId);
+            DataAccess.Instance.executeNonQuery(sql);
+        }
+        public static void ResendSmsSending(long smsId)
+        {
+            string sql = string.Format("UPDATE `swilifecore`.`smssending` SET `Status`='Waiting', `TimeToSend`=now() WHERE `SmsSendingId`='{0}'", smsId);
             DataAccess.Instance.executeNonQuery(sql);
         }
         public static void DeleteSmsSending(SmsSending sms)
@@ -109,6 +124,13 @@ namespace SWIBLL
 
             return lt;
         }
+        public static DataTable GetDataTableSmsReceiving()
+        {
+            //string sql = "SELECT * FROM swilifecore.smsreceiving order by SmsReceivingId desc";
+            string sql = "SELECT T1.*, (select concat_ws(' ', ifnull(T2.FirstName, ''), ifnull(T2.LastName, '')) from swilifecore.candidate T2 where if (char_length(T1.Sender) < 10, T1.Sender, substr(T1.Sender, 4)) like if (char_length(T2.CellPhone) < 10, T2.CellPhone ,substr(T2.CellPhone, 2)) limit 0,1) as CandidateName " +
+                            "FROM swilifecore.smsreceiving T1 order by SmsReceivingId desc";
+            return DataAccess.Instance.getDataTable(sql);
+        }
 
         public static void InsertSmsReceiving(SmsReceiving sms)
         {
@@ -126,10 +148,38 @@ namespace SWIBLL
                                        QueryBuilder.mySqlEscape(sms.SentTime), QueryBuilder.mySqlEscape(sms.Message), sms.SmsReceivingId);
             DataAccess.Instance.executeNonQuery(sql);
         }
-        public static void DeleteSmsReceiving(SmsReceiving sms)
+        public static void DeleteSmsReceiving(int smsId)
         {
-            string sql = string.Format("DELETE FROM `swilifecore`.`smsreceiving` WHERE `SmsReceivingId`='{0}'", sms.SmsReceivingId);
+            string sql = string.Format("DELETE FROM `swilifecore`.`smsreceiving` WHERE `SmsReceivingId`='{0}'", smsId);
             DataAccess.Instance.executeNonQuery(sql);
+        }
+
+        public static string FromHexString(string hexString)
+        {
+            var bytes = new byte[hexString.Length / 2];
+            for (var i = 0; i < bytes.Length; i++)
+            {
+                bytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+            }
+
+            return Encoding.BigEndianUnicode.GetString(bytes);
+        }
+
+        public static void CorrectSms()
+        {
+            var listSms = GetlistSmsReceiving();
+            foreach(var sms in listSms)
+            {
+                try {
+                    if (Regex.IsMatch(sms.Message, "^\\d+")) {
+                        sms.Message = FromHexString(sms.Message);
+                        UpdateSmsReceiving(sms);
+                    }
+                }
+                catch
+                {
+                }
+            }
         }
     }
 }

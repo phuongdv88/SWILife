@@ -39,7 +39,7 @@ namespace DXSWI.Modules
                 InitResource();
                 InitAppointments();
 
-                // init timmer check schedule event
+                // init timer check schedule event
                 Timer aTimer = new Timer();
                 aTimer.Tick += OnTimedAppointments;
                 aTimer.Interval = 1000 * 60 * 15; // check every 15 minutes 

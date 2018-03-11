@@ -65,6 +65,7 @@ namespace SWIBLL
                 Type = "Add New Job Order",
                 ActivityOf = Activity.TypeOfLogActivity.JobOrder,
                 JobOrderId = rs,
+                Notes = string.Format("JoborderID = {0} JobOrder Title = {1}", rs, jobOrder.Title)
             };
             // add activity to db
             ActivityManager.insert(act);
@@ -88,6 +89,7 @@ namespace SWIBLL
                 Type = "Update Job Order",
                 ActivityOf = Activity.TypeOfLogActivity.JobOrder,
                 JobOrderId = jobOrder.JobOrderId,
+                Notes = string.Format("JoborderID = {0} JobOrder Title = {1}", jobOrder.JobOrderId, jobOrder.Title)
             };
             // add activity to db
             ActivityManager.insert(act);
@@ -113,6 +115,7 @@ namespace SWIBLL
                     Type = "Delete Job Order",
                     ActivityOf = Activity.TypeOfLogActivity.JobOrder,
                     JobOrderId = jobOrderId,
+                    Notes = string.Format("JoborderID = {0}", jobOrderId)
                 };
                 // add activity to db
                 ActivityManager.insert(act);
