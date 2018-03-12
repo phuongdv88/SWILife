@@ -104,36 +104,11 @@ namespace DXSWI.Forms
             updateSending();
         }
 
-        private void gvReceivingMessages_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            try
-            {
-                if (gvReceivingMessages.SelectedRowsCount > 0)
-                {
-                    DataRow data_row = gvReceivingMessages.GetDataRow(gvReceivingMessages.GetSelectedRows().First());
-                    teFrom.Text = data_row["Sender"].ToString();
-                    var name = data_row["CandidateName"].ToString().Trim();
-                    if(name.Length > 0)
-                    {
-                        teFrom.Text = string.Format("{0} ({1})", name, teFrom.Text);
-                    }
-                    teToPhoneNumber.Text = data_row["Sender"].ToString();
-                    //var name = 
-                    meMessage.Text = data_row["Message"].ToString();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void sbSend_Click(object sender, EventArgs e)
         {
             // show warning if lenght > 160            
             string sms = meNewMessage.Text.Trim();
-            var number = teFrom.Text.Trim();
+            var number = teToPhoneNumber.Text.Trim();
             // correct number:
             // +84 -> 0; 84 -> 0; remove all of characters which is not a digit
             number = Regex.Replace(number, "\\D+", "", RegexOptions.Multiline);
@@ -169,36 +144,6 @@ namespace DXSWI.Forms
 
         }
 
-        //private void gvSendingMessages_RowCellStyle(object sender, RowCellStyleEventArgs e)
-        //{
-        //    Color WaitingColor = Color.DarkGray;
-        //    Color SentColor = Color.LightGreen;
-        //    Color FailColor = Color.Red;
-        //    Color ErrorColor = Color.DarkRed;
-
-        //    //Changing the appearance settings of row cells dynamically 
-
-        //    GridView view = sender as GridView;
-        //    var value = view.GetRowCellValue(e.RowHandle, "Status").ToString();
-        //    if (value == "Waiting")
-        //    {
-        //        e.Appearance.BackColor = WaitingColor;
-        //    }
-        //    else if (value == "Sent")
-        //    {
-        //        e.Appearance.BackColor = SentColor;
-        //    }
-        //    else if (value == "Fail")
-        //    {
-        //        e.Appearance.BackColor = FailColor;
-        //    }
-        //    else if (value == "Error")
-        //    {
-        //        e.Appearance.BackColor = ErrorColor;
-        //    }
-
-        //}
-
         private void gvSendingMessages_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             GridView view = sender as GridView;
@@ -230,37 +175,7 @@ namespace DXSWI.Forms
             }
         }
 
-        private void ribeRetry_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            //resend 
-            try
-            {
-                var smsId = Convert.ToInt64(gvSendingMessages.GetFocusedRowCellValue("SmsSendingId").ToString());
-                SmsManager.ResendSmsSending(smsId);
-                updateSending();
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void gvSendingMessages_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            try
-            {
-                if (gvSendingMessages.SelectedRowsCount > 0)
-                {
-                    DataRow data_row = gvSendingMessages.GetDataRow(gvSendingMessages.GetSelectedRows().First());
-                    teToPhoneNumber.Text = data_row["PhoneNumber"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+       
         private void gvReceivingMessages_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -328,6 +243,70 @@ namespace DXSWI.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void gvReceivingMessages_RowClick(object sender, RowClickEventArgs e)
+        {
+
+            try
+            {
+                if (gvReceivingMessages.SelectedRowsCount > 0)
+                {
+                    DataRow data_row = gvReceivingMessages.GetDataRow(gvReceivingMessages.GetSelectedRows().First());
+                    teFrom.Text = data_row["Sender"].ToString();
+                    var name = data_row["CandidateName"].ToString().Trim();
+                    if (name.Length > 0)
+                    {
+                        teFrom.Text = string.Format("{0} ({1})", name, teFrom.Text);
+                    }
+                    teToPhoneNumber.Text = data_row["Sender"].ToString();
+                    //var name = 
+                    meMessage.Text = data_row["Message"].ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void gvSendingMessages_RowClick(object sender, RowClickEventArgs e)
+        {
+            try
+            {
+                if (gvSendingMessages.SelectedRowsCount > 0)
+                {
+                    DataRow data_row = gvSendingMessages.GetDataRow(gvSendingMessages.GetSelectedRows().First());
+                    teToPhoneNumber.Text = data_row["PhoneNumber"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void resendThisMessageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (XtraMessageBox.Show("Are you sure to resend sms message?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var smsId = Convert.ToInt64(gvSendingMessages.GetFocusedRowCellValue("SmsSendingId").ToString());
+                    SmsManager.ResendSmsSending(smsId);
+                    updateSending();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void meNewMessage_EditValueChanged(object sender, EventArgs e)
+        {
+            lciNewTextMessage.Text = string.Format("New Message[{0}]", 160 - meNewMessage.Text.Length);
         }
     }
 }
