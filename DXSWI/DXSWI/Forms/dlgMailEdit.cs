@@ -324,7 +324,7 @@ namespace DXSWI.Forms
                     long runId = _runningTaskIds[i];
                     // send mail
                     sendMailViaSmptClient(i, true);
-                    Thread.Sleep(500);
+                    Thread.Sleep(1000);
                 }
                 catch (Exception ex)
                 {

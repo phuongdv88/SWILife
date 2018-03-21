@@ -156,7 +156,7 @@ namespace DXSWI.Modules
                     if (cellphone == "0")
                         cellphone = string.Empty;
 
-                    if(cellphone.StartsWith("9") || cellphone.StartsWith("1"))
+                    if (cellphone.StartsWith("9") || cellphone.StartsWith("1"))
                     {
                         cellphone = "0" + cellphone;
                     }
@@ -183,6 +183,57 @@ namespace DXSWI.Modules
                 //++counter;
             }
 
+        }
+
+        public void importFromContacts()
+        {
+            try
+            {
+                //get all contacts
+                var listContact = ContactManager.getContacts();
+                foreach(DataRow dataRow in listContact.Rows)
+                {
+                    var contactId = dataRow["ContactId"].ToString();
+                    Candidate can = new Candidate();
+                    can.FirstName = dataRow["FirstName"].ToString();
+                    can.LastName = dataRow["LastName"].ToString();
+                    can.CurrentPosition = dataRow["Title"].ToString();
+                    can.KeySkills = dataRow["Title"].ToString();
+                    can.Email = dataRow["Email"].ToString();
+
+                    can.CellPhone = dataRow["CellPhone"].ToString();
+                    can.CellPhone = Regex.Replace(can.CellPhone, "\\D+", "", RegexOptions.Multiline);
+                    if (can.CellPhone.StartsWith("84"))
+                    {
+                        can.CellPhone = "0" + can.CellPhone.Remove(0, 2);
+                    }
+                    if (!can.CellPhone.StartsWith("0") && can.CellPhone.Length > 0)
+                    {
+                        can.CellPhone = "0" + can.CellPhone;
+                    }
+                    can.CurrentEmployer = dataRow["MiscNotes"].ToString();
+                    can.MiscNotes = "Import from list of contacts";
+                    can.City = "N/A";
+                    can.Country = "Vietnam";
+                    can.Source = "Other";
+                    can.UserId = UserManager.ActivatedUser.UserId;
+                    // insert to database
+                    try
+                    {
+                        CandidateManager.InsertCandidate(can);
+                        //printMessage(string.Format("data: {0}, {1}, {2}, {3}, {4}, {5}", can.FirstName + " " + can.LastName, 
+                        //    can.KeySkills, can.CurrentPosition, can.CurrentEmployer, can.CellPhone, can.Email));
+                    }
+                    catch (Exception ex)
+                    {
+                        printMessage(string.Format("Error: {0} of row = {1}", ex.Message, contactId));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                printMessage(string.Format("Error: {0}", ex.Message));
+            }
         }
         private void printMessage(string msg)
         {

@@ -59,7 +59,7 @@ namespace DXSWI.Modules
         {
             try
             {
-                // delete this running task data
+                
                 if (gvContacts.SelectedRowsCount > 0)
                 {
                     int row = gvContacts.GetSelectedRows().First();

@@ -171,6 +171,8 @@
             // colTimeToSend
             // 
             this.colTimeToSend.Caption = "Sent Time";
+            this.colTimeToSend.DisplayFormat.FormatString = "yyyy/MM/dd HH:mm:ss";
+            this.colTimeToSend.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colTimeToSend.FieldName = "TimeToSend";
             this.colTimeToSend.Name = "colTimeToSend";
             this.colTimeToSend.Visible = true;

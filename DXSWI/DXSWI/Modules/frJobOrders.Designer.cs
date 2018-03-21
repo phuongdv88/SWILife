@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRule2ColorScale formatConditionRule2ColorScale1 = new DevExpress.XtraEditors.FormatConditionRule2ColorScale();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRule2ColorScale formatConditionRule2ColorScale2 = new DevExpress.XtraEditors.FormatConditionRule2ColorScale();
             this.colIsHot = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcJobOrder = new DevExpress.XtraGrid.GridControl();
@@ -41,6 +41,7 @@
             this.deleteJobOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewCompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gvJobOrder = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colCompany = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colType = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -91,9 +92,10 @@
             this.toolStripSeparator1,
             this.deleteJobOrderToolStripMenuItem,
             this.toolStripSeparator2,
+            this.viewCompanyToolStripMenuItem,
             this.refreshToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 148);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // newJobOrderToolStripMenuItem
@@ -138,6 +140,14 @@
             this.refreshToolStripMenuItem.Text = "Refresh Job Orders";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
+            // viewCompanyToolStripMenuItem
+            // 
+            this.viewCompanyToolStripMenuItem.Image = global::DXSWI.Properties.Resources.editbuilding1;
+            this.viewCompanyToolStripMenuItem.Name = "viewCompanyToolStripMenuItem";
+            this.viewCompanyToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.viewCompanyToolStripMenuItem.Text = "View Company";
+            this.viewCompanyToolStripMenuItem.Click += new System.EventHandler(this.viewCompanyToolStripMenuItem_Click);
+            // 
             // gvJobOrder
             // 
             this.gvJobOrder.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -152,20 +162,20 @@
             this.colCity,
             this.colLink,
             this.colIsHot});
-            gridFormatRule1.Column = this.colIsHot;
-            gridFormatRule1.ColumnApplyTo = this.colTitle;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRule2ColorScale1.Maximum = new decimal(new int[] {
+            gridFormatRule2.Column = this.colIsHot;
+            gridFormatRule2.ColumnApplyTo = this.colTitle;
+            gridFormatRule2.Name = "Format0";
+            formatConditionRule2ColorScale2.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            formatConditionRule2ColorScale1.MaximumColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            formatConditionRule2ColorScale1.MaximumType = DevExpress.XtraEditors.FormatConditionValueType.Number;
-            formatConditionRule2ColorScale1.MinimumType = DevExpress.XtraEditors.FormatConditionValueType.Number;
-            formatConditionRule2ColorScale1.PredefinedName = "White, Green";
-            gridFormatRule1.Rule = formatConditionRule2ColorScale1;
-            this.gvJobOrder.FormatRules.Add(gridFormatRule1);
+            formatConditionRule2ColorScale2.MaximumColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            formatConditionRule2ColorScale2.MaximumType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRule2ColorScale2.MinimumType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRule2ColorScale2.PredefinedName = "White, Green";
+            gridFormatRule2.Rule = formatConditionRule2ColorScale2;
+            this.gvJobOrder.FormatRules.Add(gridFormatRule2);
             this.gvJobOrder.GridControl = this.gcJobOrder;
             this.gvJobOrder.Name = "gvJobOrder";
             this.gvJobOrder.OptionsBehavior.Editable = false;
@@ -289,5 +299,6 @@
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private DevExpress.XtraGrid.Columns.GridColumn colIsHot;
+        private System.Windows.Forms.ToolStripMenuItem viewCompanyToolStripMenuItem;
     }
 }

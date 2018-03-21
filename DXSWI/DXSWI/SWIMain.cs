@@ -345,7 +345,9 @@ namespace DXSWI
             //System.Diagnostics.Process.Start("https://swilife.com");
             //_frUtilities.correctNumberDB();
             //_frUtilities.parseCandidateFromExelV2(@"D:\DropboxData\Dropbox\Swilife\3. Candidates\Danh sach lap trinh vien_T3 2018.xlsx");
+            //_frUtilities.importFromContacts();
             //changeGroup(_tagUtilities);
+
         }
 
         public void ShowNotice(string message, string caption, MessageBoxIcon icon)

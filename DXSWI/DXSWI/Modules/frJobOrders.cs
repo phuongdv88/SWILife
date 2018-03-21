@@ -116,5 +116,25 @@ namespace DXSWI.Modules
         {
 
         }
+
+        private void viewCompanyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (gvJobOrder.SelectedRowsCount > 0)
+                {
+                    int row = gvJobOrder.GetSelectedRows().First();
+                    DataRow data_row = gvJobOrder.GetDataRow(row);
+                    long comId = Convert.ToInt64(data_row["CompanyId"].ToString());
+                    dlgCompanyEdit dlg = new dlgCompanyEdit(comId);
+                    dlg.UpdateDataEvent += updateData;
+                    dlg.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }       
     }
 }
