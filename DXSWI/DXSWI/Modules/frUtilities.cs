@@ -15,6 +15,8 @@ using SWIBLL.Models;
 using System.Text.RegularExpressions;
 using OfficeOpenXml;
 using System.Security.Principal;
+using System.Net;
+using OfficeOpenXml.Packaging.Ionic.Zlib;
 
 namespace DXSWI.Modules
 {
@@ -89,9 +91,9 @@ namespace DXSWI.Modules
                     city = city.Replace("+", "").Replace("-", "");
                     city = city.Replace("Da nang", "Danang").Replace("Da Nang", "Danang").Replace("DA NANG", "Danang").Replace("DANANG", "Danang");
                     city = city.Replace("Ha Noi", "Hanoi").Replace("hanoi", "Hanoi").Replace("hANOI", "Hanoi").Replace("HaNoi", "Hanoi").Replace("HANOI", "Hanoi").Replace("HN", "Hanoi").Replace("HÃ Ná»™i", "Hanoi");
-                    city = city.Replace("Ha noi", "Hanoi").Replace("HA Noi", "Hanoi").Replace("HA NOI", "Hanoi");
+                    city = city.Replace("Ha noi", "Hanoi").Replace("HA Noi", "Hanoi").Replace("HA NOI", "Hanoi").Replace("Hà Nội", "Hanoi");
                     city = city.Replace("hcm", "HCM").Replace("Hcm", "HCM").Replace("HcM", "HCM").Replace("HCm", "HCM").Replace("HCMC", "HCM").Replace("HCN", "HCM").Replace("Ho Chi Minh", "HCM");
-                    city = city.Replace("Ho Chin Minh", "HCM").Replace("ho chi minh", "HCM").Replace("Ho chi minh", "HCM").Replace("HO CHI MINH", "HCM").Replace("Hochiminh", "HCM");
+                    city = city.Replace("Ho Chin Minh", "HCM").Replace("ho chi minh", "HCM").Replace("Ho chi minh", "HCM").Replace("HO CHI MINH", "HCM").Replace("Hochiminh", "HCM").Replace("Ho Chi Minh City", "HCM").Replace("HCMC", "HCM");
                     city = city.Trim();
 
                     if (city.Contains("Hanoi"))
@@ -408,8 +410,195 @@ namespace DXSWI.Modules
             }
             printMessage(string.Format("number of error parse file {0}", counter));
         }
+        public void DownloadQuandidateCV(string folder, string fileName, string link)
+        {
+            //if (Directory.Exists(folder) && Directory.GetFiles(folder).Length > 0)
+            //    return;
+            var file = folder + "\\" + fileName;
+            if (File.Exists(file))
+            {
+                return;
+            }
+
+            Directory.CreateDirectory(folder);
+            try
+            {
+                HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(link);
+                req.Method = "GET";
+                req.Host = "enjoy.qandidate.com";
+                req.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0";
+                req.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8";
+                req.Headers.Add("Accept-Language: en-US,en;q=0.5");
+                //req.Headers.Add("Accept-Encoding: gzip, deflate, br");
+                req.KeepAlive = true;
+                req.Headers.Add(@"Cookie: __utma=209967509.2084658541.1521856206.1522286777.1522292886.4; __utmz=209967509.1522292886.4.3.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; __utma=226254670.304764274.1521856228.1522286777.1522292886.4; __utmz=226254670.1522292886.4.4.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; intercom-session-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=bEZxL21GQVRKeDB3RldaS0xoSTNGUDg1eVo3Z1VmNm9ZK09rblUzMGVoREszRFRMRExTZGRER3MwOUlnY1FqQy0tUnAvVUsyRGZoaWMwSHBQcGc0THNudz09--b51cb50faf2be4114d65afe064b4c614ed32bff4; intercom-lou-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=1; __utmc=209967509; SID=fr9j9hdoecop908hlo2v9mqan4; __utmc=226254670; __utmb=226254670.2.10.1522292886; __utmt=1; __utmb=209967509.2.10.1522292886; __utmt_b=1");
+                req.Headers.Add("Upgrade-Insecure-Requests: 1");
+
+                // open firefox -> F12 -> log in and check value header of http request and fill to request header.
+
+                HttpWebResponse response = (HttpWebResponse)req.GetResponse();
+                //var tmp = response.Headers["Content-Disposition"];
+                //var name= response.Headers["Content-Disposition"]?.Split('=').Last().Replace("\"","").Trim();
+                //if (name == null || name == "")
+                //{
+                //    name = fileName;
+                //}
+                //var filename = folder + "\\" + name;
+                //if (File.Exists(filename))
+                //    return;
+                using (var stream = File.Create(file))
+                {
+                    response.GetResponseStream().CopyTo(stream);
+                }
+
+                 //printMessage(string.Format("finish download {0}", file));
+
+            }
+            catch
+            {
+                throw;
+            }
 
 
+        }
+        public void DownloadQuandidateCvs(string candidateLinksFolder)
+        {
+            string[] inputFiles = Directory.GetFiles(candidateLinksFolder);
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            //necessary information
+            string name = string.Empty;
+            string applyPos = string.Empty;
+            string applyState = string.Empty;
+            //foreach (var fileName in inputFiles)
+            //string fileName = inputFiles[0];
+
+            foreach (var fileName in inputFiles)
+            //string fileName = @"C:\Users\phuon\Downloads\quandidate\candidate_links\1054.html";
+            {
+                try
+                {
+                    doc.Load(fileName);
+                    //parse general information
+                    var nodes = doc.DocumentNode.SelectNodes("//li[@class='text-notable']");
+                    if (nodes != null && nodes.Count > 0)
+                    {
+                        name = nodes[0].InnerText.Trim();
+                        name = Regex.Replace(name, @"^\s*$\n", string.Empty, RegexOptions.Multiline).Replace("&nbsp;", "\n");
+                    }
+                    nodes = doc.DocumentNode.SelectNodes("//li");
+                    var texts = nodes.Select(node => node.InnerText).ToList();
+
+
+
+
+                    //var tmp = nodes.Descendants("a").Select(node => node.InnerText).ToList();
+                    //applyPos = tmp[0];
+                    //var ns = nodes.Descendants("//i[@class='c-icon-text-cloud']");
+                    //applyState = ns?.First().InnerText;
+
+                    nodes = doc.DocumentNode.SelectNodes("//i[@class='text-notable']");
+                    if (nodes != null)
+                    {
+                        name = nodes[0].InnerText;
+                    }
+
+
+                    nodes = doc.DocumentNode.SelectNodes("//div[@class='name']");
+                    if (nodes != null)
+                    {
+                        var links = nodes.Descendants("a").Select(node => "https://enjoy.qandidate.com" + node.GetAttributeValue("href", "")).ToList();
+                        var fileNames = nodes.Descendants("a").Select(node => node.InnerText.Trim().Replace(":", "").Replace(",", "")).ToList();
+                        for (var i = 0; i < links.Count; ++i)
+                        {
+                            DownloadQuandidateCV(fileName.Replace(".html", ""), fileNames[i], links[i]);
+                        }
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                     printMessage(string.Format("error {0}: {1}", fileName, ex.Message));
+                }
+            }
+        }
+        public List<string> GetQuandidateCandidateLinks(string generalCandidateLinks)
+        {
+            List<string> canLinks = new List<string>();
+            string[] inputFiles = Directory.GetFiles(generalCandidateLinks);
+            var doc = new HtmlAgilityPack.HtmlDocument();
+
+            foreach (var fileName in inputFiles)
+            {
+                try
+                {
+                    doc.Load(fileName);
+                    //parse general information
+                    var nodes = doc.DocumentNode.SelectNodes("//div[@class='span3']");
+                    if (nodes != null)
+                    {
+                        canLinks.AddRange(nodes.Descendants("a").Select(node => "https://enjoy.qandidate.com" + node.GetAttributeValue("href", "")).ToList());
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                     printMessage(string.Format("error when parse file {0}: {1}", fileName, ex.Message));
+                }
+            }
+
+
+            return canLinks;
+        }
+
+        public void DownloadQuandidateLinks(string generalLinksFolder, string candidateLinksFolder)
+        {
+
+
+            List<string> canLinks = GetQuandidateCandidateLinks(generalLinksFolder);
+            int index_of_file = 0;
+
+            foreach (var request_url in canLinks)
+            {
+                try
+                {
+                    index_of_file++;
+                    HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(request_url);
+                    req.Method = "GET";
+                    req.Host = "enjoy.qandidate.com";
+                    req.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0";
+                    req.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*;q=0.8";
+                    req.Headers.Add("Accept-Language: en-US,en;q=0.5");
+                    req.Headers.Add("Accept-Encoding: gzip, deflate, br");
+                    req.Referer = "https://enjoy.qandidate.com/application/index";
+                    req.KeepAlive = true;
+                    req.Headers.Add(@"Cookie: __utma=209967509.2084658541.1521856206.1522232865.1522286777.3; __utmz=209967509.1522286777.3.2.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; __utma=226254670.304764274.1521856228.1522232884.1522286777.3; __utmz=226254670.1522286777.3.3.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; intercom-session-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=YWo5RFpvQU5EWFNLVnJYa0p2UmlsQUIrQ2J3bEFLcldOSzZxSHF5T2lGQUY0ZGJnWWtHNTFmZll4MXJNN3BpZy0tRHJxWUxGak5naXRYRVFwRGxmT0tEZz09--4eb67fcf090c72f0f21b233eefe03f1f7c0401ce; intercom-lou-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=1; __utmc=209967509; SID=fr9j9hdoecop908hlo2v9mqan4; __utmc=226254670; __utmb=226254670.1.10.1522286777; __utmt=1; __utmb=209967509.1.10.1522286777; __utmt_b=1");
+                    req.Headers.Add("Upgrade-Insecure-Requests: 1");
+
+                    // open firefox -> F12 -> log in and check value header of http request and fill to request header.
+
+                    HttpWebResponse response = (HttpWebResponse)req.GetResponse();
+                    //if (response.Headers.Get("Content-Encoding") != null &&
+                    //    response.Headers.Get("Content-Encoding").ToLower() == "gzip")
+                    //{
+                    //}
+                    //using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                    using (StreamReader reader = new StreamReader(new GZipStream(response.GetResponseStream(), CompressionMode.Decompress)))
+                    {
+                        string tmp = reader.ReadToEnd();
+                        using (StreamWriter sw = new StreamWriter(candidateLinksFolder + string.Format(@"\{0}.html", index_of_file)))
+                        {
+                            sw.Write(tmp);
+                        }
+                         //printMessage(string.Format("finish download id = {0}, link = {1}", index_of_file, request_url));
+                    }
+                }
+                catch (Exception ex)
+                {
+                     printMessage(string.Format(ex.Message));
+                }
+            }
+        }
         public void ParseCandidateFromQuandidateLinks(string inputFolder)
         {
             string[] inputFiles = Directory.GetFiles(inputFolder);
@@ -452,12 +641,30 @@ namespace DXSWI.Modules
                     can.Address = texts[5].Replace("Address", "").Trim();
                     can.City = texts[6].Replace("Postal code / City", "");
                     can.City = Regex.Replace(can.City, @"\d+", string.Empty).Trim();
+                    can.City = can.City.Replace("+", "").Replace("-", "");
+                    can.City = can.City.Replace("Da nang", "Danang").Replace("Da Nang", "Danang").Replace("DA NANG", "Danang").Replace("DANANG", "Danang");
+                    can.City = can.City.Replace("Ha Noi", "Hanoi").Replace("hanoi", "Hanoi").Replace("hANOI", "Hanoi").Replace("HaNoi", "Hanoi").Replace("HANOI", "Hanoi").Replace("HN", "Hanoi").Replace("HÃ Ná»™i", "Hanoi");
+                    can.City = can.City.Replace("Ha noi", "Hanoi").Replace("HA Noi", "Hanoi").Replace("HA NOI", "Hanoi").Replace("Hà Nội", "Hanoi");
+                    can.City = can.City.Replace("hcm", "HCM").Replace("Hcm", "HCM").Replace("HcM", "HCM").Replace("HCm", "HCM").Replace("HCMC", "HCM").Replace("HCN", "HCM").Replace("Ho Chi Minh", "HCM");
+                    can.City = can.City.Replace("Ho Chin Minh", "HCM").Replace("ho chi minh", "HCM").Replace("Ho chi minh", "HCM").Replace("HO CHI MINH", "HCM").Replace("Hochiminh", "HCM").Replace("Ho Chi Minh City", "HCM").Replace("HCMC", "HCM");
+                    can.City = can.City.Trim();
+
+                    if (can.City.Contains("Hanoi"))
+                    {
+                        can.City = "Hanoi";
+                    }
+
+                    if (can.City.Contains("HCM"))
+                    {
+                        can.City = "HCM";
+                    }
                     for (var i = 7; i < texts.Count; ++i)
                     {
                         var it = texts[i];
                         if (it.Contains("Tel ") && can.CellPhone.Length == 0)
                         {
                             can.CellPhone = it.Replace("Tel ", "");
+                            can.CellPhone = Regex.Replace(can.CellPhone, "\\D+", "", RegexOptions.Multiline);
                         }
                         else if (it.Contains("Email ") && can.Email.Length == 0)
                         {
@@ -517,7 +724,16 @@ namespace DXSWI.Modules
                             var cvs = cvlinks.Where(it => it.Contains(".doc") || it.Contains(".pdf")).ToList();
                             if (cvs.Count > 0)
                             {
-                                var cvlink = cvs.First();
+                                // if folder have many files, find and get cv file
+                                var tmplink = cvs.Where(it => it.Contains("cv")).ToList();
+                                var cvlink = string.Empty;
+                                if (tmplink.Count == 0)
+                                {
+                                    cvlink = cvs.First();
+                                } else
+                                {
+                                    cvlink = tmplink.First();
+                                }
                                 var cvFile = cvlink.Split('\\').Last();
                                 if (cvFile.Length > 0)
                                 {

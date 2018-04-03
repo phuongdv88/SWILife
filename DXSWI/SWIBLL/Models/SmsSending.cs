@@ -13,6 +13,7 @@ namespace SWIBLL.Models
         public string Message { get; set; }
         public string Status { get; set; }
         public DateTime TimeToSend { get; set; }
+        public long CandidateId { get; set; }
     }
 
     public class SmsReceiving
@@ -24,6 +25,7 @@ namespace SWIBLL.Models
         public string Alphabet { get; set; }
         public string SentTime { get; set; }
         public string Message { get; set; }
+        public long CandidateId { get; set; }
     }
     public class SmsReceivingCollection : List<SmsReceiving>
     {

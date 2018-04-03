@@ -187,7 +187,7 @@ namespace DXSWI.Forms
             // if not start by 0 -> do not sent
             if (number.StartsWith("0") && number.Length > 9 && number.Length < 12)
             {
-                SmsSending tmp = new SmsSending() { PhoneNumber = number, Message = sms, TimeToSend = DateTime.Now };
+                SmsSending tmp = new SmsSending() { PhoneNumber = number, Message = sms, TimeToSend = DateTime.Now, CandidateId = candidateId };
                 SmsManager.InsertSmsSending(tmp);
                 Activity act = new Activity()
                 {

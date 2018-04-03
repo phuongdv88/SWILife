@@ -244,7 +244,16 @@ namespace SmsSenderService
                     msg.Status = m.Groups[2].Value;
                     msg.Sender = m.Groups[3].Value;
                     msg.Alphabet = m.Groups[4].Value;
+                    //'18/03/02,09:59:14+28'
                     msg.SentTime = m.Groups[5].Value;
+                    DateTime tmp = DateTime.ParseExact(msg.SentTime, "yy/MM/dd,HH:mm:ss+28", null);
+                    if(tmp != null)
+                    {
+                        msg.SentTime = tmp.ToString("yyyy-MM-dd HH:mm:ss");
+                    } else
+                    {
+                        msg.SentTime = msg.SentTime.Replace(",", " ").Replace("/", "-").Replace("+28", "");
+                    }
                     msg.Message = m.Groups[6].Value;
                     msgs.Add(msg);
                     m = m.NextMatch();

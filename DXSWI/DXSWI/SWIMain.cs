@@ -341,12 +341,21 @@ namespace DXSWI
 
         private void bbiUserHelp_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //System.Diagnostics.Process.Start("https://swilife.com");
             //_frUtilities.correctNumberDB();
             //_frUtilities.parseCandidateFromExelV2(@"D:\DropboxData\Dropbox\Swilife\3. Candidates\Danh sach lap trinh vien_T3 2018.xlsx");
             //_frUtilities.importFromContacts();
+
+            // update database from Quandidate
+            //string generalFolder = @"D:\swilifedata\quandidate\general_links_28-03-2018";
+            //string candidatesFolder = @"D:\swilifedata\quandidate\candidate_links_28-03-2018";
+            //_frUtilities.DownloadQuandidateLinks(generalFolder, candidatesFolder);
+            //_frUtilities.DownloadQuandidateCvs(candidatesFolder);
+            //_frUtilities.ParseCandidateFromQuandidateLinks(candidatesFolder);
+
             //changeGroup(_tagUtilities);
+
 
         }
 

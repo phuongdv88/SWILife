@@ -223,10 +223,12 @@
             // colModified
             // 
             this.colModified.Caption = "Modified";
+            this.colModified.DisplayFormat.FormatString = "yyyy/MM/dd HH:mm:ss";
+            this.colModified.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colModified.FieldName = "Modified";
             this.colModified.Name = "colModified";
             this.colModified.Visible = true;
-            this.colModified.VisibleIndex = 3;
+            this.colModified.VisibleIndex = 10;
             this.colModified.Width = 94;
             // 
             // colCurrentPosition
@@ -235,7 +237,7 @@
             this.colCurrentPosition.FieldName = "CurrentPosition";
             this.colCurrentPosition.Name = "colCurrentPosition";
             this.colCurrentPosition.Visible = true;
-            this.colCurrentPosition.VisibleIndex = 6;
+            this.colCurrentPosition.VisibleIndex = 5;
             this.colCurrentPosition.Width = 121;
             // 
             // colCurrentEmployer
@@ -244,7 +246,7 @@
             this.colCurrentEmployer.FieldName = "CurrentEmployer";
             this.colCurrentEmployer.Name = "colCurrentEmployer";
             this.colCurrentEmployer.Visible = true;
-            this.colCurrentEmployer.VisibleIndex = 4;
+            this.colCurrentEmployer.VisibleIndex = 3;
             this.colCurrentEmployer.Width = 143;
             // 
             // colDesiredPay
@@ -253,7 +255,7 @@
             this.colDesiredPay.FieldName = "DesiredPay";
             this.colDesiredPay.Name = "colDesiredPay";
             this.colDesiredPay.Visible = true;
-            this.colDesiredPay.VisibleIndex = 5;
+            this.colDesiredPay.VisibleIndex = 4;
             this.colDesiredPay.Width = 121;
             // 
             // colEmail
@@ -262,7 +264,7 @@
             this.colEmail.FieldName = "Email";
             this.colEmail.Name = "colEmail";
             this.colEmail.Visible = true;
-            this.colEmail.VisibleIndex = 7;
+            this.colEmail.VisibleIndex = 6;
             this.colEmail.Width = 112;
             // 
             // colCellPhoneNumber
@@ -271,7 +273,7 @@
             this.colCellPhoneNumber.FieldName = "CellPhone";
             this.colCellPhoneNumber.Name = "colCellPhoneNumber";
             this.colCellPhoneNumber.Visible = true;
-            this.colCellPhoneNumber.VisibleIndex = 8;
+            this.colCellPhoneNumber.VisibleIndex = 7;
             this.colCellPhoneNumber.Width = 112;
             // 
             // colLastStatus
@@ -280,7 +282,7 @@
             this.colLastStatus.FieldName = "LastStatus";
             this.colLastStatus.Name = "colLastStatus";
             this.colLastStatus.Visible = true;
-            this.colLastStatus.VisibleIndex = 9;
+            this.colLastStatus.VisibleIndex = 8;
             this.colLastStatus.Width = 137;
             // 
             // colCity
@@ -289,7 +291,7 @@
             this.colCity.FieldName = "City";
             this.colCity.Name = "colCity";
             this.colCity.Visible = true;
-            this.colCity.VisibleIndex = 10;
+            this.colCity.VisibleIndex = 9;
             // 
             // frCandidates
             // 

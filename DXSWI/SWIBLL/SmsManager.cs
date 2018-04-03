@@ -58,9 +58,18 @@ namespace SWIBLL
         }
         public static DataTable GetDataTableSmsSending()
         {
-            //string sql = "SELECT * FROM swilifecore.smssending order by SmsSendingId desc";
-            string sql = "SELECT T1.*, (select concat_ws(' ', ifnull(T2.FirstName,''), ifnull(T2.LastName,'')) from swilifecore.candidate T2 where T1.PhoneNumber like T2.CellPhone limit 0,1) as CandidateName FROM swilifecore.smssending T1 order by SmsSendingId desc";
+            string sql = "SELECT T1.* , concat_ws(' ', ifnull(T2.FirstName, ''), ifnull(T2.LastName, '')) as 'CandidateName' FROM swilifecore.smssending T1 left join swilifecore.candidate T2 on T1.CandidateId = T2.CandidateId order by SmsSendingId";
             return DataAccess.Instance.getDataTable(sql);
+        }
+        public static async Task<DataTable> GetDataTableSmsSendingAsync()
+        {
+            string sql = "SELECT T1.* , concat_ws(' ', ifnull(T2.FirstName, ''), ifnull(T2.LastName, '')) as 'CandidateName' FROM swilifecore.smssending T1 left join swilifecore.candidate T2 on T1.CandidateId = T2.CandidateId order by SmsSendingId";
+            DataTable x = null;
+            await Task.Run(() =>
+            {
+                x = DataAccess.Instance.getDataTable(sql);
+            });
+            return x;
         }
         public static List<SmsSending> GetlistSmsWaitToSend()
         {
@@ -87,17 +96,17 @@ namespace SWIBLL
 
         public static void InsertSmsSending(SmsSending sms)
         {
-            string sql = string.Format("INSERT INTO `swilifecore`.`smssending` (`PhoneNumber`, `Message`, `Status`, `TimeToSend`) VALUES ('{0}', '{1}', 'Waiting', '{2}')",
-                                        QueryBuilder.mySqlEscape(sms.PhoneNumber), QueryBuilder.mySqlEscape(sms.Message), sms.TimeToSend.ToString("yyyy-MM-dd HH:mm:ss"));
+            string sql = string.Format("INSERT INTO `swilifecore`.`smssending` (`PhoneNumber`, `Message`, `Status`, `TimeToSend`, `CandidateId`) VALUES ('{0}', '{1}', 'Waiting', '{2}', '{3}')",
+                                        QueryBuilder.mySqlEscape(sms.PhoneNumber), QueryBuilder.mySqlEscape(sms.Message), sms.TimeToSend.ToString("yyyy-MM-dd HH:mm:ss"), sms.CandidateId);
             DataAccess.Instance.executeNonQuery(sql);
 
-            
+
 
         }
         public static void UpdateSmsSending(SmsSending sms)
         {
-            string sql = string.Format("UPDATE `swilifecore`.`smssending` SET `PhoneNumber`='{0}', `Message`='{1}', `Status`='{2}', `TimeToSend`='{3}' WHERE `SmsSendingId`='{4}'",
-                                        QueryBuilder.mySqlEscape(sms.PhoneNumber), QueryBuilder.mySqlEscape(sms.Message), QueryBuilder.mySqlEscape(sms.Status), sms.TimeToSend.ToString("yyyy-MM-dd HH:mm:ss"), sms.SmsSendingId);
+            string sql = string.Format("UPDATE `swilifecore`.`smssending` SET `PhoneNumber`='{0}', `Message`='{1}', `Status`='{2}', `TimeToSend`='{3}', `CandidateId`='{4}' WHERE `SmsSendingId`='{5}'",
+                                        QueryBuilder.mySqlEscape(sms.PhoneNumber), QueryBuilder.mySqlEscape(sms.Message), QueryBuilder.mySqlEscape(sms.Status), sms.TimeToSend.ToString("yyyy-MM-dd HH:mm:ss"),sms.CandidateId, sms.SmsSendingId);
             DataAccess.Instance.executeNonQuery(sql);
         }
         public static void ResendSmsSending(long smsId)
@@ -126,26 +135,64 @@ namespace SWIBLL
         }
         public static DataTable GetDataTableSmsReceiving()
         {
-            //string sql = "SELECT * FROM swilifecore.smsreceiving order by SmsReceivingId desc";
-            string sql = "SELECT T1.*, (select concat_ws(' ', ifnull(T2.FirstName, ''), ifnull(T2.LastName, '')) from swilifecore.candidate T2 where if (char_length(T1.Sender) < 10, T1.Sender, substr(T1.Sender, 4)) like if (char_length(T2.CellPhone) < 10, T2.CellPhone ,substr(T2.CellPhone, 2)) limit 0,1) as CandidateName " +
-                            "FROM swilifecore.smsreceiving T1 order by SmsReceivingId desc";
+            string sql = "SELECT T1.*, concat_ws(' ', ifnull(T2.FirstName, ''), ifnull(T2.LastName, '')) as 'CandidateName' FROM swilifecore.smsreceiving T1 left join swilifecore.candidate T2 on T1.CandidateId = T2.CandidateId order by T1.SmsReceivingId";
             return DataAccess.Instance.getDataTable(sql);
         }
+        public static async Task<DataTable> GetDataTableSmsReceivingAsync()
+        {
+            string sql = "SELECT T1.*, concat_ws(' ', ifnull(T2.FirstName, ''), ifnull(T2.LastName, '')) as 'CandidateName' FROM swilifecore.smsreceiving T1 left join swilifecore.candidate T2 on T1.CandidateId = T2.CandidateId order by T1.SmsReceivingId";
+            DataTable x = null;
+            await Task.Run(() =>
+            {
+                x = DataAccess.Instance.getDataTable(sql);
+            });
+            return x;
+        }
 
+        public static long getCandidateIdFromNumber(string phoneNumber)
+        {
+            var phone = Regex.Replace(phoneNumber, "\\D+", "", RegexOptions.Multiline);
+            if (phone.StartsWith("84"))
+            {
+                phone = phone.Remove(0, 2);
+            }
+            string sql = string.Format("SELECT CandidateId FROM swilifecore.candidate where Cellphone like '%{0}' or WorkPhone like '%{0}'", phone);
+            long canId = -1;
+            MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);
+            try
+            {
+                while (reader.Read())
+                {
+                    if (reader[0] != null)
+                    {
+                        canId = Convert.ToInt64(reader[0].ToString());
+                    }
+                    break;
+                }
+            }
+            catch
+            {
+            }
+            finally
+            {
+                reader.Dispose();
+            }
+            return canId;
+        }
         public static void InsertSmsReceiving(SmsReceiving sms)
         {
-            string sql = string.Format("INSERT INTO `swilifecore`.`smsreceiving` (`Index`, `Status`, `Sender`, `Alphabet`, `SentTime`, `Message`) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+            string sql = string.Format("INSERT INTO `swilifecore`.`smsreceiving` (`Index`, `Status`, `Sender`, `Alphabet`, `SentTime`, `Message`, `CandidateId`) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
                                        sms.Index, QueryBuilder.mySqlEscape(sms.Status),
                                        QueryBuilder.mySqlEscape(sms.Sender), QueryBuilder.mySqlEscape(sms.Alphabet),
-                                       QueryBuilder.mySqlEscape(sms.SentTime), QueryBuilder.mySqlEscape(sms.Message));
+                                       QueryBuilder.mySqlEscape(sms.SentTime), QueryBuilder.mySqlEscape(sms.Message), sms.CandidateId);
             DataAccess.Instance.executeNonQuery(sql);
         }
         public static void UpdateSmsReceiving(SmsReceiving sms)
         {
-            string sql = string.Format("UPDATE `swilifecore`.`smsreceiving` SET `Index`='{0}', `Status`='{1}', `Sender`='{2}', `Alphabet`='{3}', `SentTime`='{4}', `Message`='{5}' WHERE `SmsReceivingId`='{6}';",
+            string sql = string.Format("UPDATE `swilifecore`.`smsreceiving` SET `Index`='{0}', `Status`='{1}', `Sender`='{2}', `Alphabet`='{3}', `SentTime`='{4}', `Message`='{5}', `CandidateId`='{6}' WHERE `SmsReceivingId`='{7}';",
                                        sms.Index, QueryBuilder.mySqlEscape(sms.Status),
                                        QueryBuilder.mySqlEscape(sms.Sender), QueryBuilder.mySqlEscape(sms.Alphabet),
-                                       QueryBuilder.mySqlEscape(sms.SentTime), QueryBuilder.mySqlEscape(sms.Message), sms.SmsReceivingId);
+                                       QueryBuilder.mySqlEscape(sms.SentTime), QueryBuilder.mySqlEscape(sms.Message),sms.CandidateId, sms.SmsReceivingId);
             DataAccess.Instance.executeNonQuery(sql);
         }
         public static void DeleteSmsReceiving(int smsId)
@@ -168,10 +215,12 @@ namespace SWIBLL
         public static void CorrectSms()
         {
             var listSms = GetlistSmsReceiving();
-            foreach(var sms in listSms)
+            foreach (var sms in listSms)
             {
-                try {
-                    if (Regex.IsMatch(sms.Message, "^\\d+")) {
+                try
+                {
+                    if (Regex.IsMatch(sms.Message, "^\\d+"))
+                    {
                         sms.Message = FromHexString(sms.Message);
                         UpdateSmsReceiving(sms);
                     }
@@ -180,6 +229,44 @@ namespace SWIBLL
                 {
                 }
             }
+        }
+
+        public static void CorrectSmsCandidateId()
+        {
+            var listSms = GetlistSmsReceiving();
+            foreach (var sms in listSms)
+            {
+                try
+                {
+                    sms.CandidateId = SmsManager.getCandidateIdFromNumber(sms.Sender);
+                    DateTime tmp = DateTime.ParseExact(sms.SentTime, "yy/MM/dd,HH:mm:ss+28", null);
+                    if (tmp != null)
+                    {
+                        sms.SentTime = tmp.ToString("yyyy-MM-dd HH:mm:ss");
+                    }
+                    else
+                    {
+                        sms.SentTime = sms.SentTime.Replace(",", " ").Replace("/", "-").Replace("+28", "");
+                    }
+                    UpdateSmsReceiving(sms);
+                }
+                catch
+                {
+                }
+            }
+            var listSmsSending = GetlistSmsSending();
+            foreach (var sms in listSmsSending)
+            {
+                try
+                {
+                    sms.CandidateId = SmsManager.getCandidateIdFromNumber(sms.PhoneNumber);
+                    UpdateSmsSending(sms);
+                }
+                catch
+                {
+                }
+            }
+
         }
     }
 }

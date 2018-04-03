@@ -212,6 +212,8 @@
             // colModified
             // 
             this.colModified.Caption = "Modified";
+            this.colModified.DisplayFormat.FormatString = "yyyy/MM/dd HH:mm:ss";
+            this.colModified.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colModified.FieldName = "Modified";
             this.colModified.Name = "colModified";
             this.colModified.Visible = true;

@@ -161,6 +161,9 @@ namespace SmsSenderService
                                 }
                             }
                             catch { }
+
+                            // get candidate id
+                            msg.CandidateId = SmsManager.getCandidateIdFromNumber(msg.Sender);
                             // save to db
                             SmsManager.InsertSmsReceiving(msg);
                             // delete from SIM

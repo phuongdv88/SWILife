@@ -45,21 +45,18 @@ namespace DXSWI.Forms
             aTimer.Interval = 1000 * 15; // check every 15s
             aTimer.Enabled = true;
             updateDataTimer(null, null);
-
-            //GridColumn gridColumn = gvSendingMessages.Columns.AddVisible("Retry", string.Empty);
-            //RepositoryItemButtonEdit repositoryItemButtonEdit = new RepositoryItemButtonEdit();
-            //repositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            //repositoryItemButtonEdit.ButtonClick += ribeRetry_ButtonClick;
-            //gcSendingMessages.RepositoryItems.Add(repositoryItemButtonEdit);
-            //gridColumn.ColumnEdit = repositoryItemButtonEdit;
-            //gridColumn.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
-
+            //int rowHandle = gvReceivingMessages.GetRowHandle(gvReceivingMessages.RowCount - 1);
+            //gvReceivingMessages.FocusedRowHandle = rowHandle;
+            //rowHandle = gvSendingMessages.GetRowHandle(gvSendingMessages.RowCount - 1);
+            //gvSendingMessages.FocusedRowHandle = rowHandle;
+            //gvSendingMessages.SelectRow(gvSendingMessages.RowCount - 2);
+            //gvReceivingMessages.SelectRow(gvReceivingMessages.RowCount - 2);
         }
         void updateDataTimer(object source, EventArgs e)
         {
             updateData();
         }
-        private void updateSending()
+        private async Task updateSending()
         {
             try
             {
@@ -68,7 +65,7 @@ namespace DXSWI.Forms
                 {
                     row = gvSendingMessages.GetSelectedRows().First();
                 }
-                gcSendingMessages.DataSource = SmsManager.GetDataTableSmsSending();
+                gcSendingMessages.DataSource = await SmsManager.GetDataTableSmsSendingAsync();
                 if (row != -1 && row < gvSendingMessages.RowCount)
                 {
                     gvSendingMessages.ClearSelection();
@@ -83,12 +80,12 @@ namespace DXSWI.Forms
             }
         }
 
-        private void updateReceiving()
+        private async Task  updateReceiving()
         {
             try
             {
                 int index = gvReceivingMessages.GetDataSourceRowIndex(gvReceivingMessages.FocusedRowHandle);
-                gcReceivingMessages.DataSource = SmsManager.GetDataTableSmsReceiving();
+                gcReceivingMessages.DataSource = await SmsManager.GetDataTableSmsReceivingAsync();
                 int rowHandle = gvReceivingMessages.GetRowHandle(index);
                 gvReceivingMessages.FocusedRowHandle = rowHandle;
             }
@@ -98,10 +95,10 @@ namespace DXSWI.Forms
             }
         }
 
-        private void updateData()
+        private async Task updateData()
         {
-            updateReceiving();
-            updateSending();
+            await updateReceiving();
+            await updateSending();
         }
 
         private void sbSend_Click(object sender, EventArgs e)
