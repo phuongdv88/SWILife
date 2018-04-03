@@ -63,7 +63,7 @@ namespace SWIBLL
         }
         public static async Task<DataTable> GetDataTableSmsSendingAsync()
         {
-            string sql = "SELECT T1.* , concat_ws(' ', ifnull(T2.FirstName, ''), ifnull(T2.LastName, '')) as 'CandidateName' FROM swilifecore.smssending T1 left join swilifecore.candidate T2 on T1.CandidateId = T2.CandidateId order by SmsSendingId";
+            string sql = "SELECT T1.* , concat_ws(' ', ifnull(T2.FirstName, ''), ifnull(T2.LastName, '')) as 'CandidateName' FROM swilifecore.smssending T1 left join swilifecore.candidate T2 on T1.CandidateId = T2.CandidateId order by SmsSendingId desc";
             DataTable x = null;
             await Task.Run(() =>
             {
@@ -140,7 +140,7 @@ namespace SWIBLL
         }
         public static async Task<DataTable> GetDataTableSmsReceivingAsync()
         {
-            string sql = "SELECT T1.*, concat_ws(' ', ifnull(T2.FirstName, ''), ifnull(T2.LastName, '')) as 'CandidateName' FROM swilifecore.smsreceiving T1 left join swilifecore.candidate T2 on T1.CandidateId = T2.CandidateId order by T1.SmsReceivingId";
+            string sql = "SELECT T1.*, concat_ws(' ', ifnull(T2.FirstName, ''), ifnull(T2.LastName, '')) as 'CandidateName' FROM swilifecore.smsreceiving T1 left join swilifecore.candidate T2 on T1.CandidateId = T2.CandidateId order by T1.SmsReceivingId desc";
             DataTable x = null;
             await Task.Run(() =>
             {

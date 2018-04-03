@@ -126,6 +126,7 @@ namespace DXSWI.Forms
                 if (number.StartsWith("0") && number.Length > 9 && number.Length < 12)
                 {
                     SmsSending tmp = new SmsSending() { PhoneNumber = number, Message = sms, TimeToSend = DateTime.Now };
+                    tmp.CandidateId = SmsManager.getCandidateIdFromNumber(tmp.PhoneNumber);
                     SmsManager.InsertSmsSending(tmp);
                     updateSending();
                 }
