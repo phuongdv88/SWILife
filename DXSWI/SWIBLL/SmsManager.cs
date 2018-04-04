@@ -156,6 +156,10 @@ namespace SWIBLL
             {
                 phone = phone.Remove(0, 2);
             }
+            if (phone.StartsWith("0"))
+            {
+                phone = phone.Remove(0, 1);
+            }
             string sql = string.Format("SELECT CandidateId FROM swilifecore.candidate where Cellphone like '%{0}' or WorkPhone like '%{0}'", phone);
             long canId = -1;
             MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);

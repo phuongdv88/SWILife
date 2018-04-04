@@ -76,6 +76,7 @@ namespace DXSWI
                             Process.Start(templink);
                             // close system
                             Quit();
+                            Application.Exit();
                         }
                     }
                 }

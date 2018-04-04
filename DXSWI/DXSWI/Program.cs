@@ -64,15 +64,17 @@ namespace DXSWI
                     //return;
 
                     // kill old process
+                    try {
 
-                    foreach (Process proc in Process.GetProcesses())
-                    {
-                        if (proc.ProcessName.Equals(Process.GetCurrentProcess().ProcessName) && proc.Id != Process.GetCurrentProcess().Id)
+                        foreach (Process proc in Process.GetProcesses())
                         {
-                            proc.Kill();
-                            break;
+                            if (proc.ProcessName.Equals(Process.GetCurrentProcess().ProcessName) && proc.Id != Process.GetCurrentProcess().Id)
+                            {
+                                proc.Kill();
+                            }
                         }
                     }
+                    catch { }
                     // Wait for process to close
                     //Thread.Sleep(2000);
                 }
