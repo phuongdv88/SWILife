@@ -26,11 +26,11 @@ namespace DXSWI.Modules
             updateData();
         }
 
-        private void updateData()
+        private async void updateData()
         {
             try
             {
-                gcCompanies.DataSource = CompanyManager.getAllCompanies();
+                gcCompanies.DataSource = await CompanyManager.getAllCompaniesAsync();
             }
             catch (Exception ex)
             {

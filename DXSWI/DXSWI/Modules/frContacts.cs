@@ -26,11 +26,11 @@ namespace DXSWI.Modules
             updateData();
         }
 
-        private void updateData()
+        private async void updateData()
         {
             try
             {
-                gcContacts.DataSource = ContactManager.getContacts();
+                gcContacts.DataSource =await ContactManager.getContactsAsync();
             }
             catch (Exception ex)
             {

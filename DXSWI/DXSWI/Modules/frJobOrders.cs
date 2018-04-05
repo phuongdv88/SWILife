@@ -26,12 +26,12 @@ namespace DXSWI.Modules
             updateData();
         }
 
-        private void updateData()
+        private async void updateData()
         {
             try
             {
                 // load data in candidate table and show in grid control
-                gcJobOrder.DataSource = JobOrderManager.getJobOrders();
+                gcJobOrder.DataSource = await JobOrderManager.getJobOrdersAsync();
             }
             catch (Exception ex)
             {

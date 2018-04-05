@@ -21,11 +21,11 @@ namespace DXSWI.Modules
             //sqlDataSource1.Fill();
         }
 
-        private void init()
+        private async void init()
         {
             try {
                 // load data in candidate table and show in grid control
-                gcCandidates.DataSource = mCandidateManager.GetAllCandidatesOverView();
+                gcCandidates.DataSource = await mCandidateManager.GetAllCandidatesOverViewAsync();
             }
             catch (Exception ex)
             {

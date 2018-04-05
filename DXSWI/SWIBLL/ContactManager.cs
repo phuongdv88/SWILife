@@ -11,12 +11,17 @@ namespace SWIBLL
 {
     public class ContactManager
     {
-        public static DataTable getContacts()
+        public static async Task<DataTable> getContactsAsync()
         {
             string sql = string.Format("SELECT T1.ContactId, T1.FirstName, T1.LastName, T2.Name as CompanyName, T1.CellPhone, T1.Email, T1.Title, T1.City, T1.Modified, T1.MiscNotes,  T3.UserName as Owner FROM swilifecore.contact T1 " +
                                         "left join swilifecore.company T2 on T1.CompanyId = T2.CompanyId " +
                                         "left join swilifecore.user T3 on T1.UserId = T3.UserId  order by T1.Modified desc");
-            return DataAccess.Instance.getDataTable(sql);
+            DataTable tbl = null;
+            await Task.Run(() =>
+            {
+                tbl = DataAccess.Instance.getDataTable(sql);
+            });
+            return tbl;
         }
         public static DataTable getContactsByCompanyId(long comId)
         {

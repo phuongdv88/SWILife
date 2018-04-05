@@ -21,7 +21,8 @@ namespace SWIBLL
         }
 
 
-        public int PageNumber {
+        public int PageNumber
+        {
             get { return mPageNumber; }
             set { mPageNumber = value; }
         }
@@ -59,14 +60,14 @@ namespace SWIBLL
         }
 
 
-        public DataTable  GetLimitedCandidates(int page_count, int page_size)
+        public async Task<DataTable> GetAllCandidatesOverViewAsync()
         {
-            return DataAccess.Instance.getLimitedCandidates((page_count - 1) * page_size, page_size);
-        }
-
-        public DataTable GetAllCandidatesOverView()
-        {
-            return DataAccess.Instance.getCandidatesOverview();
+            DataTable tbl = null;
+            await Task.Run(() =>
+            {
+                tbl = DataAccess.Instance.getCandidatesOverview();
+            });
+            return tbl;
         }
 
         public static void deleteCadidate(long CandidateId)
@@ -136,26 +137,26 @@ namespace SWIBLL
         {
             //INSERT INTO `swilifecore`.`candidate` (`FirstName`, `MiddleName`, `LastName`, `Email`, `SecondaryEmail`, `SkypeIM`, `CellPhone`, `WorkPhone`, `BestTimeToCall`, `Address`, `WebSite`, `Source`, `CurrentPosition`, `DateAvailable`, `CurrentEmployer`, `KeySkills`, `CanRelocate`, `CurrentPay`, `DesiredPay`, `DOBMarried`, `InterviewNotes`, `Gender`, `MiscNotes`, `City`, `Country`, `ResumeLink`, `PositionsUpTillNow`, `Years`, `ProjectDone`, `Industry`, `Education`, `Language`, `CreatedDate`, `CreatedId`, `IsInBlacklist`, `UserId`, `Modified`, `ImageLink`) 
             //VALUES('1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
-           string sql = string.Format("INSERT INTO `swilifecore`.`candidate` " +
-                "(`FirstName`, `MiddleName`, `LastName`, `Email`, `SecondaryEmail`, " +
-                "`SkypeIM`, `CellPhone`, `WorkPhone`, `BestTimeToCall`, `Address`, " +
-                "`WebSite`, `Source`, `CurrentPosition`, `DateAvailable`, `CurrentEmployer`, " +
-                "`KeySkills`, `CanRelocate`, `CurrentPay`, `DesiredPay`, `DOBMarried`, " +
-                "`InterviewNotes`, `Gender`, `MiscNotes`, `City`, `Country`, `ResumeLink`, " +
-                "`PositionsUpTillNow`, `Years`, `ProjectDone`, `Industry`, `Education`, " +
-                "`Language`, `CreatedDate`, `CreatedId`, `IsInBlacklist`, `UserId`, " +
-                "`Modified`, `ImageLink`, `IsQualified`) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', " +
-                "'{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}', '{18}', '{19}', '{20}', " +
-                "'{21}', '{22}', '{23}', '{24}', '{25}', '{26}', '{27}', '{28}', '{29}', '{30}', " +
-                "'{31}', now(), '{32}', '{33}', '{34}',now(), '{35}', '{36}')",
-                QueryBuilder.mySqlEscape(can.FirstName), QueryBuilder.mySqlEscape(can.MiddleName), QueryBuilder.mySqlEscape(can.LastName), QueryBuilder.mySqlEscape(can.Email), QueryBuilder.mySqlEscape(can.SecondaryEmail),
-                QueryBuilder.mySqlEscape(can.SkypeIM), QueryBuilder.mySqlEscape(can.CellPhone), QueryBuilder.mySqlEscape(can.WorkPhone), QueryBuilder.mySqlEscape(can.BestTimeToCall), QueryBuilder.mySqlEscape(can.Address),
-                QueryBuilder.mySqlEscape(can.WebSite), QueryBuilder.mySqlEscape(can.Source), QueryBuilder.mySqlEscape(can.CurrentPosition), can.DateAvailable.ToString("yyyy-MM-dd H:mm:ss"), QueryBuilder.mySqlEscape(can.CurrentEmployer),
-                QueryBuilder.mySqlEscape(can.KeySkills), Convert.ToInt32(can.CanRelocate), QueryBuilder.mySqlEscape(can.CurrentPay), QueryBuilder.mySqlEscape(can.DesiredPay), QueryBuilder.mySqlEscape(can.DOBMarried),
-                QueryBuilder.mySqlEscape(can.InterviewNotes), Convert.ToInt32(can.Gender), QueryBuilder.mySqlEscape(can.MiscNotes), QueryBuilder.mySqlEscape(can.City), QueryBuilder.mySqlEscape(can.Country), QueryBuilder.mySqlEscape(can.ResumeLink),
-                QueryBuilder.mySqlEscape(can.PositionsUpTillNow), can.Years, QueryBuilder.mySqlEscape(can.ProjectDone), QueryBuilder.mySqlEscape(can.Industry), QueryBuilder.mySqlEscape(can.Education),
-                QueryBuilder.mySqlEscape(can.Language), can.CreatedId, Convert.ToInt32(can.IsInBlacklist), can.UserId,
-                QueryBuilder.mySqlEscape(can.ImageLink), Convert.ToInt32(can.IsQualified));
+            string sql = string.Format("INSERT INTO `swilifecore`.`candidate` " +
+                 "(`FirstName`, `MiddleName`, `LastName`, `Email`, `SecondaryEmail`, " +
+                 "`SkypeIM`, `CellPhone`, `WorkPhone`, `BestTimeToCall`, `Address`, " +
+                 "`WebSite`, `Source`, `CurrentPosition`, `DateAvailable`, `CurrentEmployer`, " +
+                 "`KeySkills`, `CanRelocate`, `CurrentPay`, `DesiredPay`, `DOBMarried`, " +
+                 "`InterviewNotes`, `Gender`, `MiscNotes`, `City`, `Country`, `ResumeLink`, " +
+                 "`PositionsUpTillNow`, `Years`, `ProjectDone`, `Industry`, `Education`, " +
+                 "`Language`, `CreatedDate`, `CreatedId`, `IsInBlacklist`, `UserId`, " +
+                 "`Modified`, `ImageLink`, `IsQualified`) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', " +
+                 "'{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}', '{18}', '{19}', '{20}', " +
+                 "'{21}', '{22}', '{23}', '{24}', '{25}', '{26}', '{27}', '{28}', '{29}', '{30}', " +
+                 "'{31}', now(), '{32}', '{33}', '{34}',now(), '{35}', '{36}')",
+                 QueryBuilder.mySqlEscape(can.FirstName), QueryBuilder.mySqlEscape(can.MiddleName), QueryBuilder.mySqlEscape(can.LastName), QueryBuilder.mySqlEscape(can.Email), QueryBuilder.mySqlEscape(can.SecondaryEmail),
+                 QueryBuilder.mySqlEscape(can.SkypeIM), QueryBuilder.mySqlEscape(can.CellPhone), QueryBuilder.mySqlEscape(can.WorkPhone), QueryBuilder.mySqlEscape(can.BestTimeToCall), QueryBuilder.mySqlEscape(can.Address),
+                 QueryBuilder.mySqlEscape(can.WebSite), QueryBuilder.mySqlEscape(can.Source), QueryBuilder.mySqlEscape(can.CurrentPosition), can.DateAvailable.ToString("yyyy-MM-dd H:mm:ss"), QueryBuilder.mySqlEscape(can.CurrentEmployer),
+                 QueryBuilder.mySqlEscape(can.KeySkills), Convert.ToInt32(can.CanRelocate), QueryBuilder.mySqlEscape(can.CurrentPay), QueryBuilder.mySqlEscape(can.DesiredPay), QueryBuilder.mySqlEscape(can.DOBMarried),
+                 QueryBuilder.mySqlEscape(can.InterviewNotes), Convert.ToInt32(can.Gender), QueryBuilder.mySqlEscape(can.MiscNotes), QueryBuilder.mySqlEscape(can.City), QueryBuilder.mySqlEscape(can.Country), QueryBuilder.mySqlEscape(can.ResumeLink),
+                 QueryBuilder.mySqlEscape(can.PositionsUpTillNow), can.Years, QueryBuilder.mySqlEscape(can.ProjectDone), QueryBuilder.mySqlEscape(can.Industry), QueryBuilder.mySqlEscape(can.Education),
+                 QueryBuilder.mySqlEscape(can.Language), can.CreatedId, Convert.ToInt32(can.IsInBlacklist), can.UserId,
+                 QueryBuilder.mySqlEscape(can.ImageLink), Convert.ToInt32(can.IsQualified));
             long can_id = DataAccess.Instance.executeInsertingQuery(sql);
             Activity act = new Activity()
             {
@@ -186,10 +187,10 @@ namespace SWIBLL
                 "WHERE `CandidateId`='{37}'",
                 QueryBuilder.mySqlEscape(can.FirstName), QueryBuilder.mySqlEscape(can.MiddleName), QueryBuilder.mySqlEscape(can.LastName), QueryBuilder.mySqlEscape(can.Email), QueryBuilder.mySqlEscape(can.SecondaryEmail),
                 QueryBuilder.mySqlEscape(can.SkypeIM), QueryBuilder.mySqlEscape(can.CellPhone), QueryBuilder.mySqlEscape(can.WorkPhone), QueryBuilder.mySqlEscape(can.BestTimeToCall), QueryBuilder.mySqlEscape(can.Address),
-                QueryBuilder.mySqlEscape(can.WebSite), QueryBuilder.mySqlEscape(can.Source), QueryBuilder.mySqlEscape(can.CurrentPosition), can.DateAvailable.ToString("yyyy-MM-dd H:mm:ss"), 
-                QueryBuilder.mySqlEscape(can.CurrentEmployer), QueryBuilder.mySqlEscape(can.KeySkills), Convert.ToInt32(can.CanRelocate), QueryBuilder.mySqlEscape(can.CurrentPay), 
-                QueryBuilder.mySqlEscape(can.DesiredPay), QueryBuilder.mySqlEscape(can.DOBMarried), QueryBuilder.mySqlEscape(can.InterviewNotes), Convert.ToInt32(can.Gender), QueryBuilder.mySqlEscape(can.MiscNotes), 
-                QueryBuilder.mySqlEscape(can.City), QueryBuilder.mySqlEscape(can.Country), QueryBuilder.mySqlEscape(can.ResumeLink), QueryBuilder.mySqlEscape(can.PositionsUpTillNow), can.Years, 
+                QueryBuilder.mySqlEscape(can.WebSite), QueryBuilder.mySqlEscape(can.Source), QueryBuilder.mySqlEscape(can.CurrentPosition), can.DateAvailable.ToString("yyyy-MM-dd H:mm:ss"),
+                QueryBuilder.mySqlEscape(can.CurrentEmployer), QueryBuilder.mySqlEscape(can.KeySkills), Convert.ToInt32(can.CanRelocate), QueryBuilder.mySqlEscape(can.CurrentPay),
+                QueryBuilder.mySqlEscape(can.DesiredPay), QueryBuilder.mySqlEscape(can.DOBMarried), QueryBuilder.mySqlEscape(can.InterviewNotes), Convert.ToInt32(can.Gender), QueryBuilder.mySqlEscape(can.MiscNotes),
+                QueryBuilder.mySqlEscape(can.City), QueryBuilder.mySqlEscape(can.Country), QueryBuilder.mySqlEscape(can.ResumeLink), QueryBuilder.mySqlEscape(can.PositionsUpTillNow), can.Years,
                 QueryBuilder.mySqlEscape(can.ProjectDone), QueryBuilder.mySqlEscape(can.Industry), QueryBuilder.mySqlEscape(can.Education), QueryBuilder.mySqlEscape(can.Language),
                 can.CreatedId, Convert.ToInt32(can.IsInBlacklist),
                 can.UserId, QueryBuilder.mySqlEscape(can.ImageLink), Convert.ToInt32(can.IsQualified), can.CandidateId);
@@ -218,11 +219,11 @@ namespace SWIBLL
             Candidate can = null;
             string sql = string.Format("select T1.*, T2.UserName as Owner from `swilifecore`.`candidate` T1 left join user T2 on T1.UserId = T2.UserId where `CandidateId`='{0}'", id);
             DataTable tbl = DataAccess.Instance.getDataTable(sql);
-            if(tbl.Rows.Count > 0)
+            if (tbl.Rows.Count > 0)
             {
                 DataRow datarow = tbl.Rows[0];
                 can = Data.CreateItemFromRow<Candidate>(datarow);
-            }              
+            }
             return can;
         }
 
@@ -263,7 +264,7 @@ namespace SWIBLL
                 , QueryBuilder.mySqlEscape(cellphone), QueryBuilder.mySqlEscape(keyskills), QueryBuilder.mySqlEscape(city), canId);
             DataAccess.Instance.executeNonQuery(sql);
         }
-        public static void correctDatabasePhone(long canId,string cellphone, string workPhone)
+        public static void correctDatabasePhone(long canId, string cellphone, string workPhone)
         {
             string sql = string.Format("UPDATE `swilifecore`.`candidate` SET `CellPhone`='{0}', `WorkPhone`='{1}' WHERE `CandidateId`='{2}';",
                 QueryBuilder.mySqlEscape(cellphone), QueryBuilder.mySqlEscape(workPhone), canId);

@@ -69,12 +69,12 @@ namespace DXSWI.Forms
             }
         }
 
-        private void updateListTemplate()
+        private async void updateListTemplate()
         {
             try
             {
                 // load data in candidate table and show in grid control
-                gcTemplates.DataSource = EmailTemplateManager.GetEmailTemplates();
+                gcTemplates.DataSource = await EmailTemplateManager.GetEmailTemplatesAsync();
             }
             catch (Exception ex)
             {

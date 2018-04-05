@@ -85,10 +85,15 @@ namespace SWIBLL
             DataAccess.Instance.executeNonQuery(sql);
         }
 
-        public static DataTable GetAllUsers()
+        public async static Task<DataTable> GetAllUsersAsync()
         {
+            DataTable tbl = null;
             string sql = "select T1.UserId, T1.UserName, T1.Password, T1.IsOnline,T1.LastLogin, T2.RoleName, T2.RoleValue from swilifecore.user T1 left join userrole T2 on T1.Role = T2.RoleId order by UserId";
-            return DataAccess.Instance.getDataTable(sql);
+            await Task.Run(() =>
+            {
+                tbl = DataAccess.Instance.getDataTable(sql);
+            });
+            return tbl;
         }
 
         public static string createMD5Hash(string input_string)

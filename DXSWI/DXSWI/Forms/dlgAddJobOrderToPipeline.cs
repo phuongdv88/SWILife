@@ -25,13 +25,13 @@ namespace DXSWI.Forms
             init();
             canId = candidateId;
         }
-        public void init()
+        public async void init()
         {
             // get all joborders link with company
             try
             {
                 // load data in candidate table and show in grid control
-                gcJobOrder.DataSource = JobOrderManager.getJobOrders();
+                gcJobOrder.DataSource = await JobOrderManager.getJobOrdersAsync();
 
             }
             catch (Exception ex)

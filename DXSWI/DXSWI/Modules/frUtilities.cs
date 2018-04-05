@@ -187,12 +187,12 @@ namespace DXSWI.Modules
 
         }
 
-        public void importFromContacts()
+        public async void importFromContacts()
         {
             try
             {
                 //get all contacts
-                var listContact = ContactManager.getContacts();
+                var listContact = await ContactManager.getContactsAsync();
                 foreach(DataRow dataRow in listContact.Rows)
                 {
                     var contactId = dataRow["ContactId"].ToString();

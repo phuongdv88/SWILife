@@ -34,11 +34,11 @@ namespace DXSWI.Modules
         /// <summary>
         /// get late 1000 activities
         /// </summary>
-        private void updateAllActivitiesData()
+        private async void updateAllActivitiesData()
         {
             try
             {
-                gcActivites.DataSource = ActivityManager.getAllActivities();
+                gcActivites.DataSource = await ActivityManager.getAllActivitiesAsync();
             }
             catch (Exception ex)
             {

@@ -4,14 +4,20 @@ using SWIDAL;
 using SWIBLL.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SWIBLL
 {
     public class JobOrderManager
     {
-        public static DataTable getJobOrders()
+        public async static Task<DataTable> getJobOrdersAsync()
         {
-            return DataAccess.Instance.getJobOrders();
+            DataTable tbl = null;
+            await Task.Run(() =>
+            {
+                tbl = DataAccess.Instance.getJobOrders();
+            });
+            return tbl;
         }
         public static DataTable getJobOrdersByCompanyId(long comId)
         {

@@ -12,9 +12,14 @@ namespace SWIBLL
 {
     public class CompanyManager
     {
-        public static DataTable getAllCompanies()
+        public async static Task<DataTable> getAllCompaniesAsync()
         {
-            return DataAccess.Instance.getCompaniesOverview();
+            DataTable tbl = null;
+            await Task.Run(() =>
+            {
+                tbl = DataAccess.Instance.getCompaniesOverview();
+            });
+            return tbl;
         }
 
         public static DataTable getNameCompanies()

@@ -90,9 +90,14 @@ namespace SWIBLL
             }
         }
 
-        public static DataTable getAllActivities()
+        public static async Task<DataTable> getAllActivitiesAsync()
         {
-            return DataAccess.Instance.getDataTable("select T1.ActivityId, T1.Regarding, T1.Type, date_format(T1.Created,'%d/%m/%Y %T') as Created, T2.UserName from swilifecore.activity T1 left join swilifecore.user T2 on T1.UserId = T2.UserId order by T1.ActivityId desc limit 1,1000");
+            DataTable tbl = null;
+            await Task.Run(() =>
+            {
+                tbl = DataAccess.Instance.getDataTable("select T1.ActivityId, T1.Regarding, T1.Type, date_format(T1.Created,'%d/%m/%Y %T') as Created, T2.UserName from swilifecore.activity T1 left join swilifecore.user T2 on T1.UserId = T2.UserId order by T1.ActivityId desc limit 1,1000");
+            });
+            return tbl;
         }
         public static DataTable getActivitiesOfCandidate(long id)
         {

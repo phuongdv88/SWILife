@@ -11,10 +11,15 @@ namespace SWIBLL
 {
     public class EmailTemplateManager
     {
-        public static DataTable GetEmailTemplates()
+        public async static Task<DataTable> GetEmailTemplatesAsync()
         {
             string sql = string.Format("SELECT T1.*, T2.UserName as Owner FROM swilifecore.emailtemplate T1 left join swilifecore.user T2 on T1.UserId = T2.UserId order by T1.Type");
-            return DataAccess.Instance.getDataTable(sql);
+            DataTable tbl = null;
+            await Task.Run(() =>
+            {
+                tbl = DataAccess.Instance.getDataTable(sql);
+            });            
+            return tbl;
         }
 
         public static EmailTemplate GetEmailTemplateById(int tempId, ref List<string> listTitle)

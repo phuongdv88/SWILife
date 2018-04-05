@@ -47,7 +47,7 @@ namespace DXSWI.Modules
             }
         }
 
-        private void updateData()
+        private async void updateData()
         {
             try
             {
@@ -56,7 +56,7 @@ namespace DXSWI.Modules
                 {
                     row = gvUser.GetSelectedRows().First();
                 }
-                gcUser.DataSource = UserManager.GetAllUsers();
+                gcUser.DataSource = await UserManager.GetAllUsersAsync();
                 if (row != -1 && row < gvUser.RowCount)
                 {
                     gvUser.ClearSelection();
