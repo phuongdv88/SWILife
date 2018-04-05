@@ -11,11 +11,10 @@ namespace SWIDAL
 {
     public class DataAccess
     {
-        private MySqlConnection mCon;
+        private MySqlConnectionPoolFactory _ConnectionPool = null;
         private static DataAccess instance = null;
         private static readonly object padlock = new object();
-        private static MySqlTransaction mTran = null;
-        private static string mConnectionString = string.Empty;
+        private static string connnectionString = string.Empty;
         public DataAccess()
         {
 
@@ -39,19 +38,17 @@ namespace SWIDAL
 
         ~DataAccess()
         {
-            mCon?.Close();
+            _ConnectionPool = null;
         }
         //------------------------------- nomal command-------------------
         public void ConnectToDB(string connection_string)
         {
-            mConnectionString = connection_string;
-            mCon = ConnectToDatabase(connection_string);
-            mCon.Open();
+            _ConnectionPool = new MySqlConnectionPoolFactory(connection_string);
         }
 
         public void closeConnectionToDB()
         {
-            mCon?.Close();
+            _ConnectionPool = null;
         }
 
         public MySqlConnection ConnectToDatabase(string string_connection)
@@ -59,82 +56,50 @@ namespace SWIDAL
             return new MySqlConnection(string_connection);
         }
 
-        private void retryConnectToDb()
-        {
-            if(mConnectionString.Length > 0)
-            {
-                mCon = ConnectToDatabase(mConnectionString);
-                mCon.Open();
-            }
-        }
-
         public object executeScalar(string query)
         {
-            if (mCon == null) retryConnectToDb();
-            MySqlCommand cmd = new MySqlCommand(query, mCon);
+            MySqlConnection conn = _ConnectionPool.GetConnection();
+            MySqlCommand cmd = new MySqlCommand(query, conn);
             object result = cmd.ExecuteScalar();
             cmd.Dispose();
+            _ConnectionPool.ReturnConnection(conn);
             return result;
         }
         public int executeNonQuery(string query)
         {
-            if (mCon == null)
-                retryConnectToDb();
-            MySqlCommand cmd = new MySqlCommand(query, mCon);
+            MySqlConnection conn = _ConnectionPool.GetConnection();
+            MySqlCommand cmd = new MySqlCommand(query, conn);
             int result = cmd.ExecuteNonQuery();
             cmd.Dispose();
+            _ConnectionPool.ReturnConnection(conn);
             return result;
         }
 
         public long executeInsertingQuery(string query)
         {
-            if (mCon == null)
-                retryConnectToDb();
-            MySqlCommand cmd = new MySqlCommand(query, mCon);
+            MySqlConnection conn = _ConnectionPool.GetConnection();
+            MySqlCommand cmd = new MySqlCommand(query, conn);
             int result = cmd.ExecuteNonQuery();
             cmd.Dispose();
+            _ConnectionPool.ReturnConnection(conn);
             if (result == 0) return -1;
             return cmd.LastInsertedId;
         }
 
-        //public bool executeNonQueryTransaction(string[] queries)
-        //{
-        //    if (mCon == null)
-        //        return false;
-        //    MySqlTransaction transaction = mCon.BeginTransaction();
-        //    try
-        //    {
-        //        foreach (var query in queries)
-        //        {
-        //            MySqlCommand cmd = new MySqlCommand(query, mCon);
-        //            cmd.Transaction = transaction;
-        //            cmd.ExecuteNonQuery();
-        //            cmd.Dispose();
-        //        }
-        //        transaction.Commit();
-        //    }
-        //    catch
-        //    {
-        //        //Console.WriteLine(ex.Message);
-        //        transaction.Rollback();
-        //        throw;
-        //    }
-        //    return true;
-        //}
-
-        public void StartTransaction()
+       
+        public MySqlTransaction StartTransaction()
         {
-            if (mCon == null) retryConnectToDb();
-            mTran =  mCon.BeginTransaction();
+            MySqlConnection conn = _ConnectionPool.GetConnection();
+            MySqlTransaction trans =  conn.BeginTransaction();
+            return trans;
         }
 
-        public bool executeNonQueryTransaction(string querry)
+        public bool executeNonQueryTransaction(string querry, MySqlTransaction trans)
         {
-            if(mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             try {
-                cmd = new MySqlCommand(querry, mCon);
-                cmd.Transaction = mTran;
+                cmd = new MySqlCommand(querry, trans.Connection);
+                cmd.Transaction = trans;
                 cmd.ExecuteNonQuery();
             }
             catch
@@ -147,14 +112,13 @@ namespace SWIDAL
             }
             return true;
         }
-        public long executeInsertQueryTransaction(string querry)
+        public long executeInsertQueryTransaction(string querry, MySqlTransaction trans)
         {
-            if(mCon == null) retryConnectToDb();
             MySqlCommand cmd = null;
             try
             {
-                cmd = new MySqlCommand(querry, mCon);
-                cmd.Transaction = mTran;
+                cmd = new MySqlCommand(querry, trans.Connection);
+                cmd.Transaction = trans;
                 cmd.ExecuteNonQuery();
                 return cmd.LastInsertedId;
             }
@@ -168,61 +132,63 @@ namespace SWIDAL
             }
         }
 
-        public void commitTransaction()
+        public void commitTransaction(MySqlTransaction trans)
         {
-            if (mCon == null)
-                retryConnectToDb();
-            mTran?.Commit();
+            trans?.Commit();
         }
 
-        public void rollbackTransaction()
+        public void rollbackTransaction(MySqlTransaction trans)
         {
-            if (mCon == null)
-                retryConnectToDb();
-            mTran?.Rollback();
+            trans?.Rollback();
+        }
+
+        public void ReturnConnectionTransaction(MySqlTransaction trans)
+        {
+            if (trans == null) return;
+            _ConnectionPool.ReturnConnection(trans.Connection);
         }
 
         public DataTable getDataTable(string query)
         {
-            if (mCon == null)
-                retryConnectToDb();
-            MySqlDataAdapter ad = new MySqlDataAdapter(query, mCon);
+            MySqlConnection conn = _ConnectionPool.GetConnection();
+            MySqlDataAdapter ad = new MySqlDataAdapter(query, conn);
             DataTable dt = new DataTable();
             ad.Fill(dt);
+            _ConnectionPool.ReturnConnection(conn);
             return dt;
         }
 
         public DataSet getDataSet(string query)
         {
-            if (mCon == null)
-                retryConnectToDb();
-            MySqlDataAdapter ad = new MySqlDataAdapter(query, mCon);
+            MySqlConnection conn = _ConnectionPool.GetConnection();
+            MySqlDataAdapter ad = new MySqlDataAdapter(query, conn);
             DataSet dt = new DataSet();
             ad.Fill(dt);
+            _ConnectionPool.ReturnConnection(conn);
             return dt;
         }
 
         public MySqlDataReader getReader(string query)
         {
-            if (mCon == null)
-                retryConnectToDb();
-            MySqlCommand cmd = new MySqlCommand(query, mCon);
+            MySqlConnection conn = _ConnectionPool.GetConnection();
+            MySqlCommand cmd = new MySqlCommand(query, conn);
             var result = cmd.ExecuteReader();
             cmd.Dispose();
+            _ConnectionPool.ReturnConnection(conn);
             return result;
         }
 
         // function to call store procedure in user table
         public string getUserName(long id)
         {
-            if (mCon == null) return string.Empty;
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             string userName = string.Empty;
             MySqlDataReader reader = null;
             try
             {
 
-                cmd = new MySqlCommand(string.Format("select user.UserName from user where user.UserId={0}", id), mCon);
+                cmd = new MySqlCommand(string.Format("select user.UserName from user where user.UserId={0}", id), conn);
                 reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
@@ -237,6 +203,7 @@ namespace SWIDAL
             {
                 cmd?.Dispose();
                 reader?.Dispose();
+                _ConnectionPool.ReturnConnection(conn);
             }
             return userName;
         }
@@ -244,11 +211,11 @@ namespace SWIDAL
 
         public bool updateLoginState(long UserId, bool value)
         {
-            if (mCon == null) return false;
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             try
             {
-                cmd = new MySqlCommand("spLoginLogout", mCon);
+                cmd = new MySqlCommand("spLoginLogout", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("UserId", UserId);
                 cmd.Parameters.AddWithValue("IsOnline", value);
@@ -265,7 +232,7 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
 
         }
@@ -274,12 +241,12 @@ namespace SWIDAL
         // get data to show on main table
         public DataTable getLimitedCandidates(int offset, int len)
         {
-            if (mCon == null) retryConnectToDb();
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
             {
-                cmd = new MySqlCommand("spGetLimitedCandidates", mCon);
+                cmd = new MySqlCommand("spGetLimitedCandidates", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("Offset", offset);
                 cmd.Parameters.AddWithValue("Length", len);
@@ -296,19 +263,19 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
             return dt;
         }
 
         public DataTable getCandidatesOverview()
         {
-            if (mCon == null) retryConnectToDb();
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
             {
-                cmd = new MySqlCommand("spGetCandidates", mCon);
+                cmd = new MySqlCommand("spGetCandidates", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 MySqlDataAdapter ad = new MySqlDataAdapter();
                 ad.SelectCommand = cmd;
@@ -322,18 +289,18 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
             return dt;
         }
 
         public int getNumberOfCandidates()
         {
-            if (mCon == null) retryConnectToDb();
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             try
             {
-                cmd = new MySqlCommand("select count(*) from candidate", mCon);
+                cmd = new MySqlCommand("select count(*) from candidate", conn);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
             catch
@@ -343,7 +310,7 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
         }
 
@@ -355,12 +322,12 @@ namespace SWIDAL
         /// <returns></returns>
         public DataTable getJobOrders()
         {
-            if (mCon == null) retryConnectToDb();
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
             {
-                cmd = new MySqlCommand("spGetJobOrders", mCon);
+                cmd = new MySqlCommand("spGetJobOrders", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 MySqlDataAdapter ad = new MySqlDataAdapter();
                 ad.SelectCommand = cmd;
@@ -374,19 +341,19 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
             return dt;
         }
 
         public DataTable getJobOrdersByCompanyId(long comId)
         {
-            if (mCon == null) retryConnectToDb();
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
             {
-                cmd = new MySqlCommand("spGetJobOrdersByCompanyId", mCon);
+                cmd = new MySqlCommand("spGetJobOrdersByCompanyId", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("ComId", comId);
                 MySqlDataAdapter ad = new MySqlDataAdapter();
@@ -401,19 +368,19 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
             return dt;
         }
 
         public DataTable getJobOrderById(long id)
         {
-            if (mCon == null) retryConnectToDb();
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
             {
-                cmd = new MySqlCommand("spGetJobOrderById", mCon);
+                cmd = new MySqlCommand("spGetJobOrderById", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("JobOrderId", id);
                 MySqlDataAdapter ad = new MySqlDataAdapter();
@@ -428,19 +395,19 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
             return dt;
         }
 
         public DataTable getPipelineCandidates(long jobOrderId)
         {
-            if (mCon == null) retryConnectToDb();
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
             {
-                cmd = new MySqlCommand("spGetCandidatesInPipeline", mCon);
+                cmd = new MySqlCommand("spGetCandidatesInPipeline", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("JobOrderId", jobOrderId);
                 MySqlDataAdapter ad = new MySqlDataAdapter();
@@ -456,7 +423,7 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
             return dt;
         }
@@ -464,12 +431,12 @@ namespace SWIDAL
         //----------------Company---------------------
         public DataTable getCompaniesOverview()
         {
-            if (mCon == null) retryConnectToDb();
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
             {
-                cmd = new MySqlCommand("spGetCompanies", mCon);
+                cmd = new MySqlCommand("spGetCompanies", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 MySqlDataAdapter ad = new MySqlDataAdapter();
                 ad.SelectCommand = cmd;
@@ -484,7 +451,7 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
             return dt;
         }
@@ -492,12 +459,12 @@ namespace SWIDAL
         //----------------------report-------------------
         public DataTable getReportByTime(DateTime startTime, DateTime endTime)
         {
-            if (mCon == null) retryConnectToDb();
+            MySqlConnection conn = _ConnectionPool.GetConnection();
             MySqlCommand cmd = null;
             DataTable dt = null;
             try
             {
-                cmd = new MySqlCommand("spGetReportByTime", mCon);
+                cmd = new MySqlCommand("spGetReportByTime", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("StartTime", startTime.ToString("yyyy-MM-dd HH:mm:ss"));
                 cmd.Parameters.AddWithValue("EndTime", endTime.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -514,19 +481,18 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
             return dt;
         }
         public DataTable getReportUserByDate(DateTime startTime, DateTime endTime)
         {
-            if (mCon == null) retryConnectToDb();
-            MySqlCommand cmd = null
-                ;
+            MySqlConnection conn = _ConnectionPool.GetConnection();
+            MySqlCommand cmd = null;
             DataTable dt = null;
             try
             {
-                cmd = new MySqlCommand("spGetReportUserByTime", mCon);
+                cmd = new MySqlCommand("spGetReportUserByTime", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("StartTime", startTime.ToString("yyyy-MM-dd HH:mm:ss"));
                 cmd.Parameters.AddWithValue("EndTime", endTime.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -543,7 +509,7 @@ namespace SWIDAL
             finally
             {
                 cmd?.Dispose();
-
+                _ConnectionPool.ReturnConnection(conn);
             }
             return dt;
         }

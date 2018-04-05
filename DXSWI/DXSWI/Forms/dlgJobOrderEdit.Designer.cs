@@ -140,6 +140,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colCellPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ccReport)).BeginInit();
@@ -641,6 +642,7 @@
             this.colLastName,
             this.colGender,
             this.colEmail,
+            this.colCellPhone,
             this.colCity,
             this.colKeySkills,
             this.colAdded,
@@ -728,7 +730,7 @@
             this.colCity.FieldName = "City";
             this.colCity.Name = "colCity";
             this.colCity.Visible = true;
-            this.colCity.VisibleIndex = 5;
+            this.colCity.VisibleIndex = 6;
             this.colCity.Width = 77;
             // 
             // colKeySkills
@@ -737,7 +739,7 @@
             this.colKeySkills.FieldName = "KeySkills";
             this.colKeySkills.Name = "colKeySkills";
             this.colKeySkills.Visible = true;
-            this.colKeySkills.VisibleIndex = 6;
+            this.colKeySkills.VisibleIndex = 7;
             // 
             // colAdded
             // 
@@ -745,7 +747,7 @@
             this.colAdded.FieldName = "Added";
             this.colAdded.Name = "colAdded";
             this.colAdded.Visible = true;
-            this.colAdded.VisibleIndex = 7;
+            this.colAdded.VisibleIndex = 8;
             this.colAdded.Width = 77;
             // 
             // colStatus
@@ -754,7 +756,7 @@
             this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
             this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 8;
+            this.colStatus.VisibleIndex = 9;
             this.colStatus.Width = 83;
             // 
             // colLastActivity
@@ -763,7 +765,7 @@
             this.colLastActivity.FieldName = "LastActivity";
             this.colLastActivity.Name = "colLastActivity";
             this.colLastActivity.Visible = true;
-            this.colLastActivity.VisibleIndex = 9;
+            this.colLastActivity.VisibleIndex = 10;
             this.colLastActivity.Width = 120;
             // 
             // toolTipController1
@@ -1291,6 +1293,14 @@
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
+            // colCellPhone
+            // 
+            this.colCellPhone.Caption = "Cell Phone";
+            this.colCellPhone.FieldName = "CellPhone";
+            this.colCellPhone.Name = "colCellPhone";
+            this.colCellPhone.Visible = true;
+            this.colCellPhone.VisibleIndex = 5;
+            // 
             // dlgJobOrderEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1486,5 +1496,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiSendSms;
         private DevExpress.XtraGrid.Columns.GridColumn colKeySkills;
         private DevExpress.XtraGrid.Columns.GridColumn colGender;
+        private DevExpress.XtraGrid.Columns.GridColumn colCellPhone;
     }
 }

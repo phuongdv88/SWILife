@@ -73,16 +73,17 @@ namespace SWIBLL
         {
             //DELETE FROM `swilifecore`.`candidate` WHERE `CandidateId`='5';
             string sql = string.Format("DELETE FROM `swilifecore`.`candidate` WHERE `CandidateId`='{0}'", CandidateId);
+            var trans = DataAccess.Instance.StartTransaction();
+
             try
             {
-                DataAccess.Instance.StartTransaction();
 
-                DataAccess.Instance.executeNonQueryTransaction(sql);
+                DataAccess.Instance.executeNonQueryTransaction(sql, trans);
                 // delete running task 
                 sql = string.Format("DELETE FROM `swilifecore`.`runningtask` WHERE `CandidateId`='{0}'", CandidateId);
-                DataAccess.Instance.executeNonQueryTransaction(sql);
+                DataAccess.Instance.executeNonQueryTransaction(sql, trans);
                 // commit 
-                DataAccess.Instance.commitTransaction();
+                DataAccess.Instance.commitTransaction(trans);
                 Activity act = new Activity()
                 {
                     Type = "Delete Candidate",
@@ -95,8 +96,12 @@ namespace SWIBLL
             }
             catch
             {
-                DataAccess.Instance.rollbackTransaction();
+                DataAccess.Instance.rollbackTransaction(trans);
                 throw;
+            }
+            finally
+            {
+                DataAccess.Instance.ReturnConnectionTransaction(trans);
             }
         }
         public static bool IsCandidateExist(Candidate can)

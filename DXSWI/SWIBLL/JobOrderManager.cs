@@ -99,16 +99,15 @@ namespace SWIBLL
         public static void deleteJobOrder(long jobOrderId)
         {
             string sql = string.Format("delete from `swilifecore`.`joborder` where `JobOrderId`='{0}'", jobOrderId);
+            var trans = DataAccess.Instance.StartTransaction();
             try
             {
-                DataAccess.Instance.StartTransaction();
-
-                DataAccess.Instance.executeNonQueryTransaction(sql);
+                DataAccess.Instance.executeNonQueryTransaction(sql, trans);
                 // delete running task 
                 sql = string.Format("DELETE FROM `swilifecore`.`runningtask` WHERE `JobOrderId`='{0}'", jobOrderId);
-                DataAccess.Instance.executeNonQueryTransaction(sql);
+                DataAccess.Instance.executeNonQueryTransaction(sql, trans);
                 // commit 
-                DataAccess.Instance.commitTransaction();
+                DataAccess.Instance.commitTransaction(trans);
 
                 Activity act = new Activity()
                 {
@@ -123,8 +122,12 @@ namespace SWIBLL
             }
             catch
             {
-                DataAccess.Instance.rollbackTransaction();
+                DataAccess.Instance.rollbackTransaction(trans);
                 throw;
+            }
+            finally
+            {
+                DataAccess.Instance.ReturnConnectionTransaction(trans);
             }
         }
 

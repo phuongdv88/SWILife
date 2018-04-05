@@ -119,16 +119,17 @@ namespace SWIBLL
         }
         public static void deleteCompany(long comId)
         {
+            var trans = DataAccess.Instance.StartTransaction();
+            
             try
             {
-                DataAccess.Instance.StartTransaction();
 
                 // delete company
                 string sql = string.Format("DELETE FROM `swilifecore`.`company` WHERE `CompanyId`='{0}'", comId);
-                DataAccess.Instance.executeNonQueryTransaction(sql);
+                DataAccess.Instance.executeNonQueryTransaction(sql, trans);
                 // delete contact
                 sql = string.Format("delete from `swilifecore`.`contact` where `CompanyId`='{0}'", comId);
-                DataAccess.Instance.executeNonQueryTransaction(sql);
+                DataAccess.Instance.executeNonQueryTransaction(sql, trans);
 
                 sql = string.Format("select JobOrderId from `swilifecore`.`joborder` where `CompanyId`='{0}'", comId);
                 MySqlDataReader reader = DataAccess.Instance.getReader(sql);
@@ -139,19 +140,19 @@ namespace SWIBLL
                     {
                         // delete all running task 
                         sql = string.Format("DELETE FROM `swilifecore`.`runningtask` WHERE `JobOrderId`='{0}'", jobId);
-                        DataAccess.Instance.executeNonQueryTransaction(sql);
+                        DataAccess.Instance.executeNonQueryTransaction(sql, trans);
                     }
                 }
                 reader.Dispose();
 
                 // delete JobOrder 
                 sql = string.Format("delete from `swilifecore`.`joborder` where `CompanyId`='{0}'", comId);
-                DataAccess.Instance.executeNonQueryTransaction(sql);
+                DataAccess.Instance.executeNonQueryTransaction(sql, trans);
 
 
-                DataAccess.Instance.executeNonQueryTransaction(sql);
+                DataAccess.Instance.executeNonQueryTransaction(sql, trans);
                 // commit 
-                DataAccess.Instance.commitTransaction();
+                DataAccess.Instance.commitTransaction(trans);
 
                 Activity act = new Activity()
                 {
@@ -165,8 +166,12 @@ namespace SWIBLL
             }
             catch
             {
-                DataAccess.Instance.rollbackTransaction();
+                DataAccess.Instance.rollbackTransaction(trans);
                 throw;
+            }
+            finally
+            {
+                DataAccess.Instance.ReturnConnectionTransaction(trans);
             }
         }
     }

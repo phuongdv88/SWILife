@@ -97,8 +97,8 @@ namespace DXSWI.Forms
 
         private async Task updateData()
         {
-            await updateReceiving();
-            await updateSending();
+            updateReceiving();
+            updateSending();
         }
 
         private void sbSend_Click(object sender, EventArgs e)

@@ -66,16 +66,16 @@ namespace SWIBLL
             DataAccess.Instance.executeNonQuery(sql);
         }
 
-        public static bool updateStatusWithTransaction(string status, long id)
+        public static bool updateStatusWithTransaction(string status, long id, MySqlTransaction trans)
         {
             string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `Status`='{0}', `Modified`=now() WHERE `RunningtaskId`='{1}';", status, id);
-            return DataAccess.Instance.executeNonQueryTransaction(sql);
+            return DataAccess.Instance.executeNonQueryTransaction(sql, trans);
         }
 
-        public static bool updateSubmittedStateWithTransaction(bool isSubmitted, long id)
+        public static bool updateSubmittedStateWithTransaction(bool isSubmitted, long id, MySqlTransaction trans)
         {
             string sql = string.Format("UPDATE `swilifecore`.`runningtask` SET `isSubmitted`='{0}', `Modified`=now() WHERE `RunningtaskId`='{1}';", Convert.ToInt32(isSubmitted), id);
-            return DataAccess.Instance.executeNonQueryTransaction(sql);
+            return DataAccess.Instance.executeNonQueryTransaction(sql, trans);
         }
 
         public static DataTable getRunningTaskJobs(long candidateId)
