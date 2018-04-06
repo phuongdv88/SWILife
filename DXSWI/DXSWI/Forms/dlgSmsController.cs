@@ -16,6 +16,7 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraEditors.ViewInfo;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraEditors.Repository;
+using System.Globalization;
 
 namespace DXSWI.Forms
 {
@@ -105,6 +106,8 @@ namespace DXSWI.Forms
         {
             // show warning if lenght > 160            
             string sms = meNewMessage.Text.Trim();
+            sms = string.Concat(sms.Normalize(NormalizationForm.FormD).Where(
+  c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark));
             var number = teToPhoneNumber.Text.Trim();
             // correct number:
             // +84 -> 0; 84 -> 0; remove all of characters which is not a digit

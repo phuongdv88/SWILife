@@ -26,7 +26,7 @@ namespace DXSWI
         ScreenManager()
         {
             SplashScreenManager.ShowForm(null, typeof(ssMain), false, false, false, 1000);
-            checkUpdateVersion(null, null);
+            //checkUpdateVersion(null, null);
             mdlgLogin = new dlgLogin();
             mMain = new SWIMain();
             EmailEdit = new dlgMailEdit();
@@ -114,6 +114,7 @@ namespace DXSWI
             mdlgLogin.logout();
             mdlgLogin?.Show();
             mMain?.Hide();
+            checkUpdateVersion(null, null);
         }
         public void ShowMainScreen()
         {

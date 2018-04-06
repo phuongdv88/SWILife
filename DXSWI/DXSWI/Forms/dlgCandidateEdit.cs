@@ -31,7 +31,7 @@ namespace DXSWI.Forms
         string _deleteAttachmentPath = string.Empty;
         public enum ParseCandidateInfoStep
         {
-            INIT,
+            GENERAL,
             EXPERIENCE,
             EDUCATION,
             SKILL,
@@ -554,21 +554,53 @@ namespace DXSWI.Forms
 
             return true;
         }
-        /// <summary>
-        /// parse candidate information from linkedin data in clipboard
-        /// It may don't work correctly when linkedin changes data fomat
-        /// </summary>
-        /// <param name="can"></param>
-        private void getCandidateLinkedInFromClipboard(ref Candidate can)
+        private bool getParseStateV2(string line, ref ParseCandidateInfoStep state)
+        {
+            line = line.Trim();
+            if (string.Equals(line.Trim(), "Messaging"))
+            {
+                state = ParseCandidateInfoStep.GENERAL;
+            } 
+            else if (string.Equals(line, "Experience"))
+            {
+                state = ParseCandidateInfoStep.EXPERIENCE;
+            }
+            else if (string.Equals(line, "Education") || string.Equals(line, "Certifications"))
+            {
+                state = ParseCandidateInfoStep.EDUCATION;
+            }
+            else if (string.Equals(line, "Featured Skills & Endorsements") || string.Equals(line, "Skills & Endorsements") || string.Equals(line, "Other Skills"))
+            {
+                state = ParseCandidateInfoStep.SKILL;
+            }
+            else if (line.Contains(" is also good at…"))
+            {
+                state = ParseCandidateInfoStep.SKILL_EXTEND;
+            }
+            else if (string.Equals(line, "Interests"))
+            {
+                state = ParseCandidateInfoStep.INTEREST;
+            }
+            else if (string.Equals(line, "Accomplishments"))
+            {
+                state = ParseCandidateInfoStep.ACCOMPLISHMENT;
+            }           
+            else
+            {
+                return false;
+            }
+
+            return true;
+        }
+        private void ParseCandidateFromClipboardVer1(string[] lines, ref Candidate can)
         {
             // parse can from memoINfo.Text
-            ParseCandidateInfoStep state = ParseCandidateInfoStep.INIT;
-            string[] lines = Clipboard.GetText().Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            ParseCandidateInfoStep state = ParseCandidateInfoStep.GENERAL;
             if (lines.Count() < 9) return;
             for (int i = 8; i < lines.Length; ++i)
             {
                 string line = lines[i].TrimStart();
-                if (state == ParseCandidateInfoStep.INIT)
+                if (state == ParseCandidateInfoStep.GENERAL)
                 {
                     // get name:
                     if (string.Equals(line.Trim(), "Messaging"))
@@ -786,6 +818,223 @@ namespace DXSWI.Forms
                     }
                     continue;
                 }
+            }
+        }
+
+        private void ParseCandidateFromClipboardVer2(string[] lines, ref Candidate can)
+        {
+            // parse can from memoINfo.Text
+            ParseCandidateInfoStep state = ParseCandidateInfoStep.CONTACT;
+            if (lines.Count() < 9) return;
+            // get name
+            string name = lines[0];
+            string[] names = name.Split(' ');
+            can.FirstName = names.First();
+            can.LastName = names.Last();
+            can.MiddleName = name.Replace(can.FirstName, "").Replace(can.LastName, "").Trim();
+
+            for (int i = 1; i < lines.Length; ++i)
+            {
+                string line = lines[i].Trim();
+                if (state == ParseCandidateInfoStep.CONTACT)
+                {
+                    if (line.Contains("Profile"))
+                    {
+                        ++i;
+                        line = lines[i].Trim();
+                        if (line.Length > 0)
+                        {
+                            can.WebSite = line;
+                        }
+                    }
+                    else if (string.Equals(line, "Phone"))
+                    {
+                        ++i;
+                        line = lines[i].Trim();
+                        var phone = line.Split(new[] { " (" }, StringSplitOptions.RemoveEmptyEntries).First();
+                        if (phone.Length > 0)
+                        {
+                            can.CellPhone = phone;
+                        }
+                    }
+                    else if (string.Equals(line, "Email"))
+                    {
+                        ++i;
+                        line = lines[i].Trim();
+                        if (line.Length > 0)
+                        {
+                            can.Email = line;
+                        }
+                    }
+                    else if (string.Equals(line, "IM"))
+                    {
+                        ++i;
+                        line = lines[i].Trim();
+                        if (line.Length > 0)
+                        {
+                            can.SkypeIM = line;
+                        }
+                    }
+                    else if (string.Equals(line, "Birthday"))
+                    {
+                        ++i;
+                        line = lines[i].Trim();
+                        if (line.Length > 0)
+                        {
+                            can.DOBMarried = line;
+                        }
+                    }
+                    else
+                    {
+                        getParseStateV2(line, ref state);
+                    }
+                    continue;
+                }  else if (state == ParseCandidateInfoStep.GENERAL)
+                {
+                    // get name:
+                    if (string.Equals(line.Trim(), "Messaging"))
+                    {
+                        // get position
+                        do
+                        {
+                            if (i == lines.Count() - 1)
+                            {
+                                break;
+                            }
+                            ++i;
+                            line = lines[i].Trim();
+                            if (line.Contains("degree connection"))
+                                break;
+                        } while (true);
+                        ++i;
+                        line = lines[i].Trim();
+                        var pos = line.Split(new string[] { " at " }, StringSplitOptions.None);
+                        can.CurrentPosition = pos.First();
+                        can.CurrentEmployer = pos.Last();
+                        // get location
+                        ++i;
+                        line = lines[i].Trim();
+                        can.Country = line;
+                    }
+                    else 
+                    {
+                        getParseStateV2(line, ref state);
+                    }
+                    continue;
+                }
+                else if (state == ParseCandidateInfoStep.EXPERIENCE)
+                {
+                    if (!getParseStateV2(line, ref state))
+                    {
+                        can.ProjectDone += line.TrimStart() + "\r\n";
+                    }
+                    continue;
+                }
+                else if (state == ParseCandidateInfoStep.EDUCATION)
+                {
+                    if (!getParseStateV2(line, ref state))
+                    {
+                        if (!can.Education.Contains(line.Trim()))
+                        {
+                            can.Education += line.TrimStart() + "\r\n";
+                            if (can.CurrentEmployer.Contains(line.Trim()))
+                            {
+                                can.CurrentEmployer = can.CurrentEmployer.Replace(line.Trim(), "").Trim();
+                            }
+                        }
+                    }
+                    continue;
+                }
+                else if (state == ParseCandidateInfoStep.SKILL || (state == ParseCandidateInfoStep.SKILL_EXTEND))
+                {
+                    line = line.Trim();
+                    if (!getParseStateV2(line, ref state))
+                    {
+                        if (!can.KeySkills.Contains(line))
+                        {
+                            //Featured Skills & Endorsements
+                            //                            PCI DSS See 3 endorsements for PCI DSS 3
+                            if (line.Contains("See"))
+                            {
+                                line = line.Split(new[] { "See" }, StringSplitOptions.None).First();
+                                if (can.KeySkills.Length > 0 && line.Length > 0)
+                                {
+                                    can.KeySkills += "; ";
+                                }
+                                can.KeySkills += line;
+                            }
+                            else
+                            {
+                                if(string.Equals(line, "Other Skills") || line.Contains("endorsement")|| can.KeySkills.Contains(line))
+                                {
+                                    continue;
+                                }
+                                if (can.KeySkills.Length > 0 && line.Length > 0)
+                                {
+                                    can.KeySkills += "; ";
+                                }
+                                can.KeySkills += line;
+                            }
+                        }
+                    }
+                    continue;
+                }
+               else if (state == ParseCandidateInfoStep.INTEREST)
+                {
+                    if (!getParseStateV2(line, ref state))
+                    {
+                        // do nothing
+                    }
+                    continue;
+                }
+                else if (state == ParseCandidateInfoStep.ACCOMPLISHMENT)
+                {
+                    if (string.Equals(line, "Courses") || string.Equals(line, "Course"))
+                    {
+                        i++;
+                        line = lines[i];
+                        if (!can.Education.Contains(line.Trim()))
+                        {
+                            can.Education += "Courses: " + line.TrimStart() + "\r\n";
+                        }
+                    }else if (string.Equals(line, "Certifications") || string.Equals(line, "Certification"))
+                    {
+                        i++;
+                        line = lines[i];
+                        if (!can.Education.Contains(line.Trim()))
+                        {
+                            can.Education += "Certifications: " + line.TrimStart() + "\r\n";
+                            if (can.CurrentEmployer.Contains(line.Trim()))
+                            {
+                                can.CurrentEmployer = can.CurrentEmployer.Replace(line.Trim(), "").Trim();
+                            }
+                        }
+                    } else if (string.Equals(line, "Language"))
+                    {
+                        i++;
+                        line = lines[i];
+                        can.Language = line.Trim();
+                    }
+                    continue;
+                }
+               
+            }
+        }
+        /// <summary>
+        /// parse candidate information from linkedin data in clipboard
+        /// It may don't work correctly when linkedin changes data fomat
+        /// </summary>
+        /// <param name="can"></param>
+        private void getCandidateLinkedInFromClipboard(ref Candidate can)
+        {
+            string[] lines = Clipboard.GetText().Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            if (lines.Length > 2 && string.Equals(lines[1], "Contact Info"))
+            {
+                ParseCandidateFromClipboardVer2(lines, ref can); // begin from 05-April-2018
+            }
+            else
+            {
+                ParseCandidateFromClipboardVer1(lines, ref can);
             }
         }
 

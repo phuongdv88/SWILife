@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using SWIBLL.Models;
 using SWIBLL;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace DXSWI.Forms
 {
@@ -30,7 +31,7 @@ namespace DXSWI.Forms
             _listCandidateId = candidateIds;
             tePhoneNumbers.ReadOnly = true;
             string listPhone = string.Empty;
-            for(var i = 0; i < listNumbers.Count; ++i)
+            for (var i = 0; i < listNumbers.Count; ++i)
             {
                 var number = listNumbers[i];
                 number = Regex.Replace(number, "\\D+", "", RegexOptions.Multiline);
@@ -41,7 +42,7 @@ namespace DXSWI.Forms
                 if (number == null || number.Length == 0)
                     continue;
                 var name = listNames[i];
-                if(tePhoneNumbers.Text.Length > 0)
+                if (tePhoneNumbers.Text.Length > 0)
                 {
                     tePhoneNumbers.Text += ";";
                 }
@@ -160,7 +161,8 @@ namespace DXSWI.Forms
                     string email = _listEmails[i];
                     long canId = _listCandidateId[i];
                     string message = sms.Replace("[name]", name).Replace("[email]", email);
-                    if(message.Length > 160)
+                    message = string.Concat(message.Normalize(NormalizationForm.FormD).Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark));
+                    if (message.Length > 160)
                     {
                         throw new Exception(string.Format("Cant send to {0} number {1} email {2} because message lengh > 160", name, number, email));
                     }
