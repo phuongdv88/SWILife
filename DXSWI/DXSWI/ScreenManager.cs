@@ -106,7 +106,7 @@ namespace DXSWI
         {
 
             Application.Run(mdlgLogin);
-
+            checkUpdateVersion(null, null);
             //Application.Run(mMain);
         }
         public void ShowLoginScreen()
@@ -114,7 +114,6 @@ namespace DXSWI
             mdlgLogin.logout();
             mdlgLogin?.Show();
             mMain?.Hide();
-            checkUpdateVersion(null, null);
         }
         public void ShowMainScreen()
         {
