@@ -181,6 +181,7 @@
             this.gvCandidates.OptionsBehavior.Editable = false;
             this.gvCandidates.OptionsFind.AlwaysVisible = true;
             this.gvCandidates.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.FindClick;
+            this.gvCandidates.OptionsSelection.MultiSelect = true;
             this.gvCandidates.ColumnFilterChanged += new System.EventHandler(this.gvCandidates_ColumnFilterChanged);
             // 
             // colKeySkill

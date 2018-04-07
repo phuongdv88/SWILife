@@ -341,7 +341,7 @@ namespace DXSWI
 
         private void bbiUserHelp_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            XtraMessageBox.Show("This app was writed by PhuongDV for internal process in swifamily's company.", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //System.Diagnostics.Process.Start("https://swilife.com");
             //_frUtilities.correctNumberDB();
             //_frUtilities.parseCandidateFromExelV2(@"D:\DropboxData\Dropbox\Swilife\3. Candidates\Danh sach lap trinh vien_T3 2018.xlsx");
@@ -354,6 +354,7 @@ namespace DXSWI
             //_frUtilities.DownloadQuandidateCvs(candidatesFolder);
             //_frUtilities.ParseCandidateFromQuandidateLinks(candidatesFolder);
 
+            //_frUtilities.CorrectLastStatusCandidates();
             //changeGroup(_tagUtilities);
 
 

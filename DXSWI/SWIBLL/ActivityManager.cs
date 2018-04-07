@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SWIDAL;
 using SWIBLL.Models;
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace SWIBLL
 {
@@ -38,7 +39,7 @@ namespace SWIBLL
         public static void getListRegardingForContact(long contactId, ref Dictionary<string, long> listRegarding)
         {
             string sql = string.Format("SELECT T2.Title, T2.JobOrderId FROM swilifecore.contact T1 " +
-                                        "left join swilifecore.joborder T2 on T1.CompanyId = T2.CompanyId "+
+                                        "left join swilifecore.joborder T2 on T1.CompanyId = T2.CompanyId " +
                                         "where T1.ContactId = {0}", contactId);
             DataTable tbl = DataAccess.Instance.getDataTable(sql);
             for (int i = 0; i < tbl.Rows.Count; ++i)
@@ -72,7 +73,7 @@ namespace SWIBLL
             string sql = string.Empty;
             var trans = DataAccess.Instance.StartTransaction();
             try
-            {                
+            {
                 //delete activity
                 sql = string.Format("DELETE FROM `swilifecore`.`activity` WHERE `ActivityId`='{0}'", Activityid);
                 DataAccess.Instance.executeNonQueryTransaction(sql, trans);
@@ -128,56 +129,9 @@ namespace SWIBLL
                     act.Regarding, act.Type, QueryBuilder.mySqlEscape(act.Notes), (int)act.ActivityOf,
                     act.JobOrderId, act.CandidateId, act.ContactId, act.UserId, act.RunningTaskId);
                 DataAccess.Instance.executeInsertQueryTransaction(sql, trans);
-
                 // change status of running task or whatever folow by type of activity
-                if (act.ActivityOf == Activity.TypeOfLogActivity.Pipeline)
-                {
-                    // check type of status to set data in running task
-                    // if type of status is submitted -> set to running task also
+                updateCandidateStatusWithTransaction(act.Status, act.RunningTaskId, trans);
 
-                    switch (act.Status)
-                    {
-                        case Activity.RunningTaskStatus.NOT_CONTACT:
-                            RunningTaskManager.updateStatusWithTransaction("Not Contact", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.CONTACTED:
-                            RunningTaskManager.updateStatusWithTransaction("Contacted", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.CANDIDATE_RESPONDED:
-                            RunningTaskManager.updateStatusWithTransaction("Candidate Responded", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.QUALIFYING:
-                            RunningTaskManager.updateStatusWithTransaction("Qualifying", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.SUBMITTED:
-                            RunningTaskManager.updateStatusWithTransaction("Submitted", act.RunningTaskId, trans);
-                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId, trans);
-
-                            break;
-                        case Activity.RunningTaskStatus.INTERVIEWING:
-                            RunningTaskManager.updateStatusWithTransaction("Interviewing", act.RunningTaskId, trans);
-                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.OFFERED:
-                            RunningTaskManager.updateStatusWithTransaction("Offered", act.RunningTaskId, trans);
-                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.NOT_IN_CONSIDERATION:
-                            RunningTaskManager.updateStatusWithTransaction("Not In Consideration", act.RunningTaskId, trans);
-                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.CLIENT_DECLINED:
-                            RunningTaskManager.updateStatusWithTransaction("Client Declined", act.RunningTaskId, trans);
-                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.PLACED:
-                            RunningTaskManager.updateStatusWithTransaction("Placed", act.RunningTaskId, trans);
-                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId, trans);
-                            break;
-                        default:
-                            break;
-                    }
-                }
                 // commit 
                 DataAccess.Instance.commitTransaction(trans);
             }
@@ -220,44 +174,8 @@ namespace SWIBLL
 
                         // check type of status to set data in running task
                         // if type of status is submitted -> set to running task also
+                        updateCandidateStatusWithTransaction(act.Status, runningTaskId, trans);
 
-                        switch (act.Status)
-                        {
-                            case Activity.RunningTaskStatus.NOT_CONTACT:
-                                RunningTaskManager.updateStatusWithTransaction("Not Contact", runningTaskId, trans);
-                                break;
-                            case Activity.RunningTaskStatus.CONTACTED:
-                                RunningTaskManager.updateStatusWithTransaction("Contacted",runningTaskId, trans);
-                                break;
-                            case Activity.RunningTaskStatus.CANDIDATE_RESPONDED:
-                                RunningTaskManager.updateStatusWithTransaction("Candidate Responded", runningTaskId, trans);
-                                break;
-                            case Activity.RunningTaskStatus.QUALIFYING:
-                                RunningTaskManager.updateStatusWithTransaction("Qualifying", runningTaskId, trans);
-                                break;
-                            case Activity.RunningTaskStatus.SUBMITTED:
-                                RunningTaskManager.updateStatusWithTransaction("Submitted", runningTaskId, trans);
-                                RunningTaskManager.updateSubmittedStateWithTransaction(true, runningTaskId, trans);
-
-                                break;
-                            case Activity.RunningTaskStatus.INTERVIEWING:
-                                RunningTaskManager.updateStatusWithTransaction("Interviewing", runningTaskId, trans);
-                                break;
-                            case Activity.RunningTaskStatus.OFFERED:
-                                RunningTaskManager.updateStatusWithTransaction("Offered", runningTaskId, trans);
-                                break;
-                            case Activity.RunningTaskStatus.NOT_IN_CONSIDERATION:
-                                RunningTaskManager.updateStatusWithTransaction("Not In Consideration", runningTaskId, trans);
-                                break;
-                            case Activity.RunningTaskStatus.CLIENT_DECLINED:
-                                RunningTaskManager.updateStatusWithTransaction("Client Declined", runningTaskId, trans);
-                                break;
-                            case Activity.RunningTaskStatus.PLACED:
-                                RunningTaskManager.updateStatusWithTransaction("Placed", runningTaskId, trans);
-                                break;
-                            default:
-                                break;
-                        }
                     }
                 }
                 // commit 
@@ -275,6 +193,56 @@ namespace SWIBLL
 
         }
 
+        private static void updateCandidateStatusWithTransaction(Activity.RunningTaskStatus Status, long runningTaskId, MySqlTransaction trans)
+        {
+            string statusInfo = string.Empty;
+            switch (Status)
+            {
+                case Activity.RunningTaskStatus.NOT_CONTACT:
+                    statusInfo = "Not Contact";
+                    break;
+                case Activity.RunningTaskStatus.CONTACTED:
+                    statusInfo = "Contacted";
+                    break;
+                case Activity.RunningTaskStatus.CANDIDATE_RESPONDED:
+                    statusInfo = "Candidate Responded";
+                    break;
+                case Activity.RunningTaskStatus.QUALIFYING:
+                    statusInfo = "Qualifying";
+                    break;
+                case Activity.RunningTaskStatus.SUBMITTED:
+                    statusInfo = "Submitted";
+                    break;
+                case Activity.RunningTaskStatus.INTERVIEWING:
+                    statusInfo = "Interviewing";
+                    break;
+                case Activity.RunningTaskStatus.OFFERED:
+                    statusInfo = "Offered";
+                    break;
+                case Activity.RunningTaskStatus.NOT_IN_CONSIDERATION:
+                    statusInfo = "Not In Consideration";
+                    break;
+                case Activity.RunningTaskStatus.CLIENT_DECLINED:
+                    statusInfo = "Client Declined";
+                    break;
+                case Activity.RunningTaskStatus.PLACED:
+                    statusInfo = "Placed";
+                    break;
+                default:
+                    break;
+            }
+            if (statusInfo.Length > 0)
+            {
+                RunningTaskManager.updateStatusWithTransaction(statusInfo, runningTaskId, trans);
+                // update last status of candidate
+                CandidateManager.updateLastStatusWithTransaction(statusInfo, runningTaskId, trans);
+                // update submitted state
+                if(Status >= Activity.RunningTaskStatus.SUBMITTED)
+                {
+                    RunningTaskManager.updateSubmittedStateWithTransaction(true, runningTaskId, trans);
+                }
+            }
+        }
         public static Activity getActivityById(long id)
         {
             string sql = string.Format("select * from `swilifecore`.`activity` where `ActivityId`='{0}' ", id);
@@ -308,44 +276,7 @@ namespace SWIBLL
                 {
                     // check type of status to set data in running task
                     // if type of status is submitted -> set to running task also
-
-                    switch (act.Status)
-                    {
-                        case Activity.RunningTaskStatus.NOT_CONTACT:
-                            RunningTaskManager.updateStatusWithTransaction("Not Contact", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.CONTACTED:
-                            RunningTaskManager.updateStatusWithTransaction("Contacted", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.CANDIDATE_RESPONDED:
-                            RunningTaskManager.updateStatusWithTransaction("Candidate Responded", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.QUALIFYING:
-                            RunningTaskManager.updateStatusWithTransaction("Qualifying", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.SUBMITTED:
-                            RunningTaskManager.updateStatusWithTransaction("Submitted", act.RunningTaskId, trans);
-                            RunningTaskManager.updateSubmittedStateWithTransaction(true, act.RunningTaskId, trans);
-
-                            break;
-                        case Activity.RunningTaskStatus.INTERVIEWING:
-                            RunningTaskManager.updateStatusWithTransaction("Interviewing", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.OFFERED:
-                            RunningTaskManager.updateStatusWithTransaction("Offered", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.NOT_IN_CONSIDERATION:
-                            RunningTaskManager.updateStatusWithTransaction("Not In Consideration", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.CLIENT_DECLINED:
-                            RunningTaskManager.updateStatusWithTransaction("Client Declined", act.RunningTaskId, trans);
-                            break;
-                        case Activity.RunningTaskStatus.PLACED:
-                            RunningTaskManager.updateStatusWithTransaction("Placed", act.RunningTaskId, trans);
-                            break;
-                        default:
-                            break;
-                    }
+                    updateCandidateStatusWithTransaction(act.Status, act.RunningTaskId, trans);
                 }
                 // commit 
                 DataAccess.Instance.commitTransaction(trans);

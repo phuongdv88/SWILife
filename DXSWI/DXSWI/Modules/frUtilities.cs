@@ -1071,5 +1071,16 @@ namespace DXSWI.Modules
             };
             return dt;
         }
+
+        public void CorrectLastStatusCandidates()
+        {
+            try {
+                CandidateManager.CorrectLastStatusCandidates();
+            }
+            catch (Exception ex)
+            {
+                printMessage(string.Format("error: {0}", ex.Message));
+            }
+        }
     }
 }

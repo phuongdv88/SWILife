@@ -80,7 +80,10 @@ namespace SWIBLL
 
         public static DataTable getRunningTaskJobs(long candidateId)
         {
-            string sql = string.Format("select T1.RunningtaskId, T1.JobOrderId, T1.Status, T1.Match, T2.Title, date_format(T1.Added, '%d-%m-%Y') as Added, T1.EnteredBy, T4.UserName Owner, T3.Name CompanyName from swilifecore.runningtask T1 inner join swilifecore.joborder T2 on T1.JobOrderId = t2.JobOrderId inner join swilifecore.company T3 on T2.CompanyId = T3.CompanyId left join swilifecore.user T4 on T2.OwnerId = T4.UserId where T1.CandidateId = '{0}'", candidateId);
+            string sql = string.Format("select T1.RunningtaskId, T1.JobOrderId, T1.Status, T1.Match, T2.Title, date_format(T1.Added, '%d-%m-%Y') as Added, T1.EnteredBy, T4.UserName Owner, T3.Name CompanyName from swilifecore.runningtask T1 " +
+                "inner join swilifecore.joborder T2 on T1.JobOrderId = t2.JobOrderId " +
+                "inner join swilifecore.company T3 on T2.CompanyId = T3.CompanyId " +
+                "left join swilifecore.user T4 on T2.OwnerId = T4.UserId where T1.CandidateId = '{0}'", candidateId);
             return DataAccess.Instance.getDataTable(sql);
         }
         public static DataTable getRunningTaskCandidates(long jobId)

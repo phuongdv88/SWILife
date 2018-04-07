@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using SWIDAL;
 using SWIBLL.Models;
 using System.Data;
+using MySql.Data.MySqlClient;
+
 namespace SWIBLL
 {
     public class CandidateManager
@@ -269,6 +271,69 @@ namespace SWIBLL
             string sql = string.Format("UPDATE `swilifecore`.`candidate` SET `CellPhone`='{0}', `WorkPhone`='{1}' WHERE `CandidateId`='{2}';",
                 QueryBuilder.mySqlEscape(cellphone), QueryBuilder.mySqlEscape(workPhone), canId);
             DataAccess.Instance.executeNonQuery(sql);
+        }
+
+        public static void updateLastStatus(string statusInfo, long runningTaskId)
+        {
+            // get candidate id and jobtitle
+            string sql = string.Format("SELECT T1.CandidateId, T2.Title FROM swilifecore.runningtask T1 " +
+                                        "left join swilifecore.joborder T2 on T1.JobOrderId = T2.JobOrderId where RunningTaskId = {0} ", runningTaskId);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
+            var status = string.Empty;
+            long canId = -1;
+            if (tbl.Rows.Count > 0)
+            {
+                DataRow datarow = tbl.Rows[0];
+                canId = Convert.ToInt64(datarow["CandidateId"].ToString());
+                status = string.Format("{0} - {1}", statusInfo, datarow["Title"].ToString());
+            }
+            sql = string.Format("UPDATE `swilifecore`.`candidate` SET `LastStatus`='{0}' WHERE `CandidateId`='{1}'", QueryBuilder.mySqlEscape(status), canId);
+            DataAccess.Instance.executeInsertingQuery(sql);
+        }
+        public static bool updateLastStatusWithTransaction(string statusInfo, long runningTaskId, MySqlTransaction trans)
+        {
+            // get candidate id and jobtitle
+            string sql = string.Format("SELECT T1.CandidateId, T2.Title FROM swilifecore.runningtask T1 " +
+                                        "left join swilifecore.joborder T2 on T1.JobOrderId = T2.JobOrderId where RunningTaskId = {0} ", runningTaskId);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
+            var status = string.Empty;
+            long canId = -1;
+            if (tbl.Rows.Count > 0)
+            {
+                DataRow datarow = tbl.Rows[0];
+                canId = Convert.ToInt64(datarow["CandidateId"].ToString());
+                status = string.Format("{0} - {1}", statusInfo, datarow["Title"].ToString());
+            }
+            sql = string.Format("UPDATE `swilifecore`.`candidate` SET `LastStatus`='{0}' WHERE `CandidateId`='{1}'", QueryBuilder.mySqlEscape(status), canId);
+            return DataAccess.Instance.executeNonQueryTransaction(sql, trans);
+        }
+
+        public static void CorrectLastStatusCandidates()
+        {
+            // get all candidate id in running task
+            var sql = string.Format("SELECT distinct CandidateId FROM swilifecore.runningtask");
+            var dt = DataAccess.Instance.getDataTable(sql);
+            // get state of running task
+            var status = string.Empty;
+            long canId = -1;
+            foreach (DataRow datarow in dt.Rows)
+            {
+                canId = Convert.ToInt64(datarow["CandidateId"].ToString());
+                // get last status and job title
+                sql = string.Format("select T1.Status, T2.Title from swilifecore.runningtask T1 " +
+                                    "left join swilifecore.joborder T2 on T1.JobOrderId = T2.JobOrderId " +
+                                    "where T1.CandidateId = {0} order by T2.Modified desc limit 1", canId);
+                var tbl = DataAccess.Instance.getDataTable(sql);
+                if (tbl.Rows.Count > 0)
+                {
+                    status = string.Format("{0} - {1}", tbl.Rows[0]["Status"].ToString(), tbl.Rows[0]["Title"].ToString());
+                }
+
+                sql = string.Format("UPDATE `swilifecore`.`candidate` SET `LastStatus`='{0}' WHERE `CandidateId`='{1}'", QueryBuilder.mySqlEscape(status), canId);
+                DataAccess.Instance.executeInsertingQuery(sql);
+                continue;
+            }
+            return;
         }
     }
 }

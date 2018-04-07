@@ -112,9 +112,9 @@ namespace DXSWI.Forms
                 case Keys.Escape:
                     sbCancel.PerformClick();
                     break;
-                case Keys.Enter:
-                    sbOK.PerformClick();
-                    break;
+                //case Keys.Enter:
+                //    sbOK.PerformClick();
+                //    break;
                 default:
                     break;
             }

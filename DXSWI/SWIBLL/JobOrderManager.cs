@@ -154,8 +154,8 @@ namespace SWIBLL
 
             JobOrder job = null;
             string sql = string.Format("select T1.*, T2.Name CompanyName, concat(T3.FirstName , T3.LastName) as ContactName, " +
-                                        "(select count(RunningTaskId) from runningtask where runningtask.JobOrderId = T1.JobOrderId) as CanInPipeLine, " +
-                                        "(select count(*) from runningtask where runningtask.JobOrderId = T1.JobOrderId and runningtask.IsSubmitted = '1') as Submitted " +
+                                        "(select count(1) from runningtask where runningtask.JobOrderId = T1.JobOrderId) as CanInPipeLine, " +
+                                        "(select count(1) from runningtask where runningtask.JobOrderId = T1.JobOrderId and runningtask.IsSubmitted = '1') as Submitted " +
                                         "from swilifecore.joborder T1 left join swilifecore.company T2 on T1.CompanyId = T2.CompanyId " +
                                         "left join swilifecore.contact T3 on T1.ContactId = T3.ContactId " +
                                         "where T1.Title = {0} and T1.CompanyId = {1}", title, comId);
