@@ -548,9 +548,9 @@ namespace SWIDAL
             {
                 cmd = new MySqlCommand("spGetReportUserByTime", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("StartTime", startTime.ToString("yyyy-MM-dd HH:mm:ss"));
-                cmd.Parameters.AddWithValue("EndTime", endTime.ToString("yyyy-MM-dd HH:mm:ss"));
-                string tmp = startTime.ToString("yyyy-MM-dd HH:mm:ss");
+                cmd.Parameters.AddWithValue("StartTime", startTime.ToString("yyyy-MM-dd") + " 00:00:00");
+                cmd.Parameters.AddWithValue("EndTime", endTime.ToString("yyyy-MM-dd") + " 23:59:59");
+                //string tmp = startTime.ToString("yyyy-MM-dd HH:mm:ss");
                 MySqlDataAdapter ad = new MySqlDataAdapter();
                 ad.SelectCommand = cmd;
                 dt = new DataTable();
