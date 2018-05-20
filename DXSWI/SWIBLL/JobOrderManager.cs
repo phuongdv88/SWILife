@@ -19,6 +19,15 @@ namespace SWIBLL
             });
             return tbl;
         }
+        public async static Task<DataTable> getJobOrdersAvailableCandidateAsync(long CanId)
+        {
+            DataTable tbl = null;
+            await Task.Run(() =>
+            {
+                tbl = DataAccess.Instance.getJobOrdersAvailableforCandidate(CanId);
+            });
+            return tbl;
+        }
         public static DataTable getJobOrdersByCompanyId(long comId)
         {
             return DataAccess.Instance.getJobOrdersByCompanyId(comId);

@@ -144,8 +144,10 @@ namespace SmsSenderService
                 }
 
                 // get all received sms
-                if (_gsm.CountSMSmessages() > 0)
+                int numberSms = _gsm.CountSMSmessages();
+                if (numberSms > 0)
                 {
+                    Utilities.WriteLog(string.Format("number of unread sms = {0}", numberSms));
                     var messages = _gsm.ReadSMS();
                     foreach (var msg in messages)
                     {
@@ -160,10 +162,14 @@ namespace SmsSenderService
 
                                 }
                             }
-                            catch { }
+                            catch (Exception ex)
+                            {
+                                Utilities.WriteLog(ex);
+                            }
 
                             // get candidate id
                             msg.CandidateId = SmsManager.getCandidateIdFromNumber(msg.Sender);
+                            Utilities.WriteLog(msg.Message);
                             // save to db
                             SmsManager.InsertSmsReceiving(msg);
                             // delete from SIM

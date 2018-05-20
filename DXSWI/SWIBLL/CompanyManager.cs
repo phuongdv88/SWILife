@@ -40,6 +40,20 @@ namespace SWIBLL
             }
             return com;
         }
+        public static string getCompanyNameByJobOrderId(long jobOrderId)
+        {
+            string comName = string.Empty;
+            string sql = string.Format("SELECT T2.Name FROM swilifecore.joborder T1 " +
+                                        "left join swilifecore.company T2 on T1.CompanyId = T2.CompanyId " +
+                                        "where JobOrderId = '{0}'", jobOrderId);
+            DataTable tbl = DataAccess.Instance.getDataTable(sql);
+            if (tbl.Rows.Count > 0)
+            {
+                DataRow datarow = tbl.Rows[0];
+                comName = datarow[0]?.ToString();
+            }
+            return comName;
+        }
 
         public static bool IsCompanyExisted(Company com)
         {

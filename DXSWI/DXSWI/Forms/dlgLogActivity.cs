@@ -204,6 +204,16 @@ namespace DXSWI.Forms
                     else
                     {
                         ActivityManager.insert(act);
+                        // if status == place -> update current position = job title, current company = company name.
+                        if(act.Status == Activity.RunningTaskStatus.PLACED)
+                        {
+                            long canid = act.CandidateId;
+                            string currentPosition = act.Regarding;
+                            long jobId = act.JobOrderId;
+                            // get company name from job order id
+                            string currentCompany = CompanyManager.getCompanyNameByJobOrderId(jobId);
+                            CandidateManager.updateCurrentStatus(canid, currentPosition, currentCompany);
+                        }
                     }
                 }
                 else

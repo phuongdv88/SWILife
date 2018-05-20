@@ -12,62 +12,23 @@ namespace SWIBLL
 {
     public class CandidateManager
     {
-        int mPageNumber = 1;
-        int mPageSize = 50;
-        private int mNumberCandidates;
 
-        public int NumberOfCandidates
-        {
-            get { return mNumberCandidates; }
-            set { mNumberCandidates = value; }
-        }
-
-
-        public int PageNumber
-        {
-            get { return mPageNumber; }
-            set { mPageNumber = value; }
-        }
-
-        public int PageSize
-        {
-            get { return mPageSize; }
-            set { mPageSize = value; }
-        }
-
-        public CandidateManager()
-        {
-            NumberOfCandidates = DataAccess.Instance.getNumberOfCandidates();
-        }
-
-        //public DataTable getCurrentPages()
-        //{
-        //    return GetLimitedCandidates(mPageNumber, mPageSize);
-        //}
-
-        //public DataTable getNextPage()
-        //{
-        //    ++mPageNumber;
-        //    return  getCurrentPages();
-        //}
-        //public DataTable getPreviewPage()
-        //{
-        //    --mPageNumber;
-        //    return getCurrentPages();
-        //}
-
-        public int getNumberOfPages()
-        {
-            return (mNumberCandidates + mPageSize - 1) / mPageSize;
-        }
-
-
-        public async Task<DataTable> GetAllCandidatesOverViewAsync()
+        public static async Task<DataTable> GetAllCandidatesOverViewAsync()
         {
             DataTable tbl = null;
             await Task.Run(() =>
             {
                 tbl = DataAccess.Instance.getCandidatesOverview();
+            });
+            return tbl;
+        }
+
+        public static async Task<DataTable> GetAllCandidatesAvailableForJobAsync(long JobId)
+        {
+            DataTable tbl = null;
+            await Task.Run(() =>
+            {
+                tbl = DataAccess.Instance.getCandidatesAvailableForJob(JobId);
             });
             return tbl;
         }
@@ -112,6 +73,34 @@ namespace SWIBLL
             // check duplicate:
             string sql = string.Format("select count(*) from swilifecore.candidate where (char_length(CellPhone) > 0 and CellPhone = '{0}') or (char_length(Email) > 0 and Email = '{1}') or (char_length(WorkPhone) > 0 and WorkPhone = '{2}')"
                 , QueryBuilder.mySqlEscape(can.CellPhone), QueryBuilder.mySqlEscape(can.Email), QueryBuilder.mySqlEscape(can.WorkPhone));
+            MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);
+            try
+            {
+                while (reader.Read())
+                {
+                    if (int.Parse(reader[0].ToString()) > 0)
+                    {
+                        return true;
+                    }
+                    break;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                reader.Dispose();
+            }
+            return false;
+        }
+
+        public static bool IsCandidateExistByPhoneAndEmail(string cellPhone, string email)
+        {
+            // check duplicate:
+            string sql = string.Format("select count(1) from swilifecore.candidate where (char_length(CellPhone) > 0 and CellPhone = '{0}') or (char_length(Email) > 0 and Email = '{1}') or (char_length(WorkPhone) > 0 and WorkPhone = '{0}')"
+                , QueryBuilder.mySqlEscape(cellPhone), QueryBuilder.mySqlEscape(email));
             MySql.Data.MySqlClient.MySqlDataReader reader = DataAccess.Instance.getReader(sql);
             try
             {
@@ -270,6 +259,13 @@ namespace SWIBLL
         {
             string sql = string.Format("UPDATE `swilifecore`.`candidate` SET `CellPhone`='{0}', `WorkPhone`='{1}' WHERE `CandidateId`='{2}';",
                 QueryBuilder.mySqlEscape(cellphone), QueryBuilder.mySqlEscape(workPhone), canId);
+            DataAccess.Instance.executeNonQuery(sql);
+        }
+
+        public static void updateCurrentStatus(long candidateid, string currentPosition, string currentCompany)
+        {
+            // get candidate id and jobtitle
+            string sql = string.Format("UPDATE `swilifecore`.`candidate` SET `CurrentPosition`='{0}', `CurrentEmployer`='{1}' WHERE `CandidateId`='{2}'; ", QueryBuilder.mySqlEscape(currentPosition), QueryBuilder.mySqlEscape(currentCompany), candidateid);
             DataAccess.Instance.executeNonQuery(sql);
         }
 

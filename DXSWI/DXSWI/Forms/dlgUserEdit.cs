@@ -24,6 +24,19 @@ namespace DXSWI.Forms
         {
             InitializeComponent();
             _currentUser = GetUserInfo(UserId);
+            //if (UserManager.ActivatedUser.Role >= _currentUser.Role || UserManager.ActivatedUser.Role > 2)
+            //{
+            //    comboBoxEditRole.Enabled = false;
+            //}
+            if ((UserManager.ActivatedUser.Role > 2) || ((UserManager.ActivatedUser.Role <= 2) && (UserManager.ActivatedUser.Role >= _currentUser.Role)))
+            {
+                comboBoxEditRole.Enabled = false;
+            }
+            // remove all role little than current role
+            for(int i = 0; i < UserManager.ActivatedUser.Role; i++)
+            {
+                comboBoxEditRole.Properties.Items.RemoveAt(0);
+            }
             FillObjectToUi();
         }
 
@@ -106,7 +119,7 @@ namespace DXSWI.Forms
                 _currentUser.Password = UserManager.createMD5Hash(textEditPassword.Text.Trim() + _currentUser.Salt);
 
             }
-            _currentUser.Role = comboBoxEditRole.SelectedIndex + 1;
+            _currentUser.Role = comboBoxEditRole.SelectedIndex + 1 + UserManager.ActivatedUser.Role;
             _currentUser.EmailAccount = textEditEmail.Text.Trim();
 
         }

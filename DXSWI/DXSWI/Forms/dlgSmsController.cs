@@ -43,7 +43,7 @@ namespace DXSWI.Forms
         {
             Timer aTimer = new Timer();
             aTimer.Tick += updateDataTimer;
-            aTimer.Interval = 1000 * 15; // check every 15s
+            aTimer.Interval = 1000 * 60; // check every 15s
             aTimer.Enabled = true;
             updateDataTimer(null, null);
             //int rowHandle = gvReceivingMessages.GetRowHandle(gvReceivingMessages.RowCount - 1);

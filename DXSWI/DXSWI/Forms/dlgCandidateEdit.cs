@@ -470,6 +470,30 @@ namespace DXSWI.Forms
                             getCandidateLinkedInFromClipboard(ref can);
                             FillUpToUi(can);
                             SourceTextEdit.SelectedIndex = 1;
+                            if (CandidateManager.IsCandidateExistByPhoneAndEmail(can.CellPhone, can.Email))
+                            {
+                                if (XtraMessageBox.Show("This candiate has already existed. Would you want to load this candidate data?", "Notice!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    // fill data to ui
+                                    _Candidate = CandidateManager.getCandidateByEmail(EmailTextEdit.Text.Trim());
+                                    if (_Candidate == null)
+                                    {
+                                        _Candidate = CandidateManager.getCandidateByCellPhone(CellPhoneTextEdit.Text.Trim());
+                                    }
+                                    if (_Candidate == null)
+                                    {
+                                        XtraMessageBox.Show("Load data fail.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    _isNew = false;
+                                    gcActivities.Enabled = true;
+                                    gcJobOrderPipeline.Enabled = true;
+                                    FillUpToUi(_Candidate);
+                                    loadAttachment(_Candidate.ResumeLink);
+                                    updateData();
+                                    return;
+                                }
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -965,7 +989,7 @@ namespace DXSWI.Forms
                             }
                             else
                             {
-                                if(string.Equals(line, "Other Skills") || line.Contains("endorsement")|| can.KeySkills.Contains(line))
+                                if(string.Equals(line, "Other Skills") || line.Contains("ndorse")|| can.KeySkills.Contains(line))
                                 {
                                     continue;
                                 }
@@ -1253,8 +1277,9 @@ namespace DXSWI.Forms
                         foreach (var row in rows)
                         {
                             DataRow data_row = gvJobOrderPipeline.GetDataRow(row);
-                            long id = Convert.ToInt64(data_row["RunningTaskId"].ToString());
-                            RunningTaskManager.deleteRunningTask(id);
+                            long taskId = Convert.ToInt64(data_row["RunningTaskId"].ToString());
+                            long jobOrderId = Convert.ToInt64(data_row["JobOrderId"].ToString());
+                            RunningTaskManager.deleteRunningTask(taskId, jobOrderId, _Candidate.CandidateId);
                         }
 
                     }

@@ -589,8 +589,9 @@ namespace DXSWI.Forms
 
                             // delete this running task data
                             DataRow data_row = gvCandidatePipeline.GetDataRow(row);
-                            long id = Convert.ToInt64(data_row["RunningTaskId"].ToString());
-                            RunningTaskManager.deleteRunningTask(id);
+                            long taskId = Convert.ToInt64(data_row["RunningTaskId"].ToString());
+                            long canId = Convert.ToInt64(data_row["CandidateId"].ToString());
+                            RunningTaskManager.deleteRunningTask(taskId, mJobOrder.JobOrderId, canId);
 
                         }
                     }
@@ -775,6 +776,12 @@ namespace DXSWI.Forms
         {
             // open send sms includeing phones, names, email
             dlgSendSMSEdit dlg = new dlgSendSMSEdit(phoneNumbers, names, emails, candidateIds);
+            dlg.ShowDialog();
+        }
+
+        private void bbiViewSms_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            dlgSmsController dlg = new dlgSmsController();
             dlg.ShowDialog();
         }
     }

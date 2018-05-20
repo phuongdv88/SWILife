@@ -18,12 +18,12 @@ namespace DXSWI.Forms
     {
         public delegate void updateData();
         public event updateData updateDataEvent;
-        long canId = -1;
+        long _CanId = -1;
         public dlgAddJobOrderToPipeline(long candidateId)
         {
             InitializeComponent();
+            _CanId = candidateId;
             init();
-            canId = candidateId;
         }
         public async void init()
         {
@@ -31,7 +31,7 @@ namespace DXSWI.Forms
             try
             {
                 // load data in candidate table and show in grid control
-                gcJobOrder.DataSource = await JobOrderManager.getJobOrdersAsync();
+                gcJobOrder.DataSource = await JobOrderManager.getJobOrdersAvailableCandidateAsync(_CanId);
 
             }
             catch (Exception ex)
@@ -55,7 +55,7 @@ namespace DXSWI.Forms
                         DataRow data_row = gvJobOrder.GetDataRow(row); // for test
                         long jobId = Convert.ToInt64(data_row["JobOrderId"].ToString());
 
-                        if (RunningTaskManager.isExist(canId, jobId))
+                        if (RunningTaskManager.isExist(_CanId, jobId))
                         {
                             throw new Exception("It has already in Pipeline!");
                         }
@@ -63,7 +63,7 @@ namespace DXSWI.Forms
                         // add to running task table
                         RunningTask rtask = new RunningTask
                         {
-                            CandidateId = canId,
+                            CandidateId = _CanId,
                             JobOrderId = jobId,
                             Added = DateTime.Now,
                             EnteredBy = UserManager.ActivatedUser?.UserName

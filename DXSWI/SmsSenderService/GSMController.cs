@@ -234,8 +234,14 @@ namespace SmsSenderService
             SmsReceivingCollection msgs = new SmsReceivingCollection();
             try
             {
-                Regex r = new Regex(@"\+CMGL: (\d+),""(.+)"",""(.+)"",(.*),""(.+)""\r\n(.+)\r\n");
+                //Regex r = new Regex(@"\+CMGL: (\d+),""(.+)"",""(.+)"",(.*),""(.+)""\r\n(.+)\r\n");
+                Regex r = new Regex(@"\+CMGL: (\d+),""(.+)"",""(.+)"",(.*),""(.+)""\r?\n(.+)\r?\n");
                 Match m = r.Match(input);
+                if (!m.Success)
+                {
+                    Utilities.WriteLog("sms is not match input format");
+                    Utilities.WriteLog(input);
+                }
                 while (m.Success)
                 {
                     SmsReceiving msg = new SmsReceiving();
@@ -246,11 +252,12 @@ namespace SmsSenderService
                     msg.Alphabet = m.Groups[4].Value;
                     //'18/03/02,09:59:14+28'
                     msg.SentTime = m.Groups[5].Value;
-                    DateTime tmp = DateTime.ParseExact(msg.SentTime, "yy/MM/dd,HH:mm:ss+28", null);
-                    if(tmp != null)
+                    DateTime tmp = DateTime.ParseExact(msg.SentTime.Split('+').First(), "yy/MM/dd,HH:mm:ss", null);
+                    if (tmp != null)
                     {
                         msg.SentTime = tmp.ToString("yyyy-MM-dd HH:mm:ss");
-                    } else
+                    }
+                    else
                     {
                         msg.SentTime = msg.SentTime.Replace(",", " ").Replace("/", "-").Replace("+28", "");
                     }
@@ -261,7 +268,6 @@ namespace SmsSenderService
             }
             catch
             {
-
                 throw;
             }
 

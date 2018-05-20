@@ -84,6 +84,7 @@
             this.colLastName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGender = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCellPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCity = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKeySkills = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAdded = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -140,7 +141,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colCellPhone = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bbiViewSms = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ccReport)).BeginInit();
@@ -219,12 +220,15 @@
             this.colState.Caption = "State";
             this.colState.FieldName = "State";
             this.colState.Name = "colState";
+            this.colState.OptionsColumn.AllowEdit = false;
             // 
             // colFirstName
             // 
             this.colFirstName.Caption = "First Name";
             this.colFirstName.FieldName = "FirstName";
             this.colFirstName.Name = "colFirstName";
+            this.colFirstName.OptionsColumn.AllowEdit = false;
+            this.colFirstName.OptionsColumn.ReadOnly = true;
             this.colFirstName.Visible = true;
             this.colFirstName.VisibleIndex = 1;
             this.colFirstName.Width = 76;
@@ -451,9 +455,10 @@
             this.bbiDeleteCandidateFromPipeLine,
             this.bbiRefresh,
             this.bbiNewApointment,
-            this.bbiSendSms});
+            this.bbiSendSms,
+            this.bbiViewSms});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 12;
+            this.barManager1.MaxItemId = 13;
             // 
             // bar2
             // 
@@ -470,7 +475,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSendSms),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiNewApointment),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDeleteCandidateFromPipeLine),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiRefresh)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiRefresh),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiViewSms)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.StandaloneBarDockControl = this.standaloneBarDockControl1;
@@ -679,7 +685,6 @@
             this.gvCandidatePipeline.FormatRules.Add(gridFormatRule1);
             this.gvCandidatePipeline.GridControl = this.gcCandidatePipeline;
             this.gvCandidatePipeline.Name = "gvCandidatePipeline";
-            this.gvCandidatePipeline.OptionsBehavior.Editable = false;
             this.gvCandidatePipeline.OptionsSelection.MultiSelect = true;
             this.gvCandidatePipeline.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvCandidatePipeline_CellValueChanging);
             // 
@@ -703,6 +708,7 @@
             this.colLastName.Caption = "Last Name";
             this.colLastName.FieldName = "LastName";
             this.colLastName.Name = "colLastName";
+            this.colLastName.OptionsColumn.AllowEdit = false;
             this.colLastName.Visible = true;
             this.colLastName.VisibleIndex = 2;
             this.colLastName.Width = 69;
@@ -712,6 +718,7 @@
             this.colGender.Caption = "Gender";
             this.colGender.FieldName = "GenderCandidate";
             this.colGender.Name = "colGender";
+            this.colGender.OptionsColumn.AllowEdit = false;
             this.colGender.Visible = true;
             this.colGender.VisibleIndex = 3;
             // 
@@ -720,15 +727,26 @@
             this.colEmail.Caption = "Email";
             this.colEmail.FieldName = "Email";
             this.colEmail.Name = "colEmail";
+            this.colEmail.OptionsColumn.AllowEdit = false;
             this.colEmail.Visible = true;
             this.colEmail.VisibleIndex = 4;
             this.colEmail.Width = 88;
+            // 
+            // colCellPhone
+            // 
+            this.colCellPhone.Caption = "Cell Phone";
+            this.colCellPhone.FieldName = "CellPhone";
+            this.colCellPhone.Name = "colCellPhone";
+            this.colCellPhone.OptionsColumn.AllowEdit = false;
+            this.colCellPhone.Visible = true;
+            this.colCellPhone.VisibleIndex = 5;
             // 
             // colCity
             // 
             this.colCity.Caption = "City";
             this.colCity.FieldName = "City";
             this.colCity.Name = "colCity";
+            this.colCity.OptionsColumn.AllowEdit = false;
             this.colCity.Visible = true;
             this.colCity.VisibleIndex = 6;
             this.colCity.Width = 77;
@@ -738,6 +756,7 @@
             this.colKeySkills.Caption = "Key Skills";
             this.colKeySkills.FieldName = "KeySkills";
             this.colKeySkills.Name = "colKeySkills";
+            this.colKeySkills.OptionsColumn.AllowEdit = false;
             this.colKeySkills.Visible = true;
             this.colKeySkills.VisibleIndex = 7;
             // 
@@ -746,6 +765,7 @@
             this.colAdded.Caption = "Added";
             this.colAdded.FieldName = "Added";
             this.colAdded.Name = "colAdded";
+            this.colAdded.OptionsColumn.AllowEdit = false;
             this.colAdded.Visible = true;
             this.colAdded.VisibleIndex = 8;
             this.colAdded.Width = 77;
@@ -755,6 +775,7 @@
             this.colStatus.Caption = "Status";
             this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
+            this.colStatus.OptionsColumn.AllowEdit = false;
             this.colStatus.Visible = true;
             this.colStatus.VisibleIndex = 9;
             this.colStatus.Width = 83;
@@ -764,6 +785,7 @@
             this.colLastActivity.Caption = "Last Activity";
             this.colLastActivity.FieldName = "LastActivity";
             this.colLastActivity.Name = "colLastActivity";
+            this.colLastActivity.OptionsColumn.AllowEdit = false;
             this.colLastActivity.Visible = true;
             this.colLastActivity.VisibleIndex = 10;
             this.colLastActivity.Width = 120;
@@ -1293,13 +1315,13 @@
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
-            // colCellPhone
+            // bbiViewSms
             // 
-            this.colCellPhone.Caption = "Cell Phone";
-            this.colCellPhone.FieldName = "CellPhone";
-            this.colCellPhone.Name = "colCellPhone";
-            this.colCellPhone.Visible = true;
-            this.colCellPhone.VisibleIndex = 5;
+            this.bbiViewSms.Caption = "View SMS";
+            this.bbiViewSms.Id = 12;
+            this.bbiViewSms.ImageOptions.Image = global::DXSWI.Properties.Resources.AppsSmsBicon;
+            this.bbiViewSms.Name = "bbiViewSms";
+            this.bbiViewSms.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiViewSms_ItemClick);
             // 
             // dlgJobOrderEdit
             // 
@@ -1497,5 +1519,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colKeySkills;
         private DevExpress.XtraGrid.Columns.GridColumn colGender;
         private DevExpress.XtraGrid.Columns.GridColumn colCellPhone;
+        private DevExpress.XtraBars.BarButtonItem bbiViewSms;
     }
 }

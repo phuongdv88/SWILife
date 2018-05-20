@@ -294,6 +294,33 @@ namespace SWIDAL
             return dt;
         }
 
+        public DataTable getCandidatesAvailableForJob(long jobId)
+        {
+            MySqlConnection conn = _ConnectionPool.GetConnection();
+            MySqlCommand cmd = null;
+            DataTable dt = null;
+            try
+            {
+                cmd = new MySqlCommand("spGetCandidatesAvailableForJobOrder", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("JobOrderId", jobId);
+                MySqlDataAdapter ad = new MySqlDataAdapter();
+                ad.SelectCommand = cmd;
+                dt = new DataTable();
+                ad.Fill(dt);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+                _ConnectionPool.ReturnConnection(conn);
+            }
+            return dt;
+        }
+
         public int getNumberOfCandidates()
         {
             MySqlConnection conn = _ConnectionPool.GetConnection();
@@ -329,6 +356,33 @@ namespace SWIDAL
             {
                 cmd = new MySqlCommand("spGetJobOrders", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
+                MySqlDataAdapter ad = new MySqlDataAdapter();
+                ad.SelectCommand = cmd;
+                dt = new DataTable();
+                ad.Fill(dt);
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                cmd?.Dispose();
+                _ConnectionPool.ReturnConnection(conn);
+            }
+            return dt;
+        }
+
+        public DataTable getJobOrdersAvailableforCandidate(long CanId)
+        {
+            MySqlConnection conn = _ConnectionPool.GetConnection();
+            MySqlCommand cmd = null;
+            DataTable dt = null;
+            try
+            {
+                cmd = new MySqlCommand("SpGetJobOrdersAvailableForCandidate", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("CanId", CanId);
                 MySqlDataAdapter ad = new MySqlDataAdapter();
                 ad.SelectCommand = cmd;
                 dt = new DataTable();

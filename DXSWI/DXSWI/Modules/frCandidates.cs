@@ -11,7 +11,6 @@ namespace DXSWI.Modules
 {
     public partial class frCandidates : DevExpress.XtraEditors.XtraUserControl
     {
-        CandidateManager mCandidateManager = new CandidateManager();
         public frCandidates()
         {
             InitializeComponent();
@@ -25,7 +24,7 @@ namespace DXSWI.Modules
         {
             try {
                 // load data in candidate table and show in grid control
-                gcCandidates.DataSource = await mCandidateManager.GetAllCandidatesOverViewAsync();
+                gcCandidates.DataSource = await CandidateManager.GetAllCandidatesOverViewAsync();
             }
             catch (Exception ex)
             {

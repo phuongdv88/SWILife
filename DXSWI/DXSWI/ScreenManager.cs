@@ -104,9 +104,8 @@ namespace DXSWI
 
         public void InitLoginScreen()
         {
-
-            Application.Run(mdlgLogin);
             checkUpdateVersion(null, null);
+            Application.Run(mdlgLogin);
             //Application.Run(mMain);
         }
         public void ShowLoginScreen()

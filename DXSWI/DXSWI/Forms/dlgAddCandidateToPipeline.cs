@@ -18,20 +18,20 @@ namespace DXSWI.Forms
     {
         public delegate void updateData();
         public event updateData updateDataEvent;
-        long jobId = -1;
+        long _JobId = -1;
         public dlgAddCandidateToPipeline(long jobOrderId)
         {
             InitializeComponent();
-            jobId = jobOrderId;
+            _JobId = jobOrderId;
             init();
         }
 
-        private void init()
+        private async void init()
         {
             try
             {
                 // load data in candidate table and show in grid control
-                gcCandidates.DataSource = CandidateManager.getCandidatesOverview();
+                gcCandidates.DataSource = await CandidateManager.GetAllCandidatesAvailableForJobAsync(_JobId);
 
             }
             catch (Exception ex)
@@ -59,7 +59,7 @@ namespace DXSWI.Forms
                         DataRow data_row = gvCandidates.GetDataRow(row); // for test
                         long CandidateId = Convert.ToInt64(data_row["CandidateId"].ToString());
 
-                        if (RunningTaskManager.isExist(CandidateId, jobId))
+                        if (RunningTaskManager.isExist(CandidateId, _JobId))
                         {
                             throw new Exception("It has already in Pipeline!");
                         }
@@ -68,7 +68,7 @@ namespace DXSWI.Forms
                         RunningTask rtask = new RunningTask
                         {
                             CandidateId = CandidateId,
-                            JobOrderId = jobId,
+                            JobOrderId = _JobId,
                             Added = DateTime.Now,
                             EnteredBy = UserManager.ActivatedUser?.UserName
                         };
@@ -158,6 +158,18 @@ namespace DXSWI.Forms
                 gvCandidates.FindFilterText = "\"" + gvCandidates.FindFilterText + "\"";
             }
             gvCandidates.FindFilterText = gvCandidates.FindFilterText.Replace("+ ", "+").Replace("- ", "-");
+        }
+
+        public void updateDataListCandidate()
+        {
+            init();
+        }
+
+        private void bbiCreateNewCandidate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            dlgCandidateEdit dlg = new dlgCandidateEdit(-1, null);
+            dlg.emitUpdateData += updateDataListCandidate;
+            dlg.ShowDialog();
         }
     }
 }

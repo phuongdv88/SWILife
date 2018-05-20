@@ -91,16 +91,18 @@ namespace SWIBLL
             return DataAccess.Instance.getPipelineCandidates(jobId);
         }
 
-        public static bool deleteRunningTask(long id)
+        public static bool deleteRunningTask(long taskId, long jobOrderId, long canId)
         {            
-            string sql = string.Format("DELETE FROM `swilifecore`.`runningtask` WHERE `RunningTaskId`='{0}'", id);
+            string sql = string.Format("DELETE FROM `swilifecore`.`runningtask` WHERE `RunningTaskId`='{0}'", taskId);
             int result = DataAccess.Instance.executeNonQuery(sql);
             Activity act = new Activity()
             {
                 Type = "Delete Running Task",
                 ActivityOf = Activity.TypeOfLogActivity.Pipeline,
-                RunningTaskId = id,
-                Notes = string.Format("running task Id = {0}",id)
+                RunningTaskId = taskId,
+                JobOrderId = jobOrderId,
+                CandidateId = canId,
+                Notes = string.Format("running task Id = {0}",taskId)
             };
             // add activity to db
             ActivityManager.insert(act);
