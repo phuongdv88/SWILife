@@ -107,8 +107,8 @@ namespace DXSWI.Modules
                     }
                     //cellphone = cellphone.Replace("(Mobile)", "").Replace("(Home)", "").Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "").Replace(".", "");
                     //cellphone = cellphone.Trim();
-                    cellphone = Regex.Replace(cellphone, "\\D+", "", RegexOptions.Multiline).Trim();
-                    keySkills = keySkills.Replace("Hanoi, ", "").Replace("HCM, ", "").Trim();
+                    //cellphone = Regex.Replace(cellphone, "\\D+", "", RegexOptions.Multiline).Trim();
+                    //keySkills = keySkills.Replace("Hanoi, ", "").Replace("HCM, ", "").Trim();
 
                     msg += string.Format("{0}\t\t{1}\t\t{2}\t\t{3} \r\n", candiateId, city, cellphone, keySkills);
                     counter = i;
@@ -572,7 +572,7 @@ namespace DXSWI.Modules
                     req.Headers.Add("Accept-Encoding: gzip, deflate, br");
                     req.Referer = "https://enjoy.qandidate.com/application/index";
                     req.KeepAlive = true;
-                    req.Headers.Add(@"Cookie: __utma=209967509.2084658541.1521856206.1522232865.1522286777.3; __utmz=209967509.1522286777.3.2.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; __utma=226254670.304764274.1521856228.1522232884.1522286777.3; __utmz=226254670.1522286777.3.3.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; intercom-session-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=YWo5RFpvQU5EWFNLVnJYa0p2UmlsQUIrQ2J3bEFLcldOSzZxSHF5T2lGQUY0ZGJnWWtHNTFmZll4MXJNN3BpZy0tRHJxWUxGak5naXRYRVFwRGxmT0tEZz09--4eb67fcf090c72f0f21b233eefe03f1f7c0401ce; intercom-lou-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=1; __utmc=209967509; SID=fr9j9hdoecop908hlo2v9mqan4; __utmc=226254670; __utmb=226254670.1.10.1522286777; __utmt=1; __utmb=209967509.1.10.1522286777; __utmt_b=1");
+                    req.Headers.Add(@"Cookie:  __utma=209967509.2084658541.1521856206.1526372260.1526830784.14; __utmz=209967509.1526830784.14.7.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; __utma=226254670.304764274.1521856228.1526372260.1526830784.14; __utmz=226254670.1526830784.14.14.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; intercom-lou-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=1; intercom-session-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=ai9WTm9NZGg3WkVRanNyaUl1dVF3UmZydzQ2VzZIa2QraGNNMVpkRjF6M3J3ZWd3anlrTmlNcUVjeVArN211VC0tQjRMSjBmdGRmeUdhbUFHUGJzOFp3QT09--d4f1adb32725bd806512c725a2e15c70f0a242c7; SID=6ikl05b35ktf86abo26043v4p2; __utmb=226254670.3.10.1526830784; __utmc=226254670; __utmt=1; __utmb=209967509.3.10.1526830784; __utmc=209967509; __utmt_b=1");
                     req.Headers.Add("Upgrade-Insecure-Requests: 1");
 
                     // open firefox -> F12 -> log in and check value header of http request and fill to request header.

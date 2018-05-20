@@ -101,7 +101,6 @@
             this.InterviewNotesMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.GenderComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.MiscNotesMemoEdit = new DevExpress.XtraEditors.MemoEdit();
-            this.CityTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.CountryTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.PositionsUpTillNowTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ProjectDoneMemoEdit = new DevExpress.XtraEditors.MemoEdit();
@@ -117,6 +116,7 @@
             this.EducationMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.sbView = new DevExpress.XtraEditors.SimpleButton();
             this.KeySkillsTextEdit = new DevExpress.XtraEditors.MemoEdit();
+            this.CityTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lciOk = new DevExpress.XtraLayout.LayoutControlItem();
@@ -206,7 +206,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.InterviewNotesMemoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GenderComboBoxEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiscNotesMemoEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CityTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountryTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PositionsUpTillNowTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProjectDoneMemoEdit.Properties)).BeginInit();
@@ -219,6 +218,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CanRelocateCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EducationMemoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KeySkillsTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CityTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciOk)).BeginInit();
@@ -295,7 +295,6 @@
             this.dataLayoutControl1.Controls.Add(this.InterviewNotesMemoEdit);
             this.dataLayoutControl1.Controls.Add(this.GenderComboBoxEdit);
             this.dataLayoutControl1.Controls.Add(this.MiscNotesMemoEdit);
-            this.dataLayoutControl1.Controls.Add(this.CityTextEdit);
             this.dataLayoutControl1.Controls.Add(this.CountryTextEdit);
             this.dataLayoutControl1.Controls.Add(this.PositionsUpTillNowTextEdit);
             this.dataLayoutControl1.Controls.Add(this.ProjectDoneMemoEdit);
@@ -311,6 +310,7 @@
             this.dataLayoutControl1.Controls.Add(this.EducationMemoEdit);
             this.dataLayoutControl1.Controls.Add(this.sbView);
             this.dataLayoutControl1.Controls.Add(this.KeySkillsTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.CityTextEdit);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -948,16 +948,9 @@
             this.MiscNotesMemoEdit.StyleController = this.dataLayoutControl1;
             this.MiscNotesMemoEdit.TabIndex = 26;
             // 
-            // CityTextEdit
-            // 
-            this.CityTextEdit.Location = new System.Drawing.Point(479, 234);
-            this.CityTextEdit.Name = "CityTextEdit";
-            this.CityTextEdit.Size = new System.Drawing.Size(102, 20);
-            this.CityTextEdit.StyleController = this.dataLayoutControl1;
-            this.CityTextEdit.TabIndex = 27;
-            // 
             // CountryTextEdit
             // 
+            this.CountryTextEdit.EditValue = "Viet Nam";
             this.CountryTextEdit.Location = new System.Drawing.Point(261, 258);
             this.CountryTextEdit.Name = "CountryTextEdit";
             this.CountryTextEdit.Size = new System.Drawing.Size(114, 20);
@@ -1101,6 +1094,19 @@
             this.KeySkillsTextEdit.Size = new System.Drawing.Size(277, 52);
             this.KeySkillsTextEdit.StyleController = this.dataLayoutControl1;
             this.KeySkillsTextEdit.TabIndex = 19;
+            // 
+            // CityTextEdit
+            // 
+            this.CityTextEdit.Location = new System.Drawing.Point(479, 234);
+            this.CityTextEdit.Name = "CityTextEdit";
+            this.CityTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CityTextEdit.Properties.Items.AddRange(new object[] {
+            "Hanoi",
+            "HCM"});
+            this.CityTextEdit.Size = new System.Drawing.Size(102, 20);
+            this.CityTextEdit.StyleController = this.dataLayoutControl1;
+            this.CityTextEdit.TabIndex = 27;
             // 
             // layoutControlGroup1
             // 
@@ -1654,7 +1660,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.InterviewNotesMemoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GenderComboBoxEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MiscNotesMemoEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CityTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountryTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PositionsUpTillNowTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProjectDoneMemoEdit.Properties)).EndInit();
@@ -1667,6 +1672,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CanRelocateCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EducationMemoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KeySkillsTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CityTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciOk)).EndInit();
@@ -1743,7 +1749,6 @@
         private DevExpress.XtraEditors.MemoEdit InterviewNotesMemoEdit;
         private DevExpress.XtraEditors.ComboBoxEdit GenderComboBoxEdit;
         private DevExpress.XtraEditors.MemoEdit MiscNotesMemoEdit;
-        private DevExpress.XtraEditors.TextEdit CityTextEdit;
         private DevExpress.XtraEditors.TextEdit CountryTextEdit;
         private DevExpress.XtraEditors.TextEdit PositionsUpTillNowTextEdit;
         private DevExpress.XtraEditors.MemoEdit ProjectDoneMemoEdit;
@@ -1852,5 +1857,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiSendSMS;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraEditors.MemoEdit KeySkillsTextEdit;
+        private DevExpress.XtraEditors.ComboBoxEdit CityTextEdit;
     }
 }

@@ -348,13 +348,17 @@ namespace DXSWI
             //_frUtilities.importFromContacts();
 
             // update database from Quandidate
-            //string generalFolder = @"D:\swilifedata\quandidate\general_links_28-03-2018";
-            //string candidatesFolder = @"D:\swilifedata\quandidate\candidate_links_28-03-2018";
+            //----------------
+            //string generalFolder = @"D:\swilifedata\quandidate\General_Quandiate_20-5-2018";
+            //string candidatesFolder = @"D:\swilifedata\quandidate\Candiate_Quandiate_20-5-2018";
             //_frUtilities.DownloadQuandidateLinks(generalFolder, candidatesFolder);
             //_frUtilities.DownloadQuandidateCvs(candidatesFolder);
             //_frUtilities.ParseCandidateFromQuandidateLinks(candidatesFolder);
+            // correct database
+            //-----------------
 
             //_frUtilities.CorrectLastStatusCandidates();
+            //_frUtilities.correctDB();
             //changeGroup(_tagUtilities);
 
 

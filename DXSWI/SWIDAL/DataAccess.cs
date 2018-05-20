@@ -550,6 +550,7 @@ namespace SWIDAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("StartTime", startTime.ToString("yyyy-MM-dd HH:mm:ss"));
                 cmd.Parameters.AddWithValue("EndTime", endTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                string tmp = startTime.ToString("yyyy-MM-dd HH:mm:ss");
                 MySqlDataAdapter ad = new MySqlDataAdapter();
                 ad.SelectCommand = cmd;
                 dt = new DataTable();
