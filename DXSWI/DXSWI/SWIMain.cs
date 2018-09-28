@@ -73,13 +73,14 @@ namespace DXSWI
 
         public void SetupUiByRole()
         {
-            if(UserManager.ActivatedUser != null)
+            if (UserManager.ActivatedUser != null)
             {
                 rpUser.Text = string.Format("{0}", UserManager.ActivatedUser.UserName.ToUpper());
-                if(UserManager.ActivatedUser.RoleName != "ADMIN")
+                if (UserManager.ActivatedUser.RoleName != "ADMIN")
                 {
                     rpgEditUser.Visible = false;
-                } else
+                }
+                else
                 {
                     rpgEditUser.Visible = true;
                 }
@@ -210,7 +211,7 @@ namespace DXSWI
                         }
                     }
                 }
-            }           
+            }
             changeGroup(tag);
         }
         private void changeGroup(string tag)
@@ -336,7 +337,7 @@ namespace DXSWI
         {
             // delete selected user
             _frUser.DeleteUser();
-            
+
         }
 
         private void bbiUserHelp_ItemClick(object sender, ItemClickEventArgs e)
@@ -349,8 +350,8 @@ namespace DXSWI
 
             // update database from Quandidate
             //----------------
-            //string generalFolder = @"D:\swilifedata\quandidate\general_links_20-7-2018";
-            //string candidatesFolder = @"D:\swilifedata\quandidate\candidate_links_20-7-2018";
+            //string generalFolder = @"D:\swilifedata\quandidate\General_links_28-9-2018";
+            //string candidatesFolder = @"D:\swilifedata\quandidate\Candiate_links_28-9-2018";
             //_frUtilities.DownloadQuandidateLinks(generalFolder, candidatesFolder);
             //_frUtilities.DownloadQuandidateCvs(candidatesFolder);
             //_frUtilities.ParseCandidateFromQuandidateLinks(candidatesFolder);
@@ -371,10 +372,13 @@ namespace DXSWI
             if (icon == MessageBoxIcon.Information)
             {
                 image = global::DXSWI.Properties.Resources.Notice_Info_icon;
-            } else if(icon == MessageBoxIcon.Warning)
+            }
+            else if (icon == MessageBoxIcon.Warning)
             {
                 image = global::DXSWI.Properties.Resources.Button_Warning_icon;
-            } else {
+            }
+            else
+            {
 
                 image = global::DXSWI.Properties.Resources.Notice_Support_icon;
             }
@@ -431,7 +435,7 @@ namespace DXSWI
         private void barButtonItem1_ItemClick_2(object sender, ItemClickEventArgs e)
         {
             _frContacts.NewContact();
-            
+
         }
 
         private void barButtonItem2_ItemClick_1(object sender, ItemClickEventArgs e)

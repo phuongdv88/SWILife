@@ -341,7 +341,7 @@ namespace DXSWI.Forms
                             _Candidate = CandidateManager.getCandidateByEmail(EmailTextEdit.Text.Trim());
                             if (_Candidate == null)
                             {
-                                _Candidate = CandidateManager.getCandidateByCellPhone(CellPhoneTextEdit.Text.Trim());
+                                _Candidate = CandidateManager.getCandidateByCellPhone(Utils.ConvertPhoneNumberTo10Digits(CellPhoneTextEdit.Text.Trim()));
                             }
                             if (_Candidate == null)
                             {
@@ -396,6 +396,9 @@ namespace DXSWI.Forms
             {
                 can.WorkPhone = "0" + can.WorkPhone.Remove(0, 2);
             }
+            // convert to 10 digit from 28/9/2018
+            can.CellPhone = Utils.ConvertPhoneNumberTo10Digits(can.CellPhone);
+            can.WorkPhone = Utils.ConvertPhoneNumberTo10Digits(can.WorkPhone);
             can.BestTimeToCall = BestTimeToCallTextEdit.Text;
             can.Address = AddressTextEdit.Text;
             can.WebSite = WebSiteTextEdit.Text;
@@ -468,6 +471,10 @@ namespace DXSWI.Forms
                         {
                             Candidate can = new Candidate();
                             getCandidateLinkedInFromClipboard(ref can);
+                            // convert to 10 digit phone number started from 28-9-2018
+                            can.CellPhone = Utils.ConvertPhoneNumberTo10Digits(can.CellPhone);
+                            can.WorkPhone = Utils.ConvertPhoneNumberTo10Digits(can.WorkPhone);
+
                             FillUpToUi(can);
                             SourceTextEdit.SelectedIndex = 1;
                             if (CandidateManager.IsCandidateExistByPhoneAndEmail(can.CellPhone, can.Email))
@@ -478,7 +485,7 @@ namespace DXSWI.Forms
                                     _Candidate = CandidateManager.getCandidateByEmail(EmailTextEdit.Text.Trim());
                                     if (_Candidate == null)
                                     {
-                                        _Candidate = CandidateManager.getCandidateByCellPhone(CellPhoneTextEdit.Text.Trim());
+                                        _Candidate = CandidateManager.getCandidateByCellPhone(Utils.ConvertPhoneNumberTo10Digits(CellPhoneTextEdit.Text.Trim()));
                                     }
                                     if (_Candidate == null)
                                     {

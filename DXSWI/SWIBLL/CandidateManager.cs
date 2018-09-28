@@ -233,6 +233,7 @@ namespace SWIBLL
 
         public static Candidate getCandidateByCellPhone(string cellphone)
         {
+            // convert to 10 digit number first
             Candidate can = null;
             string sql = string.Format("select T1.*, T2.UserName as Owner from `swilifecore`.`candidate` T1 left join user T2 on T1.UserId = T2.UserId where `CellPhone`='{0}'", cellphone);
             DataTable tbl = DataAccess.Instance.getDataTable(sql);

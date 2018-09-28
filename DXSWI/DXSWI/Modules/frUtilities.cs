@@ -134,7 +134,7 @@ namespace DXSWI.Modules
             try
             {
                 //for (int i = 0; i < 100; ++i)
-                for (int i = 0; i < dt.Rows.Count; ++i)
+                for (int i = 0, len = dt.Rows.Count; i < len; ++i)
                 {
                     // corect db
                     DataRow data_row = dt.Rows[i];
@@ -155,6 +155,10 @@ namespace DXSWI.Modules
                     {
                         cellphone = "0" + cellphone.Remove(0, 2);
                     }
+                    if (cellphone.StartsWith("00"))
+                    {
+                        cellphone = "0" + cellphone.Remove(0, 2);
+                    }
                     if (cellphone == "0")
                         cellphone = string.Empty;
 
@@ -168,14 +172,29 @@ namespace DXSWI.Modules
                     {
                         workphone = "0" + workphone.Remove(0, 2);
                     }
+                    if (workphone.StartsWith("00"))
+                    {
+                        workphone = "0" + workphone.Remove(0, 2);
+                    }
                     if (workphone == "0")
                         workphone = string.Empty;
 
                     //msg += string.Format("{0}\t\t{1}\t\t{2}\r\n", candiateId, cellphone, workphone);
                     //printMessage(msg);
                     counter = i;
-                    // update to db
-                    CandidateManager.correctDatabasePhone(candiateId, cellphone, workphone);
+
+                    // convert to 10 digit number begin from 28/9/20189
+                    
+                    var newCellphone = Utils.ConvertPhoneNumberTo10Digits(cellphone);
+                    var newWorkphone = Utils.ConvertPhoneNumberTo10Digits(workphone);
+
+                    if (string.Equals(newCellphone, cellphone) && string.Equals(newWorkphone, workphone))
+                    {
+                        continue;
+                    }
+
+                    //update to db
+                    CandidateManager.correctDatabasePhone(candiateId, newCellphone, newWorkphone);
                 }
                 printMessage("Finish");
             }
@@ -431,7 +450,7 @@ namespace DXSWI.Modules
                 req.Headers.Add("Accept-Language: en-US,en;q=0.5");
                 //req.Headers.Add("Accept-Encoding: gzip, deflate, br");
                 req.KeepAlive = true;
-                req.Headers.Add(@"Cookie: __utma=209967509.2084658541.1521856206.1522286777.1522292886.4; __utmz=209967509.1522292886.4.3.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; __utma=226254670.304764274.1521856228.1522286777.1522292886.4; __utmz=226254670.1522292886.4.4.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; intercom-session-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=bEZxL21GQVRKeDB3RldaS0xoSTNGUDg1eVo3Z1VmNm9ZK09rblUzMGVoREszRFRMRExTZGRER3MwOUlnY1FqQy0tUnAvVUsyRGZoaWMwSHBQcGc0THNudz09--b51cb50faf2be4114d65afe064b4c614ed32bff4; intercom-lou-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=1; __utmc=209967509; SID=fr9j9hdoecop908hlo2v9mqan4; __utmc=226254670; __utmb=226254670.2.10.1522292886; __utmt=1; __utmb=209967509.2.10.1522292886; __utmt_b=1");
+                req.Headers.Add(@"Cookie: __utma=209967509.884813182.1531992935.1538106142.1538109227.5; __utmz=209967509.1532076731.2.2.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; __utma=226254670.717271683.1531992955.1538107193.1538109227.5; __utmz=226254670.1538107193.4.4.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; intercom-lou-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=1; __utmc=209967509; SID=1kvs045k2am5fhp82bfba8am25; __utmc=226254670; intercom-session-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=T3Vrc2Q3c2RMaUdDUnMveHhvSzVQR3RFc0dQYWxubzhuRXN0Z3V6Njh2R2tRSGd2N0VJM1dmUUF4NU12RVRMTS0tRkVWZGU3cjZxUnR1YXhGbGFlaW5rQT09--3f39419665b19e17391c7c999f0c2797ba315fc0; __utmb=226254670.1.10.1538109227; __utmt=1; __utmb=209967509.1.10.1538109227; __utmt_b=1");
                 req.Headers.Add("Upgrade-Insecure-Requests: 1");
 
                 // open firefox -> F12 -> log in and check value header of http request and fill to request header.
@@ -572,7 +591,7 @@ namespace DXSWI.Modules
                     req.Headers.Add("Accept-Encoding: gzip, deflate, br");
                     req.Referer = "https://enjoy.qandidate.com/application/index";
                     req.KeepAlive = true;
-                    req.Headers.Add(@"Cookie:  __utma=209967509.884813182.1531992935.1532076731.1532319372.3; __utmz=209967509.1532076731.2.2.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; __utma=226254670.717271683.1531992955.1532076731.1532319473.3; __utmz=226254670.1532319473.3.3.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; intercom-session-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=RzBKc2hQZjdTSmx5ejlSdzJnd0ttcWNBV0RrVnRWb1g5Qk5INFRrR2REdlk3STIyMnJzbFprS2FpdGJYYm9SRy0tdUpyQkRzZnBFRmRzOFBvaC9WZkErUT09--313c536303df2dccde205e8759e0539d4232665a; intercom-lou-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=1; SID=ema3bsvos49epkjmrl45crmh64; __utmc=209967509; __utmc=226254670; __utmb=209967509.4.10.1532319372; __utmt=1; __utmb=226254670.3.10.1532319473; __utmt_b=1");
+                    req.Headers.Add(@"Cookie: __utma=209967509.884813182.1531992935.1538106142.1538109227.5; __utmz=209967509.1532076731.2.2.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; __utma=226254670.717271683.1531992955.1538107193.1538109227.5; __utmz=226254670.1538107193.4.4.utmcsr=qprofile.me|utmccn=(referral)|utmcmd=referral|utmcct=/gui/index.html; intercom-lou-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=1; __utmc=209967509; SID=1kvs045k2am5fhp82bfba8am25; __utmc=226254670; intercom-session-4cdb92f527ff70ad3fd6829dddb732f035ce5b51=T3Vrc2Q3c2RMaUdDUnMveHhvSzVQR3RFc0dQYWxubzhuRXN0Z3V6Njh2R2tRSGd2N0VJM1dmUUF4NU12RVRMTS0tRkVWZGU3cjZxUnR1YXhGbGFlaW5rQT09--3f39419665b19e17391c7c999f0c2797ba315fc0; __utmb=226254670.1.10.1538109227; __utmt=1; __utmb=209967509.1.10.1538109227; __utmt_b=1");
                     req.Headers.Add("Upgrade-Insecure-Requests: 1");
 
                     // open firefox -> F12 -> log in and check value header of http request and fill to request header.
@@ -665,6 +684,7 @@ namespace DXSWI.Modules
                         {
                             can.CellPhone = it.Replace("Tel ", "");
                             can.CellPhone = Regex.Replace(can.CellPhone, "\\D+", "", RegexOptions.Multiline);
+                            can.CellPhone = Utils.ConvertPhoneNumberTo10Digits(can.CellPhone);
                         }
                         else if (it.Contains("Email ") && can.Email.Length == 0)
                         {

@@ -43,6 +43,55 @@ namespace DXSWI
                 return m.Value.ToUpper();
             });
         }
+        public static string ConvertPhoneNumberTo10Digits(string phoneNumber)
+        {
+            if (phoneNumber == null || phoneNumber == string.Empty) return string.Empty;
+
+            string[] old_head_digit = { "120", "121", "122", "126", "128"
+            , "123", "124", "125", "127", "129"
+            , "162", "163", "164", "165", "166", "167", "168", "169"
+            , "186", "188"
+            , "199"};
+            string[] new_head_digit = { "70", "79", "77", "76", "78"
+            , "83", "84", "85", "81", "82"
+            , "32", "33", "34", "35", "36", "37", "38", "39"
+            , "56", "58"
+            , "59"};
+            if (phoneNumber.StartsWith("+84"))
+            {
+                phoneNumber = phoneNumber.Remove(0, 3);
+            }
+            if (phoneNumber.StartsWith("84"))
+            {
+                phoneNumber = phoneNumber.Remove(0, 2);
+            }
+            if (phoneNumber.StartsWith("0"))
+            {
+                phoneNumber = phoneNumber.Remove(0, 1);
+            }
+
+            // update new head of phone number
+            if (phoneNumber.Length < 3)
+                return string.Empty;
+            var head = phoneNumber.Substring(0, 3);
+            if (head.StartsWith("1"))
+            {
+                // compare with old head
+                for (int i = 0; i < old_head_digit.Length; i++)
+                {
+                    if (string.Equals(head, old_head_digit[i]))
+                    {
+                        head = new_head_digit[i];
+                        // replace new old head
+                        phoneNumber = head + phoneNumber.Remove(0, 3);
+                        break;
+                    }
+                }
+            }
+            // add zero to head of phone number
+            phoneNumber = "0" + phoneNumber;
+            return phoneNumber;
+        }
     }
 
     public class RichEditMailMessageExporter : IUriProvider
@@ -97,6 +146,8 @@ namespace DXSWI
                 options.Encoding = Encoding.UTF8;
             }
         }
+
+
 
 
         #region IUriProvider Members
